@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Gaming" Class="MarketingPromosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DBSERVER2;Initial Catalog=Gaming;Integrated Security=True" SettingsObjectName="PromotionalCreationWizard.My.MySettings" SettingsPropertyName="GamingConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MarketingPromos" Member="MarketingPromos">
+    <Type Name="MarketingPromo">
+      <Column Name="PromoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PromoName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PromoType" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="Query" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PromoDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PointCutoff" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PointDivisor" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaxTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PromoMaxTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaxCoupon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="PromoMaxCoupon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="CouponID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Recurring" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Frequency" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="RecursOnWeekday" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="EarnsOnWeekday" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="CountCurrentDay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintTickets" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
