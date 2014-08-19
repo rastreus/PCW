@@ -68,10 +68,12 @@ Partial Class PCW
         Me.KeyPreview = true
         Me.Logo = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_Logo
         Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MaximizeBox = False
         Me.MinimumSize = New System.Drawing.Size(160, 139)
         Me.Name = "PCW"
         Me.SideBarImage = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_SideBarImage_373
         Me.SideBarLogo = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_Logo
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PromotionalCreationWizard (PCW)"
         Me.Title = "PWC"
         Me.ResumeLayout(false)
