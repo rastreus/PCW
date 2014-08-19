@@ -22,7 +22,8 @@ Partial Class PCW
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.SuspendLayout
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PCW))
+        Me.SuspendLayout()
         '
         'wizardTop
         '
@@ -31,16 +32,16 @@ Partial Class PCW
         '
         'cancel
         '
-        Me.cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.cancel.AutoSize = true
+        Me.cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cancel.AutoSize = True
         Me.cancel.Location = New System.Drawing.Point(9, 8)
         Me.cancel.Margin = New System.Windows.Forms.Padding(2)
         Me.cancel.Size = New System.Drawing.Size(75, 23)
         '
         'back
         '
-        Me.back.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.back.AutoSize = true
+        Me.back.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.back.AutoSize = True
         Me.back.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.back.Location = New System.Drawing.Point(415, 8)
         Me.back.Margin = New System.Windows.Forms.Padding(2)
@@ -48,7 +49,7 @@ Partial Class PCW
         '
         'panelStep
         '
-        Me.panelStep.AutoSize = true
+        Me.panelStep.AutoSize = True
         Me.panelStep.BackColor = System.Drawing.SystemColors.Control
         Me.panelStep.Location = New System.Drawing.Point(0, 35)
         Me.panelStep.Margin = New System.Windows.Forms.Padding(2)
@@ -59,13 +60,14 @@ Partial Class PCW
         '
         Me.AcceptButton = Nothing
         Me.AllowClose = TSWizards.AllowClose.Ask
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSize = true
+        Me.AutoSize = True
         Me.CancelButton = Me.back
         Me.ClientSize = New System.Drawing.Size(594, 414)
         Me.FirstStepName = "Step1"
-        Me.KeyPreview = true
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Logo = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_Logo
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False

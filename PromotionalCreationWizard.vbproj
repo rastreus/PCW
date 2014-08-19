@@ -255,6 +255,7 @@
     <Content Include="research\PromoTypeBNF.txt" />
     <Content Include="resources\CenteredMessagebox.dll" />
     <Content Include="resources\FontAwesomeIcons.dll" />
+    <None Include="resources\PCW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
