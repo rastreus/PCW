@@ -1,0 +1,20 @@
+[ BNF :: http://cui.unige.ch/db-research/Enseignement/analyseinfo/AboutBNF.html ]
+[ Created from the PromoTypeDescriptions Excel file. ]
+			  
+			  <promo> ::= <reward>
+		     <reward> ::= <ticket-quantity> | <random-prize> | "prompt-prize" | "prompt-cash-value" | "MaxCoupon-value"
+	   <random-prize> ::= "random-prize-table[RND]" // "A pseudo-randomly generated number seeds the index of a prize table"
+    <ticket-quantity> ::= "1" | <count> | <compound> | <complex> | "eligiblePlayers-table" | "prompt" // "1 OR 1+ OR Table-Lookup"
+              <count> ::= ADD <date>
+           <compound> ::= (ADD <points>) DIVIDE <points-divisor>
+            <complex> ::= <compound> ADD <count>
+               <date> ::= "current-week" | <date-region> | "earns-on-field"
+        <date-region> ::= "start-date, end-date"
+	 <date-recurring> ::= "daily" | "weekly" | "monthly" | "quartly" | "yearly"
+	    <conditional> ::= <date-conditional> | <points-conditional> | <user-conditional>
+   <date-conditional> ::= "not-already-today" | "not-enroll-date"
+             <points> ::= "lifetime" | <date-region>
+	  <points-cutoff> ::= "pointCutoff"
+	 <points-divisor> ::= "pointDivisor" // "Table-Lookup"
+ <points-conditional> ::= <points> ">" <points-cutoff> | <points> ">=" <points-cutoff> |"not-same-day-points"
+   <user-conditional> ::= "is-in-eligiblePlayers-table" | "is-in-birth-month"
