@@ -69,7 +69,7 @@ Partial Class Step4
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.CheckedListBox1)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(33, 3)
+        Me.Panel1.Location = New System.Drawing.Point(163, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(189, 162)
         Me.Panel1.TabIndex = 1
@@ -100,7 +100,7 @@ Partial Class Step4
         Me.Panel2.Controls.Add(Me.Panel5)
         Me.Panel2.Controls.Add(Me.CheckedListBox2)
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(228, 3)
+        Me.Panel2.Location = New System.Drawing.Point(358, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(189, 162)
         Me.Panel2.TabIndex = 2
@@ -172,7 +172,7 @@ Partial Class Step4
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.DateTimePicker1)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Location = New System.Drawing.Point(423, 3)
+        Me.Panel3.Location = New System.Drawing.Point(33, 3)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(124, 81)
         Me.Panel3.TabIndex = 3
@@ -199,7 +199,7 @@ Partial Class Step4
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.Controls.Add(Me.DateTimePicker2)
         Me.Panel4.Controls.Add(Me.Label4)
-        Me.Panel4.Location = New System.Drawing.Point(423, 90)
+        Me.Panel4.Location = New System.Drawing.Point(33, 90)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(124, 75)
         Me.Panel4.TabIndex = 4
@@ -227,7 +227,7 @@ Partial Class Step4
         Me.Panel6.Controls.Add(Me.Label6)
         Me.Panel6.Controls.Add(Me.DateTimePicker3)
         Me.Panel6.Controls.Add(Me.CheckBox1)
-        Me.Panel6.Location = New System.Drawing.Point(33, 172)
+        Me.Panel6.Location = New System.Drawing.Point(163, 172)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(189, 100)
         Me.Panel6.TabIndex = 5
@@ -266,7 +266,7 @@ Partial Class Step4
         Me.Panel7.Controls.Add(Me.Label7)
         Me.Panel7.Controls.Add(Me.DateTimePicker4)
         Me.Panel7.Controls.Add(Me.CheckBox2)
-        Me.Panel7.Location = New System.Drawing.Point(228, 172)
+        Me.Panel7.Location = New System.Drawing.Point(358, 172)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(189, 100)
         Me.Panel7.TabIndex = 6

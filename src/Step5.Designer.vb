@@ -93,6 +93,7 @@ Partial Class Step5
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(100, 20)
         Me.TextBox3.TabIndex = 8
+        Me.TextBox3.Text = "Enter Prize Here"
         '
         'TextBox2
         '
@@ -101,6 +102,7 @@ Partial Class Step5
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(100, 20)
         Me.TextBox2.TabIndex = 7
+        Me.TextBox2.Text = "Enter Amount Here"
         '
         'TextBox1
         '
@@ -109,6 +111,7 @@ Partial Class Step5
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 6
+        Me.TextBox1.Text = "Enter Max Here"
         '
         'RadioButton5
         '
@@ -207,6 +210,7 @@ Partial Class Step5
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(100, 20)
         Me.TextBox5.TabIndex = 1
+        Me.TextBox5.Text = "Enter # Here"
         '
         'Label4
         '
@@ -232,6 +236,7 @@ Partial Class Step5
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(100, 20)
         Me.TextBox4.TabIndex = 9
+        Me.TextBox4.Text = "Enter # of Tickets"
         '
         'RadioButton11
         '
@@ -414,6 +419,7 @@ Partial Class Step5
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(81, 20)
         Me.TextBox6.TabIndex = 9
+        Me.TextBox6.Text = "Enter # Here"
         '
         'TextBox7
         '
@@ -422,6 +428,7 @@ Partial Class Step5
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New System.Drawing.Size(81, 20)
         Me.TextBox7.TabIndex = 10
+        Me.TextBox7.Text = "Enter # Here"
         '
         'Step5
         '
