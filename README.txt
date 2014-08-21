@@ -1,1 +1,0 @@
-This is a wizard which guides the user through the process of creating a promo.
