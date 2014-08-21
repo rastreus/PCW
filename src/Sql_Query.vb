@@ -8,6 +8,7 @@ Public Class Sql_Query
     Public Shared Function Existing_Promo(ByVal new_promoName As String)
         Dim returningBool As Boolean = False
         Dim tbl As New MarketingPromosDataContext
+
         Dim trimmed_new_promoName As String = new_promoName.Trim
 
         Dim existing_promoName = (From name In tbl.MarketingPromos

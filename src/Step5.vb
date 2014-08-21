@@ -160,11 +160,11 @@ Public Class Step5
     'or if it is not 1 or more digit
     Private Function Invalid_Number(ByVal inputString As String)
         Dim invalid As Boolean = False
-        Dim inputInt As Integer
+        Dim inputInt As Short
         Dim RegexObj As Regex = New Regex("^\d+$")
 
         Try
-            inputInt = Integer.Parse(inputString)
+            inputInt = Short.Parse(inputString)
             If (inputInt = 0) Or Not RegexObj.IsMatch(inputString) Then
                 invalid = True
             End If
@@ -337,4 +337,45 @@ x696</a>.Value
             Me.TextBox7.Text = "Enter # Here"
         End If
     End Sub
+
+#Region "Numeric_Textbox_Input"
+    'This limits the textboxes to only allow numeric input.
+    'For whatever reason, because it just may happen, a user is still able to paste non-numeric input into the textbox.
+    'The textbox is validated when the user hits "Next>" to see if there is any invalid characters present.
+    Private Sub TextBox1_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox2_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox2.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox4_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox4.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox5_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox5.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox6_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox6.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox7_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox7.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+#End Region
 End Class

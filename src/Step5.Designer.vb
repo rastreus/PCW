@@ -47,15 +47,15 @@ Partial Class Step5
         Me.Label2 = New System.Windows.Forms.Label()
         Me.IconButton1 = New FontAwesomeIcons.IconButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton13 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton14 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton15 = New System.Windows.Forms.RadioButton()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.RadioButton13 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.RadioButton15 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton14 = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -199,7 +199,7 @@ Partial Class Step5
         Me.Panel3.Controls.Add(Me.TextBox5)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Enabled = False
-        Me.Panel3.Location = New System.Drawing.Point(128, 74)
+        Me.Panel3.Location = New System.Drawing.Point(143, 75)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(116, 64)
         Me.Panel3.TabIndex = 11
@@ -232,7 +232,7 @@ Partial Class Step5
         'TextBox4
         '
         Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(105, 167)
+        Me.TextBox4.Location = New System.Drawing.Point(143, 167)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(100, 20)
         Me.TextBox4.TabIndex = 9
@@ -243,10 +243,10 @@ Partial Class Step5
         Me.RadioButton11.AutoSize = True
         Me.RadioButton11.Location = New System.Drawing.Point(7, 168)
         Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(92, 17)
+        Me.RadioButton11.Size = New System.Drawing.Size(130, 17)
         Me.RadioButton11.TabIndex = 8
         Me.RadioButton11.TabStop = True
-        Me.RadioButton11.Text = "Set Amount of"
+        Me.RadioButton11.Text = "Set Amount of Tickets"
         Me.RadioButton11.UseVisualStyleBackColor = True
         '
         'RadioButton10
@@ -337,46 +337,14 @@ Partial Class Step5
         Me.Panel4.Size = New System.Drawing.Size(143, 83)
         Me.Panel4.TabIndex = 4
         '
-        'Panel5
+        'TextBox6
         '
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.TextBox7)
-        Me.Panel5.Controls.Add(Me.RadioButton15)
-        Me.Panel5.Controls.Add(Me.RadioButton14)
-        Me.Panel5.Controls.Add(Me.Label6)
-        Me.Panel5.Location = New System.Drawing.Point(428, 207)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(143, 83)
-        Me.Panel5.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(-1, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(139, 37)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Limit # of tickets per patron?"
-        '
-        'Label6
-        '
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(-1, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(139, 37)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Limit # of tickets for entire promo?"
-        '
-        'RadioButton12
-        '
-        Me.RadioButton12.AutoSize = True
-        Me.RadioButton12.Location = New System.Drawing.Point(7, 41)
-        Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(43, 17)
-        Me.RadioButton12.TabIndex = 7
-        Me.RadioButton12.TabStop = True
-        Me.RadioButton12.Text = "Yes"
-        Me.RadioButton12.UseVisualStyleBackColor = True
+        Me.TextBox6.Enabled = False
+        Me.TextBox6.Location = New System.Drawing.Point(57, 41)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(81, 20)
+        Me.TextBox6.TabIndex = 9
+        Me.TextBox6.Text = "Enter # Here"
         '
         'RadioButton13
         '
@@ -390,15 +358,46 @@ Partial Class Step5
         Me.RadioButton13.Text = "No"
         Me.RadioButton13.UseVisualStyleBackColor = True
         '
-        'RadioButton14
+        'RadioButton12
         '
-        Me.RadioButton14.AutoSize = True
-        Me.RadioButton14.Location = New System.Drawing.Point(7, 41)
-        Me.RadioButton14.Name = "RadioButton14"
-        Me.RadioButton14.Size = New System.Drawing.Size(43, 17)
-        Me.RadioButton14.TabIndex = 8
-        Me.RadioButton14.Text = "Yes"
-        Me.RadioButton14.UseVisualStyleBackColor = True
+        Me.RadioButton12.AutoSize = True
+        Me.RadioButton12.Location = New System.Drawing.Point(7, 41)
+        Me.RadioButton12.Name = "RadioButton12"
+        Me.RadioButton12.Size = New System.Drawing.Size(43, 17)
+        Me.RadioButton12.TabIndex = 7
+        Me.RadioButton12.TabStop = True
+        Me.RadioButton12.Text = "Yes"
+        Me.RadioButton12.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(-1, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(139, 37)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Limit # of tickets per patron?"
+        '
+        'Panel5
+        '
+        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel5.Controls.Add(Me.TextBox7)
+        Me.Panel5.Controls.Add(Me.RadioButton15)
+        Me.Panel5.Controls.Add(Me.RadioButton14)
+        Me.Panel5.Controls.Add(Me.Label6)
+        Me.Panel5.Location = New System.Drawing.Point(428, 207)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(143, 83)
+        Me.Panel5.TabIndex = 5
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Enabled = False
+        Me.TextBox7.Location = New System.Drawing.Point(56, 40)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(81, 20)
+        Me.TextBox7.TabIndex = 10
+        Me.TextBox7.Text = "Enter # Here"
         '
         'RadioButton15
         '
@@ -412,23 +411,24 @@ Partial Class Step5
         Me.RadioButton15.Text = "No"
         Me.RadioButton15.UseVisualStyleBackColor = True
         '
-        'TextBox6
+        'RadioButton14
         '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Location = New System.Drawing.Point(57, 41)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(81, 20)
-        Me.TextBox6.TabIndex = 9
-        Me.TextBox6.Text = "Enter # Here"
+        Me.RadioButton14.AutoSize = True
+        Me.RadioButton14.Location = New System.Drawing.Point(7, 41)
+        Me.RadioButton14.Name = "RadioButton14"
+        Me.RadioButton14.Size = New System.Drawing.Size(43, 17)
+        Me.RadioButton14.TabIndex = 8
+        Me.RadioButton14.Text = "Yes"
+        Me.RadioButton14.UseVisualStyleBackColor = True
         '
-        'TextBox7
+        'Label6
         '
-        Me.TextBox7.Enabled = False
-        Me.TextBox7.Location = New System.Drawing.Point(56, 40)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(81, 20)
-        Me.TextBox7.TabIndex = 10
-        Me.TextBox7.Text = "Enter # Here"
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(-1, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(139, 37)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Limit # of tickets for entire promo?"
         '
         'Step5
         '
