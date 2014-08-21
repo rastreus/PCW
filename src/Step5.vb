@@ -84,7 +84,27 @@ Public Class Step5
             Me.Panel5.BackColor = SystemColors.Control
         End If
 
+        If PointCutoff_Invalid() Then
+            e.Cancel = True
+            Me.Panel6.BackColor = Color.MistyRose
+            CenteredMessagebox.MsgBox.Show("The Point Cutoff amount is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Me.TextBox8.Text = ""
+            Me.ActiveControl = Me.TextBox8
+        Else
+            Me.Panel6.BackColor = SystemColors.Control
+        End If
+
     End Sub
+
+    Private Function PointCutoff_Invalid()
+        Dim invalid As Boolean = False
+
+        If Me.RadioButton16.Checked Then
+            invalid = Invalid_Number(Me.TextBox8.Text)
+        End If
+
+        Return invalid
+    End Function
 
     Private Function TicketsForEntirePromo_Invalid()
         Dim invalid As Boolean = False
@@ -338,6 +358,17 @@ x696</a>.Value
         End If
     End Sub
 
+    Private Sub RadioButton17_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton17.CheckedChanged
+        If Not Me.RadioButton17.Checked Then
+            Me.TextBox8.Enabled = True
+            Me.TextBox8.Text = ""
+            Me.ActiveControl = Me.TextBox8
+        Else
+            Me.TextBox8.Enabled = False
+            Me.TextBox8.Text = "Enter # Here"
+        End If
+    End Sub
+
 #Region "Numeric_Textbox_Input"
     'This limits the textboxes to only allow numeric input.
     'For whatever reason, because it just may happen, a user is still able to paste non-numeric input into the textbox.
@@ -377,5 +408,12 @@ x696</a>.Value
             e.Handled = True
         End If
     End Sub
+
+    Private Sub TextBox8_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox8.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 #End Region
+
 End Class

@@ -56,12 +56,18 @@ Partial Class Step5
         Me.RadioButton15 = New System.Windows.Forms.RadioButton()
         Me.RadioButton14 = New System.Windows.Forms.RadioButton()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton17 = New System.Windows.Forms.RadioButton()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Description
@@ -430,10 +436,63 @@ Partial Class Step5
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "Limit # of tickets for entire promo?"
         '
+        'Panel6
+        '
+        Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel6.Controls.Add(Me.TextBox8)
+        Me.Panel6.Controls.Add(Me.RadioButton17)
+        Me.Panel6.Controls.Add(Me.RadioButton16)
+        Me.Panel6.Controls.Add(Me.Label7)
+        Me.Panel6.Location = New System.Drawing.Point(33, 207)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(240, 83)
+        Me.Panel6.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(235, 37)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+        '
+        'RadioButton16
+        '
+        Me.RadioButton16.AutoSize = True
+        Me.RadioButton16.Location = New System.Drawing.Point(4, 41)
+        Me.RadioButton16.Name = "RadioButton16"
+        Me.RadioButton16.Size = New System.Drawing.Size(43, 17)
+        Me.RadioButton16.TabIndex = 8
+        Me.RadioButton16.Text = "Yes"
+        Me.RadioButton16.UseVisualStyleBackColor = True
+        '
+        'RadioButton17
+        '
+        Me.RadioButton17.AutoSize = True
+        Me.RadioButton17.Checked = True
+        Me.RadioButton17.Location = New System.Drawing.Point(4, 61)
+        Me.RadioButton17.Name = "RadioButton17"
+        Me.RadioButton17.Size = New System.Drawing.Size(39, 17)
+        Me.RadioButton17.TabIndex = 9
+        Me.RadioButton17.TabStop = True
+        Me.RadioButton17.Text = "No"
+        Me.RadioButton17.UseVisualStyleBackColor = True
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Enabled = False
+        Me.TextBox8.Location = New System.Drawing.Point(53, 40)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(81, 20)
+        Me.TextBox8.TabIndex = 10
+        Me.TextBox8.Text = "Enter # Here"
+        '
         'Step5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.IconButton1)
@@ -450,6 +509,7 @@ Partial Class Step5
         Me.Controls.SetChildIndex(Me.IconButton1, 0)
         Me.Controls.SetChildIndex(Me.Panel4, 0)
         Me.Controls.SetChildIndex(Me.Panel5, 0)
+        Me.Controls.SetChildIndex(Me.Panel6, 0)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -461,6 +521,8 @@ Partial Class Step5
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -498,5 +560,10 @@ Partial Class Step5
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
 
 End Class

@@ -26,6 +26,8 @@ Partial Class StepL
         Me.IconButton1 = New FontAwesomeIcons.IconButton()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -38,6 +40,7 @@ Partial Class StepL
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(568, 240)
@@ -76,6 +79,15 @@ Partial Class StepL
         Me.Panel2.Size = New System.Drawing.Size(507, 21)
         Me.Panel2.TabIndex = 4
         '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(558, 236)
+        Me.Label1.TabIndex = 0
+        '
         'StepL
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -92,6 +104,7 @@ Partial Class StepL
         Me.Controls.SetChildIndex(Me.Panel1, 0)
         Me.Controls.SetChildIndex(Me.IconButton1, 0)
         Me.Controls.SetChildIndex(Me.Panel2, 0)
+        Me.Panel1.ResumeLayout(False)
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -102,5 +115,6 @@ Partial Class StepL
     Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class

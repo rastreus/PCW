@@ -44,7 +44,7 @@ Public Class PCW
     End Sub
 #End Region
 
-    Private Sub PCW_InsertPromo()
+    Public Function PCW_GetPromo()
         'Initialize the entity
         Dim newPromo As MarketingPromo = New MarketingPromo
 
@@ -56,37 +56,176 @@ Public Class PCW
         Dim stepK As StepK = Me.GetStep("StepK")
 
         'Make sure that we are who we say we are
-        If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Then
+        If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Or IsNothing(stepK) Then
             Throw New ApplicationException("A Step is not the Step that it claims to be!")
         End If
 
         'Gather the step results and put into the entity
         newPromo.PromoName = step2.TextBox1.Text
-        ''
-        'This is going to be a bear.
-        'This will be one of the last things that gets worked out.
-        'newPromo.PromoType = DeterminePromoType()
-        ''
         newPromo.PromoDate = DeterminePromoDate(step2, step3, step4)
         newPromo.StartDate = DetermineStartDate(step2, step3, step4)
         newPromo.EndDate = DetermineEndDate(step2, step3, step4)
-        ''
-        'Still need to create a Step to determine when the Patron Qualifies for the Promo
-        'newPromo.PointCutoff
-        ''
+        newPromo.PointCutoff = DeterminePointCutoff(step5)
         newPromo.PointDivisor = DeterminePointDivisor(step5)
         newPromo.MaxTickets = DetermineMaxTickets(step5)
         newPromo.PromoMaxTickets = DeterminePromoMaxTickets(step5)
         ''
         'Still need to create a Step to determine the Coupon reward info if it is a FreePlay Coupon type promo
+        '
         'newPromo.MaxCoupon
         'newPromo.PromoMaxCoupon
         'newPromo.CouponID
         ''
+        newPromo.Recurring = DetermineRecurring(step2)
+        newPromo.Frequency = DetermineFrequency(step2)
+        newPromo.RecursOnWeekday = DetermineRecursOnWeekday(step2, step4)
+        newPromo.EarnsOnWeekday = DetermineEarnsOnWeekday(step2, step4)
+        newPromo.CountCurrentDay = DetermineCountCurrentDay(step2, step3, step4)
+        newPromo.PrintTickets = DeterminePrintTickets(step5)
         newPromo.Comments = DetermineComments(stepK)
+        ''
+        'This is going to be a bear.
+        'This will be one of the last things that gets worked out.
+        'Figure out the PromoType now that we know everything else about the Promo.
+        'newPromo.PromoType = DeterminePromoType()
+        '
+        'Query is the old format and generally the same as PromoType?
+        'I guess there will be a few special cases since there's the whole String <--> Short Conversion
+        'newPromo.Query = newPromo.PromoType
+        ''
+        Return newPromo
+    End Function
 
+    Private Function DeterminePointCutoff(ByVal step5 As Step5)
+        Dim pointCutoff As Short
 
-    End Sub
+        If step5.RadioButton16.Checked Then
+            pointCutoff = Short.Parse(step5.TextBox8.Text)
+        Else
+            pointCutoff = Nothing
+        End If
+
+        Return pointCutoff
+    End Function
+
+    Private Function DetermineEarnsOnWeekday(ByVal step2 As Step2, ByVal step4 As Step4)
+        Dim earnsOnWeekday As String
+
+        If step2.RadioButton5.Checked Then
+            earnsOnWeekday = Nothing
+        Else
+            earnsOnWeekday = ""
+            For Each itemChecked As Object In step4.CheckedListBox2.CheckedItems
+                Select Case itemChecked.ToString
+                    Case "Sunday"
+                        earnsOnWeekday = earnsOnWeekday & "N"
+                    Case "Monday"
+                        earnsOnWeekday = earnsOnWeekday & "M"
+                    Case "Tuesday"
+                        earnsOnWeekday = earnsOnWeekday & "T"
+                    Case "Wednesday"
+                        earnsOnWeekday = earnsOnWeekday & "W"
+                    Case "Thursday"
+                        earnsOnWeekday = earnsOnWeekday & "R"
+                    Case "Friday"
+                        earnsOnWeekday = earnsOnWeekday & "F"
+                    Case "Saturday"
+                        earnsOnWeekday = earnsOnWeekday & "S"
+                    Case Else
+                        earnsOnWeekday = Nothing
+                End Select
+            Next
+        End If
+
+        Return earnsOnWeekday
+    End Function
+
+    Private Function DetermineRecursOnWeekday(ByVal step2 As Step2, ByVal step4 As Step4)
+        Dim recursOnWeekday As String
+
+        If step2.RadioButton5.Checked Then
+            recursOnWeekday = Nothing
+        Else
+            recursOnWeekday = ""
+            For Each itemChecked As Object In step4.CheckedListBox1.CheckedItems
+                Select Case itemChecked.ToString
+                    Case "Sunday"
+                        recursOnWeekday = recursOnWeekday & "N"
+                    Case "Monday"
+                        recursOnWeekday = recursOnWeekday & "M"
+                    Case "Tuesday"
+                        recursOnWeekday = recursOnWeekday & "T"
+                    Case "Wednesday"
+                        recursOnWeekday = recursOnWeekday & "W"
+                    Case "Thursday"
+                        recursOnWeekday = recursOnWeekday & "R"
+                    Case "Friday"
+                        recursOnWeekday = recursOnWeekday & "F"
+                    Case "Saturday"
+                        recursOnWeekday = recursOnWeekday & "S"
+                    Case Else
+                        recursOnWeekday = Nothing
+                End Select
+            Next
+        End If
+
+        Return recursOnWeekday
+    End Function
+
+    Private Function DeterminePrintTickets(ByVal step5 As Step5)
+        Dim printTickets As Boolean = False
+
+        If step5.RadioButton1.Checked Then
+            printTickets = True
+        End If
+
+        Return printTickets
+    End Function
+
+    Private Function DetermineCountCurrentDay(ByVal step2 As Step2, ByVal step3 As Step3, ByVal step4 As Step4)
+        Dim countCurrentDay As Boolean = False
+
+        If step2.RadioButton4.Checked Then
+            If step4.RadioButton1.Checked Then
+                countCurrentDay = True
+            ElseIf DateTime.Compare(step3.DateTimePicker3.Value.Date, step3.DateTimePicker1.Value.Date) = 0 Then
+                countCurrentDay = True
+            End If
+        End If
+
+        Return countCurrentDay
+    End Function
+
+    Private Function DetermineFrequency(ByVal step2 As Step2)
+        Dim frequency As Char = "W"
+
+        If step2.RadioButton4.Checked Then
+            Select Case step2.ComboBox2.Text
+                Case "Daily"
+                    frequency = "D"
+                Case "Weekly"
+                    frequency = "W"
+                Case "Monthly"
+                    frequency = "M"
+                Case "Yearly"
+                    frequency = "Y"
+                Case Else
+                    frequency = "W"
+            End Select
+        End If
+
+        Return frequency
+    End Function
+
+    Private Function DetermineRecurring(ByVal step2 As Step2)
+        Dim recurring As Boolean = False
+
+        If step2.RadioButton4.Checked Then
+            recurring = True
+        End If
+
+        Return recurring
+    End Function
 
     Private Function DetermineComments(ByVal stepK As StepK)
         Dim comments As String
