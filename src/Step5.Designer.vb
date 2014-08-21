@@ -440,7 +440,7 @@ Partial Class Step5
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Step5"
-        Me.NextStep = "StepL"
+        Me.NextStep = "StepK"
         Me.PreviousStep = "Step3"
         Me.Size = New System.Drawing.Size(594, 293)
         Me.StepDescription = "The reward of the promotion will be decided on this screen."

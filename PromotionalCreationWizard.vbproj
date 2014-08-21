@@ -151,6 +151,12 @@
     <Compile Include="src\Step5.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\StepK.Designer.vb">
+      <DependentUpon>StepK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\StepK.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\StepL.Designer.vb">
       <DependentUpon>StepL.vb</DependentUpon>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step5.resx">
       <DependentUpon>Step5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\StepK.resx">
+      <DependentUpon>StepK.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\StepL.resx">
       <DependentUpon>StepL.vb</DependentUpon>

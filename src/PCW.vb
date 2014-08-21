@@ -37,6 +37,7 @@ Public Class PCW
         AddStep("Step3", New Step3)
         AddStep("Step4", New Step4)
         AddStep("Step5", New Step5)
+        AddStep("StepK", New StepK)
         AddStep("StepL", New StepL)
         AddStep("StepM", New StepM)
         AddStep("StepN", New StepN)
@@ -52,6 +53,7 @@ Public Class PCW
         Dim step3 As Step3 = Me.GetStep("Step3")
         Dim step4 As Step4 = Me.GetStep("Step4")
         Dim step5 As Step5 = Me.GetStep("Step5")
+        Dim stepK As StepK = Me.GetStep("StepK")
 
         'Make sure that we are who we say we are
         If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Then
@@ -81,9 +83,22 @@ Public Class PCW
         'newPromo.PromoMaxCoupon
         'newPromo.CouponID
         ''
+        newPromo.Comments = DetermineComments(stepK)
 
 
     End Sub
+
+    Private Function DetermineComments(ByVal stepK As StepK)
+        Dim comments As String
+
+        If stepK.RadioButton1.Checked Then
+            comments = stepK.RichTextBox1.Text
+        Else
+            comments = Nothing
+        End If
+
+        Return comments
+    End Function
 
     Private Function DeterminePromoMaxTickets(ByVal step5 As Step5)
         Dim promoMaxTickets As Short

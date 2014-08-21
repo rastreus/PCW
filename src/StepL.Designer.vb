@@ -85,7 +85,7 @@ Partial Class StepL
         Me.Controls.Add(Me.Panel1)
         Me.Name = "StepL"
         Me.NextStep = "StepM"
-        Me.PreviousStep = "Step5"
+        Me.PreviousStep = "StepK"
         Me.Size = New System.Drawing.Size(594, 293)
         Me.StepDescription = "Please be responsible when creating promotionals."
         Me.Controls.SetChildIndex(Me.Description, 0)
