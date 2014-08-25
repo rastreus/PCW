@@ -11,7 +11,6 @@ Public Class Step6
         If CouponID_Invalid() Then
             e.Cancel = True
             Me.Panel1.BackColor = Color.MistyRose
-            CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.TextBox1.Text = ""
             Me.ActiveControl = Me.TextBox1
         Else
@@ -71,6 +70,10 @@ Public Class Step6
         Dim invalid = False
 
         If Me.TextBox1.Text = "" Or Me.TextBox1.Text = "Enter ID Here" Or Invalid_CouponID(Me.TextBox1.Text) Then
+            CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            invalid = True
+        ElseIf Sql_Query.Existing_Coupon(Me.TextBox1.Text) Then
+            CenteredMessagebox.MsgBox.Show("There is an existing coupon with this ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             invalid = True
         End If
 

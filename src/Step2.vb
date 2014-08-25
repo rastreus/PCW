@@ -26,7 +26,7 @@ Public Class Step2
 
         If FreePlay_Invalid() Then
             e.Cancel = True
-            CenteredMessagebox.MsgBox.Show("Please select Free Play coupon delivery option", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            CenteredMessagebox.MsgBox.Show("Please select Free Play coupon delivery option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.Panel2.BackColor = Color.MistyRose
             Me.ActiveControl = Me.ComboBox1
             Me.ComboBox1.DroppedDown = True
@@ -36,7 +36,7 @@ Public Class Step2
 
         If Recurring_Period_Invalid() Then
             e.Cancel = True
-            CenteredMessagebox.MsgBox.Show("Please select Recurring period option", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            CenteredMessagebox.MsgBox.Show("Please select Recurring period option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.Panel3.BackColor = Color.MistyRose
             Me.ActiveControl = Me.ComboBox2
             Me.ComboBox2.DroppedDown = True
@@ -111,10 +111,10 @@ Public Class Step2
         Dim invalid As Boolean = False
 
         If Me.TextBox1.Text = "" Then
-            CenteredMessagebox.MsgBox.Show("Promo must have a name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            CenteredMessagebox.MsgBox.Show("Promo must have a name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             invalid = True
         ElseIf Sql_Query.Existing_Promo(Me.TextBox1.Text) Then
-            CenteredMessagebox.MsgBox.Show("There is an existing promo with this name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            CenteredMessagebox.MsgBox.Show("There is an existing promo with this name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.TextBox1.Text = ""
             invalid = True
         End If

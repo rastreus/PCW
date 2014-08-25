@@ -28,4 +28,25 @@ Public Class Sql_Query
     End Function
 #End Region
 
+#Region "Existing_Coupon"
+    'In the same way that we checked to see if there is an existing promo by checking its name,
+    'we will check to see if there is an existing coupon by checking its couponID.
+    Public Shared Function Existing_Coupon(ByVal new_couponID As String)
+        Dim returningBool As Boolean = False
+        Dim tbl As New MarketingPromosDataContext
+
+        Dim trimmed_new_couponID As String = new_couponID.Trim
+
+        Dim existing_couponID = (From couponID In tbl.MarketingPromos
+                                 Where couponID.CouponID = trimmed_new_couponID
+                                 Select couponID.CouponID).FirstOrDefault
+
+        If Not String.IsNullOrEmpty(existing_couponID) Then
+            returningBool = True
+        End If
+
+        Return returningBool
+    End Function
+#End Region
+
 End Class
