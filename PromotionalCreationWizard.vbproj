@@ -151,6 +151,12 @@
     <Compile Include="src\Step5.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\Step6.Designer.vb">
+      <DependentUpon>Step6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Step6.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\StepK.Designer.vb">
       <DependentUpon>StepK.vb</DependentUpon>
     </Compile>
@@ -180,6 +186,7 @@
     <EmbeddedResource Include="src\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <None Include="README.md" />
     <None Include="research\PromoTypeDescriptions.xlsx" />
     <None Include="resources\MarketingPromos.dbml.layout">
       <DependentUpon>MarketingPromos.dbml</DependentUpon>
@@ -207,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step5.resx">
       <DependentUpon>Step5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Step6.resx">
+      <DependentUpon>Step6.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\StepK.resx">
       <DependentUpon>StepK.vb</DependentUpon>
@@ -260,7 +270,6 @@
     <Content Include="LICENSE\CenterMessagebox-License.txt" />
     <Content Include="Future-Developer-README.txt" />
     <Content Include="LICENSE\PromotionalCreationWizard-License.txt" />
-    <Content Include="README.txt" />
     <Content Include="research\PromoTypeBNF.txt" />
     <Content Include="resources\CenteredMessagebox.dll" />
     <Content Include="resources\FontAwesomeIcons.dll" />

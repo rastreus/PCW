@@ -29,6 +29,7 @@ Partial Class StepM
         'Description
         '
         Me.Description.Size = New System.Drawing.Size(578, 72)
+        Me.Description.Text = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
         '
         'IconButton1
         '
@@ -50,7 +51,7 @@ Partial Class StepM
         Me.Controls.Add(Me.IconButton1)
         Me.Name = "StepM"
         Me.NextStep = "StepN"
-        Me.Size = New System.Drawing.Size(594, 294)
+        Me.Size = New System.Drawing.Size(594, 293)
         Me.StepDescription = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
         Me.Controls.SetChildIndex(Me.Description, 0)
         Me.Controls.SetChildIndex(Me.IconButton1, 0)

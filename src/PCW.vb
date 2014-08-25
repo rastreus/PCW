@@ -37,6 +37,7 @@ Public Class PCW
         AddStep("Step3", New Step3)
         AddStep("Step4", New Step4)
         AddStep("Step5", New Step5)
+        AddStep("Step6", New Step6)
         AddStep("StepK", New StepK)
         AddStep("StepL", New StepL)
         AddStep("StepM", New StepM)
@@ -53,11 +54,12 @@ Public Class PCW
         Dim step3 As Step3 = Me.GetStep("Step3")
         Dim step4 As Step4 = Me.GetStep("Step4")
         Dim step5 As Step5 = Me.GetStep("Step5")
+        Dim step6 As Step6 = Me.GetStep("Step6")
         Dim stepK As StepK = Me.GetStep("StepK")
 
         'Make sure that we are who we say we are
-        If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Or IsNothing(stepK) Then
-            Throw New ApplicationException("A Step is not the Step that it claims to be!")
+        If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Or IsNothing(step6) Or IsNothing(stepK) Then
+            Throw New ApplicationException("Oh no! A Step is not the Step that it claims to be!")
         End If
 
         'Gather the step results and put into the entity
@@ -69,13 +71,9 @@ Public Class PCW
         newPromo.PointDivisor = DeterminePointDivisor(step5)
         newPromo.MaxTickets = DetermineMaxTickets(step5)
         newPromo.PromoMaxTickets = DeterminePromoMaxTickets(step5)
-        ''
-        'Still need to create a Step to determine the Coupon reward info if it is a FreePlay Coupon type promo
-        '
-        'newPromo.MaxCoupon
-        'newPromo.PromoMaxCoupon
-        'newPromo.CouponID
-        ''
+        newPromo.MaxCoupon = DetermineMaxCoupon(step2, step6)
+        newPromo.PromoMaxCoupon = DeterminePromoMaxCoupon(step2, step6)
+        newPromo.CouponID = DetermineCouponID(step2, step6)
         newPromo.Recurring = DetermineRecurring(step2)
         newPromo.Frequency = DetermineFrequency(step2)
         newPromo.RecursOnWeekday = DetermineRecursOnWeekday(step2, step4)
@@ -94,6 +92,42 @@ Public Class PCW
         'newPromo.Query = newPromo.PromoType
         ''
         Return newPromo
+    End Function
+
+    Private Function DetermineCouponID(ByVal step2 As Step2, ByVal step6 As Step6)
+        Dim couponID As String
+
+        If step2.RadioButton1.Checked Then
+            couponID = step6.TextBox1.Text
+        Else
+            couponID = Nothing
+        End If
+
+        Return couponID
+    End Function
+
+    Private Function DeterminePromoMaxCoupon(ByVal step2 As Step2, ByVal step6 As Step6)
+        Dim promoMaxCoupon As Decimal
+
+        If step2.RadioButton1.Checked Then
+            promoMaxCoupon = Decimal.Parse(step6.TextBox3.Text)
+        Else
+            promoMaxCoupon = Nothing
+        End If
+
+        Return promoMaxCoupon
+    End Function
+
+    Private Function DetermineMaxCoupon(ByVal step2 As Step2, ByVal step6 As Step6)
+        Dim maxCoupon As Decimal
+
+        If step2.RadioButton1.Checked Then
+            maxCoupon = Decimal.Parse(step6.TextBox2.Text)
+        Else
+            maxCoupon = Nothing
+        End If
+
+        Return maxCoupon
     End Function
 
     Private Function DeterminePointCutoff(ByVal step5 As Step5)

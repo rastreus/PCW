@@ -27,15 +27,17 @@ Partial Class StepK
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.IconButton1 = New FontAwesomeIcons.IconButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.IconButton1 = New FontAwesomeIcons.IconButton()
+        Me.IconButton2 = New FontAwesomeIcons.IconButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
+        CType(Me.IconButton2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Description
@@ -96,6 +98,20 @@ Partial Class StepK
         Me.Panel2.Size = New System.Drawing.Size(341, 103)
         Me.Panel2.TabIndex = 2
         '
+        'IconButton1
+        '
+        Me.IconButton1.ActiveColor = System.Drawing.SystemColors.ControlDark
+        Me.IconButton1.BackColor = System.Drawing.Color.Transparent
+        Me.IconButton1.Enabled = False
+        Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
+        Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
+        Me.IconButton1.Location = New System.Drawing.Point(226, 70)
+        Me.IconButton1.Name = "IconButton1"
+        Me.IconButton1.Size = New System.Drawing.Size(24, 24)
+        Me.IconButton1.TabIndex = 3
+        Me.IconButton1.TabStop = False
+        Me.IconButton1.ToolTipText = Nothing
+        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Label3)
@@ -136,24 +152,24 @@ Partial Class StepK
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = "Insert Comment of 140 characters or less into this TextBox."
         '
-        'IconButton1
+        'IconButton2
         '
-        Me.IconButton1.ActiveColor = System.Drawing.SystemColors.ControlDark
-        Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-        Me.IconButton1.Enabled = False
-        Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
-        Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-        Me.IconButton1.Location = New System.Drawing.Point(226, 70)
-        Me.IconButton1.Name = "IconButton1"
-        Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-        Me.IconButton1.TabIndex = 3
-        Me.IconButton1.TabStop = False
-        Me.IconButton1.ToolTipText = Nothing
+        Me.IconButton2.ActiveColor = System.Drawing.Color.CornflowerBlue
+        Me.IconButton2.BackColor = System.Drawing.Color.Transparent
+        Me.IconButton2.IconType = FontAwesomeIcons.IconType.InfoCircle
+        Me.IconButton2.InActiveColor = System.Drawing.SystemColors.ControlDark
+        Me.IconButton2.Location = New System.Drawing.Point(3, 269)
+        Me.IconButton2.Name = "IconButton2"
+        Me.IconButton2.Size = New System.Drawing.Size(24, 24)
+        Me.IconButton2.TabIndex = 3
+        Me.IconButton2.TabStop = False
+        Me.IconButton2.ToolTipText = Nothing
         '
         'StepK
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.IconButton2)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "StepK"
@@ -163,12 +179,14 @@ Partial Class StepK
         Me.Controls.SetChildIndex(Me.Description, 0)
         Me.Controls.SetChildIndex(Me.Panel1, 0)
         Me.Controls.SetChildIndex(Me.Panel2, 0)
+        Me.Controls.SetChildIndex(Me.IconButton2, 0)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IconButton2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -182,5 +200,6 @@ Partial Class StepK
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
+    Friend WithEvents IconButton2 As FontAwesomeIcons.IconButton
 
 End Class

@@ -44,9 +44,27 @@ Public Class Step2
             Me.Panel3.BackColor = SystemColors.Control
         End If
 
-        'Determine which Radiobutton (Yes or No) is checked
-        'If the promo is recurring, MoveTo Step4 instead of Step3
-        'Inform Step5 that its PreviousStep is now Step4 instead of Step3
+        'If the PromoType is a FreePlay, then it is known that the reward is going to be a FreePlay Coupon.
+        'Instead of going to Step5 for General Promo reward information, user will be taken to Step6.
+        'This gets tricky because the promo may still be single-instance of recurring.
+        'The appropriate Steps are informed and updated as to the flow of "<Back" and "Next>"
+        If PromoType_FreePlay() Then
+            If PromoDate_Recurring() Then
+                PCW.GetStep("Step4").NextStep = "Step6"
+                PCW.GetStep("Step6").PreviousStep = "Step4"
+            Else
+                PCW.GetStep("Step3").NextStep = "Step6"
+                PCW.GetStep("Step6").PreviousStep = "Step3"
+            End If
+            PCW.GetStep("StepK").PreviousStep = "Step6"
+        Else
+            PCW.GetStep("StepK").PreviousStep = "Step5"
+        End If
+
+        'Determine which Radiobutton (Yes or No) is checked for "Will the new promo be recurring?"
+        'If the promo is recurring, MoveTo Step4 instead of Step3.
+        'Inform Step5 that its PreviousStep is now Step4 instead of Step3.
+        'This needs to be the final check in the Step2Validation since a MoveTo is involved.
         If PromoDate_Recurring() Then
             e.Cancel = True
             PCW.GetStep("Step5").PreviousStep = "Step4"
@@ -58,6 +76,16 @@ Public Class Step2
         End If
 
     End Sub
+
+    Private Function PromoType_FreePlay()
+        Dim freePlay As Boolean = False
+
+        If Me.RadioButton1.Checked Then
+            freePlay = True
+        End If
+
+        Return freePlay
+    End Function
 
     Private Function FreePlay_Invalid()
         Dim invalid As Boolean = False
