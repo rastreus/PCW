@@ -355,6 +355,11 @@ Public Class PCW
         Return step2.RadioButton5.Checked
     End Function
 
+    'Disable the Cancel Button at the end
+    Public Sub CancelEnabled(state As Boolean)
+        Me.cancel.Enabled = state
+    End Sub
+
 #Region "OnClosing"
     'It really bothered me that the dialog boxes did not center on their parent window.
     'The Sub and Function that follows are a direct override of TSWizard.BaseWizard.OnClosing.
