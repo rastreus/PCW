@@ -269,6 +269,7 @@ Public Class PCW
         Else
             comments = Nothing
         End If
+        comments = comments & "(Created " & DateTime.Today.ToShortDateString & " by " & Environment.UserName.ToString & ")"
 
         Return comments
     End Function

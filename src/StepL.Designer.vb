@@ -23,10 +23,10 @@ Partial Class StepL
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.IconButton1 = New FontAwesomeIcons.IconButton()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -43,8 +43,17 @@ Partial Class StepL
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(568, 240)
+        Me.Panel1.Size = New System.Drawing.Size(568, 260)
         Me.Panel1.TabIndex = 1
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(558, 256)
+        Me.Label1.TabIndex = 0
         '
         'IconButton1
         '
@@ -74,19 +83,10 @@ Partial Class StepL
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.CheckBox1)
-        Me.Panel2.Location = New System.Drawing.Point(64, 249)
+        Me.Panel2.Location = New System.Drawing.Point(64, 269)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(507, 21)
         Me.Panel2.TabIndex = 4
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label1.Location = New System.Drawing.Point(3, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(558, 236)
-        Me.Label1.TabIndex = 0
         '
         'StepL
         '

@@ -16,6 +16,12 @@ Public Class Step6
             Me.ActiveControl = Me.TextBox1
         Else
             Me.Panel1.BackColor = SystemColors.Control
+
+            'If valid, make sure that the characters are uppercase.
+            'The variables shouldn't be necessary, but VB.NET is weird about Strings.
+            Dim couponID_Name As String = TextBox1.Text.Substring(0, TextBox1.Text.Length - 4)
+            Dim couponID_Digits As String = TextBox1.Text.Substring(TextBox1.Text.Length - 4)
+            Me.TextBox1.Text = couponID_Name.ToUpper & couponID_Digits
         End If
 
         If MaxCoupon_Invalid() Then
@@ -75,7 +81,7 @@ Public Class Step6
     'At the moment, it is a hard-limit of a 10 character abbreviation (possibly problematic).
     Private Function Invalid_CouponID(ByVal inputString As String)
         Dim invalid As Boolean = False
-        Dim RegexObj As Regex = New Regex("^\w{1,10}\d{4}$")
+        Dim RegexObj As Regex = New Regex("^[a-zA-Z]{1,10}\d{4}$")
 
         If Not RegexObj.IsMatch(inputString) Then
             invalid = True
