@@ -63,7 +63,7 @@ Public Class PCW
         End If
 
         'Gather the step results and put into the entity
-        newPromo.PromoName = step2.TextBox1.Text
+        newPromo.PromoName = step2.TextBox1.Text.Trim
         newPromo.PromoDate = DeterminePromoDate(step2, step3, step4)
         newPromo.StartDate = DetermineStartDate(step2, step3, step4)
         newPromo.EndDate = DetermineEndDate(step2, step3, step4)
@@ -265,11 +265,14 @@ Public Class PCW
         Dim comments As String
 
         If stepK.RadioButton1.Checked Then
-            comments = stepK.RichTextBox1.Text
+            'Trimmed because you never know.
+            comments = stepK.RichTextBox1.Text.Trim
+            'Seems a little redundant, but if there is a comment, it appends with a space first,
+            'otherwise it just makes the creator string the comment.
+            comments = comments & " (Created " & DateTime.Today.ToShortDateString & " by " & Environment.UserName.ToString & ")"
         Else
-            comments = Nothing
+            comments = "(Created " & DateTime.Today.ToShortDateString & " by " & Environment.UserName.ToString & ")"
         End If
-        comments = comments & "(Created " & DateTime.Today.ToShortDateString & " by " & Environment.UserName.ToString & ")"
 
         Return comments
     End Function

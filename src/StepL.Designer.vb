@@ -81,7 +81,6 @@ Partial Class StepL
         '
         'Panel2
         '
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.CheckBox1)
         Me.Panel2.Location = New System.Drawing.Point(64, 269)
         Me.Panel2.Name = "Panel2"
