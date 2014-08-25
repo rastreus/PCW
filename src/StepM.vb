@@ -89,8 +89,26 @@ Public Class StepM
         End If
 
         Me.NextStep = "StepN"
+        'SubmitPromoToTable
         Thread.Sleep(600)
         PCW.MoveNext()
+    End Sub
+
+    Private Sub SubmitPromoToTable()
+        'Insert the new promo into MarketingPromos table
+        Dim tbl As New MarketingPromosDataContext
+        Dim newPromo As MarketingPromo = New MarketingPromo
+        newPromo = PCW.PCW_GetPromo
+        tbl.MarketingPromos.InsertOnSubmit(newPromo)
+        Try
+            tbl.SubmitChanges()
+        Catch ex As Exception
+            Dim result As Integer = CenteredMessagebox.MsgBox.Show("Oh no! The promo wasn't added to the MarketingPromo table!", "NoooOOOooOOo!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
+
+            If result = DialogResult.Retry Then
+                tbl.SubmitChanges()
+            End If
+        End Try
     End Sub
 
     Private Delegate Sub IntDelegate(num As Integer)

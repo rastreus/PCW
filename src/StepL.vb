@@ -26,10 +26,17 @@ Otherwise, cancel and attempt the process later.</a>.Value
         Dim newPromo As MarketingPromo = PCW.PCW_GetPromo()
         Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
+        'It bothered me that the DateTime wasn't formatted properly.
+        'Creating more local variables seems to be one of the only solutions.
+        Dim promoDate As DateTime = newPromo.PromoDate
+        Dim startDate As DateTime = newPromo.StartDate
+        Dim endDate As DateTime = newPromo.EndDate
+
+
         builder.Append("           Name: " & newPromo.PromoName & vbCrLf)
-        builder.Append("           Date: " & newPromo.PromoDate.ToString & vbCrLf)
-        builder.Append("      StartDate: " & newPromo.StartDate.ToString & vbCrLf)
-        builder.Append("        EndDate: " & newPromo.EndDate.ToString & vbCrLf)
+        builder.Append("           Date: " & promoDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
+        builder.Append("      StartDate: " & startDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
+        builder.Append("        EndDate: " & endDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
         builder.Append("    PointCutoff: " & newPromo.PointCutoff.ToString & vbCrLf)
         builder.Append("   PointDivisor: " & newPromo.PointDivisor.ToString & vbCrLf)
         builder.Append("     MaxTickets: " & newPromo.MaxTickets.ToString & vbCrLf)
