@@ -113,6 +113,9 @@ Public Class Step2
         If Me.TextBox1.Text = "" Then
             CenteredMessagebox.MsgBox.Show("Promo must have a name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             invalid = True
+        ElseIf Me.TextBox1.Text.Length > 50 Then
+            CenteredMessagebox.MsgBox.Show("Promo name cannot be more than 50 characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            invalid = True
         ElseIf Sql_Query.Existing_Promo(Me.TextBox1.Text) Then
             CenteredMessagebox.MsgBox.Show("There is an existing promo with this name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.TextBox1.Text = ""

@@ -64,6 +64,7 @@ Partial Class Step2
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(3, 33)
+        Me.TextBox1.MaxLength = 50
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(284, 20)
         Me.TextBox1.TabIndex = 1

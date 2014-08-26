@@ -31,23 +31,95 @@ Otherwise, cancel and attempt the process later.</a>.Value
         Dim promoDate As DateTime = newPromo.PromoDate
         Dim startDate As DateTime = newPromo.StartDate
         Dim endDate As DateTime = newPromo.EndDate
+        Dim pointCutoff As String
+        Dim pointDivisor As String
+        Dim maxTickets As String
+        Dim promoMaxTickets As String
+        Dim promoDateStr As String
+        Dim maxCoupon As String
+        Dim promoMaxCoupon As String
+        Dim couponID As String
+        Dim recursOnWeekday As String
+        Dim earnsOnWeekday As String
 
+        'The following simply converts the Nothings into a more readable NULL.
+        If IsNothing(newPromo.PointCutoff) Then
+            pointCutoff = "NULL"
+        Else
+            pointCutoff = newPromo.PointCutoff.ToString
+        End If
 
+        If IsNothing(newPromo.PointDivisor) Then
+            pointDivisor = "NULL"
+        Else
+            pointDivisor = newPromo.PointDivisor.ToString
+        End If
+
+        If IsNothing(newPromo.MaxTickets) Then
+            maxTickets = "NULL"
+        Else
+            maxTickets = newPromo.MaxTickets.ToString
+        End If
+
+        If IsNothing(newPromo.PromoMaxTickets) Then
+            promoMaxTickets = "NULL"
+        Else
+            promoMaxTickets = newPromo.PromoMaxTickets.ToString
+        End If
+
+        If IsNothing(newPromo.PromoDate) Then
+            promoDateStr = "NULL"
+        Else
+            promoDateStr = promoDate.ToString("MM/dd/yyyy hh:mm tt")
+        End If
+
+        If IsNothing(newPromo.MaxCoupon) Then
+            maxCoupon = "NULL"
+        Else
+            maxCoupon = newPromo.MaxCoupon.ToString
+        End If
+
+        If IsNothing(newPromo.PromoMaxCoupon) Then
+            promoMaxCoupon = "NULL"
+        Else
+            promoMaxCoupon = newPromo.PromoMaxCoupon.ToString
+        End If
+
+        If IsNothing(newPromo.CouponID) Then
+            couponID = "NULL"
+        Else
+            couponID = newPromo.CouponID
+        End If
+
+        If IsNothing(newPromo.RecursOnWeekday) Then
+            recursOnWeekday = "NULL"
+        Else
+            recursOnWeekday = newPromo.RecursOnWeekday
+        End If
+
+        If IsNothing(newPromo.EarnsOnWeekday) Then
+            earnsOnWeekday = "NULL"
+        Else
+            earnsOnWeekday = newPromo.EarnsOnWeekday
+        End If
+
+        'Now that the NULL formalities are out of the way,
+        'we can actually build the string that the user will read.
         builder.Append("           Name: " & newPromo.PromoName & vbCrLf)
-        builder.Append("           Date: " & promoDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
+        builder.Append("           Date: " & promoDateStr & vbCrLf)
         builder.Append("      StartDate: " & startDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
         builder.Append("        EndDate: " & endDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
-        builder.Append("    PointCutoff: " & newPromo.PointCutoff.ToString & vbCrLf)
-        builder.Append("   PointDivisor: " & newPromo.PointDivisor.ToString & vbCrLf)
-        builder.Append("     MaxTickets: " & newPromo.MaxTickets.ToString & vbCrLf)
-        builder.Append("PromoMaxTickets: " & newPromo.PromoMaxTickets.ToString & vbCrLf)
-        builder.Append("      MaxCoupon: " & newPromo.MaxCoupon.ToString & vbCrLf)
-        builder.Append(" PromoMaxCoupon: " & newPromo.PromoMaxCoupon.ToString & vbCrLf)
-        builder.Append("       CouponID: " & newPromo.CouponID & vbCrLf)
+        builder.Append("    PointCutoff: " & pointCutoff & vbCrLf)
+        builder.Append("   PointDivisor: " & pointDivisor & vbCrLf)
+        builder.Append("     MaxTickets: " & maxTickets & vbCrLf)
+        builder.Append("PromoMaxTickets: " & promoMaxTickets & vbCrLf)
+        builder.Append("      MaxCoupon: " & maxCoupon & vbCrLf)
+        builder.Append(" PromoMaxCoupon: " & promoMaxCoupon & vbCrLf)
+        builder.Append("       CouponID: " & couponID & vbCrLf)
         builder.Append("      Recurring: " & newPromo.Recurring.ToString & vbCrLf)
         builder.Append("      Frequency: " & newPromo.Frequency.ToString & vbCrLf)
-        builder.Append("RecursOnWeekday: " & newPromo.RecursOnWeekday & vbCrLf)
-        builder.Append(" EarnsOnWeekday: " & newPromo.EarnsOnWeekday & vbCrLf)
+        builder.Append("RecursOnWeekday: " & recursOnWeekday & vbCrLf)
+        builder.Append(" EarnsOnWeekday: " & earnsOnWeekday & vbCrLf)
         builder.Append("CountCurrentDay: " & newPromo.CountCurrentDay.ToString & vbCrLf)
         builder.Append("   PrintTickets: " & newPromo.PrintTickets.ToString & vbCrLf)
         builder.Append("       Comments: " & newPromo.Comments & vbCrLf)

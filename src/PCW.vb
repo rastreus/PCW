@@ -107,7 +107,7 @@ Public Class PCW
     End Function
 
     Private Function DeterminePromoMaxCoupon(ByVal step2 As Step2, ByVal step6 As Step6)
-        Dim promoMaxCoupon As Decimal
+        Dim promoMaxCoupon As Decimal?
 
         If step2.RadioButton1.Checked Then
             promoMaxCoupon = Decimal.Parse(step6.TextBox3.Text)
@@ -119,7 +119,7 @@ Public Class PCW
     End Function
 
     Private Function DetermineMaxCoupon(ByVal step2 As Step2, ByVal step6 As Step6)
-        Dim maxCoupon As Decimal
+        Dim maxCoupon As Decimal?
 
         If step2.RadioButton1.Checked Then
             maxCoupon = Decimal.Parse(step6.TextBox2.Text)
@@ -131,7 +131,7 @@ Public Class PCW
     End Function
 
     Private Function DeterminePointCutoff(ByVal step5 As Step5)
-        Dim pointCutoff As Short
+        Dim pointCutoff As Short?
 
         If step5.RadioButton16.Checked Then
             pointCutoff = Short.Parse(step5.TextBox8.Text)
@@ -278,7 +278,7 @@ Public Class PCW
     End Function
 
     Private Function DeterminePromoMaxTickets(ByVal step5 As Step5)
-        Dim promoMaxTickets As Short
+        Dim promoMaxTickets As Short?
 
         If step5.RadioButton1.Checked And step5.RadioButton14.Checked Then
             promoMaxTickets = Short.Parse(step5.TextBox7.Text)
@@ -290,7 +290,7 @@ Public Class PCW
     End Function
 
     Private Function DetermineMaxTickets(ByVal step5 As Step5)
-        Dim maxTickets As Short
+        Dim maxTickets As Short?
 
         If step5.RadioButton1.Checked And step5.RadioButton12.Checked Then
             maxTickets = Short.Parse(step5.TextBox6.Text)
@@ -302,7 +302,7 @@ Public Class PCW
     End Function
 
     Private Function DeterminePointDivisor(ByVal step5 As Step5)
-        Dim pointDivisor As Short
+        Dim pointDivisor As Short?
 
         If step5.RadioButton1.Checked And (step5.RadioButton6.Checked Or step5.RadioButton7.Checked) Then
             pointDivisor = Short.Parse(step5.TextBox5.Text)
@@ -314,7 +314,7 @@ Public Class PCW
     End Function
 
     Private Function DeterminePromoDate(ByVal step2 As Step2, ByVal step3 As Step3, ByVal step4 As Step4)
-        Dim promoDate As DateTime
+        Dim promoDate As DateTime?
 
         'Check the recurring button that determines everything
         If Recurring(step2) Then

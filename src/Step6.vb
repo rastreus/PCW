@@ -69,7 +69,7 @@ Public Class Step6
     Private Function CouponID_Invalid()
         Dim invalid = False
 
-        If Me.TextBox1.Text = "" Or Me.TextBox1.Text = "Enter ID Here" Or Invalid_CouponID(Me.TextBox1.Text) Then
+        If Me.TextBox1.Text = "" Or Me.TextBox1.Text = "Enter ID Here" Or Invalid_CouponID(Me.TextBox1.Text) Or Me.TextBox1.Text.Length > 12 Then
             CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             invalid = True
         ElseIf Sql_Query.Existing_Coupon(Me.TextBox1.Text) Then
