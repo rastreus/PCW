@@ -40,14 +40,40 @@ Public Class Step6
             Me.TextBox3.Text = ""
             Me.ActiveControl = Me.TextBox3
         Else
-            Me.Panel3.BackColor = SystemColors.Control
+            If Not PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon() Then
+                Me.Panel3.BackColor = SystemColors.Control
+            End If
         End If
 
+        'Make sure that the TextBoxes for MaxCoupon and PromoMaxCoupon are not empty strings
+        If Not Invalid_Decimal(Me.TextBox2.Text) And Not Invalid_Decimal(Me.TextBox3.Text) Then
+            If PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon() Then
+                e.Cancel = True
+                Me.Panel3.BackColor = Color.MistyRose
+                CenteredMessagebox.MsgBox.Show("The Promo Max Coupon value is less than or equal to the Max Coupon value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Me.TextBox3.Text = ""
+                Me.ActiveControl = Me.TextBox3
+            Else
+                If Not PromoMaxCoupon_Invalid() Then
+                    Me.Panel3.BackColor = SystemColors.Control
+                End If
+            End If
+        End If
 
     End Sub
 
+    Private Function PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon()
+        Dim invalid As Boolean = False
+
+        If (Decimal.Parse(Me.TextBox3.Text) <= Decimal.Parse(Me.TextBox2.Text)) Then
+            invalid = True
+        End If
+
+        Return invalid
+    End Function
+
     Private Function PromoMaxCoupon_Invalid()
-        Dim invalid = False
+        Dim invalid As Boolean = False
 
         If Invalid_Decimal(Me.TextBox3.Text) Then
             invalid = True
@@ -57,7 +83,7 @@ Public Class Step6
     End Function
 
     Private Function MaxCoupon_Invalid()
-        Dim invalid = False
+        Dim invalid As Boolean = False
 
         If Invalid_Decimal(Me.TextBox2.Text) Then
             invalid = True
@@ -67,7 +93,7 @@ Public Class Step6
     End Function
 
     Private Function CouponID_Invalid()
-        Dim invalid = False
+        Dim invalid As Boolean = False
 
         If Me.TextBox1.Text = "" Or Me.TextBox1.Text = "Enter ID Here" Or Invalid_CouponID(Me.TextBox1.Text) Or Me.TextBox1.Text.Length > 12 Then
             CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

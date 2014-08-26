@@ -16,6 +16,7 @@ Public Class StepM
         'needs functioning navigation buttons while the user waits for the progress bar.
         'CancelEnabled is different from the other two because it is a Public Sub of PCW
         'while the other two are properties of a TSWizard.BaseWizard.
+        PCW.ControlBox = False
         PCW.CancelEnabled(False)
         PCW.BackEnabled = False
         PCW.NextEnabled = False

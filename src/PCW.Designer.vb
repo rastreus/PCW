@@ -63,7 +63,7 @@ Partial Class PCW
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.CancelButton = Me.back
+        Me.CancelButton = Nothing
         Me.ClientSize = New System.Drawing.Size(594, 414)
         Me.FirstStepName = "Step1"
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
