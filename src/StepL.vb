@@ -41,6 +41,7 @@ Otherwise, cancel and attempt the process later.</a>.Value
         Dim couponID As String
         Dim recursOnWeekday As String
         Dim earnsOnWeekday As String
+        Dim promoType As String
 
         'The following simply converts the Nothings into a more readable NULL.
         If IsNothing(newPromo.PointCutoff) Then
@@ -103,8 +104,15 @@ Otherwise, cancel and attempt the process later.</a>.Value
             earnsOnWeekday = newPromo.EarnsOnWeekday
         End If
 
+        If IsNothing(newPromo.PromoType) Then
+            promoType = "NULL"
+        Else
+            promoType = newPromo.PromoType
+        End If
+
         'Now that the NULL formalities are out of the way,
         'we can actually build the string that the user will read.
+        builder.Append("      PromoType: " & promoType & vbCrLf)
         builder.Append("           Name: " & newPromo.PromoName & vbCrLf)
         builder.Append("           Date: " & promoDateStr & vbCrLf)
         builder.Append("      StartDate: " & startDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)

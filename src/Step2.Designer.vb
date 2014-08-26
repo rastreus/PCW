@@ -94,6 +94,7 @@ Partial Class Step2
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Enabled = False
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Physical Mail", "Email"})
@@ -101,7 +102,6 @@ Partial Class Step2
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 7
-        Me.ComboBox1.Text = "Coupon delivery?"
         '
         'RadioButton3
         '
@@ -159,6 +159,7 @@ Partial Class Step2
         '
         'ComboBox2
         '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.Enabled = False
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"Daily", "Weekly", "Monthly", "Yearly"})
@@ -166,7 +167,6 @@ Partial Class Step2
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox2.TabIndex = 8
-        Me.ComboBox2.Text = "Recurring Period?"
         '
         'RadioButton5
         '

@@ -33,10 +33,16 @@ Partial Class Step6
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.IconButton1 = New FontAwesomeIcons.IconButton()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Description
@@ -89,7 +95,7 @@ Partial Class Step6
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.TextBox2)
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(203, 83)
+        Me.Panel2.Location = New System.Drawing.Point(384, 28)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(175, 111)
         Me.Panel2.TabIndex = 2
@@ -116,7 +122,7 @@ Partial Class Step6
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.TextBox3)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Location = New System.Drawing.Point(384, 83)
+        Me.Panel3.Location = New System.Drawing.Point(384, 145)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(175, 111)
         Me.Panel3.TabIndex = 3
@@ -151,10 +157,63 @@ Partial Class Step6
         Me.IconButton1.TabStop = False
         Me.IconButton1.ToolTipText = Nothing
         '
+        'Panel4
+        '
+        Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.RadioButton2)
+        Me.Panel4.Controls.Add(Me.RadioButton1)
+        Me.Panel4.Controls.Add(Me.Label6)
+        Me.Panel4.Controls.Add(Me.Label5)
+        Me.Panel4.Location = New System.Drawing.Point(203, 83)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(175, 111)
+        Me.Panel4.TabIndex = 5
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(0, 2)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(182, 16)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Will value be prompted?"
+        '
+        'Label6
+        '
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(3, 18)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(167, 37)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "If No, coupon value will be the max. value of a single coupon."
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(3, 59)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(43, 17)
+        Me.RadioButton1.TabIndex = 4
+        Me.RadioButton1.Text = "Yes"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Checked = True
+        Me.RadioButton2.Location = New System.Drawing.Point(3, 83)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(39, 17)
+        Me.RadioButton2.TabIndex = 5
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "No"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
         'Step6
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.IconButton1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -169,6 +228,7 @@ Partial Class Step6
         Me.Controls.SetChildIndex(Me.Panel2, 0)
         Me.Controls.SetChildIndex(Me.Panel3, 0)
         Me.Controls.SetChildIndex(Me.IconButton1, 0)
+        Me.Controls.SetChildIndex(Me.Panel4, 0)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -176,6 +236,8 @@ Partial Class Step6
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -190,5 +252,10 @@ Partial Class Step6
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
+    Friend WithEvents Panel4 As System.Windows.Forms.Panel
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class

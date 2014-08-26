@@ -57,10 +57,11 @@ Partial Class Step5
         Me.RadioButton14 = New System.Windows.Forms.RadioButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton17 = New System.Windows.Forms.RadioButton()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.RadioButton17 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -238,7 +239,7 @@ Partial Class Step5
         'TextBox4
         '
         Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(143, 167)
+        Me.TextBox4.Location = New System.Drawing.Point(169, 167)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(100, 20)
         Me.TextBox4.TabIndex = 9
@@ -249,10 +250,10 @@ Partial Class Step5
         Me.RadioButton11.AutoSize = True
         Me.RadioButton11.Location = New System.Drawing.Point(7, 168)
         Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(130, 17)
+        Me.RadioButton11.Size = New System.Drawing.Size(159, 17)
         Me.RadioButton11.TabIndex = 8
         Me.RadioButton11.TabStop = True
-        Me.RadioButton11.Text = "Set Amount of Tickets"
+        Me.RadioButton11.Text = "Prompted Amount of Tickets"
         Me.RadioButton11.UseVisualStyleBackColor = True
         '
         'RadioButton10
@@ -334,6 +335,7 @@ Partial Class Step5
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.CheckBox1)
         Me.Panel4.Controls.Add(Me.TextBox6)
         Me.Panel4.Controls.Add(Me.RadioButton13)
         Me.Panel4.Controls.Add(Me.RadioButton12)
@@ -448,24 +450,14 @@ Partial Class Step5
         Me.Panel6.Size = New System.Drawing.Size(240, 83)
         Me.Panel6.TabIndex = 6
         '
-        'Label7
+        'TextBox8
         '
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(4, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(235, 37)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
-        '
-        'RadioButton16
-        '
-        Me.RadioButton16.AutoSize = True
-        Me.RadioButton16.Location = New System.Drawing.Point(4, 41)
-        Me.RadioButton16.Name = "RadioButton16"
-        Me.RadioButton16.Size = New System.Drawing.Size(43, 17)
-        Me.RadioButton16.TabIndex = 8
-        Me.RadioButton16.Text = "Yes"
-        Me.RadioButton16.UseVisualStyleBackColor = True
+        Me.TextBox8.Enabled = False
+        Me.TextBox8.Location = New System.Drawing.Point(53, 40)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(81, 20)
+        Me.TextBox8.TabIndex = 10
+        Me.TextBox8.Text = "Enter # Here"
         '
         'RadioButton17
         '
@@ -479,14 +471,34 @@ Partial Class Step5
         Me.RadioButton17.Text = "No"
         Me.RadioButton17.UseVisualStyleBackColor = True
         '
-        'TextBox8
+        'RadioButton16
         '
-        Me.TextBox8.Enabled = False
-        Me.TextBox8.Location = New System.Drawing.Point(53, 40)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(81, 20)
-        Me.TextBox8.TabIndex = 10
-        Me.TextBox8.Text = "Enter # Here"
+        Me.RadioButton16.AutoSize = True
+        Me.RadioButton16.Location = New System.Drawing.Point(4, 41)
+        Me.RadioButton16.Name = "RadioButton16"
+        Me.RadioButton16.Size = New System.Drawing.Size(43, 17)
+        Me.RadioButton16.TabIndex = 8
+        Me.RadioButton16.Text = "Yes"
+        Me.RadioButton16.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(235, 37)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(57, 62)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(69, 17)
+        Me.CheckBox1.TabIndex = 10
+        Me.CheckBox1.Text = "Daily limit"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Step5
         '
@@ -499,7 +511,7 @@ Partial Class Step5
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Step5"
-        Me.NextStep = "StepK"
+        Me.NextStep = "Step5X5"
         Me.PreviousStep = "Step3"
         Me.Size = New System.Drawing.Size(594, 293)
         Me.StepDescription = "The reward of the promotion will be decided on this screen."
@@ -565,5 +577,6 @@ Partial Class Step5
     Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 
 End Class

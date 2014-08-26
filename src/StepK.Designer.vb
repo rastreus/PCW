@@ -174,7 +174,7 @@ Partial Class StepK
         Me.Controls.Add(Me.Panel1)
         Me.Name = "StepK"
         Me.NextStep = "StepL"
-        Me.PreviousStep = "Step5"
+        Me.PreviousStep = "Step5X5"
         Me.Size = New System.Drawing.Size(594, 293)
         Me.Controls.SetChildIndex(Me.Description, 0)
         Me.Controls.SetChildIndex(Me.Panel1, 0)

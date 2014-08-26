@@ -58,7 +58,7 @@ Public Class Step2
             End If
             PCW.GetStep("StepK").PreviousStep = "Step6"
         Else
-            PCW.GetStep("StepK").PreviousStep = "Step5"
+            PCW.GetStep("StepK").PreviousStep = "Step5X5"
         End If
 
         'Determine which Radiobutton (Yes or No) is checked for "Will the new promo be recurring?"
@@ -90,7 +90,7 @@ Public Class Step2
     Private Function FreePlay_Invalid()
         Dim invalid As Boolean = False
 
-        If Me.RadioButton1.Checked And Me.ComboBox1.Text = "Coupon delivery?" Then
+        If Me.RadioButton1.Checked And Me.ComboBox1.Text = "" Then
             invalid = True
         End If
 
@@ -100,7 +100,7 @@ Public Class Step2
     Private Function Recurring_Period_Invalid()
         Dim invalid As Boolean = False
 
-        If Me.RadioButton4.Checked And Me.ComboBox2.Text = "Recurring Period?" Then
+        If Me.RadioButton4.Checked And Me.ComboBox2.Text = "" Then
             invalid = True
         End If
 
@@ -146,6 +146,13 @@ Public Class Step2
             Me.ComboBox1.DroppedDown = True
         Else
             Me.ComboBox1.Enabled = False
+            If PromoDate_Recurring() Then
+                PCW.GetStep("Step4").NextStep = "Step5"
+                PCW.GetStep("StepK").PreviousStep = "Step5X5"
+            Else
+                PCW.GetStep("Step3").NextStep = "Step5"
+                PCW.GetStep("StepK").PreviousStep = "Step5X5"
+            End If
         End If
     End Sub
 #End Region

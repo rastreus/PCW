@@ -41,18 +41,18 @@ Partial Class StepL
         Me.Panel1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(3, 3)
+        Me.Panel1.Location = New System.Drawing.Point(3, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(568, 260)
+        Me.Panel1.Size = New System.Drawing.Size(568, 265)
         Me.Panel1.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Location = New System.Drawing.Point(3, 2)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(558, 256)
+        Me.Label1.Size = New System.Drawing.Size(558, 262)
         Me.Label1.TabIndex = 0
         '
         'IconButton1
