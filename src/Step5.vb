@@ -84,6 +84,35 @@ Public Class Step5
             Me.Panel5.BackColor = SystemColors.Control
         End If
 
+        If TicketsForEntirePromo_EqualTo_TicketsPerPatron() Then
+            e.Cancel = AskIfIntended()
+            If e.Cancel = True Then
+                Me.Panel4.BackColor = Color.MistyRose
+                Me.Panel5.BackColor = Color.MistyRose
+                Me.TextBox7.Text = ""
+                Me.TextBox6.Text = ""
+                Me.ActiveControl = Me.TextBox6
+            End If
+        Else
+            If Not TicketsPerPatron_Invalid() And Not TicketsForEntirePromo_Invalid() And Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
+                Me.Panel4.BackColor = SystemColors.Control
+                Me.Panel5.BackColor = SystemColors.Control
+            End If
+        End If
+
+        If TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
+            e.Cancel = True
+            Me.Panel5.BackColor = Color.MistyRose
+            CenteredMessagebox.MsgBox.Show("Tickets for entire promo less than Tickets per patron.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Me.TextBox7.Text = ""
+            Me.TextBox7.Text = ""
+            Me.ActiveControl = Me.TextBox7
+        Else
+            If Not TicketsForEntirePromo_Invalid() And Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
+                Me.Panel5.BackColor = SystemColors.Control
+            End If
+        End If
+
         If PointCutoff_Invalid() Then
             e.Cancel = True
             Me.Panel6.BackColor = Color.MistyRose
@@ -93,8 +122,39 @@ Public Class Step5
         Else
             Me.Panel6.BackColor = SystemColors.Control
         End If
-
     End Sub
+
+    Private Function TicketsForEntirePromo_LessThan_TicketsPerPatron()
+        Dim lessThan As Boolean = False
+
+        If Me.RadioButton12.Checked And Me.RadioButton14.Checked And (Short.Parse(Me.TextBox7.Text) < Short.Parse(Me.TextBox6.Text)) Then
+            lessThan = True
+        End If
+
+        Return lessThan
+    End Function
+
+    Private Function TicketsForEntirePromo_EqualTo_TicketsPerPatron()
+        Dim equivalent As Boolean = False
+
+        If Me.RadioButton12.Checked And Me.RadioButton14.Checked And (Short.Parse(Me.TextBox6.Text) = Short.Parse(Me.TextBox7.Text)) Then
+            equivalent = True
+        End If
+
+        Return equivalent
+    End Function
+
+    Private Function AskIfIntended()
+        Dim samedayMsgString As String = "Do you want tickets for entire promo to be the same as tickets per person?"
+
+        Dim result As Integer = CenteredMessagebox.MsgBox.Show(samedayMsgString, "Equal?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
     Private Function PointCutoff_Invalid()
         Dim invalid As Boolean = False
@@ -191,7 +251,7 @@ Public Class Step5
         Catch ex As Exception
             invalid = True
         End Try
-        
+
         Return invalid
     End Function
 

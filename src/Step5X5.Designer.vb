@@ -31,8 +31,10 @@ Partial Class Step5X5
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.IconButton1 = New FontAwesomeIcons.IconButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Description
@@ -130,10 +132,24 @@ Partial Class Step5X5
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "The points total must be"
         '
+        'IconButton1
+        '
+        Me.IconButton1.ActiveColor = System.Drawing.Color.CornflowerBlue
+        Me.IconButton1.BackColor = System.Drawing.Color.Transparent
+        Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
+        Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
+        Me.IconButton1.Location = New System.Drawing.Point(3, 269)
+        Me.IconButton1.Name = "IconButton1"
+        Me.IconButton1.Size = New System.Drawing.Size(24, 24)
+        Me.IconButton1.TabIndex = 3
+        Me.IconButton1.TabStop = False
+        Me.IconButton1.ToolTipText = Nothing
+        '
         'Step5X5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.IconButton1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Step5X5"
@@ -144,9 +160,11 @@ Partial Class Step5X5
         Me.Controls.SetChildIndex(Me.Description, 0)
         Me.Controls.SetChildIndex(Me.Panel1, 0)
         Me.Controls.SetChildIndex(Me.Panel2, 0)
+        Me.Controls.SetChildIndex(Me.IconButton1, 0)
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -159,5 +177,6 @@ Partial Class Step5X5
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
 
 End Class
