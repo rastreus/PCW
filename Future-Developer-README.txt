@@ -11,8 +11,7 @@ must be planned and created in advance.
 
 This may never actually become an issue. But if it does, it is possible that
 a custom control which inherts from DateTimePicker could be created. I am not
-sure about that though. If that doesn't work, you may be in trouble for my poor
-decisions when the application was originally created.
+sure about that though.
 
 Be sure to read the comments on Form1.vb if you haven't already done so.
 I tried to comment my code accordingly as I was writing it so details and
