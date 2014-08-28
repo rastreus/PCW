@@ -12,9 +12,22 @@
 
         'If you haven't already read the file titled "Future-Developer-README.txt," then you should do so
         'if you are indeed a developer in the future (Today's date: 08/18/2014) wanting to maintain this software.
+        Me.ShowDialog()
+    End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Create an instance of the PCW class and show it
         Dim wizard As PCW = New PCW
         wizard.ShowDialog()
+        'We can close the opener Form now that wizard is being shown
+        Me.Close()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'Create an instance of the PME class and show it
+        Dim editor As PAE = New PAE
+        editor.ShowDialog()
+        'We can close the opener Form now that wizard is being shown
+        Me.Close()
     End Sub
 End Class

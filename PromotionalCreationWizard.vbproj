@@ -120,6 +120,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="src\PAE.Designer.vb">
+      <DependentUpon>PAE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\PAE.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="src\Sql_Query.vb" />
     <Compile Include="src\Step1.Designer.vb">
       <DependentUpon>Step1.vb</DependentUpon>
@@ -205,6 +211,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\PAE.resx">
+      <DependentUpon>PAE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step1.resx">
       <DependentUpon>Step1.vb</DependentUpon>
