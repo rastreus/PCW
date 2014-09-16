@@ -29,6 +29,7 @@ Partial Class Step1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.IconButton1 = New FontAwesomeIcons.IconButton()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -80,7 +81,7 @@ Partial Class Step1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(5, 240)
+        Me.Label5.Location = New System.Drawing.Point(5, 205)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(252, 13)
         Me.Label5.TabIndex = 5
@@ -89,7 +90,7 @@ Partial Class Step1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(5, 262)
+        Me.Label6.Location = New System.Drawing.Point(5, 227)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(271, 13)
         Me.Label6.TabIndex = 6
@@ -108,10 +109,23 @@ Partial Class Step1
         Me.IconButton1.TabStop = False
         Me.IconButton1.ToolTipText = Nothing
         '
+        'Button2
+        '
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.Button2.Location = New System.Drawing.Point(8, 271)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(411, 35)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "Click Here to Edit an Existing Promo!"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Step1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.IconButton1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -132,6 +146,7 @@ Partial Class Step1
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.Label6, 0)
         Me.Controls.SetChildIndex(Me.IconButton1, 0)
+        Me.Controls.SetChildIndex(Me.Button2, 0)
         CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -144,5 +159,6 @@ Partial Class Step1
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

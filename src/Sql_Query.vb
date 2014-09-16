@@ -28,6 +28,22 @@ Public Class Sql_Query
     End Function
 #End Region
 
+#Region "Return_Existing_Promo"
+    'This is the function that is used by the PAE form to grab the existing promo.
+    'This is only used by PAE, not PCW.
+    Public Shared Function Return_Existing_Promo(ByVal existing_promoName As String)
+        Dim tbl As New MarketingPromosDataContext
+        Dim existing_promo As New MarketingPromo
+        Dim trimmed_existing_promoName As String = existing_promoName.Trim
+
+        existing_promo = (From promo In tbl.MarketingPromos
+                          Where promo.PromoName = trimmed_existing_promoName
+                          Select promo)
+
+        Return existing_promo
+    End Function
+#End Region
+
 #Region "Existing_Coupon"
     'In the same way that we checked to see if there is an existing promo by checking its name,
     'we will check to see if there is an existing coupon by checking its couponID.

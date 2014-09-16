@@ -58,7 +58,11 @@ Public Class Step2
             End If
             PCW.GetStep("StepK").PreviousStep = "Step6"
         Else
-            PCW.GetStep("StepK").PreviousStep = "Step5X5"
+            If Not IsNothing(PCW.GetStep("StepK")) Then
+                PromotionalCreationWizard.PCW.GetStep("StepK").PreviousStep = "Step5X5"
+            Else
+                CenteredMessagebox.MsgBox.Show("Something is horribly wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
 
         'Determine which Radiobutton (Yes or No) is checked for "Will the new promo be recurring?"

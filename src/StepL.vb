@@ -28,14 +28,16 @@ Otherwise, cancel and attempt the process later.</a>.Value
 
         'It bothered me that the DateTime wasn't formatted properly.
         'Creating more local variables seems to be one of the only solutions.
-        Dim promoDate As DateTime = newPromo.PromoDate
-        Dim startDate As DateTime = newPromo.StartDate
-        Dim endDate As DateTime = newPromo.EndDate
+        Dim promoDate As Nullable(Of DateTime) = newPromo.PromoDate
+        Dim startDate As Nullable(Of DateTime) = newPromo.StartDate
+        Dim endDate As Nullable(Of DateTime) = newPromo.EndDate
         Dim pointCutoff As String
         Dim pointDivisor As String
         Dim maxTickets As String
         Dim promoMaxTickets As String
         Dim promoDateStr As String
+        Dim startDateStr As String
+        Dim EndDateStr As String
         Dim maxCoupon As String
         Dim promoMaxCoupon As String
         Dim couponID As String
@@ -71,7 +73,20 @@ Otherwise, cancel and attempt the process later.</a>.Value
         If IsNothing(newPromo.PromoDate) Then
             promoDateStr = "NULL"
         Else
-            promoDateStr = promoDate.ToString("MM/dd/yyyy hh:mm tt")
+            promoDateStr = String.Format("{0:MM/dd/yyyy}", promoDate)
+        End If
+
+        If IsNothing(newPromo.StartDate) Then
+            startDateStr = "NULL"
+        Else
+            startDateStr = String.Format("{0:MM/dd/yyyy}", startDate)
+        End If
+
+        If IsNothing(newPromo.EndDate) Then
+            EndDateStr = "NULL"
+        Else
+            'EndDateStr = endDate.ToString("MM/dd/yyyy")
+            EndDateStr = String.Format("{0:MM/dd/yyyy}", endDate)
         End If
 
         If IsNothing(newPromo.MaxCoupon) Then
@@ -115,8 +130,8 @@ Otherwise, cancel and attempt the process later.</a>.Value
         builder.Append("      PromoType: " & promoType & vbCrLf)
         builder.Append("           Name: " & newPromo.PromoName & vbCrLf)
         builder.Append("           Date: " & promoDateStr & vbCrLf)
-        builder.Append("      StartDate: " & startDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
-        builder.Append("        EndDate: " & endDate.ToString("MM/dd/yyyy hh:mm tt") & vbCrLf)
+        builder.Append("      StartDate: " & startDateStr & vbCrLf)
+        builder.Append("        EndDate: " & EndDateStr & vbCrLf)
         builder.Append("    PointCutoff: " & pointCutoff & vbCrLf)
         builder.Append("   PointDivisor: " & pointDivisor & vbCrLf)
         builder.Append("     MaxTickets: " & maxTickets & vbCrLf)

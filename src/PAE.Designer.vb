@@ -25,14 +25,14 @@ Partial Class PAE
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -42,9 +42,9 @@ Partial Class PAE
         Me.Label1.ForeColor = System.Drawing.Color.Chocolate
         Me.Label1.Location = New System.Drawing.Point(41, 19)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(509, 39)
+        Me.Label1.Size = New System.Drawing.Size(468, 39)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "PromotionalModificationEditor"
+        Me.Label1.Text = "PromotionalAlterationEditor"
         '
         'Label2
         '
@@ -70,34 +70,14 @@ Partial Class PAE
         Me.Panel1.Size = New System.Drawing.Size(601, 40)
         Me.Panel1.TabIndex = 2
         '
-        'Panel2
+        'Panel3
         '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(-5, -1)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(601, 160)
-        Me.Panel2.TabIndex = 3
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(16, 7)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Cancel"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(511, 7)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Submit"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Panel3.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel3.Controls.Add(Me.CheckBox1)
+        Me.Panel3.Location = New System.Drawing.Point(128, 3)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(377, 32)
+        Me.Panel3.TabIndex = 5
         '
         'CheckBox1
         '
@@ -109,16 +89,36 @@ Partial Class PAE
         Me.CheckBox1.Text = "I understand and take responsibility for the changes to the above promo."
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
-        'Panel3
+        'Button2
         '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel3.Controls.Add(Me.CheckBox1)
-        Me.Panel3.Location = New System.Drawing.Point(128, 3)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(377, 32)
-        Me.Panel3.TabIndex = 5
+        Me.Button2.Location = New System.Drawing.Point(511, 7)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "Submit"
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'PME
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(16, 7)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Cancel"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Location = New System.Drawing.Point(-5, -1)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(601, 160)
+        Me.Panel2.TabIndex = 3
+        '
+        'PAE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -127,15 +127,15 @@ Partial Class PAE
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.MaximizeBox = False
-        Me.Name = "PME"
+        Me.Name = "PAE"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "PME"
+        Me.Text = "PAE"
         Me.Panel1.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

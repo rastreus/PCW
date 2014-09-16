@@ -127,8 +127,10 @@ Public Class Step5
     Private Function TicketsForEntirePromo_LessThan_TicketsPerPatron()
         Dim lessThan As Boolean = False
 
-        If Me.RadioButton12.Checked And Me.RadioButton14.Checked And (Short.Parse(Me.TextBox7.Text) < Short.Parse(Me.TextBox6.Text)) Then
-            lessThan = True
+        If Me.RadioButton12.Checked And Me.RadioButton14.Checked Then
+            If (Short.Parse(Me.TextBox7.Text) < Short.Parse(Me.TextBox6.Text)) Then
+                lessThan = True
+            End If
         End If
 
         Return lessThan
@@ -137,8 +139,10 @@ Public Class Step5
     Private Function TicketsForEntirePromo_EqualTo_TicketsPerPatron()
         Dim equivalent As Boolean = False
 
-        If Me.RadioButton12.Checked And Me.RadioButton14.Checked And (Short.Parse(Me.TextBox6.Text) = Short.Parse(Me.TextBox7.Text)) Then
-            equivalent = True
+        If Me.RadioButton12.Checked And Me.RadioButton14.Checked Then
+            If (Short.Parse(Me.TextBox6.Text) = Short.Parse(Me.TextBox7.Text)) Then
+                equivalent = True
+            End If
         End If
 
         Return equivalent

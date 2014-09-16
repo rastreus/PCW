@@ -1,4 +1,10 @@
-﻿Public Class Form1
+﻿Imports TSWizards
+Imports CenteredMessagebox
+Imports System.Windows.Forms
+Imports System.Xml
+Imports System.Xml.Linq
+
+Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'This application makes use of TSWizard, a wizard framework for .NET.
         'It was actually created in C# for .NET 2.0 but currently works as a dll in this app.
@@ -19,7 +25,7 @@
         'Create an instance of the PCW class and show it
         Dim wizard As PCW = New PCW
         wizard.ShowDialog()
-        'We can close the opener Form now that wizard is being shown
+        'We can close the opener Form now that wizard is being shown OR CAN WE?
         Me.Close()
     End Sub
 
