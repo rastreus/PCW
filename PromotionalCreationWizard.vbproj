@@ -147,29 +147,34 @@
     <Compile Include="src\PAE.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="src\SingletonQueue.vb" />
     <Compile Include="src\Sql_Query.vb" />
-    <Compile Include="src\Step1.Designer.vb">
-      <DependentUpon>Step1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="src\Step1.vb">
+    <Compile Include="src\Step4.Designer.vb" />
+    <Compile Include="src\Step4.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Step2.Designer.vb">
-      <DependentUpon>Step2.vb</DependentUpon>
+    <Compile Include="src\StepA.Designer.vb">
+      <DependentUpon>StepA.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\Step2.vb">
+    <Compile Include="src\StepA.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\StepB.Designer.vb">
+      <DependentUpon>StepB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\StepB.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Step2X1.Designer.vb">
+      <DependentUpon>Step2X1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Step2X1.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\Step3.Designer.vb">
       <DependentUpon>Step3.vb</DependentUpon>
     </Compile>
     <Compile Include="src\Step3.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="src\Step4.Designer.vb">
-      <DependentUpon>Step4.vb</DependentUpon>
-    </Compile>
-    <Compile Include="src\Step4.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\Step5.Designer.vb">
@@ -188,6 +193,24 @@
       <DependentUpon>Step6.vb</DependentUpon>
     </Compile>
     <Compile Include="src\Step6.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\StepD.Designer.vb">
+      <DependentUpon>StepD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\StepD.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\StepE.Designer.vb">
+      <DependentUpon>StepE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\StepE.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\StepF.Designer.vb">
+      <DependentUpon>StepF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\StepF.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\StepK.Designer.vb">
@@ -237,17 +260,18 @@
     <EmbeddedResource Include="src\PAE.resx">
       <DependentUpon>PAE.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Step1.resx">
-      <DependentUpon>Step1.vb</DependentUpon>
+    <EmbeddedResource Include="src\Step4.resx" />
+    <EmbeddedResource Include="src\StepA.resx">
+      <DependentUpon>StepA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Step2.resx">
-      <DependentUpon>Step2.vb</DependentUpon>
+    <EmbeddedResource Include="src\StepB.resx">
+      <DependentUpon>StepB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Step2X1.resx">
+      <DependentUpon>Step2X1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step3.resx">
       <DependentUpon>Step3.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Step4.resx">
-      <DependentUpon>Step4.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step5.resx">
       <DependentUpon>Step5.vb</DependentUpon>
@@ -257,6 +281,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Step6.resx">
       <DependentUpon>Step6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\StepD.resx">
+      <DependentUpon>StepD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\StepE.resx">
+      <DependentUpon>StepE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\StepF.resx">
+      <DependentUpon>StepF.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\StepK.resx">
       <DependentUpon>StepK.vb</DependentUpon>

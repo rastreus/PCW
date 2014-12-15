@@ -10,7 +10,8 @@ Public Class Step5X5
         If Invalid_Points_Qualifier() Then
             e.Cancel = True
             Me.Panel1.BackColor = Color.MistyRose
-            CenteredMessagebox.MsgBox.Show("Please select a Points Qualifier option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            CenteredMessagebox.MsgBox.Show("Please select a Points Qualifier option.", "Error",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.ActiveControl = Me.ComboBox1
             Me.ComboBox1.DroppedDown = True
         Else
@@ -20,11 +21,19 @@ Public Class Step5X5
         If Invalid_Points_Comparison() Then
             e.Cancel = True
             Me.Panel2.BackColor = Color.MistyRose
-            CenteredMessagebox.MsgBox.Show("Please select a Points Qualifier option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            CenteredMessagebox.MsgBox.Show("Please select a Points Qualifier option.", "Error",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.ActiveControl = Me.ComboBox2
             Me.ComboBox2.DroppedDown = True
         Else
             Me.Panel2.BackColor = SystemColors.Control
+        End If
+
+        Dim step2 As StepB = PCW.GetStep("Step2")
+        If (step2.RadioButton6.Checked Or step2.RadioButton7.Checked) Then
+            Me.NextStep = "Step6"
+            CenteredMessagebox.MsgBox.Show("Configure the Coupon Payout for the Promo.", "FreePlay Coupon",
+                                           MessageBoxButtons.OK, MessageBoxIcon.None)
         End If
     End Sub
 
@@ -57,31 +66,18 @@ Public Class Step5X5
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Dim step5 As Step5 = PCW.GetStep("Step5")
-        If Me.ComboBox1.Text <> "Gives reward regardless of points" And step5.RadioButton16.Checked Then
+        If (Me.ComboBox1.Text <> "Gives reward regardless of points") And step5.RadioButton16.Checked Then
             Me.Panel2.Enabled = True
         Else
             Me.Panel2.Enabled = False
         End If
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
-
 #Region "Step5X5_InfoCircle"
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
         Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
 
-Brought to you by the fine folks of the OJC IT Department!
-
-Please direct questions and concerns toward:
-Russell Dillin
-rdillin@oaklawn.com
-x696</a>.Value
+Brought to you by the fine folks of the OJC IT Department!</a>.Value
 
         CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub

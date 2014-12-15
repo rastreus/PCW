@@ -90,9 +90,9 @@ Partial Class Step5X5
         Me.Label5.ForeColor = System.Drawing.Color.OrangeRed
         Me.Label5.Location = New System.Drawing.Point(130, 62)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 13)
+        Me.Label5.Size = New System.Drawing.Size(25, 13)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Label5"
+        Me.Label5.Text = "------"
         '
         'Label4
         '

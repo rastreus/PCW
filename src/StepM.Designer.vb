@@ -34,6 +34,7 @@ Partial Class StepM
         '
         Me.Description.Size = New System.Drawing.Size(578, 72)
         Me.Description.Text = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
+        Me.Description.UseWaitCursor = True
         '
         'IconButton1
         '
@@ -47,6 +48,7 @@ Partial Class StepM
         Me.IconButton1.TabIndex = 1
         Me.IconButton1.TabStop = False
         Me.IconButton1.ToolTipText = Nothing
+        Me.IconButton1.UseWaitCursor = True
         '
         'ProgressBar1
         '
@@ -55,6 +57,7 @@ Partial Class StepM
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(536, 43)
         Me.ProgressBar1.TabIndex = 2
+        Me.ProgressBar1.UseWaitCursor = True
         '
         'Label1
         '
@@ -65,6 +68,7 @@ Partial Class StepM
         Me.Label1.Size = New System.Drawing.Size(92, 16)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Now saving:"
+        Me.Label1.UseWaitCursor = True
         '
         'Label2
         '
@@ -73,6 +77,7 @@ Partial Class StepM
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(0, 13)
         Me.Label2.TabIndex = 4
+        Me.Label2.UseWaitCursor = True
         '
         'Label3
         '
@@ -84,6 +89,7 @@ Partial Class StepM
         Me.Label3.Size = New System.Drawing.Size(443, 24)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Please wait while your promotional is being created."
+        Me.Label3.UseWaitCursor = True
         '
         'StepM
         '
@@ -98,6 +104,7 @@ Partial Class StepM
         Me.NextStep = "StepN"
         Me.Size = New System.Drawing.Size(594, 293)
         Me.StepDescription = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
+        Me.UseWaitCursor = True
         Me.Controls.SetChildIndex(Me.Description, 0)
         Me.Controls.SetChildIndex(Me.IconButton1, 0)
         Me.Controls.SetChildIndex(Me.ProgressBar1, 0)

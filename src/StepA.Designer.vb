@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Step1
+Partial Class StepA
     Inherits TSWizards.BaseExteriorStep
 
     'UserControl overrides dispose to clean up the component list.
