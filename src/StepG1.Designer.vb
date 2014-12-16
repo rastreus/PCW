@@ -1,27 +1,27 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Step5
-    Inherits TSWizards.BaseInteriorStep
+Partial Class StepG1
+	Inherits TSWizards.BaseInteriorStep
 
-    'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
+	'UserControl overrides dispose to clean up the component list.
+	<System.Diagnostics.DebuggerNonUserCode()> _
+	Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+		Try
+			If disposing AndAlso components IsNot Nothing Then
+				components.Dispose()
+			End If
+		Finally
+			MyBase.Dispose(disposing)
+		End Try
+	End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+	'Required by the Windows Form Designer
+	Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
+	'NOTE: The following procedure is required by the Windows Form Designer
+	'It can be modified using the Windows Form Designer.  
+	'Do not modify it using the code editor.
+	<System.Diagnostics.DebuggerStepThrough()> _
+	Private Sub InitializeComponent()
 		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -395,29 +395,29 @@ Partial Class Step5
 
 	End Sub
 	Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton7 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton8 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+	Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton7 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton8 As System.Windows.Forms.RadioButton
+	Friend WithEvents Label2 As System.Windows.Forms.Label
 	Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents RadioButton11 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton10 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton9 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents RadioButton13 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton12 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents RadioButton15 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton14 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+	Friend WithEvents RadioButton11 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton10 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton9 As System.Windows.Forms.RadioButton
+	Friend WithEvents Label3 As System.Windows.Forms.Label
+	Friend WithEvents Panel3 As System.Windows.Forms.Panel
+	Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+	Friend WithEvents Label4 As System.Windows.Forms.Label
+	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
+	Friend WithEvents Panel4 As System.Windows.Forms.Panel
+	Friend WithEvents RadioButton13 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton12 As System.Windows.Forms.RadioButton
+	Friend WithEvents Label5 As System.Windows.Forms.Label
+	Friend WithEvents Panel5 As System.Windows.Forms.Panel
+	Friend WithEvents RadioButton15 As System.Windows.Forms.RadioButton
+	Friend WithEvents RadioButton14 As System.Windows.Forms.RadioButton
+	Friend WithEvents Label6 As System.Windows.Forms.Label
+	Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+	Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 	Friend WithEvents Label1 As System.Windows.Forms.Label
 	Friend WithEvents Label7 As System.Windows.Forms.Label

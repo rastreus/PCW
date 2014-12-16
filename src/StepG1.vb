@@ -3,11 +3,11 @@ Imports System.Xml
 Imports System.Xml.Linq
 Imports System.Text.RegularExpressions
 
-Public Class Step5
-    Inherits TSWizards.BaseInteriorStep
+Public Class StepG1
+	Inherits TSWizards.BaseInteriorStep
 
 #Region "Step5_Validation"
-	Private Sub Step5_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
+	Private Sub StepG1_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
 
 		If PointsDivisor_Invalid() Then
 			e.Cancel = True
@@ -260,13 +260,13 @@ Public Class Step5
 	End Sub
 #End Region
 
-#Region "Step5_Load"
+#Region "StepG1_Load"
 	Dim toolTip1 As Lingering_ToolTip = New Lingering_ToolTip
 	Dim toolTip2 As Lingering_ToolTip = New Lingering_ToolTip
 	Dim toolTip3 As Lingering_ToolTip = New Lingering_ToolTip
 	Dim toolTip4 As Lingering_ToolTip = New Lingering_ToolTip
 
-	Private Sub Step5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+	Private Sub StepG1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 		Dim countString As String = <a>Counts the number of days between the start date
 and the end date in which the account earned points.
@@ -334,7 +334,7 @@ from the EligiblePlayers table.</a>
 	End Sub
 #End Region
 
-#Region "Step5_InfoCircle"
+#Region "StepG1_InfoCircle"
 	'This really needs to become a method in a subclass of TSWizards.BaseInteriorStep.
 	'That way there it is not copied into every single Step.
 	Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click

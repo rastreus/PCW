@@ -36,29 +36,29 @@ Public Class PCW
 
         AddStep("StepA", New StepA)
         AddStep("StepB", New StepB)
-        AddStep("StepC", New StepC)
+		AddStep("Step4", New Step4)	'Had issues renaming to StepC
         AddStep("StepD", New StepD)
-
-        AddStep("Step5", New Step5)
-        AddStep("Step5X5", New Step5X5)
-        AddStep("Step6", New Step6)
-        AddStep("StepK", New StepK)
-        AddStep("StepL", New StepL)
-        AddStep("StepM", New StepM)
-        AddStep("StepN", New StepN)
-    End Sub
+		AddStep("StepE", New StepE)
+		AddStep("StepF", New StepF)
+		AddStep("StepG1", New StepG1)
+		AddStep("StepG2", New StepG2)
+		AddStep("StepH", New StepH)
+		AddStep("StepI", New StepI)
+		AddStep("StepJ", New StepJ)
+		AddStep("StepX", New StepX)
+	End Sub
 #End Region
 
-    Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
-        Dim entriesQ As System.Collections.Queue = New Queue
-        Dim step2 As StepB = Me.GetStep("Step2")
+	Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
+		Dim entriesQ As System.Collections.Queue = New Queue
+		Dim step2 As StepB = Me.GetStep("Step2")
 
-        AddStep("entriesLoop_step3", New Step3)
+		AddStep("entriesLoop_step3", New Step3)
 		AddStep("entriesLoop_step4", New StepC)
-		AddStep("entriesLoop_step5", New Step5)
+		AddStep("entriesLoop_step5", New StepG1)
 		AddStep("entriesLoop_step5X5", New Step5X5)
-		AddStep("entriesLoop_step6", New Step6)
-		AddStep("entriesLoop_stepK", New StepK)
+		AddStep("entriesLoop_step6", New StepG2)
+		AddStep("entriesLoop_stepK", New StepH)
 
 		Me.GetStep("entriesLoop_step3").NextStep = "entriesLoop_step5"
 		Me.GetStep("entriesLoop_step4").NextStep = "entriesLoop_step5"
@@ -83,16 +83,25 @@ Public Class PCW
 		Dim newPromo As MarketingPromo = New MarketingPromo
 
 		'Initialize the Steps
-		Dim step2 As StepB = Me.GetStep("Step2")
-		Dim step3 As Step3 = Me.GetStep("Step3")
-		Dim step4 As StepC = Me.GetStep("Step4")
-		Dim step5 As Step5 = Me.GetStep("Step5")
-		Dim step5X5 As Step5X5 = Me.GetStep("Step5X5")
-		Dim step6 As Step6 = Me.GetStep("Step6")
-		Dim stepK As StepK = Me.GetStep("StepK")
+		Dim stepB As StepB = Me.GetStep("StepB")
+		Dim step4 As Step4 = Me.GetStep("Step4")
+		Dim stepD As StepD = Me.GetStep("StepD")
+		Dim stepE As StepE = Me.GetStep("StepE")
+		Dim stepF As StepF = Me.GetStep("StepF")
+		Dim stepG1 As StepG1 = Me.GetStep("StepG1")
+		Dim stepG2 As StepG2 = Me.GetStep("StepG2")
+		Dim stepH As StepH = Me.GetStep("StepH")
 
 		'Make sure that we are who we say we are
-		If IsNothing(step2) Or IsNothing(step3) Or IsNothing(step4) Or IsNothing(step5) Or IsNothing(step6) Or IsNothing(stepK) Then
+		'if we're aren't sure who we are, we die
+		If IsNothing(stepB) Or
+			IsNothing(step4) Or
+			IsNothing(stepD) Or
+			IsNothing(stepE) Or
+			IsNothing(stepF) Or
+			IsNothing(stepG1) Or
+			IsNothing(stepG2) Or
+			IsNothing(stepH) Then
 			Throw New ApplicationException("Oh no! A Step is not the Step that it claims to be!")
 		End If
 
@@ -157,9 +166,9 @@ Public Class PCW
 	Private Function DeterminePromoType(ByVal step2 As StepB, _
 										ByVal step3 As Step3, _
 										ByVal step4 As StepC, _
-										ByVal step5 As Step5, _
+										ByVal step5 As StepG1, _
 										ByVal step5X5 As Step5X5, _
-										ByVal step6 As Step6)
+										ByVal step6 As StepG2)
 		Dim result As String
 		If Is_Type_20(step2, step5, step5X5) Then
 			result = "20"
@@ -239,7 +248,7 @@ Public Class PCW
 
 	'"Gives out 1 ticket regardless of points if player has Players club account."
 	Private Function Is_Type_20(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton13.Checked And step5X5.ComboBox1.Text = "Gives reward regardless of points" Then
@@ -250,7 +259,7 @@ Public Class PCW
 
 	'"Gives out 1 ticket between start and end, per account."
 	Private Function Is_Type_20A(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton12.Checked And step5.TextBox6.Text = "1" And step5X5.ComboBox1.Text = "Gives reward regardless of points" Then
@@ -261,7 +270,7 @@ Public Class PCW
 
 	'"Sums up total points from points table and gives one ticket if lifetime points are greater than or equal to cutoff."
 	Private Function Is_Type_21(ByVal step2 As StepB, _
-								ByVal step5 As Step5) As Boolean
+								ByVal step5 As StepG1) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked Then
 			it_is = True
@@ -271,7 +280,7 @@ Public Class PCW
 
 	'"Sums up total points from points table where the date is between start and end date and gives one ticket if total points are greater than or equal to cutoff."
 	Private Function Is_Type_22(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than or equal to" Then
@@ -282,7 +291,7 @@ Public Class PCW
 
 	'"If points are greater than cutoff, prints one ticket up to "max tickets," but only one per day."
 	Private Function Is_Type_22A(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than" And step5.RadioButton12.Checked Then
@@ -294,7 +303,7 @@ Public Class PCW
 	'"If points are greater than cutoff, prints one ticket between start and end date if player has signed up for new account between start and end.
 	'Redemption date cannot be same as enroll date."
 	Private Function Is_Type_22B(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton3.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than" Then
@@ -306,7 +315,7 @@ Public Class PCW
 	'"Sums up total points from points table and does a count of the date field in the points table where the date is between start and end date and returns the count as number of tickets
 	'if total points are greater than or equal to cutoff."
 	Private Function Is_Type_23(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton9.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than or equal to" Then
@@ -318,7 +327,7 @@ Public Class PCW
 	'"Sums up total points from points table where date is between start and end date, divides that by the point divisor and then
 	'adds it to a count of the date field to get the number of tickets if total points is greater than cutoff."
 	Private Function Is_Type_24(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton6.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than" And (step5.TextBox5.Text <> "" Or step5.TextBox5.Text <> "Enter # Here") Then
@@ -330,7 +339,7 @@ Public Class PCW
 	'"Sums up total points from points table where the date is between start and end date and then divides that by the point divisor
 	'to determine amount of tickets if the total points is greater than or equal to cutoff."
 	Private Function Is_Type_25(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton7.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than or equal to" And (step5.TextBox5.Text <> "" Or step5.TextBox5.Text <> "Enter # Here") Then
@@ -356,7 +365,7 @@ Public Class PCW
 
 	'"Selects the number of tickets from the Eligible Players Table."
 	Private Function Is_Type_26(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton10.Checked And step5.RadioButton17.Checked And step5X5.ComboBox1.Text = "Gives reward regardless of points" Then
@@ -368,7 +377,7 @@ Public Class PCW
 	'"Sums up total points from points table where date is between start and end date and then selects the number of tickets from
 	'the eligible players table if total points are greater than or equal to cutoff."
 	Private Function Is_Type_27(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton10.Checked And step5.RadioButton16.Checked And (step5.TextBox5.Text <> "" Or step5.TextBox5.Text <> "Enter # Here") And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than or equal to" Then
@@ -381,7 +390,7 @@ Public Class PCW
 	'one of the days listed in the earns on field and return that as the number of tickets. Not compatible with Same-Day Points."
 	Private Function Is_Type_28(ByVal step2 As StepB, _
 								ByVal step4 As StepC, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step2.RadioButton4.Checked And step4.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton9.Checked And step5.RadioButton16.Checked And step5X5.ComboBox1.Text = "Sums points between start and end dates" And step5X5.ComboBox2.Text = "greater than or equal to" Then
@@ -391,7 +400,7 @@ Public Class PCW
 	End Function
 
 	'"Will prompt to select a prize from a dropdown box and then print one ticket for that prize for that day."
-	Private Function Is_Type_29(ByVal step2 As StepB, ByVal step5 As Step5) As Boolean
+	Private Function Is_Type_29(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton4.Checked And step5.RadioButton12.Checked And step5.CheckBox1.Checked Then
 			it_is = True
@@ -401,7 +410,7 @@ Public Class PCW
 
 	'"Will prompt for number of tickets to print and then print them without checking if the player has already got tickets for that day."
 	Private Function Is_Type_30(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton11.Checked And step5.RadioButton17.Checked And step5X5.ComboBox1.Text = "Gives reward regardless of points" Then
@@ -411,7 +420,7 @@ Public Class PCW
 	End Function
 
 	'"Will prompt to select a prize from a dropdown box and then print one ticket for that prize and will allow multiple prints for the same day."
-	Private Function Is_Type_31(ByVal step2 As StepB, ByVal step5 As Step5) As Boolean
+	Private Function Is_Type_31(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton4.Checked And step5.RadioButton13.Checked Then
 			it_is = True
@@ -420,7 +429,7 @@ Public Class PCW
 	End Function
 
 	'"Similar to 31, other than it is a prompt with free form entry of cash value."
-	Private Function Is_Type_31A(ByVal step2 As StepB, ByVal step5 As Step5) As Boolean
+	Private Function Is_Type_31A(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton3.Checked Then
 			it_is = True
@@ -429,7 +438,7 @@ Public Class PCW
 	End Function
 
 	'"Similar to 31A, other than it is a prompt with free form entry of cash value and prints on receipt and creates validated free play offer."
-	Private Function Is_Type_31B(ByVal step2 As StepB, ByVal step6 As Step6) As Boolean
+	Private Function Is_Type_31B(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton1.Checked And step6.RadioButton1.Checked Then
 			it_is = True
@@ -438,7 +447,7 @@ Public Class PCW
 	End Function
 
 	'"Similar to 31B, but no prompt. Value of receipt is always value of MaxCoupon."
-	Private Function Is_Type_31C(ByVal step2 As StepB, ByVal step6 As Step6) As Boolean
+	Private Function Is_Type_31C(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton1.Checked And step6.RadioButton2.Checked Then
 			it_is = True
@@ -448,7 +457,7 @@ Public Class PCW
 
 	'"Allows one ticket to be printed weekly, monthly, quarterly, or yearly if account is in eligible players table."
 	Private Function Is_Type_32(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5X5.ComboBox1.Text = "Uses EligiblePlayers table to determine points" Then
@@ -459,7 +468,7 @@ Public Class PCW
 
 	'"Allows one ticket to be printed daily, weekly, monthly, quarterly, or yearly if account is in eligible players table. Uses EligiblePlayers table to determine who and how many to print."
 	Private Function Is_Type_32A(ByVal step2 As StepB, _
-								ByVal step5 As Step5, _
+								ByVal step5 As StepG1, _
 								ByVal step5X5 As Step5X5) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton10.Checked And step5X5.ComboBox1.Text = "Uses EligiblePlayers table to determine points" Then
@@ -469,7 +478,7 @@ Public Class PCW
 	End Function
 
 	'"Generates a random number and then selects a prize from the random prizes table based on that number."
-	Private Function Is_Type_33(ByVal step2 As StepB, ByVal step5 As Step5) As Boolean
+	Private Function Is_Type_33(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton2.Checked And step5.RadioButton5.Checked Then
 			it_is = True
@@ -479,7 +488,7 @@ Public Class PCW
 
 	'"Allows one ticket to be printed if the current month is the user's Birthday month and the user has not had one printed this year.
 	'Ticket value is MaxCoupon value."
-	Private Function Is_Type_34(ByVal step2 As StepB, ByVal step6 As Step6) As Boolean
+	Private Function Is_Type_34(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton4.Checked And step6.RadioButton2.Checked Then
 			it_is = True
@@ -488,7 +497,7 @@ Public Class PCW
 	End Function
 #End Region
 
-	Private Function DetermineCouponID(ByVal step2 As StepB, ByVal step6 As Step6)
+	Private Function DetermineCouponID(ByVal step2 As StepB, ByVal step6 As StepG2)
 		Dim couponID As String
 
 		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
@@ -500,7 +509,7 @@ Public Class PCW
 		Return couponID
 	End Function
 
-	Private Function DeterminePromoMaxCoupon(ByVal step2 As StepB, ByVal step6 As Step6)
+	Private Function DeterminePromoMaxCoupon(ByVal step2 As StepB, ByVal step6 As StepG2)
 		Dim promoMaxCoupon As Decimal?
 
 		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
@@ -512,7 +521,7 @@ Public Class PCW
 		Return promoMaxCoupon
 	End Function
 
-	Private Function DetermineMaxCoupon(ByVal step2 As StepB, ByVal step6 As Step6)
+	Private Function DetermineMaxCoupon(ByVal step2 As StepB, ByVal step6 As StepG2)
 		Dim maxCoupon As Decimal?
 
 		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
@@ -524,7 +533,7 @@ Public Class PCW
 		Return maxCoupon
 	End Function
 
-	Private Function DeterminePointCutoff(ByVal step5 As Step5)
+	Private Function DeterminePointCutoff(ByVal step5 As StepG1)
 		Dim pointCutoff As Short?
 
 		If step5.RadioButton16.Checked Then
@@ -600,7 +609,7 @@ Public Class PCW
 		Return recursOnWeekday
 	End Function
 
-	Private Function DeterminePrintTickets(ByVal step5 As Step5)
+	Private Function DeterminePrintTickets(ByVal step5 As StepG1)
 		Dim printTickets As Boolean = False
 
 		If step5.RadioButton1.Checked Then
@@ -655,7 +664,7 @@ Public Class PCW
 		Return recurring
 	End Function
 
-	Private Function DetermineComments(ByVal stepK As StepK)
+	Private Function DetermineComments(ByVal stepK As StepH)
 		Dim comments As String
 
 		If stepK.RadioButton1.Checked Then
@@ -671,7 +680,7 @@ Public Class PCW
 		Return comments
 	End Function
 
-	Private Function DeterminePromoMaxTickets(ByVal step5 As Step5)
+	Private Function DeterminePromoMaxTickets(ByVal step5 As StepG1)
 		Dim promoMaxTickets As Short?
 
 		If step5.RadioButton1.Checked And step5.RadioButton14.Checked Then
@@ -683,7 +692,7 @@ Public Class PCW
 		Return promoMaxTickets
 	End Function
 
-	Private Function DetermineMaxTickets(ByVal step5 As Step5)
+	Private Function DetermineMaxTickets(ByVal step5 As StepG1)
 		Dim maxTickets As Short?
 
 		If step5.RadioButton1.Checked And step5.RadioButton12.Checked Then
@@ -695,7 +704,7 @@ Public Class PCW
 		Return maxTickets
 	End Function
 
-	Private Function DeterminePointDivisor(ByVal step5 As Step5)
+	Private Function DeterminePointDivisor(ByVal step5 As StepG1)
 		Dim pointDivisor As Short?
 
 		If step5.RadioButton1.Checked And (step5.RadioButton6.Checked Or step5.RadioButton7.Checked) Then
