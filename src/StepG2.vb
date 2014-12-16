@@ -26,7 +26,8 @@ Public Class StepG2
 		If MaxCoupon_Invalid() Then
 			e.Cancel = True
 			Me.Panel2.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Max Coupon value is invalid. Must be a Decimal value i.e. 500.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			CenteredMessagebox.MsgBox.Show("Max Coupon value is invalid. Must be a Decimal value i.e. 500.00", "Error",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			Me.TextBox2.Text = ""
 			Me.ActiveControl = Me.TextBox2
 		Else
@@ -36,7 +37,8 @@ Public Class StepG2
 		If PromoMaxCoupon_Invalid() Then
 			e.Cancel = True
 			Me.Panel3.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Promo Max Coupon value is invalid. Must be a Decimal value i.e. 15000.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			CenteredMessagebox.MsgBox.Show("Promo Max Coupon value is invalid. Must be a Decimal value i.e. 15000.00", "Error",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			Me.TextBox3.Text = ""
 			Me.ActiveControl = Me.TextBox3
 		Else
@@ -50,7 +52,8 @@ Public Class StepG2
 			If PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon() Then
 				e.Cancel = True
 				Me.Panel3.BackColor = Color.MistyRose
-				CenteredMessagebox.MsgBox.Show("The Promo Max Coupon value is less than or equal to the Max Coupon value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+				CenteredMessagebox.MsgBox.Show("Promo Max Coupon value is less than or equal to the Max Coupon value.", "Error",
+											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 				Me.TextBox3.Text = ""
 				Me.ActiveControl = Me.TextBox3
 			Else
@@ -95,11 +98,16 @@ Public Class StepG2
 	Private Function CouponID_Invalid()
 		Dim invalid As Boolean = False
 
-		If Me.TextBox1.Text = "" Or Me.TextBox1.Text = "Enter ID Here" Or Invalid_CouponID(Me.TextBox1.Text) Or Me.TextBox1.Text.Length > 12 Then
-			CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+		If Me.TextBox1.Text = "" Or
+			Me.TextBox1.Text = "Enter ID Here" Or
+			Invalid_CouponID(Me.TextBox1.Text) Or
+			Me.TextBox1.Text.Length > 12 Then
+			CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			invalid = True
 		ElseIf Sql_Query.Existing_Coupon(Me.TextBox1.Text) Then
-			CenteredMessagebox.MsgBox.Show("There is an existing coupon with this ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			CenteredMessagebox.MsgBox.Show("There is an existing coupon with this ID.", "Error",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			invalid = True
 		End If
 
@@ -161,7 +169,8 @@ Public Class StepG2
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value
 
-		CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+		CenteredMessagebox.MsgBox.Show(infoString, "Information",
+									   MessageBoxButtons.OK, MessageBoxIcon.Information)
 	End Sub
 #End Region
 End Class

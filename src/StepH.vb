@@ -7,7 +7,8 @@ Public Class StepH
 		If Me.RadioButton1.Checked And Me.RichTextBox1.Text = "" Then
 			e.Cancel = True
 			Me.Panel2.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Textbox is blank. Please insert a Comment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			CenteredMessagebox.MsgBox.Show("The Textbox is blank. Please insert a Comment.", "Error",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 		Else
 			Me.Panel2.BackColor = SystemColors.Control
 		End If
@@ -60,7 +61,8 @@ Public Class StepH
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value
 
-		CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+		CenteredMessagebox.MsgBox.Show(infoString, "Information",
+									   MessageBoxButtons.OK, MessageBoxIcon.Information)
 	End Sub
 #End Region
 End Class

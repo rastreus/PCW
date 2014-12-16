@@ -63,7 +63,9 @@ Public Class StepG1
 				Me.ActiveControl = Me.TextBox6
 			End If
 		Else
-			If Not TicketsPerPatron_Invalid() And Not TicketsForEntirePromo_Invalid() And Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
+			If Not TicketsPerPatron_Invalid() And
+				Not TicketsForEntirePromo_Invalid() And
+				Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
 				Me.Panel4.BackColor = SystemColors.Control
 				Me.Panel5.BackColor = SystemColors.Control
 			End If
@@ -78,7 +80,8 @@ Public Class StepG1
 			Me.TextBox7.Text = ""
 			Me.ActiveControl = Me.TextBox7
 		Else
-			If Not TicketsForEntirePromo_Invalid() And Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
+			If Not TicketsForEntirePromo_Invalid() And
+				Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
 				Me.Panel5.BackColor = SystemColors.Control
 			End If
 		End If
@@ -342,7 +345,8 @@ from the EligiblePlayers table.</a>
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value
 
-		CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+		CenteredMessagebox.MsgBox.Show(infoString, "Information",
+									   MessageBoxButtons.OK, MessageBoxIcon.Information)
 	End Sub
 #End Region
 End Class

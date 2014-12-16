@@ -12,7 +12,8 @@ Public Class StepI
 Check that you have read and confirmed the above parameters.
 Otherwise, cancel and attempt the process later.</a>.Value
 
-			CenteredMessagebox.MsgBox.Show(Environment.UserName & warningString, "OBEY", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			CenteredMessagebox.MsgBox.Show(Environment.UserName & warningString, "Are you sure?",
+										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 		Else
 			Me.Panel2.BackColor = SystemColors.Control
 		End If
@@ -155,7 +156,8 @@ Otherwise, cancel and attempt the process later.</a>.Value
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value
 
-		CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+		CenteredMessagebox.MsgBox.Show(infoString, "Information",
+									   MessageBoxButtons.OK, MessageBoxIcon.Information)
 	End Sub
 #End Region
 End Class

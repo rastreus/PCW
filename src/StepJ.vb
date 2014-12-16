@@ -22,11 +22,13 @@ Public Class StepJ
 		If (step2.RadioButton7.Checked Or step2.RadioButton6.Checked) And (count > 1) Then 'Needs to "Loop" for additional days
 			SubmitPromoIntoQueue(PCW.PCW_GetPromo)
 			Me.NextStep = "Step5"
-			CenteredMessagebox.MsgBox.Show("Now figure the requirements for next entry.", "Entries!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+			CenteredMessagebox.MsgBox.Show("Now figure the requirements for next entry.", "Entries!",
+										   MessageBoxButtons.OK, MessageBoxIcon.Hand)
 			PCW.ResetSteps()
 			Thread.Sleep(600)
 			PCW.MoveNext()
-		ElseIf (step2.RadioButton7.Checked Or step2.RadioButton6.Checked) And (count = 1) Then 'Multi-Part Single Instance Or End of "Loop"
+		ElseIf step2.RadioButton7.Checked Or
+				(step2.RadioButton6.Checked And (count = 1)) Then 'Multi-Part Single Instance Or End of "Loop"
 			SubmitPromoIntoQueue(PCW.PCW_GetPromo)
 			Me.NextStep = "StepN"
 			ProcessPromoQueue(PCWq)
@@ -34,7 +36,8 @@ Public Class StepJ
 			PCW.MoveNext()
 		Else 'ERROR!
 			'Not entirely sure why we would ever get here, but it's good to have a catch just in case
-			CenteredMessagebox.MsgBox.Show("StepJ: Loop Logic Error (Error Code 142857)", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+			CenteredMessagebox.MsgBox.Show("StepJ: Loop Logic Error (Error Code 142857)", "ERROR!",
+										   MessageBoxButtons.OK, MessageBoxIcon.Error)
 		End If
 	End Sub
 
@@ -131,7 +134,8 @@ Public Class StepJ
 
 		For Each key As Object In proxyLoop
 			'SubmitPromoIntoTable(PCWq.Dequeue())
-			CenteredMessagebox.MsgBox.Show(PCWq.Dequeue().ToString, "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.None)
+			CenteredMessagebox.MsgBox.Show(PCWq.Dequeue().ToString, "DEBUG",
+										   MessageBoxButtons.OK, MessageBoxIcon.None)
 		Next
 	End Sub
 
@@ -158,7 +162,8 @@ Public Class StepJ
 		Try
 			tbl.SubmitChanges()
 		Catch ex As Exception
-			Dim result As Integer = CenteredMessagebox.MsgBox.Show("Oh no! The promo wasn't added to the MarketingPromo table!", "No!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
+			Dim result As Integer = CenteredMessagebox.MsgBox.Show("Oh no! Promo not added to MarketingPromo table!", "No!",
+																   MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
 
 			If result = DialogResult.Retry Then
 				tbl.SubmitChanges()
@@ -179,7 +184,8 @@ Public Class StepJ
 		'
 		'Brought to you by the fine folks of the OJC IT Department!</a>.Value
 		'
-		'       CenteredMessagebox.MsgBox.Show(infoString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+		'       CenteredMessagebox.MsgBox.Show(infoString, "Information",
+		'									  MessageBoxButtons.OK, MessageBoxIcon.Information)
 	End Sub
 #End Region
 End Class
