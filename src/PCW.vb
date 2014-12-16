@@ -49,34 +49,34 @@ Public Class PCW
 	End Sub
 #End Region
 
-	Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
-		Dim entriesQ As System.Collections.Queue = New Queue
-		Dim step2 As StepB = Me.GetStep("Step2")
+	'Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
+	'	Dim entriesQ As System.Collections.Queue = New Queue
+	'	Dim step2 As StepB = Me.GetStep("Step2")
 
-		AddStep("entriesLoop_step3", New Step3)
-		AddStep("entriesLoop_step4", New StepC)
-		AddStep("entriesLoop_step5", New StepG1)
-		AddStep("entriesLoop_step5X5", New Step5X5)
-		AddStep("entriesLoop_step6", New StepG2)
-		AddStep("entriesLoop_stepK", New StepH)
+	'	AddStep("entriesLoop_step3", New Step3)
+	'	AddStep("entriesLoop_step4", New StepC)
+	'	AddStep("entriesLoop_step5", New StepG1)
+	'	AddStep("entriesLoop_step5X5", New Step5X5)
+	'	AddStep("entriesLoop_step6", New StepG2)
+	'	AddStep("entriesLoop_stepK", New StepH)
 
-		Me.GetStep("entriesLoop_step3").NextStep = "entriesLoop_step5"
-		Me.GetStep("entriesLoop_step4").NextStep = "entriesLoop_step5"
-		Me.GetStep("entriesLoop_step5").NextStep = "entriesLoop_step5X5"
-		Me.GetStep("entriesLoop_step5X5").NextStep = "entriesLoop_step6"
-		Me.GetStep("entriesLoop_step6").NextStep = "entriesLoop_stepK"
+	'	Me.GetStep("entriesLoop_step3").NextStep = "entriesLoop_step5"
+	'	Me.GetStep("entriesLoop_step4").NextStep = "entriesLoop_step5"
+	'	Me.GetStep("entriesLoop_step5").NextStep = "entriesLoop_step5X5"
+	'	Me.GetStep("entriesLoop_step5X5").NextStep = "entriesLoop_step6"
+	'	Me.GetStep("entriesLoop_step6").NextStep = "entriesLoop_stepK"
 
-		Me.GetStep("entriesLoop_stepK").NextStep = "entriesLoop_step5"
+	'	Me.GetStep("entriesLoop_stepK").NextStep = "entriesLoop_step5"
 
-		'ENTRIES LOOP
-		If step2.RadioButton4.Checked Then
-			'Show Step3
-		Else
-			'Show Step4
-		End If
+	'	'ENTRIES LOOP
+	'	If step2.RadioButton4.Checked Then
+	'		'Show Step3
+	'	Else
+	'		'Show Step4
+	'	End If
 
-		Return entriesQ
-	End Function
+	'	Return entriesQ
+	'End Function
 
 	Public Function PCW_GetPromo()
 		'Initialize the entity
@@ -106,38 +106,55 @@ Public Class PCW
 		End If
 
 		'Gather the step results and put into the entity
-		newPromo.PromoName = DeterminePromoName(step2)
-		newPromo.PromoDate = DeterminePromoDate(step2, step3, step4)
-		newPromo.StartDate = DetermineStartDate(step2, step3, step4)
-		newPromo.EndDate = DetermineEndDate(step2, step3, step4)
-		newPromo.PointCutoff = DeterminePointCutoff(step5)
-		newPromo.PointDivisor = DeterminePointDivisor(step5)
-		newPromo.MaxTickets = DetermineMaxTickets(step5)
-		newPromo.PromoMaxTickets = DeterminePromoMaxTickets(step5)
-		newPromo.MaxCoupon = DetermineMaxCoupon(step2, step6)
-		newPromo.PromoMaxCoupon = DeterminePromoMaxCoupon(step2, step6)
-		newPromo.CouponID = DetermineCouponID(step2, step6)
-		newPromo.Recurring = DetermineRecurring(step2)
-		newPromo.Frequency = DetermineFrequency(step2)
+		newPromo.PromoName = DeterminePromoName(stepB, stepD) 'Needs work
+
+		'Step4 should be StepC
+		'This needs to be reworked and fixed
+		'
+		'newPromo.PromoDate = DeterminePromoDate(step2, step3, step4)
+		'newPromo.StartDate = DetermineStartDate(step2, step3, step4)
+		'newPromo.EndDate = DetermineEndDate(step2, step3, step4)
+		'
+		'Uses StepE
+		'==========
+		newPromo.PointCutoff = DeterminePointCutoff(stepE)
+		'Uses StepG1
+		'===========
+		newPromo.PointDivisor = DeterminePointDivisor(stepF, stepG1)
+		newPromo.MaxTickets = DetermineTicketsPerPatron(stepF, stepG1)
+		newPromo.PromoMaxTickets = DetermineTicketsPerPromo(stepF, stepG1)
+		'Uses StepG2
+		'===========
+		newPromo.MaxCoupon = DetermineMaxCoupon(stepF, stepG2)
+		newPromo.PromoMaxCoupon = DeterminePromoMaxCoupon(stepF, stepG2)
+		newPromo.CouponID = DetermineCouponID(stepF, stepG2)
+		'Uses StepB
+		'==========
+		newPromo.Recurring = DetermineRecurring(stepB)
+		newPromo.Frequency = DetermineFrequency(stepB)
+		'
 		newPromo.RecursOnWeekday = DetermineRecursOnWeekday(step2, step4)
 		newPromo.EarnsOnWeekday = DetermineEarnsOnWeekday(step2, step4)
 		newPromo.CountCurrentDay = DetermineCountCurrentDay(step2, step3, step4)
-		newPromo.PrintTickets = DeterminePrintTickets(step5)
-		newPromo.Comments = DetermineComments(stepK)
+		'
+		newPromo.PrintTickets = DeterminePrintTickets(stepF)
+		newPromo.Comments = DetermineComments(stepH)
+		'
 		newPromo.PromoType = DeterminePromoType(step2, step3, step4, step5, step5X5, step6)
 		newPromo.Query = DetermineQuery(newPromo.PromoType)
+		'
 		Return newPromo
 	End Function
 
-	Private Function DeterminePromoName(ByVal step2 As StepB)
+	Private Function DeterminePromoName(ByVal stepB As StepB, ByVal stepD As StepD)
 		'Grab and trim the text that is already there
-		Dim promoName As String = step2.TextBox1.Text.Trim
+		Dim promoName As String = stepB.TextBox1.Text.Trim
 		'Grab an instance of the singleton queue
 		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
 
 		'Deploy some logic to see if anything needs to be appended
 		'This specifically handles "Multi-Part Single Instance"
-		If step2.RadioButton7.Checked And PCWq.Count = 0 Then
+		If stepD.RadioButton7.Checked And PCWq.Count = 0 Then
 			promoName = "Entries - " & promoName.ToString
 		Else
 			promoName = "Payout - " & promoName.ToString
@@ -497,11 +514,69 @@ Public Class PCW
 	End Function
 #End Region
 
-	Private Function DetermineCouponID(ByVal step2 As StepB, ByVal step6 As StepG2)
+#Region "Uses StepE"
+	Private Function DeterminePointCutoff(ByVal stepE As StepE)
+		Dim pointCutoff As Short?
+
+		'If Yes -- there is a Point Cutoff
+		If stepE.RadioButton16.Checked Then
+			pointCutoff = Short.Parse(stepE.TextBox8.Text)
+		Else
+			pointCutoff = Nothing
+		End If
+
+		Return pointCutoff
+	End Function
+#End Region
+
+#Region "Uses StepG1"
+	Private Function DetermineTicketsPerPromo(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+		Dim ticketsPerPromo As Short?
+
+		'If reward of promo is "# of Tickets" And Yes -- there is a Ticket Per Promo limit
+		If stepF.RadioButton1.Checked And stepG1.RadioButton14.Checked Then
+			ticketsPerPromo = Short.Parse(stepG1.TextBox7.Text)
+		Else
+			ticketsPerPromo = Nothing
+		End If
+
+		Return ticketsPerPromo
+	End Function
+
+	Private Function DetermineTicketsPerPatron(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+		Dim ticketsPerPatron As Short?
+
+		'If reward of promo is "# of Tickets" And Yes -- there is a Ticket Per Patron limit
+		If stepF.RadioButton1.Checked And stepG1.RadioButton12.Checked Then
+			ticketsPerPatron = Short.Parse(stepG1.TextBox6.Text)
+		Else
+			ticketsPerPatron = Nothing
+		End If
+
+		Return ticketsPerPatron
+	End Function
+
+	Private Function DeterminePointDivisor(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+		Dim pointDivisor As Short?
+
+		'If reward of promo is "# of Tickets" And ticket amount is "Compound Amount" Or "Complex Amount"
+		If stepF.RadioButton1.Checked And (stepG1.RadioButton6.Checked Or stepG1.RadioButton7.Checked) Then
+			pointDivisor = Short.Parse(stepG1.TextBox5.Text)
+		Else
+			pointDivisor = Nothing
+		End If
+
+		Return pointDivisor
+	End Function
+#End Region
+
+#Region "Uses StepG2"
+	Private Function DetermineCouponID(ByVal stepF As StepF, ByVal stepG2 As StepG2)
 		Dim couponID As String
 
-		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
-			couponID = step6.TextBox1.Text
+		'If reward of promo is "FreePlay Coupon"
+		If stepF.RadioButton5.Checked Then
+			couponID = stepG2.TextBox1.Text
 		Else
 			couponID = Nothing
 		End If
@@ -509,11 +584,12 @@ Public Class PCW
 		Return couponID
 	End Function
 
-	Private Function DeterminePromoMaxCoupon(ByVal step2 As StepB, ByVal step6 As StepG2)
+	Private Function DeterminePromoMaxCoupon(ByVal stepF As StepF, ByVal stepG2 As StepG2)
 		Dim promoMaxCoupon As Decimal?
 
-		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
-			promoMaxCoupon = Decimal.Parse(step6.TextBox3.Text)
+		'If reward of promo is "FreePlay Coupon"
+		If stepF.RadioButton5.Checked Then
+			promoMaxCoupon = Decimal.Parse(stepG2.TextBox3.Text)
 		Else
 			promoMaxCoupon = Nothing
 		End If
@@ -521,29 +597,19 @@ Public Class PCW
 		Return promoMaxCoupon
 	End Function
 
-	Private Function DetermineMaxCoupon(ByVal step2 As StepB, ByVal step6 As StepG2)
+	Private Function DetermineMaxCoupon(ByVal stepF As StepF, ByVal stepG2 As StepG2)
 		Dim maxCoupon As Decimal?
 
-		If step2.RadioButton1.Checked Or step2.RadioButton6.Checked Or step2.RadioButton7.Checked Then
-			maxCoupon = Decimal.Parse(step6.TextBox2.Text)
+		'If reward of promo is "FreePlay Coupon" And value not prompted
+		If stepF.RadioButton5.Checked And stepG2.RadioButton2.Checked Then
+			maxCoupon = Decimal.Parse(stepG2.TextBox2.Text)
 		Else
 			maxCoupon = Nothing
 		End If
 
 		Return maxCoupon
 	End Function
-
-	Private Function DeterminePointCutoff(ByVal step5 As StepG1)
-		Dim pointCutoff As Short?
-
-		If step5.RadioButton16.Checked Then
-			pointCutoff = Short.Parse(step5.TextBox8.Text)
-		Else
-			pointCutoff = Nothing
-		End If
-
-		Return pointCutoff
-	End Function
+#End Region
 
 	Private Function DetermineEarnsOnWeekday(ByVal step2 As StepB, ByVal step4 As StepC)
 		Dim earnsOnWeekday As String
@@ -609,10 +675,11 @@ Public Class PCW
 		Return recursOnWeekday
 	End Function
 
-	Private Function DeterminePrintTickets(ByVal step5 As StepG1)
+	Private Function DeterminePrintTickets(ByVal stepF As StepF)
 		Dim printTickets As Boolean = False
 
-		If step5.RadioButton1.Checked Then
+		'If reward of promo is "# of Tickets"
+		If stepF.RadioButton1.Checked Then
 			printTickets = True
 		End If
 
@@ -633,17 +700,20 @@ Public Class PCW
 		Return countCurrentDay
 	End Function
 
-	Private Function DetermineFrequency(ByVal step2 As StepB)
+	Private Function DetermineFrequency(ByVal stepB As StepB)
 		Dim frequency As Char = "W"
 
-		If step2.RadioButton4.Checked Then
-			Select Case step2.ComboBox2.Text
+		'If promo is recurring
+		If stepB.RadioButton4.Checked Then
+			Select Case stepB.ComboBox2.Text
 				Case "Daily"
 					frequency = "D"
 				Case "Weekly"
 					frequency = "W"
 				Case "Monthly"
 					frequency = "M"
+				Case "Quarterly"
+					frequency = "Q"
 				Case "Yearly"
 					frequency = "Y"
 				Case Else
@@ -654,22 +724,22 @@ Public Class PCW
 		Return frequency
 	End Function
 
-	Private Function DetermineRecurring(ByVal step2 As StepB)
+	Private Function DetermineRecurring(ByVal stepB As StepB)
 		Dim recurring As Boolean = False
 
-		If step2.RadioButton4.Checked Then
+		If stepB.RadioButton4.Checked Then
 			recurring = True
 		End If
 
 		Return recurring
 	End Function
 
-	Private Function DetermineComments(ByVal stepK As StepH)
+	Private Function DetermineComments(ByVal stepH As StepH)
 		Dim comments As String
 
-		If stepK.RadioButton1.Checked Then
+		If stepH.RadioButton1.Checked Then
 			'Trimmed because you never know.
-			comments = stepK.RichTextBox1.Text.Trim
+			comments = stepH.RichTextBox1.Text.Trim
 			'Seems a little redundant, but if there is a comment, it appends with a space first,
 			'otherwise it just makes the creator string the comment.
 			comments = comments & " (" & DateTime.Today.ToShortDateString & " * " & Environment.UserName.ToString & ")"
@@ -678,42 +748,6 @@ Public Class PCW
 		End If
 
 		Return comments
-	End Function
-
-	Private Function DeterminePromoMaxTickets(ByVal step5 As StepG1)
-		Dim promoMaxTickets As Short?
-
-		If step5.RadioButton1.Checked And step5.RadioButton14.Checked Then
-			promoMaxTickets = Short.Parse(step5.TextBox7.Text)
-		Else
-			promoMaxTickets = Nothing
-		End If
-
-		Return promoMaxTickets
-	End Function
-
-	Private Function DetermineMaxTickets(ByVal step5 As StepG1)
-		Dim maxTickets As Short?
-
-		If step5.RadioButton1.Checked And step5.RadioButton12.Checked Then
-			maxTickets = Short.Parse(step5.TextBox6.Text)
-		Else
-			maxTickets = Nothing
-		End If
-
-		Return maxTickets
-	End Function
-
-	Private Function DeterminePointDivisor(ByVal step5 As StepG1)
-		Dim pointDivisor As Short?
-
-		If step5.RadioButton1.Checked And (step5.RadioButton6.Checked Or step5.RadioButton7.Checked) Then
-			pointDivisor = Short.Parse(step5.TextBox5.Text)
-		Else
-			pointDivisor = Nothing
-		End If
-
-		Return pointDivisor
 	End Function
 
 	Private Function DeterminePromoDate(ByVal step2 As StepB, ByVal step3 As Step3, ByVal step4 As StepC)
@@ -753,37 +787,39 @@ Public Class PCW
 		Return endDate
 	End Function
 
-    'Not exactly necessary but it makes the code read well
-    Private Function Recurring(ByVal step2 As StepB)
-        Return step2.RadioButton5.Checked
-    End Function
+#Region "Utility Functions"
+	'Not exactly necessary but it makes the code read well
+	Private Function Recurring(ByVal step2 As StepB)
+		Return step2.RadioButton5.Checked
+	End Function
 
-    'Disable the Cancel Button at the end
-    Public Sub CancelEnabled(state As Boolean)
-        Me.cancel.Enabled = state
-    End Sub
+	'Disable the Cancel Button at the end
+	Public Sub CancelEnabled(state As Boolean)
+		Me.cancel.Enabled = state
+	End Sub
+#End Region
 
 #Region "OnClosing"
-    'It really bothered me that the dialog boxes did not center on their parent window.
-    'The Sub and Function that follows are a direct override of TSWizard.BaseWizard.OnClosing.
-    'The only difference here is that the dialog now centers on the parent window. SUCCESS!
-    Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
-        If DialogResult = DialogResult.Cancel Then
-            e.Cancel = Not AskToClose()
-        End If
-    End Sub
+	'It really bothered me that the dialog boxes did not center on their parent window.
+	'The Sub and Function that follows are a direct override of TSWizard.BaseWizard.OnClosing.
+	'The only difference here is that the dialog now centers on the parent window. SUCCESS!
+	Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
+		If DialogResult = DialogResult.Cancel Then
+			e.Cancel = Not AskToClose()
+		End If
+	End Sub
 
-    Private Function AskToClose()
-        Dim cancelMsgString As String = <a>Do you wish to quit the wizard now?
+	Private Function AskToClose()
+		Dim cancelMsgString As String = <a>Do you wish to quit the wizard now?
 Your changes will not be saved if you do.</a>.Value
 
-        Dim result As Integer = CenteredMessagebox.MsgBox.Show(cancelMsgString, "Exit wizard?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+		Dim result As Integer = CenteredMessagebox.MsgBox.Show(cancelMsgString, "Exit wizard?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        If result = DialogResult.Yes Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
+		If result = DialogResult.Yes Then
+			Return True
+		Else
+			Return False
+		End If
+	End Function
 #End Region
 End Class
