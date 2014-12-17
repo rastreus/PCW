@@ -36,7 +36,7 @@ Public Class PCW
 
         AddStep("StepA", New StepA)
         AddStep("StepB", New StepB)
-		AddStep("Step4", New Step4)	'Had issues renaming to StepC
+		AddStep("StepC", New StepC)
         AddStep("StepD", New StepD)
 		AddStep("StepE", New StepE)
 		AddStep("StepF", New StepF)
@@ -84,7 +84,7 @@ Public Class PCW
 
 		'Initialize the Steps
 		Dim stepB As StepB = Me.GetStep("StepB")
-		Dim step4 As Step4 = Me.GetStep("Step4")
+		Dim stepC As StepC = Me.GetStep("StepC")
 		Dim stepD As StepD = Me.GetStep("StepD")
 		Dim stepE As StepE = Me.GetStep("StepE")
 		Dim stepF As StepF = Me.GetStep("StepF")
@@ -95,7 +95,7 @@ Public Class PCW
 		'Make sure that we are who we say we are
 		'if we're aren't sure who we are, we die
 		If IsNothing(stepB) Or
-			IsNothing(step4) Or
+			IsNothing(stepC) Or
 			IsNothing(stepD) Or
 			IsNothing(stepE) Or
 			IsNothing(stepF) Or
