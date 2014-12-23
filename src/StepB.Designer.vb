@@ -52,7 +52,7 @@ Partial Class StepB
 		Me.Panel1.Location = New System.Drawing.Point(151, 56)
 		Me.Panel1.Name = "Panel1"
 		Me.Panel1.Size = New System.Drawing.Size(292, 66)
-		Me.Panel1.TabIndex = 1
+		Me.Panel1.TabIndex = 0
 		'
 		'TextBox1
 		'
@@ -82,7 +82,7 @@ Partial Class StepB
 		Me.Panel3.Location = New System.Drawing.Point(151, 126)
 		Me.Panel3.Name = "Panel3"
 		Me.Panel3.Size = New System.Drawing.Size(292, 132)
-		Me.Panel3.TabIndex = 3
+		Me.Panel3.TabIndex = 0
 		'
 		'ComboBox2
 		'
@@ -113,7 +113,7 @@ Partial Class StepB
 		Me.RadioButton4.Location = New System.Drawing.Point(4, 31)
 		Me.RadioButton4.Name = "RadioButton4"
 		Me.RadioButton4.Size = New System.Drawing.Size(43, 17)
-		Me.RadioButton4.TabIndex = 5
+		Me.RadioButton4.TabIndex = 2
 		Me.RadioButton4.TabStop = True
 		Me.RadioButton4.Text = "Yes"
 		Me.RadioButton4.UseVisualStyleBackColor = True
@@ -125,7 +125,7 @@ Partial Class StepB
 		Me.Label3.Location = New System.Drawing.Point(0, 0)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(233, 16)
-		Me.Label3.TabIndex = 4
+		Me.Label3.TabIndex = 0
 		Me.Label3.Text = "Will the new promo be recurring?"
 		'
 		'IconButton1

@@ -106,61 +106,30 @@ Public Class PCW
 		End If
 
 		'Gather the step results and put into the entity
-		newPromo.PromoName = DeterminePromoName(stepB, stepD) 'Needs work
-
-		'Step4 should be StepC
-		'This needs to be reworked and fixed
+		newPromo.PromoName = DeterminePromoName(stepB, stepD)
 		'
-		'newPromo.PromoDate = DeterminePromoDate(step2, step3, step4)
-		'newPromo.StartDate = DetermineStartDate(step2, step3, step4)
-		'newPromo.EndDate = DetermineEndDate(step2, step3, step4)
-		'
-		'Uses StepE
-		'==========
+		newPromo.PromoDate = DeterminePromoDate(stepB, stepC)
+		newPromo.StartDate = DetermineStartDate(stepC)
+		newPromo.EndDate = DetermineEndDate(stepC)
 		newPromo.PointCutoff = DeterminePointCutoff(stepE)
-		'Uses StepG1
-		'===========
 		newPromo.PointDivisor = DeterminePointDivisor(stepF, stepG1)
 		newPromo.MaxTickets = DetermineTicketsPerPatron(stepF, stepG1)
 		newPromo.PromoMaxTickets = DetermineTicketsPerPromo(stepF, stepG1)
-		'Uses StepG2
-		'===========
 		newPromo.MaxCoupon = DetermineMaxCoupon(stepF, stepG2)
 		newPromo.PromoMaxCoupon = DeterminePromoMaxCoupon(stepF, stepG2)
 		newPromo.CouponID = DetermineCouponID(stepF, stepG2)
-		'Uses StepB
-		'==========
 		newPromo.Recurring = DetermineRecurring(stepB)
 		newPromo.Frequency = DetermineFrequency(stepB)
-		'
-		newPromo.RecursOnWeekday = DetermineRecursOnWeekday(step2, step4)
-		newPromo.EarnsOnWeekday = DetermineEarnsOnWeekday(step2, step4)
-		newPromo.CountCurrentDay = DetermineCountCurrentDay(step2, step3, step4)
-		'
+		newPromo.RecursOnWeekday = DetermineRecursOnWeekday(stepB, stepC)
+		newPromo.EarnsOnWeekday = DetermineEarnsOnWeekday(stepB, stepC)
+		newPromo.CountCurrentDay = DetermineCountCurrentDay(stepC)
 		newPromo.PrintTickets = DeterminePrintTickets(stepF)
 		newPromo.Comments = DetermineComments(stepH)
 		'
-		newPromo.PromoType = DeterminePromoType(step2, step3, step4, step5, step5X5, step6)
+		newPromo.PromoType = DeterminePromoType(step2, step3, Step4, step5, step5X5, step6)	'Needs work still
 		newPromo.Query = DetermineQuery(newPromo.PromoType)
 		'
 		Return newPromo
-	End Function
-
-	Private Function DeterminePromoName(ByVal stepB As StepB, ByVal stepD As StepD)
-		'Grab and trim the text that is already there
-		Dim promoName As String = stepB.TextBox1.Text.Trim
-		'Grab an instance of the singleton queue
-		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
-
-		'Deploy some logic to see if anything needs to be appended
-		'This specifically handles "Multi-Part Single Instance"
-		If stepD.RadioButton7.Checked And PCWq.Count = 0 Then
-			promoName = "Entries - " & promoName.ToString
-		Else
-			promoName = "Payout - " & promoName.ToString
-		End If
-
-		Return promoName
 	End Function
 
 	Private Function DetermineQuery(ByVal promoType As String)
@@ -177,84 +146,84 @@ Public Class PCW
 	End Function
 
 #Region "DeterminePromoType"
-	'This is this function routes to other functions,
+	'This function routes to other functions,
 	'just trying to figure out the promotype.
-	'And yes, I know that this is not a very efficient method.
-	Private Function DeterminePromoType(ByVal step2 As StepB, _
-										ByVal step3 As Step3, _
-										ByVal step4 As StepC, _
-										ByVal step5 As StepG1, _
-										ByVal step5X5 As Step5X5, _
-										ByVal step6 As StepG2)
+	Private Function DeterminePromoType(ByVal stepB As StepB, _
+										ByVal stepC As StepC, _
+										ByVal stepD As StepD, _
+										ByVal stepE As StepE, _
+										ByVal stepF As StepF, _
+										ByVal stepG1 As StepG1, _
+										ByVal stepG2 As StepG2)
 		Dim result As String
-		If Is_Type_20(step2, step5, step5X5) Then
+		If Is_Type_20(stepD, stepE, stepF) Then
 			result = "20"
 			Return result
-		ElseIf Is_Type_20A(step2, step5, step5X5) Then
+		ElseIf Is_Type_20A(stepB, stepG1, step5X5) Then
 			result = "20A"
 			Return result
-		ElseIf Is_Type_21(step2, step5) Then
+		ElseIf Is_Type_21(stepB, stepG1) Then
 			result = "21"
 			Return result
-		ElseIf Is_Type_22(step2, step5, step5X5) Then
+		ElseIf Is_Type_22(stepB, stepG1, step5X5) Then
 			result = "22"
 			Return result
-		ElseIf Is_Type_22A(step2, step5, step5X5) Then
+		ElseIf Is_Type_22A(stepB, stepG1, step5X5) Then
 			result = "22A"
 			Return result
-		ElseIf Is_Type_22B(step2, step5, step5X5) Then
+		ElseIf Is_Type_22B(stepB, stepG1, step5X5) Then
 			result = "22B"
 			Return result
-		ElseIf Is_Type_23(step2, step5, step5X5) Then
+		ElseIf Is_Type_23(stepB, stepG1, step5X5) Then
 			result = "23"
 			Return result
-		ElseIf Is_Type_24(step2, step5, step5X5) Then
+		ElseIf Is_Type_24(stepB, stepG1, step5X5) Then
 			result = "24"
 			Return result
-		ElseIf Is_Type_25(step2, step5, step5X5) Then
+		ElseIf Is_Type_25(stepB, stepG1, step5X5) Then
 			result = "25"
 			Return result
 			'Not sure how to determine a 25A at the moment. :\
 			'ElseIf Is_Type_25A(step2, step3, step4, step5, step6) Then
 			'    result = "25A"
 			'    Return result
-		ElseIf Is_Type_26(step2, step5, step5X5) Then
+		ElseIf Is_Type_26(stepB, stepG1, step5X5) Then
 			result = "26"
 			Return result
-		ElseIf Is_Type_27(step2, step5, step5X5) Then
+		ElseIf Is_Type_27(stepB, stepG1, step5X5) Then
 			result = "27"
 			Return result
-		ElseIf Is_Type_28(step2, step4, step5, step5X5) Then
+		ElseIf Is_Type_28(stepB, stepC, stepG1, step5X5) Then
 			result = "28"
 			Return result
-		ElseIf Is_Type_29(step2, step5) Then
+		ElseIf Is_Type_29(stepB, stepG1) Then
 			result = "29"
 			Return result
-		ElseIf Is_Type_30(step2, step5, step5X5) Then
+		ElseIf Is_Type_30(stepB, stepG1, step5X5) Then
 			result = "30"
 			Return result
-		ElseIf Is_Type_31(step2, step5) Then
+		ElseIf Is_Type_31(stepB, stepG1) Then
 			result = "31"
 			Return result
-		ElseIf Is_Type_31A(step2, step5) Then
+		ElseIf Is_Type_31A(stepB, stepG1) Then
 			result = "31A"
 			Return result
-		ElseIf Is_Type_31B(step2, step6) Then
+		ElseIf Is_Type_31B(stepB, stepG2) Then
 			result = "31B"
 			Return result
-		ElseIf Is_Type_31C(step2, step6) Then
+		ElseIf Is_Type_31C(stepB, stepG2) Then
 			result = "31C"
 			Return result
-		ElseIf Is_Type_32(step2, step5, step5X5) Then
+		ElseIf Is_Type_32(stepB, stepG1, step5X5) Then
 			result = "32"
 			Return result
-		ElseIf Is_Type_32A(step2, step5, step5X5) Then
+		ElseIf Is_Type_32A(stepB, stepG1, step5X5) Then
 			result = "32A"
 			Return result
-		ElseIf Is_Type_33(step2, step5) Then
+		ElseIf Is_Type_33(stepB, stepG1) Then
 			result = "33"
 			Return result
-		ElseIf Is_Type_34(step2, step6) Then
+		ElseIf Is_Type_34(stepB, stepG2) Then
 			result = "34"
 			Return result
 		Else
@@ -263,12 +232,15 @@ Public Class PCW
 		End If
 	End Function
 
+
 	'"Gives out 1 ticket regardless of points if player has Players club account."
-	Private Function Is_Type_20(ByVal step2 As StepB, _
-								ByVal step5 As StepG1, _
-								ByVal step5X5 As Step5X5) As Boolean
+	Private Function Is_Type_20(ByVal stepD As StepD, _
+								ByVal stepE As StepE, _
+								ByVal stepF As StepF) As Boolean
 		Dim it_is As Boolean = False
-		If step2.RadioButton2.Checked And step5.RadioButton1.Checked And step5.RadioButton8.Checked And step5.RadioButton13.Checked And step5X5.ComboBox1.Text = "Gives reward regardless of points" Then
+		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+			(No_PointCutoff(stepE) Or
+			 (Yes_PointCutoff(stepE) And Give_Regardless_Of_Points(stepE))) Then
 			it_is = True
 		End If
 		Return it_is
@@ -514,6 +486,143 @@ Public Class PCW
 	End Function
 #End Region
 
+#Region "Uses StepB And StepD)"
+	Private Function DeterminePromoName(ByVal stepB As StepB, ByVal stepD As StepD)
+		'Grab and trim the text that is already there
+		Dim promoName As String = stepB.TextBox1.Text.Trim
+		'Grab an instance of the singleton queue
+		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
+
+		'Deploy some logic to see if anything needs to be appended
+		'This specifically handles "Multi-Part Single Instance"
+		If (stepD.RadioButton6.Checked And PCWq.Count = 0) Or
+			(stepD.RadioButton7.Checked And PCWq.Count = 0) Then
+			promoName = "Entries - " & promoName.ToString
+		Else
+			promoName = "Payout - " & promoName.ToString
+		End If
+
+		Return promoName
+	End Function
+#End Region
+
+#Region "Uses StepB And/Or StepC"
+	Private Function DeterminePromoDate(ByVal stepB As StepB, ByVal stepC As StepC)
+		Dim promoDate As DateTime?
+
+		If Not Recurring(stepB) Then
+			promoDate = stepC.DateTimePicker3.Value.Date
+		Else
+			promoDate = Nothing
+		End If
+
+		Return promoDate
+	End Function
+
+	Private Function DetermineStartDate(ByVal stepC As StepC)
+		Return stepC.DateTimePicker1.Value.Date
+	End Function
+
+	Private Function DetermineEndDate(ByVal stepC As StepC)
+		Return stepC.DateTimePicker2.Value.Date
+	End Function
+
+	Private Function DetermineFrequency(ByVal stepB As StepB)
+		Dim frequency As Char = "W"
+
+		If Recurring(stepB) Then
+			Select Case stepB.ComboBox2.Text
+				Case "Daily"
+					frequency = "D"
+				Case "Weekly"
+					frequency = "W"
+				Case "Monthly"
+					frequency = "M"
+				Case "Quarterly"
+					frequency = "Q"
+				Case "Yearly"
+					frequency = "Y"
+				Case Else
+					frequency = "W"
+			End Select
+		End If
+
+		Return frequency
+	End Function
+
+	Private Function DetermineRecurring(ByVal stepB As StepB)
+		Return Recurring(stepB)
+	End Function
+
+	Private Function DetermineRecursOnWeekday(ByVal stepB As StepB, ByVal stepC As StepC)
+		Dim recursOnWeekday As String
+
+		If Not Recurring(stepB) Then
+			recursOnWeekday = Nothing
+		Else
+			recursOnWeekday = ""
+			For Each itemChecked As Object In stepC.CheckedListBox1.CheckedItems
+				Select Case itemChecked.ToString
+					Case "Sunday"
+						recursOnWeekday = recursOnWeekday & "N"
+					Case "Monday"
+						recursOnWeekday = recursOnWeekday & "M"
+					Case "Tuesday"
+						recursOnWeekday = recursOnWeekday & "T"
+					Case "Wednesday"
+						recursOnWeekday = recursOnWeekday & "W"
+					Case "Thursday"
+						recursOnWeekday = recursOnWeekday & "R"
+					Case "Friday"
+						recursOnWeekday = recursOnWeekday & "F"
+					Case "Saturday"
+						recursOnWeekday = recursOnWeekday & "S"
+					Case Else
+						recursOnWeekday = Nothing
+				End Select
+			Next
+		End If
+
+		Return recursOnWeekday
+	End Function
+
+	Private Function DetermineEarnsOnWeekday(ByVal stepB As StepB, ByVal stepC As StepC)
+		Dim earnsOnWeekday As String
+
+		If Not Recurring(stepB) Then
+			earnsOnWeekday = Nothing
+		Else
+			earnsOnWeekday = ""
+			For Each itemChecked As Object In stepC.CheckedListBox2.CheckedItems
+				Select Case itemChecked.ToString
+					Case "Sunday"
+						earnsOnWeekday = earnsOnWeekday & "N"
+					Case "Monday"
+						earnsOnWeekday = earnsOnWeekday & "M"
+					Case "Tuesday"
+						earnsOnWeekday = earnsOnWeekday & "T"
+					Case "Wednesday"
+						earnsOnWeekday = earnsOnWeekday & "W"
+					Case "Thursday"
+						earnsOnWeekday = earnsOnWeekday & "R"
+					Case "Friday"
+						earnsOnWeekday = earnsOnWeekday & "F"
+					Case "Saturday"
+						earnsOnWeekday = earnsOnWeekday & "S"
+					Case Else
+						earnsOnWeekday = Nothing
+				End Select
+			Next
+		End If
+
+		Return earnsOnWeekday
+	End Function
+
+	Private Function DetermineCountCurrentDay(ByVal stepC As StepC)
+		Return stepC.RadioButton1.Checked
+	End Function
+#End Region
+
 #Region "Uses StepE"
 	Private Function DeterminePointCutoff(ByVal stepE As StepE)
 		Dim pointCutoff As Short?
@@ -611,137 +720,23 @@ Public Class PCW
 	End Function
 #End Region
 
-	Private Function DetermineEarnsOnWeekday(ByVal step2 As StepB, ByVal step4 As StepC)
-		Dim earnsOnWeekday As String
-
-		If step2.RadioButton5.Checked Then
-			earnsOnWeekday = Nothing
-		Else
-			earnsOnWeekday = ""
-			For Each itemChecked As Object In step4.CheckedListBox2.CheckedItems
-				Select Case itemChecked.ToString
-					Case "Sunday"
-						earnsOnWeekday = earnsOnWeekday & "N"
-					Case "Monday"
-						earnsOnWeekday = earnsOnWeekday & "M"
-					Case "Tuesday"
-						earnsOnWeekday = earnsOnWeekday & "T"
-					Case "Wednesday"
-						earnsOnWeekday = earnsOnWeekday & "W"
-					Case "Thursday"
-						earnsOnWeekday = earnsOnWeekday & "R"
-					Case "Friday"
-						earnsOnWeekday = earnsOnWeekday & "F"
-					Case "Saturday"
-						earnsOnWeekday = earnsOnWeekday & "S"
-					Case Else
-						earnsOnWeekday = Nothing
-				End Select
-			Next
-		End If
-
-		Return earnsOnWeekday
-	End Function
-
-	Private Function DetermineRecursOnWeekday(ByVal step2 As StepB, ByVal step4 As StepC)
-		Dim recursOnWeekday As String
-
-		If step2.RadioButton5.Checked Then
-			recursOnWeekday = Nothing
-		Else
-			recursOnWeekday = ""
-			For Each itemChecked As Object In step4.CheckedListBox1.CheckedItems
-				Select Case itemChecked.ToString
-					Case "Sunday"
-						recursOnWeekday = recursOnWeekday & "N"
-					Case "Monday"
-						recursOnWeekday = recursOnWeekday & "M"
-					Case "Tuesday"
-						recursOnWeekday = recursOnWeekday & "T"
-					Case "Wednesday"
-						recursOnWeekday = recursOnWeekday & "W"
-					Case "Thursday"
-						recursOnWeekday = recursOnWeekday & "R"
-					Case "Friday"
-						recursOnWeekday = recursOnWeekday & "F"
-					Case "Saturday"
-						recursOnWeekday = recursOnWeekday & "S"
-					Case Else
-						recursOnWeekday = Nothing
-				End Select
-			Next
-		End If
-
-		Return recursOnWeekday
-	End Function
-
+#Region "Uses StepF"
 	Private Function DeterminePrintTickets(ByVal stepF As StepF)
-		Dim printTickets As Boolean = False
-
-		'If reward of promo is "# of Tickets"
-		If stepF.RadioButton1.Checked Then
-			printTickets = True
-		End If
-
-		Return printTickets
+		'True if reward of promo is "# of Tickets"
+		Return stepF.RadioButton1.Checked
 	End Function
+#End Region
 
-	Private Function DetermineCountCurrentDay(ByVal step2 As StepB, ByVal step3 As Step3, ByVal step4 As StepC)
-		Dim countCurrentDay As Boolean = False
-
-		If step2.RadioButton4.Checked Then
-			If step4.RadioButton1.Checked Then
-				countCurrentDay = True
-			ElseIf DateTime.Compare(step3.DateTimePicker3.Value.Date, step3.DateTimePicker1.Value.Date) = 0 Then
-				countCurrentDay = True
-			End If
-		End If
-
-		Return countCurrentDay
-	End Function
-
-	Private Function DetermineFrequency(ByVal stepB As StepB)
-		Dim frequency As Char = "W"
-
-		'If promo is recurring
-		If stepB.RadioButton4.Checked Then
-			Select Case stepB.ComboBox2.Text
-				Case "Daily"
-					frequency = "D"
-				Case "Weekly"
-					frequency = "W"
-				Case "Monthly"
-					frequency = "M"
-				Case "Quarterly"
-					frequency = "Q"
-				Case "Yearly"
-					frequency = "Y"
-				Case Else
-					frequency = "W"
-			End Select
-		End If
-
-		Return frequency
-	End Function
-
-	Private Function DetermineRecurring(ByVal stepB As StepB)
-		Dim recurring As Boolean = False
-
-		If stepB.RadioButton4.Checked Then
-			recurring = True
-		End If
-
-		Return recurring
-	End Function
-
+#Region "Uses StepH"
 	Private Function DetermineComments(ByVal stepH As StepH)
 		Dim comments As String
 
+		'If Yes -- We want to comment
 		If stepH.RadioButton1.Checked Then
-			'Trimmed because you never know.
+			'Trim for safety! You can never be too careful.
 			comments = stepH.RichTextBox1.Text.Trim
-			'Seems a little redundant, but if there is a comment, it appends with a space first,
-			'otherwise it just makes the creator string the comment.
+			'Appends with a space first,
+			'otherwise just make the creator string the comment.
 			comments = comments & " (" & DateTime.Today.ToShortDateString & " * " & Environment.UserName.ToString & ")"
 		Else
 			comments = "(" & DateTime.Today.ToShortDateString & " * " & Environment.UserName.ToString & ")"
@@ -749,48 +744,32 @@ Public Class PCW
 
 		Return comments
 	End Function
-
-	Private Function DeterminePromoDate(ByVal step2 As StepB, ByVal step3 As Step3, ByVal step4 As StepC)
-		Dim promoDate As DateTime?
-
-		'Check the recurring button that determines everything
-		If Recurring(step2) Then
-			promoDate = step3.DateTimePicker1.Value.Date
-		Else
-			promoDate = Nothing
-		End If
-
-		Return promoDate
-	End Function
-
-	Private Function DetermineStartDate(ByVal step2 As StepB, ByVal step3 As Step3, ByVal step4 As StepC)
-		Dim startDate As DateTime
-
-		If Recurring(step2) Then
-			startDate = step3.DateTimePicker2.Value.Date
-		Else
-			startDate = step4.DateTimePicker1.Value.Date
-		End If
-
-		Return startDate
-	End Function
-
-	Private Function DetermineEndDate(ByVal step2 As StepB, ByVal step3 As Step3, ByVal step4 As StepC)
-		Dim endDate As DateTime
-
-		If Recurring(step2) Then
-			endDate = step3.DateTimePicker3.Value.Date
-		Else
-			endDate = step4.DateTimePicker2.Value.Date
-		End If
-
-		Return endDate
-	End Function
+#End Region
 
 #Region "Utility Functions"
-	'Not exactly necessary but it makes the code read well
-	Private Function Recurring(ByVal step2 As StepB)
-		Return step2.RadioButton5.Checked
+	'Sometimes it's just easier to use Utility Functions
+	Private Function Recurring(ByVal stepB As StepB)
+		Return stepB.RadioButton4.Checked
+	End Function
+
+	Private Function General_Promo(ByVal stepD As StepD)
+		Return stepD.RadioButton2.Checked
+	End Function
+
+	Private Function Give_Regardless_Of_Points(ByVal stepE As StepE)
+		Return If(stepE.ComboBox1.Text = "Give reward regardless of points", True, False)
+	End Function
+
+	Private Function Yes_PointCutoff(ByVal stepE As StepE)
+		Return stepE.RadioButton16.Checked
+	End Function
+
+	Private Function No_PointCutoff(ByVal stepE As StepE)
+		Return stepE.RadioButton17.Checked
+	End Function
+
+	Private Function Tickets_Rewarded(ByVal stepF As StepF)
+		Return stepF.RadioButton1.Checked
 	End Function
 
 	'Disable the Cancel Button at the end

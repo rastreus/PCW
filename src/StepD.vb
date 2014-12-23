@@ -26,7 +26,7 @@ Public Class StepD
         End If
 
         Return invalid
-    End Function
+	End Function
 
     'Copied utilitarian function that should only be one place.
     'On a refactoring, place this in a single location.
