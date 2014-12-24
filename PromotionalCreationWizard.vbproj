@@ -149,10 +149,6 @@
     </Compile>
     <Compile Include="src\SingletonQueue.vb" />
     <Compile Include="src\Sql_Query.vb" />
-    <Compile Include="src\Step4.Designer.vb" />
-    <Compile Include="src\Step4.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="src\StepA.Designer.vb">
       <DependentUpon>StepA.vb</DependentUpon>
     </Compile>
@@ -248,7 +244,6 @@
     <EmbeddedResource Include="src\PAE.resx">
       <DependentUpon>PAE.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Step4.resx" />
     <EmbeddedResource Include="src\StepA.resx">
       <DependentUpon>StepA.vb</DependentUpon>
     </EmbeddedResource>

@@ -142,7 +142,7 @@ Partial Class StepE
 		Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.ComboBox1.Enabled = False
 		Me.ComboBox1.FormattingEnabled = True
-		Me.ComboBox1.Items.AddRange(New Object() {"Gives reward regardless of points", "Sums lifetime points", "Sums points between start and end dates", "Uses EligiblePlayers table to determine points"})
+		Me.ComboBox1.Items.AddRange(New Object() {"Give reward regardless of points", "Sums lifetime points", "Sums points between start and end dates", "Uses EligiblePlayers table to determine points"})
 		Me.ComboBox1.Location = New System.Drawing.Point(3, 36)
 		Me.ComboBox1.Name = "ComboBox1"
 		Me.ComboBox1.Size = New System.Drawing.Size(260, 21)
