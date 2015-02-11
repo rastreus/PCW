@@ -126,7 +126,7 @@ Public Class PCW
 		newPromo.PrintTickets = DeterminePrintTickets(stepF)
 		newPromo.Comments = DetermineComments(stepH)
 		'
-		newPromo.PromoType = DeterminePromoType(step2, step3, Step4, step5, step5X5, step6)	'Needs work still
+		newPromo.PromoType = DeterminePromoType(stepB, stepC, stepD, stepE, stepF, stepG1, stepG2)	'Needs work still
 		newPromo.Query = DetermineQuery(newPromo.PromoType)
 		'
 		Return newPromo
@@ -196,31 +196,31 @@ Public Class PCW
 		ElseIf Is_Type_28(stepC, stepD, stepE, stepF, stepG1) Then
 			result = "28"
 			Return result
-		ElseIf Is_Type_29(stepB, stepG1) Then
-			result = "29"
-			Return result
-		ElseIf Is_Type_30(stepB, stepG1, step5X5) Then
-			result = "30"
-			Return result
-		ElseIf Is_Type_31(stepB, stepG1) Then
-			result = "31"
-			Return result
-		ElseIf Is_Type_31A(stepB, stepG1) Then
-			result = "31A"
-			Return result
-		ElseIf Is_Type_31B(stepB, stepG2) Then
-			result = "31B"
-			Return result
-		ElseIf Is_Type_31C(stepB, stepG2) Then
-			result = "31C"
-			Return result
+			'ElseIf Is_Type_29(stepB, stepG1) Then
+			'	result = "29"
+			'	Return result
+			'ElseIf Is_Type_30(stepB, stepG1, step5X5) Then
+			'	result = "30"
+			'	Return result
+			'ElseIf Is_Type_31(stepB, stepG1) Then
+			'	result = "31"
+			'	Return result
+			'ElseIf Is_Type_31A(stepB, stepG1) Then
+			'	result = "31A"
+			'	Return result
+			'ElseIf Is_Type_31B(stepB, stepG2) Then
+			'	result = "31B"
+			'	Return result
+			'ElseIf Is_Type_31C(stepB, stepG2) Then
+			'	result = "31C"
+			'	Return result
 		ElseIf Is_Type_32(stepD, stepE, stepF, stepG1) Then
 			result = "32"
 			Return result
 		ElseIf Is_Type_32A(stepD, stepE, stepF, stepG1) Then
 			result = "32A"
 			Return result
-		ElseIf Is_Type_33(stepB, stepG1) Then
+		ElseIf Is_Type_33(stepD, stepF) Then
 			result = "33"
 			Return result
 		ElseIf Is_Type_34(stepB, stepG2) Then
@@ -374,7 +374,9 @@ Public Class PCW
 	'                            ByVal step5X5 As Step5X5, _
 	'                            ByVal step6 As Step6) As Boolean
 	'    Dim it_is As Boolean = False
-	'    If General_Promo(stepD) And Tickets_Rewarded(stepF) And One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
+	'    If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		 One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
+	'		  Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
 	'        it_is = True
 	'    End If
 	'    Return it_is
@@ -429,98 +431,111 @@ Public Class PCW
 		Return it_is
 	End Function
 
-	'"Will prompt to select a prize from a dropdown box and then print one ticket for that prize for that day."
-	Private Function Is_Type_29(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And step5.RadioButton4.Checked And step5.RadioButton12.Checked And step5.CheckBox1.Checked Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Will prompt to select a prize from a dropdown box and then print one ticket for that prize for that day."
+	'Private Function Is_Type_29(ByVal stepD As StepD, _
+	'							ByVal stepE As StepE, _
+	'							ByVal stepF As StepF, _
+	'							ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And step5.RadioButton4.Checked And
+	'		step5.RadioButton12.Checked And step5.CheckBox1.Checked Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Will prompt for number of tickets to print and then print them without checking
-	'if the player has already got tickets for that day."
-	Private Function Is_Type_30(ByVal step2 As StepB, _
-								ByVal step5 As StepG1, _
-								ByVal step5X5 As Step5X5) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(StepD) And Tickets_Rewarded(StepF) And
-			step5.RadioButton11.Checked And step5.RadioButton17.Checked And
-			 Give_Regardless_Of_Points(StepE) Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Will prompt for number of tickets to print and then print them without checking
+	''if the player has already got tickets for that day."
+	'Private Function Is_Type_30(ByVal stepD As StepD, _
+	'							ByVal stepE As StepE, _
+	'							ByVal stepF As StepF, _
+	'							ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		step5.RadioButton11.Checked And step5.RadioButton17.Checked And
+	'		 Give_Regardless_Of_Points(stepE) Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Will prompt to select a prize from a dropdown box and then print one ticket for that prize and will allow multiple prints for the same day."
-	Private Function Is_Type_31(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And step5.RadioButton4.Checked And step5.RadioButton13.Checked Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Will prompt to select a prize from a dropdown box and then print one ticket for that prize
+	''and will allow multiple prints for the same day."
+	'Private Function Is_Type_31(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And step5.RadioButton4.Checked And step5.RadioButton13.Checked Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Similar to 31, other than it is a prompt with free form entry of cash value."
-	Private Function Is_Type_31A(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And step5.RadioButton3.Checked Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Similar to 31, other than it is a prompt with free form entry of cash value."
+	'Private Function Is_Type_31A(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And step5.RadioButton3.Checked Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Similar to 31A, other than it is a prompt with free form entry of cash value and prints on receipt and creates validated free play offer."
-	Private Function Is_Type_31B(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
-		Dim it_is As Boolean = False
-		If step2.RadioButton1.Checked And step6.RadioButton1.Checked Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Similar to 31A, other than it is a prompt with free form entry of cash value
+	''and prints on receipt and creates validated free play offer."
+	'Private Function Is_Type_31B(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If step2.RadioButton1.Checked And step6.RadioButton1.Checked Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Similar to 31B, but no prompt. Value of receipt is always value of MaxCoupon."
-	Private Function Is_Type_31C(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
-		Dim it_is As Boolean = False
-		If step2.RadioButton1.Checked And step6.RadioButton2.Checked Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Similar to 31B, but no prompt. Value of receipt is always value of MaxCoupon."
+	'Private Function Is_Type_31C(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If step2.RadioButton1.Checked And step6.RadioButton2.Checked Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
 	'"Allows one ticket to be printed weekly, monthly, quarterly, or yearly if account is in eligible players table."
-	Private Function Is_Type_32(ByVal step2 As StepB, _
-								ByVal step5 As StepG1, _
-								ByVal step5X5 As Step5X5) As Boolean
+	Private Function Is_Type_32(ByVal stepD As StepD, _
+								ByVal stepE As StepE, _
+								ByVal stepF As StepF, _
+								ByVal stepG1 As StepG1) As Boolean
 		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And One_Ticket_Rewarded(stepG1) And step5X5.ComboBox1.Text = "Uses EligiblePlayers table to determine points" Then
+		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+			One_Ticket_Rewarded(stepG1) And Uses_EligiblePlayers_For_Points(stepE) Then
 			it_is = True
 		End If
 		Return it_is
 	End Function
 
-	'"Allows one ticket to be printed daily, weekly, monthly, quarterly, or yearly if account is in eligible players table. Uses EligiblePlayers table to determine who and how many to print."
-	Private Function Is_Type_32A(ByVal step2 As StepB, _
-								ByVal step5 As StepG1, _
-								ByVal step5X5 As Step5X5) As Boolean
+	'"Allows one ticket to be printed daily, weekly, monthly, quarterly, or yearly if account is in eligible players table.
+	'Uses EligiblePlayers table to determine who and how many to print."
+	Private Function Is_Type_32A(ByVal stepD As StepD, _
+								 ByVal stepE As StepE, _
+								 ByVal stepF As StepF, _
+								 ByVal stepG1 As StepG1) As Boolean
 		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And EligiblePlayers_Amount_Rewarded(stepG1) And step5X5.ComboBox1.Text = "Uses EligiblePlayers table to determine points" Then
+		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+			EligiblePlayers_Amount_Rewarded(stepG1) And Uses_EligiblePlayers_For_Points(stepE) Then
 			it_is = True
 		End If
 		Return it_is
 	End Function
 
 	'"Generates a random number and then selects a prize from the random prizes table based on that number."
-	Private Function Is_Type_33(ByVal step2 As StepB, ByVal step5 As StepG1) As Boolean
+	Private Function Is_Type_33(ByVal stepD As StepD, _
+								ByVal stepF As StepF) As Boolean
 		Dim it_is As Boolean = False
-		If General_Promo(stepD) And step5.RadioButton5.Checked Then
+		If General_Promo(stepD) And Random_Prize_Rewarded(stepF) Then
 			it_is = True
 		End If
 		Return it_is
 	End Function
 
-	'"Allows one ticket to be printed if the current month is the user's Birthday month and the user has not had one printed this year.
-	'Ticket value is MaxCoupon value."
+	'"Allows one ticket to be printed if the current month is the user's Birthday month and
+	'the user has not had one printed this year. Ticket value is MaxCoupon value."
 	Private Function Is_Type_34(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
 		Dim it_is As Boolean = False
 		If step2.RadioButton4.Checked And step6.RadioButton2.Checked Then
@@ -530,7 +545,7 @@ Public Class PCW
 	End Function
 #End Region
 
-#Region "Uses StepB And StepD)"
+#Region "Uses StepB And StepD"
 	Private Function DeterminePromoName(ByVal stepB As StepB, ByVal stepD As StepD)
 		'Grab and trim the text that is already there
 		Dim promoName As String = stepB.TextBox1.Text.Trim
@@ -821,6 +836,10 @@ Public Class PCW
 		Return If(stepE.ComboBox1.Text = "Sums points between start and end dates", True, False)
 	End Function
 
+	Private Function Uses_EligiblePlayers_For_Points(ByVal stepE As StepE)
+		Return If(stepE.ComboBox1.Text = "Uses EligiblePlayers table to determine points", True, False)
+	End Function
+
 	Private Function Greater_Than(ByVal stepE As StepE)
 		Return If(stepE.ComboBox2.Text = "PT > (greater than) PC", True, False)
 	End Function
@@ -839,6 +858,10 @@ Public Class PCW
 
 	Private Function Tickets_Rewarded(ByVal stepF As StepF)
 		Return stepF.RadioButton1.Checked
+	End Function
+
+	Private Function Random_Prize_Rewarded(ByVal stepF As StepF)
+		Return stepF.RadioButton4.Checked
 	End Function
 
 	Private Function One_Ticket_Rewarded(ByVal stepG1 As StepG1)

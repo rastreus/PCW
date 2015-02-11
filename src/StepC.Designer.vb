@@ -44,6 +44,7 @@ Partial Class StepC
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
 		Me.Label6 = New System.Windows.Forms.Label()
+		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
 		Me.Panel1.SuspendLayout()
 		Me.Panel6.SuspendLayout()
 		Me.Panel2.SuspendLayout()
@@ -122,6 +123,7 @@ Partial Class StepC
 		'Panel2
 		'
 		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel2.Controls.Add(Me.CheckBox1)
 		Me.Panel2.Controls.Add(Me.Label7)
 		Me.Panel2.Controls.Add(Me.CheckedListBox2)
 		Me.Panel2.Controls.Add(Me.Panel5)
@@ -148,7 +150,7 @@ Partial Class StepC
 		Me.CheckedListBox2.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.CheckedListBox2.Location = New System.Drawing.Point(17, 43)
 		Me.CheckedListBox2.Name = "CheckedListBox2"
-		Me.CheckedListBox2.Size = New System.Drawing.Size(149, 105)
+		Me.CheckedListBox2.Size = New System.Drawing.Size(81, 105)
 		Me.CheckedListBox2.TabIndex = 6
 		Me.CheckedListBox2.ThreeDCheckBoxes = True
 		'
@@ -279,6 +281,18 @@ Partial Class StepC
 		Me.Label6.Text = "When is the promo occurance date?"
 		Me.Label6.Visible = False
 		'
+		'CheckBox1
+		'
+		Me.CheckBox1.AutoSize = True
+		Me.CheckBox1.Checked = True
+		Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+		Me.CheckBox1.Location = New System.Drawing.Point(105, 44)
+		Me.CheckBox1.Name = "CheckBox1"
+		Me.CheckBox1.Size = New System.Drawing.Size(70, 17)
+		Me.CheckBox1.TabIndex = 7
+		Me.CheckBox1.Text = "Select All"
+		Me.CheckBox1.UseVisualStyleBackColor = True
+		'
 		'StepC
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -302,6 +316,7 @@ Partial Class StepC
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel6.ResumeLayout(False)
 		Me.Panel2.ResumeLayout(False)
+		Me.Panel2.PerformLayout()
 		Me.Panel5.ResumeLayout(False)
 		Me.Panel5.PerformLayout()
 		Me.Panel3.ResumeLayout(False)
@@ -332,5 +347,6 @@ Partial Class StepC
 	Friend WithEvents Label6 As System.Windows.Forms.Label
 	Friend WithEvents CheckedListBox2 As System.Windows.Forms.CheckedListBox
 	Friend WithEvents Label7 As System.Windows.Forms.Label
+	Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 
 End Class

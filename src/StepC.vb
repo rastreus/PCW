@@ -7,14 +7,23 @@ Public Class StepC
 		'If it is not recurring, then we need to get the occuring promo date.
 		'Otherwise, the promo date will be entered as NULL.
 		If Not Recurring_Promo() Then
+			'Bottom Panel becomes visible
 			Me.Panel7.Visible = True
-			Me.Label7.Visible = True
+			Me.Label6.Visible = True
 			Me.DateTimePicker3.Enabled = True
+			'Middle Panel not needed
+			Me.Panel1.Visible = False
 		Else
+			'Middile Panel becomes visible
+			Me.Panel1.Visible = True
+			'Bottom Panel not needed
 			Me.DateTimePicker3.Enabled = False
-			Me.Label7.Visible = False
+			Me.Label6.Visible = False
 			Me.Panel7.Visible = False
 		End If
+
+		All_Or_Nothing_Checked()
+
 	End Sub
 
 	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
@@ -35,13 +44,27 @@ Public Class StepC
 		End If
 
 		'Only the Occuring on Days values forgot to be set
-		If Not Nothing_Was_Set() And Empty_Occuring_Days() Then
-			e.Cancel = True
-			CenteredMessagebox.MsgBox.Show("Please set the occuring day values.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.Panel1.BackColor = Color.MistyRose
-		Else
-			Me.Panel1.BackColor = SystemColors.Control
+		If Recurring_Promo() Then
+			If (Not Nothing_Was_Set() And Empty_Occuring_Days()) Then
+				e.Cancel = True
+				CenteredMessagebox.MsgBox.Show("Please set the occuring day values.", "Error",
+											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+				Me.Panel1.BackColor = Color.MistyRose
+			Else
+				Me.Panel1.BackColor = SystemColors.Control
+			End If
+		End If
+
+		'Checks to see if the primary day is invalid
+		If Recurring_Promo() Then
+			If Primary_Day_Invalid() Then
+				e.Cancel = True
+				Me.Panel1.BackColor = Color.MistyRose
+				CenteredMessagebox.MsgBox.Show("Primary Day is invalid.", "Error",
+											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+			Else
+				Me.Panel1.BackColor = SystemColors.Control
+			End If
 		End If
 
 		'Only the Points Earned On valuse forgot to be set
@@ -102,7 +125,7 @@ Public Class StepC
 		'Checks to see if attempting to earn points on the day of the promo when NO is selected
 		'If this occurs, we're going to show a dialog to ask directly what the user intended to do
 		'and then we will act accordingly from their direct response.
-		If No_Selected_For_SameDay_Points And SameDays_Are_Selected Then
+		If No_Selected_For_SameDay_Points() And SameDays_Are_Selected() Then
 			e.Cancel = AskForSameDay()
 			If e.Cancel = True Then
 				Me.Panel1.BackColor = Color.MistyRose
@@ -117,16 +140,13 @@ Public Class StepC
 				End If
 			End If
 		End If
+	End Sub
 
-		'Checks to see if the primary day is invalid
-		If Primary_Day_Invalid() Then
-			e.Cancel = True
-			Me.Panel1.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("Primary Day is invalid.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		Else
-			Me.Panel1.BackColor = SystemColors.Control
-		End If
+	'Check all the "Earned on Days"
+	Private Sub All_Or_Nothing_Checked()
+		For i As Integer = 0 To Me.CheckedListBox2.Items.Count - 1
+			Me.CheckedListBox2.SetItemChecked(i, Me.CheckBox1.Checked)
+		Next
 	End Sub
 
 	Private Function Nothing_Was_Set()
@@ -287,4 +307,7 @@ Do you want points to be earned on the day of the promo?</a>.Value
 		Return invalid
 	End Function
 
+	Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+		All_Or_Nothing_Checked()
+	End Sub
 End Class

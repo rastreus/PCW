@@ -61,7 +61,7 @@ Partial Class StepG1
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "The reward of the promotion will be decided on this screen."
+		Me.Description.Text = "This is where ticket options are determined."
 		'
 		'Panel2
 		'
@@ -359,7 +359,7 @@ Partial Class StepG1
 		Me.Label8.TabIndex = 7
 		Me.Label8.Text = "........|"
 		'
-		'Step5
+		'StepG1
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -368,11 +368,11 @@ Partial Class StepG1
 		Me.Controls.Add(Me.IconButton1)
 		Me.Controls.Add(Me.Label8)
 		Me.Controls.Add(Me.Panel2)
-		Me.Name = "Step5"
+		Me.Name = "StepG1"
 		Me.NextStep = "StepH"
 		Me.PreviousStep = "StepF"
 		Me.Size = New System.Drawing.Size(594, 293)
-		Me.StepDescription = "The reward of the promotion will be decided on this screen."
+		Me.StepDescription = "This is where ticket options are determined."
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Controls.SetChildIndex(Me.Label8, 0)
 		Me.Controls.SetChildIndex(Me.IconButton1, 0)

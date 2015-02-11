@@ -9,36 +9,36 @@ Public Class StepJ
 
 #Region "StepJ_ShowStep"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
-		Dim step2 As StepB = PCW.GetStep("Step2")
-		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
-		'By default the count variable will be 1;
-		'however, if this is a "Multi-Part Sequencial,"
-		'the count will be the supplied number.
-		Dim count As Short = 1
-		If step2.RadioButton6.Checked Then
-			count = Short.Parse(step2.TextBox2.Text)
-		End If
+		'Dim step2 As StepB = PCW.GetStep("Step2")
+		'Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
+		''By default the count variable will be 1;
+		''however, if this is a "Multi-Part Sequencial,"
+		''the count will be the supplied number.
+		'Dim count As Short = 1
+		'If step2.RadioButton6.Checked Then
+		'	count = Short.Parse(step2.TextBox2.Text)
+		'End If
 
-		If (step2.RadioButton7.Checked Or step2.RadioButton6.Checked) And (count > 1) Then 'Needs to "Loop" for additional days
-			SubmitPromoIntoQueue(PCW.PCW_GetPromo)
-			Me.NextStep = "Step5"
-			CenteredMessagebox.MsgBox.Show("Now figure the requirements for next entry.", "Entries!",
-										   MessageBoxButtons.OK, MessageBoxIcon.Hand)
-			PCW.ResetSteps()
-			Thread.Sleep(600)
-			PCW.MoveNext()
-		ElseIf step2.RadioButton7.Checked Or
-				(step2.RadioButton6.Checked And (count = 1)) Then 'Multi-Part Single Instance Or End of "Loop"
-			SubmitPromoIntoQueue(PCW.PCW_GetPromo)
-			Me.NextStep = "StepN"
-			ProcessPromoQueue(PCWq)
-			Thread.Sleep(600)
-			PCW.MoveNext()
-		Else 'ERROR!
-			'Not entirely sure why we would ever get here, but it's good to have a catch just in case
-			CenteredMessagebox.MsgBox.Show("StepJ: Loop Logic Error (Error Code 142857)", "ERROR!",
-										   MessageBoxButtons.OK, MessageBoxIcon.Error)
-		End If
+		'If (step2.RadioButton7.Checked Or step2.RadioButton6.Checked) And (count > 1) Then 'Needs to "Loop" for additional days
+		'	SubmitPromoIntoQueue(PCW.PCW_GetPromo)
+		'	Me.NextStep = "Step5"
+		'	CenteredMessagebox.MsgBox.Show("Now figure the requirements for next entry.", "Entries!",
+		'								   MessageBoxButtons.OK, MessageBoxIcon.Hand)
+		'	PCW.ResetSteps()
+		'	Thread.Sleep(600)
+		'	PCW.MoveNext()
+		'ElseIf step2.RadioButton7.Checked Or
+		'		(step2.RadioButton6.Checked And (count = 1)) Then 'Multi-Part Single Instance Or End of "Loop"
+		'	SubmitPromoIntoQueue(PCW.PCW_GetPromo)
+		'	Me.NextStep = "StepN"
+		'	ProcessPromoQueue(PCWq)
+		'	Thread.Sleep(600)
+		'	PCW.MoveNext()
+		'Else 'ERROR!
+		'	'Not entirely sure why we would ever get here, but it's good to have a catch just in case
+		'	CenteredMessagebox.MsgBox.Show("StepJ: Loop Logic Error (Error Code 142857)", "ERROR!",
+		'								   MessageBoxButtons.OK, MessageBoxIcon.Error)
+		'End If
 	End Sub
 
 	'A lot of this progress bar step was taken from the TSWizards example.

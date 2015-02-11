@@ -43,6 +43,7 @@ Partial Class StepH
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
+		Me.Description.Text = "This comment will be inserted into the database row."
 		'
 		'Panel1
 		'
@@ -176,6 +177,7 @@ Partial Class StepH
 		Me.NextStep = "StepI"
 		Me.PreviousStep = "StepG1"
 		Me.Size = New System.Drawing.Size(594, 293)
+		Me.StepDescription = "This comment will be inserted into the database row."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)

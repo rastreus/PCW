@@ -151,7 +151,7 @@ Partial Class StepB
 		Me.Margin = New System.Windows.Forms.Padding(2)
 		Me.Name = "StepB"
 		Me.NextStep = "StepC"
-		Me.PreviousStep = "Step1"
+		Me.PreviousStep = "StepA"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Let's start with a couple simple questions!"
 		Me.Controls.SetChildIndex(Me.Description, 0)

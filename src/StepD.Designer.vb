@@ -121,7 +121,7 @@ Partial Class StepD
 		Me.Controls.Add(Me.Panel2)
 		Me.Name = "StepD"
 		Me.NextStep = "StepE"
-		Me.PreviousStep = "Step4"
+		Me.PreviousStep = "StepC"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Of the four available types, which will this promo be?"
 		Me.Controls.SetChildIndex(Me.Description, 0)

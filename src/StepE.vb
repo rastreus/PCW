@@ -94,7 +94,7 @@ Public Class StepE
 
 	'Enable/Disable is based on RadioButton16
 	Private Sub RadioButton16_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton16.CheckedChanged
-		If Me.RadioButton16.Checked Then
+		If PointCutoff() Then
 			Me.TextBox8.Text = ""
 			Me.TextBox8.Enabled = True
 			Me.ActiveControl = Me.TextBox8

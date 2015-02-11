@@ -101,7 +101,6 @@ Partial Class StepE
 		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.Panel2.Controls.Add(Me.ComboBox2)
 		Me.Panel2.Controls.Add(Me.Label2)
-		Me.Panel2.Enabled = False
 		Me.Panel2.Location = New System.Drawing.Point(300, 193)
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(268, 80)

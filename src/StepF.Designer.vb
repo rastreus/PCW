@@ -43,6 +43,7 @@ Partial Class StepF
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
+		Me.Description.Text = "The reward of the promotion will be determined here."
 		'
 		'Panel1
 		'
@@ -189,6 +190,7 @@ Partial Class StepF
 		Me.NextStep = "StepG1"
 		Me.PreviousStep = "StepE"
 		Me.Size = New System.Drawing.Size(594, 293)
+		Me.StepDescription = "This is where the reward of the promotional will be determined."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Panel1.ResumeLayout(False)
