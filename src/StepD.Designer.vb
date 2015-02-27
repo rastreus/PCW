@@ -25,26 +25,28 @@ Partial Class StepD
 		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton7 = New System.Windows.Forms.RadioButton()
-		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.RadioButton6 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton3 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.Panel3 = New System.Windows.Forms.Panel()
+		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.Panel4 = New System.Windows.Forms.Panel()
 		Me.Panel5 = New System.Windows.Forms.Panel()
-		Me.Label1 = New System.Windows.Forms.Label()
-		Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton5 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton8 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton9 = New System.Windows.Forms.RadioButton()
 		Me.Panel6 = New System.Windows.Forms.Panel()
 		Me.Label3 = New System.Windows.Forms.Label()
+		Me.RadioButton9 = New System.Windows.Forms.RadioButton()
+		Me.RadioButton8 = New System.Windows.Forms.RadioButton()
+		Me.RadioButton5 = New System.Windows.Forms.RadioButton()
+		Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+		Me.Label1 = New System.Windows.Forms.Label()
+		Me.IconButton1 = New FontAwesomeIcons.IconButton()
 		Me.Panel2.SuspendLayout()
 		Me.Panel3.SuspendLayout()
 		Me.Panel5.SuspendLayout()
 		Me.Panel6.SuspendLayout()
+		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -72,7 +74,7 @@ Partial Class StepD
 		'RadioButton1
 		'
 		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.BackColor = System.Drawing.Color.PaleGreen
+		Me.RadioButton1.BackColor = System.Drawing.Color.Aquamarine
 		Me.RadioButton1.Location = New System.Drawing.Point(7, 77)
 		Me.RadioButton1.Name = "RadioButton1"
 		Me.RadioButton1.Size = New System.Drawing.Size(148, 17)
@@ -83,7 +85,7 @@ Partial Class StepD
 		'RadioButton7
 		'
 		Me.RadioButton7.AutoSize = True
-		Me.RadioButton7.BackColor = System.Drawing.Color.PaleGreen
+		Me.RadioButton7.BackColor = System.Drawing.Color.Aquamarine
 		Me.RadioButton7.Checked = True
 		Me.RadioButton7.Location = New System.Drawing.Point(7, 31)
 		Me.RadioButton7.Name = "RadioButton7"
@@ -92,16 +94,6 @@ Partial Class StepD
 		Me.RadioButton7.TabStop = True
 		Me.RadioButton7.Text = "Single Event: Entry and Payout"
 		Me.RadioButton7.UseVisualStyleBackColor = False
-		'
-		'TextBox2
-		'
-		Me.TextBox2.BackColor = System.Drawing.SystemColors.HighlightText
-		Me.TextBox2.Enabled = False
-		Me.TextBox2.Location = New System.Drawing.Point(26, 26)
-		Me.TextBox2.Name = "TextBox2"
-		Me.TextBox2.Size = New System.Drawing.Size(115, 20)
-		Me.TextBox2.TabIndex = 9
-		Me.TextBox2.Text = "How many days/tiers?"
 		'
 		'RadioButton6
 		'
@@ -128,7 +120,7 @@ Partial Class StepD
 		'RadioButton2
 		'
 		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.BackColor = System.Drawing.Color.PaleGreen
+		Me.RadioButton2.BackColor = System.Drawing.Color.Aquamarine
 		Me.RadioButton2.Location = New System.Drawing.Point(7, 54)
 		Me.RadioButton2.Name = "RadioButton2"
 		Me.RadioButton2.Size = New System.Drawing.Size(139, 17)
@@ -148,7 +140,7 @@ Partial Class StepD
 		'
 		'Panel1
 		'
-		Me.Panel1.BackColor = System.Drawing.Color.PaleGreen
+		Me.Panel1.BackColor = System.Drawing.Color.Aquamarine
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel1.Location = New System.Drawing.Point(3, 23)
 		Me.Panel1.Name = "Panel1"
@@ -164,6 +156,16 @@ Partial Class StepD
 		Me.Panel3.Name = "Panel3"
 		Me.Panel3.Size = New System.Drawing.Size(251, 57)
 		Me.Panel3.TabIndex = 13
+		'
+		'TextBox2
+		'
+		Me.TextBox2.BackColor = System.Drawing.SystemColors.HighlightText
+		Me.TextBox2.Enabled = False
+		Me.TextBox2.Location = New System.Drawing.Point(26, 26)
+		Me.TextBox2.Name = "TextBox2"
+		Me.TextBox2.Size = New System.Drawing.Size(115, 20)
+		Me.TextBox2.TabIndex = 9
+		Me.TextBox2.Text = "How many days/tiers?"
 		'
 		'Panel4
 		'
@@ -188,15 +190,59 @@ Partial Class StepD
 		Me.Panel5.Size = New System.Drawing.Size(265, 222)
 		Me.Panel5.TabIndex = 4
 		'
-		'Label1
+		'Panel6
 		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(0, 0)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(259, 16)
-		Me.Label1.TabIndex = 4
-		Me.Label1.Text = "How is player eligibility determined?"
+		Me.Panel6.AllowDrop = True
+		Me.Panel6.BackColor = System.Drawing.Color.AntiqueWhite
+		Me.Panel6.Controls.Add(Me.IconButton1)
+		Me.Panel6.Controls.Add(Me.Label3)
+		Me.Panel6.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.Panel6.Enabled = False
+		Me.Panel6.Location = New System.Drawing.Point(28, 129)
+		Me.Panel6.Name = "Panel6"
+		Me.Panel6.Size = New System.Drawing.Size(214, 82)
+		Me.Panel6.TabIndex = 9
+		Me.Panel6.Visible = False
+		'
+		'Label3
+		'
+		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label3.Location = New System.Drawing.Point(3, 12)
+		Me.Label3.Name = "Label3"
+		Me.Label3.Size = New System.Drawing.Size(208, 60)
+		Me.Label3.TabIndex = 0
+		Me.Label3.Text = "(Drag Offer List Here)"
+		Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'RadioButton9
+		'
+		Me.RadioButton9.AutoSize = True
+		Me.RadioButton9.Location = New System.Drawing.Point(4, 101)
+		Me.RadioButton9.Name = "RadioButton9"
+		Me.RadioButton9.Size = New System.Drawing.Size(248, 17)
+		Me.RadioButton9.TabIndex = 8
+		Me.RadioButton9.Text = "EligiblePlayers offer list Determines Qualification"
+		Me.RadioButton9.UseVisualStyleBackColor = True
+		'
+		'RadioButton8
+		'
+		Me.RadioButton8.AutoSize = True
+		Me.RadioButton8.Location = New System.Drawing.Point(4, 77)
+		Me.RadioButton8.Name = "RadioButton8"
+		Me.RadioButton8.Size = New System.Drawing.Size(233, 17)
+		Me.RadioButton8.TabIndex = 7
+		Me.RadioButton8.Text = "Automatic Qualification Regardless of Points"
+		Me.RadioButton8.UseVisualStyleBackColor = True
+		'
+		'RadioButton5
+		'
+		Me.RadioButton5.AutoSize = True
+		Me.RadioButton5.Location = New System.Drawing.Point(4, 54)
+		Me.RadioButton5.Name = "RadioButton5"
+		Me.RadioButton5.Size = New System.Drawing.Size(117, 17)
+		Me.RadioButton5.TabIndex = 6
+		Me.RadioButton5.Text = "Sum Lifetime Points"
+		Me.RadioButton5.UseVisualStyleBackColor = True
 		'
 		'RadioButton4
 		'
@@ -210,58 +256,30 @@ Partial Class StepD
 		Me.RadioButton4.Text = "Sum Points Within Qualifying Peroid"
 		Me.RadioButton4.UseVisualStyleBackColor = True
 		'
-		'RadioButton5
+		'Label1
 		'
-		Me.RadioButton5.AutoSize = True
-		Me.RadioButton5.Location = New System.Drawing.Point(4, 54)
-		Me.RadioButton5.Name = "RadioButton5"
-		Me.RadioButton5.Size = New System.Drawing.Size(117, 17)
-		Me.RadioButton5.TabIndex = 6
-		Me.RadioButton5.Text = "Sum Lifetime Points"
-		Me.RadioButton5.UseVisualStyleBackColor = True
+		Me.Label1.AutoSize = True
+		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Location = New System.Drawing.Point(0, 0)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(259, 16)
+		Me.Label1.TabIndex = 4
+		Me.Label1.Text = "How is player eligibility determined?"
 		'
-		'RadioButton8
+		'IconButton1
 		'
-		Me.RadioButton8.AutoSize = True
-		Me.RadioButton8.Location = New System.Drawing.Point(4, 77)
-		Me.RadioButton8.Name = "RadioButton8"
-		Me.RadioButton8.Size = New System.Drawing.Size(233, 17)
-		Me.RadioButton8.TabIndex = 7
-		Me.RadioButton8.Text = "Automatic Qualification Regardless of Points"
-		Me.RadioButton8.UseVisualStyleBackColor = True
-		'
-		'RadioButton9
-		'
-		Me.RadioButton9.AutoSize = True
-		Me.RadioButton9.Location = New System.Drawing.Point(4, 101)
-		Me.RadioButton9.Name = "RadioButton9"
-		Me.RadioButton9.Size = New System.Drawing.Size(248, 17)
-		Me.RadioButton9.TabIndex = 8
-		Me.RadioButton9.Text = "EligiblePlayers offer list Determines Qualification"
-		Me.RadioButton9.UseVisualStyleBackColor = True
-		'
-		'Panel6
-		'
-		Me.Panel6.AllowDrop = True
-		Me.Panel6.BackColor = System.Drawing.Color.SeaShell
-		Me.Panel6.Controls.Add(Me.Label3)
-		Me.Panel6.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.Panel6.Enabled = False
-		Me.Panel6.Location = New System.Drawing.Point(23, 131)
-		Me.Panel6.Name = "Panel6"
-		Me.Panel6.Size = New System.Drawing.Size(214, 82)
-		Me.Panel6.TabIndex = 9
-		'
-		'Label3
-		'
-		Me.Label3.AutoSize = True
-		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-				Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(31, 33)
-		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(155, 16)
-		Me.Label3.TabIndex = 0
-		Me.Label3.Text = "(Drag Offer List Here)"
+		Me.IconButton1.ActiveColor = System.Drawing.Color.Lime
+		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
+		Me.IconButton1.Enabled = False
+		Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
+		Me.IconButton1.InActiveColor = System.Drawing.Color.Lime
+		Me.IconButton1.Location = New System.Drawing.Point(185, 6)
+		Me.IconButton1.Name = "IconButton1"
+		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
+		Me.IconButton1.TabIndex = 5
+		Me.IconButton1.TabStop = False
+		Me.IconButton1.ToolTipText = Nothing
+		Me.IconButton1.Visible = False
 		'
 		'StepD
 		'
@@ -284,7 +302,7 @@ Partial Class StepD
 		Me.Panel5.ResumeLayout(False)
 		Me.Panel5.PerformLayout()
 		Me.Panel6.ResumeLayout(False)
-		Me.Panel6.PerformLayout()
+		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -307,5 +325,6 @@ Partial Class StepD
 	Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
 	Friend WithEvents Panel6 As System.Windows.Forms.Panel
 	Friend WithEvents Label3 As System.Windows.Forms.Label
+	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
 
 End Class

@@ -4,11 +4,11 @@ Imports System.Text.RegularExpressions
 Public Class StepD
 	Inherits TSWizards.BaseInteriorStep
 
-	Private Delegate Sub DelegateLabelText(ByVal s As String)
-	Private m_DelegateLabelText As DelegateLabelText
+	Private Delegate Sub DelegateChangeLabelText(ByVal s As String)
+	Private m_DelegateChangeLabelText As DelegateChangeLabelText
 
 	Private Sub StepD_Load(sender As Object, e As EventArgs) Handles Me.Load
-		m_DelegateLabelText = New DelegateLabelText(AddressOf ChangeLabelText)
+		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 
 	Private Sub ChangeLabelText(ByVal s As String)
@@ -75,14 +75,19 @@ Public Class StepD
 	End Sub
 
 	Private Sub RadioButton9_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton9.CheckedChanged
-		If Me.RadioButton9.Checked Then
-			Me.Panel6.Enabled = True
-		Else
-			Me.Panel6.Enabled = False
+		SetDragDropPanel(Me.RadioButton9.Checked)
+	End Sub
+
+	Private Sub SetDragDropPanel(ByVal bool As Boolean)
+		Me.Panel6.Enabled = bool
+		Me.Panel6.Visible = bool
+		If Not bool Then
+			Me.IconButton1.Visible = bool
+			ChangeLabelText("(Drag Offer List Here)")
 		End If
 	End Sub
 
-	Private Sub Panel6_DragEnter(sender As Object, e As DragEventArgs)
+	Private Sub Panel6_DragEnter(sender As Object, e As DragEventArgs) Handles Panel6.DragEnter
 		If e.Data.GetDataPresent(DataFormats.FileDrop) Then
 			e.Effect = DragDropEffects.Copy
 		Else
@@ -90,16 +95,32 @@ Public Class StepD
 		End If
 	End Sub
 
-	Private Sub Panel6_DragDrop(sender As Object, e As DragEventArgs)
+	Private Sub DragDropSuccessIcon()
+		Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
+		Me.IconButton1.ActiveColor = Color.Lime
+		Me.IconButton1.InActiveColor = Color.Lime
+		Me.IconButton1.Visible = True
+	End Sub
+
+	Private Sub DragDropFailureIcon()
+		Me.IconButton1.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
+		Me.IconButton1.ActiveColor = Color.Red
+		Me.IconButton1.InActiveColor = Color.Red
+		Me.IconButton1.Visible = True
+	End Sub
+
+	Private Sub Panel6_DragDrop(sender As Object, e As DragEventArgs) Handles Panel6.DragDrop
 		Try
 			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop), Array)
 			If Not IsNothing(a) Then
 				Dim s As String = a.GetValue(0).ToString
-				Me.BeginInvoke(m_DelegateLabelText, New Object() {s})
-				Me.ActiveControl = Me
+				Me.BeginInvoke(m_DelegateChangeLabelText, New Object() {s})
+				DragDropSuccessIcon()
 			End If
 		Catch ex As Exception
 			Trace.WriteLine("Error in DragDrop Sub: " + ex.Message)
+			ChangeLabelText("FAILURE: " + ex.Message)
+			DragDropFailureIcon()
 		End Try
 	End Sub
 End Class
