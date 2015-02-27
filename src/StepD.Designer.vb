@@ -39,9 +39,12 @@ Partial Class StepD
 		Me.RadioButton5 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton8 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton9 = New System.Windows.Forms.RadioButton()
+		Me.Panel6 = New System.Windows.Forms.Panel()
+		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Panel2.SuspendLayout()
 		Me.Panel3.SuspendLayout()
 		Me.Panel5.SuspendLayout()
+		Me.Panel6.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -174,6 +177,7 @@ Partial Class StepD
 		'Panel5
 		'
 		Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel5.Controls.Add(Me.Panel6)
 		Me.Panel5.Controls.Add(Me.RadioButton9)
 		Me.Panel5.Controls.Add(Me.RadioButton8)
 		Me.Panel5.Controls.Add(Me.RadioButton5)
@@ -190,9 +194,9 @@ Partial Class StepD
 		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label1.Location = New System.Drawing.Point(0, 0)
 		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(263, 16)
+		Me.Label1.Size = New System.Drawing.Size(259, 16)
 		Me.Label1.TabIndex = 4
-		Me.Label1.Text = "How is Player Eligibility Determined?"
+		Me.Label1.Text = "How is player eligibility determined?"
 		'
 		'RadioButton4
 		'
@@ -200,10 +204,10 @@ Partial Class StepD
 		Me.RadioButton4.Checked = True
 		Me.RadioButton4.Location = New System.Drawing.Point(4, 31)
 		Me.RadioButton4.Name = "RadioButton4"
-		Me.RadioButton4.Size = New System.Drawing.Size(210, 17)
+		Me.RadioButton4.Size = New System.Drawing.Size(193, 17)
 		Me.RadioButton4.TabIndex = 5
 		Me.RadioButton4.TabStop = True
-		Me.RadioButton4.Text = "Sums Points Between Qualifying Peroid"
+		Me.RadioButton4.Text = "Sum Points Within Qualifying Peroid"
 		Me.RadioButton4.UseVisualStyleBackColor = True
 		'
 		'RadioButton5
@@ -211,9 +215,9 @@ Partial Class StepD
 		Me.RadioButton5.AutoSize = True
 		Me.RadioButton5.Location = New System.Drawing.Point(4, 54)
 		Me.RadioButton5.Name = "RadioButton5"
-		Me.RadioButton5.Size = New System.Drawing.Size(122, 17)
+		Me.RadioButton5.Size = New System.Drawing.Size(117, 17)
 		Me.RadioButton5.TabIndex = 6
-		Me.RadioButton5.Text = "Sums Lifetime Points"
+		Me.RadioButton5.Text = "Sum Lifetime Points"
 		Me.RadioButton5.UseVisualStyleBackColor = True
 		'
 		'RadioButton8
@@ -231,10 +235,33 @@ Partial Class StepD
 		Me.RadioButton9.AutoSize = True
 		Me.RadioButton9.Location = New System.Drawing.Point(4, 101)
 		Me.RadioButton9.Name = "RadioButton9"
-		Me.RadioButton9.Size = New System.Drawing.Size(239, 17)
+		Me.RadioButton9.Size = New System.Drawing.Size(248, 17)
 		Me.RadioButton9.TabIndex = 8
-		Me.RadioButton9.Text = "EligiblePlayers Table Determines Qualification"
+		Me.RadioButton9.Text = "EligiblePlayers offer list Determines Qualification"
 		Me.RadioButton9.UseVisualStyleBackColor = True
+		'
+		'Panel6
+		'
+		Me.Panel6.AllowDrop = True
+		Me.Panel6.BackColor = System.Drawing.Color.SeaShell
+		Me.Panel6.Controls.Add(Me.Label3)
+		Me.Panel6.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.Panel6.Enabled = False
+		Me.Panel6.Location = New System.Drawing.Point(23, 131)
+		Me.Panel6.Name = "Panel6"
+		Me.Panel6.Size = New System.Drawing.Size(214, 82)
+		Me.Panel6.TabIndex = 9
+		'
+		'Label3
+		'
+		Me.Label3.AutoSize = True
+		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+				Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label3.Location = New System.Drawing.Point(31, 33)
+		Me.Label3.Name = "Label3"
+		Me.Label3.Size = New System.Drawing.Size(155, 16)
+		Me.Label3.TabIndex = 0
+		Me.Label3.Text = "(Drag Offer List Here)"
 		'
 		'StepD
 		'
@@ -256,6 +283,8 @@ Partial Class StepD
 		Me.Panel3.PerformLayout()
 		Me.Panel5.ResumeLayout(False)
 		Me.Panel5.PerformLayout()
+		Me.Panel6.ResumeLayout(False)
+		Me.Panel6.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -276,5 +305,7 @@ Partial Class StepD
 	Friend WithEvents RadioButton8 As System.Windows.Forms.RadioButton
 	Friend WithEvents RadioButton5 As System.Windows.Forms.RadioButton
 	Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
+	Friend WithEvents Panel6 As System.Windows.Forms.Panel
+	Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class
