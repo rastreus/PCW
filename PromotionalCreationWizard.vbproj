@@ -119,6 +119,7 @@
     <Compile Include="resources\MarketingPromos.vb">
       <DependentUpon>MarketingPromos.dbml</DependentUpon>
     </Compile>
+    <Compile Include="src\Models\StepB_Data.vb" />
     <Compile Include="src\PCW.vb">
       <SubType>Form</SubType>
     </Compile>

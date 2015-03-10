@@ -74,8 +74,24 @@ Public Class StepD
 		End If
 	End Sub
 
+	Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
+		If Not RadioButton5.Checked Then
+			SetPointCutoffPanel(Me.RadioButton4.Checked)
+		End If
+	End Sub
+
+	Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
+		If Not RadioButton4.Checked Then
+			SetPointCutoffPanel(Me.RadioButton5.Checked)
+		End If
+	End Sub
+
 	Private Sub RadioButton9_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton9.CheckedChanged
 		SetDragDropPanel(Me.RadioButton9.Checked)
+	End Sub
+
+	Private Sub SetPointCutoffPanel(ByVal bool As Boolean)
+		Me.Panel7.Visible = bool
 	End Sub
 
 	Private Sub SetDragDropPanel(ByVal bool As Boolean)

@@ -204,7 +204,7 @@ Public Class StepC
 	Private Function Recurring_Promo()
 		Dim recurring As Boolean = False
 		Dim stepB As StepB = PCW.GetStep("StepB")
-		If stepB.RadioButton4.Checked Then
+		If stepB.rbRecurringYes.Checked Then
 			recurring = True
 		End If
 		Return recurring
