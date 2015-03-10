@@ -554,7 +554,7 @@ Public Class PCW
 
 		'Deploy some logic to see if anything needs to be appended
 		'This specifically handles "Multi-Part Single Instance"
-		If (stepD.RadioButton6.Checked And PCWq.Count = 0) Or
+		If (stepD.rbMultiPartEntryPayout.Checked And PCWq.Count = 0) Or
 			(stepD.RadioButton7.Checked And PCWq.Count = 0) Then
 			promoName = "Entries - " & promoName.ToString
 		Else

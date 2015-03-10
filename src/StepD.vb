@@ -11,8 +11,8 @@ Public Class StepD
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 
-	Private Sub ChangeLabelText(ByVal s As String)
-		Me.Label3.Text = s
+	Private Sub ChangeLabelText(ByVal str As String)
+		Me.lblDragOffer.Text = str
 	End Sub
 
 #Region "StepD_Validation"
@@ -23,7 +23,7 @@ Public Class StepD
 		If MPSI_Invalid() Then
 			e.Cancel = True
 			Me.Panel2.BackColor = Color.MistyRose
-			Me.ActiveControl = Me.TextBox2
+			Me.ActiveControl = Me.txtNumOfDaysTiers
 		Else
 			Me.Panel2.BackColor = SystemColors.Control
 		End If
@@ -32,8 +32,8 @@ Public Class StepD
 	Private Function MPSI_Invalid()
 		Dim invalid As Boolean = False
 
-		If Me.RadioButton6.Checked Then
-			invalid = Invalid_Number(Me.TextBox2.Text)
+		If Me.rbMultiPartEntryPayout.Checked Then
+			invalid = Invalid_Number(Me.txtNumOfDaysTiers.Text)
 		End If
 
 		Return invalid
@@ -63,47 +63,61 @@ Public Class StepD
 
 	'If MULTI-PART SEQUENCIAL INSTANCES is selected, please enable the textbox.
 	'Otherwise, put that thing back the way it was.
-	Private Sub RadioButton6_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged
-		If Me.RadioButton6.Checked Then
-			Me.TextBox2.Text = ""
-			Me.TextBox2.Enabled = True
-			Me.ActiveControl = Me.TextBox2
+	Private Sub rbMultiPartEntryPayout_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbMultiPartEntryPayout.CheckedChanged
+		If Me.rbMultiPartEntryPayout.Checked Then
+			Me.txtNumOfDaysTiers.Text = ""
+			Me.txtNumOfDaysTiers.Enabled = True
+			Me.ActiveControl = Me.txtNumOfDaysTiers
 		Else
-			Me.TextBox2.Enabled = False
-			Me.TextBox2.Text = "How many days/tiers?"
+			Me.txtNumOfDaysTiers.Enabled = False
+			Me.txtNumOfDaysTiers.Text = "How many days/tiers?"
 		End If
 	End Sub
 
-	Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
-		If Not RadioButton5.Checked Then
-			SetPointCutoffPanel(Me.RadioButton4.Checked)
+	Private Sub rbSumQualifyingPoints_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbSumQualifyingPoints.CheckedChanged
+		If Not rbEligiblePlayersOfferList.Checked Then
+			SetPointCutoffPanel(Me.rbSumQualifyingPoints.Checked)
 		End If
 	End Sub
 
-	Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
-		If Not RadioButton4.Checked Then
-			SetPointCutoffPanel(Me.RadioButton5.Checked)
+	Private Sub rbSumLifetimePoints_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbSumLifetimePoints.CheckedChanged
+		If Not rbEligiblePlayersOfferList.Checked Then
+			SetPointCutoffPanel(Me.rbSumLifetimePoints.Checked)
 		End If
 	End Sub
 
-	Private Sub RadioButton9_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton9.CheckedChanged
-		SetDragDropPanel(Me.RadioButton9.Checked)
+	Private Sub rbAutoQualification_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbAutoQualification.CheckedChanged
+		If Not rbEligiblePlayersOfferList.Checked Then
+			SetPointCutoffPanel(Me.rbAutoQualification.Checked)
+		End If
+	End Sub
+
+	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbEligiblePlayersOfferList.CheckedChanged
+		If rbEligiblePlayersOfferList.Checked Then
+			SetDragDropPanel(Me.rbEligiblePlayersOfferList.Checked)
+		End If
 	End Sub
 
 	Private Sub SetPointCutoffPanel(ByVal bool As Boolean)
-		Me.Panel7.Visible = bool
+		Me.pnlPointCutoffLimit.Visible = bool
 	End Sub
 
 	Private Sub SetDragDropPanel(ByVal bool As Boolean)
-		Me.Panel6.Enabled = bool
-		Me.Panel6.Visible = bool
+		Me.pnlDragOffer.Enabled = bool
+		Me.pnlDragOffer.Visible = bool
 		If Not bool Then
-			Me.IconButton1.Visible = bool
+			Me.SuccessIcon.Visible = bool
 			ChangeLabelText("(Drag Offer List Here)")
 		End If
 	End Sub
 
-	Private Sub Panel6_DragEnter(sender As Object, e As DragEventArgs) Handles Panel6.DragEnter
+	Private Sub pnlDragOffer_DragEnter(sender As Object, e As DragEventArgs) _
+		Handles pnlDragOffer.DragEnter
 		If e.Data.GetDataPresent(DataFormats.FileDrop) Then
 			e.Effect = DragDropEffects.Copy
 		Else
@@ -112,20 +126,21 @@ Public Class StepD
 	End Sub
 
 	Private Sub DragDropSuccessIcon()
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
-		Me.IconButton1.ActiveColor = Color.Lime
-		Me.IconButton1.InActiveColor = Color.Lime
-		Me.IconButton1.Visible = True
+		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.SuccessIcon.ActiveColor = Color.Lime
+		Me.SuccessIcon.InActiveColor = Color.Lime
+		Me.SuccessIcon.Visible = True
 	End Sub
 
 	Private Sub DragDropFailureIcon()
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
-		Me.IconButton1.ActiveColor = Color.Red
-		Me.IconButton1.InActiveColor = Color.Red
-		Me.IconButton1.Visible = True
+		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
+		Me.SuccessIcon.ActiveColor = Color.Red
+		Me.SuccessIcon.InActiveColor = Color.Red
+		Me.SuccessIcon.Visible = True
 	End Sub
 
-	Private Sub Panel6_DragDrop(sender As Object, e As DragEventArgs) Handles Panel6.DragDrop
+	Private Sub pnlDragOffer_DragDrop(sender As Object, e As DragEventArgs) _
+		Handles pnlDragOffer.DragDrop
 		Try
 			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop), Array)
 			If Not IsNothing(a) Then

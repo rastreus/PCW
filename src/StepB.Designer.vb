@@ -31,9 +31,11 @@ Partial Class StepB
 		Me.rbRecurringYes = New System.Windows.Forms.RadioButton()
 		Me.lblRecurring = New System.Windows.Forms.Label()
 		Me.IconButton1 = New FontAwesomeIcons.IconButton()
+		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.pnlPromoName.SuspendLayout()
 		Me.pnlRecurring.SuspendLayout()
 		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -45,7 +47,7 @@ Partial Class StepB
 		'
 		'pnlPromoName
 		'
-		Me.pnlPromoName.BackColor = System.Drawing.SystemColors.Control
+		Me.pnlPromoName.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPromoName.CausesValidation = False
 		Me.pnlPromoName.Controls.Add(Me.txtPromoName)
@@ -69,6 +71,7 @@ Partial Class StepB
 		Me.lblPromoName.AutoSize = True
 		Me.lblPromoName.CausesValidation = False
 		Me.lblPromoName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoName.ForeColor = System.Drawing.Color.White
 		Me.lblPromoName.Location = New System.Drawing.Point(0, 0)
 		Me.lblPromoName.Name = "lblPromoName"
 		Me.lblPromoName.Size = New System.Drawing.Size(255, 16)
@@ -77,12 +80,11 @@ Partial Class StepB
 		'
 		'pnlRecurring
 		'
+		Me.pnlRecurring.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlRecurring.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlRecurring.CausesValidation = False
-		Me.pnlRecurring.Controls.Add(Me.cbRecurringFrequency)
-		Me.pnlRecurring.Controls.Add(Me.rbRecurringNo)
-		Me.pnlRecurring.Controls.Add(Me.rbRecurringYes)
 		Me.pnlRecurring.Controls.Add(Me.lblRecurring)
+		Me.pnlRecurring.Controls.Add(Me.Panel1)
 		Me.pnlRecurring.Location = New System.Drawing.Point(151, 126)
 		Me.pnlRecurring.Name = "pnlRecurring"
 		Me.pnlRecurring.Size = New System.Drawing.Size(292, 132)
@@ -95,20 +97,20 @@ Partial Class StepB
 		Me.cbRecurringFrequency.Enabled = False
 		Me.cbRecurringFrequency.FormattingEnabled = True
 		Me.cbRecurringFrequency.Items.AddRange(New Object() {"Daily", "Weekly", "Monthly", "Quarterly", "Yearly"})
-		Me.cbRecurringFrequency.Location = New System.Drawing.Point(53, 30)
+		Me.cbRecurringFrequency.Location = New System.Drawing.Point(52, 2)
 		Me.cbRecurringFrequency.Name = "cbRecurringFrequency"
 		Me.cbRecurringFrequency.Size = New System.Drawing.Size(121, 21)
-		Me.cbRecurringFrequency.TabIndex = 8
+		Me.cbRecurringFrequency.TabIndex = 3
 		'
 		'rbRecurringNo
 		'
 		Me.rbRecurringNo.AutoSize = True
 		Me.rbRecurringNo.CausesValidation = False
 		Me.rbRecurringNo.Checked = True
-		Me.rbRecurringNo.Location = New System.Drawing.Point(4, 54)
+		Me.rbRecurringNo.Location = New System.Drawing.Point(3, 26)
 		Me.rbRecurringNo.Name = "rbRecurringNo"
 		Me.rbRecurringNo.Size = New System.Drawing.Size(39, 17)
-		Me.rbRecurringNo.TabIndex = 6
+		Me.rbRecurringNo.TabIndex = 4
 		Me.rbRecurringNo.TabStop = True
 		Me.rbRecurringNo.Text = "No"
 		Me.rbRecurringNo.UseVisualStyleBackColor = True
@@ -117,7 +119,7 @@ Partial Class StepB
 		'
 		Me.rbRecurringYes.AutoSize = True
 		Me.rbRecurringYes.CausesValidation = False
-		Me.rbRecurringYes.Location = New System.Drawing.Point(4, 31)
+		Me.rbRecurringYes.Location = New System.Drawing.Point(3, 3)
 		Me.rbRecurringYes.Name = "rbRecurringYes"
 		Me.rbRecurringYes.Size = New System.Drawing.Size(43, 17)
 		Me.rbRecurringYes.TabIndex = 2
@@ -128,8 +130,10 @@ Partial Class StepB
 		'lblRecurring
 		'
 		Me.lblRecurring.AutoSize = True
+		Me.lblRecurring.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.lblRecurring.CausesValidation = False
 		Me.lblRecurring.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblRecurring.ForeColor = System.Drawing.Color.White
 		Me.lblRecurring.Location = New System.Drawing.Point(0, 0)
 		Me.lblRecurring.Name = "lblRecurring"
 		Me.lblRecurring.Size = New System.Drawing.Size(233, 16)
@@ -148,6 +152,18 @@ Partial Class StepB
 		Me.IconButton1.TabIndex = 4
 		Me.IconButton1.TabStop = False
 		Me.IconButton1.ToolTipText = Nothing
+		'
+		'Panel1
+		'
+		Me.Panel1.BackColor = System.Drawing.Color.AntiqueWhite
+		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel1.Controls.Add(Me.cbRecurringFrequency)
+		Me.Panel1.Controls.Add(Me.rbRecurringYes)
+		Me.Panel1.Controls.Add(Me.rbRecurringNo)
+		Me.Panel1.Location = New System.Drawing.Point(53, 25)
+		Me.Panel1.Name = "Panel1"
+		Me.Panel1.Size = New System.Drawing.Size(180, 91)
+		Me.Panel1.TabIndex = 0
 		'
 		'StepB
 		'
@@ -171,6 +187,8 @@ Partial Class StepB
 		Me.pnlRecurring.ResumeLayout(False)
 		Me.pnlRecurring.PerformLayout()
 		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.Panel1.ResumeLayout(False)
+		Me.Panel1.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -183,5 +201,6 @@ Partial Class StepB
 	Friend WithEvents rbRecurringYes As System.Windows.Forms.RadioButton
 	Friend WithEvents rbRecurringNo As System.Windows.Forms.RadioButton
 	Friend WithEvents cbRecurringFrequency As System.Windows.Forms.ComboBox
+	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class
