@@ -43,7 +43,7 @@ Partial Class StepF
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "The reward of the promotion will be determined here."
+		Me.Description.Text = "This is where the reward of the promotional will be determined."
 		'
 		'Panel1
 		'
@@ -60,7 +60,7 @@ Partial Class StepF
 		Me.Panel1.Controls.Add(Me.Label1)
 		Me.Panel1.Location = New System.Drawing.Point(151, 56)
 		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(292, 202)
+		Me.Panel1.Size = New System.Drawing.Size(302, 202)
 		Me.Panel1.TabIndex = 2
 		'
 		'Panel3
@@ -177,9 +177,9 @@ Partial Class StepF
 		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label1.Location = New System.Drawing.Point(0, 0)
 		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(233, 16)
+		Me.Label1.Size = New System.Drawing.Size(300, 16)
 		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "What is the reward of the promo?"
+		Me.Label1.Text = "What form of Payout does the promo give?"
 		'
 		'StepF
 		'

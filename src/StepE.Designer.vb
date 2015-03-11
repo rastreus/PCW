@@ -27,16 +27,16 @@ Partial Class StepE
 		Me.RadioButton17 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton16 = New System.Windows.Forms.RadioButton()
 		Me.Label7 = New System.Windows.Forms.Label()
-		Me.Panel2 = New System.Windows.Forms.Panel()
-		Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-		Me.Label2 = New System.Windows.Forms.Label()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-		Me.Label1 = New System.Windows.Forms.Label()
 		Me.Label3 = New System.Windows.Forms.Label()
+		Me.Label1 = New System.Windows.Forms.Label()
+		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+		Me.Panel1 = New System.Windows.Forms.Panel()
+		Me.Label2 = New System.Windows.Forms.Label()
+		Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.Panel6.SuspendLayout()
-		Me.Panel2.SuspendLayout()
 		Me.Panel1.SuspendLayout()
+		Me.Panel2.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -96,45 +96,25 @@ Partial Class StepE
 		Me.Label7.TabIndex = 7
 		Me.Label7.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'Panel2
+		'Label3
 		'
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Controls.Add(Me.ComboBox2)
-		Me.Panel2.Controls.Add(Me.Label2)
-		Me.Panel2.Location = New System.Drawing.Point(300, 193)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(268, 80)
-		Me.Panel2.TabIndex = 9
+		Me.Label3.AutoSize = True
+		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label3.Location = New System.Drawing.Point(30, 166)
+		Me.Label3.Name = "Label3"
+		Me.Label3.Size = New System.Drawing.Size(516, 16)
+		Me.Label3.TabIndex = 10
+		Me.Label3.Text = "The below information is not needed (and not enabled) if there is not a Point Cut" & _
+	"off limit."
 		'
-		'ComboBox2
+		'Label1
 		'
-		Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.ComboBox2.Enabled = False
-		Me.ComboBox2.FormattingEnabled = True
-		Me.ComboBox2.Items.AddRange(New Object() {"PT > (greater than) PC", "PT >= (greater than or equal to) PC"})
-		Me.ComboBox2.Location = New System.Drawing.Point(3, 36)
-		Me.ComboBox2.Name = "ComboBox2"
-		Me.ComboBox2.Size = New System.Drawing.Size(257, 21)
-		Me.ComboBox2.TabIndex = 1
-		'
-		'Label2
-		'
-		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.Location = New System.Drawing.Point(3, 1)
-		Me.Label2.Name = "Label2"
-		Me.Label2.Size = New System.Drawing.Size(260, 32)
-		Me.Label2.TabIndex = 0
-		Me.Label2.Text = "What is the relation of the Points Total to the Points Cutoff?"
-		'
-		'Panel1
-		'
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel1.Controls.Add(Me.ComboBox1)
-		Me.Panel1.Controls.Add(Me.Label1)
-		Me.Panel1.Location = New System.Drawing.Point(26, 193)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(268, 80)
-		Me.Panel1.TabIndex = 8
+		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Location = New System.Drawing.Point(3, 1)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(260, 32)
+		Me.Label1.TabIndex = 0
+		Me.Label1.Text = "How are the points totaled to qualify for the promo?"
 		'
 		'ComboBox1
 		'
@@ -147,25 +127,45 @@ Partial Class StepE
 		Me.ComboBox1.Size = New System.Drawing.Size(260, 21)
 		Me.ComboBox1.TabIndex = 1
 		'
-		'Label1
+		'Panel1
 		'
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(3, 1)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(260, 32)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "How are the points totaled to qualify for the promo?"
+		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel1.Controls.Add(Me.ComboBox1)
+		Me.Panel1.Controls.Add(Me.Label1)
+		Me.Panel1.Location = New System.Drawing.Point(26, 193)
+		Me.Panel1.Name = "Panel1"
+		Me.Panel1.Size = New System.Drawing.Size(268, 80)
+		Me.Panel1.TabIndex = 8
 		'
-		'Label3
+		'Label2
 		'
-		Me.Label3.AutoSize = True
-		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(30, 166)
-		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(516, 16)
-		Me.Label3.TabIndex = 10
-		Me.Label3.Text = "The below information is not needed (and not enabled) if there is not a Point Cut" & _
-	"off limit."
+		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label2.Location = New System.Drawing.Point(3, 1)
+		Me.Label2.Name = "Label2"
+		Me.Label2.Size = New System.Drawing.Size(260, 32)
+		Me.Label2.TabIndex = 0
+		Me.Label2.Text = "What is the relation of the Points Total to the Points Cutoff?"
+		'
+		'ComboBox2
+		'
+		Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.ComboBox2.Enabled = False
+		Me.ComboBox2.FormattingEnabled = True
+		Me.ComboBox2.Items.AddRange(New Object() {"PT > (greater than) PC", "PT >= (greater than or equal to) PC"})
+		Me.ComboBox2.Location = New System.Drawing.Point(3, 36)
+		Me.ComboBox2.Name = "ComboBox2"
+		Me.ComboBox2.Size = New System.Drawing.Size(257, 21)
+		Me.ComboBox2.TabIndex = 1
+		'
+		'Panel2
+		'
+		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel2.Controls.Add(Me.ComboBox2)
+		Me.Panel2.Controls.Add(Me.Label2)
+		Me.Panel2.Location = New System.Drawing.Point(300, 193)
+		Me.Panel2.Name = "Panel2"
+		Me.Panel2.Size = New System.Drawing.Size(268, 80)
+		Me.Panel2.TabIndex = 9
 		'
 		'StepE
 		'
@@ -180,15 +180,15 @@ Partial Class StepE
 		Me.PreviousStep = "StepD"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Let's think through the Limits now."
-		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Controls.SetChildIndex(Me.Panel6, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Controls.SetChildIndex(Me.Label3, 0)
+		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Panel6.ResumeLayout(False)
 		Me.Panel6.PerformLayout()
-		Me.Panel2.ResumeLayout(False)
 		Me.Panel1.ResumeLayout(False)
+		Me.Panel2.ResumeLayout(False)
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -197,13 +197,13 @@ Partial Class StepE
     Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
     Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents Label7 As System.Windows.Forms.Label
 	Friend WithEvents Label3 As System.Windows.Forms.Label
+	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+	Friend WithEvents Panel1 As System.Windows.Forms.Panel
+	Friend WithEvents Label2 As System.Windows.Forms.Label
+	Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+	Friend WithEvents Panel2 As System.Windows.Forms.Panel
 
 End Class

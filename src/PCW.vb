@@ -538,7 +538,7 @@ Public Class PCW
 	'the user has not had one printed this year. Ticket value is MaxCoupon value."
 	Private Function Is_Type_34(ByVal step2 As StepB, ByVal step6 As StepG2) As Boolean
 		Dim it_is As Boolean = False
-		If step2.RadioButton4.Checked And step6.RadioButton2.Checked Then
+		If step2.rbRecurringYes.Checked And step6.RadioButton2.Checked Then
 			it_is = True
 		End If
 		Return it_is
@@ -548,13 +548,13 @@ Public Class PCW
 #Region "Uses StepB And StepD"
 	Private Function DeterminePromoName(ByVal stepB As StepB, ByVal stepD As StepD)
 		'Grab and trim the text that is already there
-		Dim promoName As String = stepB.TextBox1.Text.Trim
+		Dim promoName As String = stepB.txtPromoName.Text.Trim
 		'Grab an instance of the singleton queue
 		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
 
 		'Deploy some logic to see if anything needs to be appended
 		'This specifically handles "Multi-Part Single Instance"
-		If (stepD.RadioButton6.Checked And PCWq.Count = 0) Or
+		If (stepD.rbMultiPartEntryPayout.Checked And PCWq.Count = 0) Or
 			(stepD.RadioButton7.Checked And PCWq.Count = 0) Then
 			promoName = "Entries - " & promoName.ToString
 		Else
@@ -590,7 +590,7 @@ Public Class PCW
 		Dim frequency As Char = "W"
 
 		If Recurring(stepB) Then
-			Select Case stepB.ComboBox2.Text
+			Select Case stepB.cbRecurringFrequency.Text
 				Case "Daily"
 					frequency = "D"
 				Case "Weekly"
@@ -809,7 +809,7 @@ Public Class PCW
 	'Sometimes it's just easier to use Utility Functions
 	'Increases readability and decreases duplicate code (DRY)
 	Private Function Recurring(ByVal stepB As StepB)
-		Return stepB.RadioButton4.Checked
+		Return stepB.rbRecurringYes.Checked
 	End Function
 
 	Private Function General_Promo(ByVal stepD As StepD)

@@ -78,7 +78,7 @@ Partial Class StepG1
 		Me.Panel2.Controls.Add(Me.Label2)
 		Me.Panel2.Controls.Add(Me.Label1)
 		Me.Panel2.Controls.Add(Me.Label7)
-		Me.Panel2.Location = New System.Drawing.Point(151, 3)
+		Me.Panel2.Location = New System.Drawing.Point(263, 3)
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(292, 197)
 		Me.Panel2.TabIndex = 2
@@ -251,7 +251,7 @@ Partial Class StepG1
 		Me.Panel4.Controls.Add(Me.RadioButton13)
 		Me.Panel4.Controls.Add(Me.RadioButton12)
 		Me.Panel4.Controls.Add(Me.Label5)
-		Me.Panel4.Location = New System.Drawing.Point(151, 207)
+		Me.Panel4.Location = New System.Drawing.Point(263, 207)
 		Me.Panel4.Name = "Panel4"
 		Me.Panel4.Size = New System.Drawing.Size(143, 83)
 		Me.Panel4.TabIndex = 4
@@ -304,7 +304,7 @@ Partial Class StepG1
 		Me.Panel5.Controls.Add(Me.RadioButton15)
 		Me.Panel5.Controls.Add(Me.RadioButton14)
 		Me.Panel5.Controls.Add(Me.Label6)
-		Me.Panel5.Location = New System.Drawing.Point(300, 207)
+		Me.Panel5.Location = New System.Drawing.Point(412, 207)
 		Me.Panel5.Name = "Panel5"
 		Me.Panel5.Size = New System.Drawing.Size(143, 83)
 		Me.Panel5.TabIndex = 5
@@ -353,7 +353,7 @@ Partial Class StepG1
 		'
 		Me.Label8.AutoSize = True
 		Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label8.Location = New System.Drawing.Point(285, 173)
+		Me.Label8.Location = New System.Drawing.Point(397, 173)
 		Me.Label8.Name = "Label8"
 		Me.Label8.Size = New System.Drawing.Size(33, 13)
 		Me.Label8.TabIndex = 7
