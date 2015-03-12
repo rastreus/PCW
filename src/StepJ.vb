@@ -157,7 +157,7 @@ Public Class StepJ
 
 	Private Sub SubmitPromoIntoTable(ByVal newPromo As MarketingPromo)
 		'Insert the new promo into MarketingPromos table
-		Dim tbl As New MarketingPromosDataContext
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
 		tbl.MarketingPromos.InsertOnSubmit(newPromo)
 		Try
 			tbl.SubmitChanges()

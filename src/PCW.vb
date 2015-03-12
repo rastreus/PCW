@@ -122,7 +122,7 @@ Public Class PCW
 		newPromo.Frequency = DetermineFrequency(stepB)
 		newPromo.RecursOnWeekday = DetermineRecursOnWeekday(stepB, stepC)
 		newPromo.EarnsOnWeekday = DetermineEarnsOnWeekday(stepB, stepC)
-		newPromo.CountCurrentDay = DetermineCountCurrentDay(stepC)
+		'newPromo.CountCurrentDay = DetermineCountCurrentDay(stepC)
 		newPromo.PrintTickets = DeterminePrintTickets(stepF)
 		newPromo.Comments = DetermineComments(stepH)
 		'
@@ -193,9 +193,9 @@ Public Class PCW
 		ElseIf Is_Type_27(stepD, stepE, stepF, stepG1) Then
 			result = "27"
 			Return result
-		ElseIf Is_Type_28(stepC, stepD, stepE, stepF, stepG1) Then
-			result = "28"
-			Return result
+			'ElseIf Is_Type_28(stepC, stepD, stepE, stepF, stepG1) Then
+			'	result = "28"
+			'	Return result
 			'ElseIf Is_Type_29(stepB, stepG1) Then
 			'	result = "29"
 			'	Return result
@@ -413,23 +413,24 @@ Public Class PCW
 		Return it_is
 	End Function
 
-	'"Will do a count of the date field in the points table where handle is greater than or equal to cutoff
-	'and where the date is one of the days listed in the earns on field and return that as the number of tickets.
-	'Not compatible with Same-Day Points."
-	Private Function Is_Type_28(ByVal stepC As StepC, _
-								ByVal stepD As StepD, _
-								ByVal stepE As StepE, _
-								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
-			Same_Day_Points_Not_Compatible(stepC) And
-			 Count_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
-			  Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	'Commented out when changing StepC
+	''"Will do a count of the date field in the points table where handle is greater than or equal to cutoff
+	''and where the date is one of the days listed in the earns on field and return that as the number of tickets.
+	''Not compatible with Same-Day Points."
+	'Private Function Is_Type_28(ByVal stepC As StepC, _
+	'							ByVal stepD As StepD, _
+	'							ByVal stepE As StepE, _
+	'							ByVal stepF As StepF, _
+	'							ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		Same_Day_Points_Not_Compatible(stepC) And
+	'		 Count_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
+	'		  Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
 	''"Will prompt to select a prize from a dropdown box and then print one ticket for that prize for that day."
 	'Private Function Is_Type_29(ByVal stepD As StepD, _
@@ -677,9 +678,9 @@ Public Class PCW
 		Return earnsOnWeekday
 	End Function
 
-	Private Function DetermineCountCurrentDay(ByVal stepC As StepC)
-		Return stepC.RadioButton1.Checked
-	End Function
+	'Private Function DetermineCountCurrentDay(ByVal stepC As StepC)
+	'	Return stepC.RadioButton1.Checked
+	'End Function
 #End Region
 
 #Region "Uses StepE"
@@ -820,9 +821,10 @@ Public Class PCW
 		Return stepD.RadioButton3.Checked
 	End Function
 
-	Private Function Same_Day_Points_Not_Compatible(ByVal stepC As StepC)
-		Return stepC.RadioButton2.Checked
-	End Function
+	'Commented out when changing StepC
+	'Private Function Same_Day_Points_Not_Compatible(ByVal stepC As StepC)
+	'	Return stepC.RadioButton2.Checked
+	'End Function
 
 	Private Function Give_Regardless_Of_Points(ByVal stepE As StepE)
 		Return If(stepE.ComboBox1.Text = "Give reward regardless of points", True, False)

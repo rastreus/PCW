@@ -102,6 +102,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings.vb" />
     <Compile Include="src\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>

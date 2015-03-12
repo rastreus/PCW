@@ -55,17 +55,17 @@ Public Class StepC
 			End If
 		End If
 
-		'Checks to see if the primary day is invalid
-		If Recurring_Promo() Then
-			If Primary_Day_Invalid() Then
-				e.Cancel = True
-				Me.Panel1.BackColor = Color.MistyRose
-				CenteredMessagebox.MsgBox.Show("Primary Day is invalid.", "Error",
-											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Else
-				Me.Panel1.BackColor = SystemColors.Control
-			End If
-		End If
+		''Checks to see if the primary day is invalid
+		'If Recurring_Promo() Then
+		'	If Primary_Day_Invalid() Then
+		'		e.Cancel = True
+		'		Me.Panel1.BackColor = Color.MistyRose
+		'		CenteredMessagebox.MsgBox.Show("Primary Day is invalid.", "Error",
+		'									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+		'	Else
+		'		Me.Panel1.BackColor = SystemColors.Control
+		'	End If
+		'End If
 
 		'Only the Points Earned On valuse forgot to be set
 		If Not Nothing_Was_Set() And Empty_Points_Earned() Then
@@ -122,24 +122,25 @@ Public Class StepC
 			End If
 		End If
 
-		'Checks to see if attempting to earn points on the day of the promo when NO is selected
-		'If this occurs, we're going to show a dialog to ask directly what the user intended to do
-		'and then we will act accordingly from their direct response.
-		If No_Selected_For_SameDay_Points() And SameDays_Are_Selected() Then
-			e.Cancel = AskForSameDay()
-			If e.Cancel = True Then
-				Me.Panel1.BackColor = Color.MistyRose
-				Me.Panel2.BackColor = Color.MistyRose
-				Clear_Checklistboxes()
-			Else
-				Me.RadioButton2.Checked = False
-				Me.RadioButton1.Checked = True
-				If Not Empty_Occuring_Days() And Not Empty_Points_Earned() Then
-					Me.Panel1.BackColor = SystemColors.Control
-					Me.Panel2.BackColor = SystemColors.Control
-				End If
-			End If
-		End If
+		'Commented out when changing StepC
+		''Checks to see if attempting to earn points on the day of the promo when NO is selected
+		''If this occurs, we're going to show a dialog to ask directly what the user intended to do
+		''and then we will act accordingly from their direct response.
+		'If No_Selected_For_SameDay_Points() And SameDays_Are_Selected() Then
+		'	e.Cancel = AskForSameDay()
+		'	If e.Cancel = True Then
+		'		Me.Panel1.BackColor = Color.MistyRose
+		'		Me.Panel2.BackColor = Color.MistyRose
+		'		Clear_Checklistboxes()
+		'	Else
+		'		Me.RadioButton2.Checked = False
+		'		Me.RadioButton1.Checked = True
+		'		If Not Empty_Occuring_Days() And Not Empty_Points_Earned() Then
+		'			Me.Panel1.BackColor = SystemColors.Control
+		'			Me.Panel2.BackColor = SystemColors.Control
+		'		End If
+		'	End If
+		'End If
 	End Sub
 
 	'Check all the "Earned on Days"
@@ -183,22 +184,22 @@ Public Class StepC
 		Return invalid
 	End Function
 
-	Private Function Primary_Day_Invalid()
-		Dim invalid As Boolean = True
-		Dim count As Short = 0
+	'Private Function Primary_Day_Invalid()
+	'	Dim invalid As Boolean = True
+	'	Dim count As Short = 0
 
-		For Each itemChecked As Object In CheckedListBox1.CheckedItems
-			If itemChecked.ToString = Me.ComboBox1.Text Then
-				count += 1
-			End If
-		Next
+	'	For Each itemChecked As Object In CheckedListBox1.CheckedItems
+	'		If itemChecked.ToString = Me.ComboBox1.Text Then
+	'			count += 1
+	'		End If
+	'	Next
 
-		If count = 1 Then
-			invalid = False
-		End If
+	'	If count = 1 Then
+	'		invalid = False
+	'	End If
 
-		Return invalid
-	End Function
+	'	Return invalid
+	'End Function
 
 	'Checks the previous Step to see if this is a recurring promo.
 	Private Function Recurring_Promo()
@@ -273,9 +274,10 @@ Do you want points to be earned on the day of the promo?</a>.Value
 		Return invalid
 	End Function
 
-	Private Function No_Selected_For_SameDay_Points()
-		Return RadioButton2.Checked
-	End Function
+	'Commented out when changing StepC
+	'Private Function No_Selected_For_SameDay_Points()
+	'	Return RadioButton2.Checked
+	'End Function
 
 	Private Function EndDate_Before_BeginDate()
 		Dim invalid As Boolean = False

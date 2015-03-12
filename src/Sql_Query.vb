@@ -7,7 +7,7 @@ Public Class Sql_Query
     'that has the same name as the promotional which is attempting to be created.
 	Public Shared Function Existing_Promo(ByVal new_promoName As String) As Boolean
 		Dim returningBool As Boolean = False
-		Dim tbl As New MarketingPromosDataContext
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
 
 		Dim trimmed_new_promoName As String = new_promoName.Trim
 
@@ -32,7 +32,7 @@ Public Class Sql_Query
     'This is the function that is used by the PAE form to grab the existing promo.
     'This is only used by PAE, not PCW.
     Public Shared Function Return_Existing_Promo(ByVal existing_promoName As String)
-        Dim tbl As New MarketingPromosDataContext
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
         Dim existing_promo As New MarketingPromo
         Dim trimmed_existing_promoName As String = existing_promoName.Trim
 
@@ -49,7 +49,7 @@ Public Class Sql_Query
     'we will check to see if there is an existing coupon by checking its couponID.
     Public Shared Function Existing_Coupon(ByVal new_couponID As String)
         Dim returningBool As Boolean = False
-        Dim tbl As New MarketingPromosDataContext
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
 
         Dim trimmed_new_couponID As String = new_couponID.Trim
 

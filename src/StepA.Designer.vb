@@ -120,6 +120,7 @@ Partial Class StepA
 		'
 		'Button2
 		'
+		Me.Button2.Enabled = False
 		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.Button2.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Button2.ForeColor = System.Drawing.Color.LavenderBlush
@@ -127,7 +128,7 @@ Partial Class StepA
 		Me.Button2.Name = "Button2"
 		Me.Button2.Size = New System.Drawing.Size(387, 35)
 		Me.Button2.TabIndex = 8
-		Me.Button2.Text = "Click Here to Edit an Existing Promo!"
+		Me.Button2.Text = "Click Here to Edit an Existing Promo! (Disabled WIP)"
 		Me.Button2.UseVisualStyleBackColor = True
 		'
 		'Panel1

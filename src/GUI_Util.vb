@@ -1,0 +1,48 @@
+﻿Imports CenteredMessagebox
+
+''' <summary>
+''' Global GUI class which handles common, utility tasks.
+''' </summary>
+''' <remarks>Delegation typically is not ideal; however, something needed to be done quickly.</remarks>
+Public Class GUI_Util
+#Region "Utility Subroutines"
+	''' <summary>
+	''' Changes "BackColor" of Panel to represent an error.
+	''' </summary>
+	''' <param name="pnl">The panel whose BackColor will be changed.</param>
+	''' <remarks>More delegation to clean code.</remarks>
+	Public Shared Sub errPnl(ByRef pnl As System.Windows.Forms.Panel)
+		pnl.BackColor = Color.Crimson
+	End Sub
+
+	''' <summary>
+	''' Changes "BackColor" of Panel back to regular color.
+	''' </summary>
+	''' <param name="pnl">The panel whose BackColor will be changed.</param>
+	''' <remarks>More delegation to clean code.</remarks>
+	Public Shared Sub regPnl(ByRef pnl As System.Windows.Forms.Panel)
+		pnl.BackColor = SystemColors.ControlDarkDark
+	End Sub
+
+	''' <summary>
+	''' Delegates CenteredMessagebox creation.
+	''' </summary>
+	''' <param name="str">The text to be shown in the msgBox.</param>
+	''' <remarks>Possibly unnecessary delegation; however, removes "Imports."</remarks>
+	Public Shared Sub msgBox(ByRef str As String)
+		CenteredMessagebox.MsgBox.Show(str, "Error",
+									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+	End Sub
+
+	''' <summary>
+	''' Delegates CenteredMessagebox creation (Overloaded).
+	''' </summary>
+	''' <param name="str">The text to be shown in the msgBox.</param>
+	''' <param name="title">The text to be shown as the title of the msgBox.</param>
+	''' <remarks>Overloaded to increase usefulness.</remarks>
+	Public Shared Sub msgBox(ByRef str As String, ByRef title As String)
+		CenteredMessagebox.MsgBox.Show(str, title,
+									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+	End Sub
+#End Region
+End Class

@@ -340,7 +340,7 @@ from the EligiblePlayers table.</a>
 #Region "StepG1_InfoCircle"
 	'This really needs to become a method in a subclass of TSWizards.BaseInteriorStep.
 	'That way there it is not copied into every single Step.
-	Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
+	Private Sub IconButton1_Click(sender As Object, e As EventArgs)
 		Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value

@@ -34,6 +34,12 @@ Partial Class StepD
 		Me.txtNumOfDaysTiers = New System.Windows.Forms.TextBox()
 		Me.Panel4 = New System.Windows.Forms.Panel()
 		Me.Panel5 = New System.Windows.Forms.Panel()
+		Me.Panel6 = New System.Windows.Forms.Panel()
+		Me.rbEligiblePlayersOfferList = New System.Windows.Forms.RadioButton()
+		Me.rbSumQualifyingPoints = New System.Windows.Forms.RadioButton()
+		Me.rbSumLifetimePoints = New System.Windows.Forms.RadioButton()
+		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
+		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.TextBox8 = New System.Windows.Forms.TextBox()
 		Me.RadioButton17 = New System.Windows.Forms.RadioButton()
@@ -42,26 +48,20 @@ Partial Class StepD
 		Me.pnlDragOffer = New System.Windows.Forms.Panel()
 		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.lblDragOffer = New System.Windows.Forms.Label()
-		Me.rbEligiblePlayersOfferList = New System.Windows.Forms.RadioButton()
-		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
-		Me.rbSumLifetimePoints = New System.Windows.Forms.RadioButton()
-		Me.rbSumQualifyingPoints = New System.Windows.Forms.RadioButton()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.Panel6 = New System.Windows.Forms.Panel()
-		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.Panel2.SuspendLayout()
 		Me.Panel3.SuspendLayout()
 		Me.Panel5.SuspendLayout()
+		Me.Panel6.SuspendLayout()
 		Me.pnlPointCutoffLimit.SuspendLayout()
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.Panel6.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "Of the four available types, which will this promo be?"
+		Me.Description.Text = "Of the five available types, which will this promo be?"
 		'
 		'Panel2
 		'
@@ -200,6 +200,72 @@ Partial Class StepD
 		Me.Panel5.Size = New System.Drawing.Size(265, 238)
 		Me.Panel5.TabIndex = 4
 		'
+		'Panel6
+		'
+		Me.Panel6.BackColor = System.Drawing.Color.Moccasin
+		Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel6.Controls.Add(Me.rbEligiblePlayersOfferList)
+		Me.Panel6.Controls.Add(Me.rbSumQualifyingPoints)
+		Me.Panel6.Controls.Add(Me.rbSumLifetimePoints)
+		Me.Panel6.Controls.Add(Me.rbAutoQualification)
+		Me.Panel6.Controls.Add(Me.Panel7)
+		Me.Panel6.Location = New System.Drawing.Point(3, 22)
+		Me.Panel6.Name = "Panel6"
+		Me.Panel6.Size = New System.Drawing.Size(255, 120)
+		Me.Panel6.TabIndex = 10
+		'
+		'rbEligiblePlayersOfferList
+		'
+		Me.rbEligiblePlayersOfferList.AutoSize = True
+		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
+		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
+		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
+		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(248, 17)
+		Me.rbEligiblePlayersOfferList.TabIndex = 8
+		Me.rbEligiblePlayersOfferList.Text = "EligiblePlayers offer list Determines Qualification"
+		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
+		'
+		'rbSumQualifyingPoints
+		'
+		Me.rbSumQualifyingPoints.AutoSize = True
+		Me.rbSumQualifyingPoints.Checked = True
+		Me.rbSumQualifyingPoints.Location = New System.Drawing.Point(3, 9)
+		Me.rbSumQualifyingPoints.Name = "rbSumQualifyingPoints"
+		Me.rbSumQualifyingPoints.Size = New System.Drawing.Size(193, 17)
+		Me.rbSumQualifyingPoints.TabIndex = 5
+		Me.rbSumQualifyingPoints.TabStop = True
+		Me.rbSumQualifyingPoints.Text = "Sum Points Within Qualifying Peroid"
+		Me.rbSumQualifyingPoints.UseVisualStyleBackColor = True
+		'
+		'rbSumLifetimePoints
+		'
+		Me.rbSumLifetimePoints.AutoSize = True
+		Me.rbSumLifetimePoints.Location = New System.Drawing.Point(3, 32)
+		Me.rbSumLifetimePoints.Name = "rbSumLifetimePoints"
+		Me.rbSumLifetimePoints.Size = New System.Drawing.Size(117, 17)
+		Me.rbSumLifetimePoints.TabIndex = 6
+		Me.rbSumLifetimePoints.Text = "Sum Lifetime Points"
+		Me.rbSumLifetimePoints.UseVisualStyleBackColor = True
+		'
+		'rbAutoQualification
+		'
+		Me.rbAutoQualification.AutoSize = True
+		Me.rbAutoQualification.Location = New System.Drawing.Point(3, 55)
+		Me.rbAutoQualification.Name = "rbAutoQualification"
+		Me.rbAutoQualification.Size = New System.Drawing.Size(233, 17)
+		Me.rbAutoQualification.TabIndex = 7
+		Me.rbAutoQualification.Text = "Automatic Qualification Regardless of Points"
+		Me.rbAutoQualification.UseVisualStyleBackColor = True
+		'
+		'Panel7
+		'
+		Me.Panel7.BackColor = System.Drawing.Color.LemonChiffon
+		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel7.Location = New System.Drawing.Point(-2, 83)
+		Me.Panel7.Name = "Panel7"
+		Me.Panel7.Size = New System.Drawing.Size(255, 35)
+		Me.Panel7.TabIndex = 11
+		'
 		'pnlPointCutoffLimit
 		'
 		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.Moccasin
@@ -291,49 +357,6 @@ Partial Class StepD
 		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'rbEligiblePlayersOfferList
-		'
-		Me.rbEligiblePlayersOfferList.AutoSize = True
-		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
-		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
-		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
-		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(248, 17)
-		Me.rbEligiblePlayersOfferList.TabIndex = 8
-		Me.rbEligiblePlayersOfferList.Text = "EligiblePlayers offer list Determines Qualification"
-		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
-		'
-		'rbAutoQualification
-		'
-		Me.rbAutoQualification.AutoSize = True
-		Me.rbAutoQualification.Location = New System.Drawing.Point(3, 55)
-		Me.rbAutoQualification.Name = "rbAutoQualification"
-		Me.rbAutoQualification.Size = New System.Drawing.Size(233, 17)
-		Me.rbAutoQualification.TabIndex = 7
-		Me.rbAutoQualification.Text = "Automatic Qualification Regardless of Points"
-		Me.rbAutoQualification.UseVisualStyleBackColor = True
-		'
-		'rbSumLifetimePoints
-		'
-		Me.rbSumLifetimePoints.AutoSize = True
-		Me.rbSumLifetimePoints.Location = New System.Drawing.Point(3, 32)
-		Me.rbSumLifetimePoints.Name = "rbSumLifetimePoints"
-		Me.rbSumLifetimePoints.Size = New System.Drawing.Size(117, 17)
-		Me.rbSumLifetimePoints.TabIndex = 6
-		Me.rbSumLifetimePoints.Text = "Sum Lifetime Points"
-		Me.rbSumLifetimePoints.UseVisualStyleBackColor = True
-		'
-		'rbSumQualifyingPoints
-		'
-		Me.rbSumQualifyingPoints.AutoSize = True
-		Me.rbSumQualifyingPoints.Checked = True
-		Me.rbSumQualifyingPoints.Location = New System.Drawing.Point(3, 9)
-		Me.rbSumQualifyingPoints.Name = "rbSumQualifyingPoints"
-		Me.rbSumQualifyingPoints.Size = New System.Drawing.Size(193, 17)
-		Me.rbSumQualifyingPoints.TabIndex = 5
-		Me.rbSumQualifyingPoints.TabStop = True
-		Me.rbSumQualifyingPoints.Text = "Sum Points Within Qualifying Peroid"
-		Me.rbSumQualifyingPoints.UseVisualStyleBackColor = True
-		'
 		'Label1
 		'
 		Me.Label1.AutoSize = True
@@ -345,29 +368,6 @@ Partial Class StepD
 		Me.Label1.TabIndex = 4
 		Me.Label1.Text = "How is player eligibility determined?"
 		'
-		'Panel6
-		'
-		Me.Panel6.BackColor = System.Drawing.Color.Moccasin
-		Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel6.Controls.Add(Me.rbEligiblePlayersOfferList)
-		Me.Panel6.Controls.Add(Me.rbSumQualifyingPoints)
-		Me.Panel6.Controls.Add(Me.rbSumLifetimePoints)
-		Me.Panel6.Controls.Add(Me.rbAutoQualification)
-		Me.Panel6.Controls.Add(Me.Panel7)
-		Me.Panel6.Location = New System.Drawing.Point(3, 22)
-		Me.Panel6.Name = "Panel6"
-		Me.Panel6.Size = New System.Drawing.Size(255, 120)
-		Me.Panel6.TabIndex = 10
-		'
-		'Panel7
-		'
-		Me.Panel7.BackColor = System.Drawing.Color.LemonChiffon
-		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel7.Location = New System.Drawing.Point(-2, 83)
-		Me.Panel7.Name = "Panel7"
-		Me.Panel7.Size = New System.Drawing.Size(255, 35)
-		Me.Panel7.TabIndex = 11
-		'
 		'StepD
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -378,7 +378,7 @@ Partial Class StepD
 		Me.NextStep = "StepE"
 		Me.PreviousStep = "StepC"
 		Me.Size = New System.Drawing.Size(594, 293)
-		Me.StepDescription = "Of the four available types, which will this promo be?"
+		Me.StepDescription = "Of the five available types, which will this promo be?"
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Controls.SetChildIndex(Me.Panel5, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
@@ -388,12 +388,12 @@ Partial Class StepD
 		Me.Panel3.PerformLayout()
 		Me.Panel5.ResumeLayout(False)
 		Me.Panel5.PerformLayout()
+		Me.Panel6.ResumeLayout(False)
+		Me.Panel6.PerformLayout()
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
 		Me.pnlDragOffer.ResumeLayout(False)
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		Me.Panel6.ResumeLayout(False)
-		Me.Panel6.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
