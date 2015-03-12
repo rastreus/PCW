@@ -24,10 +24,10 @@ Partial Class StepX
 	Private Sub InitializeComponent()
 		Me.Label5 = New System.Windows.Forms.Label()
 		Me.Label6 = New System.Windows.Forms.Label()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
-		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+		Me.stepX_InfoCircle = New FontAwesomeIcons.IconButton()
+		Me.cbPCWRerun = New System.Windows.Forms.CheckBox()
 		Me.Panel1 = New System.Windows.Forms.Panel()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+		CType(Me.stepX_InfoCircle, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
 		'
@@ -56,37 +56,37 @@ Partial Class StepX
 		Me.Label6.Size = New System.Drawing.Size(0, 13)
 		Me.Label6.TabIndex = 6
 		'
-		'IconButton1
+		'stepX_InfoCircle
 		'
-		Me.IconButton1.ActiveColor = System.Drawing.Color.CornflowerBlue
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(3, 337)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 7
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
+		Me.stepX_InfoCircle.ActiveColor = System.Drawing.Color.Gold
+		Me.stepX_InfoCircle.BackColor = System.Drawing.Color.Transparent
+		Me.stepX_InfoCircle.IconType = FontAwesomeIcons.IconType.InfoCircle
+		Me.stepX_InfoCircle.InActiveColor = System.Drawing.Color.LightGray
+		Me.stepX_InfoCircle.Location = New System.Drawing.Point(3, 337)
+		Me.stepX_InfoCircle.Name = "stepX_InfoCircle"
+		Me.stepX_InfoCircle.Size = New System.Drawing.Size(24, 24)
+		Me.stepX_InfoCircle.TabIndex = 7
+		Me.stepX_InfoCircle.TabStop = False
+		Me.stepX_InfoCircle.ToolTipText = Nothing
 		'
-		'CheckBox1
+		'cbPCWRerun
 		'
-		Me.CheckBox1.AutoSize = True
-		Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.CheckBox1.ForeColor = System.Drawing.Color.White
-		Me.CheckBox1.Location = New System.Drawing.Point(5, 5)
-		Me.CheckBox1.Name = "CheckBox1"
-		Me.CheckBox1.Size = New System.Drawing.Size(193, 20)
-		Me.CheckBox1.TabIndex = 8
-		Me.CheckBox1.Text = "Check to run PCW again"
-		Me.CheckBox1.UseVisualStyleBackColor = True
+		Me.cbPCWRerun.AutoSize = True
+		Me.cbPCWRerun.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbPCWRerun.ForeColor = System.Drawing.Color.White
+		Me.cbPCWRerun.Location = New System.Drawing.Point(5, 5)
+		Me.cbPCWRerun.Name = "cbPCWRerun"
+		Me.cbPCWRerun.Size = New System.Drawing.Size(193, 20)
+		Me.cbPCWRerun.TabIndex = 8
+		Me.cbPCWRerun.Text = "Check to run PCW again"
+		Me.cbPCWRerun.UseVisualStyleBackColor = True
 		'
 		'Panel1
 		'
 		Me.Panel1.BackColor = System.Drawing.Color.MediumPurple
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel1.Controls.Add(Me.CheckBox1)
-		Me.Panel1.Location = New System.Drawing.Point(103, 268)
+		Me.Panel1.Controls.Add(Me.cbPCWRerun)
+		Me.Panel1.Location = New System.Drawing.Point(103, 212)
 		Me.Panel1.Name = "Panel1"
 		Me.Panel1.Size = New System.Drawing.Size(204, 35)
 		Me.Panel1.TabIndex = 9
@@ -96,7 +96,7 @@ Partial Class StepX
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.Panel1)
-		Me.Controls.Add(Me.IconButton1)
+		Me.Controls.Add(Me.stepX_InfoCircle)
 		Me.Controls.Add(Me.Label6)
 		Me.Controls.Add(Me.Label5)
 		Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -110,9 +110,9 @@ Partial Class StepX
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Label5, 0)
 		Me.Controls.SetChildIndex(Me.Label6, 0)
-		Me.Controls.SetChildIndex(Me.IconButton1, 0)
+		Me.Controls.SetChildIndex(Me.stepX_InfoCircle, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.stepX_InfoCircle, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel1.PerformLayout()
 		Me.ResumeLayout(False)
@@ -121,8 +121,8 @@ Partial Class StepX
 	End Sub
 	Friend WithEvents Label5 As System.Windows.Forms.Label
 	Friend WithEvents Label6 As System.Windows.Forms.Label
-	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
-	Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+	Friend WithEvents stepX_InfoCircle As FontAwesomeIcons.IconButton
+	Friend WithEvents cbPCWRerun As System.Windows.Forms.CheckBox
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class

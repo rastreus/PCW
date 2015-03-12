@@ -22,12 +22,10 @@ Partial Class StepJ
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
 		Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Label3 = New System.Windows.Forms.Label()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -35,20 +33,6 @@ Partial Class StepJ
 		Me.Description.Size = New System.Drawing.Size(578, 72)
 		Me.Description.Text = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
 		Me.Description.UseWaitCursor = True
-		'
-		'IconButton1
-		'
-		Me.IconButton1.ActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(3, 269)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 1
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
-		Me.IconButton1.UseWaitCursor = True
 		'
 		'ProgressBar1
 		'
@@ -99,7 +83,6 @@ Partial Class StepJ
 		Me.Controls.Add(Me.Label2)
 		Me.Controls.Add(Me.Label1)
 		Me.Controls.Add(Me.ProgressBar1)
-		Me.Controls.Add(Me.IconButton1)
 		Me.Name = "StepJ"
 		Me.NextStep = "StepX"
 		Me.PreviousStep = "StepI"
@@ -107,17 +90,14 @@ Partial Class StepJ
 		Me.StepDescription = "Finally, the moment that you have been waiting for is here! It's a progress bar!"
 		Me.UseWaitCursor = True
 		Me.Controls.SetChildIndex(Me.Description, 0)
-		Me.Controls.SetChildIndex(Me.IconButton1, 0)
 		Me.Controls.SetChildIndex(Me.ProgressBar1, 0)
 		Me.Controls.SetChildIndex(Me.Label1, 0)
 		Me.Controls.SetChildIndex(Me.Label2, 0)
 		Me.Controls.SetChildIndex(Me.Label3, 0)
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
 	End Sub
-	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
 	Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
 	Friend WithEvents Label1 As System.Windows.Forms.Label
 	Friend WithEvents Label2 As System.Windows.Forms.Label

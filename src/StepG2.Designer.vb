@@ -32,7 +32,6 @@ Partial Class StepG2
 		Me.Panel3 = New System.Windows.Forms.Panel()
 		Me.TextBox3 = New System.Windows.Forms.TextBox()
 		Me.Label3 = New System.Windows.Forms.Label()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
 		Me.Panel4 = New System.Windows.Forms.Panel()
 		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
 		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
@@ -41,7 +40,6 @@ Partial Class StepG2
 		Me.Panel1.SuspendLayout()
 		Me.Panel2.SuspendLayout()
 		Me.Panel3.SuspendLayout()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel4.SuspendLayout()
 		Me.SuspendLayout()
 		'
@@ -144,19 +142,6 @@ Partial Class StepG2
 		Me.Label3.TabIndex = 2
 		Me.Label3.Text = "What is the max. value of coupons across all patrons?"
 		'
-		'IconButton1
-		'
-		Me.IconButton1.ActiveColor = System.Drawing.Color.CornflowerBlue
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(3, 269)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 4
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
-		'
 		'Panel4
 		'
 		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -209,16 +194,15 @@ Partial Class StepG2
 		Me.Label5.TabIndex = 1
 		Me.Label5.Text = "Will value be prompted?"
 		'
-		'Step6
+		'StepG2
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.Panel4)
-		Me.Controls.Add(Me.IconButton1)
 		Me.Controls.Add(Me.Panel3)
 		Me.Controls.Add(Me.Panel2)
 		Me.Controls.Add(Me.Panel1)
-		Me.Name = "Step6"
+		Me.Name = "StepG2"
 		Me.NextStep = "StepH"
 		Me.PreviousStep = "StepF"
 		Me.Size = New System.Drawing.Size(594, 293)
@@ -227,7 +211,6 @@ Partial Class StepG2
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Controls.SetChildIndex(Me.Panel3, 0)
-		Me.Controls.SetChildIndex(Me.IconButton1, 0)
 		Me.Controls.SetChildIndex(Me.Panel4, 0)
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel1.PerformLayout()
@@ -235,7 +218,6 @@ Partial Class StepG2
 		Me.Panel2.PerformLayout()
 		Me.Panel3.ResumeLayout(False)
 		Me.Panel3.PerformLayout()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel4.ResumeLayout(False)
 		Me.Panel4.PerformLayout()
 		Me.ResumeLayout(False)
@@ -251,7 +233,6 @@ Partial Class StepG2
 	Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
 	Friend WithEvents Label3 As System.Windows.Forms.Label
 	Friend WithEvents Label4 As System.Windows.Forms.Label
-	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
 	Friend WithEvents Panel4 As System.Windows.Forms.Panel
 	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
 	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton

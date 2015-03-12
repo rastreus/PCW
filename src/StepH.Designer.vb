@@ -32,12 +32,10 @@ Partial Class StepH
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-		Me.IconButton2 = New FontAwesomeIcons.IconButton()
 		Me.Panel1.SuspendLayout()
 		Me.Panel2.SuspendLayout()
 		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel3.SuspendLayout()
-		CType(Me.IconButton2, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -153,24 +151,10 @@ Partial Class StepH
 		Me.RichTextBox1.TabIndex = 0
 		Me.RichTextBox1.Text = "Insert Comment of 140 characters or less into this TextBox."
 		'
-		'IconButton2
-		'
-		Me.IconButton2.ActiveColor = System.Drawing.Color.CornflowerBlue
-		Me.IconButton2.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton2.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton2.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton2.Location = New System.Drawing.Point(3, 269)
-		Me.IconButton2.Name = "IconButton2"
-		Me.IconButton2.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton2.TabIndex = 3
-		Me.IconButton2.TabStop = False
-		Me.IconButton2.ToolTipText = Nothing
-		'
 		'StepH
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.IconButton2)
 		Me.Controls.Add(Me.Panel2)
 		Me.Controls.Add(Me.Panel1)
 		Me.Name = "StepH"
@@ -181,14 +165,12 @@ Partial Class StepH
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
-		Me.Controls.SetChildIndex(Me.IconButton2, 0)
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel1.PerformLayout()
 		Me.Panel2.ResumeLayout(False)
 		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel3.ResumeLayout(False)
 		Me.Panel3.PerformLayout()
-		CType(Me.IconButton2, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -202,6 +184,5 @@ Partial Class StepH
 	Friend WithEvents Label2 As System.Windows.Forms.Label
 	Friend WithEvents Panel3 As System.Windows.Forms.Panel
 	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
-	Friend WithEvents IconButton2 As FontAwesomeIcons.IconButton
 
 End Class

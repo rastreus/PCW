@@ -44,5 +44,21 @@ Public Class GUI_Util
 		CenteredMessagebox.MsgBox.Show(str, title,
 									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 	End Sub
+
+	''' <summary>
+	''' Delegates CenteredMessagebox creation (Overloaded).
+	''' </summary>
+	''' <param name="str">The text to be shown in the msgBox.</param>
+	''' <param name="title">The text to be shown as the title of the msgBox.</param>
+	''' <param name="info">"Information" must be the value.</param>
+	''' <remarks></remarks>
+	Public Shared Sub msgBox(ByRef str As String, ByRef title As String, ByRef info As String)
+		If info = "Information" Then
+			CenteredMessagebox.MsgBox.Show(str, title,
+									   MessageBoxButtons.OK, MessageBoxIcon.Information)
+		Else
+			msgBox(str, title)
+		End If
+	End Sub
 #End Region
 End Class

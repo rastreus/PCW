@@ -56,7 +56,7 @@ Public Class StepH
 	End Sub
 
 #Region "StepH_IconButton"
-	Private Sub IconButton2_Click(sender As Object, e As EventArgs) Handles IconButton2.Click
+	Private Sub IconButton2_Click(sender As Object, e As EventArgs)
 		Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value

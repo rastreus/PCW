@@ -1,7 +1,7 @@
 ﻿Imports TSWizards
 
 ''' <summary>
-''' Second Step of the PCW which handles PromoName, Recurring and RecurringFrequency.
+''' Second Step; handles PromoName, Recurring and RecurringFrequency.
 ''' </summary>
 ''' <remarks>Ideally each Class should have a single purpose, but this is decent.</remarks>
 Public Class StepB

@@ -109,6 +109,7 @@
     <Compile Include="src\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="src\GUI_Util.vb" />
     <Compile Include="src\Lingering_ToolTip.vb">
       <SubType>Component</SubType>
     </Compile>
