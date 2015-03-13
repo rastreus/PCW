@@ -1,43 +1,104 @@
 ﻿Imports TSWizards
 
+''' <summary>
+''' Third Step; handles all the date information
+''' </summary>
+''' <remarks></remarks>
 Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
 
-	Private Sub StepC_ShowStep(sender As Object, e As ShowStepEventArgs) Handles MyBase.ShowStep
-		'If it is not recurring, then we need to get the occuring promo date.
-		'Otherwise, the promo date will be entered as NULL.
-		If Not Recurring_Promo() Then
-			'Bottom Panel becomes visible
-			Me.Panel7.Visible = True
-			Me.Label6.Visible = True
-			Me.DateTimePicker3.Enabled = True
-			'Middle Panel not needed
-			Me.Panel1.Visible = False
-		Else
-			'Middile Panel becomes visible
-			Me.Panel1.Visible = True
-			'Bottom Panel not needed
-			Me.DateTimePicker3.Enabled = False
-			Me.Label6.Visible = False
-			Me.Panel7.Visible = False
+#Region "StepC_ShowStep"
+	''' <summary>
+	''' Shows the Step controls.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>This Step can look slightly different depending on Occuring/Recurring</remarks>
+	Private Sub StepC_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		If Recurring_Promo() Then
+			Me.pnlRecurringQualifyingPeriod.Enabled = True
+			Me.pnlRecurringQualifyingPeriod.Visible = True
+			Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
+			Me.pnlOccursDate.Enabled = False
+			Me.pnlOccursDate.Visible = False
+			Me.pnlOccuringQualifyingPeriod.Enabled = False
+			Me.pnlOccuringQualifyingPeriod.Visible = False
+		Else 'Occuring Promo
+			Me.pnlOccursDate.Enabled = True
+			Me.pnlOccursDate.Visible = True
+			Me.pnlOccuringQualifyingPeriod.Enabled = True
+			Me.pnlOccuringQualifyingPeriod.Visible = True
+			Me.lblRedemptionDays.Text = "On which day(s) is redemption allowed?"
+			Me.pnlRecurringQualifyingPeriod.Enabled = False
+			Me.pnlRecurringQualifyingPeriod.Visible = False
 		End If
 
-		All_Or_Nothing_Checked()
+		SelectAll()
 
 	End Sub
 
-	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
+	''' <summary>
+	''' Asks StepB's data if this is a Recurring promo.
+	''' </summary>
+	''' <returns></returns>
+	''' <remarks>At least it isn't asking the control directly.</remarks>
+	Private Function Recurring_Promo() As Boolean
+		Dim stepB As StepB = PCW.GetStep("StepB")
+		Return stepB.Data.Recurring
+	End Function
+#End Region
+#Region "StepC_ResetStep"
+	''' <summary>
+	''' Resets the controls (View) for the Step to be used again.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>A lot of controls to get correct.</remarks>
+	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
+		Handles MyBase.ResetStep
+		Me.dtpOccursDate.Value = Date.Today
+		Me.dtpQualifyingStart.Value = Date.Today
+		Me.dtpQualifyingEnd.Value = Date.Today
+		Me.lblPromoIs.Text = "Promo is: "
+		Me.cbSameDayPromo.Checked = False
+		Me.MonthCal.SelectionStart = Date.Today
+		Me.MonthCal.SelectionEnd = Date.Today
+		Me.MonthCal.TodayDate = Date.Today
+		Me.lblQualifyingStart.Text = "Start Date"
+		Me.lblQualifyingEnd.Text = "End Date"
+	End Sub
+#End Region
+#Region "StepC_SelectAll"
+	''' <summary>
+	''' Checks all the Items in clbPointsEarningDays.
+	''' </summary>
+	''' <remarks></remarks>
+	Private Sub SelectAll()
+		For item As Integer = 0 To Me.clbPointsEarningDays.Items.Count - 1
+			Me.clbPointsEarningDays.SetItemChecked(item, Me.cbSelectAll.Checked)
+		Next
+	End Sub
+
+	Private Sub cbSelectAll_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles cbSelectAll.CheckedChanged
+		SelectAll()
+	End Sub
+#End Region
+
+	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
 		'Checks if the user pressed Next> before setting any values
 		If Nothing_Was_Set() Then
 			e.Cancel = True
-			Me.Panel1.BackColor = Color.MistyRose
+			Me.pnlRedemptionDays.BackColor = Color.MistyRose
 			Me.Panel2.BackColor = Color.MistyRose
 			Me.Panel3.BackColor = Color.MistyRose
 			Me.Panel4.BackColor = Color.MistyRose
 			CenteredMessagebox.MsgBox.Show("Please set the date values", "Error",
 										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 		Else
-			Me.Panel1.BackColor = SystemColors.Control
+			Me.pnlRedemptionDays.BackColor = SystemColors.Control
 			Me.Panel2.BackColor = SystemColors.Control
 			Me.Panel3.BackColor = SystemColors.Control
 			Me.Panel4.BackColor = SystemColors.Control
@@ -49,9 +110,9 @@ Public Class StepC
 				e.Cancel = True
 				CenteredMessagebox.MsgBox.Show("Please set the occuring day values.", "Error",
 											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-				Me.Panel1.BackColor = Color.MistyRose
+				Me.pnlRedemptionDays.BackColor = Color.MistyRose
 			Else
-				Me.Panel1.BackColor = SystemColors.Control
+				Me.pnlRedemptionDays.BackColor = SystemColors.Control
 			End If
 		End If
 
@@ -99,9 +160,9 @@ Public Class StepC
 		If EndDate_Before_BeginDate() Then
 			e.Cancel = True
 			Me.Panel3.BackColor = Color.MistyRose
-			Me.DateTimePicker1.Value = DateTime.Today
+			Me.dtpQualifyingStart.Value = DateTime.Today
 			Me.Panel4.BackColor = Color.MistyRose
-			Me.DateTimePicker2.Value = DateTime.Today
+			Me.dtpQualifyingEnd.Value = DateTime.Today
 		Else
 			If Not Promo_Start_Not_Set() And Not Promo_End_Not_Set() Then
 				Me.Panel3.BackColor = SystemColors.Control
@@ -114,7 +175,7 @@ Public Class StepC
 			Me.Panel7.BackColor = Color.MistyRose
 			Me.DateTimePicker3.Value = DateTime.Today
 			Me.Panel4.BackColor = Color.MistyRose
-			Me.DateTimePicker2.Value = DateTime.Today
+			Me.dtpQualifyingEnd.Value = DateTime.Today
 		Else
 			If Not Promo_Start_Not_Set() And Not Promo_End_Not_Set() Then
 				Me.Panel7.BackColor = SystemColors.Control
@@ -143,13 +204,6 @@ Public Class StepC
 		'End If
 	End Sub
 
-	'Check all the "Earned on Days"
-	Private Sub All_Or_Nothing_Checked()
-		For i As Integer = 0 To Me.CheckedListBox2.Items.Count - 1
-			Me.CheckedListBox2.SetItemChecked(i, Me.CheckBox1.Checked)
-		Next
-	End Sub
-
 	Private Function Nothing_Was_Set()
 		Dim invalid As Boolean = False
 
@@ -162,7 +216,7 @@ Public Class StepC
 
 	Private Function Promo_Start_Not_Set()
 		Dim invalid As Boolean = False
-		If Me.DateTimePicker1.Value.Date = DateTime.Today Then
+		If Me.dtpQualifyingStart.Value.Date = DateTime.Today Then
 			invalid = True
 		End If
 		Return invalid
@@ -170,7 +224,7 @@ Public Class StepC
 
 	Private Function Promo_End_Not_Set()
 		Dim invalid As Boolean = False
-		If Me.DateTimePicker2.Value.Date = DateTime.Today Then
+		If Me.dtpQualifyingEnd.Value.Date = DateTime.Today Then
 			invalid = True
 		End If
 		Return invalid
@@ -202,18 +256,10 @@ Public Class StepC
 	'End Function
 
 	'Checks the previous Step to see if this is a recurring promo.
-	Private Function Recurring_Promo()
-		Dim recurring As Boolean = False
-		Dim stepB As StepB = PCW.GetStep("StepB")
-		If stepB.rbRecurringYes.Checked Then
-			recurring = True
-		End If
-		Return recurring
-	End Function
 
 	Private Function Empty_Points_Earned()
 		Dim empty As Boolean = False
-		If (Me.CheckedListBox2.CheckedIndices.Count = 0) Then
+		If (Me.clbPointsEarningDays.CheckedIndices.Count = 0) Then
 			empty = True
 		End If
 		Return empty
@@ -227,53 +273,6 @@ Public Class StepC
 		Return empty
 	End Function
 
-	Private Function AskForSameDay()
-		Dim samedayMsgString As String = <a>It is currently selected to not allow SameDay points.
-Do you want points to be earned on the day of the promo?</a>.Value
-
-		Dim result As Integer = CenteredMessagebox.MsgBox.Show(samedayMsgString, "SameDay Points?",
-															   MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-		If result = DialogResult.Yes Then
-			Return False
-		Else
-			Return True
-		End If
-	End Function
-
-	Private Sub Clear_PromoDays()
-		For Each indexChecked As Integer In Me.CheckedListBox1.CheckedIndices
-			If Me.CheckedListBox1.GetItemChecked(indexChecked) = True Then
-				Me.CheckedListBox1.SetItemChecked(indexChecked, False)
-			End If
-		Next
-	End Sub
-
-	Private Sub Clear_PointsDays()
-		For Each indexChecked As Integer In Me.CheckedListBox2.CheckedIndices
-			If Me.CheckedListBox2.GetItemChecked(indexChecked) = True Then
-				Me.CheckedListBox2.SetItemChecked(indexChecked, False)
-			End If
-		Next
-	End Sub
-
-	Private Sub Clear_Checklistboxes()
-		Clear_PromoDays()
-		Clear_PointsDays()
-	End Sub
-
-	Private Function SameDays_Are_Selected()
-		Dim invalid As Boolean = False
-
-		For Each indexChecked As Integer In Me.CheckedListBox1.CheckedIndices
-			If Me.CheckedListBox1.GetItemCheckState(indexChecked) = Me.CheckedListBox2.GetItemCheckState(indexChecked) Then
-				invalid = True
-			End If
-		Next
-
-		Return invalid
-	End Function
-
 	'Commented out when changing StepC
 	'Private Function No_Selected_For_SameDay_Points()
 	'	Return RadioButton2.Checked
@@ -282,8 +281,8 @@ Do you want points to be earned on the day of the promo?</a>.Value
 	Private Function EndDate_Before_BeginDate()
 		Dim invalid As Boolean = False
 
-		Dim beginDate As DateTime = Me.DateTimePicker1.Value.Date
-		Dim endDate As DateTime = Me.DateTimePicker2.Value.Date
+		Dim beginDate As DateTime = Me.dtpQualifyingStart.Value.Date
+		Dim endDate As DateTime = Me.dtpQualifyingEnd.Value.Date
 		Dim result As Int16 = DateTime.Compare(beginDate, endDate)
 		If (result > 0) Then
 			invalid = True
@@ -298,7 +297,7 @@ Do you want points to be earned on the day of the promo?</a>.Value
 		Dim invalid As Boolean = False
 
 		Dim occursDate As DateTime = Me.DateTimePicker3.Value.Date
-		Dim endDate As DateTime = Me.DateTimePicker2.Value.Date
+		Dim endDate As DateTime = Me.dtpQualifyingEnd.Value.Date
 		Dim result As Int16 = DateTime.Compare(endDate, occursDate)
 		If (result > 0) Then
 			invalid = True
@@ -308,8 +307,4 @@ Do you want points to be earned on the day of the promo?</a>.Value
 
 		Return invalid
 	End Function
-
-	Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-		All_Or_Nothing_Checked()
-	End Sub
 End Class

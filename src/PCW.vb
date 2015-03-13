@@ -580,11 +580,11 @@ Public Class PCW
 	End Function
 
 	Private Function DetermineStartDate(ByVal stepC As StepC)
-		Return stepC.DateTimePicker1.Value.Date
+		Return stepC.dtpQualifyingStart.Value.Date
 	End Function
 
 	Private Function DetermineEndDate(ByVal stepC As StepC)
-		Return stepC.DateTimePicker2.Value.Date
+		Return stepC.dtpQualifyingEnd.Value.Date
 	End Function
 
 	Private Function DetermineFrequency(ByVal stepB As StepB)
@@ -653,7 +653,7 @@ Public Class PCW
 			earnsOnWeekday = Nothing
 		Else
 			earnsOnWeekday = ""
-			For Each itemChecked As Object In stepC.CheckedListBox2.CheckedItems
+			For Each itemChecked As Object In stepC.clbPointsEarningDays.CheckedItems
 				Select Case itemChecked.ToString
 					Case "Sunday"
 						earnsOnWeekday = earnsOnWeekday & "N"

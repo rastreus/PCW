@@ -49,9 +49,9 @@ Partial Class StepH
 		Me.Panel1.Controls.Add(Me.RadioButton2)
 		Me.Panel1.Controls.Add(Me.RadioButton1)
 		Me.Panel1.Controls.Add(Me.Label1)
-		Me.Panel1.Location = New System.Drawing.Point(121, 29)
+		Me.Panel1.Location = New System.Drawing.Point(180, 39)
 		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(341, 104)
+		Me.Panel1.Size = New System.Drawing.Size(250, 103)
 		Me.Panel1.TabIndex = 1
 		'
 		'RadioButton2
@@ -60,10 +60,10 @@ Partial Class StepH
 		Me.RadioButton2.Checked = True
 		Me.RadioButton2.Location = New System.Drawing.Point(4, 72)
 		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(260, 17)
+		Me.RadioButton2.Size = New System.Drawing.Size(214, 17)
 		Me.RadioButton2.TabIndex = 2
 		Me.RadioButton2.TabStop = True
-		Me.RadioButton2.Text = "No, I would not like to add a comment at this time."
+		Me.RadioButton2.Text = "No, I would not like to insert a comment."
 		Me.RadioButton2.UseVisualStyleBackColor = True
 		'
 		'RadioButton1
@@ -71,9 +71,9 @@ Partial Class StepH
 		Me.RadioButton1.AutoSize = True
 		Me.RadioButton1.Location = New System.Drawing.Point(4, 49)
 		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(314, 17)
+		Me.RadioButton1.Size = New System.Drawing.Size(200, 17)
 		Me.RadioButton1.TabIndex = 1
-		Me.RadioButton1.Text = "Yes, I would like to insert a helpful comment about the promo."
+		Me.RadioButton1.Text = "Yes, I would like to insert a comment."
 		Me.RadioButton1.UseVisualStyleBackColor = True
 		'
 		'Label1
@@ -81,10 +81,9 @@ Partial Class StepH
 		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label1.Location = New System.Drawing.Point(1, 6)
 		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(339, 41)
+		Me.Label1.Size = New System.Drawing.Size(203, 41)
 		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "Would you like to insert a short description of the promo? It would be greatly ap" & _
-	"preciated."
+		Me.Label1.Text = "Would you like to insert a comment about the promo?"
 		'
 		'Panel2
 		'
@@ -92,9 +91,9 @@ Partial Class StepH
 		Me.Panel2.Controls.Add(Me.IconButton1)
 		Me.Panel2.Controls.Add(Me.Panel3)
 		Me.Panel2.Controls.Add(Me.RichTextBox1)
-		Me.Panel2.Location = New System.Drawing.Point(121, 139)
+		Me.Panel2.Location = New System.Drawing.Point(180, 149)
 		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(341, 103)
+		Me.Panel2.Size = New System.Drawing.Size(250, 102)
 		Me.Panel2.TabIndex = 2
 		'
 		'IconButton1
@@ -104,7 +103,7 @@ Partial Class StepH
 		Me.IconButton1.Enabled = False
 		Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
 		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(226, 70)
+		Me.IconButton1.Location = New System.Drawing.Point(126, 70)
 		Me.IconButton1.Name = "IconButton1"
 		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
 		Me.IconButton1.TabIndex = 3
@@ -115,7 +114,7 @@ Partial Class StepH
 		'
 		Me.Panel3.Controls.Add(Me.Label3)
 		Me.Panel3.Controls.Add(Me.Label2)
-		Me.Panel3.Location = New System.Drawing.Point(245, 70)
+		Me.Panel3.Location = New System.Drawing.Point(145, 70)
 		Me.Panel3.Name = "Panel3"
 		Me.Panel3.Size = New System.Drawing.Size(73, 24)
 		Me.Panel3.TabIndex = 3
@@ -144,10 +143,10 @@ Partial Class StepH
 		'RichTextBox1
 		'
 		Me.RichTextBox1.Enabled = False
-		Me.RichTextBox1.Location = New System.Drawing.Point(4, 4)
+		Me.RichTextBox1.Location = New System.Drawing.Point(3, 4)
 		Me.RichTextBox1.Name = "RichTextBox1"
 		Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-		Me.RichTextBox1.Size = New System.Drawing.Size(332, 60)
+		Me.RichTextBox1.Size = New System.Drawing.Size(242, 60)
 		Me.RichTextBox1.TabIndex = 0
 		Me.RichTextBox1.Text = "Insert Comment of 140 characters or less into this TextBox."
 		'
