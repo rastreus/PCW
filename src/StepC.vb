@@ -7,6 +7,18 @@
 Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepC_Load"
+	Private startDayInt As Integer
+	Private endDayInt As Integer
+	Private longDateFormat As String
+
+	Private Sub StepC_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		startDayInt = -7
+		endDayInt = -1
+		longDateFormat = New String("dddd, MMMM dd, yyyy")
+	End Sub
+#End Region
 #Region "StepC_ShowStep"
 	''' <summary>
 	''' Shows the Step controls.
@@ -83,6 +95,70 @@ Public Class StepC
 	Private Sub cbSelectAll_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles cbSelectAll.CheckedChanged
 		SelectAll()
+	End Sub
+#End Region
+#Region "StepC_getPrimaryOccuringDayOfWeek"
+	Private Function getPrimaryOccuringDayOfWeek() As System.Windows.Forms.CheckBox
+		Dim cbDayOfWeek As System.Windows.Forms.CheckBox = New System.Windows.Forms.CheckBox
+		Select Case Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()
+			Case "Sunday"
+				cbDayOfWeek = Me.cbSunday
+			Case "Monday"
+				cbDayOfWeek = Me.cbMonday
+			Case "Tuesday"
+				cbDayOfWeek = Me.cbTuesday
+			Case "Wednesday"
+				cbDayOfWeek = Me.cbWednesday
+			Case "Thursday"
+				cbDayOfWeek = Me.cbThursday
+			Case "Friday"
+				cbDayOfWeek = Me.cbFriday
+			Case "Saturday"
+				cbDayOfWeek = Me.cbSaturday
+		End Select
+		Return cbDayOfWeek
+	End Function
+#End Region
+#Region "StepC_lockPrimaryOccuringDayOfWeek"
+	Private Sub lockPrimaryOccuringDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
+		cbDayOfWeek.Checked = True
+		cbDayOfWeek.Enabled = False
+		cbDayOfWeek.BackColor = Color.Lime
+		cbDayOfWeek.Text = cbDayOfWeek.Text & "*"
+	End Sub
+#End Region
+#Region "StepC_dtpOccursDate_CloseUp"
+	Private Sub dtpOccursDate_CloseUp(sender As Object, e As EventArgs) _
+	Handles dtpOccursDate.CloseUp
+		setStartEndQualifyingLabels(Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat), _
+									Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat))
+		lockPrimaryOccuringDayOfWeek(getPrimaryOccuringDayOfWeek)
+		If Me.MonthCal.Visible = False Then
+			Me.MonthCal.Visible = True
+		End If
+	End Sub
+#End Region
+#Region "StepC_setStartEndQualifyingLabels"
+	Private Sub setStartEndQualifyingLabels(ByVal local_startDay As String, ByVal local_endDay As String)
+		Me.lblQualifyingStart.Text = local_startDay
+		Me.lblQualifyingEnd.Text = local_endDay
+		Me.MonthCal.SetSelectionRange(Me.lblQualifyingStart.Text, Me.lblQualifyingEnd.Text)
+	End Sub
+#End Region
+#Region "StepC_cbSameDayPromo_CheckedChanged"
+	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles cbSameDayPromo.CheckedChanged
+		If Not (Me.lblQualifyingStart.Text = "Start Date") And Not (Me.lblQualifyingEnd.Text = "End Date") Then
+			If Me.cbSameDayPromo.Checked Then
+				Me.startDayInt = -6
+				Me.endDayInt = 0
+			Else
+				Me.startDayInt = -7
+				Me.endDayInt = -1
+			End If
+			setStartEndQualifyingLabels(Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat), _
+										Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat))
+		End If
 	End Sub
 #End Region
 

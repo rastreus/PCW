@@ -43,9 +43,9 @@ Public Class StepB
 				Case Else
 					frequency = "W"
 			End Select
-			Me.stepB_data.RecurringFrequency = frequency
 		Else
 			Me.stepB_data.Recurring = False
+			Me.stepB_data.RecurringFrequency = frequency
 		End If
 	End Sub
 #End Region

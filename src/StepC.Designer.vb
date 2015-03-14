@@ -24,13 +24,13 @@ Partial Class StepC
     Private Sub InitializeComponent()
 		Me.pnlRedemptionDays = New System.Windows.Forms.Panel()
 		Me.pnlCbRedemptionDays = New System.Windows.Forms.Panel()
-		Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-		Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+		Me.cbSaturday = New System.Windows.Forms.CheckBox()
+		Me.cbFriday = New System.Windows.Forms.CheckBox()
+		Me.cbThursday = New System.Windows.Forms.CheckBox()
+		Me.cbWednesday = New System.Windows.Forms.CheckBox()
+		Me.cbTuesday = New System.Windows.Forms.CheckBox()
+		Me.cbMonday = New System.Windows.Forms.CheckBox()
+		Me.cbSunday = New System.Windows.Forms.CheckBox()
 		Me.lblPromoIs = New System.Windows.Forms.Label()
 		Me.lblPrimaryDay = New System.Windows.Forms.Label()
 		Me.lblRedemptionDays = New System.Windows.Forms.Label()
@@ -95,90 +95,90 @@ Partial Class StepC
 		'
 		Me.pnlCbRedemptionDays.BackColor = System.Drawing.Color.Lavender
 		Me.pnlCbRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox9)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox8)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox7)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox6)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox5)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox4)
-		Me.pnlCbRedemptionDays.Controls.Add(Me.CheckBox3)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSaturday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbFriday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbThursday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbWednesday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbTuesday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbMonday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSunday)
 		Me.pnlCbRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.pnlCbRedemptionDays.Location = New System.Drawing.Point(19, 52)
 		Me.pnlCbRedemptionDays.Name = "pnlCbRedemptionDays"
 		Me.pnlCbRedemptionDays.Size = New System.Drawing.Size(103, 109)
 		Me.pnlCbRedemptionDays.TabIndex = 27
 		'
-		'CheckBox9
+		'cbSaturday
 		'
-		Me.CheckBox9.AutoSize = True
-		Me.CheckBox9.Location = New System.Drawing.Point(1, 90)
-		Me.CheckBox9.Name = "CheckBox9"
-		Me.CheckBox9.Size = New System.Drawing.Size(68, 17)
-		Me.CheckBox9.TabIndex = 34
-		Me.CheckBox9.Text = "Saturday"
-		Me.CheckBox9.UseVisualStyleBackColor = True
+		Me.cbSaturday.AutoSize = True
+		Me.cbSaturday.Location = New System.Drawing.Point(1, 90)
+		Me.cbSaturday.Name = "cbSaturday"
+		Me.cbSaturday.Size = New System.Drawing.Size(68, 17)
+		Me.cbSaturday.TabIndex = 34
+		Me.cbSaturday.Text = "Saturday"
+		Me.cbSaturday.UseVisualStyleBackColor = True
 		'
-		'CheckBox8
+		'cbFriday
 		'
-		Me.CheckBox8.AutoSize = True
-		Me.CheckBox8.Location = New System.Drawing.Point(1, 75)
-		Me.CheckBox8.Name = "CheckBox8"
-		Me.CheckBox8.Size = New System.Drawing.Size(54, 17)
-		Me.CheckBox8.TabIndex = 33
-		Me.CheckBox8.Text = "Friday"
-		Me.CheckBox8.UseVisualStyleBackColor = True
+		Me.cbFriday.AutoSize = True
+		Me.cbFriday.Location = New System.Drawing.Point(1, 75)
+		Me.cbFriday.Name = "cbFriday"
+		Me.cbFriday.Size = New System.Drawing.Size(54, 17)
+		Me.cbFriday.TabIndex = 33
+		Me.cbFriday.Text = "Friday"
+		Me.cbFriday.UseVisualStyleBackColor = True
 		'
-		'CheckBox7
+		'cbThursday
 		'
-		Me.CheckBox7.AutoSize = True
-		Me.CheckBox7.Location = New System.Drawing.Point(1, 60)
-		Me.CheckBox7.Name = "CheckBox7"
-		Me.CheckBox7.Size = New System.Drawing.Size(70, 17)
-		Me.CheckBox7.TabIndex = 32
-		Me.CheckBox7.Text = "Thursday"
-		Me.CheckBox7.UseVisualStyleBackColor = True
+		Me.cbThursday.AutoSize = True
+		Me.cbThursday.Location = New System.Drawing.Point(1, 60)
+		Me.cbThursday.Name = "cbThursday"
+		Me.cbThursday.Size = New System.Drawing.Size(70, 17)
+		Me.cbThursday.TabIndex = 32
+		Me.cbThursday.Text = "Thursday"
+		Me.cbThursday.UseVisualStyleBackColor = True
 		'
-		'CheckBox6
+		'cbWednesday
 		'
-		Me.CheckBox6.BackColor = System.Drawing.Color.Transparent
-		Me.CheckBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.CheckBox6.ForeColor = System.Drawing.Color.Black
-		Me.CheckBox6.Location = New System.Drawing.Point(1, 44)
-		Me.CheckBox6.Name = "CheckBox6"
-		Me.CheckBox6.Size = New System.Drawing.Size(100, 19)
-		Me.CheckBox6.TabIndex = 31
-		Me.CheckBox6.Text = "Wednesday"
-		Me.CheckBox6.UseVisualStyleBackColor = False
+		Me.cbWednesday.BackColor = System.Drawing.Color.Transparent
+		Me.cbWednesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbWednesday.ForeColor = System.Drawing.Color.Black
+		Me.cbWednesday.Location = New System.Drawing.Point(1, 44)
+		Me.cbWednesday.Name = "cbWednesday"
+		Me.cbWednesday.Size = New System.Drawing.Size(100, 19)
+		Me.cbWednesday.TabIndex = 31
+		Me.cbWednesday.Text = "Wednesday"
+		Me.cbWednesday.UseVisualStyleBackColor = False
 		'
-		'CheckBox5
+		'cbTuesday
 		'
-		Me.CheckBox5.AutoSize = True
-		Me.CheckBox5.Location = New System.Drawing.Point(1, 30)
-		Me.CheckBox5.Name = "CheckBox5"
-		Me.CheckBox5.Size = New System.Drawing.Size(67, 17)
-		Me.CheckBox5.TabIndex = 30
-		Me.CheckBox5.Text = "Tuesday"
-		Me.CheckBox5.UseVisualStyleBackColor = True
+		Me.cbTuesday.AutoSize = True
+		Me.cbTuesday.Location = New System.Drawing.Point(1, 30)
+		Me.cbTuesday.Name = "cbTuesday"
+		Me.cbTuesday.Size = New System.Drawing.Size(67, 17)
+		Me.cbTuesday.TabIndex = 30
+		Me.cbTuesday.Text = "Tuesday"
+		Me.cbTuesday.UseVisualStyleBackColor = True
 		'
-		'CheckBox4
+		'cbMonday
 		'
-		Me.CheckBox4.AutoSize = True
-		Me.CheckBox4.Location = New System.Drawing.Point(1, 15)
-		Me.CheckBox4.Name = "CheckBox4"
-		Me.CheckBox4.Size = New System.Drawing.Size(64, 17)
-		Me.CheckBox4.TabIndex = 29
-		Me.CheckBox4.Text = "Monday"
-		Me.CheckBox4.UseVisualStyleBackColor = True
+		Me.cbMonday.AutoSize = True
+		Me.cbMonday.Location = New System.Drawing.Point(1, 15)
+		Me.cbMonday.Name = "cbMonday"
+		Me.cbMonday.Size = New System.Drawing.Size(64, 17)
+		Me.cbMonday.TabIndex = 29
+		Me.cbMonday.Text = "Monday"
+		Me.cbMonday.UseVisualStyleBackColor = True
 		'
-		'CheckBox3
+		'cbSunday
 		'
-		Me.CheckBox3.AutoSize = True
-		Me.CheckBox3.Location = New System.Drawing.Point(1, 0)
-		Me.CheckBox3.Name = "CheckBox3"
-		Me.CheckBox3.Size = New System.Drawing.Size(62, 17)
-		Me.CheckBox3.TabIndex = 28
-		Me.CheckBox3.Text = "Sunday"
-		Me.CheckBox3.UseVisualStyleBackColor = True
+		Me.cbSunday.AutoSize = True
+		Me.cbSunday.Location = New System.Drawing.Point(1, 0)
+		Me.cbSunday.Name = "cbSunday"
+		Me.cbSunday.Size = New System.Drawing.Size(62, 17)
+		Me.cbSunday.TabIndex = 28
+		Me.cbSunday.Text = "Sunday"
+		Me.cbSunday.UseVisualStyleBackColor = True
 		'
 		'lblPromoIs
 		'
@@ -593,13 +593,13 @@ Partial Class StepC
 	Friend WithEvents pnlOccursDate As System.Windows.Forms.Panel
 	Friend WithEvents pnlMonthCal As System.Windows.Forms.Panel
 	Friend WithEvents pnlCbRedemptionDays As System.Windows.Forms.Panel
-	Friend WithEvents CheckBox9 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox8 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox7 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox6 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
-	Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
+	Friend WithEvents cbSaturday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbFriday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbThursday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbWednesday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbTuesday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbMonday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbSunday As System.Windows.Forms.CheckBox
 	Friend WithEvents pnlRecurringQualifyingPeriod As System.Windows.Forms.Panel
 	Friend WithEvents Label6 As System.Windows.Forms.Label
 	Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
