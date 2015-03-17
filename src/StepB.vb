@@ -45,8 +45,8 @@ Public Class StepB
 			End Select
 		Else
 			Me.stepB_data.Recurring = False
-			Me.stepB_data.RecurringFrequency = frequency
 		End If
+		Me.stepB_data.RecurringFrequency = frequency
 	End Sub
 #End Region
 #Region "StepB_Load"

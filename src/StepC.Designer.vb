@@ -31,7 +31,6 @@ Partial Class StepC
 		Me.cbTuesday = New System.Windows.Forms.CheckBox()
 		Me.cbMonday = New System.Windows.Forms.CheckBox()
 		Me.cbSunday = New System.Windows.Forms.CheckBox()
-		Me.lblPromoIs = New System.Windows.Forms.Label()
 		Me.lblPrimaryDay = New System.Windows.Forms.Label()
 		Me.lblRedemptionDays = New System.Windows.Forms.Label()
 		Me.Panel2 = New System.Windows.Forms.Panel()
@@ -61,6 +60,9 @@ Partial Class StepC
 		Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+		Me.pnlPrimaryDay = New System.Windows.Forms.Panel()
+		Me.cbPrimaryDay = New System.Windows.Forms.ComboBox()
+		Me.yetAnotherLabel = New System.Windows.Forms.Label()
 		Me.pnlRedemptionDays.SuspendLayout()
 		Me.pnlCbRedemptionDays.SuspendLayout()
 		Me.Panel2.SuspendLayout()
@@ -71,6 +73,7 @@ Partial Class StepC
 		Me.pnlMonthCal.SuspendLayout()
 		Me.pnlRecurringQualifyingPeriod.SuspendLayout()
 		Me.Panel7.SuspendLayout()
+		Me.pnlPrimaryDay.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -83,12 +86,11 @@ Partial Class StepC
 		Me.pnlRedemptionDays.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlRedemptionDays.Controls.Add(Me.pnlCbRedemptionDays)
-		Me.pnlRedemptionDays.Controls.Add(Me.lblPromoIs)
 		Me.pnlRedemptionDays.Controls.Add(Me.lblPrimaryDay)
 		Me.pnlRedemptionDays.Controls.Add(Me.lblRedemptionDays)
-		Me.pnlRedemptionDays.Location = New System.Drawing.Point(229, 73)
+		Me.pnlRedemptionDays.Location = New System.Drawing.Point(229, 10)
 		Me.pnlRedemptionDays.Name = "pnlRedemptionDays"
-		Me.pnlRedemptionDays.Size = New System.Drawing.Size(174, 205)
+		Me.pnlRedemptionDays.Size = New System.Drawing.Size(174, 192)
 		Me.pnlRedemptionDays.TabIndex = 0
 		'
 		'pnlCbRedemptionDays
@@ -180,15 +182,6 @@ Partial Class StepC
 		Me.cbSunday.Text = "Sunday"
 		Me.cbSunday.UseVisualStyleBackColor = True
 		'
-		'lblPromoIs
-		'
-		Me.lblPromoIs.ForeColor = System.Drawing.Color.White
-		Me.lblPromoIs.Location = New System.Drawing.Point(39, 178)
-		Me.lblPromoIs.Name = "lblPromoIs"
-		Me.lblPromoIs.Size = New System.Drawing.Size(83, 13)
-		Me.lblPromoIs.TabIndex = 6
-		Me.lblPromoIs.Text = "Promo is: "
-		'
 		'lblPrimaryDay
 		'
 		Me.lblPrimaryDay.AutoSize = True
@@ -218,9 +211,9 @@ Partial Class StepC
 		Me.Panel2.Controls.Add(Me.cbSelectAll)
 		Me.Panel2.Controls.Add(Me.lblPointsEarningDays)
 		Me.Panel2.Controls.Add(Me.clbPointsEarningDays)
-		Me.Panel2.Location = New System.Drawing.Point(409, 73)
+		Me.Panel2.Location = New System.Drawing.Point(409, 10)
 		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(172, 205)
+		Me.Panel2.Size = New System.Drawing.Size(172, 192)
 		Me.Panel2.TabIndex = 0
 		'
 		'cbSelectAll
@@ -280,6 +273,7 @@ Partial Class StepC
 		'
 		'Label2
 		'
+		Me.Label2.BackColor = System.Drawing.Color.Transparent
 		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label2.Location = New System.Drawing.Point(0, 0)
 		Me.Label2.Name = "Label2"
@@ -308,6 +302,7 @@ Partial Class StepC
 		'
 		'Label3
 		'
+		Me.Label3.BackColor = System.Drawing.Color.Transparent
 		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label3.Location = New System.Drawing.Point(0, 0)
 		Me.Label3.Name = "Label3"
@@ -321,7 +316,7 @@ Partial Class StepC
 		Me.Label9.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label9.ForeColor = System.Drawing.Color.Gainsboro
-		Me.Label9.Location = New System.Drawing.Point(9, 35)
+		Me.Label9.Location = New System.Drawing.Point(9, 38)
 		Me.Label9.Name = "Label9"
 		Me.Label9.Size = New System.Drawing.Size(33, 13)
 		Me.Label9.TabIndex = 23
@@ -346,7 +341,7 @@ Partial Class StepC
 		Me.lblQualifyingEnd.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.lblQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingEnd.ForeColor = System.Drawing.Color.White
-		Me.lblQualifyingEnd.Location = New System.Drawing.Point(100, 32)
+		Me.lblQualifyingEnd.Location = New System.Drawing.Point(37, 34)
 		Me.lblQualifyingEnd.Name = "lblQualifyingEnd"
 		Me.lblQualifyingEnd.Size = New System.Drawing.Size(198, 23)
 		Me.lblQualifyingEnd.TabIndex = 20
@@ -358,7 +353,7 @@ Partial Class StepC
 		Me.lblQualifyingStart.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.lblQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingStart.ForeColor = System.Drawing.Color.White
-		Me.lblQualifyingStart.Location = New System.Drawing.Point(101, 17)
+		Me.lblQualifyingStart.Location = New System.Drawing.Point(38, 17)
 		Me.lblQualifyingStart.Name = "lblQualifyingStart"
 		Me.lblQualifyingStart.Size = New System.Drawing.Size(198, 23)
 		Me.lblQualifyingStart.TabIndex = 21
@@ -368,7 +363,7 @@ Partial Class StepC
 		'cbSameDayPromo
 		'
 		Me.cbSameDayPromo.AutoSize = True
-		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Moccasin
+		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
 		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 56)
 		Me.cbSameDayPromo.Name = "cbSameDayPromo"
@@ -393,7 +388,7 @@ Partial Class StepC
 		'Label14
 		'
 		Me.Label14.AutoSize = True
-		Me.Label14.BackColor = System.Drawing.Color.Moccasin
+		Me.Label14.BackColor = System.Drawing.Color.Transparent
 		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label14.Location = New System.Drawing.Point(3, 10)
 		Me.Label14.Name = "Label14"
@@ -436,9 +431,9 @@ Partial Class StepC
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingEnd)
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingStart)
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label9)
-		Me.pnlOccuringQualifyingPeriod.Location = New System.Drawing.Point(227, 10)
+		Me.pnlOccuringQualifyingPeriod.Location = New System.Drawing.Point(229, 208)
 		Me.pnlOccuringQualifyingPeriod.Name = "pnlOccuringQualifyingPeriod"
-		Me.pnlOccuringQualifyingPeriod.Size = New System.Drawing.Size(354, 57)
+		Me.pnlOccuringQualifyingPeriod.Size = New System.Drawing.Size(247, 57)
 		Me.pnlOccuringQualifyingPeriod.TabIndex = 24
 		'
 		'pnlOccursDate
@@ -500,7 +495,7 @@ Partial Class StepC
 		Me.Panel7.Controls.Add(Me.DateTimePicker3)
 		Me.Panel7.Controls.Add(Me.Label6)
 		Me.Panel7.Enabled = False
-		Me.Panel7.Location = New System.Drawing.Point(229, 343)
+		Me.Panel7.Location = New System.Drawing.Point(273, 442)
 		Me.Panel7.Name = "Panel7"
 		Me.Panel7.Size = New System.Drawing.Size(144, 81)
 		Me.Panel7.TabIndex = 0
@@ -513,7 +508,7 @@ Partial Class StepC
 		Me.CheckedListBox1.Enabled = False
 		Me.CheckedListBox1.FormattingEnabled = True
 		Me.CheckedListBox1.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
-		Me.CheckedListBox1.Location = New System.Drawing.Point(120, 343)
+		Me.CheckedListBox1.Location = New System.Drawing.Point(164, 442)
 		Me.CheckedListBox1.Name = "CheckedListBox1"
 		Me.CheckedListBox1.RightToLeft = System.Windows.Forms.RightToLeft.No
 		Me.CheckedListBox1.Size = New System.Drawing.Size(103, 109)
@@ -522,31 +517,68 @@ Partial Class StepC
 		Me.CheckedListBox1.UseCompatibleTextRendering = True
 		Me.CheckedListBox1.Visible = False
 		'
+		'pnlPrimaryDay
+		'
+		Me.pnlPrimaryDay.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPrimaryDay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPrimaryDay.Controls.Add(Me.cbPrimaryDay)
+		Me.pnlPrimaryDay.Controls.Add(Me.yetAnotherLabel)
+		Me.pnlPrimaryDay.Enabled = False
+		Me.pnlPrimaryDay.Location = New System.Drawing.Point(229, 208)
+		Me.pnlPrimaryDay.Name = "pnlPrimaryDay"
+		Me.pnlPrimaryDay.Size = New System.Drawing.Size(124, 57)
+		Me.pnlPrimaryDay.TabIndex = 28
+		Me.pnlPrimaryDay.Visible = False
+		'
+		'cbPrimaryDay
+		'
+		Me.cbPrimaryDay.FormattingEnabled = True
+		Me.cbPrimaryDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+		Me.cbPrimaryDay.Location = New System.Drawing.Point(7, 24)
+		Me.cbPrimaryDay.Name = "cbPrimaryDay"
+		Me.cbPrimaryDay.Size = New System.Drawing.Size(103, 21)
+		Me.cbPrimaryDay.TabIndex = 30
+		'
+		'yetAnotherLabel
+		'
+		Me.yetAnotherLabel.AutoSize = True
+		Me.yetAnotherLabel.BackColor = System.Drawing.Color.Transparent
+		Me.yetAnotherLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.yetAnotherLabel.ForeColor = System.Drawing.Color.Gainsboro
+		Me.yetAnotherLabel.Location = New System.Drawing.Point(0, 0)
+		Me.yetAnotherLabel.Name = "yetAnotherLabel"
+		Me.yetAnotherLabel.Size = New System.Drawing.Size(74, 13)
+		Me.yetAnotherLabel.TabIndex = 29
+		Me.yetAnotherLabel.Text = "Primary Day"
+		Me.yetAnotherLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		'
 		'StepC
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.pnlOccuringQualifyingPeriod)
 		Me.Controls.Add(Me.CheckedListBox1)
-		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Controls.Add(Me.pnlMonthCal)
 		Me.Controls.Add(Me.Panel7)
 		Me.Controls.Add(Me.Panel2)
 		Me.Controls.Add(Me.pnlRedemptionDays)
+		Me.Controls.Add(Me.pnlPrimaryDay)
+		Me.Controls.Add(Me.pnlOccuringQualifyingPeriod)
 		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
+		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Name = "StepC"
 		Me.NextStep = "StepD"
 		Me.PreviousStep = "StepB"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Set the date information for the promotional."
+		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
 		Me.Controls.SetChildIndex(Me.pnlRecurringQualifyingPeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlOccuringQualifyingPeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlPrimaryDay, 0)
 		Me.Controls.SetChildIndex(Me.pnlRedemptionDays, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Controls.SetChildIndex(Me.Panel7, 0)
 		Me.Controls.SetChildIndex(Me.pnlMonthCal, 0)
-		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
 		Me.Controls.SetChildIndex(Me.CheckedListBox1, 0)
-		Me.Controls.SetChildIndex(Me.pnlOccuringQualifyingPeriod, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.pnlRedemptionDays.ResumeLayout(False)
 		Me.pnlRedemptionDays.PerformLayout()
@@ -563,6 +595,8 @@ Partial Class StepC
 		Me.pnlMonthCal.ResumeLayout(False)
 		Me.pnlRecurringQualifyingPeriod.ResumeLayout(False)
 		Me.Panel7.ResumeLayout(False)
+		Me.pnlPrimaryDay.ResumeLayout(False)
+		Me.pnlPrimaryDay.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -578,7 +612,6 @@ Partial Class StepC
 	Friend WithEvents clbPointsEarningDays As System.Windows.Forms.CheckedListBox
 	Friend WithEvents lblPointsEarningDays As System.Windows.Forms.Label
 	Friend WithEvents cbSelectAll As System.Windows.Forms.CheckBox
-	Friend WithEvents lblPromoIs As System.Windows.Forms.Label
 	Friend WithEvents lblPrimaryDay As System.Windows.Forms.Label
 	Friend WithEvents Label9 As System.Windows.Forms.Label
 	Friend WithEvents Label10 As System.Windows.Forms.Label
@@ -605,5 +638,8 @@ Partial Class StepC
 	Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel
 	Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
+	Friend WithEvents pnlPrimaryDay As System.Windows.Forms.Panel
+	Friend WithEvents cbPrimaryDay As System.Windows.Forms.ComboBox
+	Friend WithEvents yetAnotherLabel As System.Windows.Forms.Label
 
 End Class

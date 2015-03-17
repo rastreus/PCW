@@ -7,16 +7,208 @@
 Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepC_Data"
+	Private stepC_data As StepC_Data
+	Public ReadOnly Property Data() As StepC_Data
+		Get
+			Return Me.stepC_data
+		End Get
+	End Property
+#End Region
+#Region "StepC_SetData"
+	''' <summary>
+	''' Sets the data's properties from the controls.
+	''' </summary>
+	''' <remarks>(View->Controller->Model)</remarks>
+	Private Sub StepC_SetData()
+		If Recurring_Promo() Then
+			Me.stepC_data.OccursDate = Nothing
+			Me.stepC_data.StartDate = Me.dtpQualifyingStart.Value.Date
+			Me.stepC_data.EndDate = Me.dtpQualifyingEnd.Value.Date
+			Me.stepC_data.RecursOnWeekday = getRecursOnWeekday()
+			Me.stepC_data.CountCurrentDay = False
+		Else 'Occurring Promo
+			Me.stepC_data.OccursDate = Me.dtpOccursDate.Value.Date
+			Me.stepC_data.StartDate = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt)
+			Me.stepC_data.EndDate = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt)
+			Me.stepC_data.RecursOnWeekday = Nothing
+			Me.stepC_data.CountCurrentDay = Me.cbSameDayPromo.Checked
+		End If
+		Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
+	End Sub
+
+	Private Function getRecursOnWeekday() As String
+		Dim value As String = New String("")
+		value = getPrimaryDay() & getSecondaryDays()
+		Return value
+	End Function
+
+	Private Function getEarnsOnWeekday() As String
+		Dim days As String = New String("")
+		For Each item In Me.clbPointsEarningDays.CheckedItems
+			days = days & daysFormat(item.ToString)
+		Next
+		If days = "" Then
+			days = Nothing
+		End If
+		Return days
+	End Function
+
+	Private Function daysFormat(ByVal inputDay As String) As String
+		Dim returnDay As String = New String("")
+		Select Case inputDay
+			Case "Sunday"
+				returnDay = "N"
+			Case "Monday"
+				returnDay = "M"
+			Case "Tuesday"
+				returnDay = "T"
+			Case "Wednesday"
+				returnDay = "W"
+			Case "Thursday"
+				returnDay = "R"
+			Case "Friday"
+				returnDay = "F"
+			Case "Saturday"
+				returnDay = "S"
+		End Select
+		Return returnDay
+	End Function
+
+	Private Function getPrimaryDay() As String
+		Return daysFormat(Me.primaryDayStr)
+	End Function
+
+	Private Function getSecondaryDays() As String
+		Dim days As String = New String("")
+		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
+			If Not ctrl.Text = Me.primaryDayStr Then
+				days = days & daysFormat(ctrl.Text)
+			End If
+		Next
+		Return days
+	End Function
+#End Region
 #Region "StepC_Load"
+	Private primaryDayStr As String
+	Private primaryDayBool As Boolean
+	Private recurringFlagBool As System.Nullable(Of Boolean)
+	Private occursDateBool As Boolean
+	Private startDayBool As Boolean
+	Private endDayBool As Boolean
 	Private startDayInt As Integer
 	Private endDayInt As Integer
 	Private longDateFormat As String
 
 	Private Sub StepC_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
+		primaryDayStr = New String("ASSIGNED A VALUE")
+		primaryDayBool = False
+		recurringFlagBool = Nothing
+		occursDateBool = False
+		startDayBool = False
+		endDayBool = False
 		startDayInt = -7
 		endDayInt = -1
 		longDateFormat = New String("dddd, MMMM dd, yyyy")
+		stepC_data = New StepC_Data
+	End Sub
+#End Region
+#Region "StepC_ResetStep"
+	''' <summary>
+	''' Resets the Step so it can be used again.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>A lot of controls to get correct.</remarks>
+	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
+		Handles MyBase.ResetStep
+		StepC_ResetControls()
+	End Sub
+
+	''' <summary>
+	''' Resets the controls (View) for the Step.
+	''' </summary>
+	''' <remarks>Just in case user changes between Recurring/Occuring.</remarks>
+	Private Sub StepC_ResetControls()
+		Me.primaryDayBool = False
+		Me.dtpOccursDate.Value = Date.Today
+		Me.dtpQualifyingStart.Value = Date.Today
+		Me.dtpQualifyingEnd.Value = Date.Today
+		Me.cbSameDayPromo.Checked = False
+		Me.lblQualifyingStart.Text = "Start Date"
+		Me.lblQualifyingEnd.Text = "End Date"
+		Me.occursDateBool = False
+		Me.recurringFlagBool = Nothing
+		Me.startDayBool = False
+		Me.endDayBool = False
+		Me.MonthCal.SelectionStart = Date.Today
+		Me.MonthCal.SelectionEnd = Date.Today
+		Me.MonthCal.TodayDate = Date.Today
+		ResetPrimaryDay()
+		ResetRedemptionDays()
+	End Sub
+
+	''' <summary>
+	''' Unlocks what was once locked.
+	''' </summary>
+	''' <remarks>Separated from ResetControls because logic.</remarks>
+	Private Sub ResetPrimaryDay()
+		If Not Me.primaryDayStr = "ASSIGNED A VALUE" Then
+			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+			Me.primaryDayStr = "ASSIGNED A VALUE"
+			Me.cbPrimaryDay.Text = ""
+		End If
+	End Sub
+
+	''' <summary>
+	''' Unchecks what was once checked.
+	''' </summary>
+	''' <remarks>A Panel full (/fool/) of CheckBoxs instead of CheckListBox.</remarks>
+	Private Sub ResetRedemptionDays()
+		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
+			ctrl.Checked = False
+		Next
+	End Sub
+#End Region
+#Region "StepC_Validation"
+	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
+		Dim cancelContinuingToNextStep As Boolean = False
+		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+
+		Me.StepC_SetData()
+
+		If Recurring_Promo() Then
+			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, Me.endDayBool) Then
+				cancelContinuingToNextStep = True
+				errString = "Qualifying Period Start or End is not established."
+				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
+			Else
+				GUI_Util.regPnl(Me.pnlRecurringQualifyingPeriod)
+			End If
+
+			If Me.stepC_data.PrimaryDay_NotEstablished(Me.primaryDayBool) Then
+				cancelContinuingToNextStep = True
+				errString = "Primary Day is not established."
+				GUI_Util.errPnl(Me.pnlPrimaryDay)
+			Else
+				GUI_Util.regPnl(Me.pnlPrimaryDay)
+			End If
+		Else 'Occurring Promo
+			If Me.stepC_data.OccursDate_NotEstablished(Me.occursDateBool) Then
+				cancelContinuingToNextStep = True
+				errString = "Occurs Date is not established."
+				GUI_Util.errPnl(Me.pnlOccursDate)
+			Else
+				GUI_Util.regPnl(Me.pnlOccursDate)
+			End If
+		End If
+
+		e.Cancel = cancelContinuingToNextStep
+		If cancelContinuingToNextStep Then
+			GUI_Util.msgBox(errString)
+		End If
 	End Sub
 #End Region
 #Region "StepC_ShowStep"
@@ -31,23 +223,40 @@ Public Class StepC
 		If Recurring_Promo() Then
 			Me.pnlRecurringQualifyingPeriod.Enabled = True
 			Me.pnlRecurringQualifyingPeriod.Visible = True
-			Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
+			Me.pnlPrimaryDay.Enabled = True
+			Me.pnlPrimaryDay.Visible = True
+			Me.lblRedemptionDays.Text = "On which day(s) is redemption allowed?"
 			Me.pnlOccursDate.Enabled = False
 			Me.pnlOccursDate.Visible = False
 			Me.pnlOccuringQualifyingPeriod.Enabled = False
 			Me.pnlOccuringQualifyingPeriod.Visible = False
-		Else 'Occuring Promo
+			Me.MonthCal.MaxSelectionCount = 31
+			If Not IsNothing(Me.recurringFlagBool) Then
+				If Me.recurringFlagBool = False Then
+					StepC_ResetControls()
+				End If
+			End If
+			Me.recurringFlagBool = True
+		Else 'Occurring Promo
 			Me.pnlOccursDate.Enabled = True
 			Me.pnlOccursDate.Visible = True
 			Me.pnlOccuringQualifyingPeriod.Enabled = True
 			Me.pnlOccuringQualifyingPeriod.Visible = True
-			Me.lblRedemptionDays.Text = "On which day(s) is redemption allowed?"
+			Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
 			Me.pnlRecurringQualifyingPeriod.Enabled = False
 			Me.pnlRecurringQualifyingPeriod.Visible = False
+			Me.pnlPrimaryDay.Enabled = False
+			Me.pnlPrimaryDay.Visible = False
+			Me.MonthCal.MaxSelectionCount = 7
+			If Not IsNothing(Me.recurringFlagBool) Then
+				If Me.recurringFlagBool = True Then
+					StepC_ResetControls()
+				End If
+			End If
+			Me.recurringFlagBool = False
 		End If
 
 		SelectAll()
-
 	End Sub
 
 	''' <summary>
@@ -59,27 +268,6 @@ Public Class StepC
 		Dim stepB As StepB = PCW.GetStep("StepB")
 		Return stepB.Data.Recurring
 	End Function
-#End Region
-#Region "StepC_ResetStep"
-	''' <summary>
-	''' Resets the controls (View) for the Step to be used again.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	''' <remarks>A lot of controls to get correct.</remarks>
-	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
-		Handles MyBase.ResetStep
-		Me.dtpOccursDate.Value = Date.Today
-		Me.dtpQualifyingStart.Value = Date.Today
-		Me.dtpQualifyingEnd.Value = Date.Today
-		Me.lblPromoIs.Text = "Promo is: "
-		Me.cbSameDayPromo.Checked = False
-		Me.MonthCal.SelectionStart = Date.Today
-		Me.MonthCal.SelectionEnd = Date.Today
-		Me.MonthCal.TodayDate = Date.Today
-		Me.lblQualifyingStart.Text = "Start Date"
-		Me.lblQualifyingEnd.Text = "End Date"
-	End Sub
 #End Region
 #Region "StepC_SelectAll"
 	''' <summary>
@@ -97,10 +285,10 @@ Public Class StepC
 		SelectAll()
 	End Sub
 #End Region
-#Region "StepC_getPrimaryOccuringDayOfWeek"
-	Private Function getPrimaryOccuringDayOfWeek() As System.Windows.Forms.CheckBox
+#Region "StepC_getPrimaryDayOfWeek"
+	Private Function getPrimaryDayOfWeek(ByVal dayToGet As String) As System.Windows.Forms.CheckBox
 		Dim cbDayOfWeek As System.Windows.Forms.CheckBox = New System.Windows.Forms.CheckBox
-		Select Case Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()
+		Select Case dayToGet
 			Case "Sunday"
 				cbDayOfWeek = Me.cbSunday
 			Case "Monday"
@@ -119,30 +307,62 @@ Public Class StepC
 		Return cbDayOfWeek
 	End Function
 #End Region
-#Region "StepC_lockPrimaryOccuringDayOfWeek"
-	Private Sub lockPrimaryOccuringDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
+#Region "StepC_lockPrimaryDayOfWeek"
+	Private Sub lockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
 		cbDayOfWeek.Checked = True
 		cbDayOfWeek.Enabled = False
 		cbDayOfWeek.BackColor = Color.Lime
 		cbDayOfWeek.Text = cbDayOfWeek.Text & "*"
 	End Sub
 #End Region
-#Region "StepC_dtpOccursDate_CloseUp"
-	Private Sub dtpOccursDate_CloseUp(sender As Object, e As EventArgs) _
-	Handles dtpOccursDate.CloseUp
-		setStartEndQualifyingLabels(Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat), _
-									Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat))
-		lockPrimaryOccuringDayOfWeek(getPrimaryOccuringDayOfWeek)
-		If Me.MonthCal.Visible = False Then
-			Me.MonthCal.Visible = True
-		End If
+#Region "StepC_unlockPrimaryDayOfWeek"
+	Private Sub unlockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
+		Dim txt As String = New String("ASSIGNED A VALUE")
+		cbDayOfWeek.Checked = False
+		cbDayOfWeek.Enabled = True
+		cbDayOfWeek.BackColor = Color.Transparent
+		Select Case cbDayOfWeek.Text
+			Case "Sunday*"
+				txt = "Sunday"
+			Case "Monday*"
+				txt = "Monday"
+			Case "Tuesday*"
+				txt = "Tuesday"
+			Case "Wednesday*"
+				txt = "Wednesday"
+			Case "Thursday*"
+				txt = "Thursday"
+			Case "Friday*"
+				txt = "Friday"
+			Case "Saturday*"
+				txt = "Saturday"
+		End Select
+		cbDayOfWeek.Text = txt
 	End Sub
 #End Region
+#Region "_OCCURRING_PROMO_"
 #Region "StepC_setStartEndQualifyingLabels"
 	Private Sub setStartEndQualifyingLabels(ByVal local_startDay As String, ByVal local_endDay As String)
 		Me.lblQualifyingStart.Text = local_startDay
 		Me.lblQualifyingEnd.Text = local_endDay
-		Me.MonthCal.SetSelectionRange(Me.lblQualifyingStart.Text, Me.lblQualifyingEnd.Text)
+	End Sub
+#End Region
+#Region "StepC_dtpOccursDate_CloseUp"
+	Private Sub dtpOccursDate_CloseUp(sender As Object, e As EventArgs) _
+	Handles dtpOccursDate.CloseUp
+		Dim local_startDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat)
+		Dim local_endDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)
+		'
+		Me.primaryDayStr = Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()
+		setStartEndQualifyingLabels(local_startDay, local_endDay)
+		Me.MonthCal.SetSelectionRange(local_startDay, local_endDay)
+		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+		If Me.occursDateBool = False Then
+			Me.occursDateBool = True
+		End If
+		If Me.MonthCal.Visible = False Then
+			Me.MonthCal.Visible = True
+		End If
 	End Sub
 #End Region
 #Region "StepC_cbSameDayPromo_CheckedChanged"
@@ -161,226 +381,55 @@ Public Class StepC
 		End If
 	End Sub
 #End Region
-
-	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
-		Handles Me.ValidateStep
-		'Checks if the user pressed Next> before setting any values
-		If Nothing_Was_Set() Then
-			e.Cancel = True
-			Me.pnlRedemptionDays.BackColor = Color.MistyRose
-			Me.Panel2.BackColor = Color.MistyRose
-			Me.Panel3.BackColor = Color.MistyRose
-			Me.Panel4.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("Please set the date values", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		Else
-			Me.pnlRedemptionDays.BackColor = SystemColors.Control
-			Me.Panel2.BackColor = SystemColors.Control
-			Me.Panel3.BackColor = SystemColors.Control
-			Me.Panel4.BackColor = SystemColors.Control
+#End Region
+#Region "_RECURRING_PROMO_"
+#Region "StepC_cbPrimaryDay_DropDown"
+	Private Sub cbPrimaryDay_DropDown(sender As Object, e As EventArgs) _
+	Handles cbPrimaryDay.DropDown
+		If Not IsNothing(cbPrimaryDay.SelectedItem) Then
+			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+			Me.primaryDayStr = "ASSIGNED A VALUE"
 		End If
-
-		'Only the Occuring on Days values forgot to be set
-		If Recurring_Promo() Then
-			If (Not Nothing_Was_Set() And Empty_Occuring_Days()) Then
-				e.Cancel = True
-				CenteredMessagebox.MsgBox.Show("Please set the occuring day values.", "Error",
-											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-				Me.pnlRedemptionDays.BackColor = Color.MistyRose
-			Else
-				Me.pnlRedemptionDays.BackColor = SystemColors.Control
-			End If
-		End If
-
-		''Checks to see if the primary day is invalid
-		'If Recurring_Promo() Then
-		'	If Primary_Day_Invalid() Then
-		'		e.Cancel = True
-		'		Me.Panel1.BackColor = Color.MistyRose
-		'		CenteredMessagebox.MsgBox.Show("Primary Day is invalid.", "Error",
-		'									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		'	Else
-		'		Me.Panel1.BackColor = SystemColors.Control
-		'	End If
-		'End If
-
-		'Only the Points Earned On valuse forgot to be set
-		If Not Nothing_Was_Set() And Empty_Points_Earned() Then
-			e.Cancel = True
-			CenteredMessagebox.MsgBox.Show("Please set the points earned on values.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.Panel2.BackColor = Color.MistyRose
-		Else
-			Me.Panel2.BackColor = SystemColors.Control
-		End If
-
-		If Not Nothing_Was_Set() And Promo_Start_Not_Set() Then
-			e.Cancel = True
-			CenteredMessagebox.MsgBox.Show("Please set the promo start date.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.Panel3.BackColor = Color.MistyRose
-		Else
-			Me.Panel3.BackColor = SystemColors.Control
-		End If
-
-		If Not Nothing_Was_Set() And Promo_End_Not_Set() Then
-			e.Cancel = True
-			CenteredMessagebox.MsgBox.Show("Please set the promo end date.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.Panel4.BackColor = Color.MistyRose
-		Else
-			Me.Panel4.BackColor = SystemColors.Control
-		End If
-
-		'Checks if LastDay is before FirstDay
-		If EndDate_Before_BeginDate() Then
-			e.Cancel = True
-			Me.Panel3.BackColor = Color.MistyRose
-			Me.dtpQualifyingStart.Value = DateTime.Today
-			Me.Panel4.BackColor = Color.MistyRose
-			Me.dtpQualifyingEnd.Value = DateTime.Today
-		Else
-			If Not Promo_Start_Not_Set() And Not Promo_End_Not_Set() Then
-				Me.Panel3.BackColor = SystemColors.Control
-				Me.Panel4.BackColor = SystemColors.Control
-			End If
-		End If
-
-		If OccursDate_Before_EndDate() Then
-			e.Cancel = True
-			Me.Panel7.BackColor = Color.MistyRose
-			Me.DateTimePicker3.Value = DateTime.Today
-			Me.Panel4.BackColor = Color.MistyRose
-			Me.dtpQualifyingEnd.Value = DateTime.Today
-		Else
-			If Not Promo_Start_Not_Set() And Not Promo_End_Not_Set() Then
-				Me.Panel7.BackColor = SystemColors.Control
-				Me.Panel4.BackColor = SystemColors.Control
-			End If
-		End If
-
-		'Commented out when changing StepC
-		''Checks to see if attempting to earn points on the day of the promo when NO is selected
-		''If this occurs, we're going to show a dialog to ask directly what the user intended to do
-		''and then we will act accordingly from their direct response.
-		'If No_Selected_For_SameDay_Points() And SameDays_Are_Selected() Then
-		'	e.Cancel = AskForSameDay()
-		'	If e.Cancel = True Then
-		'		Me.Panel1.BackColor = Color.MistyRose
-		'		Me.Panel2.BackColor = Color.MistyRose
-		'		Clear_Checklistboxes()
-		'	Else
-		'		Me.RadioButton2.Checked = False
-		'		Me.RadioButton1.Checked = True
-		'		If Not Empty_Occuring_Days() And Not Empty_Points_Earned() Then
-		'			Me.Panel1.BackColor = SystemColors.Control
-		'			Me.Panel2.BackColor = SystemColors.Control
-		'		End If
-		'	End If
-		'End If
 	End Sub
-
-	Private Function Nothing_Was_Set()
-		Dim invalid As Boolean = False
-
-		If Promo_Start_Not_Set() And Promo_End_Not_Set() And Empty_Occuring_Days() And Empty_Points_Earned() Then
-			invalid = True
+#End Region
+#Region "StepC_cbPrimaryDay_SelectionChangeCommitted"
+	Private Sub cbPrimaryDay_SelectionChangeCommitted(sender As Object, e As EventArgs) _
+		Handles cbPrimaryDay.SelectionChangeCommitted
+		If Me.primaryDayBool = False Then
+			Me.primaryDayBool = True
 		End If
-
-		Return invalid
-	End Function
-
-	Private Function Promo_Start_Not_Set()
-		Dim invalid As Boolean = False
-		If Me.dtpQualifyingStart.Value.Date = DateTime.Today Then
-			invalid = True
+		Me.primaryDayStr = Me.cbPrimaryDay.SelectedItem.ToString()
+		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+	End Sub
+#End Region
+#Region "StepC_dtpQualifyingStart_CloseUp"
+	Private Sub dtpQualifyingStart_CloseUp(sender As Object, e As EventArgs) _
+	Handles dtpQualifyingStart.CloseUp
+		If Me.startDayBool = False Then
+			Me.startDayBool = True
 		End If
-		Return invalid
-	End Function
-
-	Private Function Promo_End_Not_Set()
-		Dim invalid As Boolean = False
-		If Me.dtpQualifyingEnd.Value.Date = DateTime.Today Then
-			invalid = True
+		checkRecurringStartEndQualifyingCheckboxes()
+	End Sub
+#End Region
+#Region "StepC_dtpQualifyingEnd_CloseUp"
+	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, e As EventArgs) _
+	Handles dtpQualifyingEnd.CloseUp
+		If Me.endDayBool = False Then
+			Me.endDayBool = True
 		End If
-		Return invalid
-	End Function
-
-	Private Function Promo_Occuring_Not_Set()
-		Dim invalid As Boolean = False
-		If Not Recurring_Promo() And (Me.DateTimePicker3.Value.Date = DateTime.Today) Then
-			invalid = True
+		checkRecurringStartEndQualifyingCheckboxes()
+	End Sub
+#End Region
+#Region "StepC_checkRecurringStartEndQualifyingCheckboxes"
+	Private Sub checkRecurringStartEndQualifyingCheckboxes()
+		If Me.startDayBool And Me.endDayBool Then
+			Me.MonthCal.SetSelectionRange(Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
+										  Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
+			If Me.MonthCal.Visible = False Then
+				Me.MonthCal.Visible = True
+			End If
 		End If
-		Return invalid
-	End Function
-
-	'Private Function Primary_Day_Invalid()
-	'	Dim invalid As Boolean = True
-	'	Dim count As Short = 0
-
-	'	For Each itemChecked As Object In CheckedListBox1.CheckedItems
-	'		If itemChecked.ToString = Me.ComboBox1.Text Then
-	'			count += 1
-	'		End If
-	'	Next
-
-	'	If count = 1 Then
-	'		invalid = False
-	'	End If
-
-	'	Return invalid
-	'End Function
-
-	'Checks the previous Step to see if this is a recurring promo.
-
-	Private Function Empty_Points_Earned()
-		Dim empty As Boolean = False
-		If (Me.clbPointsEarningDays.CheckedIndices.Count = 0) Then
-			empty = True
-		End If
-		Return empty
-	End Function
-
-	Private Function Empty_Occuring_Days()
-		Dim empty As Boolean = False
-		If (Me.CheckedListBox1.CheckedIndices.Count = 0) Then
-			empty = True
-		End If
-		Return empty
-	End Function
-
-	'Commented out when changing StepC
-	'Private Function No_Selected_For_SameDay_Points()
-	'	Return RadioButton2.Checked
-	'End Function
-
-	Private Function EndDate_Before_BeginDate()
-		Dim invalid As Boolean = False
-
-		Dim beginDate As DateTime = Me.dtpQualifyingStart.Value.Date
-		Dim endDate As DateTime = Me.dtpQualifyingEnd.Value.Date
-		Dim result As Int16 = DateTime.Compare(beginDate, endDate)
-		If (result > 0) Then
-			invalid = True
-			CenteredMessagebox.MsgBox.Show("The end date of the promo is before the begin date", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		End If
-
-		Return invalid
-	End Function
-
-	Private Function OccursDate_Before_EndDate()
-		Dim invalid As Boolean = False
-
-		Dim occursDate As DateTime = Me.DateTimePicker3.Value.Date
-		Dim endDate As DateTime = Me.dtpQualifyingEnd.Value.Date
-		Dim result As Int16 = DateTime.Compare(endDate, occursDate)
-		If (result > 0) Then
-			invalid = True
-			CenteredMessagebox.MsgBox.Show("The occurs date of the promo is before the end date", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		End If
-
-		Return invalid
-	End Function
+	End Sub
+#End Region
+#End Region
 End Class
