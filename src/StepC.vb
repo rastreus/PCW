@@ -433,6 +433,8 @@ Public Class StepC
 	''' <remarks>Only happens if the Qualifying period has been set.</remarks>
 	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles cbSameDayPromo.CheckedChanged
+		Dim local_startDay As String = New String("")
+		Dim local_endDay As String = New String("")
 		If Me.occursDateBool Then
 			If Me.cbSameDayPromo.Checked Then 'Weird maths to figure the Qualifying Range
 				Me.startDayInt = -6
@@ -441,8 +443,10 @@ Public Class StepC
 				Me.startDayInt = -7
 				Me.endDayInt = -1
 			End If
-			setStartEndQualifyingLabels(Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat), _
-										Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat))
+			local_startDay = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat)
+			local_endDay = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)
+			setStartEndQualifyingLabels(local_startDay, local_endDay)
+			Me.MonthCal.SetSelectionRange(local_startDay, local_endDay)	'UI/UX flair! Plus it's fun.
 		End If
 	End Sub
 #End Region
