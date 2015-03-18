@@ -8,6 +8,10 @@ Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
 
 #Region "StepC_Data"
+	''' <summary>
+	''' Model for StepC.
+	''' </summary>
+	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
 	Private stepC_data As StepC_Data
 	Public ReadOnly Property Data() As StepC_Data
 		Get
@@ -19,7 +23,7 @@ Public Class StepC
 	''' <summary>
 	''' Sets the data's properties from the controls.
 	''' </summary>
-	''' <remarks>(View->Controller->Model)</remarks>
+	''' <remarks>Values are set differently depending if the promo is recurring or not.</remarks>
 	Private Sub StepC_SetData()
 		If Recurring_Promo() Then
 			Me.stepC_data.OccursDate = Nothing
@@ -37,12 +41,45 @@ Public Class StepC
 		Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
 	End Sub
 
+	''' <summary>
+	''' Concatenates the Primary and Secondary Days.
+	''' </summary>
+	''' <returns>The formatted days String for "RecursOnWeekday."</returns>
+	''' <remarks>Trim removes the whitespace that may happen if there are no secondary days.</remarks>
 	Private Function getRecursOnWeekday() As String
-		Dim value As String = New String("")
-		value = getPrimaryDay() & getSecondaryDays()
-		Return value
+		Dim value As String = getPrimaryDay() & getSecondaryDays()
+		Return value.Trim
 	End Function
 
+	''' <summary>
+	''' Gets the Primary Day for "getRecursOnWeekday."
+	''' </summary>
+	''' <returns>A single-character String representation of the Primary Day.</returns>
+	''' <remarks></remarks>
+	Private Function getPrimaryDay() As String
+		Return daysFormat(Me.primaryDayStr)
+	End Function
+
+	''' <summary>
+	''' Gets the Secondary Days for "getRecursOnWeekday" if they exist.
+	''' </summary>
+	''' <returns>A String of letters representing days.</returns>
+	''' <remarks>Be sure to confirm that it is not the primary day.</remarks>
+	Private Function getSecondaryDays() As String
+		Dim days As String = New String("")
+		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
+			If Not ctrl.Text = Me.primaryDayStr Then
+				days = days & daysFormat(ctrl.Text)
+			End If
+		Next
+		Return days
+	End Function
+
+	''' <summary>
+	''' Checks to see which items are checked in the CheckedListBox.
+	''' </summary>
+	''' <returns>A String of letters representing days.</returns>
+	''' <remarks>If none are checked, return Nothing.</remarks>
 	Private Function getEarnsOnWeekday() As String
 		Dim days As String = New String("")
 		For Each item In Me.clbPointsEarningDays.CheckedItems
@@ -54,6 +91,12 @@ Public Class StepC
 		Return days
 	End Function
 
+	''' <summary>
+	''' Formats days to what the database expects.
+	''' </summary>
+	''' <param name="inputDay"></param>
+	''' <returns>A single-character String representing the inputDay.</returns>
+	''' <remarks>The pride and joy of StepC_SetData.</remarks>
 	Private Function daysFormat(ByVal inputDay As String) As String
 		Dim returnDay As String = New String("")
 		Select Case inputDay
@@ -73,20 +116,6 @@ Public Class StepC
 				returnDay = "S"
 		End Select
 		Return returnDay
-	End Function
-
-	Private Function getPrimaryDay() As String
-		Return daysFormat(Me.primaryDayStr)
-	End Function
-
-	Private Function getSecondaryDays() As String
-		Dim days As String = New String("")
-		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
-			If Not ctrl.Text = Me.primaryDayStr Then
-				days = days & daysFormat(ctrl.Text)
-			End If
-		Next
-		Return days
 	End Function
 #End Region
 #Region "StepC_Load"
@@ -172,6 +201,12 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_Validation"
+	''' <summary>
+	''' Asks StepC_Data to validate data and then handles GUI reactions accordingly.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
 	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
@@ -286,6 +321,12 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_getPrimaryDayOfWeek"
+	''' <summary>
+	''' Given a Day as a String, Returns that Day's CheckBox.
+	''' </summary>
+	''' <param name="dayToGet"></param>
+	''' <returns>The Primary Day's CheckBox.</returns>
+	''' <remarks>This is here because a Panel full of CheckBoxes were used for UI/UX purposes.</remarks>
 	Private Function getPrimaryDayOfWeek(ByVal dayToGet As String) As System.Windows.Forms.CheckBox
 		Dim cbDayOfWeek As System.Windows.Forms.CheckBox = New System.Windows.Forms.CheckBox
 		Select Case dayToGet
@@ -308,6 +349,11 @@ Public Class StepC
 	End Function
 #End Region
 #Region "StepC_lockPrimaryDayOfWeek"
+	''' <summary>
+	''' Changes properties of a CheckBox to represent the Primary Day.
+	''' </summary>
+	''' <param name="cbDayOfWeek"></param>
+	''' <remarks>UI/UX flair! SUPERSTAR!</remarks>
 	Private Sub lockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
 		cbDayOfWeek.Checked = True
 		cbDayOfWeek.Enabled = False
@@ -316,6 +362,11 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_unlockPrimaryDayOfWeek"
+	''' <summary>
+	''' Reverts property changes made by "lockPrimaryDayOfWeek."
+	''' </summary>
+	''' <param name="cbDayOfWeek"></param>
+	''' <remarks>If you're going to lock it, you best be prepared to unlock it.</remarks>
 	Private Sub unlockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
 		Dim txt As String = New String("ASSIGNED A VALUE")
 		cbDayOfWeek.Checked = False
@@ -348,15 +399,23 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_dtpOccursDate_CloseUp"
+	''' <summary>
+	''' All the things that happen once dtpOccursDate's CloseUp event gets fired!
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>This probably does way too much! Be careful!</remarks>
 	Private Sub dtpOccursDate_CloseUp(sender As Object, e As EventArgs) _
 	Handles dtpOccursDate.CloseUp
-		Dim local_startDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat)
-		Dim local_endDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)
+		'Local vars because of all those dot operators to get to what is needed!
+		Dim local_startDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat) 'Math + Format
+		Dim local_endDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)	   'Math + Format
 		'
-		Me.primaryDayStr = Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()
+		Me.primaryDayStr = Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()	'Assign the Primary Day to the variable
 		setStartEndQualifyingLabels(local_startDay, local_endDay)
 		Me.MonthCal.SetSelectionRange(local_startDay, local_endDay)
 		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+		'This Boolean determines if the Occurs Date has ever been set.
 		If Me.occursDateBool = False Then
 			Me.occursDateBool = True
 		End If
@@ -366,10 +425,16 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_cbSameDayPromo_CheckedChanged"
+	''' <summary>
+	''' Changes the Qualifying Period to a Same-Day schema.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>Only happens if the Qualifying period has been set.</remarks>
 	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles cbSameDayPromo.CheckedChanged
-		If Not (Me.lblQualifyingStart.Text = "Start Date") And Not (Me.lblQualifyingEnd.Text = "End Date") Then
-			If Me.cbSameDayPromo.Checked Then
+		If Me.occursDateBool Then
+			If Me.cbSameDayPromo.Checked Then 'Weird maths to figure the Qualifying Range
 				Me.startDayInt = -6
 				Me.endDayInt = 0
 			Else
@@ -384,43 +449,59 @@ Public Class StepC
 #End Region
 #Region "_RECURRING_PROMO_"
 #Region "StepC_cbPrimaryDay_DropDown"
+	''' <summary>
+	''' Unlocks and clears the Primary Day.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>What if I fat-finger the Primary Day and have to change it?</remarks>
 	Private Sub cbPrimaryDay_DropDown(sender As Object, e As EventArgs) _
 	Handles cbPrimaryDay.DropDown
-		If Not IsNothing(cbPrimaryDay.SelectedItem) Then
+		If Not IsNothing(cbPrimaryDay.SelectedItem) Then 'Clear it if it's set!
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
 			Me.primaryDayStr = "ASSIGNED A VALUE"
 		End If
 	End Sub
 #End Region
 #Region "StepC_cbPrimaryDay_SelectionChangeCommitted"
+	''' <summary>
+	''' Gets called when cbPrimaryDay's SelectionChangeCommitted event is fired.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>Thankfully VS is Intelligent.</remarks>
 	Private Sub cbPrimaryDay_SelectionChangeCommitted(sender As Object, e As EventArgs) _
 		Handles cbPrimaryDay.SelectionChangeCommitted
-		If Me.primaryDayBool = False Then
+		If Me.primaryDayBool = False Then '"Break the (bool) seal!"
 			Me.primaryDayBool = True
 		End If
-		Me.primaryDayStr = Me.cbPrimaryDay.SelectedItem.ToString()
-		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+		Me.primaryDayStr = Me.cbPrimaryDay.SelectedItem.ToString()	'Set
+		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))	'And Lock
 	End Sub
 #End Region
 #Region "StepC_dtpQualifyingStart_CloseUp"
 	Private Sub dtpQualifyingStart_CloseUp(sender As Object, e As EventArgs) _
 	Handles dtpQualifyingStart.CloseUp
-		If Me.startDayBool = False Then
+		If Me.startDayBool = False Then	'"Break the (bool) seal!"
 			Me.startDayBool = True
 		End If
-		checkRecurringStartEndQualifyingCheckboxes()
+		checkRecurringStartEndQualifyingCheckboxes() 'Have both seals been broken?
 	End Sub
 #End Region
 #Region "StepC_dtpQualifyingEnd_CloseUp"
 	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, e As EventArgs) _
 	Handles dtpQualifyingEnd.CloseUp
-		If Me.endDayBool = False Then
+		If Me.endDayBool = False Then '"Break the (bool) seal!"
 			Me.endDayBool = True
 		End If
-		checkRecurringStartEndQualifyingCheckboxes()
+		checkRecurringStartEndQualifyingCheckboxes() 'Have both seals been broken?
 	End Sub
 #End Region
 #Region "StepC_checkRecurringStartEndQualifyingCheckboxes"
+	''' <summary>
+	''' Sets the SelectionRange if both bools are true.
+	''' </summary>
+	''' <remarks>Make the MonthCal visible too!</remarks>
 	Private Sub checkRecurringStartEndQualifyingCheckboxes()
 		If Me.startDayBool And Me.endDayBool Then
 			Me.MonthCal.SetSelectionRange(Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
