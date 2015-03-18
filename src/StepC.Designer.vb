@@ -22,36 +22,58 @@ Partial Class StepC
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.Panel6 = New System.Windows.Forms.Panel()
-		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-		Me.Label5 = New System.Windows.Forms.Label()
-		Me.Label1 = New System.Windows.Forms.Label()
-		Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+		Me.pnlRedemptionDays = New System.Windows.Forms.Panel()
+		Me.pnlCbRedemptionDays = New System.Windows.Forms.Panel()
+		Me.cbSaturday = New System.Windows.Forms.CheckBox()
+		Me.cbFriday = New System.Windows.Forms.CheckBox()
+		Me.cbThursday = New System.Windows.Forms.CheckBox()
+		Me.cbWednesday = New System.Windows.Forms.CheckBox()
+		Me.cbTuesday = New System.Windows.Forms.CheckBox()
+		Me.cbMonday = New System.Windows.Forms.CheckBox()
+		Me.cbSunday = New System.Windows.Forms.CheckBox()
+		Me.lblPrimaryDay = New System.Windows.Forms.Label()
+		Me.lblRedemptionDays = New System.Windows.Forms.Label()
 		Me.Panel2 = New System.Windows.Forms.Panel()
-		Me.Label7 = New System.Windows.Forms.Label()
-		Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox()
-		Me.Panel5 = New System.Windows.Forms.Panel()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-		Me.Label4 = New System.Windows.Forms.Label()
+		Me.cbSelectAll = New System.Windows.Forms.CheckBox()
+		Me.lblPointsEarningDays = New System.Windows.Forms.Label()
+		Me.clbPointsEarningDays = New System.Windows.Forms.CheckedListBox()
 		Me.Panel3 = New System.Windows.Forms.Panel()
-		Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+		Me.dtpQualifyingStart = New System.Windows.Forms.DateTimePicker()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Panel4 = New System.Windows.Forms.Panel()
-		Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+		Me.dtpQualifyingEnd = New System.Windows.Forms.DateTimePicker()
 		Me.Label3 = New System.Windows.Forms.Label()
-		Me.Panel7 = New System.Windows.Forms.Panel()
-		Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+		Me.Label9 = New System.Windows.Forms.Label()
+		Me.Label10 = New System.Windows.Forms.Label()
+		Me.lblQualifyingEnd = New System.Windows.Forms.Label()
+		Me.lblQualifyingStart = New System.Windows.Forms.Label()
+		Me.cbSameDayPromo = New System.Windows.Forms.CheckBox()
+		Me.Label13 = New System.Windows.Forms.Label()
+		Me.Label14 = New System.Windows.Forms.Label()
+		Me.dtpOccursDate = New System.Windows.Forms.DateTimePicker()
+		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
+		Me.pnlOccuringQualifyingPeriod = New System.Windows.Forms.Panel()
+		Me.pnlOccursDate = New System.Windows.Forms.Panel()
+		Me.pnlMonthCal = New System.Windows.Forms.Panel()
+		Me.pnlRecurringQualifyingPeriod = New System.Windows.Forms.Panel()
 		Me.Label6 = New System.Windows.Forms.Label()
-		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-		Me.Panel1.SuspendLayout()
-		Me.Panel6.SuspendLayout()
+		Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+		Me.Panel7 = New System.Windows.Forms.Panel()
+		Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+		Me.pnlPrimaryDay = New System.Windows.Forms.Panel()
+		Me.cbPrimaryDay = New System.Windows.Forms.ComboBox()
+		Me.yetAnotherLabel = New System.Windows.Forms.Label()
+		Me.pnlRedemptionDays.SuspendLayout()
+		Me.pnlCbRedemptionDays.SuspendLayout()
 		Me.Panel2.SuspendLayout()
-		Me.Panel5.SuspendLayout()
 		Me.Panel3.SuspendLayout()
 		Me.Panel4.SuspendLayout()
+		Me.pnlOccuringQualifyingPeriod.SuspendLayout()
+		Me.pnlOccursDate.SuspendLayout()
+		Me.pnlMonthCal.SuspendLayout()
+		Me.pnlRecurringQualifyingPeriod.SuspendLayout()
 		Me.Panel7.SuspendLayout()
+		Me.pnlPrimaryDay.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -59,217 +81,393 @@ Partial Class StepC
 		Me.Description.Size = New System.Drawing.Size(578, 72)
 		Me.Description.Text = "Set the date information for the promotional."
 		'
-		'Panel1
+		'pnlRedemptionDays
 		'
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel1.Controls.Add(Me.Panel6)
-		Me.Panel1.Controls.Add(Me.Label1)
-		Me.Panel1.Controls.Add(Me.CheckedListBox1)
-		Me.Panel1.Location = New System.Drawing.Point(191, 16)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(174, 255)
-		Me.Panel1.TabIndex = 0
+		Me.pnlRedemptionDays.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlRedemptionDays.Controls.Add(Me.pnlCbRedemptionDays)
+		Me.pnlRedemptionDays.Controls.Add(Me.lblPrimaryDay)
+		Me.pnlRedemptionDays.Controls.Add(Me.lblRedemptionDays)
+		Me.pnlRedemptionDays.Location = New System.Drawing.Point(229, 10)
+		Me.pnlRedemptionDays.Name = "pnlRedemptionDays"
+		Me.pnlRedemptionDays.Size = New System.Drawing.Size(174, 192)
+		Me.pnlRedemptionDays.TabIndex = 0
 		'
-		'Panel6
+		'pnlCbRedemptionDays
 		'
-		Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel6.Controls.Add(Me.ComboBox1)
-		Me.Panel6.Controls.Add(Me.Label5)
-		Me.Panel6.Location = New System.Drawing.Point(4, 160)
-		Me.Panel6.Name = "Panel6"
-		Me.Panel6.Size = New System.Drawing.Size(162, 81)
-		Me.Panel6.TabIndex = 0
+		Me.pnlCbRedemptionDays.BackColor = System.Drawing.Color.Lavender
+		Me.pnlCbRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSaturday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbFriday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbThursday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbWednesday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbTuesday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbMonday)
+		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSunday)
+		Me.pnlCbRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.pnlCbRedemptionDays.Location = New System.Drawing.Point(19, 52)
+		Me.pnlCbRedemptionDays.Name = "pnlCbRedemptionDays"
+		Me.pnlCbRedemptionDays.Size = New System.Drawing.Size(103, 109)
+		Me.pnlCbRedemptionDays.TabIndex = 27
 		'
-		'ComboBox1
+		'cbSaturday
 		'
-		Me.ComboBox1.FormattingEnabled = True
-		Me.ComboBox1.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
-		Me.ComboBox1.Location = New System.Drawing.Point(3, 48)
-		Me.ComboBox1.Name = "ComboBox1"
-		Me.ComboBox1.Size = New System.Drawing.Size(154, 21)
-		Me.ComboBox1.TabIndex = 5
+		Me.cbSaturday.AutoSize = True
+		Me.cbSaturday.Location = New System.Drawing.Point(1, 90)
+		Me.cbSaturday.Name = "cbSaturday"
+		Me.cbSaturday.Size = New System.Drawing.Size(68, 17)
+		Me.cbSaturday.TabIndex = 34
+		Me.cbSaturday.Text = "Saturday"
+		Me.cbSaturday.UseVisualStyleBackColor = True
 		'
-		'Label5
+		'cbFriday
 		'
-		Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label5.Location = New System.Drawing.Point(3, 1)
-		Me.Label5.Name = "Label5"
-		Me.Label5.Size = New System.Drawing.Size(152, 31)
-		Me.Label5.TabIndex = 0
-		Me.Label5.Text = "Of the selected day(s), which is the primary day?"
+		Me.cbFriday.AutoSize = True
+		Me.cbFriday.Location = New System.Drawing.Point(1, 75)
+		Me.cbFriday.Name = "cbFriday"
+		Me.cbFriday.Size = New System.Drawing.Size(54, 17)
+		Me.cbFriday.TabIndex = 33
+		Me.cbFriday.Text = "Friday"
+		Me.cbFriday.UseVisualStyleBackColor = True
 		'
-		'Label1
+		'cbThursday
 		'
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(5, 4)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(159, 36)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "On which day(s) will the promo occur?"
+		Me.cbThursday.AutoSize = True
+		Me.cbThursday.Location = New System.Drawing.Point(1, 60)
+		Me.cbThursday.Name = "cbThursday"
+		Me.cbThursday.Size = New System.Drawing.Size(70, 17)
+		Me.cbThursday.TabIndex = 32
+		Me.cbThursday.Text = "Thursday"
+		Me.cbThursday.UseVisualStyleBackColor = True
 		'
-		'CheckedListBox1
+		'cbWednesday
 		'
-		Me.CheckedListBox1.BackColor = System.Drawing.SystemColors.Control
-		Me.CheckedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-		Me.CheckedListBox1.CheckOnClick = True
-		Me.CheckedListBox1.FormattingEnabled = True
-		Me.CheckedListBox1.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
-		Me.CheckedListBox1.Location = New System.Drawing.Point(17, 43)
-		Me.CheckedListBox1.Name = "CheckedListBox1"
-		Me.CheckedListBox1.Size = New System.Drawing.Size(149, 105)
-		Me.CheckedListBox1.TabIndex = 4
-		Me.CheckedListBox1.ThreeDCheckBoxes = True
+		Me.cbWednesday.BackColor = System.Drawing.Color.Transparent
+		Me.cbWednesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbWednesday.ForeColor = System.Drawing.Color.Black
+		Me.cbWednesday.Location = New System.Drawing.Point(1, 44)
+		Me.cbWednesday.Name = "cbWednesday"
+		Me.cbWednesday.Size = New System.Drawing.Size(100, 19)
+		Me.cbWednesday.TabIndex = 31
+		Me.cbWednesday.Text = "Wednesday"
+		Me.cbWednesday.UseVisualStyleBackColor = False
+		'
+		'cbTuesday
+		'
+		Me.cbTuesday.AutoSize = True
+		Me.cbTuesday.Location = New System.Drawing.Point(1, 30)
+		Me.cbTuesday.Name = "cbTuesday"
+		Me.cbTuesday.Size = New System.Drawing.Size(67, 17)
+		Me.cbTuesday.TabIndex = 30
+		Me.cbTuesday.Text = "Tuesday"
+		Me.cbTuesday.UseVisualStyleBackColor = True
+		'
+		'cbMonday
+		'
+		Me.cbMonday.AutoSize = True
+		Me.cbMonday.Location = New System.Drawing.Point(1, 15)
+		Me.cbMonday.Name = "cbMonday"
+		Me.cbMonday.Size = New System.Drawing.Size(64, 17)
+		Me.cbMonday.TabIndex = 29
+		Me.cbMonday.Text = "Monday"
+		Me.cbMonday.UseVisualStyleBackColor = True
+		'
+		'cbSunday
+		'
+		Me.cbSunday.AutoSize = True
+		Me.cbSunday.Location = New System.Drawing.Point(1, 0)
+		Me.cbSunday.Name = "cbSunday"
+		Me.cbSunday.Size = New System.Drawing.Size(62, 17)
+		Me.cbSunday.TabIndex = 28
+		Me.cbSunday.Text = "Sunday"
+		Me.cbSunday.UseVisualStyleBackColor = True
+		'
+		'lblPrimaryDay
+		'
+		Me.lblPrimaryDay.AutoSize = True
+		Me.lblPrimaryDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPrimaryDay.ForeColor = System.Drawing.Color.Lime
+		Me.lblPrimaryDay.Location = New System.Drawing.Point(39, 164)
+		Me.lblPrimaryDay.Name = "lblPrimaryDay"
+		Me.lblPrimaryDay.Size = New System.Drawing.Size(83, 13)
+		Me.lblPrimaryDay.TabIndex = 5
+		Me.lblPrimaryDay.Text = "* Primary Day"
+		Me.lblPrimaryDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
+		'lblRedemptionDays
+		'
+		Me.lblRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblRedemptionDays.ForeColor = System.Drawing.Color.White
+		Me.lblRedemptionDays.Location = New System.Drawing.Point(3, 0)
+		Me.lblRedemptionDays.Name = "lblRedemptionDays"
+		Me.lblRedemptionDays.Size = New System.Drawing.Size(165, 49)
+		Me.lblRedemptionDays.TabIndex = 0
+		Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
 		'
 		'Panel2
 		'
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Controls.Add(Me.CheckBox1)
-		Me.Panel2.Controls.Add(Me.Label7)
-		Me.Panel2.Controls.Add(Me.CheckedListBox2)
-		Me.Panel2.Controls.Add(Me.Panel5)
-		Me.Panel2.Location = New System.Drawing.Point(371, 16)
+		Me.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel2.Controls.Add(Me.cbSelectAll)
+		Me.Panel2.Controls.Add(Me.lblPointsEarningDays)
+		Me.Panel2.Controls.Add(Me.clbPointsEarningDays)
+		Me.Panel2.Location = New System.Drawing.Point(409, 10)
 		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(174, 255)
+		Me.Panel2.Size = New System.Drawing.Size(172, 192)
 		Me.Panel2.TabIndex = 0
 		'
-		'Label7
+		'cbSelectAll
 		'
-		Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label7.Location = New System.Drawing.Point(5, 4)
-		Me.Label7.Name = "Label7"
-		Me.Label7.Size = New System.Drawing.Size(159, 36)
-		Me.Label7.TabIndex = 0
-		Me.Label7.Text = "On which day(s) will points be earned?"
+		Me.cbSelectAll.AutoSize = True
+		Me.cbSelectAll.Checked = True
+		Me.cbSelectAll.CheckState = System.Windows.Forms.CheckState.Checked
+		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSelectAll.ForeColor = System.Drawing.Color.Lime
+		Me.cbSelectAll.Location = New System.Drawing.Point(21, 163)
+		Me.cbSelectAll.Name = "cbSelectAll"
+		Me.cbSelectAll.Size = New System.Drawing.Size(80, 17)
+		Me.cbSelectAll.TabIndex = 7
+		Me.cbSelectAll.Text = "Select All"
+		Me.cbSelectAll.UseVisualStyleBackColor = True
 		'
-		'CheckedListBox2
+		'lblPointsEarningDays
 		'
-		Me.CheckedListBox2.BackColor = System.Drawing.SystemColors.Control
-		Me.CheckedListBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-		Me.CheckedListBox2.CheckOnClick = True
-		Me.CheckedListBox2.FormattingEnabled = True
-		Me.CheckedListBox2.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
-		Me.CheckedListBox2.Location = New System.Drawing.Point(17, 43)
-		Me.CheckedListBox2.Name = "CheckedListBox2"
-		Me.CheckedListBox2.Size = New System.Drawing.Size(81, 105)
-		Me.CheckedListBox2.TabIndex = 6
-		Me.CheckedListBox2.ThreeDCheckBoxes = True
+		Me.lblPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPointsEarningDays.ForeColor = System.Drawing.Color.White
+		Me.lblPointsEarningDays.Location = New System.Drawing.Point(3, 0)
+		Me.lblPointsEarningDays.Name = "lblPointsEarningDays"
+		Me.lblPointsEarningDays.Size = New System.Drawing.Size(165, 49)
+		Me.lblPointsEarningDays.TabIndex = 0
+		Me.lblPointsEarningDays.Text = "On which day(s), within the qualifying period, will points be earned?"
 		'
-		'Panel5
+		'clbPointsEarningDays
 		'
-		Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel5.Controls.Add(Me.RadioButton2)
-		Me.Panel5.Controls.Add(Me.RadioButton1)
-		Me.Panel5.Controls.Add(Me.Label4)
-		Me.Panel5.Location = New System.Drawing.Point(4, 160)
-		Me.Panel5.Name = "Panel5"
-		Me.Panel5.Size = New System.Drawing.Size(162, 81)
-		Me.Panel5.TabIndex = 0
-		'
-		'RadioButton2
-		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.Checked = True
-		Me.RadioButton2.Location = New System.Drawing.Point(3, 53)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(39, 17)
-		Me.RadioButton2.TabIndex = 0
-		Me.RadioButton2.TabStop = True
-		Me.RadioButton2.Text = "No"
-		Me.RadioButton2.UseVisualStyleBackColor = True
-		'
-		'RadioButton1
-		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.Location = New System.Drawing.Point(3, 35)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(43, 17)
-		Me.RadioButton1.TabIndex = 7
-		Me.RadioButton1.TabStop = True
-		Me.RadioButton1.Text = "Yes"
-		Me.RadioButton1.UseVisualStyleBackColor = True
-		'
-		'Label4
-		'
-		Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label4.Location = New System.Drawing.Point(3, 1)
-		Me.Label4.Name = "Label4"
-		Me.Label4.Size = New System.Drawing.Size(152, 31)
-		Me.Label4.TabIndex = 0
-		Me.Label4.Text = "Can points be earned on the day of the promo?"
+		Me.clbPointsEarningDays.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.clbPointsEarningDays.CheckOnClick = True
+		Me.clbPointsEarningDays.FormattingEnabled = True
+		Me.clbPointsEarningDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+		Me.clbPointsEarningDays.Location = New System.Drawing.Point(19, 52)
+		Me.clbPointsEarningDays.Name = "clbPointsEarningDays"
+		Me.clbPointsEarningDays.Size = New System.Drawing.Size(103, 109)
+		Me.clbPointsEarningDays.TabIndex = 6
+		Me.clbPointsEarningDays.ThreeDCheckBoxes = True
 		'
 		'Panel3
 		'
-		Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel3.Controls.Add(Me.DateTimePicker1)
+		Me.Panel3.BackColor = System.Drawing.Color.LemonChiffon
+		Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel3.Controls.Add(Me.dtpQualifyingStart)
 		Me.Panel3.Controls.Add(Me.Label2)
-		Me.Panel3.Location = New System.Drawing.Point(41, 16)
+		Me.Panel3.Location = New System.Drawing.Point(0, 3)
 		Me.Panel3.Name = "Panel3"
-		Me.Panel3.Size = New System.Drawing.Size(144, 81)
+		Me.Panel3.Size = New System.Drawing.Size(107, 80)
 		Me.Panel3.TabIndex = 0
 		'
-		'DateTimePicker1
+		'dtpQualifyingStart
 		'
-		Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-		Me.DateTimePicker1.Location = New System.Drawing.Point(2, 43)
-		Me.DateTimePicker1.Name = "DateTimePicker1"
-		Me.DateTimePicker1.Size = New System.Drawing.Size(95, 20)
-		Me.DateTimePicker1.TabIndex = 1
+		Me.dtpQualifyingStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+		Me.dtpQualifyingStart.Location = New System.Drawing.Point(3, 53)
+		Me.dtpQualifyingStart.Name = "dtpQualifyingStart"
+		Me.dtpQualifyingStart.Size = New System.Drawing.Size(95, 20)
+		Me.dtpQualifyingStart.TabIndex = 1
 		'
 		'Label2
 		'
+		Me.Label2.BackColor = System.Drawing.Color.Transparent
 		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.Location = New System.Drawing.Point(-1, 5)
+		Me.Label2.Location = New System.Drawing.Point(0, 0)
 		Me.Label2.Name = "Label2"
-		Me.Label2.Size = New System.Drawing.Size(140, 35)
+		Me.Label2.Size = New System.Drawing.Size(106, 48)
 		Me.Label2.TabIndex = 0
-		Me.Label2.Text = "When is the promo start date?"
+		Me.Label2.Text = "When does the qualifying period start?"
 		'
 		'Panel4
 		'
-		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel4.Controls.Add(Me.DateTimePicker2)
+		Me.Panel4.BackColor = System.Drawing.Color.LemonChiffon
+		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel4.Controls.Add(Me.dtpQualifyingEnd)
 		Me.Panel4.Controls.Add(Me.Label3)
-		Me.Panel4.Location = New System.Drawing.Point(41, 103)
+		Me.Panel4.Location = New System.Drawing.Point(113, 3)
 		Me.Panel4.Name = "Panel4"
-		Me.Panel4.Size = New System.Drawing.Size(144, 81)
+		Me.Panel4.Size = New System.Drawing.Size(107, 80)
 		Me.Panel4.TabIndex = 0
 		'
-		'DateTimePicker2
+		'dtpQualifyingEnd
 		'
-		Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-		Me.DateTimePicker2.Location = New System.Drawing.Point(2, 43)
-		Me.DateTimePicker2.Name = "DateTimePicker2"
-		Me.DateTimePicker2.Size = New System.Drawing.Size(95, 20)
-		Me.DateTimePicker2.TabIndex = 2
+		Me.dtpQualifyingEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+		Me.dtpQualifyingEnd.Location = New System.Drawing.Point(3, 53)
+		Me.dtpQualifyingEnd.Name = "dtpQualifyingEnd"
+		Me.dtpQualifyingEnd.Size = New System.Drawing.Size(95, 20)
+		Me.dtpQualifyingEnd.TabIndex = 2
 		'
 		'Label3
 		'
+		Me.Label3.BackColor = System.Drawing.Color.Transparent
 		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(-1, 5)
+		Me.Label3.Location = New System.Drawing.Point(0, 0)
 		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(140, 35)
+		Me.Label3.Size = New System.Drawing.Size(106, 48)
 		Me.Label3.TabIndex = 0
-		Me.Label3.Text = "When is the promo end date?"
+		Me.Label3.Text = "When does the qualifying period end?"
 		'
-		'Panel7
+		'Label9
 		'
-		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel7.Controls.Add(Me.DateTimePicker3)
-		Me.Panel7.Controls.Add(Me.Label6)
-		Me.Panel7.Location = New System.Drawing.Point(41, 190)
-		Me.Panel7.Name = "Panel7"
-		Me.Panel7.Size = New System.Drawing.Size(144, 81)
-		Me.Panel7.TabIndex = 0
+		Me.Label9.AutoSize = True
+		Me.Label9.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label9.ForeColor = System.Drawing.Color.Gainsboro
+		Me.Label9.Location = New System.Drawing.Point(9, 38)
+		Me.Label9.Name = "Label9"
+		Me.Label9.Size = New System.Drawing.Size(33, 13)
+		Me.Label9.TabIndex = 23
+		Me.Label9.Text = "End:"
+		Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
-		'DateTimePicker3
+		'Label10
 		'
-		Me.DateTimePicker3.Enabled = False
-		Me.DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-		Me.DateTimePicker3.Location = New System.Drawing.Point(2, 43)
-		Me.DateTimePicker3.Name = "DateTimePicker3"
-		Me.DateTimePicker3.Size = New System.Drawing.Size(95, 20)
-		Me.DateTimePicker3.TabIndex = 0
-		Me.DateTimePicker3.TabStop = False
+		Me.Label10.AutoSize = True
+		Me.Label10.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label10.ForeColor = System.Drawing.Color.Gainsboro
+		Me.Label10.Location = New System.Drawing.Point(4, 21)
+		Me.Label10.Name = "Label10"
+		Me.Label10.Size = New System.Drawing.Size(38, 13)
+		Me.Label10.TabIndex = 22
+		Me.Label10.Text = "Start:"
+		Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
+		'lblQualifyingEnd
+		'
+		Me.lblQualifyingEnd.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblQualifyingEnd.ForeColor = System.Drawing.Color.White
+		Me.lblQualifyingEnd.Location = New System.Drawing.Point(37, 34)
+		Me.lblQualifyingEnd.Name = "lblQualifyingEnd"
+		Me.lblQualifyingEnd.Size = New System.Drawing.Size(198, 23)
+		Me.lblQualifyingEnd.TabIndex = 20
+		Me.lblQualifyingEnd.Text = "End Date"
+		Me.lblQualifyingEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
+		'lblQualifyingStart
+		'
+		Me.lblQualifyingStart.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblQualifyingStart.ForeColor = System.Drawing.Color.White
+		Me.lblQualifyingStart.Location = New System.Drawing.Point(38, 17)
+		Me.lblQualifyingStart.Name = "lblQualifyingStart"
+		Me.lblQualifyingStart.Size = New System.Drawing.Size(198, 23)
+		Me.lblQualifyingStart.TabIndex = 21
+		Me.lblQualifyingStart.Text = "Start Date"
+		Me.lblQualifyingStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
+		'cbSameDayPromo
+		'
+		Me.cbSameDayPromo.AutoSize = True
+		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 56)
+		Me.cbSameDayPromo.Name = "cbSameDayPromo"
+		Me.cbSameDayPromo.Size = New System.Drawing.Size(124, 19)
+		Me.cbSameDayPromo.TabIndex = 19
+		Me.cbSameDayPromo.Text = "Same-Day Promo"
+		Me.cbSameDayPromo.UseVisualStyleBackColor = False
+		'
+		'Label13
+		'
+		Me.Label13.AutoSize = True
+		Me.Label13.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label13.ForeColor = System.Drawing.Color.Gainsboro
+		Me.Label13.Location = New System.Drawing.Point(0, 0)
+		Me.Label13.Name = "Label13"
+		Me.Label13.Size = New System.Drawing.Size(140, 13)
+		Me.Label13.TabIndex = 18
+		Me.Label13.Text = "Qualifying Period Dates"
+		Me.Label13.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		'
+		'Label14
+		'
+		Me.Label14.AutoSize = True
+		Me.Label14.BackColor = System.Drawing.Color.Transparent
+		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label14.Location = New System.Drawing.Point(3, 10)
+		Me.Label14.Name = "Label14"
+		Me.Label14.Size = New System.Drawing.Size(142, 16)
+		Me.Label14.TabIndex = 17
+		Me.Label14.Text = "Promo Occurs Date"
+		'
+		'dtpOccursDate
+		'
+		Me.dtpOccursDate.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.dtpOccursDate.Location = New System.Drawing.Point(6, 29)
+		Me.dtpOccursDate.Name = "dtpOccursDate"
+		Me.dtpOccursDate.Size = New System.Drawing.Size(199, 20)
+		Me.dtpOccursDate.TabIndex = 16
+		'
+		'MonthCal
+		'
+		Me.MonthCal.BackColor = System.Drawing.Color.White
+		Me.MonthCal.Cursor = System.Windows.Forms.Cursors.No
+		Me.MonthCal.Enabled = False
+		Me.MonthCal.ForeColor = System.Drawing.SystemColors.ControlText
+		Me.MonthCal.Location = New System.Drawing.Point(6, 4)
+		Me.MonthCal.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
+		Me.MonthCal.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
+		Me.MonthCal.Name = "MonthCal"
+		Me.MonthCal.ShowToday = False
+		Me.MonthCal.ShowTodayCircle = False
+		Me.MonthCal.TabIndex = 15
+		Me.MonthCal.TitleBackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.MonthCal.TitleForeColor = System.Drawing.Color.Gold
+		Me.MonthCal.TrailingForeColor = System.Drawing.Color.Gray
+		Me.MonthCal.Visible = False
+		'
+		'pnlOccuringQualifyingPeriod
+		'
+		Me.pnlOccuringQualifyingPeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlOccuringQualifyingPeriod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label13)
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label10)
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingEnd)
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingStart)
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label9)
+		Me.pnlOccuringQualifyingPeriod.Location = New System.Drawing.Point(229, 208)
+		Me.pnlOccuringQualifyingPeriod.Name = "pnlOccuringQualifyingPeriod"
+		Me.pnlOccuringQualifyingPeriod.Size = New System.Drawing.Size(247, 57)
+		Me.pnlOccuringQualifyingPeriod.TabIndex = 24
+		'
+		'pnlOccursDate
+		'
+		Me.pnlOccursDate.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlOccursDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlOccursDate.Controls.Add(Me.Label14)
+		Me.pnlOccursDate.Controls.Add(Me.dtpOccursDate)
+		Me.pnlOccursDate.Controls.Add(Me.cbSameDayPromo)
+		Me.pnlOccursDate.Location = New System.Drawing.Point(3, 189)
+		Me.pnlOccursDate.Name = "pnlOccursDate"
+		Me.pnlOccursDate.Size = New System.Drawing.Size(220, 89)
+		Me.pnlOccursDate.TabIndex = 25
+		'
+		'pnlMonthCal
+		'
+		Me.pnlMonthCal.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlMonthCal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMonthCal.Controls.Add(Me.MonthCal)
+		Me.pnlMonthCal.Location = New System.Drawing.Point(3, 10)
+		Me.pnlMonthCal.Name = "pnlMonthCal"
+		Me.pnlMonthCal.Size = New System.Drawing.Size(220, 175)
+		Me.pnlMonthCal.TabIndex = 26
+		'
+		'pnlRecurringQualifyingPeriod
+		'
+		Me.pnlRecurringQualifyingPeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlRecurringQualifyingPeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlRecurringQualifyingPeriod.Controls.Add(Me.Panel3)
+		Me.pnlRecurringQualifyingPeriod.Controls.Add(Me.Panel4)
+		Me.pnlRecurringQualifyingPeriod.Location = New System.Drawing.Point(3, 189)
+		Me.pnlRecurringQualifyingPeriod.Name = "pnlRecurringQualifyingPeriod"
+		Me.pnlRecurringQualifyingPeriod.Size = New System.Drawing.Size(220, 89)
+		Me.pnlRecurringQualifyingPeriod.TabIndex = 27
 		'
 		'Label6
 		'
@@ -281,72 +479,167 @@ Partial Class StepC
 		Me.Label6.Text = "When is the promo occurance date?"
 		Me.Label6.Visible = False
 		'
-		'CheckBox1
+		'DateTimePicker3
 		'
-		Me.CheckBox1.AutoSize = True
-		Me.CheckBox1.Checked = True
-		Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-		Me.CheckBox1.Location = New System.Drawing.Point(105, 44)
-		Me.CheckBox1.Name = "CheckBox1"
-		Me.CheckBox1.Size = New System.Drawing.Size(70, 17)
-		Me.CheckBox1.TabIndex = 7
-		Me.CheckBox1.Text = "Select All"
-		Me.CheckBox1.UseVisualStyleBackColor = True
+		Me.DateTimePicker3.Enabled = False
+		Me.DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+		Me.DateTimePicker3.Location = New System.Drawing.Point(2, 43)
+		Me.DateTimePicker3.Name = "DateTimePicker3"
+		Me.DateTimePicker3.Size = New System.Drawing.Size(95, 20)
+		Me.DateTimePicker3.TabIndex = 0
+		Me.DateTimePicker3.TabStop = False
+		'
+		'Panel7
+		'
+		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel7.Controls.Add(Me.DateTimePicker3)
+		Me.Panel7.Controls.Add(Me.Label6)
+		Me.Panel7.Enabled = False
+		Me.Panel7.Location = New System.Drawing.Point(273, 442)
+		Me.Panel7.Name = "Panel7"
+		Me.Panel7.Size = New System.Drawing.Size(144, 81)
+		Me.Panel7.TabIndex = 0
+		Me.Panel7.Visible = False
+		'
+		'CheckedListBox1
+		'
+		Me.CheckedListBox1.BackColor = System.Drawing.Color.MediumSpringGreen
+		Me.CheckedListBox1.CheckOnClick = True
+		Me.CheckedListBox1.Enabled = False
+		Me.CheckedListBox1.FormattingEnabled = True
+		Me.CheckedListBox1.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+		Me.CheckedListBox1.Location = New System.Drawing.Point(164, 442)
+		Me.CheckedListBox1.Name = "CheckedListBox1"
+		Me.CheckedListBox1.RightToLeft = System.Windows.Forms.RightToLeft.No
+		Me.CheckedListBox1.Size = New System.Drawing.Size(103, 109)
+		Me.CheckedListBox1.TabIndex = 4
+		Me.CheckedListBox1.ThreeDCheckBoxes = True
+		Me.CheckedListBox1.UseCompatibleTextRendering = True
+		Me.CheckedListBox1.Visible = False
+		'
+		'pnlPrimaryDay
+		'
+		Me.pnlPrimaryDay.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPrimaryDay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPrimaryDay.Controls.Add(Me.cbPrimaryDay)
+		Me.pnlPrimaryDay.Controls.Add(Me.yetAnotherLabel)
+		Me.pnlPrimaryDay.Enabled = False
+		Me.pnlPrimaryDay.Location = New System.Drawing.Point(229, 208)
+		Me.pnlPrimaryDay.Name = "pnlPrimaryDay"
+		Me.pnlPrimaryDay.Size = New System.Drawing.Size(124, 57)
+		Me.pnlPrimaryDay.TabIndex = 28
+		Me.pnlPrimaryDay.Visible = False
+		'
+		'cbPrimaryDay
+		'
+		Me.cbPrimaryDay.FormattingEnabled = True
+		Me.cbPrimaryDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+		Me.cbPrimaryDay.Location = New System.Drawing.Point(7, 24)
+		Me.cbPrimaryDay.Name = "cbPrimaryDay"
+		Me.cbPrimaryDay.Size = New System.Drawing.Size(103, 21)
+		Me.cbPrimaryDay.TabIndex = 30
+		'
+		'yetAnotherLabel
+		'
+		Me.yetAnotherLabel.AutoSize = True
+		Me.yetAnotherLabel.BackColor = System.Drawing.Color.Transparent
+		Me.yetAnotherLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.yetAnotherLabel.ForeColor = System.Drawing.Color.Gainsboro
+		Me.yetAnotherLabel.Location = New System.Drawing.Point(0, 0)
+		Me.yetAnotherLabel.Name = "yetAnotherLabel"
+		Me.yetAnotherLabel.Size = New System.Drawing.Size(74, 13)
+		Me.yetAnotherLabel.TabIndex = 29
+		Me.yetAnotherLabel.Text = "Primary Day"
+		Me.yetAnotherLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
 		'StepC
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.CheckedListBox1)
+		Me.Controls.Add(Me.pnlMonthCal)
 		Me.Controls.Add(Me.Panel7)
-		Me.Controls.Add(Me.Panel4)
-		Me.Controls.Add(Me.Panel3)
 		Me.Controls.Add(Me.Panel2)
-		Me.Controls.Add(Me.Panel1)
+		Me.Controls.Add(Me.pnlRedemptionDays)
+		Me.Controls.Add(Me.pnlPrimaryDay)
+		Me.Controls.Add(Me.pnlOccuringQualifyingPeriod)
+		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
+		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Name = "StepC"
 		Me.NextStep = "StepD"
 		Me.PreviousStep = "StepB"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Set the date information for the promotional."
-		Me.Controls.SetChildIndex(Me.Description, 0)
-		Me.Controls.SetChildIndex(Me.Panel1, 0)
+		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
+		Me.Controls.SetChildIndex(Me.pnlRecurringQualifyingPeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlOccuringQualifyingPeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlPrimaryDay, 0)
+		Me.Controls.SetChildIndex(Me.pnlRedemptionDays, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
-		Me.Controls.SetChildIndex(Me.Panel3, 0)
-		Me.Controls.SetChildIndex(Me.Panel4, 0)
 		Me.Controls.SetChildIndex(Me.Panel7, 0)
-		Me.Panel1.ResumeLayout(False)
-		Me.Panel6.ResumeLayout(False)
+		Me.Controls.SetChildIndex(Me.pnlMonthCal, 0)
+		Me.Controls.SetChildIndex(Me.CheckedListBox1, 0)
+		Me.Controls.SetChildIndex(Me.Description, 0)
+		Me.pnlRedemptionDays.ResumeLayout(False)
+		Me.pnlRedemptionDays.PerformLayout()
+		Me.pnlCbRedemptionDays.ResumeLayout(False)
+		Me.pnlCbRedemptionDays.PerformLayout()
 		Me.Panel2.ResumeLayout(False)
 		Me.Panel2.PerformLayout()
-		Me.Panel5.ResumeLayout(False)
-		Me.Panel5.PerformLayout()
 		Me.Panel3.ResumeLayout(False)
 		Me.Panel4.ResumeLayout(False)
+		Me.pnlOccuringQualifyingPeriod.ResumeLayout(False)
+		Me.pnlOccuringQualifyingPeriod.PerformLayout()
+		Me.pnlOccursDate.ResumeLayout(False)
+		Me.pnlOccursDate.PerformLayout()
+		Me.pnlMonthCal.ResumeLayout(False)
+		Me.pnlRecurringQualifyingPeriod.ResumeLayout(False)
 		Me.Panel7.ResumeLayout(False)
+		Me.pnlPrimaryDay.ResumeLayout(False)
+		Me.pnlPrimaryDay.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents Label1 As System.Windows.Forms.Label
-	Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
+	Friend WithEvents pnlRedemptionDays As System.Windows.Forms.Panel
+	Friend WithEvents lblRedemptionDays As System.Windows.Forms.Label
 	Friend WithEvents Panel2 As System.Windows.Forms.Panel
 	Friend WithEvents Panel3 As System.Windows.Forms.Panel
-	Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+	Friend WithEvents dtpQualifyingStart As System.Windows.Forms.DateTimePicker
 	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents Panel5 As System.Windows.Forms.Panel
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-	Friend WithEvents Label4 As System.Windows.Forms.Label
 	Friend WithEvents Panel4 As System.Windows.Forms.Panel
-	Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
+	Friend WithEvents dtpQualifyingEnd As System.Windows.Forms.DateTimePicker
 	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents Panel6 As System.Windows.Forms.Panel
-	Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-	Friend WithEvents Label5 As System.Windows.Forms.Label
-	Friend WithEvents Panel7 As System.Windows.Forms.Panel
-	Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
+	Friend WithEvents clbPointsEarningDays As System.Windows.Forms.CheckedListBox
+	Friend WithEvents lblPointsEarningDays As System.Windows.Forms.Label
+	Friend WithEvents cbSelectAll As System.Windows.Forms.CheckBox
+	Friend WithEvents lblPrimaryDay As System.Windows.Forms.Label
+	Friend WithEvents Label9 As System.Windows.Forms.Label
+	Friend WithEvents Label10 As System.Windows.Forms.Label
+	Friend WithEvents lblQualifyingEnd As System.Windows.Forms.Label
+	Friend WithEvents lblQualifyingStart As System.Windows.Forms.Label
+	Friend WithEvents cbSameDayPromo As System.Windows.Forms.CheckBox
+	Friend WithEvents Label13 As System.Windows.Forms.Label
+	Friend WithEvents Label14 As System.Windows.Forms.Label
+	Friend WithEvents dtpOccursDate As System.Windows.Forms.DateTimePicker
+	Friend WithEvents MonthCal As System.Windows.Forms.MonthCalendar
+	Friend WithEvents pnlOccuringQualifyingPeriod As System.Windows.Forms.Panel
+	Friend WithEvents pnlOccursDate As System.Windows.Forms.Panel
+	Friend WithEvents pnlMonthCal As System.Windows.Forms.Panel
+	Friend WithEvents pnlCbRedemptionDays As System.Windows.Forms.Panel
+	Friend WithEvents cbSaturday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbFriday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbThursday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbWednesday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbTuesday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbMonday As System.Windows.Forms.CheckBox
+	Friend WithEvents cbSunday As System.Windows.Forms.CheckBox
+	Friend WithEvents pnlRecurringQualifyingPeriod As System.Windows.Forms.Panel
 	Friend WithEvents Label6 As System.Windows.Forms.Label
-	Friend WithEvents CheckedListBox2 As System.Windows.Forms.CheckedListBox
-	Friend WithEvents Label7 As System.Windows.Forms.Label
-	Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+	Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
+	Friend WithEvents Panel7 As System.Windows.Forms.Panel
+	Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
+	Friend WithEvents pnlPrimaryDay As System.Windows.Forms.Panel
+	Friend WithEvents cbPrimaryDay As System.Windows.Forms.ComboBox
+	Friend WithEvents yetAnotherLabel As System.Windows.Forms.Label
 
 End Class

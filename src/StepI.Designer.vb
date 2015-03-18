@@ -24,11 +24,9 @@ Partial Class StepI
 	Private Sub InitializeComponent()
 		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
 		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
 		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.Panel1.SuspendLayout()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel2.SuspendLayout()
 		Me.SuspendLayout()
 		'
@@ -55,28 +53,14 @@ Partial Class StepI
 		Me.Label1.Size = New System.Drawing.Size(558, 262)
 		Me.Label1.TabIndex = 0
 		'
-		'IconButton1
-		'
-		Me.IconButton1.ActiveColor = System.Drawing.Color.CornflowerBlue
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(3, 269)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 2
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
-		'
 		'CheckBox1
 		'
 		Me.CheckBox1.AutoSize = True
 		Me.CheckBox1.Location = New System.Drawing.Point(5, 2)
 		Me.CheckBox1.Name = "CheckBox1"
-		Me.CheckBox1.Size = New System.Drawing.Size(503, 17)
+		Me.CheckBox1.Size = New System.Drawing.Size(321, 17)
 		Me.CheckBox1.TabIndex = 3
-		Me.CheckBox1.Text = "I understand the above statements and confirm that this is indeed the promotional" & _
-	" that I want created."
+		Me.CheckBox1.Text = "I confirm that this is indeed the promotional that I want created."
 		Me.CheckBox1.UseVisualStyleBackColor = True
 		'
 		'Panel2
@@ -92,7 +76,6 @@ Partial Class StepI
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.Panel2)
-		Me.Controls.Add(Me.IconButton1)
 		Me.Controls.Add(Me.Panel1)
 		Me.Name = "StepI"
 		Me.NextStep = "StepJ"
@@ -101,17 +84,14 @@ Partial Class StepI
 		Me.StepDescription = "Please be responsible when creating promotionals."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
-		Me.Controls.SetChildIndex(Me.IconButton1, 0)
 		Me.Controls.SetChildIndex(Me.Panel2, 0)
 		Me.Panel1.ResumeLayout(False)
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel2.ResumeLayout(False)
 		Me.Panel2.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
 	Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 	Friend WithEvents Panel2 As System.Windows.Forms.Panel
 	Friend WithEvents Label1 As System.Windows.Forms.Label

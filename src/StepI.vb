@@ -151,7 +151,7 @@ Otherwise, cancel and attempt the process later.</a>.Value
 	End Sub
 
 #Region "StepI_InfoCircle"
-	Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
+	Private Sub IconButton1_Click(sender As Object, e As EventArgs)
 		Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
 
 Brought to you by the fine folks of the OJC IT Department!</a>.Value

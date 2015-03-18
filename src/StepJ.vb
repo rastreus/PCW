@@ -157,7 +157,7 @@ Public Class StepJ
 
 	Private Sub SubmitPromoIntoTable(ByVal newPromo As MarketingPromo)
 		'Insert the new promo into MarketingPromos table
-		Dim tbl As New MarketingPromosDataContext
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
 		tbl.MarketingPromos.InsertOnSubmit(newPromo)
 		Try
 			tbl.SubmitChanges()
@@ -179,7 +179,7 @@ Public Class StepJ
 	'It also does not change color when the mouse hovers over it (well, it does but it's the same color).
 	'The user is forced to sit and wait. They must reflect on the action that they have just commited.
 	'They have created a new promotional. Sit there and bask in the glory of the progress bar. Wait.
-	Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
+	Private Sub IconButton1_Click(sender As Object, e As EventArgs)
 		'        Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
 		'
 		'Brought to you by the fine folks of the OJC IT Department!</a>.Value

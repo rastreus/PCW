@@ -1,9 +1,15 @@
-﻿Public Class StepB_Data
+﻿''' <summary>
+''' Contains data and validity checks for StepB. 
+''' </summary>
+''' <remarks>This is the Model for StepB (Controller).</remarks>
+Public Class StepB_Data
 #Region "Properties"
 	Private _promoName As String
-	Private _promoRecurring As Boolean
-	Private _promoRecurringFrequency As String
-
+	Private _promoRecurring As System.Nullable(Of Boolean)
+	Private _promoRecurringFrequency As System.Nullable(Of Char)
+	'ASIDE: I've read that the below Property definitions are implicitly declared.
+	'That is probably both good and true; however, I like to be explicit.
+	'That is why the boilerplate below currently exists and will exist in all Models.
 	Public Property Name As String
 		Get
 			Return _promoName
@@ -51,7 +57,7 @@
 		Return invalid
 	End Function
 	Public Function PromoName_Invalid_GetErrString() As String
-		'It is good programming practice to always assign a value to a declared variable to avoid NULL errors.
+		'Assign a value to a declared variable to avoid NULL errors.
 		Dim errString As String = New String("ASSIGNED A VALUE")
 
 		If Me.Name = "" Then

@@ -28,10 +28,10 @@ Partial Class StepA
 		Me.Label4 = New System.Windows.Forms.Label()
 		Me.Label5 = New System.Windows.Forms.Label()
 		Me.Label6 = New System.Windows.Forms.Label()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
-		Me.Button2 = New System.Windows.Forms.Button()
+		Me.StepA_InfoCircle = New FontAwesomeIcons.IconButton()
+		Me.btnEditPromo = New System.Windows.Forms.Button()
 		Me.Panel1 = New System.Windows.Forms.Panel()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+		CType(Me.StepA_InfoCircle, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
 		'
@@ -105,37 +105,38 @@ Partial Class StepA
 		Me.Label6.TabIndex = 6
 		Me.Label6.Text = "Nothing will be created if PCW is canceled and aborted."
 		'
-		'IconButton1
+		'StepA_InfoCircle
 		'
-		Me.IconButton1.ActiveColor = System.Drawing.Color.Gold
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.InfoCircle
-		Me.IconButton1.InActiveColor = System.Drawing.Color.LavenderBlush
-		Me.IconButton1.Location = New System.Drawing.Point(3, 332)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 7
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
+		Me.StepA_InfoCircle.ActiveColor = System.Drawing.Color.Gold
+		Me.StepA_InfoCircle.BackColor = System.Drawing.Color.Transparent
+		Me.StepA_InfoCircle.IconType = FontAwesomeIcons.IconType.InfoCircle
+		Me.StepA_InfoCircle.InActiveColor = System.Drawing.Color.LavenderBlush
+		Me.StepA_InfoCircle.Location = New System.Drawing.Point(3, 332)
+		Me.StepA_InfoCircle.Name = "StepA_InfoCircle"
+		Me.StepA_InfoCircle.Size = New System.Drawing.Size(24, 24)
+		Me.StepA_InfoCircle.TabIndex = 7
+		Me.StepA_InfoCircle.TabStop = False
+		Me.StepA_InfoCircle.ToolTipText = Nothing
 		'
-		'Button2
+		'btnEditPromo
 		'
-		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button2.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Button2.ForeColor = System.Drawing.Color.LavenderBlush
-		Me.Button2.Location = New System.Drawing.Point(9, 268)
-		Me.Button2.Name = "Button2"
-		Me.Button2.Size = New System.Drawing.Size(387, 35)
-		Me.Button2.TabIndex = 8
-		Me.Button2.Text = "Click Here to Edit an Existing Promo!"
-		Me.Button2.UseVisualStyleBackColor = True
+		Me.btnEditPromo.Enabled = False
+		Me.btnEditPromo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnEditPromo.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnEditPromo.ForeColor = System.Drawing.Color.LavenderBlush
+		Me.btnEditPromo.Location = New System.Drawing.Point(9, 268)
+		Me.btnEditPromo.Name = "btnEditPromo"
+		Me.btnEditPromo.Size = New System.Drawing.Size(387, 35)
+		Me.btnEditPromo.TabIndex = 8
+		Me.btnEditPromo.Text = "Click Here to Edit an Existing Promo! (Disabled WIP)"
+		Me.btnEditPromo.UseVisualStyleBackColor = True
 		'
 		'Panel1
 		'
 		Me.Panel1.BackColor = System.Drawing.Color.MediumPurple
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel1.Controls.Add(Me.IconButton1)
-		Me.Panel1.Controls.Add(Me.Button2)
+		Me.Panel1.Controls.Add(Me.StepA_InfoCircle)
+		Me.Panel1.Controls.Add(Me.btnEditPromo)
 		Me.Panel1.Controls.Add(Me.Label1)
 		Me.Panel1.Controls.Add(Me.Label2)
 		Me.Panel1.Controls.Add(Me.Label6)
@@ -160,20 +161,20 @@ Partial Class StepA
 		Me.StepDescription = "Welcome to the PCW!"
 		Me.Controls.SetChildIndex(Me.Panel1, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.StepA_InfoCircle, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel1.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
-	Friend WithEvents Button2 As System.Windows.Forms.Button
+	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents Label2 As System.Windows.Forms.Label
+	Friend WithEvents Label3 As System.Windows.Forms.Label
+	Friend WithEvents Label4 As System.Windows.Forms.Label
+	Friend WithEvents Label5 As System.Windows.Forms.Label
+	Friend WithEvents Label6 As System.Windows.Forms.Label
+	Friend WithEvents StepA_InfoCircle As FontAwesomeIcons.IconButton
+	Friend WithEvents btnEditPromo As System.Windows.Forms.Button
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class
