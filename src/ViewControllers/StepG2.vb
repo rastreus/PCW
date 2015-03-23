@@ -105,7 +105,7 @@ Public Class StepG2
 			CenteredMessagebox.MsgBox.Show("The CouponID does not follow the standard format i.e. PROMO14XX", "Error",
 										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			invalid = True
-		ElseIf Sql_Query.Existing_Coupon(Me.TextBox1.Text) Then
+		ElseIf SQL_Util.Existing_Coupon(Me.TextBox1.Text) Then
 			CenteredMessagebox.MsgBox.Show("There is an existing coupon with this ID.", "Error",
 										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 			invalid = True

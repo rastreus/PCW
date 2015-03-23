@@ -109,7 +109,8 @@
     <Compile Include="src\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\GUI_Util.vb" />
+    <Compile Include="src\Models\StepD_Data.vb" />
+    <Compile Include="src\_Utils\GUI_Util.vb" />
     <Compile Include="src\Lingering_ToolTip.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -121,6 +122,7 @@
     <Compile Include="resources\MarketingPromos.vb">
       <DependentUpon>MarketingPromos.dbml</DependentUpon>
     </Compile>
+    <Compile Include="src\Models\PCW_Data.vb" />
     <Compile Include="src\Models\StepB_Data.vb" />
     <Compile Include="src\Models\StepC_Data.vb" />
     <Compile Include="src\PCW.vb">
@@ -152,79 +154,80 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\SingletonQueue.vb" />
-    <Compile Include="src\Sql_Query.vb" />
-    <Compile Include="src\StepA.Designer.vb">
+    <Compile Include="src\_Utils\SQL_Util.vb" />
+    <Compile Include="src\ViewControllers\StepA.Designer.vb">
       <DependentUpon>StepA.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepA.vb">
+    <Compile Include="src\ViewControllers\StepA.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepB.Designer.vb">
+    <Compile Include="src\ViewControllers\StepB.Designer.vb">
       <DependentUpon>StepB.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepB.vb">
+    <Compile Include="src\ViewControllers\StepB.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepC.Designer.vb">
+    <Compile Include="src\ViewControllers\StepC.Designer.vb">
       <DependentUpon>StepC.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepC.vb">
+    <Compile Include="src\ViewControllers\StepC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepG1.Designer.vb">
+    <Compile Include="src\ViewControllers\StepG1.Designer.vb">
       <DependentUpon>StepG1.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepG1.vb">
+    <Compile Include="src\ViewControllers\StepG1.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepG2.Designer.vb">
+    <Compile Include="src\ViewControllers\StepG2.Designer.vb">
       <DependentUpon>StepG2.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepG2.vb">
+    <Compile Include="src\ViewControllers\StepG2.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepD.Designer.vb">
+    <Compile Include="src\ViewControllers\StepD.Designer.vb">
       <DependentUpon>StepD.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepD.vb">
+    <Compile Include="src\ViewControllers\StepD.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepE.Designer.vb">
+    <Compile Include="src\ViewControllers\StepE.Designer.vb">
       <DependentUpon>StepE.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepE.vb">
+    <Compile Include="src\ViewControllers\StepE.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepF.Designer.vb">
+    <Compile Include="src\ViewControllers\StepF.Designer.vb">
       <DependentUpon>StepF.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepF.vb">
+    <Compile Include="src\ViewControllers\StepF.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepH.Designer.vb">
+    <Compile Include="src\ViewControllers\StepH.Designer.vb">
       <DependentUpon>StepH.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepH.vb">
+    <Compile Include="src\ViewControllers\StepH.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepI.Designer.vb">
+    <Compile Include="src\ViewControllers\StepI.Designer.vb">
       <DependentUpon>StepI.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepI.vb">
+    <Compile Include="src\ViewControllers\StepI.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepJ.Designer.vb">
+    <Compile Include="src\ViewControllers\StepJ.Designer.vb">
       <DependentUpon>StepJ.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepJ.vb">
+    <Compile Include="src\ViewControllers\StepJ.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepX.Designer.vb">
+    <Compile Include="src\ViewControllers\StepX.Designer.vb">
       <DependentUpon>StepX.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepX.vb">
+    <Compile Include="src\ViewControllers\StepX.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\_Utils\BEP_Util.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="src\Form1.resx">
@@ -248,40 +251,40 @@
     <EmbeddedResource Include="src\PAE.resx">
       <DependentUpon>PAE.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepA.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepA.resx">
       <DependentUpon>StepA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepB.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepB.resx">
       <DependentUpon>StepB.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepC.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepC.resx">
       <DependentUpon>StepC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepG1.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepG1.resx">
       <DependentUpon>StepG1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepG2.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepG2.resx">
       <DependentUpon>StepG2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepD.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepD.resx">
       <DependentUpon>StepD.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepE.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepE.resx">
       <DependentUpon>StepE.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepF.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepF.resx">
       <DependentUpon>StepF.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepH.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepH.resx">
       <DependentUpon>StepH.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepI.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepI.resx">
       <DependentUpon>StepI.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepJ.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepJ.resx">
       <DependentUpon>StepJ.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepX.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepX.resx">
       <DependentUpon>StepX.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -346,6 +349,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿Imports CenteredMessagebox
 
 ''' <summary>
-''' Global GUI class which handles common, utility tasks.
+''' Global Graphical User Interface class which handles common, utility tasks.
 ''' </summary>
 ''' <remarks>Delegation typically is not ideal; however, something needed to be done quickly.</remarks>
 Public Class GUI_Util

@@ -9,35 +9,53 @@ Imports System.Xml.Linq
 Public Class PCW
     Inherits TSWizards.BaseWizard
 
-    Private infoCircle As FontAwesomeIcons.IconButton = New FontAwesomeIcons.IconButton
-
-#Region "New"
-    'Not entirely sure if this was needed,
-    'but it got added and works
-    Public Sub New()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.cancel.Visible = True
-        Me.back.Visible = True
-    End Sub
+#Region "PCW_New"
+	''' <summary>
+	''' Gets run when creating a New PCW
+	''' </summary>
+	''' <remarks>'Not entirely sure if this is needed, but it  works.</remarks>
+	Public Sub New()
+		'Required by the Designer code.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.cancel.Visible = True
+		Me.back.Visible = True
+	End Sub
 #End Region
+#Region "PCW_Data"
+	Private pcw_data As PCW_Data
 
+	Public Property Data() As PCW_Data
+		Get
+			Return Me.pcw_data
+		End Get
+		Set(value As PCW_Data)
+			Me.pcw_data = value
+		End Set
+	End Property
+#End Region
+#Region "PCW_Load"
+	Private infoCircle As FontAwesomeIcons.IconButton
+
+	Private Sub PCW_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		Me.pcw_data = New PCW_Data
+		Me.infoCircle = New FontAwesomeIcons.IconButton
+	End Sub
+#End Region
 #Region "PCW_LoadSteps"
-    'This is an important subroutine.
-    'This creates instances of the Step classes,
-    'names them and associates them to the Wizard (PCW).
-    'A Step can be generated dynamically during runtime,
-    'but the better option is just to create a Step and add it here.
-    Private Sub PCW_LoadSteps(ByVal sender As System.Object,
-                              ByVal e As System.EventArgs) Handles MyBase.LoadSteps
-
-        AddStep("StepA", New StepA)
-        AddStep("StepB", New StepB)
+	''' <summary>
+	''' Creates instances of the Step classes.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>THIS IS AN IMPORTANT SUB!</remarks>
+	Private Sub PCW_LoadSteps(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+		Handles MyBase.LoadSteps
+		AddStep("StepA", New StepA)
+		AddStep("StepB", New StepB)
 		AddStep("StepC", New StepC)
-        AddStep("StepD", New StepD)
+		AddStep("StepD", New StepD)
 		AddStep("StepE", New StepE)
 		AddStep("StepF", New StepF)
 		AddStep("StepG1", New StepG1)
@@ -556,7 +574,7 @@ Public Class PCW
 		'Deploy some logic to see if anything needs to be appended
 		'This specifically handles "Multi-Part Single Instance"
 		If (stepD.rbMultiPartEntryPayout.Checked And PCWq.Count = 0) Or
-			(stepD.RadioButton7.Checked And PCWq.Count = 0) Then
+			(stepD.rbSingleEntryPayout.Checked And PCWq.Count = 0) Then
 			promoName = "Entries - " & promoName.ToString
 		Else
 			promoName = "Payout - " & promoName.ToString
@@ -814,11 +832,11 @@ Public Class PCW
 	End Function
 
 	Private Function General_Promo(ByVal stepD As StepD)
-		Return stepD.RadioButton2.Checked
+		Return stepD.rbSingleEntryOnly.Checked
 	End Function
 
 	Private Function Acquisition_Promo(ByVal stepD As StepD)
-		Return stepD.RadioButton3.Checked
+		Return stepD.rbAcquisition.Checked
 	End Function
 
 	'Commented out when changing StepC

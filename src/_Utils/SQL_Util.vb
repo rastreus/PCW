@@ -2,7 +2,7 @@
 ''' Global SQL class which handles queries.
 ''' </summary>
 ''' <remarks>SELECT ONLY!</remarks>
-Public Class Sql_Query
+Public Class SQL_Util
 
 #Region "Existing_Promo"
 	''' <summary>

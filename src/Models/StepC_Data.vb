@@ -1,5 +1,5 @@
 ﻿''' <summary>
-''' Contains data and validity checks for StepB. 
+''' Contains data and validity checks for StepC. 
 ''' </summary>
 ''' <remarks>This is the Model for StepC (Controller).</remarks>
 Public Class StepC_Data

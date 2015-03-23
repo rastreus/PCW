@@ -50,7 +50,7 @@ Public Class StepB_Data
 
 		If (Me.Name = "") Or _
 			(Me.Name.Length > 50) Or _
-			(Sql_Query.Existing_Promo(Me.Name)) Then
+			(SQL_Util.Existing_Promo(Me.Name)) Then
 			invalid = True
 		End If
 
@@ -64,7 +64,7 @@ Public Class StepB_Data
 			errString = "Promo must have a name."
 		ElseIf Me.Name.Length > 50 Then
 			errString = "Promo name cannot be more than 50 characters."
-		ElseIf Sql_Query.Existing_Promo(Me.Name) Then
+		ElseIf SQL_Util.Existing_Promo(Me.Name) Then
 			errString = "There is an existing promo with this name."
 		Else
 			errString = "ERROR IN: PromoName_Invalid_GetErrString"

@@ -22,19 +22,19 @@ Partial Class StepD
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-		Me.Panel2 = New System.Windows.Forms.Panel()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+		Me.pnlPromoType = New System.Windows.Forms.Panel()
+		Me.rbSinglePayoutOnly = New System.Windows.Forms.RadioButton()
+		Me.rbSingleEntryPayout = New System.Windows.Forms.RadioButton()
 		Me.rbMultiPartEntryPayout = New System.Windows.Forms.RadioButton()
-		Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.Label2 = New System.Windows.Forms.Label()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.Panel3 = New System.Windows.Forms.Panel()
+		Me.rbAcquisition = New System.Windows.Forms.RadioButton()
+		Me.rbSingleEntryOnly = New System.Windows.Forms.RadioButton()
+		Me.lblPromoType = New System.Windows.Forms.Label()
+		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
+		Me.pnlMultiPart = New System.Windows.Forms.Panel()
 		Me.txtNumOfDaysTiers = New System.Windows.Forms.TextBox()
-		Me.Panel4 = New System.Windows.Forms.Panel()
-		Me.Panel5 = New System.Windows.Forms.Panel()
-		Me.Panel6 = New System.Windows.Forms.Panel()
+		Me.pnlAcquisition = New System.Windows.Forms.Panel()
+		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
+		Me.pnlSumMethod = New System.Windows.Forms.Panel()
 		Me.rbEligiblePlayersOfferList = New System.Windows.Forms.RadioButton()
 		Me.rbSumQualifyingPoints = New System.Windows.Forms.RadioButton()
 		Me.rbSumLifetimePoints = New System.Windows.Forms.RadioButton()
@@ -48,11 +48,11 @@ Partial Class StepD
 		Me.pnlDragOffer = New System.Windows.Forms.Panel()
 		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.lblDragOffer = New System.Windows.Forms.Label()
-		Me.Label1 = New System.Windows.Forms.Label()
-		Me.Panel2.SuspendLayout()
-		Me.Panel3.SuspendLayout()
-		Me.Panel5.SuspendLayout()
-		Me.Panel6.SuspendLayout()
+		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
+		Me.pnlPromoType.SuspendLayout()
+		Me.pnlMultiPart.SuspendLayout()
+		Me.pnlPlayerEligibility.SuspendLayout()
+		Me.pnlSumMethod.SuspendLayout()
 		Me.pnlPointCutoffLimit.SuspendLayout()
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,47 +63,47 @@ Partial Class StepD
 		Me.Description.Size = New System.Drawing.Size(578, 72)
 		Me.Description.Text = "Of the five available types, which will this promo be?"
 		'
-		'Panel2
+		'pnlPromoType
 		'
-		Me.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Controls.Add(Me.RadioButton1)
-		Me.Panel2.Controls.Add(Me.RadioButton7)
-		Me.Panel2.Controls.Add(Me.rbMultiPartEntryPayout)
-		Me.Panel2.Controls.Add(Me.RadioButton3)
-		Me.Panel2.Controls.Add(Me.RadioButton2)
-		Me.Panel2.Controls.Add(Me.Label2)
-		Me.Panel2.Controls.Add(Me.Panel1)
-		Me.Panel2.Controls.Add(Me.Panel3)
-		Me.Panel2.Controls.Add(Me.Panel4)
-		Me.Panel2.Location = New System.Drawing.Point(24, 34)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(259, 238)
-		Me.Panel2.TabIndex = 3
+		Me.pnlPromoType.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPromoType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoType.Controls.Add(Me.rbSinglePayoutOnly)
+		Me.pnlPromoType.Controls.Add(Me.rbSingleEntryPayout)
+		Me.pnlPromoType.Controls.Add(Me.rbMultiPartEntryPayout)
+		Me.pnlPromoType.Controls.Add(Me.rbAcquisition)
+		Me.pnlPromoType.Controls.Add(Me.rbSingleEntryOnly)
+		Me.pnlPromoType.Controls.Add(Me.lblPromoType)
+		Me.pnlPromoType.Controls.Add(Me.pnlSingleEvent)
+		Me.pnlPromoType.Controls.Add(Me.pnlMultiPart)
+		Me.pnlPromoType.Controls.Add(Me.pnlAcquisition)
+		Me.pnlPromoType.Location = New System.Drawing.Point(24, 34)
+		Me.pnlPromoType.Name = "pnlPromoType"
+		Me.pnlPromoType.Size = New System.Drawing.Size(259, 238)
+		Me.pnlPromoType.TabIndex = 3
 		'
-		'RadioButton1
+		'rbSinglePayoutOnly
 		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.BackColor = System.Drawing.Color.Aquamarine
-		Me.RadioButton1.Location = New System.Drawing.Point(7, 77)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(148, 17)
-		Me.RadioButton1.TabIndex = 11
-		Me.RadioButton1.Text = "Single Event: Payout Only"
-		Me.RadioButton1.UseVisualStyleBackColor = False
+		Me.rbSinglePayoutOnly.AutoSize = True
+		Me.rbSinglePayoutOnly.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSinglePayoutOnly.Location = New System.Drawing.Point(7, 77)
+		Me.rbSinglePayoutOnly.Name = "rbSinglePayoutOnly"
+		Me.rbSinglePayoutOnly.Size = New System.Drawing.Size(148, 17)
+		Me.rbSinglePayoutOnly.TabIndex = 11
+		Me.rbSinglePayoutOnly.Text = "Single Event: Payout Only"
+		Me.rbSinglePayoutOnly.UseVisualStyleBackColor = False
 		'
-		'RadioButton7
+		'rbSingleEntryPayout
 		'
-		Me.RadioButton7.AutoSize = True
-		Me.RadioButton7.BackColor = System.Drawing.Color.Aquamarine
-		Me.RadioButton7.Checked = True
-		Me.RadioButton7.Location = New System.Drawing.Point(7, 31)
-		Me.RadioButton7.Name = "RadioButton7"
-		Me.RadioButton7.Size = New System.Drawing.Size(172, 17)
-		Me.RadioButton7.TabIndex = 10
-		Me.RadioButton7.TabStop = True
-		Me.RadioButton7.Text = "Single Event: Entry and Payout"
-		Me.RadioButton7.UseVisualStyleBackColor = False
+		Me.rbSingleEntryPayout.AutoSize = True
+		Me.rbSingleEntryPayout.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSingleEntryPayout.Checked = True
+		Me.rbSingleEntryPayout.Location = New System.Drawing.Point(7, 31)
+		Me.rbSingleEntryPayout.Name = "rbSingleEntryPayout"
+		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(172, 17)
+		Me.rbSingleEntryPayout.TabIndex = 10
+		Me.rbSingleEntryPayout.TabStop = True
+		Me.rbSingleEntryPayout.Text = "Single Event: Entry and Payout"
+		Me.rbSingleEntryPayout.UseVisualStyleBackColor = False
 		'
 		'rbMultiPartEntryPayout
 		'
@@ -116,57 +116,57 @@ Partial Class StepD
 		Me.rbMultiPartEntryPayout.Text = "Multi-Part Sequential Event: Entry and Payout"
 		Me.rbMultiPartEntryPayout.UseVisualStyleBackColor = False
 		'
-		'RadioButton3
+		'rbAcquisition
 		'
-		Me.RadioButton3.AutoSize = True
-		Me.RadioButton3.BackColor = System.Drawing.Color.Lavender
-		Me.RadioButton3.Location = New System.Drawing.Point(7, 184)
-		Me.RadioButton3.Name = "RadioButton3"
-		Me.RadioButton3.Size = New System.Drawing.Size(76, 17)
-		Me.RadioButton3.TabIndex = 6
-		Me.RadioButton3.Text = "Acquisition"
-		Me.RadioButton3.UseVisualStyleBackColor = False
+		Me.rbAcquisition.AutoSize = True
+		Me.rbAcquisition.BackColor = System.Drawing.Color.Lavender
+		Me.rbAcquisition.Location = New System.Drawing.Point(7, 184)
+		Me.rbAcquisition.Name = "rbAcquisition"
+		Me.rbAcquisition.Size = New System.Drawing.Size(76, 17)
+		Me.rbAcquisition.TabIndex = 6
+		Me.rbAcquisition.Text = "Acquisition"
+		Me.rbAcquisition.UseVisualStyleBackColor = False
 		'
-		'RadioButton2
+		'rbSingleEntryOnly
 		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.BackColor = System.Drawing.Color.Aquamarine
-		Me.RadioButton2.Location = New System.Drawing.Point(7, 54)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(139, 17)
-		Me.RadioButton2.TabIndex = 5
-		Me.RadioButton2.Text = "Single Event: Entry Only"
-		Me.RadioButton2.UseVisualStyleBackColor = False
+		Me.rbSingleEntryOnly.AutoSize = True
+		Me.rbSingleEntryOnly.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSingleEntryOnly.Location = New System.Drawing.Point(7, 54)
+		Me.rbSingleEntryOnly.Name = "rbSingleEntryOnly"
+		Me.rbSingleEntryOnly.Size = New System.Drawing.Size(139, 17)
+		Me.rbSingleEntryOnly.TabIndex = 5
+		Me.rbSingleEntryOnly.Text = "Single Event: Entry Only"
+		Me.rbSingleEntryOnly.UseVisualStyleBackColor = False
 		'
-		'Label2
+		'lblPromoType
 		'
-		Me.Label2.AutoSize = True
-		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.ForeColor = System.Drawing.Color.White
-		Me.Label2.Location = New System.Drawing.Point(0, 0)
-		Me.Label2.Name = "Label2"
-		Me.Label2.Size = New System.Drawing.Size(247, 16)
-		Me.Label2.TabIndex = 3
-		Me.Label2.Text = "What is the type of the new promo?"
+		Me.lblPromoType.AutoSize = True
+		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoType.ForeColor = System.Drawing.Color.White
+		Me.lblPromoType.Location = New System.Drawing.Point(0, 0)
+		Me.lblPromoType.Name = "lblPromoType"
+		Me.lblPromoType.Size = New System.Drawing.Size(247, 16)
+		Me.lblPromoType.TabIndex = 3
+		Me.lblPromoType.Text = "What is the category of the promo?"
 		'
-		'Panel1
+		'pnlSingleEvent
 		'
-		Me.Panel1.BackColor = System.Drawing.Color.Aquamarine
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel1.Location = New System.Drawing.Point(3, 23)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(251, 78)
-		Me.Panel1.TabIndex = 12
+		Me.pnlSingleEvent.BackColor = System.Drawing.Color.Aquamarine
+		Me.pnlSingleEvent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlSingleEvent.Location = New System.Drawing.Point(3, 23)
+		Me.pnlSingleEvent.Name = "pnlSingleEvent"
+		Me.pnlSingleEvent.Size = New System.Drawing.Size(251, 78)
+		Me.pnlSingleEvent.TabIndex = 12
 		'
-		'Panel3
+		'pnlMultiPart
 		'
-		Me.Panel3.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel3.Controls.Add(Me.txtNumOfDaysTiers)
-		Me.Panel3.Location = New System.Drawing.Point(3, 107)
-		Me.Panel3.Name = "Panel3"
-		Me.Panel3.Size = New System.Drawing.Size(251, 57)
-		Me.Panel3.TabIndex = 13
+		Me.pnlMultiPart.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlMultiPart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMultiPart.Controls.Add(Me.txtNumOfDaysTiers)
+		Me.pnlMultiPart.Location = New System.Drawing.Point(3, 107)
+		Me.pnlMultiPart.Name = "pnlMultiPart"
+		Me.pnlMultiPart.Size = New System.Drawing.Size(251, 57)
+		Me.pnlMultiPart.TabIndex = 13
 		'
 		'txtNumOfDaysTiers
 		'
@@ -178,41 +178,41 @@ Partial Class StepD
 		Me.txtNumOfDaysTiers.TabIndex = 9
 		Me.txtNumOfDaysTiers.Text = "How many days/tiers?"
 		'
-		'Panel4
+		'pnlAcquisition
 		'
-		Me.Panel4.BackColor = System.Drawing.Color.Lavender
-		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel4.Location = New System.Drawing.Point(3, 170)
-		Me.Panel4.Name = "Panel4"
-		Me.Panel4.Size = New System.Drawing.Size(251, 43)
-		Me.Panel4.TabIndex = 14
+		Me.pnlAcquisition.BackColor = System.Drawing.Color.Lavender
+		Me.pnlAcquisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlAcquisition.Location = New System.Drawing.Point(3, 170)
+		Me.pnlAcquisition.Name = "pnlAcquisition"
+		Me.pnlAcquisition.Size = New System.Drawing.Size(251, 43)
+		Me.pnlAcquisition.TabIndex = 14
 		'
-		'Panel5
+		'pnlPlayerEligibility
 		'
-		Me.Panel5.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel5.Controls.Add(Me.Panel6)
-		Me.Panel5.Controls.Add(Me.pnlPointCutoffLimit)
-		Me.Panel5.Controls.Add(Me.pnlDragOffer)
-		Me.Panel5.Controls.Add(Me.Label1)
-		Me.Panel5.Location = New System.Drawing.Point(290, 34)
-		Me.Panel5.Name = "Panel5"
-		Me.Panel5.Size = New System.Drawing.Size(265, 238)
-		Me.Panel5.TabIndex = 4
+		Me.pnlPlayerEligibility.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
+		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
+		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
+		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
+		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
+		Me.pnlPlayerEligibility.TabIndex = 4
 		'
-		'Panel6
+		'pnlSumMethod
 		'
-		Me.Panel6.BackColor = System.Drawing.Color.Moccasin
-		Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel6.Controls.Add(Me.rbEligiblePlayersOfferList)
-		Me.Panel6.Controls.Add(Me.rbSumQualifyingPoints)
-		Me.Panel6.Controls.Add(Me.rbSumLifetimePoints)
-		Me.Panel6.Controls.Add(Me.rbAutoQualification)
-		Me.Panel6.Controls.Add(Me.Panel7)
-		Me.Panel6.Location = New System.Drawing.Point(3, 22)
-		Me.Panel6.Name = "Panel6"
-		Me.Panel6.Size = New System.Drawing.Size(255, 120)
-		Me.Panel6.TabIndex = 10
+		Me.pnlSumMethod.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlSumMethod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlSumMethod.Controls.Add(Me.rbEligiblePlayersOfferList)
+		Me.pnlSumMethod.Controls.Add(Me.rbSumQualifyingPoints)
+		Me.pnlSumMethod.Controls.Add(Me.rbSumLifetimePoints)
+		Me.pnlSumMethod.Controls.Add(Me.rbAutoQualification)
+		Me.pnlSumMethod.Controls.Add(Me.Panel7)
+		Me.pnlSumMethod.Location = New System.Drawing.Point(3, 22)
+		Me.pnlSumMethod.Name = "pnlSumMethod"
+		Me.pnlSumMethod.Size = New System.Drawing.Size(255, 120)
+		Me.pnlSumMethod.TabIndex = 10
 		'
 		'rbEligiblePlayersOfferList
 		'
@@ -357,39 +357,39 @@ Partial Class StepD
 		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'Label1
+		'lblPlayerEligibility
 		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.ForeColor = System.Drawing.Color.White
-		Me.Label1.Location = New System.Drawing.Point(0, 0)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(259, 16)
-		Me.Label1.TabIndex = 4
-		Me.Label1.Text = "How is player eligibility determined?"
+		Me.lblPlayerEligibility.AutoSize = True
+		Me.lblPlayerEligibility.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPlayerEligibility.ForeColor = System.Drawing.Color.White
+		Me.lblPlayerEligibility.Location = New System.Drawing.Point(0, 0)
+		Me.lblPlayerEligibility.Name = "lblPlayerEligibility"
+		Me.lblPlayerEligibility.Size = New System.Drawing.Size(259, 16)
+		Me.lblPlayerEligibility.TabIndex = 4
+		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
 		'
 		'StepD
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.Panel5)
-		Me.Controls.Add(Me.Panel2)
+		Me.Controls.Add(Me.pnlPlayerEligibility)
+		Me.Controls.Add(Me.pnlPromoType)
 		Me.Name = "StepD"
 		Me.NextStep = "StepE"
 		Me.PreviousStep = "StepC"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Of the five available types, which will this promo be?"
-		Me.Controls.SetChildIndex(Me.Panel2, 0)
-		Me.Controls.SetChildIndex(Me.Panel5, 0)
+		Me.Controls.SetChildIndex(Me.pnlPromoType, 0)
+		Me.Controls.SetChildIndex(Me.pnlPlayerEligibility, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
-		Me.Panel2.ResumeLayout(False)
-		Me.Panel2.PerformLayout()
-		Me.Panel3.ResumeLayout(False)
-		Me.Panel3.PerformLayout()
-		Me.Panel5.ResumeLayout(False)
-		Me.Panel5.PerformLayout()
-		Me.Panel6.ResumeLayout(False)
-		Me.Panel6.PerformLayout()
+		Me.pnlPromoType.ResumeLayout(False)
+		Me.pnlPromoType.PerformLayout()
+		Me.pnlMultiPart.ResumeLayout(False)
+		Me.pnlMultiPart.PerformLayout()
+		Me.pnlPlayerEligibility.ResumeLayout(False)
+		Me.pnlPlayerEligibility.PerformLayout()
+		Me.pnlSumMethod.ResumeLayout(False)
+		Me.pnlSumMethod.PerformLayout()
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
 		Me.pnlDragOffer.ResumeLayout(False)
@@ -397,19 +397,19 @@ Partial Class StepD
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents Panel2 As System.Windows.Forms.Panel
-	Friend WithEvents RadioButton7 As System.Windows.Forms.RadioButton
+	Friend WithEvents pnlPromoType As System.Windows.Forms.Panel
+	Friend WithEvents rbSingleEntryPayout As System.Windows.Forms.RadioButton
 	Friend WithEvents txtNumOfDaysTiers As System.Windows.Forms.TextBox
 	Friend WithEvents rbMultiPartEntryPayout As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents Panel3 As System.Windows.Forms.Panel
-	Friend WithEvents Panel4 As System.Windows.Forms.Panel
-	Friend WithEvents Panel5 As System.Windows.Forms.Panel
-	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents rbAcquisition As System.Windows.Forms.RadioButton
+	Friend WithEvents rbSingleEntryOnly As System.Windows.Forms.RadioButton
+	Friend WithEvents lblPromoType As System.Windows.Forms.Label
+	Friend WithEvents rbSinglePayoutOnly As System.Windows.Forms.RadioButton
+	Friend WithEvents pnlSingleEvent As System.Windows.Forms.Panel
+	Friend WithEvents pnlMultiPart As System.Windows.Forms.Panel
+	Friend WithEvents pnlAcquisition As System.Windows.Forms.Panel
+	Friend WithEvents pnlPlayerEligibility As System.Windows.Forms.Panel
+	Friend WithEvents lblPlayerEligibility As System.Windows.Forms.Label
 	Friend WithEvents rbEligiblePlayersOfferList As System.Windows.Forms.RadioButton
 	Friend WithEvents rbAutoQualification As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSumLifetimePoints As System.Windows.Forms.RadioButton
@@ -422,7 +422,7 @@ Partial Class StepD
 	Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
 	Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
 	Friend WithEvents Label9 As System.Windows.Forms.Label
-	Friend WithEvents Panel6 As System.Windows.Forms.Panel
+	Friend WithEvents pnlSumMethod As System.Windows.Forms.Panel
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel
 
 End Class
