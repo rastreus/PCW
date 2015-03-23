@@ -254,7 +254,7 @@ Partial Class StepC
 		'
 		'Panel3
 		'
-		Me.Panel3.BackColor = System.Drawing.Color.LemonChiffon
+		Me.Panel3.BackColor = System.Drawing.Color.PapayaWhip
 		Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel3.Controls.Add(Me.dtpQualifyingStart)
 		Me.Panel3.Controls.Add(Me.Label2)
@@ -283,7 +283,7 @@ Partial Class StepC
 		'
 		'Panel4
 		'
-		Me.Panel4.BackColor = System.Drawing.Color.LemonChiffon
+		Me.Panel4.BackColor = System.Drawing.Color.PapayaWhip
 		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel4.Controls.Add(Me.dtpQualifyingEnd)
 		Me.Panel4.Controls.Add(Me.Label3)

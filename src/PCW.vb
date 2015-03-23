@@ -58,7 +58,7 @@ Public Class PCW
 		AddStep("StepD", New StepD)
 		AddStep("StepE", New StepE)
 		AddStep("StepF", New StepF)
-		AddStep("StepG1", New StepG1)
+		AddStep("StepEntryTicketAmt", New StepEntryTicketAmt)
 		AddStep("StepG2", New StepG2)
 		AddStep("StepH", New StepH)
 		AddStep("StepI", New StepI)
@@ -106,7 +106,7 @@ Public Class PCW
 		Dim stepD As StepD = Me.GetStep("StepD")
 		Dim stepE As StepE = Me.GetStep("StepE")
 		Dim stepF As StepF = Me.GetStep("StepF")
-		Dim stepG1 As StepG1 = Me.GetStep("StepG1")
+		Dim stepG1 As StepEntryTicketAmt = Me.GetStep("StepG1")
 		Dim stepG2 As StepG2 = Me.GetStep("StepG2")
 		Dim stepH As StepH = Me.GetStep("StepH")
 
@@ -171,7 +171,7 @@ Public Class PCW
 										ByVal stepD As StepD, _
 										ByVal stepE As StepE, _
 										ByVal stepF As StepF, _
-										ByVal stepG1 As StepG1, _
+										ByVal stepG1 As StepEntryTicketAmt, _
 										ByVal stepG2 As StepG2)
 		Dim result As String
 		If Is_Type_20(stepD, stepE, stepF) Then
@@ -205,12 +205,12 @@ Public Class PCW
 			'ElseIf Is_Type_25A(step2, step3, step4, step5, step6) Then
 			'    result = "25A"
 			'    Return result
-		ElseIf Is_Type_26(stepD, stepE, stepF, stepG1) Then
-			result = "26"
-			Return result
-		ElseIf Is_Type_27(stepD, stepE, stepF, stepG1) Then
-			result = "27"
-			Return result
+			'ElseIf Is_Type_26(stepD, stepE, stepF, stepG1) Then
+			'	result = "26"
+			'	Return result
+			'ElseIf Is_Type_27(stepD, stepE, stepF, stepG1) Then
+			'	result = "27"
+			'	Return result
 			'ElseIf Is_Type_28(stepC, stepD, stepE, stepF, stepG1) Then
 			'	result = "28"
 			'	Return result
@@ -235,9 +235,9 @@ Public Class PCW
 		ElseIf Is_Type_32(stepD, stepE, stepF, stepG1) Then
 			result = "32"
 			Return result
-		ElseIf Is_Type_32A(stepD, stepE, stepF, stepG1) Then
-			result = "32A"
-			Return result
+			'ElseIf Is_Type_32A(stepD, stepE, stepF, stepG1) Then
+			'	result = "32A"
+			'	Return result
 		ElseIf Is_Type_33(stepD, stepF) Then
 			result = "33"
 			Return result
@@ -268,7 +268,7 @@ Public Class PCW
 	Private Function Is_Type_20A(ByVal stepD As StepD, _
 								 ByVal stepE As StepE, _
 								 ByVal stepF As StepF, _
-								 ByVal stepG1 As StepG1) As Boolean
+								 ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Limit_Tickets_Per_Patron(stepG1) And Limit_Amount_Is_One(stepG1) And
@@ -283,7 +283,7 @@ Public Class PCW
 	Private Function Is_Type_21(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -298,7 +298,7 @@ Public Class PCW
 	Private Function Is_Type_22(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -312,7 +312,7 @@ Public Class PCW
 	Private Function Is_Type_22A(ByVal stepD As StepD, _
 								 ByVal stepE As StepE, _
 								 ByVal stepF As StepF, _
-								 ByVal stepG1 As StepG1) As Boolean
+								 ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -327,7 +327,7 @@ Public Class PCW
 	Private Function Is_Type_22B(ByVal stepD As StepD, _
 								 ByVal stepE As StepE, _
 								 ByVal stepF As StepF, _
-								 ByVal stepG1 As StepG1) As Boolean
+								 ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If Acquisition_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -343,7 +343,7 @@ Public Class PCW
 	Private Function Is_Type_23(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			Count_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -358,7 +358,7 @@ Public Class PCW
 	Private Function Is_Type_24(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			Complex_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -373,7 +373,7 @@ Public Class PCW
 	Private Function Is_Type_25(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			Compound_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
@@ -400,36 +400,36 @@ Public Class PCW
 	'    Return it_is
 	'End Function
 
-	'"Selects the number of tickets from the Eligible Players Table."
-	'/This will need to be updated once Eligible Players Table is fully implimented through StepG3./
-	Private Function Is_Type_26(ByVal stepD As StepD, _
-								ByVal stepE As StepE, _
-								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
-			EligiblePlayers_Amount_Rewarded(stepG1) And
-			 (No_PointCutoff(stepE) Or
-			  (Yes_PointCutoff(stepE) And Give_Regardless_Of_Points(stepE))) Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Selects the number of tickets from the Eligible Players Table."
+	''/This will need to be updated once Eligible Players Table is fully implimented through StepG3./
+	'Private Function Is_Type_26(ByVal stepD As StepD, _
+	'							ByVal stepE As StepE, _
+	'							ByVal stepF As StepF, _
+	'							ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		EligiblePlayers_Amount_Rewarded(stepG1) And
+	'		 (No_PointCutoff(stepE) Or
+	'		  (Yes_PointCutoff(stepE) And Give_Regardless_Of_Points(stepE))) Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
-	'"Sums up total points from points table where date is between start and end date and then selects
-	'the number of tickets from the eligible players table if total points are greater than or equal to cutoff."
-	Private Function Is_Type_27(ByVal stepD As StepD, _
-								ByVal stepE As StepE, _
-								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
-			EligiblePlayers_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
-			 Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Sums up total points from points table where date is between start and end date and then selects
+	''the number of tickets from the eligible players table if total points are greater than or equal to cutoff."
+	'Private Function Is_Type_27(ByVal stepD As StepD, _
+	'							ByVal stepE As StepE, _
+	'							ByVal stepF As StepF, _
+	'							ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		EligiblePlayers_Amount_Rewarded(stepG1) And Yes_PointCutoff(stepE) And
+	'		 Sums_Start_End_Points(stepE) And Greater_Than_Or_Equal_To(stepE) Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
 	'Commented out when changing StepC
 	''"Will do a count of the date field in the points table where handle is greater than or equal to cutoff
@@ -520,7 +520,7 @@ Public Class PCW
 	Private Function Is_Type_32(ByVal stepD As StepD, _
 								ByVal stepE As StepE, _
 								ByVal stepF As StepF, _
-								ByVal stepG1 As StepG1) As Boolean
+								ByVal stepG1 As StepEntryTicketAmt) As Boolean
 		Dim it_is As Boolean = False
 		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
 			One_Ticket_Rewarded(stepG1) And Uses_EligiblePlayers_For_Points(stepE) Then
@@ -529,19 +529,19 @@ Public Class PCW
 		Return it_is
 	End Function
 
-	'"Allows one ticket to be printed daily, weekly, monthly, quarterly, or yearly if account is in eligible players table.
-	'Uses EligiblePlayers table to determine who and how many to print."
-	Private Function Is_Type_32A(ByVal stepD As StepD, _
-								 ByVal stepE As StepE, _
-								 ByVal stepF As StepF, _
-								 ByVal stepG1 As StepG1) As Boolean
-		Dim it_is As Boolean = False
-		If General_Promo(stepD) And Tickets_Rewarded(stepF) And
-			EligiblePlayers_Amount_Rewarded(stepG1) And Uses_EligiblePlayers_For_Points(stepE) Then
-			it_is = True
-		End If
-		Return it_is
-	End Function
+	''"Allows one ticket to be printed daily, weekly, monthly, quarterly, or yearly if account is in eligible players table.
+	''Uses EligiblePlayers table to determine who and how many to print."
+	'Private Function Is_Type_32A(ByVal stepD As StepD, _
+	'							 ByVal stepE As StepE, _
+	'							 ByVal stepF As StepF, _
+	'							 ByVal stepG1 As StepG1) As Boolean
+	'	Dim it_is As Boolean = False
+	'	If General_Promo(stepD) And Tickets_Rewarded(stepF) And
+	'		EligiblePlayers_Amount_Rewarded(stepG1) And Uses_EligiblePlayers_For_Points(stepE) Then
+	'		it_is = True
+	'	End If
+	'	Return it_is
+	'End Function
 
 	'"Generates a random number and then selects a prize from the random prizes table based on that number."
 	Private Function Is_Type_33(ByVal stepD As StepD, _
@@ -717,12 +717,12 @@ Public Class PCW
 #End Region
 
 #Region "Uses StepG1"
-	Private Function DetermineTicketsPerPromo(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+	Private Function DetermineTicketsPerPromo(ByVal stepF As StepF, ByVal stepG1 As StepEntryTicketAmt)
 		Dim ticketsPerPromo As Short?
 
 		'If reward of promo is "# of Tickets" And Yes -- there is a Ticket Per Promo limit
-		If stepF.RadioButton1.Checked And stepG1.RadioButton14.Checked Then
-			ticketsPerPromo = Short.Parse(stepG1.TextBox7.Text)
+		If stepF.RadioButton1.Checked And stepG1.rbTicketsEntirePromoYES.Checked Then
+			ticketsPerPromo = Short.Parse(stepG1.txtTicketsEntirePromo.Text)
 		Else
 			ticketsPerPromo = Nothing
 		End If
@@ -730,12 +730,12 @@ Public Class PCW
 		Return ticketsPerPromo
 	End Function
 
-	Private Function DetermineTicketsPerPatron(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+	Private Function DetermineTicketsPerPatron(ByVal stepF As StepF, ByVal stepG1 As StepEntryTicketAmt)
 		Dim ticketsPerPatron As Short?
 
 		'If reward of promo is "# of Tickets" And Yes -- there is a Ticket Per Patron limit
-		If stepF.RadioButton1.Checked And stepG1.RadioButton12.Checked Then
-			ticketsPerPatron = Short.Parse(stepG1.TextBox6.Text)
+		If stepF.RadioButton1.Checked And stepG1.rbTicketPerPatronYES.Checked Then
+			ticketsPerPatron = Short.Parse(stepG1.txtTicketsPerPatron.Text)
 		Else
 			ticketsPerPatron = Nothing
 		End If
@@ -743,12 +743,12 @@ Public Class PCW
 		Return ticketsPerPatron
 	End Function
 
-	Private Function DeterminePointDivisor(ByVal stepF As StepF, ByVal stepG1 As StepG1)
+	Private Function DeterminePointDivisor(ByVal stepF As StepF, ByVal stepG1 As StepEntryTicketAmt)
 		Dim pointDivisor As Short?
 
 		'If reward of promo is "# of Tickets" And ticket amount is "Compound Amount" Or "Complex Amount"
-		If stepF.RadioButton1.Checked And (stepG1.RadioButton6.Checked Or stepG1.RadioButton7.Checked) Then
-			pointDivisor = Short.Parse(stepG1.TextBox5.Text)
+		If stepF.RadioButton1.Checked And (stepG1.rbCalPlusNumOfVisits.Checked Or stepG1.rbCalculated.Checked) Then
+			pointDivisor = Short.Parse(stepG1.txtPointsDivisor.Text)
 		Else
 			pointDivisor = Nothing
 		End If
@@ -884,32 +884,32 @@ Public Class PCW
 		Return stepF.RadioButton4.Checked
 	End Function
 
-	Private Function One_Ticket_Rewarded(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton8.Checked
+	Private Function One_Ticket_Rewarded(ByVal stepG1 As StepEntryTicketAmt)
+		Return stepG1.rb1.Checked
 	End Function
 
-	Private Function Count_Amount_Rewarded(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton9.Checked
+	Private Function Count_Amount_Rewarded(ByVal stepG1 As StepEntryTicketAmt)
+		Return stepG1.rbNumOfVisits.Checked
 	End Function
 
-	Private Function Compound_Amount_Rewarded(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton7.Checked
+	Private Function Compound_Amount_Rewarded(ByVal stepG1 As StepEntryTicketAmt)
+		Return stepG1.rbCalculated.Checked
 	End Function
 
-	Private Function Complex_Amount_Rewarded(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton6.Checked
+	Private Function Complex_Amount_Rewarded(ByVal stepG1 As StepEntryTicketAmt)
+		Return stepG1.rbCalPlusNumOfVisits.Checked
 	End Function
 
-	Private Function EligiblePlayers_Amount_Rewarded(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton10.Checked
+	'Private Function EligiblePlayers_Amount_Rewarded(ByVal stepG1 As StepG1)
+	'	Return stepG1.RadioButton10.Checked
+	'End Function
+
+	Private Function Limit_Tickets_Per_Patron(ByVal stepG1 As StepEntryTicketAmt)
+		Return stepG1.rbTicketPerPatronYES.Checked
 	End Function
 
-	Private Function Limit_Tickets_Per_Patron(ByVal stepG1 As StepG1)
-		Return stepG1.RadioButton12.Checked
-	End Function
-
-	Private Function Limit_Amount_Is_One(ByVal stepG1 As StepG1)
-		Return If(stepG1.TextBox6.Text = "1", True, False)
+	Private Function Limit_Amount_Is_One(ByVal stepG1 As StepEntryTicketAmt)
+		Return If(stepG1.txtTicketsPerPatron.Text = "1", True, False)
 	End Function
 
 	'Disable the Cancel Button at the end

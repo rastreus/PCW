@@ -41,10 +41,10 @@ Partial Class StepD
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
-		Me.TextBox8 = New System.Windows.Forms.TextBox()
-		Me.RadioButton17 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton16 = New System.Windows.Forms.RadioButton()
-		Me.Label9 = New System.Windows.Forms.Label()
+		Me.txtPointCutoffLimit = New System.Windows.Forms.TextBox()
+		Me.rbPointCutoffLimitNo = New System.Windows.Forms.RadioButton()
+		Me.rbPointCutoffLimitYes = New System.Windows.Forms.RadioButton()
+		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
 		Me.pnlDragOffer = New System.Windows.Forms.Panel()
 		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.lblDragOffer = New System.Windows.Forms.Label()
@@ -145,9 +145,9 @@ Partial Class StepD
 		Me.lblPromoType.ForeColor = System.Drawing.Color.White
 		Me.lblPromoType.Location = New System.Drawing.Point(0, 0)
 		Me.lblPromoType.Name = "lblPromoType"
-		Me.lblPromoType.Size = New System.Drawing.Size(247, 16)
+		Me.lblPromoType.Size = New System.Drawing.Size(205, 16)
 		Me.lblPromoType.TabIndex = 3
-		Me.lblPromoType.Text = "What is the category of the promo?"
+		Me.lblPromoType.Text = "What category is the promo?"
 		'
 		'pnlSingleEvent
 		'
@@ -202,7 +202,7 @@ Partial Class StepD
 		'
 		'pnlSumMethod
 		'
-		Me.pnlSumMethod.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlSumMethod.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlSumMethod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlSumMethod.Controls.Add(Me.rbEligiblePlayersOfferList)
 		Me.pnlSumMethod.Controls.Add(Me.rbSumQualifyingPoints)
@@ -268,55 +268,55 @@ Partial Class StepD
 		'
 		'pnlPointCutoffLimit
 		'
-		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.Moccasin
-		Me.pnlPointCutoffLimit.Controls.Add(Me.TextBox8)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.RadioButton17)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.RadioButton16)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.Label9)
+		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPointCutoffLimit.Controls.Add(Me.txtPointCutoffLimit)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitNo)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitYes)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.lblPointCutoffLimit)
 		Me.pnlPointCutoffLimit.Location = New System.Drawing.Point(18, 148)
 		Me.pnlPointCutoffLimit.Name = "pnlPointCutoffLimit"
 		Me.pnlPointCutoffLimit.Size = New System.Drawing.Size(224, 80)
 		Me.pnlPointCutoffLimit.TabIndex = 9
 		'
-		'TextBox8
+		'txtPointCutoffLimit
 		'
-		Me.TextBox8.Enabled = False
-		Me.TextBox8.Location = New System.Drawing.Point(53, 40)
-		Me.TextBox8.Name = "TextBox8"
-		Me.TextBox8.Size = New System.Drawing.Size(143, 20)
-		Me.TextBox8.TabIndex = 10
-		Me.TextBox8.Text = "Enter Point Cutoff limit here"
+		Me.txtPointCutoffLimit.Enabled = False
+		Me.txtPointCutoffLimit.Location = New System.Drawing.Point(53, 40)
+		Me.txtPointCutoffLimit.Name = "txtPointCutoffLimit"
+		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(143, 20)
+		Me.txtPointCutoffLimit.TabIndex = 10
+		Me.txtPointCutoffLimit.Text = "Enter Point Cutoff limit here."
 		'
-		'RadioButton17
+		'rbPointCutoffLimitNo
 		'
-		Me.RadioButton17.AutoSize = True
-		Me.RadioButton17.Checked = True
-		Me.RadioButton17.Location = New System.Drawing.Point(4, 61)
-		Me.RadioButton17.Name = "RadioButton17"
-		Me.RadioButton17.Size = New System.Drawing.Size(39, 17)
-		Me.RadioButton17.TabIndex = 9
-		Me.RadioButton17.TabStop = True
-		Me.RadioButton17.Text = "No"
-		Me.RadioButton17.UseVisualStyleBackColor = True
+		Me.rbPointCutoffLimitNo.AutoSize = True
+		Me.rbPointCutoffLimitNo.Checked = True
+		Me.rbPointCutoffLimitNo.Location = New System.Drawing.Point(4, 61)
+		Me.rbPointCutoffLimitNo.Name = "rbPointCutoffLimitNo"
+		Me.rbPointCutoffLimitNo.Size = New System.Drawing.Size(39, 17)
+		Me.rbPointCutoffLimitNo.TabIndex = 9
+		Me.rbPointCutoffLimitNo.TabStop = True
+		Me.rbPointCutoffLimitNo.Text = "No"
+		Me.rbPointCutoffLimitNo.UseVisualStyleBackColor = True
 		'
-		'RadioButton16
+		'rbPointCutoffLimitYes
 		'
-		Me.RadioButton16.AutoSize = True
-		Me.RadioButton16.Location = New System.Drawing.Point(4, 41)
-		Me.RadioButton16.Name = "RadioButton16"
-		Me.RadioButton16.Size = New System.Drawing.Size(43, 17)
-		Me.RadioButton16.TabIndex = 8
-		Me.RadioButton16.Text = "Yes"
-		Me.RadioButton16.UseVisualStyleBackColor = True
+		Me.rbPointCutoffLimitYes.AutoSize = True
+		Me.rbPointCutoffLimitYes.Location = New System.Drawing.Point(4, 41)
+		Me.rbPointCutoffLimitYes.Name = "rbPointCutoffLimitYes"
+		Me.rbPointCutoffLimitYes.Size = New System.Drawing.Size(43, 17)
+		Me.rbPointCutoffLimitYes.TabIndex = 8
+		Me.rbPointCutoffLimitYes.Text = "Yes"
+		Me.rbPointCutoffLimitYes.UseVisualStyleBackColor = True
 		'
-		'Label9
+		'lblPointCutoffLimit
 		'
-		Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label9.Location = New System.Drawing.Point(4, 0)
-		Me.Label9.Name = "Label9"
-		Me.Label9.Size = New System.Drawing.Size(235, 37)
-		Me.Label9.TabIndex = 7
-		Me.Label9.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+		Me.lblPointCutoffLimit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPointCutoffLimit.Location = New System.Drawing.Point(4, 0)
+		Me.lblPointCutoffLimit.Name = "lblPointCutoffLimit"
+		Me.lblPointCutoffLimit.Size = New System.Drawing.Size(235, 37)
+		Me.lblPointCutoffLimit.TabIndex = 7
+		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
 		'pnlDragOffer
 		'
@@ -375,7 +375,7 @@ Partial Class StepD
 		Me.Controls.Add(Me.pnlPlayerEligibility)
 		Me.Controls.Add(Me.pnlPromoType)
 		Me.Name = "StepD"
-		Me.NextStep = "StepE"
+		Me.NextStep = "StepEntryTicketAmt"
 		Me.PreviousStep = "StepC"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Of the five available types, which will this promo be?"
@@ -418,10 +418,10 @@ Partial Class StepD
 	Friend WithEvents lblDragOffer As System.Windows.Forms.Label
 	Friend WithEvents SuccessIcon As FontAwesomeIcons.IconButton
 	Friend WithEvents pnlPointCutoffLimit As System.Windows.Forms.Panel
-	Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
-	Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
-	Friend WithEvents Label9 As System.Windows.Forms.Label
+	Friend WithEvents txtPointCutoffLimit As System.Windows.Forms.TextBox
+	Friend WithEvents rbPointCutoffLimitNo As System.Windows.Forms.RadioButton
+	Friend WithEvents rbPointCutoffLimitYes As System.Windows.Forms.RadioButton
+	Friend WithEvents lblPointCutoffLimit As System.Windows.Forms.Label
 	Friend WithEvents pnlSumMethod As System.Windows.Forms.Panel
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel
 

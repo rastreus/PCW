@@ -38,7 +38,11 @@ Public Class StepC
 			Me.stepC_data.RecursOnWeekday = Nothing
 			Me.stepC_data.CountCurrentDay = Me.cbSameDayPromo.Checked
 		End If
-		Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
+		If Me.cbSelectAll.Checked Then
+			Me.stepC_data.EarnsOnWeekday = Nothing
+		Else
+			Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
+		End If
 	End Sub
 
 	''' <summary>

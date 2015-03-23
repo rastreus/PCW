@@ -103,7 +103,7 @@ Partial Class StepB
 		'
 		'Panel1
 		'
-		Me.Panel1.BackColor = System.Drawing.Color.AntiqueWhite
+		Me.Panel1.BackColor = System.Drawing.Color.PapayaWhip
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel1.Controls.Add(Me.cbRecurringFrequency)
 		Me.Panel1.Controls.Add(Me.rbRecurringYes)
