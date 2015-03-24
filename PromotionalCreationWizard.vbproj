@@ -110,10 +110,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Models\StepD_Data.vb" />
+    <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
     <Compile Include="src\_Utils\GUI_Util.vb" />
-    <Compile Include="src\Lingering_ToolTip.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="resources\MarketingPromos.designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

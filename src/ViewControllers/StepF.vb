@@ -1,25 +1,25 @@
 ﻿Imports TSWizards
-Imports System.Text.RegularExpressions
 
 Public Class StepF
 	Inherits TSWizards.BaseInteriorStep
 
-	Private Sub StepF_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
+	Private Sub StepF_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
 
 		If CashValue_Invalid() Then
 			e.Cancel = True
-			Me.Panel3.BackColor = Color.MistyRose
-			Me.ActiveControl = Me.TextBox3
+			Me.pnlCashValue.BackColor = Color.MistyRose
+			Me.ActiveControl = Me.txtCashValue
 		Else
-			Me.Panel3.BackColor = SystemColors.Control
+			Me.pnlCashValue.BackColor = SystemColors.Control
 		End If
 
 		If Prize_Blank() Then
 			e.Cancel = True
-			Me.Panel2.BackColor = Color.MistyRose
-			Me.ActiveControl = Me.TextBox2
+			Me.pnlPrize.BackColor = Color.MistyRose
+			Me.ActiveControl = Me.txtPrize
 		Else
-			Me.Panel2.BackColor = SystemColors.Control
+			Me.pnlPrize.BackColor = SystemColors.Control
 		End If
 
 		'KEEP AS LAST LINE OF VALIDATION
@@ -28,26 +28,17 @@ Public Class StepF
 		'===============================
 	End Sub
 
-	'If PromoDate_Recurring() Then
-	'    e.Cancel = True
-	'    PCW.GetStep("Step5").PreviousStep = "Step4"
-	'    If Not PromoName_Invalid() And Not Recurring_Period_Invalid() Then
-	'        PCW.MoveTo("Step4")
-	'    End If
-	'Else
-	'    PCW.GetStep("Step5").PreviousStep = "Step3"
-	'End If
 	Private Sub Determine_NextStep()
 		Select Case True
-			Case Me.RadioButton1.Checked
-				PCW.GetStep("StepF").NextStep = "StepG1"
-			Case Me.RadioButton5.Checked
+			'Case Me.RadioButton1.Checked
+			'	PCW.GetStep("StepF").NextStep = "StepG1"
+			Case Me.rbFreePlayCoupon.Checked
 				PCW.GetStep("StepF").NextStep = "StepG2"
-			Case Me.RadioButton4.Checked
+			Case Me.rbRandomPrize.Checked
 				PCW.GetStep("StepF").NextStep = "StepG3"
-			Case Me.RadioButton2.Checked
+			Case Me.rbCashValue.Checked
 				PCW.GetStep("StepF").NextStep = "StepH"
-			Case Me.RadioButton3.Checked
+			Case Me.rbPrize.Checked
 				PCW.GetStep("StepF").NextStep = "StepH"
 		End Select
 	End Sub
@@ -57,7 +48,7 @@ Public Class StepF
 	Private Function Prize_Blank()
 		Dim blank As Boolean = False
 
-		If Me.TextBox2.Text = "" Then
+		If Me.txtPrize.Text = "" Then
 			blank = True
 		End If
 
@@ -67,55 +58,36 @@ Public Class StepF
 	Private Function CashValue_Invalid()
 		Dim invalid As Boolean = False
 
-		If Me.RadioButton2.Checked Then
-			invalid = Invalid_Number(Me.TextBox3.Text)
+		If Me.rbCashValue.Checked Then
+			invalid = BEP_Util.invalidNum(Me.txtCashValue.Text)
 		End If
-
-		Return invalid
-	End Function
-
-	'Copied utilitarian function that should only be one place.
-	'On a refactoring, place this in a single location.
-	'Checks to see if the supplied value is not 0
-	'or if it is not 1 or more digit
-	Private Function Invalid_Number(ByVal inputString As String)
-		Dim invalid As Boolean = False
-		Dim inputInt As Short
-		Dim RegexObj As Regex = New Regex("^\d+$")
-
-		Try
-			inputInt = Short.Parse(inputString)
-			If (inputInt = 0) Or Not RegexObj.IsMatch(inputString) Then
-				invalid = True
-			End If
-		Catch ex As Exception
-			invalid = True
-		End Try
 
 		Return invalid
 	End Function
 
 	'Cash Value Changed
-	Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-		If Me.RadioButton2.Checked Then
-			Me.TextBox3.Text = ""
-			Me.TextBox3.Enabled = True
-			Me.ActiveControl = Me.TextBox3
+	Private Sub rbCashValue_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbCashValue.CheckedChanged
+		If Me.rbCashValue.Checked Then
+			Me.txtCashValue.Text = ""
+			Me.txtCashValue.Enabled = True
+			Me.ActiveControl = Me.txtCashValue
 		Else
-			Me.TextBox3.Enabled = False
-			Me.TextBox3.Text = "Enter Cash Value Here"
+			Me.txtCashValue.Enabled = False
+			Me.txtCashValue.Text = "Enter Cash Value Here"
 		End If
 	End Sub
 
 	'Prize Changed
-	Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
-		If Me.RadioButton3.Checked Then
-			Me.TextBox2.Text = ""
-			Me.TextBox2.Enabled = True
-			Me.ActiveControl = Me.TextBox2
+	Private Sub rbPrize_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbPrize.CheckedChanged
+		If Me.rbPrize.Checked Then
+			Me.txtPrize.Text = ""
+			Me.txtPrize.Enabled = True
+			Me.ActiveControl = Me.txtPrize
 		Else
-			Me.TextBox2.Enabled = False
-			Me.TextBox2.Text = "Enter Prize Here"
+			Me.txtPrize.Enabled = False
+			Me.txtPrize.Text = "Enter Prize Here"
 		End If
 	End Sub
 End Class

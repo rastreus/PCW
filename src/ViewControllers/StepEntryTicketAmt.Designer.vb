@@ -366,8 +366,8 @@ Partial Class StepEntryTicketAmt
 		Me.Controls.Add(Me.pnlTicketsAmount)
 		Me.Controls.Add(Me.pnlAmtDescription)
 		Me.Name = "StepEntryTicketAmt"
-		Me.NextStep = "StepH"
-		Me.PreviousStep = "StepF"
+		Me.NextStep = "StepF"
+		Me.PreviousStep = "StepD"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "This is where ticket options are determined."
 		Me.Controls.SetChildIndex(Me.pnlAmtDescription, 0)

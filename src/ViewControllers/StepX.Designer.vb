@@ -76,7 +76,7 @@ Partial Class StepX
 		Me.cbPCWRerun.ForeColor = System.Drawing.Color.White
 		Me.cbPCWRerun.Location = New System.Drawing.Point(5, 5)
 		Me.cbPCWRerun.Name = "cbPCWRerun"
-		Me.cbPCWRerun.Size = New System.Drawing.Size(193, 20)
+		Me.cbPCWRerun.Size = New System.Drawing.Size(203, 20)
 		Me.cbPCWRerun.TabIndex = 8
 		Me.cbPCWRerun.Text = "Check to run PCW again"
 		Me.cbPCWRerun.UseVisualStyleBackColor = True
@@ -88,7 +88,7 @@ Partial Class StepX
 		Me.Panel1.Controls.Add(Me.cbPCWRerun)
 		Me.Panel1.Location = New System.Drawing.Point(103, 212)
 		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(204, 35)
+		Me.Panel1.Size = New System.Drawing.Size(211, 35)
 		Me.Panel1.TabIndex = 9
 		'
 		'StepX

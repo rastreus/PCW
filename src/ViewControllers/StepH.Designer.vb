@@ -22,20 +22,21 @@ Partial Class StepH
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-		Me.Label1 = New System.Windows.Forms.Label()
-		Me.Panel2 = New System.Windows.Forms.Panel()
-		Me.IconButton1 = New FontAwesomeIcons.IconButton()
-		Me.Panel3 = New System.Windows.Forms.Panel()
-		Me.Label3 = New System.Windows.Forms.Label()
-		Me.Label2 = New System.Windows.Forms.Label()
-		Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-		Me.Panel1.SuspendLayout()
-		Me.Panel2.SuspendLayout()
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.Panel3.SuspendLayout()
+		Me.pnlInsertComment = New System.Windows.Forms.Panel()
+		Me.rbNO = New System.Windows.Forms.RadioButton()
+		Me.rbYES = New System.Windows.Forms.RadioButton()
+		Me.lblInsertComment = New System.Windows.Forms.Label()
+		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
+		Me.pnlCommentBox = New System.Windows.Forms.Panel()
+		Me.IconTick = New FontAwesomeIcons.IconButton()
+		Me.pnl140Characters = New System.Windows.Forms.Panel()
+		Me.lblNumerator = New System.Windows.Forms.Label()
+		Me.lblDenominator = New System.Windows.Forms.Label()
+		Me.txtCommentBox = New System.Windows.Forms.RichTextBox()
+		Me.pnlInsertComment.SuspendLayout()
+		Me.pnlCommentBox.SuspendLayout()
+		CType(Me.IconTick, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnl140Characters.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -43,145 +44,164 @@ Partial Class StepH
 		Me.Description.Size = New System.Drawing.Size(578, 72)
 		Me.Description.Text = "This comment will be inserted into the database row."
 		'
-		'Panel1
+		'pnlInsertComment
 		'
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel1.Controls.Add(Me.RadioButton2)
-		Me.Panel1.Controls.Add(Me.RadioButton1)
-		Me.Panel1.Controls.Add(Me.Label1)
-		Me.Panel1.Location = New System.Drawing.Point(180, 39)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(250, 103)
-		Me.Panel1.TabIndex = 1
+		Me.pnlInsertComment.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlInsertComment.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlInsertComment.Controls.Add(Me.rbNO)
+		Me.pnlInsertComment.Controls.Add(Me.rbYES)
+		Me.pnlInsertComment.Controls.Add(Me.lblInsertComment)
+		Me.pnlInsertComment.Controls.Add(Me.pnlPaleTurquoise)
+		Me.pnlInsertComment.Location = New System.Drawing.Point(103, 88)
+		Me.pnlInsertComment.Name = "pnlInsertComment"
+		Me.pnlInsertComment.Size = New System.Drawing.Size(139, 102)
+		Me.pnlInsertComment.TabIndex = 1
 		'
-		'RadioButton2
+		'rbNO
 		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.Checked = True
-		Me.RadioButton2.Location = New System.Drawing.Point(4, 72)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(214, 17)
-		Me.RadioButton2.TabIndex = 2
-		Me.RadioButton2.TabStop = True
-		Me.RadioButton2.Text = "No, I would not like to insert a comment."
-		Me.RadioButton2.UseVisualStyleBackColor = True
+		Me.rbNO.AutoSize = True
+		Me.rbNO.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.rbNO.Checked = True
+		Me.rbNO.Location = New System.Drawing.Point(46, 70)
+		Me.rbNO.Name = "rbNO"
+		Me.rbNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbNO.TabIndex = 2
+		Me.rbNO.TabStop = True
+		Me.rbNO.Text = "No"
+		Me.rbNO.UseVisualStyleBackColor = False
 		'
-		'RadioButton1
+		'rbYES
 		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.Location = New System.Drawing.Point(4, 49)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(200, 17)
-		Me.RadioButton1.TabIndex = 1
-		Me.RadioButton1.Text = "Yes, I would like to insert a comment."
-		Me.RadioButton1.UseVisualStyleBackColor = True
+		Me.rbYES.AutoSize = True
+		Me.rbYES.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.rbYES.Location = New System.Drawing.Point(46, 47)
+		Me.rbYES.Name = "rbYES"
+		Me.rbYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbYES.TabIndex = 1
+		Me.rbYES.Text = "Yes"
+		Me.rbYES.UseVisualStyleBackColor = False
 		'
-		'Label1
+		'lblInsertComment
 		'
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(1, 6)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(203, 41)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "Would you like to insert a comment about the promo?"
+		Me.lblInsertComment.BackColor = System.Drawing.Color.Transparent
+		Me.lblInsertComment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblInsertComment.ForeColor = System.Drawing.Color.White
+		Me.lblInsertComment.Location = New System.Drawing.Point(0, 0)
+		Me.lblInsertComment.Name = "lblInsertComment"
+		Me.lblInsertComment.Size = New System.Drawing.Size(138, 36)
+		Me.lblInsertComment.TabIndex = 0
+		Me.lblInsertComment.Text = "Would you like to insert a comment?"
 		'
-		'Panel2
+		'pnlPaleTurquoise
 		'
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Controls.Add(Me.IconButton1)
-		Me.Panel2.Controls.Add(Me.Panel3)
-		Me.Panel2.Controls.Add(Me.RichTextBox1)
-		Me.Panel2.Location = New System.Drawing.Point(180, 149)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(250, 102)
-		Me.Panel2.TabIndex = 2
+		Me.pnlPaleTurquoise.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlPaleTurquoise.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(17, 39)
+		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
+		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(104, 54)
+		Me.pnlPaleTurquoise.TabIndex = 3
 		'
-		'IconButton1
+		'pnlCommentBox
 		'
-		Me.IconButton1.ActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.BackColor = System.Drawing.Color.Transparent
-		Me.IconButton1.Enabled = False
-		Me.IconButton1.IconType = FontAwesomeIcons.IconType.Tick
-		Me.IconButton1.InActiveColor = System.Drawing.SystemColors.ControlDark
-		Me.IconButton1.Location = New System.Drawing.Point(126, 70)
-		Me.IconButton1.Name = "IconButton1"
-		Me.IconButton1.Size = New System.Drawing.Size(24, 24)
-		Me.IconButton1.TabIndex = 3
-		Me.IconButton1.TabStop = False
-		Me.IconButton1.ToolTipText = Nothing
+		Me.pnlCommentBox.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlCommentBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlCommentBox.Controls.Add(Me.IconTick)
+		Me.pnlCommentBox.Controls.Add(Me.pnl140Characters)
+		Me.pnlCommentBox.Controls.Add(Me.txtCommentBox)
+		Me.pnlCommentBox.Location = New System.Drawing.Point(248, 88)
+		Me.pnlCommentBox.Name = "pnlCommentBox"
+		Me.pnlCommentBox.Size = New System.Drawing.Size(250, 102)
+		Me.pnlCommentBox.TabIndex = 2
 		'
-		'Panel3
+		'IconTick
 		'
-		Me.Panel3.Controls.Add(Me.Label3)
-		Me.Panel3.Controls.Add(Me.Label2)
-		Me.Panel3.Location = New System.Drawing.Point(145, 70)
-		Me.Panel3.Name = "Panel3"
-		Me.Panel3.Size = New System.Drawing.Size(73, 24)
-		Me.Panel3.TabIndex = 3
+		Me.IconTick.ActiveColor = System.Drawing.SystemColors.ControlDark
+		Me.IconTick.BackColor = System.Drawing.Color.Transparent
+		Me.IconTick.Enabled = False
+		Me.IconTick.IconType = FontAwesomeIcons.IconType.Tick
+		Me.IconTick.InActiveColor = System.Drawing.SystemColors.ControlDark
+		Me.IconTick.Location = New System.Drawing.Point(126, 70)
+		Me.IconTick.Name = "IconTick"
+		Me.IconTick.Size = New System.Drawing.Size(24, 24)
+		Me.IconTick.TabIndex = 3
+		Me.IconTick.TabStop = False
+		Me.IconTick.ToolTipText = Nothing
 		'
-		'Label3
+		'pnl140Characters
 		'
-		Me.Label3.AutoSize = True
-		Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-		Me.Label3.Location = New System.Drawing.Point(6, 5)
-		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(25, 13)
-		Me.Label3.TabIndex = 2
-		Me.Label3.Text = "140"
-		Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.pnl140Characters.Controls.Add(Me.lblNumerator)
+		Me.pnl140Characters.Controls.Add(Me.lblDenominator)
+		Me.pnl140Characters.Location = New System.Drawing.Point(145, 70)
+		Me.pnl140Characters.Name = "pnl140Characters"
+		Me.pnl140Characters.Size = New System.Drawing.Size(73, 24)
+		Me.pnl140Characters.TabIndex = 3
 		'
-		'Label2
+		'lblNumerator
 		'
-		Me.Label2.AutoSize = True
-		Me.Label2.Location = New System.Drawing.Point(31, 5)
-		Me.Label2.Name = "Label2"
-		Me.Label2.Size = New System.Drawing.Size(36, 13)
-		Me.Label2.TabIndex = 1
-		Me.Label2.Text = "/  140"
-		Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.lblNumerator.AutoSize = True
+		Me.lblNumerator.ForeColor = System.Drawing.Color.White
+		Me.lblNumerator.Location = New System.Drawing.Point(6, 5)
+		Me.lblNumerator.Name = "lblNumerator"
+		Me.lblNumerator.Size = New System.Drawing.Size(25, 13)
+		Me.lblNumerator.TabIndex = 2
+		Me.lblNumerator.Text = "140"
+		Me.lblNumerator.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
-		'RichTextBox1
+		'lblDenominator
 		'
-		Me.RichTextBox1.Enabled = False
-		Me.RichTextBox1.Location = New System.Drawing.Point(3, 4)
-		Me.RichTextBox1.Name = "RichTextBox1"
-		Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-		Me.RichTextBox1.Size = New System.Drawing.Size(242, 60)
-		Me.RichTextBox1.TabIndex = 0
-		Me.RichTextBox1.Text = "Insert Comment of 140 characters or less into this TextBox."
+		Me.lblDenominator.AutoSize = True
+		Me.lblDenominator.ForeColor = System.Drawing.Color.White
+		Me.lblDenominator.Location = New System.Drawing.Point(31, 5)
+		Me.lblDenominator.Name = "lblDenominator"
+		Me.lblDenominator.Size = New System.Drawing.Size(36, 13)
+		Me.lblDenominator.TabIndex = 1
+		Me.lblDenominator.Text = "/  140"
+		Me.lblDenominator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'txtCommentBox
+		'
+		Me.txtCommentBox.Enabled = False
+		Me.txtCommentBox.Location = New System.Drawing.Point(3, 4)
+		Me.txtCommentBox.MaxLength = 300
+		Me.txtCommentBox.Name = "txtCommentBox"
+		Me.txtCommentBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
+		Me.txtCommentBox.Size = New System.Drawing.Size(242, 60)
+		Me.txtCommentBox.TabIndex = 0
+		Me.txtCommentBox.Text = "Insert Comment of 140 characters or less into this TextBox."
 		'
 		'StepH
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.Panel2)
-		Me.Controls.Add(Me.Panel1)
+		Me.Controls.Add(Me.pnlCommentBox)
+		Me.Controls.Add(Me.pnlInsertComment)
 		Me.Name = "StepH"
 		Me.NextStep = "StepI"
-		Me.PreviousStep = "StepG1"
+		Me.PreviousStep = "StepG2"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "This comment will be inserted into the database row."
 		Me.Controls.SetChildIndex(Me.Description, 0)
-		Me.Controls.SetChildIndex(Me.Panel1, 0)
-		Me.Controls.SetChildIndex(Me.Panel2, 0)
-		Me.Panel1.ResumeLayout(False)
-		Me.Panel1.PerformLayout()
-		Me.Panel2.ResumeLayout(False)
-		CType(Me.IconButton1, System.ComponentModel.ISupportInitialize).EndInit()
-		Me.Panel3.ResumeLayout(False)
-		Me.Panel3.PerformLayout()
+		Me.Controls.SetChildIndex(Me.pnlInsertComment, 0)
+		Me.Controls.SetChildIndex(Me.pnlCommentBox, 0)
+		Me.pnlInsertComment.ResumeLayout(False)
+		Me.pnlInsertComment.PerformLayout()
+		Me.pnlCommentBox.ResumeLayout(False)
+		CType(Me.IconTick, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnl140Characters.ResumeLayout(False)
+		Me.pnl140Characters.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-	Friend WithEvents Label1 As System.Windows.Forms.Label
-	Friend WithEvents Panel2 As System.Windows.Forms.Panel
-	Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
-	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents Panel3 As System.Windows.Forms.Panel
-	Friend WithEvents IconButton1 As FontAwesomeIcons.IconButton
+	Friend WithEvents pnlInsertComment As System.Windows.Forms.Panel
+	Friend WithEvents rbNO As System.Windows.Forms.RadioButton
+	Friend WithEvents rbYES As System.Windows.Forms.RadioButton
+	Friend WithEvents lblInsertComment As System.Windows.Forms.Label
+	Friend WithEvents pnlCommentBox As System.Windows.Forms.Panel
+	Friend WithEvents txtCommentBox As System.Windows.Forms.RichTextBox
+	Friend WithEvents lblNumerator As System.Windows.Forms.Label
+	Friend WithEvents lblDenominator As System.Windows.Forms.Label
+	Friend WithEvents pnl140Characters As System.Windows.Forms.Panel
+	Friend WithEvents IconTick As FontAwesomeIcons.IconButton
+	Friend WithEvents pnlPaleTurquoise As System.Windows.Forms.Panel
 
 End Class

@@ -22,198 +22,210 @@ Partial Class StepF
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.Panel3 = New System.Windows.Forms.Panel()
-		Me.TextBox3 = New System.Windows.Forms.TextBox()
+		Me.pnlPayout = New System.Windows.Forms.Panel()
+		Me.pnlCashValue = New System.Windows.Forms.Panel()
+		Me.txtCashValue = New System.Windows.Forms.TextBox()
 		Me.Label3 = New System.Windows.Forms.Label()
-		Me.Panel2 = New System.Windows.Forms.Panel()
-		Me.TextBox2 = New System.Windows.Forms.TextBox()
-		Me.Label2 = New System.Windows.Forms.Label()
-		Me.RadioButton5 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.Panel1.SuspendLayout()
-		Me.Panel3.SuspendLayout()
-		Me.Panel2.SuspendLayout()
+		Me.pnlPrize = New System.Windows.Forms.Panel()
+		Me.txtPrize = New System.Windows.Forms.TextBox()
+		Me.Label2 = New System.Windows.Forms.Label()
+		Me.rbFreePlayCoupon = New System.Windows.Forms.RadioButton()
+		Me.rbRandomPrize = New System.Windows.Forms.RadioButton()
+		Me.rbPrize = New System.Windows.Forms.RadioButton()
+		Me.rbCashValue = New System.Windows.Forms.RadioButton()
+		Me.pnlLavender = New System.Windows.Forms.Panel()
+		Me.pnlPayout.SuspendLayout()
+		Me.pnlCashValue.SuspendLayout()
+		Me.pnlPrize.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "This is where the reward of the promotional will be determined."
+		Me.Description.Text = "This is where the category of the promo payout will be determined."
 		'
-		'Panel1
+		'pnlPayout
 		'
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel1.Controls.Add(Me.Panel3)
-		Me.Panel1.Controls.Add(Me.Label3)
-		Me.Panel1.Controls.Add(Me.Panel2)
-		Me.Panel1.Controls.Add(Me.Label2)
-		Me.Panel1.Controls.Add(Me.RadioButton5)
-		Me.Panel1.Controls.Add(Me.RadioButton4)
-		Me.Panel1.Controls.Add(Me.RadioButton3)
-		Me.Panel1.Controls.Add(Me.RadioButton2)
-		Me.Panel1.Controls.Add(Me.RadioButton1)
-		Me.Panel1.Controls.Add(Me.Label1)
-		Me.Panel1.Location = New System.Drawing.Point(151, 56)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(302, 202)
-		Me.Panel1.TabIndex = 2
+		Me.pnlPayout.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPayout.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPayout.Controls.Add(Me.pnlCashValue)
+		Me.pnlPayout.Controls.Add(Me.Label3)
+		Me.pnlPayout.Controls.Add(Me.Label1)
+		Me.pnlPayout.Controls.Add(Me.pnlPrize)
+		Me.pnlPayout.Controls.Add(Me.Label2)
+		Me.pnlPayout.Controls.Add(Me.rbFreePlayCoupon)
+		Me.pnlPayout.Controls.Add(Me.rbRandomPrize)
+		Me.pnlPayout.Controls.Add(Me.rbPrize)
+		Me.pnlPayout.Controls.Add(Me.rbCashValue)
+		Me.pnlPayout.Controls.Add(Me.pnlLavender)
+		Me.pnlPayout.Location = New System.Drawing.Point(145, 52)
+		Me.pnlPayout.Name = "pnlPayout"
+		Me.pnlPayout.Size = New System.Drawing.Size(313, 197)
+		Me.pnlPayout.TabIndex = 2
 		'
-		'Panel3
+		'pnlCashValue
 		'
-		Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel3.Controls.Add(Me.TextBox3)
-		Me.Panel3.Location = New System.Drawing.Point(139, 121)
-		Me.Panel3.Name = "Panel3"
-		Me.Panel3.Size = New System.Drawing.Size(131, 36)
-		Me.Panel3.TabIndex = 9
+		Me.pnlCashValue.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlCashValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlCashValue.Controls.Add(Me.txtCashValue)
+		Me.pnlCashValue.Location = New System.Drawing.Point(149, 92)
+		Me.pnlCashValue.Name = "pnlCashValue"
+		Me.pnlCashValue.Size = New System.Drawing.Size(131, 36)
+		Me.pnlCashValue.TabIndex = 9
 		'
-		'TextBox3
+		'txtCashValue
 		'
-		Me.TextBox3.Enabled = False
-		Me.TextBox3.Location = New System.Drawing.Point(2, 8)
-		Me.TextBox3.Name = "TextBox3"
-		Me.TextBox3.Size = New System.Drawing.Size(122, 20)
-		Me.TextBox3.TabIndex = 7
-		Me.TextBox3.Text = "Enter Cash Value Here"
+		Me.txtCashValue.Enabled = False
+		Me.txtCashValue.Location = New System.Drawing.Point(3, 8)
+		Me.txtCashValue.MaxLength = 6
+		Me.txtCashValue.Name = "txtCashValue"
+		Me.txtCashValue.Size = New System.Drawing.Size(122, 20)
+		Me.txtCashValue.TabIndex = 7
+		Me.txtCashValue.Text = "Enter Cash Value Here"
 		'
 		'Label3
 		'
 		Me.Label3.AutoSize = True
+		Me.Label3.BackColor = System.Drawing.Color.Lavender
 		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(94, 133)
+		Me.Label3.Location = New System.Drawing.Point(104, 104)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(42, 13)
 		Me.Label3.TabIndex = 10
 		Me.Label3.Text = "...........|"
 		'
-		'Panel2
+		'Label1
 		'
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Controls.Add(Me.TextBox2)
-		Me.Panel2.Location = New System.Drawing.Point(139, 163)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(131, 36)
-		Me.Panel2.TabIndex = 8
+		Me.Label1.BackColor = System.Drawing.Color.Transparent
+		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.ForeColor = System.Drawing.Color.White
+		Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.Label1.Location = New System.Drawing.Point(0, 0)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(311, 19)
+		Me.Label1.TabIndex = 0
+		Me.Label1.Text = "What form of Payout does the promo give?"
 		'
-		'TextBox2
+		'pnlPrize
 		'
-		Me.TextBox2.Enabled = False
-		Me.TextBox2.Location = New System.Drawing.Point(2, 8)
-		Me.TextBox2.Name = "TextBox2"
-		Me.TextBox2.Size = New System.Drawing.Size(122, 20)
-		Me.TextBox2.TabIndex = 7
-		Me.TextBox2.Text = "Enter Prize Here"
+		Me.pnlPrize.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlPrize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPrize.Controls.Add(Me.txtPrize)
+		Me.pnlPrize.Location = New System.Drawing.Point(149, 134)
+		Me.pnlPrize.Name = "pnlPrize"
+		Me.pnlPrize.Size = New System.Drawing.Size(131, 36)
+		Me.pnlPrize.TabIndex = 8
+		'
+		'txtPrize
+		'
+		Me.txtPrize.Enabled = False
+		Me.txtPrize.Location = New System.Drawing.Point(3, 7)
+		Me.txtPrize.MaxLength = 6
+		Me.txtPrize.Name = "txtPrize"
+		Me.txtPrize.Size = New System.Drawing.Size(122, 20)
+		Me.txtPrize.TabIndex = 7
+		Me.txtPrize.Text = "Enter Prize Here"
 		'
 		'Label2
 		'
 		Me.Label2.AutoSize = True
+		Me.Label2.BackColor = System.Drawing.Color.Lavender
 		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.Location = New System.Drawing.Point(62, 173)
+		Me.Label2.Location = New System.Drawing.Point(72, 144)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(75, 13)
 		Me.Label2.TabIndex = 3
 		Me.Label2.Text = "......................|"
 		'
-		'RadioButton5
+		'rbFreePlayCoupon
 		'
-		Me.RadioButton5.AutoSize = True
-		Me.RadioButton5.Location = New System.Drawing.Point(19, 63)
-		Me.RadioButton5.Name = "RadioButton5"
-		Me.RadioButton5.Size = New System.Drawing.Size(106, 17)
-		Me.RadioButton5.TabIndex = 5
-		Me.RadioButton5.Text = "FreePlay Coupon"
-		Me.RadioButton5.UseVisualStyleBackColor = True
+		Me.rbFreePlayCoupon.AutoSize = True
+		Me.rbFreePlayCoupon.BackColor = System.Drawing.Color.Lavender
+		Me.rbFreePlayCoupon.Checked = True
+		Me.rbFreePlayCoupon.Location = New System.Drawing.Point(29, 34)
+		Me.rbFreePlayCoupon.Name = "rbFreePlayCoupon"
+		Me.rbFreePlayCoupon.Size = New System.Drawing.Size(106, 17)
+		Me.rbFreePlayCoupon.TabIndex = 5
+		Me.rbFreePlayCoupon.TabStop = True
+		Me.rbFreePlayCoupon.Text = "FreePlay Coupon"
+		Me.rbFreePlayCoupon.UseVisualStyleBackColor = False
 		'
-		'RadioButton4
+		'rbRandomPrize
 		'
-		Me.RadioButton4.AutoSize = True
-		Me.RadioButton4.Location = New System.Drawing.Point(19, 95)
-		Me.RadioButton4.Name = "RadioButton4"
-		Me.RadioButton4.Size = New System.Drawing.Size(91, 17)
-		Me.RadioButton4.TabIndex = 4
-		Me.RadioButton4.Text = "Random Prize"
-		Me.RadioButton4.UseVisualStyleBackColor = True
+		Me.rbRandomPrize.AutoSize = True
+		Me.rbRandomPrize.BackColor = System.Drawing.Color.Lavender
+		Me.rbRandomPrize.Location = New System.Drawing.Point(29, 66)
+		Me.rbRandomPrize.Name = "rbRandomPrize"
+		Me.rbRandomPrize.Size = New System.Drawing.Size(91, 17)
+		Me.rbRandomPrize.TabIndex = 4
+		Me.rbRandomPrize.Text = "Random Prize"
+		Me.rbRandomPrize.UseVisualStyleBackColor = False
 		'
-		'RadioButton3
+		'rbPrize
 		'
-		Me.RadioButton3.AutoSize = True
-		Me.RadioButton3.Location = New System.Drawing.Point(19, 172)
-		Me.RadioButton3.Name = "RadioButton3"
-		Me.RadioButton3.Size = New System.Drawing.Size(48, 17)
-		Me.RadioButton3.TabIndex = 3
-		Me.RadioButton3.Text = "Prize"
-		Me.RadioButton3.UseVisualStyleBackColor = True
+		Me.rbPrize.AutoSize = True
+		Me.rbPrize.BackColor = System.Drawing.Color.Lavender
+		Me.rbPrize.Location = New System.Drawing.Point(29, 143)
+		Me.rbPrize.Name = "rbPrize"
+		Me.rbPrize.Size = New System.Drawing.Size(48, 17)
+		Me.rbPrize.TabIndex = 3
+		Me.rbPrize.Text = "Prize"
+		Me.rbPrize.UseVisualStyleBackColor = False
 		'
-		'RadioButton2
+		'rbCashValue
 		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.Location = New System.Drawing.Point(19, 132)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(79, 17)
-		Me.RadioButton2.TabIndex = 2
-		Me.RadioButton2.Text = "Cash Value"
-		Me.RadioButton2.UseVisualStyleBackColor = True
+		Me.rbCashValue.AutoSize = True
+		Me.rbCashValue.BackColor = System.Drawing.Color.Lavender
+		Me.rbCashValue.Location = New System.Drawing.Point(29, 103)
+		Me.rbCashValue.Name = "rbCashValue"
+		Me.rbCashValue.Size = New System.Drawing.Size(79, 17)
+		Me.rbCashValue.TabIndex = 2
+		Me.rbCashValue.Text = "Cash Value"
+		Me.rbCashValue.UseVisualStyleBackColor = False
 		'
-		'RadioButton1
+		'pnlLavender
 		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.Checked = True
-		Me.RadioButton1.Location = New System.Drawing.Point(19, 31)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(82, 17)
-		Me.RadioButton1.TabIndex = 1
-		Me.RadioButton1.TabStop = True
-		Me.RadioButton1.Text = "# of Tickets"
-		Me.RadioButton1.UseVisualStyleBackColor = True
-		'
-		'Label1
-		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(0, 0)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(300, 16)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "What form of Payout does the promo give?"
+		Me.pnlLavender.BackColor = System.Drawing.Color.Lavender
+		Me.pnlLavender.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlLavender.Location = New System.Drawing.Point(14, 22)
+		Me.pnlLavender.Name = "pnlLavender"
+		Me.pnlLavender.Size = New System.Drawing.Size(279, 159)
+		Me.pnlLavender.TabIndex = 11
 		'
 		'StepF
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.Panel1)
+		Me.Controls.Add(Me.pnlPayout)
 		Me.Name = "StepF"
-		Me.NextStep = "StepG1"
-		Me.PreviousStep = "StepE"
+		Me.NextStep = "StepG2"
+		Me.PreviousStep = "StepEntryTicketAmt"
 		Me.Size = New System.Drawing.Size(594, 293)
-		Me.StepDescription = "This is where the reward of the promotional will be determined."
+		Me.StepDescription = "This is where the category of the promo payout will be determined."
 		Me.Controls.SetChildIndex(Me.Description, 0)
-		Me.Controls.SetChildIndex(Me.Panel1, 0)
-		Me.Panel1.ResumeLayout(False)
-		Me.Panel1.PerformLayout()
-		Me.Panel3.ResumeLayout(False)
-		Me.Panel3.PerformLayout()
-		Me.Panel2.ResumeLayout(False)
-		Me.Panel2.PerformLayout()
+		Me.Controls.SetChildIndex(Me.pnlPayout, 0)
+		Me.pnlPayout.ResumeLayout(False)
+		Me.pnlPayout.PerformLayout()
+		Me.pnlCashValue.ResumeLayout(False)
+		Me.pnlCashValue.PerformLayout()
+		Me.pnlPrize.ResumeLayout(False)
+		Me.pnlPrize.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-	Friend WithEvents RadioButton5 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+	Friend WithEvents pnlPayout As System.Windows.Forms.Panel
+	Friend WithEvents txtPrize As System.Windows.Forms.TextBox
+	Friend WithEvents rbFreePlayCoupon As System.Windows.Forms.RadioButton
+	Friend WithEvents rbRandomPrize As System.Windows.Forms.RadioButton
+	Friend WithEvents rbPrize As System.Windows.Forms.RadioButton
+	Friend WithEvents rbCashValue As System.Windows.Forms.RadioButton
 	Friend WithEvents Label1 As System.Windows.Forms.Label
 	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents Panel3 As System.Windows.Forms.Panel
-	Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-	Friend WithEvents Panel2 As System.Windows.Forms.Panel
+	Friend WithEvents pnlCashValue As System.Windows.Forms.Panel
+	Friend WithEvents txtCashValue As System.Windows.Forms.TextBox
+	Friend WithEvents pnlPrize As System.Windows.Forms.Panel
 	Friend WithEvents Label2 As System.Windows.Forms.Label
+	Friend WithEvents pnlLavender As System.Windows.Forms.Panel
 
 End Class

@@ -24,7 +24,7 @@ Otherwise, cancel and attempt the process later.</a>.Value
 	End Sub
 
 	Private Sub GetPromoString()
-		Dim newPromo As MarketingPromo = PCW.PCW_GetPromo()
+		Dim newPromo As MarketingPromo = New MarketingPromo 'PCW.PCW_GetPromo()
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
 		'It bothered me that the DateTime wasn't formatted properly.
