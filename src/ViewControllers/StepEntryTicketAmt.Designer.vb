@@ -23,7 +23,6 @@ Partial Class StepEntryTicketAmt
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
 		Me.pnlTicketsAmount = New System.Windows.Forms.Panel()
-		Me.rbSetAmt = New System.Windows.Forms.RadioButton()
 		Me.rbNumOfVisits = New System.Windows.Forms.RadioButton()
 		Me.rbCalPlusNumOfVisits = New System.Windows.Forms.RadioButton()
 		Me.rbCalculated = New System.Windows.Forms.RadioButton()
@@ -31,9 +30,6 @@ Partial Class StepEntryTicketAmt
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.pnl1 = New System.Windows.Forms.Panel()
 		Me.pnlCountAndCal = New System.Windows.Forms.Panel()
-		Me.pnlSetAmt = New System.Windows.Forms.Panel()
-		Me.pnlSetAmtTxt = New System.Windows.Forms.Panel()
-		Me.txtSetAmt = New System.Windows.Forms.TextBox()
 		Me.pnlPointsDivisor = New System.Windows.Forms.Panel()
 		Me.txtPointsDivisor = New System.Windows.Forms.TextBox()
 		Me.lblPointsDivisor = New System.Windows.Forms.Label()
@@ -41,20 +37,18 @@ Partial Class StepEntryTicketAmt
 		Me.txtTicketsPerPatron = New System.Windows.Forms.TextBox()
 		Me.rbTicketsPerPatronNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketPerPatronYES = New System.Windows.Forms.RadioButton()
+		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.lblTicketsPerPatron = New System.Windows.Forms.Label()
 		Me.pnlTicketsEntirePromo = New System.Windows.Forms.Panel()
 		Me.txtTicketsEntirePromo = New System.Windows.Forms.TextBox()
 		Me.rbTicketsEntirePromoNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketsEntirePromoYES = New System.Windows.Forms.RadioButton()
+		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.lblTicketsEntirePromo = New System.Windows.Forms.Label()
 		Me.lblDescription = New System.Windows.Forms.Label()
 		Me.pnlAmtDescription = New System.Windows.Forms.Panel()
 		Me.lblAmtDesc = New System.Windows.Forms.Label()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.pnlTicketsAmount.SuspendLayout()
-		Me.pnlSetAmt.SuspendLayout()
-		Me.pnlSetAmtTxt.SuspendLayout()
 		Me.pnlPointsDivisor.SuspendLayout()
 		Me.pnlTicketPerPatron.SuspendLayout()
 		Me.pnlTicketsEntirePromo.SuspendLayout()
@@ -70,7 +64,6 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.pnlTicketsAmount.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlTicketsAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.pnlTicketsAmount.Controls.Add(Me.rbSetAmt)
 		Me.pnlTicketsAmount.Controls.Add(Me.rbNumOfVisits)
 		Me.pnlTicketsAmount.Controls.Add(Me.rbCalPlusNumOfVisits)
 		Me.pnlTicketsAmount.Controls.Add(Me.rbCalculated)
@@ -78,29 +71,16 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsAmount.Controls.Add(Me.Label2)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnl1)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnlCountAndCal)
-		Me.pnlTicketsAmount.Controls.Add(Me.pnlSetAmt)
-		Me.pnlTicketsAmount.Location = New System.Drawing.Point(198, 31)
+		Me.pnlTicketsAmount.Location = New System.Drawing.Point(224, 43)
 		Me.pnlTicketsAmount.Name = "pnlTicketsAmount"
-		Me.pnlTicketsAmount.Size = New System.Drawing.Size(174, 234)
+		Me.pnlTicketsAmount.Size = New System.Drawing.Size(160, 172)
 		Me.pnlTicketsAmount.TabIndex = 2
-		'
-		'rbSetAmt
-		'
-		Me.rbSetAmt.AutoSize = True
-		Me.rbSetAmt.BackColor = System.Drawing.Color.Lavender
-		Me.rbSetAmt.Location = New System.Drawing.Point(16, 168)
-		Me.rbSetAmt.Name = "rbSetAmt"
-		Me.rbSetAmt.Size = New System.Drawing.Size(130, 17)
-		Me.rbSetAmt.TabIndex = 8
-		Me.rbSetAmt.TabStop = True
-		Me.rbSetAmt.Text = "Set Amount of Tickets"
-		Me.rbSetAmt.UseVisualStyleBackColor = False
 		'
 		'rbNumOfVisits
 		'
 		Me.rbNumOfVisits.AutoSize = True
 		Me.rbNumOfVisits.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.rbNumOfVisits.Location = New System.Drawing.Point(16, 77)
+		Me.rbNumOfVisits.Location = New System.Drawing.Point(13, 84)
 		Me.rbNumOfVisits.Name = "rbNumOfVisits"
 		Me.rbNumOfVisits.Size = New System.Drawing.Size(71, 17)
 		Me.rbNumOfVisits.TabIndex = 6
@@ -112,7 +92,7 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.rbCalPlusNumOfVisits.AutoSize = True
 		Me.rbCalPlusNumOfVisits.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.rbCalPlusNumOfVisits.Location = New System.Drawing.Point(16, 123)
+		Me.rbCalPlusNumOfVisits.Location = New System.Drawing.Point(13, 130)
 		Me.rbCalPlusNumOfVisits.Name = "rbCalPlusNumOfVisits"
 		Me.rbCalPlusNumOfVisits.Size = New System.Drawing.Size(133, 17)
 		Me.rbCalPlusNumOfVisits.TabIndex = 5
@@ -123,7 +103,7 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.rbCalculated.AutoSize = True
 		Me.rbCalculated.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.rbCalculated.Location = New System.Drawing.Point(16, 100)
+		Me.rbCalculated.Location = New System.Drawing.Point(13, 107)
 		Me.rbCalculated.Name = "rbCalculated"
 		Me.rbCalculated.Size = New System.Drawing.Size(75, 17)
 		Me.rbCalculated.TabIndex = 4
@@ -135,7 +115,7 @@ Partial Class StepEntryTicketAmt
 		Me.rb1.AutoSize = True
 		Me.rb1.BackColor = System.Drawing.Color.Aquamarine
 		Me.rb1.Checked = True
-		Me.rb1.Location = New System.Drawing.Point(16, 31)
+		Me.rb1.Location = New System.Drawing.Point(13, 38)
 		Me.rb1.Name = "rb1"
 		Me.rb1.Size = New System.Drawing.Size(31, 17)
 		Me.rb1.TabIndex = 3
@@ -158,48 +138,19 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.pnl1.BackColor = System.Drawing.Color.Aquamarine
 		Me.pnl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnl1.Location = New System.Drawing.Point(7, 23)
+		Me.pnl1.Location = New System.Drawing.Point(7, 30)
 		Me.pnl1.Name = "pnl1"
-		Me.pnl1.Size = New System.Drawing.Size(155, 32)
+		Me.pnl1.Size = New System.Drawing.Size(142, 32)
 		Me.pnl1.TabIndex = 13
 		'
 		'pnlCountAndCal
 		'
 		Me.pnlCountAndCal.BackColor = System.Drawing.Color.PaleTurquoise
 		Me.pnlCountAndCal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlCountAndCal.Location = New System.Drawing.Point(7, 61)
+		Me.pnlCountAndCal.Location = New System.Drawing.Point(7, 68)
 		Me.pnlCountAndCal.Name = "pnlCountAndCal"
-		Me.pnlCountAndCal.Size = New System.Drawing.Size(155, 91)
+		Me.pnlCountAndCal.Size = New System.Drawing.Size(142, 91)
 		Me.pnlCountAndCal.TabIndex = 14
-		'
-		'pnlSetAmt
-		'
-		Me.pnlSetAmt.BackColor = System.Drawing.Color.Lavender
-		Me.pnlSetAmt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlSetAmt.Controls.Add(Me.pnlSetAmtTxt)
-		Me.pnlSetAmt.Location = New System.Drawing.Point(7, 158)
-		Me.pnlSetAmt.Name = "pnlSetAmt"
-		Me.pnlSetAmt.Size = New System.Drawing.Size(155, 68)
-		Me.pnlSetAmt.TabIndex = 15
-		'
-		'pnlSetAmtTxt
-		'
-		Me.pnlSetAmtTxt.BackColor = System.Drawing.Color.Gainsboro
-		Me.pnlSetAmtTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.pnlSetAmtTxt.Controls.Add(Me.txtSetAmt)
-		Me.pnlSetAmtTxt.Location = New System.Drawing.Point(24, 31)
-		Me.pnlSetAmtTxt.Name = "pnlSetAmtTxt"
-		Me.pnlSetAmtTxt.Size = New System.Drawing.Size(116, 31)
-		Me.pnlSetAmtTxt.TabIndex = 12
-		'
-		'txtSetAmt
-		'
-		Me.txtSetAmt.Enabled = False
-		Me.txtSetAmt.Location = New System.Drawing.Point(6, 4)
-		Me.txtSetAmt.Name = "txtSetAmt"
-		Me.txtSetAmt.Size = New System.Drawing.Size(100, 20)
-		Me.txtSetAmt.TabIndex = 9
-		Me.txtSetAmt.Text = "Enter # of Tickets"
 		'
 		'pnlPointsDivisor
 		'
@@ -208,15 +159,16 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPointsDivisor.Controls.Add(Me.txtPointsDivisor)
 		Me.pnlPointsDivisor.Controls.Add(Me.lblPointsDivisor)
 		Me.pnlPointsDivisor.Enabled = False
-		Me.pnlPointsDivisor.Location = New System.Drawing.Point(378, 31)
+		Me.pnlPointsDivisor.Location = New System.Drawing.Point(278, 221)
 		Me.pnlPointsDivisor.Name = "pnlPointsDivisor"
-		Me.pnlPointsDivisor.Size = New System.Drawing.Size(107, 49)
+		Me.pnlPointsDivisor.Size = New System.Drawing.Size(106, 49)
 		Me.pnlPointsDivisor.TabIndex = 11
 		Me.pnlPointsDivisor.Visible = False
 		'
 		'txtPointsDivisor
 		'
 		Me.txtPointsDivisor.Location = New System.Drawing.Point(2, 21)
+		Me.txtPointsDivisor.MaxLength = 6
 		Me.txtPointsDivisor.Name = "txtPointsDivisor"
 		Me.txtPointsDivisor.Size = New System.Drawing.Size(100, 20)
 		Me.txtPointsDivisor.TabIndex = 1
@@ -242,7 +194,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketPerPatron.Controls.Add(Me.rbTicketPerPatronYES)
 		Me.pnlTicketPerPatron.Controls.Add(Me.Panel1)
 		Me.pnlTicketPerPatron.Controls.Add(Me.lblTicketsPerPatron)
-		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(378, 93)
+		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(390, 43)
 		Me.pnlTicketPerPatron.Name = "pnlTicketPerPatron"
 		Me.pnlTicketPerPatron.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketPerPatron.TabIndex = 4
@@ -251,6 +203,7 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.txtTicketsPerPatron.Enabled = False
 		Me.txtTicketsPerPatron.Location = New System.Drawing.Point(57, 37)
+		Me.txtTicketsPerPatron.MaxLength = 6
 		Me.txtTicketsPerPatron.Name = "txtTicketsPerPatron"
 		Me.txtTicketsPerPatron.Size = New System.Drawing.Size(81, 20)
 		Me.txtTicketsPerPatron.TabIndex = 9
@@ -281,6 +234,15 @@ Partial Class StepEntryTicketAmt
 		Me.rbTicketPerPatronYES.Text = "Yes"
 		Me.rbTicketPerPatronYES.UseVisualStyleBackColor = False
 		'
+		'Panel1
+		'
+		Me.Panel1.BackColor = System.Drawing.Color.PapayaWhip
+		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel1.Location = New System.Drawing.Point(1, 31)
+		Me.Panel1.Name = "Panel1"
+		Me.Panel1.Size = New System.Drawing.Size(148, 47)
+		Me.Panel1.TabIndex = 10
+		'
 		'lblTicketsPerPatron
 		'
 		Me.lblTicketsPerPatron.BackColor = System.Drawing.Color.Transparent
@@ -301,7 +263,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.rbTicketsEntirePromoYES)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.Panel2)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.lblTicketsEntirePromo)
-		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(378, 182)
+		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(390, 132)
 		Me.pnlTicketsEntirePromo.Name = "pnlTicketsEntirePromo"
 		Me.pnlTicketsEntirePromo.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketsEntirePromo.TabIndex = 5
@@ -310,6 +272,7 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.txtTicketsEntirePromo.Enabled = False
 		Me.txtTicketsEntirePromo.Location = New System.Drawing.Point(56, 36)
+		Me.txtTicketsEntirePromo.MaxLength = 6
 		Me.txtTicketsEntirePromo.Name = "txtTicketsEntirePromo"
 		Me.txtTicketsEntirePromo.Size = New System.Drawing.Size(81, 20)
 		Me.txtTicketsEntirePromo.TabIndex = 10
@@ -339,6 +302,15 @@ Partial Class StepEntryTicketAmt
 		Me.rbTicketsEntirePromoYES.Text = "Yes"
 		Me.rbTicketsEntirePromoYES.UseVisualStyleBackColor = False
 		'
+		'Panel2
+		'
+		Me.Panel2.BackColor = System.Drawing.Color.PapayaWhip
+		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.Panel2.Location = New System.Drawing.Point(1, 31)
+		Me.Panel2.Name = "Panel2"
+		Me.Panel2.Size = New System.Drawing.Size(148, 47)
+		Me.Panel2.TabIndex = 11
+		'
 		'lblTicketsEntirePromo
 		'
 		Me.lblTicketsEntirePromo.BackColor = System.Drawing.Color.Transparent
@@ -355,7 +327,7 @@ Partial Class StepEntryTicketAmt
 		Me.lblDescription.BackColor = System.Drawing.Color.PapayaWhip
 		Me.lblDescription.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblDescription.ForeColor = System.Drawing.SystemColors.ControlText
-		Me.lblDescription.Location = New System.Drawing.Point(4, 26)
+		Me.lblDescription.Location = New System.Drawing.Point(5, 30)
 		Me.lblDescription.Name = "lblDescription"
 		Me.lblDescription.Size = New System.Drawing.Size(167, 129)
 		Me.lblDescription.TabIndex = 12
@@ -368,9 +340,9 @@ Partial Class StepEntryTicketAmt
 		Me.pnlAmtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlAmtDescription.Controls.Add(Me.lblDescription)
 		Me.pnlAmtDescription.Controls.Add(Me.lblAmtDesc)
-		Me.pnlAmtDescription.Location = New System.Drawing.Point(15, 73)
+		Me.pnlAmtDescription.Location = New System.Drawing.Point(41, 43)
 		Me.pnlAmtDescription.Name = "pnlAmtDescription"
-		Me.pnlAmtDescription.Size = New System.Drawing.Size(177, 162)
+		Me.pnlAmtDescription.Size = New System.Drawing.Size(177, 172)
 		Me.pnlAmtDescription.TabIndex = 13
 		'
 		'lblAmtDesc
@@ -378,29 +350,11 @@ Partial Class StepEntryTicketAmt
 		Me.lblAmtDesc.AutoSize = True
 		Me.lblAmtDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblAmtDesc.ForeColor = System.Drawing.Color.White
-		Me.lblAmtDesc.Location = New System.Drawing.Point(3, 5)
+		Me.lblAmtDesc.Location = New System.Drawing.Point(3, 4)
 		Me.lblAmtDesc.Name = "lblAmtDesc"
-		Me.lblAmtDesc.Size = New System.Drawing.Size(146, 16)
+		Me.lblAmtDesc.Size = New System.Drawing.Size(150, 16)
 		Me.lblAmtDesc.TabIndex = 14
 		Me.lblAmtDesc.Text = "Amount Description:"
-		'
-		'Panel1
-		'
-		Me.Panel1.BackColor = System.Drawing.Color.PapayaWhip
-		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel1.Location = New System.Drawing.Point(1, 31)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(148, 47)
-		Me.Panel1.TabIndex = 10
-		'
-		'Panel2
-		'
-		Me.Panel2.BackColor = System.Drawing.Color.PapayaWhip
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel2.Location = New System.Drawing.Point(1, 31)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(148, 47)
-		Me.Panel2.TabIndex = 11
 		'
 		'StepEntryTicketAmt
 		'
@@ -424,9 +378,6 @@ Partial Class StepEntryTicketAmt
 		Me.Controls.SetChildIndex(Me.pnlPointsDivisor, 0)
 		Me.pnlTicketsAmount.ResumeLayout(False)
 		Me.pnlTicketsAmount.PerformLayout()
-		Me.pnlSetAmt.ResumeLayout(False)
-		Me.pnlSetAmtTxt.ResumeLayout(False)
-		Me.pnlSetAmtTxt.PerformLayout()
 		Me.pnlPointsDivisor.ResumeLayout(False)
 		Me.pnlPointsDivisor.PerformLayout()
 		Me.pnlTicketPerPatron.ResumeLayout(False)
@@ -443,8 +394,6 @@ Partial Class StepEntryTicketAmt
 	Friend WithEvents rbCalculated As System.Windows.Forms.RadioButton
 	Friend WithEvents rb1 As System.Windows.Forms.RadioButton
 	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents txtSetAmt As System.Windows.Forms.TextBox
-	Friend WithEvents rbSetAmt As System.Windows.Forms.RadioButton
 	Friend WithEvents rbNumOfVisits As System.Windows.Forms.RadioButton
 	Friend WithEvents pnlPointsDivisor As System.Windows.Forms.Panel
 	Friend WithEvents txtPointsDivisor As System.Windows.Forms.TextBox
@@ -459,9 +408,7 @@ Partial Class StepEntryTicketAmt
 	Friend WithEvents lblTicketsEntirePromo As System.Windows.Forms.Label
 	Friend WithEvents txtTicketsPerPatron As System.Windows.Forms.TextBox
 	Friend WithEvents txtTicketsEntirePromo As System.Windows.Forms.TextBox
-	Friend WithEvents pnlSetAmtTxt As System.Windows.Forms.Panel
 	Friend WithEvents pnl1 As System.Windows.Forms.Panel
-	Friend WithEvents pnlSetAmt As System.Windows.Forms.Panel
 	Friend WithEvents pnlCountAndCal As System.Windows.Forms.Panel
 	Friend WithEvents lblDescription As System.Windows.Forms.Label
 	Friend WithEvents pnlAmtDescription As System.Windows.Forms.Panel

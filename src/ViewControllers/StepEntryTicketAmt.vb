@@ -1,207 +1,203 @@
 ﻿Imports TSWizards
-Imports System.Text.RegularExpressions
 
 Public Class StepEntryTicketAmt
 	Inherits TSWizards.BaseInteriorStep
 
-#Region "StepEntryTicketAmt_Validation"
-	Private Sub StepEntryTicketAmt_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
-		Handles Me.ValidateStep
-
-		If PointsDivisor_Invalid() Then
-			e.Cancel = True
-			Me.pnlPointsDivisor.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Points Divisor is invalid.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.txtPointsDivisor.Text = ""
-			Me.ActiveControl = Me.txtPointsDivisor
-		Else
-			Me.pnlPointsDivisor.BackColor = SystemColors.Control
-		End If
-
-		If SetAmount_Invalid() Then
-			e.Cancel = True
-			Me.pnlTicketsAmount.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Set Amount of Tickets is invalid.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.txtSetAmt.Text = ""
-			Me.ActiveControl = Me.txtSetAmt
-		Else
-			Me.pnlTicketsAmount.BackColor = SystemColors.Control
-		End If
-
-		If TicketsPerPatron_Invalid() Then
-			e.Cancel = True
-			Me.pnlTicketPerPatron.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Limit # of Tickets per patron is invalid.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.txtTicketsPerPatron.Text = ""
-			Me.ActiveControl = Me.txtTicketsPerPatron
-		Else
-			Me.pnlTicketPerPatron.BackColor = SystemColors.Control
-		End If
-
-		If TicketsForEntirePromo_Invalid() Then
-			e.Cancel = True
-			Me.pnlTicketsEntirePromo.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("The Limit # of Tickets for entire promo is invalid.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.txtTicketsEntirePromo.Text = ""
-			Me.ActiveControl = Me.txtTicketsEntirePromo
-		Else
-			Me.pnlTicketsEntirePromo.BackColor = SystemColors.Control
-		End If
-
-		If TicketsForEntirePromo_EqualTo_TicketsPerPatron() Then
-			e.Cancel = AskIfIntended()
-			If e.Cancel = True Then
-				Me.pnlTicketPerPatron.BackColor = Color.MistyRose
-				Me.pnlTicketsEntirePromo.BackColor = Color.MistyRose
-				Me.txtTicketsEntirePromo.Text = ""
-				Me.txtTicketsPerPatron.Text = ""
-				Me.ActiveControl = Me.txtTicketsPerPatron
-			End If
-		Else
-			If Not TicketsPerPatron_Invalid() And
-				Not TicketsForEntirePromo_Invalid() And
-				Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
-				Me.pnlTicketPerPatron.BackColor = SystemColors.Control
-				Me.pnlTicketsEntirePromo.BackColor = SystemColors.Control
-			End If
-		End If
-
-		If TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
-			e.Cancel = True
-			Me.pnlTicketsEntirePromo.BackColor = Color.MistyRose
-			CenteredMessagebox.MsgBox.Show("Tickets for entire promo less than Tickets per patron.", "Error",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.txtTicketsEntirePromo.Text = ""
-			Me.txtTicketsEntirePromo.Text = ""
-			Me.ActiveControl = Me.txtTicketsEntirePromo
-		Else
-			If Not TicketsForEntirePromo_Invalid() And
-				Not TicketsForEntirePromo_LessThan_TicketsPerPatron() Then
-				Me.pnlTicketsEntirePromo.BackColor = SystemColors.Control
-			End If
-		End If
-
-		''Obviously this is correct. /s
-		'If EligiblePlayers_Selected() Then
-		'	e.Cancel = True
-		'	Me.Panel5.BackColor = Color.MistyRose
-		'	CenteredMessagebox.MsgBox.Show("Sorry: Feature Not Yet Implemented.", "Oh, this is embarassing...",
-		'								   MessageBoxButtons.OK, MessageBoxIcon.Question)
-		'End If
+#Region "StepEntryTicketAmt_Data"
+	''' <summary>
+	''' Model for StepEntryTicketAmt.
+	''' </summary>
+	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	Private stepEntryTicketAmt_data As StepEntryTicketAmt_Data
+	Public ReadOnly Property Data() As StepEntryTicketAmt_Data
+		Get
+			Return Me.stepEntryTicketAmt_data
+		End Get
+	End Property
+#End Region
+#Region "StepEntryTicketAmt_SetData"
+	''' <summary>
+	''' Sets the data from StepEntryTicketAmt_Data.
+	''' </summary>
+	''' <remarks>Complexity meets delegation.</remarks>
+	Private Sub StepEntryTicketAmt_SetData()
+		Me.stepEntryTicketAmt_data.TicketAmtCategory = getTicketAmtCategory()
+		Me.stepEntryTicketAmt_data.PointsDivisor = getPointsDivisor(Me.Data.TicketAmtCategory)
+		Me.stepEntryTicketAmt_data.TicketsPerPatron = getTicketsLimit(Me.rbTicketPerPatronYES.Checked, Me.txtTicketsPerPatron.Text)
+		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, Me.txtTicketsEntirePromo.Text)
+		Me.stepEntryTicketAmt_data.PrintTickets = True
 	End Sub
 
-	'Private Function EligiblePlayers_Selected()
-	'	Dim hasnt_been_completed_yet As Boolean = False
-
-	'	If Me.RadioButton10.Checked Then
-	'		hasnt_been_completed_yet = True
-	'	End If
-
-	'	Return hasnt_been_completed_yet
-	'End Function
-
-	Private Function TicketsForEntirePromo_LessThan_TicketsPerPatron()
-		Dim lessThan As Boolean = False
-
-		If Me.rbTicketPerPatronYES.Checked And Me.rbTicketsEntirePromoYES.Checked Then
-			If (Short.Parse(Me.txtTicketsEntirePromo.Text) < Short.Parse(Me.txtTicketsPerPatron.Text)) Then
-				lessThan = True
-			End If
+	''' <summary>
+	''' Used to get TicketsPerPatron and TicketsForEntirePromo.
+	''' </summary>
+	''' <param name="yesChecked">"YES" RadioButton.Checked</param>
+	''' <param name="txtInput">Input of TextBox.</param>
+	''' <returns>Ticket Limit.</returns>
+	''' <remarks>Remember, kids: Keep code DRY!</remarks>
+	Private Function getTicketsLimit(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
+		Dim result As System.Nullable(Of Short) = Nothing
+		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+			result = Short.Parse(txtInput)
 		End If
-
-		Return lessThan
+		Return result
 	End Function
 
-	Private Function TicketsForEntirePromo_EqualTo_TicketsPerPatron()
-		Dim equivalent As Boolean = False
-
-		If Me.rbTicketPerPatronYES.Checked And Me.rbTicketsEntirePromoYES.Checked Then
-			If (Short.Parse(Me.txtTicketsPerPatron.Text) = Short.Parse(Me.txtTicketsEntirePromo.Text)) Then
-				equivalent = True
-			End If
+	''' <summary>
+	''' If (Cal Or Cal+#ofVisits) And (Not invalidNum), get Points Divisor from TextBox.
+	''' </summary>
+	''' <param name="local_ticketAmtCategory">TicketAmtCategory.</param>
+	''' <returns>Get me Points Divisor Or Nothing!</returns>
+	''' <remarks>This is sloppy; needs refactoring.</remarks>
+	Private Function getPointsDivisor(ByVal local_ticketAmtCategory As StepEntryTicketAmt_Data.PromoTicketAmtCategory) As System.Nullable(Of Short)
+		Dim pointsDivisor As System.Nullable(Of Short) = Nothing
+		Dim pointsDivisorStr As String = Me.txtPointsDivisor.Text
+		If ((local_ticketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calculated) Or
+			(local_ticketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calPlusNumOfVisits)) And
+			(Not BEP_Util.invalidNum(pointsDivisorStr)) Then
+			pointsDivisor = Short.Parse(pointsDivisorStr)
 		End If
-
-		Return equivalent
+		Return pointsDivisor
 	End Function
 
-	Private Function AskIfIntended()
-		Dim samedayMsgString As String = "Do you want tickets for entire promo to be the same as tickets per person?"
-
-		Dim result As Integer = CenteredMessagebox.MsgBox.Show(samedayMsgString, "Equal?",
-															   MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-		If result = DialogResult.Yes Then
-			Return False
+	''' <summary>
+	''' Finds the Checked RadioButton to determine TicketAmtCategory.
+	''' </summary>
+	''' <returns>TicketAmtCategory.</returns>
+	''' <remarks>At this point, I'm beginning to question myself.</remarks>
+	Private Function getTicketAmtCategory() As StepEntryTicketAmt_Data.PromoTicketAmtCategory
+		Dim promoTicketAmtCategory As StepEntryTicketAmt_Data.PromoTicketAmtCategory = New StepEntryTicketAmt_Data.PromoTicketAmtCategory
+		If Me.rbCalPlusNumOfVisits.Checked Then
+			promoTicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calPlusNumOfVisits
+		ElseIf Me.rbCalculated.Checked Then
+			promoTicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calculated
+		ElseIf Me.rbNumOfVisits.Checked Then
+			promoTicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.numOfVisits
 		Else
-			Return True
+			promoTicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.one
 		End If
-	End Function
-
-	Private Function TicketsForEntirePromo_Invalid()
-		Dim invalid As Boolean = False
-
-		If Me.rbTicketsEntirePromoYES.Checked Then
-			invalid = Invalid_Number(Me.txtTicketsEntirePromo.Text)
-		End If
-
-		Return invalid
-	End Function
-
-	Private Function TicketsPerPatron_Invalid()
-		Dim invalid As Boolean = False
-
-		If Me.rbTicketPerPatronYES.Checked Then
-			invalid = Invalid_Number(Me.txtTicketsPerPatron.Text)
-		End If
-
-		Return invalid
-	End Function
-
-	Private Function SetAmount_Invalid()
-		Dim invalid As Boolean = False
-
-		If Me.rbSetAmt.Checked Then
-			invalid = Invalid_Number(Me.txtPointsDivisor.Text)
-		End If
-
-		Return invalid
-	End Function
-
-	Private Function PointsDivisor_Invalid()
-		Dim invalid As Boolean = False
-
-		If (Me.rbCalPlusNumOfVisits.Checked Or Me.rbCalculated.Checked) Then
-			invalid = Invalid_Number(Me.txtPointsDivisor.Text)
-		End If
-
-		Return invalid
-	End Function
-
-	'Checks to see if the supplied value is not 0
-	'or if it is not 1 or more digit
-	Private Function Invalid_Number(ByVal inputString As String)
-		Dim invalid As Boolean = False
-		Dim inputInt As Short
-		Dim RegexObj As Regex = New Regex("^\d+$")
-
-		Try
-			inputInt = Short.Parse(inputString)
-			If (inputInt = 0) Or Not RegexObj.IsMatch(inputString) Then
-				invalid = True
-			End If
-		Catch ex As Exception
-			invalid = True
-		End Try
-
-		Return invalid
+		Return promoTicketAmtCategory
 	End Function
 #End Region
+#Region "StepEntryTicketAmt_Load"
+	Dim defaultStr As String
+	Dim oneStr As String
+	Dim numOfVisitsStr As String
+	Dim calStr As String
+	Dim calPlusNumOfVisitsStr As String
+	Dim setAmtStr As String
+
+	Private Sub StepEntryTicketAmt_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		defaultStr = New String("Move mouse pointer over amount for description.")
+		oneStr = New String("One: a single entry ticket.")
+		numOfVisitsStr = New String("Counts the number of visits within the qualifying period " &
+									"in which the account earned points. The counted number " &
+									"is the amount of entry tickets.")
+		calStr = New String("Sums points accured within the qualifying period, " &
+							"divides the total by the points divisor.")
+		calPlusNumOfVisitsStr = New String("Sums points accured within the qualifying period, " &
+										   "divides the total by the points divisor, " &
+										   "then adds the result to a count of visits.")
+		setAmtStr = New String("A static, set amount of tickets; " &
+							   "enter the amount into the box below.")
+		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_ResetStep"
+	Private Sub StepEntryTicketAmt_ResetStep(sender As Object, e As EventArgs) _
+		Handles MyBase.ResetStep
+		StepEntryTicketAmt_ResetControls()
+	End Sub
+
+	Private Sub StepEntryTicketAmt_ResetControls()
+		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
+		Me.rb1.Checked = True
+		Me.rbTicketsPerPatronNO.Checked = True
+		Me.txtTicketsPerPatron.Text = "Enter # Here"
+		Me.rbTicketsPerPatronNO.Checked = True
+		Me.txtTicketsEntirePromo.Text = "Enter # Here"
+		SetPointsDivisorPnl(False)
+		SetPointsDivisorTxt(False)
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_Validation"
+	''' <summary>
+	''' Asks StepEntryTicketAmt_Data to validate data and then handles GUI reactions accordingly.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	Private Sub StepEntryTicketAmt_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
+		Dim cancelContinuingToNextStep As Boolean = False
+		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
+
+		Me.StepEntryTicketAmt_SetData()
+
+		If (Me.Data.TicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calculated) Or
+			(Me.Data.TicketAmtCategory = PromotionalCreationWizard.StepEntryTicketAmt_Data.PromoTicketAmtCategory.calPlusNumOfVisits) Then
+			If Me.Data.PointsDivisor_Invalid() Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlPointsDivisor)
+				errString = "The Points Divisor is invalid."
+				errStrArray.Add(errString)
+				Me.txtPointsDivisor.Text = ""
+				Me.ActiveControl = Me.txtPointsDivisor
+			Else
+				GUI_Util.regPnl(Me.pnlPointsDivisor)
+			End If
+		End If
+
+		If Me.rbTicketPerPatronYES.Checked And Me.rbTicketsEntirePromoYES.Checked Then
+			If Me.Data.BadTicketLimits() Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlTicketPerPatron)
+				GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
+				errString = "Tickets For Entire Promo is less than Tickets Per Patron."
+				errStrArray.Add(errString)
+			Else
+				GUI_Util.regPnl(Me.pnlTicketPerPatron)
+				GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
+			End If
+		End If
+
+		If Me.rbTicketPerPatronYES.Checked Then
+			If Me.Data.TicketsPerPatron_Invalid() Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlTicketPerPatron)
+				errString = "The Limit # of Tickets per patron is invalid."
+				errStrArray.Add(errString)
+				Me.txtTicketsPerPatron.Text = ""
+				Me.ActiveControl = Me.txtTicketsPerPatron
+			Else
+				GUI_Util.regPnl(Me.pnlTicketPerPatron)
+			End If
+		End If
+
+		If Me.rbTicketsEntirePromoYES.Checked Then
+			If Me.Data.TicketsForEntirePromo_Invalid() Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
+				errString = "The Limit # of Tickets for entire promo is invalid."
+				errStrArray.Add(errString)
+				Me.txtTicketsEntirePromo.Text = ""
+				Me.ActiveControl = Me.txtTicketsEntirePromo
+			Else
+				GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
+			End If
+		End If
+
+		e.Cancel = cancelContinuingToNextStep
+		If cancelContinuingToNextStep Then
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
+		End If
+	End Sub
+#End Region
 #Region "StepEntryTicketAmt_PointsDivisor"
-	'These are the two RadioButtons for the Points Divisor
 	Private Sub rbCalculated_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbCalculated.CheckedChanged
 		SetPointsDivisorPnl(rbCalculated.Checked)
@@ -228,22 +224,14 @@ Public Class StepEntryTicketAmt
 		End If
 	End Sub
 #End Region
-#Region "RadioButtons On/Off"
-	'This is the RadioButton for the "Set Amount of Tickets"
-	Private Sub rbSetAmt_CheckedChanged(sender As Object, e As EventArgs) _
-		Handles rbSetAmt.CheckedChanged
-		If rbSetAmt.Checked Then
-			Me.txtSetAmt.Enabled = True
-			Me.ActiveControl = Me.txtSetAmt
-			Me.txtSetAmt.Text = ""
-		Else
-			Me.txtSetAmt.Enabled = False
-			Me.txtSetAmt.Text = "Enter # of Tickets"
-		End If
-	End Sub
-
-	'This is the Yes/No pair of radiobuttons for "Limit # of tickets per patron?"
-	Private Sub RadioButton13_CheckedChanged(sender As Object, e As EventArgs) _
+#Region "StepEntryTicketAmt_rbTicketsPerPatronNO_CheckedChanged"
+	''' <summary>
+	''' Yes/No pair of RadioButtons for "Limit # of tickets per patron?"
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks></remarks>
+	Private Sub rbTicketsPerPatronNO_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbTicketsPerPatronNO.CheckedChanged
 		If Not Me.rbTicketsPerPatronNO.Checked Then
 			Me.txtTicketsPerPatron.Enabled = True
@@ -254,9 +242,15 @@ Public Class StepEntryTicketAmt
 			Me.txtTicketsPerPatron.Text = "Enter # Here"
 		End If
 	End Sub
-
-	'This is the Yes/No pair of radiobuttons for "Limit # of tickets for entire promo?"
-	Private Sub RadioButton15_CheckedChanged(sender As Object, e As EventArgs) _
+#End Region
+#Region "StepEntryTicketAmt_rbTicketsEntirePromoNO_CheckedChanged"
+	''' <summary>
+	''' Yes/No pair of RadioButtons for "Limit # of tickets for entire promo?"
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks></remarks>
+	Private Sub rbTicketsEntirePromoNO_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbTicketsEntirePromoNO.CheckedChanged
 		If Not Me.rbTicketsEntirePromoNO.Checked Then
 			Me.txtTicketsEntirePromo.Enabled = True
@@ -268,32 +262,12 @@ Public Class StepEntryTicketAmt
 		End If
 	End Sub
 #End Region
-#Region "StepEntryTicketAmt_Load"
-	Dim defaultStr As String
-	Dim oneStr As String
-	Dim numOfVisitsStr As String
-	Dim calStr As String
-	Dim calPlusNumOfVisitsStr As String
-	Dim setAmtStr As String
-
-	Private Sub StepEntryTicketAmt_Load(sender As Object, e As EventArgs) _
-		Handles MyBase.Load
-		defaultStr = New String("Move mouse pointer over amount for description.")
-		oneStr = New String("One: a single entry ticket.")
-		numOfVisitsStr = New String("Counts the number of visits within the qualifying period " &
-									"in which the account earned points. The counted number " &
-									"is the amount of entry tickets.")
-		calStr = New String("Sums points accured within the qualifying period, " &
-							"divides the total by the points divisor.")
-		calPlusNumOfVisitsStr = New String("Sums points accured within the qualifying period, " &
-										   "divides the total by the points divisor, " &
-										   "then adds the result to a count of visits.")
-		setAmtStr = New String("A static, set amount of tickets; " &
-							   "enter the amount into the box below.")
-	End Sub
-#End Region
-
 #Region "_MOUSE_ENTER_LEAVE_"
+#If False Then 'VB.NET Multi-Line Comment For The Win!
+ASIDE: ToolTips are horrid!
+Because of this, MouseEnter and MouseLeave have been
+used as UI/UX flair for ticket amount descriptions.
+#End If
 #Region "StepEntryTicketAmt_rb1_Mouse"
 	Private Sub rb1_MouseEnter(ByVal sender As Object, ByVal e As EventArgs) _
 		Handles rb1.MouseEnter
@@ -335,47 +309,45 @@ Public Class StepEntryTicketAmt
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_rbSetAmt_Mouse"
-	Private Sub rbSetAmt_MouseEnter(ByVal sender As Object, ByVal e As EventArgs) _
-		Handles rbSetAmt.MouseEnter
+	Private Sub rbSetAmt_MouseEnter(ByVal sender As Object, ByVal e As EventArgs)
+
 		Me.lblDescription.Text = Me.setAmtStr
 	End Sub
-	Private Sub rbSetAmt_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) _
-		Handles rbSetAmt.MouseLeave
+	Private Sub rbSetAmt_MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
+
 		Me.lblDescription.Text = Me.defaultStr
 	End Sub
 #End Region
 #End Region
-
-#Region "Numeric_Textbox_Input"
-	'This limits the textboxes to only allow numeric input.
-	'A user is still able to paste non-numeric input into the textbox.
-	'The textbox is validated when the user hits "Next>" to see if there is any invalid characters present.
-	Private Sub txtSetAmt_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) _
-		Handles txtSetAmt.KeyPress
-		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
-			e.Handled = True
-		End If
-	End Sub
-
+#Region "_TEXTBOX_KEYPRESS_"
+#If False Then
+ASIDE: Limits the textboxes to only allow numeric input.
+A user is able to paste non-numeric input into the textbox.
+Each TextBox is validated for invalid (non-numeric) characters.
+#End If
+#Region "StepEntryTicketAmt_txtPointsDivisor_KeyPress"
 	Private Sub txtPointsDivisor_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) _
-		Handles txtPointsDivisor.KeyPress
+	Handles txtPointsDivisor.KeyPress
 		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
-
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsPerPatron_KeyPress"
 	Private Sub txtTicketsPerPatron_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) _
-		Handles txtTicketsPerPatron.KeyPress
+	Handles txtTicketsPerPatron.KeyPress
 		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
-
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsEntirePromo_KeyPress"
 	Private Sub txtTicketsEntirePromo_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) _
-		Handles txtTicketsEntirePromo.KeyPress
+	Handles txtTicketsEntirePromo.KeyPress
 		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
+#End Region
 #End Region
 End Class
