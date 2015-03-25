@@ -52,7 +52,7 @@ Public Class StepD
 	Private Sub StepD_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
-		stepD_data = New StepD_Data
+		Me.stepD_data = New StepD_Data
 	End Sub
 #End Region
 #Region "StepD_ResetStep"
@@ -99,7 +99,7 @@ Public Class StepD
 		End If
 
 		If Me.rbPointCutoffLimitYes.Checked Then
-			If BEP_Util.invalidNum(Me.Data.PointCutoffLimit) Then
+			If BEP_Util.invalidNum(Me.txtPointCutoffLimit.Text) Then
 				cancelContinuingToNextStep = True
 				errString = "Point Cutoff Limit Invalid Number."
 				GUI_Util.errPnl(Me.pnlPointCutoffLimit)

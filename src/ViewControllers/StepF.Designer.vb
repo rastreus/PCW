@@ -121,7 +121,7 @@ Partial Class StepF
 		'
 		Me.txtPrize.Enabled = False
 		Me.txtPrize.Location = New System.Drawing.Point(3, 7)
-		Me.txtPrize.MaxLength = 6
+		Me.txtPrize.MaxLength = 23
 		Me.txtPrize.Name = "txtPrize"
 		Me.txtPrize.Size = New System.Drawing.Size(122, 20)
 		Me.txtPrize.TabIndex = 7
