@@ -7,9 +7,33 @@
 Public Class StepH
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepH_Data"
+	''' <summary>
+	''' Model for StepH.
+	''' </summary>
+	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	Private stepH_data As StepH_Data
+	Public ReadOnly Property Data() As StepH_Data
+		Get
+			Return Me.stepH_data
+		End Get
+	End Property
+#End Region
+#Region "StepH_SetData"
+	Private Sub StepH_SetData()
+		Me.stepH_data.Comment = Me.txtCommentBox.Text
+	End Sub
+#End Region
+#Region "StepH_Load"
+	Private Sub StepH_Load(sender As Object, e As EventArgs) _
+	Handles MyBase.Load
+		stepH_data = New StepH_Data
+	End Sub
+#End Region
 #Region "StepH_ResetStep"
 	Private Sub StepH_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
+		stepH_data = New StepH_Data
 		StepH_ResetControls()
 	End Sub
 
@@ -47,11 +71,13 @@ Public Class StepH
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 
+		StepH_SetData()
+
 		If Me.rbYES.Checked And
-			(Me.txtCommentBox.Text = "") Then
+			Me.Data.CommentIsBlank Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlCommentBox)
-			errString = "Insert a Comment."
+			errString = "BLANK: Insert a Comment."
 		Else
 			GUI_Util.regPnl(Me.pnlCommentBox)
 		End If
