@@ -6,10 +6,10 @@ Public Class StepD_Data
 #Region "Properties"
 	Private _promoCategory As PromoCategory
 	Private _promoMutiPartDaysTiers As String = Nothing
-	Private _promoPointCutoffLimit As Integer
+	Private _promoPointCutoffLimit As System.Nullable(Of Short)
 	Private _promoPathToFile As String
-	Private _promoSkipEntry As Boolean
-	Private _promoSkipPayout As Boolean
+	Private _promoSkipEntry As Boolean = False
+	Private _promoSkipPayout As Boolean = False
 
 	Public Enum PromoCategory
 		entryAndPayout
@@ -35,11 +35,11 @@ Public Class StepD_Data
 			_promoMutiPartDaysTiers = value
 		End Set
 	End Property
-	Public Property PointCutoffLimit As Integer
+	Public Property PointCutoffLimit As System.Nullable(Of Short)
 		Get
 			Return _promoPointCutoffLimit
 		End Get
-		Set(value As Integer)
+		Set(value As System.Nullable(Of Short))
 			_promoPointCutoffLimit = value
 		End Set
 	End Property
@@ -69,6 +69,11 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "Validity Checks"
+	Public Function PointCutoffLimit_Invalid() As Boolean
+		Return IsNothing(PointCutoffLimit)
+	End Function
+#End Region
+#Region "CheckForReset"
 	Public Sub CheckForReset()
 		If (Me.Category = PromoCategory.entryAndPayout) Or
 			(Me.Category = PromoCategory.multPart) Then
@@ -76,5 +81,22 @@ Public Class StepD_Data
 			PCW.Data.ResetTo = "StepD"
 		End If
 	End Sub
+#End Region
+#Region "DetermineStepFlow"
+	''' <summary>
+	''' Queries to PromoCategory to determine where to go.
+	''' </summary>
+	''' <returns>NextStep.</returns>
+	''' <remarks>Trying to keep this as clean as possible.</remarks>
+	Public Function DetermineStepFlow() As String
+		Dim result As String = New String("")
+		Select Case Category
+			Case PromoCategory.payoutOnly
+				result = "StepF"
+			Case Else
+				result = "StepEntryTicketAmt"
+		End Select
+		Return result
+	End Function
 #End Region
 End Class

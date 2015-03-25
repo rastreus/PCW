@@ -42,8 +42,8 @@ Partial Class StepD
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.txtPointCutoffLimit = New System.Windows.Forms.TextBox()
-		Me.rbPointCutoffLimitNo = New System.Windows.Forms.RadioButton()
-		Me.rbPointCutoffLimitYes = New System.Windows.Forms.RadioButton()
+		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
+		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
 		Me.pnlDragOffer = New System.Windows.Forms.Panel()
 		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
@@ -270,8 +270,8 @@ Partial Class StepD
 		'
 		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlPointCutoffLimit.Controls.Add(Me.txtPointCutoffLimit)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitNo)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitYes)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitNO)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitYES)
 		Me.pnlPointCutoffLimit.Controls.Add(Me.lblPointCutoffLimit)
 		Me.pnlPointCutoffLimit.Location = New System.Drawing.Point(18, 148)
 		Me.pnlPointCutoffLimit.Name = "pnlPointCutoffLimit"
@@ -287,27 +287,27 @@ Partial Class StepD
 		Me.txtPointCutoffLimit.TabIndex = 10
 		Me.txtPointCutoffLimit.Text = "Enter Point Cutoff limit here."
 		'
-		'rbPointCutoffLimitNo
+		'rbPointCutoffLimitNO
 		'
-		Me.rbPointCutoffLimitNo.AutoSize = True
-		Me.rbPointCutoffLimitNo.Checked = True
-		Me.rbPointCutoffLimitNo.Location = New System.Drawing.Point(4, 61)
-		Me.rbPointCutoffLimitNo.Name = "rbPointCutoffLimitNo"
-		Me.rbPointCutoffLimitNo.Size = New System.Drawing.Size(39, 17)
-		Me.rbPointCutoffLimitNo.TabIndex = 9
-		Me.rbPointCutoffLimitNo.TabStop = True
-		Me.rbPointCutoffLimitNo.Text = "No"
-		Me.rbPointCutoffLimitNo.UseVisualStyleBackColor = True
+		Me.rbPointCutoffLimitNO.AutoSize = True
+		Me.rbPointCutoffLimitNO.Checked = True
+		Me.rbPointCutoffLimitNO.Location = New System.Drawing.Point(4, 61)
+		Me.rbPointCutoffLimitNO.Name = "rbPointCutoffLimitNO"
+		Me.rbPointCutoffLimitNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbPointCutoffLimitNO.TabIndex = 9
+		Me.rbPointCutoffLimitNO.TabStop = True
+		Me.rbPointCutoffLimitNO.Text = "No"
+		Me.rbPointCutoffLimitNO.UseVisualStyleBackColor = True
 		'
-		'rbPointCutoffLimitYes
+		'rbPointCutoffLimitYES
 		'
-		Me.rbPointCutoffLimitYes.AutoSize = True
-		Me.rbPointCutoffLimitYes.Location = New System.Drawing.Point(4, 41)
-		Me.rbPointCutoffLimitYes.Name = "rbPointCutoffLimitYes"
-		Me.rbPointCutoffLimitYes.Size = New System.Drawing.Size(43, 17)
-		Me.rbPointCutoffLimitYes.TabIndex = 8
-		Me.rbPointCutoffLimitYes.Text = "Yes"
-		Me.rbPointCutoffLimitYes.UseVisualStyleBackColor = True
+		Me.rbPointCutoffLimitYES.AutoSize = True
+		Me.rbPointCutoffLimitYES.Location = New System.Drawing.Point(4, 41)
+		Me.rbPointCutoffLimitYES.Name = "rbPointCutoffLimitYES"
+		Me.rbPointCutoffLimitYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbPointCutoffLimitYES.TabIndex = 8
+		Me.rbPointCutoffLimitYES.Text = "Yes"
+		Me.rbPointCutoffLimitYES.UseVisualStyleBackColor = True
 		'
 		'lblPointCutoffLimit
 		'
@@ -419,8 +419,8 @@ Partial Class StepD
 	Friend WithEvents SuccessIcon As FontAwesomeIcons.IconButton
 	Friend WithEvents pnlPointCutoffLimit As System.Windows.Forms.Panel
 	Friend WithEvents txtPointCutoffLimit As System.Windows.Forms.TextBox
-	Friend WithEvents rbPointCutoffLimitNo As System.Windows.Forms.RadioButton
-	Friend WithEvents rbPointCutoffLimitYes As System.Windows.Forms.RadioButton
+	Friend WithEvents rbPointCutoffLimitNO As System.Windows.Forms.RadioButton
+	Friend WithEvents rbPointCutoffLimitYES As System.Windows.Forms.RadioButton
 	Friend WithEvents lblPointCutoffLimit As System.Windows.Forms.Label
 	Friend WithEvents pnlSumMethod As System.Windows.Forms.Panel
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel

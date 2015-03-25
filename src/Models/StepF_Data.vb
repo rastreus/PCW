@@ -48,4 +48,23 @@ Public Class StepF_Data
 		Return (Prize = "")
 	End Function
 #End Region
+#Region "DetermineStepFlow"
+	''' <summary>
+	''' Queries to PayoutCategory to determine where to go.
+	''' </summary>
+	''' <returns>NextStep.</returns>
+	''' <remarks>Trying to keep this as clean as possible.</remarks>
+	Public Function DetermineStepFlow() As String
+		Dim result As String = New String("")
+		Select Case PayoutCatgory
+			Case PromoPayoutCategory.freePlayCoupon
+				result = "StepG2"
+			Case PromoPayoutCategory.randomPrize	'Not implimented
+				result = "StepG3"
+			Case Else
+				result = "StepH"
+		End Select
+		Return result
+	End Function
+#End Region
 End Class

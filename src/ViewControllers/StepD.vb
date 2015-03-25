@@ -21,24 +21,41 @@ Public Class StepD
 #End Region
 #Region "StepD_SetData"
 	Private Sub StepD_SetData()
-		Dim promoCategory As StepD_Data.PromoCategory = New StepD_Data.PromoCategory
+		Me.stepD_data.Category = getPromoCategory()
+		Select Case Me.Data.Category
+			Case PromotionalCreationWizard.StepD_Data.PromoCategory.entryOnly
+				Me.stepD_data.SkipPayout = True
+			Case PromotionalCreationWizard.StepD_Data.PromoCategory.payoutOnly
+				Me.stepD_data.SkipEntry = True
+			Case PromotionalCreationWizard.StepD_Data.PromoCategory.multPart
+				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
+		End Select
+		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
+	End Sub
 
+	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
+		Dim result As System.Nullable(Of Short) = Nothing
+		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+			result = Short.Parse(txtInput)
+		End If
+		Return result
+	End Function
+
+	Private Function getPromoCategory() As StepD_Data.PromoCategory
+		Dim promoCategory As StepD_Data.PromoCategory
 		If Me.rbSingleEntryPayout.Checked Then
 			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.entryAndPayout
 		ElseIf Me.rbSingleEntryOnly.Checked Then
 			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.entryOnly
-			Me.stepD_data.SkipPayout = True
 		ElseIf Me.rbSinglePayoutOnly.Checked Then
 			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.payoutOnly
-			Me.stepD_data.SkipEntry = True
 		ElseIf Me.rbMultiPartEntryPayout.Checked Then
 			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.multPart
-			Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
 		Else
 			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.acquisition
 		End If
-		Me.stepD_data.Category = promoCategory
-	End Sub
+		Return promoCategory
+	End Function
 #End Region
 #Region "StepD_Delegates"
 	Private Delegate Sub DelegateChangeLabelText(ByVal s As String)
@@ -66,7 +83,7 @@ Public Class StepD
 		Me.rbSingleEntryPayout.Checked = True
 		Me.txtNumOfDaysTiers.Text = "How many days/tiers?"
 		Me.rbSumQualifyingPoints.Checked = True
-		Me.rbPointCutoffLimitNo.Checked = True
+		Me.rbPointCutoffLimitNO.Checked = True
 		Me.txtPointCutoffLimit.Text = "Enter Point Cutoff limit here."
 		Me.SetPointCutoffPanel(True)
 		Me.SetDragDropPanel(False)
@@ -87,33 +104,32 @@ Public Class StepD
 		Me.StepD_SetData()
 		Me.Data.CheckForReset()
 
-		If Me.Data.Category = PromotionalCreationWizard.StepD_Data.PromoCategory.multPart Then
-			If BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
-				cancelContinuingToNextStep = True
-				errString = "MutiPart Days/Tiers Invalid Number."
-				GUI_Util.errPnl(Me.pnlPromoType)
-				Me.ActiveControl = Me.txtNumOfDaysTiers
-			Else
-				GUI_Util.regPnl(Me.pnlPromoType)
-			End If
+		If Me.Data.Category = PromotionalCreationWizard.StepD_Data.PromoCategory.multPart And
+			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
+			cancelContinuingToNextStep = True
+			errString = "MutiPart Days/Tiers Invalid Number."
+			GUI_Util.errPnl(Me.pnlPromoType)
+			Me.ActiveControl = Me.txtNumOfDaysTiers
+		Else
+			GUI_Util.regPnl(Me.pnlPromoType)
 		End If
 
-		If Me.rbPointCutoffLimitYes.Checked Then
-			If BEP_Util.invalidNum(Me.txtPointCutoffLimit.Text) Then
-				cancelContinuingToNextStep = True
-				errString = "Point Cutoff Limit Invalid Number."
-				GUI_Util.errPnl(Me.pnlPointCutoffLimit)
-			Else
-				GUI_Util.regPnl(Me.pnlPointCutoffLimit)
-			End If
+		If Me.rbPointCutoffLimitYES.Checked And
+			Me.Data.PointCutoffLimit_Invalid() Then
+			cancelContinuingToNextStep = True
+			errString = "Point Cutoff Limit Invalid Number."
+			GUI_Util.errPnl(Me.pnlPointCutoffLimit)
+		Else
+			GUI_Util.regPnl(Me.pnlPointCutoffLimit)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
 		Else
-			If Me.Data.SkipEntry Then
-				Me.NextStep = "StepF"
+			Me.NextStep = Me.Data.DetermineStepFlow()
+			If Me.NextStep = "StepF" Then
+				PCW.GetStep("StepF").PreviousStep = "StepD"
 			End If
 		End If
 	End Sub

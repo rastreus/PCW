@@ -155,6 +155,7 @@ Partial Class StepF
 		'
 		Me.rbRandomPrize.AutoSize = True
 		Me.rbRandomPrize.BackColor = System.Drawing.Color.Lavender
+		Me.rbRandomPrize.Enabled = False
 		Me.rbRandomPrize.Location = New System.Drawing.Point(29, 66)
 		Me.rbRandomPrize.Name = "rbRandomPrize"
 		Me.rbRandomPrize.Size = New System.Drawing.Size(91, 17)

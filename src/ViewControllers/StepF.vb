@@ -112,30 +112,12 @@ Public Class StepF
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
 		Else
-			Me.NextStep = DetermineNextStep()
+			Me.NextStep = Me.Data.DetermineStepFlow()
+			If Me.NextStep = "StepH" Then
+				PCW.GetStep("StepH").PreviousStep = "StepF"
+			End If
 		End If
 	End Sub
-#End Region
-#Region "StepF_DetermineNextStep"
-	''' <summary>
-	''' Queries to PayoutCategory to determine where to go.
-	''' </summary>
-	''' <returns>NextStep.</returns>
-	''' <remarks>Trying to keep this as clean as possible.</remarks>
-	Private Function DetermineNextStep() As String
-		Dim result As String = New String("")
-		Select Case Me.Data.PayoutCatgory
-			Case PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.freePlayCoupon
-				PCW.GetStep("StepF").NextStep = "StepG2"
-			Case PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.randomPrize
-				PCW.GetStep("StepF").NextStep = "StepG3"
-			Case PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.cashValue
-				PCW.GetStep("StepF").NextStep = "StepH"
-			Case PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.prize
-				PCW.GetStep("StepF").NextStep = "StepH"
-		End Select
-		Return result
-	End Function
 #End Region
 #Region "StepF_rbCashValue_CheckedChanged"
 	'Cash Value Changed
