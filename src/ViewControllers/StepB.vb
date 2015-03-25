@@ -65,6 +65,11 @@ Public Class StepB
 	''' <remarks>If PCW is run for a single-entry and then gets run again for a single-payout.</remarks>
 	Private Sub StepB_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
+		Me.stepB_data = New StepB_Data
+		StepB_ResetControls()
+	End Sub
+
+	Private Sub StepB_ResetControls()
 		Me.txtPromoName.Text = ""
 		Me.rbRecurringNo.Checked = True
 		Me.cbRecurringFrequency.Enabled = False

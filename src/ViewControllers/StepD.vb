@@ -58,6 +58,7 @@ Public Class StepD
 #Region "StepD_ResetStep"
 	Private Sub StepD_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
+		Me.stepD_data = New StepD_Data
 		StepD_ResetControls()
 	End Sub
 

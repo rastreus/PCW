@@ -156,6 +156,7 @@ Public Class StepC
 	''' <remarks>A lot of controls to get correct.</remarks>
 	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
+		Me.stepC_data = New StepC_Data
 		StepC_ResetControls()
 	End Sub
 

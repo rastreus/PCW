@@ -107,11 +107,11 @@ Public Class StepEntryTicketAmt
 #Region "StepEntryTicketAmt_ResetStep"
 	Private Sub StepEntryTicketAmt_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
+		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
 		StepEntryTicketAmt_ResetControls()
 	End Sub
 
 	Private Sub StepEntryTicketAmt_ResetControls()
-		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
 		Me.rb1.Checked = True
 		Me.rbTicketsPerPatronNO.Checked = True
 		Me.txtTicketsPerPatron.Text = "Enter # Here"
