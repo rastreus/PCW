@@ -59,7 +59,7 @@ Public Class PCW
 		AddStep("StepE", New StepE)
 		AddStep("StepF", New StepF)
 		AddStep("StepEntryTicketAmt", New StepEntryTicketAmt)
-		AddStep("StepG2", New StepG2)
+		AddStep("StepGeneratePayoutCoupon", New StepGeneratePayoutCoupon)
 		AddStep("StepH", New StepH)
 		AddStep("StepI", New StepI)
 		AddStep("StepJ", New StepJ)

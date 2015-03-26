@@ -58,7 +58,7 @@ Public Class StepF_Data
 		Dim result As String = New String("")
 		Select Case PayoutCatgory
 			Case PromoPayoutCategory.freePlayCoupon
-				result = "StepG2"
+				result = "StepGeneratePayoutCoupon"
 			Case PromoPayoutCategory.randomPrize	'Not implimented
 				result = "StepG3"
 			Case Else

@@ -111,6 +111,9 @@
     </Compile>
     <Compile Include="src\Models\StepD_Data.vb" />
     <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
+    <Compile Include="src\Models\StepF_Data.vb" />
+    <Compile Include="src\Models\StepGeneratePayoutCoupon_Data.vb" />
+    <Compile Include="src\Models\StepH_Data.vb" />
     <Compile Include="src\_Utils\GUI_Util.vb" />
     <Compile Include="resources\MarketingPromos.designer.vb">
       <AutoGen>True</AutoGen>
@@ -177,10 +180,10 @@
     <Compile Include="src\ViewControllers\StepEntryTicketAmt.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ViewControllers\StepG2.Designer.vb">
-      <DependentUpon>StepG2.vb</DependentUpon>
+    <Compile Include="src\ViewControllers\StepGeneratePayoutCoupon.Designer.vb">
+      <DependentUpon>StepGeneratePayoutCoupon.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\ViewControllers\StepG2.vb">
+    <Compile Include="src\ViewControllers\StepGeneratePayoutCoupon.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\ViewControllers\StepD.Designer.vb">
@@ -261,8 +264,8 @@
     <EmbeddedResource Include="src\ViewControllers\StepEntryTicketAmt.resx">
       <DependentUpon>StepEntryTicketAmt.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ViewControllers\StepG2.resx">
-      <DependentUpon>StepG2.vb</DependentUpon>
+    <EmbeddedResource Include="src\ViewControllers\StepGeneratePayoutCoupon.resx">
+      <DependentUpon>StepGeneratePayoutCoupon.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepD.resx">
       <DependentUpon>StepD.vb</DependentUpon>

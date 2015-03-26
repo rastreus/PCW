@@ -200,7 +200,7 @@ Partial Class StepF
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.pnlPayout)
 		Me.Name = "StepF"
-		Me.NextStep = "StepG2"
+		Me.NextStep = "StepGeneratePayoutCoupon"
 		Me.PreviousStep = "StepEntryTicketAmt"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "This is where the category of the promo payout will be determined."

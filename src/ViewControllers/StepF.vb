@@ -71,7 +71,7 @@ Public Class StepF
 	Private Sub StepF_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepF_data = New StepF_Data
-		Me.NextStep = "StepG2"
+		Me.NextStep = "StepGeneratePayoutCoupon"
 		StepF_ResetControls()
 	End Sub
 
