@@ -352,7 +352,7 @@ Partial Class StepEntryTicketAmt
 		Me.lblAmtDesc.ForeColor = System.Drawing.Color.White
 		Me.lblAmtDesc.Location = New System.Drawing.Point(3, 4)
 		Me.lblAmtDesc.Name = "lblAmtDesc"
-		Me.lblAmtDesc.Size = New System.Drawing.Size(150, 16)
+		Me.lblAmtDesc.Size = New System.Drawing.Size(146, 16)
 		Me.lblAmtDesc.TabIndex = 14
 		Me.lblAmtDesc.Text = "Amount Description:"
 		'

@@ -26,40 +26,40 @@ Public Class StepGeneratePayoutCoupon
 
 		If MaxCoupon_Invalid() Then
 			e.Cancel = True
-			Me.Panel2.BackColor = Color.MistyRose
+			Me.pnlMaxAmtOneCoupon.BackColor = Color.MistyRose
 			CenteredMessagebox.MsgBox.Show("Max Coupon value is invalid. Must be a Decimal value i.e. 500.00", "Error",
 										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.TextBox2.Text = ""
-			Me.ActiveControl = Me.TextBox2
+			Me.txtMaxAmtOneCoupon.Text = ""
+			Me.ActiveControl = Me.txtMaxAmtOneCoupon
 		Else
-			Me.Panel2.BackColor = SystemColors.Control
+			Me.pnlMaxAmtOneCoupon.BackColor = SystemColors.Control
 		End If
 
 		If PromoMaxCoupon_Invalid() Then
 			e.Cancel = True
-			Me.Panel3.BackColor = Color.MistyRose
+			Me.pnlMaxAmtAllCoupons.BackColor = Color.MistyRose
 			CenteredMessagebox.MsgBox.Show("Promo Max Coupon value is invalid. Must be a Decimal value i.e. 15000.00", "Error",
 										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-			Me.TextBox3.Text = ""
-			Me.ActiveControl = Me.TextBox3
+			Me.txtMaxAmtAllCoupons.Text = ""
+			Me.ActiveControl = Me.txtMaxAmtAllCoupons
 		Else
 			If Not PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon() Then
-				Me.Panel3.BackColor = SystemColors.Control
+				Me.pnlMaxAmtAllCoupons.BackColor = SystemColors.Control
 			End If
 		End If
 
 		'Make sure that the TextBoxes for MaxCoupon and PromoMaxCoupon are not empty strings
-		If Not BEP_Util.invalidDecimal(Me.TextBox2.Text) And Not BEP_Util.invalidDecimal(Me.TextBox3.Text) Then
+		If Not BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) And Not BEP_Util.invalidDecimal(Me.txtMaxAmtAllCoupons.Text) Then
 			If PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon() Then
 				e.Cancel = True
-				Me.Panel3.BackColor = Color.MistyRose
+				Me.pnlMaxAmtAllCoupons.BackColor = Color.MistyRose
 				CenteredMessagebox.MsgBox.Show("Promo Max Coupon value is less than or equal to the Max Coupon value.", "Error",
 											   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-				Me.TextBox3.Text = ""
-				Me.ActiveControl = Me.TextBox3
+				Me.txtMaxAmtAllCoupons.Text = ""
+				Me.ActiveControl = Me.txtMaxAmtAllCoupons
 			Else
 				If Not PromoMaxCoupon_Invalid() Then
-					Me.Panel3.BackColor = SystemColors.Control
+					Me.pnlMaxAmtAllCoupons.BackColor = SystemColors.Control
 				End If
 			End If
 		End If
@@ -69,7 +69,7 @@ Public Class StepGeneratePayoutCoupon
 	Private Function PromoMaxCoupon_LessThan_Or_EqualTo_MaxCoupon()
 		Dim invalid As Boolean = False
 
-		If (Decimal.Parse(Me.TextBox3.Text) <= Decimal.Parse(Me.TextBox2.Text)) Then
+		If (Decimal.Parse(Me.txtMaxAmtAllCoupons.Text) <= Decimal.Parse(Me.txtMaxAmtOneCoupon.Text)) Then
 			invalid = True
 		End If
 
@@ -79,7 +79,7 @@ Public Class StepGeneratePayoutCoupon
 	Private Function PromoMaxCoupon_Invalid()
 		Dim invalid As Boolean = False
 
-		If BEP_Util.invalidDecimal(Me.TextBox3.Text) Then
+		If BEP_Util.invalidDecimal(Me.txtMaxAmtAllCoupons.Text) Then
 			invalid = True
 		End If
 
@@ -89,7 +89,7 @@ Public Class StepGeneratePayoutCoupon
 	Private Function MaxCoupon_Invalid()
 		Dim invalid As Boolean = False
 
-		If BEP_Util.invalidDecimal(Me.TextBox2.Text) Then
+		If BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) Then
 			invalid = True
 		End If
 
@@ -115,34 +115,9 @@ Public Class StepGeneratePayoutCoupon
 	'	Return invalid
 	'End Function
 
-	'Checks to see if the supplied CouponID matches the required pattern.
-	'At the moment, it is a hard-limit of a 10 character abbreviation (possibly problematic).
-	Private Function Invalid_CouponID(ByVal inputString As String)
-		Dim invalid As Boolean = False
-		Dim RegexObj As Regex = New Regex("^[a-zA-Z]{1,10}\d{4}$")
-
-		If Not RegexObj.IsMatch(inputString) Then
-			invalid = True
-		End If
-
-		Return invalid
-	End Function
-
 	'Private Sub TextBox1_Enter(sender As Object, e As EventArgs)
 	'	If Me.TextBox1.Text = "Enter ID Here" Then
 	'		Me.TextBox1.Text = ""
 	'	End If
 	'End Sub
-
-	Private Sub TextBox2_Enter(sender As Object, e As EventArgs) Handles TextBox2.GotFocus
-		If Me.TextBox2.Text = "Enter Decimal value Here" Then
-			Me.TextBox2.Text = ""
-		End If
-	End Sub
-
-	Private Sub TextBox3_Enter(sender As Object, e As EventArgs) Handles TextBox3.GotFocus
-		If Me.TextBox3.Text = "Enter Decimal value Here" Then
-			Me.TextBox3.Text = ""
-		End If
-	End Sub
 End Class
