@@ -36,6 +36,8 @@ Partial Class StepJ
 		'
 		'ProgressBar1
 		'
+		Me.ProgressBar1.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.ProgressBar1.ForeColor = System.Drawing.Color.Lime
 		Me.ProgressBar1.Location = New System.Drawing.Point(22, 134)
 		Me.ProgressBar1.Maximum = 0
 		Me.ProgressBar1.Name = "ProgressBar1"
