@@ -19,6 +19,10 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
 		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
+		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
+		Me.txtMaxAmtOneCoupon_acceptableKey = False
+		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
+		Me.txtMaxAmtAllCoupons_acceptableKey = False
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_Validation"
@@ -73,5 +77,86 @@ Public Class StepGeneratePayoutCoupon
 			GUI_Util.msgBox(errString)
 		End If
 	End Sub
+#End Region
+#Region "_KEY_DOWN_PRESS_"
+#Region "StepGeneratePayoutCoupon_txtMaxAmtOneCoupon_KeyDown_KeyPress"
+	Private txtMaxAmtOneCoupon_strCurrency As String
+	Private txtMaxAmtOneCoupon_acceptableKey As Boolean
+
+	Private Sub txtMaxAmtOneCoupon_KeyDown(ByVal sender As Object, _
+										   ByVal e As System.Windows.Forms.KeyEventArgs) _
+		Handles txtMaxAmtOneCoupon.KeyDown
+		Me.txtMaxAmtOneCoupon_acceptableKey = txt_KeyDown(e)
+	End Sub
+
+	Private Sub txtMaxAmtOneCoupon_KeyPress(ByVal sender As Object, _
+											ByVal e As System.Windows.Forms.KeyPressEventArgs) _
+		Handles txtMaxAmtOneCoupon.KeyPress
+		e.Handled = txt_KeyPress(e, _
+								 Me.txtMaxAmtOneCoupon_acceptableKey, _
+								 Me.txtMaxAmtOneCoupon_strCurrency, _
+								 Me.txtMaxAmtOneCoupon)
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_txtMaxAmtAllCoupons_KeyDown_KeyPress"
+	Private txtMaxAmtAllCoupons_strCurrency As String
+	Private txtMaxAmtAllCoupons_acceptableKey As Boolean
+
+	Private Sub txtMaxAmtAllCoupons_KeyDown(ByVal sender As Object, _
+											ByVal e As System.Windows.Forms.KeyEventArgs) _
+		Handles txtMaxAmtAllCoupons.KeyDown
+		Me.txtMaxAmtAllCoupons_acceptableKey = txt_KeyDown(e)
+	End Sub
+
+	Private Sub txtMaxAmtAllCoupons_KeyPress(ByVal sender As Object, _
+											 ByVal e As System.Windows.Forms.KeyPressEventArgs) _
+		Handles txtMaxAmtAllCoupons.KeyPress
+		e.Handled = txt_KeyPress(e, _
+								 Me.txtMaxAmtAllCoupons_acceptableKey, _
+								 Me.txtMaxAmtAllCoupons_strCurrency, _
+								 Me.txtMaxAmtAllCoupons)
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_txt_KeyDown"
+	Private Function txt_KeyDown(ByVal e As System.Windows.Forms.KeyEventArgs) As Boolean
+		Return (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse
+			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse
+			e.KeyCode = Keys.Back
+	End Function
+#End Region
+#Region "StepGeneratePayoutCoupon_txt_KeyPress"
+	Private Function txt_KeyPress(ByVal e As System.Windows.Forms.KeyPressEventArgs, _
+							  ByVal acceptableKeyBool As Boolean, _
+							  ByVal strCurreny As String, _
+							  ByRef txtBox As System.Windows.Forms.TextBox) As Boolean
+		' Check for the flag being set in the KeyDown event.
+		If acceptableKeyBool = False Then
+			' Stop the character from being entered into the control since it is non-numerical.
+			Return True	'Early Return! Ugly, but gets the job done.
+		Else
+			If e.KeyChar = Convert.ToChar(Keys.Back) Then
+				If strCurreny.Length > 0 Then
+					strCurreny = strCurreny.Substring(0, strCurreny.Length - 1)
+				End If
+			Else
+				strCurreny = strCurreny & e.KeyChar
+			End If
+
+			Select Case strCurreny.Length
+				Case 0
+					txtBox.Text = ""
+				Case 1
+					txtBox.Text = "0.0" & strCurreny
+				Case 2
+					txtBox.Text = "0." & strCurreny
+				Case Else
+					txtBox.Text = strCurreny.Substring(0, strCurreny.Length - 2) &
+						"." & strCurreny.Substring(strCurreny.Length - 2)
+			End Select
+			txtBox.Select(txtBox.Text.Length, 0)
+		End If
+		Return True
+	End Function
+#End Region
 #End Region
 End Class
