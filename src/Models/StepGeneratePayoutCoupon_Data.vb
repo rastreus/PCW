@@ -1,7 +1,7 @@
 ﻿''' <summary>
-''' Contains data and validity checks for StepEntryTicketAmt.
+''' Contains data and validity checks for StepGeneratePayoutCoupon.
 ''' </summary>
-''' <remarks>This is the Model for StepEntryTicketAmt (Controller).</remarks>
+''' <remarks>This is the Model for StepGeneratePayoutCoupon (Controller).</remarks>
 Public Class StepGeneratePayoutCoupon_Data
 #Region "Properties"
 	Private _promoCouponId As String = Nothing
@@ -9,10 +9,13 @@ Public Class StepGeneratePayoutCoupon_Data
 	Private _promoCouponAmtForEntirePromo As System.Nullable(Of Decimal) = Nothing
 	Private _promoMaxNumOfCouponsPerPatron As System.Nullable(Of Short) = Nothing
 
-	Public ReadOnly Property CouponId As String
+	Public Property CouponId As String
 		Get
 			Return _promoCouponId
 		End Get
+		Set(value As String)
+			_promoCouponId = value
+		End Set
 	End Property
 	Public Property CouponAmtPerPatron As System.Nullable(Of Decimal)
 		Get

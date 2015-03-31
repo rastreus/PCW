@@ -37,29 +37,29 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnCouponID = New System.Windows.Forms.Button()
 		Me.lblCouponIDEdit = New System.Windows.Forms.Label()
 		Me.pnlMaxAmtAllCoupons = New System.Windows.Forms.Panel()
-		Me.lblMaxAmtAllCoupons = New System.Windows.Forms.Label()
-		Me.pnlMaxAmtOneCoupon = New System.Windows.Forms.Panel()
-		Me.txtMaxAmtOneCoupon = New System.Windows.Forms.TextBox()
-		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
-		Me.lblMaxAmtOneCoupon = New System.Windows.Forms.Label()
-		Me.lblMoney1 = New System.Windows.Forms.Label()
 		Me.pnlLavender = New System.Windows.Forms.Panel()
 		Me.txtMaxAmtAllCoupons = New System.Windows.Forms.TextBox()
 		Me.lblMoney2 = New System.Windows.Forms.Label()
+		Me.lblMaxAmtAllCoupons = New System.Windows.Forms.Label()
+		Me.pnlMaxAmtOneCoupon = New System.Windows.Forms.Panel()
+		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
+		Me.txtMaxAmtOneCoupon = New System.Windows.Forms.TextBox()
+		Me.lblMoney1 = New System.Windows.Forms.Label()
+		Me.lblMaxAmtOneCoupon = New System.Windows.Forms.Label()
 		Me.pnlCouponsPerPatron = New System.Windows.Forms.Panel()
-		Me.txtCouponsPerPatron = New System.Windows.Forms.TextBox()
 		Me.rbCouponsPerPatronNO = New System.Windows.Forms.RadioButton()
 		Me.rbCouponsPerPatronYES = New System.Windows.Forms.RadioButton()
 		Me.pnlAquamarine = New System.Windows.Forms.Panel()
+		Me.txtCouponsPerPatron = New System.Windows.Forms.TextBox()
 		Me.Label7 = New System.Windows.Forms.Label()
 		Me.pnlEditCouponID.SuspendLayout()
 		Me.Panel4.SuspendLayout()
 		Me.pnlCouponID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlMaxAmtAllCoupons.SuspendLayout()
+		Me.pnlLavender.SuspendLayout()
 		Me.pnlMaxAmtOneCoupon.SuspendLayout()
 		Me.pnlPaleTurquoise.SuspendLayout()
-		Me.pnlLavender.SuspendLayout()
 		Me.pnlCouponsPerPatron.SuspendLayout()
 		Me.pnlAquamarine.SuspendLayout()
 		Me.SuspendLayout()
@@ -108,7 +108,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.lblEditCouponID.Name = "lblEditCouponID"
 		Me.lblEditCouponID.Size = New System.Drawing.Size(37, 23)
 		Me.lblEditCouponID.TabIndex = 1
-		Me.lblEditCouponID.Text = "0015"
+		Me.lblEditCouponID.Text = "1503"
 		Me.lblEditCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'txtEditCouponID
@@ -119,7 +119,8 @@ Partial Class StepGeneratePayoutCoupon
 		Me.txtEditCouponID.Name = "txtEditCouponID"
 		Me.txtEditCouponID.Size = New System.Drawing.Size(77, 23)
 		Me.txtEditCouponID.TabIndex = 0
-		Me.txtEditCouponID.Text = "EXAMPLEEEE"
+		Me.txtEditCouponID.Text = "EXAMPLE"
+		Me.txtEditCouponID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
 		'Panel4
 		'
@@ -219,7 +220,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Name = "btnCouponID"
 		Me.btnCouponID.Size = New System.Drawing.Size(101, 23)
 		Me.btnCouponID.TabIndex = 1
-		Me.btnCouponID.Text = "EXAMPLEEEE1503"
+		Me.btnCouponID.Text = "EXAMPLE1503"
 		Me.btnCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		Me.btnCouponID.UseVisualStyleBackColor = False
 		'
@@ -245,72 +246,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlMaxAmtAllCoupons.Name = "pnlMaxAmtAllCoupons"
 		Me.pnlMaxAmtAllCoupons.Size = New System.Drawing.Size(176, 91)
 		Me.pnlMaxAmtAllCoupons.TabIndex = 8
-		'
-		'lblMaxAmtAllCoupons
-		'
-		Me.lblMaxAmtAllCoupons.BackColor = System.Drawing.Color.Transparent
-		Me.lblMaxAmtAllCoupons.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblMaxAmtAllCoupons.ForeColor = System.Drawing.Color.White
-		Me.lblMaxAmtAllCoupons.Location = New System.Drawing.Point(0, 0)
-		Me.lblMaxAmtAllCoupons.Name = "lblMaxAmtAllCoupons"
-		Me.lblMaxAmtAllCoupons.Size = New System.Drawing.Size(172, 52)
-		Me.lblMaxAmtAllCoupons.TabIndex = 7
-		Me.lblMaxAmtAllCoupons.Text = "What is the max. amount for coupons across the entire promo?"
-		'
-		'pnlMaxAmtOneCoupon
-		'
-		Me.pnlMaxAmtOneCoupon.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.pnlMaxAmtOneCoupon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.pnlPaleTurquoise)
-		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.lblMaxAmtOneCoupon)
-		Me.pnlMaxAmtOneCoupon.Location = New System.Drawing.Point(224, 106)
-		Me.pnlMaxAmtOneCoupon.Name = "pnlMaxAmtOneCoupon"
-		Me.pnlMaxAmtOneCoupon.Size = New System.Drawing.Size(176, 77)
-		Me.pnlMaxAmtOneCoupon.TabIndex = 7
-		'
-		'txtMaxAmtOneCoupon
-		'
-		Me.txtMaxAmtOneCoupon.Enabled = False
-		Me.txtMaxAmtOneCoupon.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtMaxAmtOneCoupon.Location = New System.Drawing.Point(31, 5)
-		Me.txtMaxAmtOneCoupon.MaxLength = 10
-		Me.txtMaxAmtOneCoupon.Name = "txtMaxAmtOneCoupon"
-		Me.txtMaxAmtOneCoupon.Size = New System.Drawing.Size(111, 23)
-		Me.txtMaxAmtOneCoupon.TabIndex = 9
-		Me.txtMaxAmtOneCoupon.Text = "Enter Amt Here"
-		'
-		'pnlPaleTurquoise
-		'
-		Me.pnlPaleTurquoise.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.pnlPaleTurquoise.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlPaleTurquoise.Controls.Add(Me.txtMaxAmtOneCoupon)
-		Me.pnlPaleTurquoise.Controls.Add(Me.lblMoney1)
-		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(3, 35)
-		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
-		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(166, 35)
-		Me.pnlPaleTurquoise.TabIndex = 10
-		'
-		'lblMaxAmtOneCoupon
-		'
-		Me.lblMaxAmtOneCoupon.BackColor = System.Drawing.Color.Transparent
-		Me.lblMaxAmtOneCoupon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblMaxAmtOneCoupon.ForeColor = System.Drawing.Color.White
-		Me.lblMaxAmtOneCoupon.Location = New System.Drawing.Point(0, 0)
-		Me.lblMaxAmtOneCoupon.Name = "lblMaxAmtOneCoupon"
-		Me.lblMaxAmtOneCoupon.Size = New System.Drawing.Size(172, 33)
-		Me.lblMaxAmtOneCoupon.TabIndex = 6
-		Me.lblMaxAmtOneCoupon.Text = "What is the max. amount for a single coupon?"
-		'
-		'lblMoney1
-		'
-		Me.lblMoney1.AutoSize = True
-		Me.lblMoney1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblMoney1.Location = New System.Drawing.Point(17, 5)
-		Me.lblMoney1.Name = "lblMoney1"
-		Me.lblMoney1.Size = New System.Drawing.Size(18, 19)
-		Me.lblMoney1.TabIndex = 10
-		Me.lblMoney1.Text = "$"
-		Me.lblMoney1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
 		'pnlLavender
 		'
@@ -345,6 +280,72 @@ Partial Class StepGeneratePayoutCoupon
 		Me.lblMoney2.Text = "$"
 		Me.lblMoney2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
+		'lblMaxAmtAllCoupons
+		'
+		Me.lblMaxAmtAllCoupons.BackColor = System.Drawing.Color.Transparent
+		Me.lblMaxAmtAllCoupons.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblMaxAmtAllCoupons.ForeColor = System.Drawing.Color.White
+		Me.lblMaxAmtAllCoupons.Location = New System.Drawing.Point(0, 0)
+		Me.lblMaxAmtAllCoupons.Name = "lblMaxAmtAllCoupons"
+		Me.lblMaxAmtAllCoupons.Size = New System.Drawing.Size(172, 52)
+		Me.lblMaxAmtAllCoupons.TabIndex = 7
+		Me.lblMaxAmtAllCoupons.Text = "What is the max. amount for coupons across the entire promo?"
+		'
+		'pnlMaxAmtOneCoupon
+		'
+		Me.pnlMaxAmtOneCoupon.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlMaxAmtOneCoupon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.pnlPaleTurquoise)
+		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.lblMaxAmtOneCoupon)
+		Me.pnlMaxAmtOneCoupon.Location = New System.Drawing.Point(224, 106)
+		Me.pnlMaxAmtOneCoupon.Name = "pnlMaxAmtOneCoupon"
+		Me.pnlMaxAmtOneCoupon.Size = New System.Drawing.Size(176, 77)
+		Me.pnlMaxAmtOneCoupon.TabIndex = 7
+		'
+		'pnlPaleTurquoise
+		'
+		Me.pnlPaleTurquoise.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlPaleTurquoise.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPaleTurquoise.Controls.Add(Me.txtMaxAmtOneCoupon)
+		Me.pnlPaleTurquoise.Controls.Add(Me.lblMoney1)
+		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(3, 35)
+		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
+		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(166, 35)
+		Me.pnlPaleTurquoise.TabIndex = 10
+		'
+		'txtMaxAmtOneCoupon
+		'
+		Me.txtMaxAmtOneCoupon.Enabled = False
+		Me.txtMaxAmtOneCoupon.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtMaxAmtOneCoupon.Location = New System.Drawing.Point(31, 5)
+		Me.txtMaxAmtOneCoupon.MaxLength = 10
+		Me.txtMaxAmtOneCoupon.Name = "txtMaxAmtOneCoupon"
+		Me.txtMaxAmtOneCoupon.Size = New System.Drawing.Size(111, 23)
+		Me.txtMaxAmtOneCoupon.TabIndex = 9
+		Me.txtMaxAmtOneCoupon.Text = "Enter Amt Here"
+		'
+		'lblMoney1
+		'
+		Me.lblMoney1.AutoSize = True
+		Me.lblMoney1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblMoney1.Location = New System.Drawing.Point(17, 5)
+		Me.lblMoney1.Name = "lblMoney1"
+		Me.lblMoney1.Size = New System.Drawing.Size(18, 19)
+		Me.lblMoney1.TabIndex = 10
+		Me.lblMoney1.Text = "$"
+		Me.lblMoney1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
+		'lblMaxAmtOneCoupon
+		'
+		Me.lblMaxAmtOneCoupon.BackColor = System.Drawing.Color.Transparent
+		Me.lblMaxAmtOneCoupon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblMaxAmtOneCoupon.ForeColor = System.Drawing.Color.White
+		Me.lblMaxAmtOneCoupon.Location = New System.Drawing.Point(0, 0)
+		Me.lblMaxAmtOneCoupon.Name = "lblMaxAmtOneCoupon"
+		Me.lblMaxAmtOneCoupon.Size = New System.Drawing.Size(172, 33)
+		Me.lblMaxAmtOneCoupon.TabIndex = 6
+		Me.lblMaxAmtOneCoupon.Text = "What is the max. amount for a single coupon?"
+		'
 		'pnlCouponsPerPatron
 		'
 		Me.pnlCouponsPerPatron.BackColor = System.Drawing.SystemColors.ControlDarkDark
@@ -357,17 +358,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlCouponsPerPatron.Name = "pnlCouponsPerPatron"
 		Me.pnlCouponsPerPatron.Size = New System.Drawing.Size(176, 88)
 		Me.pnlCouponsPerPatron.TabIndex = 9
-		'
-		'txtCouponsPerPatron
-		'
-		Me.txtCouponsPerPatron.Enabled = False
-		Me.txtCouponsPerPatron.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtCouponsPerPatron.Location = New System.Drawing.Point(48, 4)
-		Me.txtCouponsPerPatron.MaxLength = 6
-		Me.txtCouponsPerPatron.Name = "txtCouponsPerPatron"
-		Me.txtCouponsPerPatron.Size = New System.Drawing.Size(95, 23)
-		Me.txtCouponsPerPatron.TabIndex = 9
-		Me.txtCouponsPerPatron.Text = "Enter # Here"
 		'
 		'rbCouponsPerPatronNO
 		'
@@ -405,6 +395,17 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlAquamarine.Name = "pnlAquamarine"
 		Me.pnlAquamarine.Size = New System.Drawing.Size(166, 48)
 		Me.pnlAquamarine.TabIndex = 10
+		'
+		'txtCouponsPerPatron
+		'
+		Me.txtCouponsPerPatron.Enabled = False
+		Me.txtCouponsPerPatron.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtCouponsPerPatron.Location = New System.Drawing.Point(48, 4)
+		Me.txtCouponsPerPatron.MaxLength = 6
+		Me.txtCouponsPerPatron.Name = "txtCouponsPerPatron"
+		Me.txtCouponsPerPatron.Size = New System.Drawing.Size(95, 23)
+		Me.txtCouponsPerPatron.TabIndex = 9
+		Me.txtCouponsPerPatron.Text = "Enter # Here"
 		'
 		'Label7
 		'
@@ -447,11 +448,11 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlCouponID.PerformLayout()
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlMaxAmtAllCoupons.ResumeLayout(False)
+		Me.pnlLavender.ResumeLayout(False)
+		Me.pnlLavender.PerformLayout()
 		Me.pnlMaxAmtOneCoupon.ResumeLayout(False)
 		Me.pnlPaleTurquoise.ResumeLayout(False)
 		Me.pnlPaleTurquoise.PerformLayout()
-		Me.pnlLavender.ResumeLayout(False)
-		Me.pnlLavender.PerformLayout()
 		Me.pnlCouponsPerPatron.ResumeLayout(False)
 		Me.pnlCouponsPerPatron.PerformLayout()
 		Me.pnlAquamarine.ResumeLayout(False)

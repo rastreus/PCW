@@ -1,5 +1,9 @@
 ﻿Imports TSWizards
 
+''' <summary>
+''' Handle promo coupon generation.
+''' </summary>
+''' <remarks>Does what the name would suggest.</remarks>
 Public Class StepGeneratePayoutCoupon
 	Inherits TSWizards.BaseInteriorStep
 
@@ -15,14 +19,75 @@ Public Class StepGeneratePayoutCoupon
 		End Get
 	End Property
 #End Region
+#Region "StepGeneratePayoutCoupon_SetData"
+	''' <summary>
+	''' Sets the data from StepGeneratePayoutCoupon_Data.
+	''' </summary>
+	''' <remarks>Complexity meets delegation.</remarks>
+	Private Sub StepGeneratePayoutCoupon_SetData()
+		Me.stepGeneratePayoutCoupon_data.CouponId = getCouponId()
+		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
+		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
+		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
+																								Me.txtCouponsPerPatron.Text)
+	End Sub
+
+	Private Function getCouponId() As String
+		Dim result As String = Nothing
+		Return result
+	End Function
+
+	Private Function getCouponAmt(ByVal txtInput As String) As System.Nullable(Of Decimal)
+		Dim result As System.Nullable(Of Decimal) = Nothing
+		If Not BEP_Util.invalidDecimal(txtInput) Then
+			result = Decimal.Parse(txtInput)
+		End If
+		Return result
+	End Function
+
+	Private Function getMaxNumOfCouponsPerPatron(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
+		Dim result As System.Nullable(Of Short) = Nothing
+		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+			result = Short.Parse(txtInput)
+		End If
+		Return result
+	End Function
+#End Region
 #Region "StepGeneratePayoutCoupon_Load"
+	Private local_stepB As StepB
+	Private local_promoName As String
+
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
+		Me.local_stepB = PCW.GetStep("StepB")
+		Me.local_promoName = local_stepB.Data.Name
 		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
 		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_ResetStep"
+	Private Sub StepGeneratePayoutCoupon_ResetStep(sender As Object, e As EventArgs) _
+		Handles MyBase.ResetStep
+		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
+		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
+		Me.txtMaxAmtOneCoupon_acceptableKey = False
+		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
+		Me.txtMaxAmtAllCoupons_acceptableKey = False
+		StepGeneratePayoutCoupon_ResetControls()
+	End Sub
+
+	Private Sub StepGeneratePayoutCoupon_ResetControls()
+		Me.btnCouponID.Text = "EXAMPLE1503"
+		Me.txtEditCouponID.Text = "EXAMPLE"
+		Me.pnlEditCouponID.Enabled = False
+		Me.pnlEditCouponID.Visible = False
+		Me.rbCouponsPerPatronNO.Checked = True
+		Me.txtCouponsPerPatron.Text = "Enter # Here"
+		Me.txtMaxAmtOneCoupon.Text = "Enter Amt Here"
+		Me.txtMaxAmtAllCoupons.Text = "Enter Amt Here"
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_Validation"

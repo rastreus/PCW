@@ -23,8 +23,10 @@ Public Class StepEntryTicketAmt
 	Private Sub StepEntryTicketAmt_SetData()
 		Me.stepEntryTicketAmt_data.TicketAmtCategory = getTicketAmtCategory()
 		Me.stepEntryTicketAmt_data.PointsDivisor = getPointsDivisor(Me.Data.TicketAmtCategory)
-		Me.stepEntryTicketAmt_data.TicketsPerPatron = getTicketsLimit(Me.rbTicketPerPatronYES.Checked, Me.txtTicketsPerPatron.Text)
-		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, Me.txtTicketsEntirePromo.Text)
+		Me.stepEntryTicketAmt_data.TicketsPerPatron = getTicketsLimit(Me.rbTicketPerPatronYES.Checked, _
+																	  Me.txtTicketsPerPatron.Text)
+		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, _
+																		   Me.txtTicketsEntirePromo.Text)
 		Me.stepEntryTicketAmt_data.PrintTickets = True
 	End Sub
 
