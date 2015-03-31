@@ -50,11 +50,38 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_Load"
+	Private promoAcronym As String
+	Private promoMonth As String
+	Private promoYear As String
+	Private promoId As String
+
 	Private Sub StepB_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
-		stepB_data = New StepB_Data
+		Me.stepB_data = New StepB_Data
+		Me.promoAcronym = New String("")
+		Me.promoMonth = getPromoMonth()
+		Me.promoYear = getPromoYear()
+		Me.promoId = New String("")
 		Me.ActiveControl = Me.txtPromoName
 	End Sub
+
+	Private Function getPromoMonth() As String
+		Dim monthStr As String = Date.Today.Month.ToString
+		Dim result As String = New String("")
+		If monthStr.Length < 2 Then
+			result = "0" & monthStr
+		Else
+			result = monthStr
+		End If
+		Return result
+	End Function
+
+	Private Function getPromoYear() As String
+		Dim yearStr = Date.Today.Year.ToString
+		Dim result As String = New String("")
+		result = yearStr.Chars(2) & yearStr.Chars(3)
+		Return result
+	End Function
 #End Region
 #Region "StepB_Reset"
 	''' <summary>
@@ -130,6 +157,36 @@ Public Class StepB
 		Else
 			Me.cbRecurringFrequency.Enabled = False
 		End If
+	End Sub
+#End Region
+
+	Private Sub txtPromoName_Leave(sender As Object, e As EventArgs) _
+		Handles txtPromoName.Leave
+		Me.promoAcronym = getPromoAcronym()
+		Me.promoId = Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
+		Me.btnPromoID.Text = Me.promoId
+	End Sub
+
+	Private Function getPromoAcronym() As String
+		Dim word As String = New String(Me.txtPromoName.Text.Trim)
+		Dim words As String() = word.Split(New Char() {" "c})
+		Dim acronym As String = New String("")
+		For Each word In words
+			acronym = acronym & word(0)
+		Next
+		Return acronym
+	End Function
+
+
+#Region "StepB_btnPromoId_Click"
+	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
+		Handles btnPromoID.Click
+		SetEditPromoId(True)
+	End Sub
+
+	Private Sub SetEditPromoId(ByVal bool As Boolean)
+		Me.pnlEditPromoID.Visible = bool
+		Me.pnlEditPromoID.Enabled = bool
 	End Sub
 #End Region
 End Class

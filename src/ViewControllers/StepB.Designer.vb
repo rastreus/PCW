@@ -31,9 +31,21 @@ Partial Class StepB
 		Me.cbRecurringFrequency = New System.Windows.Forms.ComboBox()
 		Me.rbRecurringYes = New System.Windows.Forms.RadioButton()
 		Me.rbRecurringNo = New System.Windows.Forms.RadioButton()
+		Me.pnlPromoID = New System.Windows.Forms.Panel()
+		Me.lblPromoID = New System.Windows.Forms.Label()
+		Me.pnlPapayaWhip = New System.Windows.Forms.Panel()
+		Me.btnPromoID = New System.Windows.Forms.Button()
+		Me.lblPromoIDEdit = New System.Windows.Forms.Label()
+		Me.pnlEditPromoID = New System.Windows.Forms.Panel()
+		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
+		Me.lblEditPromoID = New System.Windows.Forms.Label()
+		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
 		Me.pnlPromoName.SuspendLayout()
 		Me.pnlRecurring.SuspendLayout()
 		Me.Panel1.SuspendLayout()
+		Me.pnlPromoID.SuspendLayout()
+		Me.pnlPapayaWhip.SuspendLayout()
+		Me.pnlEditPromoID.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -50,7 +62,7 @@ Partial Class StepB
 		Me.pnlPromoName.CausesValidation = False
 		Me.pnlPromoName.Controls.Add(Me.txtPromoName)
 		Me.pnlPromoName.Controls.Add(Me.lblPromoName)
-		Me.pnlPromoName.Location = New System.Drawing.Point(151, 56)
+		Me.pnlPromoName.Location = New System.Drawing.Point(88, 47)
 		Me.pnlPromoName.Name = "pnlPromoName"
 		Me.pnlPromoName.Size = New System.Drawing.Size(292, 66)
 		Me.pnlPromoName.TabIndex = 0
@@ -83,7 +95,7 @@ Partial Class StepB
 		Me.pnlRecurring.CausesValidation = False
 		Me.pnlRecurring.Controls.Add(Me.lblRecurring)
 		Me.pnlRecurring.Controls.Add(Me.Panel1)
-		Me.pnlRecurring.Location = New System.Drawing.Point(151, 126)
+		Me.pnlRecurring.Location = New System.Drawing.Point(88, 117)
 		Me.pnlRecurring.Name = "pnlRecurring"
 		Me.pnlRecurring.Size = New System.Drawing.Size(292, 132)
 		Me.pnlRecurring.TabIndex = 0
@@ -150,10 +162,127 @@ Partial Class StepB
 		Me.rbRecurringNo.Text = "No"
 		Me.rbRecurringNo.UseVisualStyleBackColor = True
 		'
+		'pnlPromoID
+		'
+		Me.pnlPromoID.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPromoID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPromoID.Controls.Add(Me.lblPromoID)
+		Me.pnlPromoID.Controls.Add(Me.pnlPapayaWhip)
+		Me.pnlPromoID.Location = New System.Drawing.Point(386, 47)
+		Me.pnlPromoID.Name = "pnlPromoID"
+		Me.pnlPromoID.Size = New System.Drawing.Size(123, 81)
+		Me.pnlPromoID.TabIndex = 8
+		'
+		'lblPromoID
+		'
+		Me.lblPromoID.AutoSize = True
+		Me.lblPromoID.BackColor = System.Drawing.Color.Transparent
+		Me.lblPromoID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoID.ForeColor = System.Drawing.Color.White
+		Me.lblPromoID.Location = New System.Drawing.Point(0, 0)
+		Me.lblPromoID.Name = "lblPromoID"
+		Me.lblPromoID.Size = New System.Drawing.Size(76, 16)
+		Me.lblPromoID.TabIndex = 0
+		Me.lblPromoID.Text = "PromoID: "
+		'
+		'pnlPapayaWhip
+		'
+		Me.pnlPapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPapayaWhip.Controls.Add(Me.btnPromoID)
+		Me.pnlPapayaWhip.Controls.Add(Me.lblPromoIDEdit)
+		Me.pnlPapayaWhip.Location = New System.Drawing.Point(3, 19)
+		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
+		Me.pnlPapayaWhip.Size = New System.Drawing.Size(111, 49)
+		Me.pnlPapayaWhip.TabIndex = 7
+		'
+		'btnPromoID
+		'
+		Me.btnPromoID.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnPromoID.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+		Me.btnPromoID.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.btnPromoID.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
+		Me.btnPromoID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnPromoID.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnPromoID.Location = New System.Drawing.Point(3, 3)
+		Me.btnPromoID.Name = "btnPromoID"
+		Me.btnPromoID.Size = New System.Drawing.Size(101, 23)
+		Me.btnPromoID.TabIndex = 1
+		Me.btnPromoID.Text = "EXAMPLE1503"
+		Me.btnPromoID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnPromoID.UseVisualStyleBackColor = False
+		'
+		'lblPromoIDEdit
+		'
+		Me.lblPromoIDEdit.BackColor = System.Drawing.Color.PapayaWhip
+		Me.lblPromoIDEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoIDEdit.ForeColor = System.Drawing.Color.Black
+		Me.lblPromoIDEdit.Location = New System.Drawing.Point(3, 29)
+		Me.lblPromoIDEdit.Name = "lblPromoIDEdit"
+		Me.lblPromoIDEdit.Size = New System.Drawing.Size(101, 17)
+		Me.lblPromoIDEdit.TabIndex = 2
+		Me.lblPromoIDEdit.Text = "(Click to edit)"
+		Me.lblPromoIDEdit.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		'
+		'pnlEditPromoID
+		'
+		Me.pnlEditPromoID.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlEditPromoID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlEditPromoID.Controls.Add(Me.btnTxtEditPromoID)
+		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
+		Me.pnlEditPromoID.Controls.Add(Me.txtEditPromoID)
+		Me.pnlEditPromoID.Enabled = False
+		Me.pnlEditPromoID.Location = New System.Drawing.Point(386, 134)
+		Me.pnlEditPromoID.Name = "pnlEditPromoID"
+		Me.pnlEditPromoID.Size = New System.Drawing.Size(123, 63)
+		Me.pnlEditPromoID.TabIndex = 7
+		Me.pnlEditPromoID.Visible = False
+		'
+		'btnTxtEditPromoID
+		'
+		Me.btnTxtEditPromoID.BackColor = System.Drawing.Color.HotPink
+		Me.btnTxtEditPromoID.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnTxtEditPromoID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnTxtEditPromoID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnTxtEditPromoID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnTxtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnTxtEditPromoID.ForeColor = System.Drawing.Color.White
+		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 32)
+		Me.btnTxtEditPromoID.Name = "btnTxtEditPromoID"
+		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(111, 23)
+		Me.btnTxtEditPromoID.TabIndex = 2
+		Me.btnTxtEditPromoID.Text = "Set ID"
+		Me.btnTxtEditPromoID.UseVisualStyleBackColor = False
+		'
+		'lblEditPromoID
+		'
+		Me.lblEditPromoID.BackColor = System.Drawing.Color.Transparent
+		Me.lblEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblEditPromoID.ForeColor = System.Drawing.Color.White
+		Me.lblEditPromoID.Location = New System.Drawing.Point(82, 3)
+		Me.lblEditPromoID.Name = "lblEditPromoID"
+		Me.lblEditPromoID.Size = New System.Drawing.Size(37, 23)
+		Me.lblEditPromoID.TabIndex = 1
+		Me.lblEditPromoID.Text = "1503"
+		Me.lblEditPromoID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'txtEditPromoID
+		'
+		Me.txtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtEditPromoID.Location = New System.Drawing.Point(3, 3)
+		Me.txtEditPromoID.MaxLength = 10
+		Me.txtEditPromoID.Name = "txtEditPromoID"
+		Me.txtEditPromoID.Size = New System.Drawing.Size(77, 23)
+		Me.txtEditPromoID.TabIndex = 0
+		Me.txtEditPromoID.Text = "EXAMPLE"
+		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		'
 		'StepB
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlPromoID)
+		Me.Controls.Add(Me.pnlEditPromoID)
 		Me.Controls.Add(Me.pnlRecurring)
 		Me.Controls.Add(Me.pnlPromoName)
 		Me.Margin = New System.Windows.Forms.Padding(2)
@@ -165,12 +294,19 @@ Partial Class StepB
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlPromoName, 0)
 		Me.Controls.SetChildIndex(Me.pnlRecurring, 0)
+		Me.Controls.SetChildIndex(Me.pnlEditPromoID, 0)
+		Me.Controls.SetChildIndex(Me.pnlPromoID, 0)
 		Me.pnlPromoName.ResumeLayout(False)
 		Me.pnlPromoName.PerformLayout()
 		Me.pnlRecurring.ResumeLayout(False)
 		Me.pnlRecurring.PerformLayout()
 		Me.Panel1.ResumeLayout(False)
 		Me.Panel1.PerformLayout()
+		Me.pnlPromoID.ResumeLayout(False)
+		Me.pnlPromoID.PerformLayout()
+		Me.pnlPapayaWhip.ResumeLayout(False)
+		Me.pnlEditPromoID.ResumeLayout(False)
+		Me.pnlEditPromoID.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -183,5 +319,14 @@ Partial Class StepB
 	Friend WithEvents rbRecurringNo As System.Windows.Forms.RadioButton
 	Friend WithEvents cbRecurringFrequency As System.Windows.Forms.ComboBox
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
+	Friend WithEvents pnlPromoID As System.Windows.Forms.Panel
+	Friend WithEvents lblPromoID As System.Windows.Forms.Label
+	Friend WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
+	Friend WithEvents btnPromoID As System.Windows.Forms.Button
+	Friend WithEvents lblPromoIDEdit As System.Windows.Forms.Label
+	Friend WithEvents pnlEditPromoID As System.Windows.Forms.Panel
+	Friend WithEvents btnTxtEditPromoID As System.Windows.Forms.Button
+	Friend WithEvents lblEditPromoID As System.Windows.Forms.Label
+	Friend WithEvents txtEditPromoID As System.Windows.Forms.TextBox
 
 End Class
