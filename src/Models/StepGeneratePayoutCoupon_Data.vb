@@ -1,6 +1,4 @@
-﻿Imports System.Text.RegularExpressions
-
-''' <summary>
+﻿''' <summary>
 ''' Contains data and validity checks for StepEntryTicketAmt.
 ''' </summary>
 ''' <remarks>This is the Model for StepEntryTicketAmt (Controller).</remarks>
@@ -48,21 +46,17 @@ Public Class StepGeneratePayoutCoupon_Data
 	End Function
 #End Region
 #Region "Validity Checks"
-	''' <summary>
-	''' Checks to see if the supplied CouponID matches the required pattern.
-	''' </summary>
-	''' <param name="inputString"></param>
-	''' <returns></returns>
-	''' <remarks>Hard-limit of 10 character abbreviation (possibly problematic).</remarks>
-	Private Function Invalid_CouponID(ByVal inputString As String) As Boolean
-		Dim invalid As Boolean = False
-		Dim RegexObj As Regex = New Regex("^[a-zA-Z]{1,10}\d{4}$")
-
-		If Not RegexObj.IsMatch(inputString) Then
-			invalid = True
-		End If
-
-		Return invalid
+	Public Function CouponAmtPerPatron_Invalid() As Boolean
+		Return IsNothing(CouponAmtPerPatron)
+	End Function
+	Public Function CouponAmtForEntirePromo_Invalid() As Boolean
+		Return IsNothing(CouponAmtForEntirePromo)
+	End Function
+	Public Function MaxNumOfCouponsPerPatron_Invalid() As Boolean
+		Return IsNothing(MaxNumOfCouponsPerPatron)
+	End Function
+	Public Function BadCouponAmts() As Boolean
+		Return (CouponAmtForEntirePromo < CouponAmtPerPatron)
 	End Function
 #End Region
 End Class

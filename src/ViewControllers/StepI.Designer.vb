@@ -56,19 +56,23 @@ Partial Class StepI
 		'CheckBox1
 		'
 		Me.CheckBox1.AutoSize = True
-		Me.CheckBox1.Location = New System.Drawing.Point(5, 2)
+		Me.CheckBox1.Location = New System.Drawing.Point(3, -1)
 		Me.CheckBox1.Name = "CheckBox1"
-		Me.CheckBox1.Size = New System.Drawing.Size(321, 17)
+		Me.CheckBox1.Size = New System.Drawing.Size(199, 20)
 		Me.CheckBox1.TabIndex = 3
-		Me.CheckBox1.Text = "I confirm that this is indeed the promotional that I want created."
+		Me.CheckBox1.Text = "Create the above Promo."
 		Me.CheckBox1.UseVisualStyleBackColor = True
 		'
 		'Panel2
 		'
+		Me.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel2.Controls.Add(Me.CheckBox1)
-		Me.Panel2.Location = New System.Drawing.Point(64, 269)
+		Me.Panel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Panel2.ForeColor = System.Drawing.Color.White
+		Me.Panel2.Location = New System.Drawing.Point(369, 269)
 		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(507, 21)
+		Me.Panel2.Size = New System.Drawing.Size(202, 21)
 		Me.Panel2.TabIndex = 4
 		'
 		'StepI
