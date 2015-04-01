@@ -36,11 +36,12 @@ Public Class BEP_Util
 	''' <remarks></remarks>
 	Public Shared Function invalidDecimal(ByVal inputString As String) As Boolean
 		Dim invalid As Boolean = False
+		Dim invalid_decimal As Decimal = 0.01
 		Dim RegexObj As Regex = New Regex("^\d+\.\d{2}$")
 
 		Try
-			Dim inputDecimal As Decimal = Decimal.Parse(inputString)
-			If (inputDecimal = 0.0) Or Not RegexObj.IsMatch(inputString) Then
+			Dim input_decimal As Decimal = Decimal.Parse(inputString)
+			If (input_decimal < invalid_decimal) Or Not RegexObj.IsMatch(inputString) Then
 				invalid = True
 			End If
 		Catch ex As Exception
