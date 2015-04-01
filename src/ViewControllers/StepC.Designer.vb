@@ -113,6 +113,7 @@ Partial Class StepC
 		'cbSaturday
 		'
 		Me.cbSaturday.AutoSize = True
+		Me.cbSaturday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSaturday.Location = New System.Drawing.Point(1, 90)
 		Me.cbSaturday.Name = "cbSaturday"
 		Me.cbSaturday.Size = New System.Drawing.Size(68, 17)
@@ -123,6 +124,7 @@ Partial Class StepC
 		'cbFriday
 		'
 		Me.cbFriday.AutoSize = True
+		Me.cbFriday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbFriday.Location = New System.Drawing.Point(1, 75)
 		Me.cbFriday.Name = "cbFriday"
 		Me.cbFriday.Size = New System.Drawing.Size(54, 17)
@@ -133,6 +135,7 @@ Partial Class StepC
 		'cbThursday
 		'
 		Me.cbThursday.AutoSize = True
+		Me.cbThursday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbThursday.Location = New System.Drawing.Point(1, 60)
 		Me.cbThursday.Name = "cbThursday"
 		Me.cbThursday.Size = New System.Drawing.Size(70, 17)
@@ -155,6 +158,7 @@ Partial Class StepC
 		'cbTuesday
 		'
 		Me.cbTuesday.AutoSize = True
+		Me.cbTuesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbTuesday.Location = New System.Drawing.Point(1, 30)
 		Me.cbTuesday.Name = "cbTuesday"
 		Me.cbTuesday.Size = New System.Drawing.Size(67, 17)
@@ -165,6 +169,7 @@ Partial Class StepC
 		'cbMonday
 		'
 		Me.cbMonday.AutoSize = True
+		Me.cbMonday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbMonday.Location = New System.Drawing.Point(1, 15)
 		Me.cbMonday.Name = "cbMonday"
 		Me.cbMonday.Size = New System.Drawing.Size(64, 17)
@@ -175,6 +180,7 @@ Partial Class StepC
 		'cbSunday
 		'
 		Me.cbSunday.AutoSize = True
+		Me.cbSunday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSunday.Location = New System.Drawing.Point(1, 0)
 		Me.cbSunday.Name = "cbSunday"
 		Me.cbSunday.Size = New System.Drawing.Size(62, 17)
@@ -244,6 +250,7 @@ Partial Class StepC
 		'
 		Me.clbPointsEarningDays.BackColor = System.Drawing.Color.PaleTurquoise
 		Me.clbPointsEarningDays.CheckOnClick = True
+		Me.clbPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.clbPointsEarningDays.FormattingEnabled = True
 		Me.clbPointsEarningDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.clbPointsEarningDays.Location = New System.Drawing.Point(19, 52)
@@ -265,6 +272,7 @@ Partial Class StepC
 		'
 		'dtpQualifyingStart
 		'
+		Me.dtpQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingStart.Name = "dtpQualifyingStart"
@@ -294,6 +302,7 @@ Partial Class StepC
 		'
 		'dtpQualifyingEnd
 		'
+		Me.dtpQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingEnd.Name = "dtpQualifyingEnd"
@@ -532,6 +541,7 @@ Partial Class StepC
 		'
 		'cbPrimaryDay
 		'
+		Me.cbPrimaryDay.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbPrimaryDay.FormattingEnabled = True
 		Me.cbPrimaryDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.cbPrimaryDay.Location = New System.Drawing.Point(7, 24)

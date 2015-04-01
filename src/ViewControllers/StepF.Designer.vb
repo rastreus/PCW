@@ -35,6 +35,7 @@ Partial Class StepF
 		Me.rbPrize = New System.Windows.Forms.RadioButton()
 		Me.rbCashValue = New System.Windows.Forms.RadioButton()
 		Me.pnlLavender = New System.Windows.Forms.Panel()
+		Me.lblMoney1 = New System.Windows.Forms.Label()
 		Me.pnlPayout.SuspendLayout()
 		Me.pnlCashValue.SuspendLayout()
 		Me.pnlPrize.SuspendLayout()
@@ -67,8 +68,9 @@ Partial Class StepF
 		'pnlCashValue
 		'
 		Me.pnlCashValue.BackColor = System.Drawing.Color.Gainsboro
-		Me.pnlCashValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlCashValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCashValue.Controls.Add(Me.txtCashValue)
+		Me.pnlCashValue.Controls.Add(Me.lblMoney1)
 		Me.pnlCashValue.Location = New System.Drawing.Point(149, 92)
 		Me.pnlCashValue.Name = "pnlCashValue"
 		Me.pnlCashValue.Size = New System.Drawing.Size(131, 36)
@@ -77,12 +79,13 @@ Partial Class StepF
 		'txtCashValue
 		'
 		Me.txtCashValue.Enabled = False
-		Me.txtCashValue.Location = New System.Drawing.Point(3, 8)
+		Me.txtCashValue.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtCashValue.Location = New System.Drawing.Point(18, 7)
 		Me.txtCashValue.MaxLength = 6
 		Me.txtCashValue.Name = "txtCashValue"
-		Me.txtCashValue.Size = New System.Drawing.Size(122, 20)
+		Me.txtCashValue.Size = New System.Drawing.Size(106, 20)
 		Me.txtCashValue.TabIndex = 7
-		Me.txtCashValue.Text = "Enter Cash Value Here"
+		Me.txtCashValue.Text = "Enter Amt Here"
 		'
 		'Label3
 		'
@@ -110,7 +113,7 @@ Partial Class StepF
 		'pnlPrize
 		'
 		Me.pnlPrize.BackColor = System.Drawing.Color.Gainsboro
-		Me.pnlPrize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPrize.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlPrize.Controls.Add(Me.txtPrize)
 		Me.pnlPrize.Location = New System.Drawing.Point(149, 134)
 		Me.pnlPrize.Name = "pnlPrize"
@@ -120,7 +123,8 @@ Partial Class StepF
 		'txtPrize
 		'
 		Me.txtPrize.Enabled = False
-		Me.txtPrize.Location = New System.Drawing.Point(3, 7)
+		Me.txtPrize.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPrize.Location = New System.Drawing.Point(2, 6)
 		Me.txtPrize.MaxLength = 23
 		Me.txtPrize.Name = "txtPrize"
 		Me.txtPrize.Size = New System.Drawing.Size(122, 20)
@@ -180,9 +184,9 @@ Partial Class StepF
 		Me.rbCashValue.BackColor = System.Drawing.Color.Lavender
 		Me.rbCashValue.Location = New System.Drawing.Point(29, 103)
 		Me.rbCashValue.Name = "rbCashValue"
-		Me.rbCashValue.Size = New System.Drawing.Size(79, 17)
+		Me.rbCashValue.Size = New System.Drawing.Size(70, 17)
 		Me.rbCashValue.TabIndex = 2
-		Me.rbCashValue.Text = "Cash Value"
+		Me.rbCashValue.Text = "Cash Amt"
 		Me.rbCashValue.UseVisualStyleBackColor = False
 		'
 		'pnlLavender
@@ -193,6 +197,18 @@ Partial Class StepF
 		Me.pnlLavender.Name = "pnlLavender"
 		Me.pnlLavender.Size = New System.Drawing.Size(279, 159)
 		Me.pnlLavender.TabIndex = 11
+		'
+		'lblMoney1
+		'
+		Me.lblMoney1.AutoSize = True
+		Me.lblMoney1.BackColor = System.Drawing.Color.Transparent
+		Me.lblMoney1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblMoney1.Location = New System.Drawing.Point(4, 5)
+		Me.lblMoney1.Name = "lblMoney1"
+		Me.lblMoney1.Size = New System.Drawing.Size(18, 19)
+		Me.lblMoney1.TabIndex = 11
+		Me.lblMoney1.Text = "$"
+		Me.lblMoney1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
 		'StepF
 		'
@@ -228,5 +244,6 @@ Partial Class StepF
 	Friend WithEvents pnlPrize As System.Windows.Forms.Panel
 	Friend WithEvents Label2 As System.Windows.Forms.Label
 	Friend WithEvents pnlLavender As System.Windows.Forms.Panel
+	Friend WithEvents lblMoney1 As System.Windows.Forms.Label
 
 End Class

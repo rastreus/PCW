@@ -77,7 +77,7 @@ Public Class StepF
 
 	Private Sub StepF_ResetControls()
 		Me.rbFreePlayCoupon.Checked = True
-		deactivateTextBox(Me.txtCashValue, "Enter Cash Value Here")
+		deactivateTextBox(Me.txtCashValue, "Enter Amt Here")
 		deactivateTextBox(Me.txtPrize, "Enter Prize Here")
 	End Sub
 #End Region
@@ -126,13 +126,8 @@ Public Class StepF
 		If Me.rbCashValue.Checked Then
 			activateTextBox(Me.txtCashValue)
 		Else
-			deactivateTextBox(Me.txtCashValue, "Enter Cash Value Here")
+			deactivateTextBox(Me.txtCashValue, "Enter Amt Here")
 		End If
-	End Sub
-
-	Private Sub resetTxtCashValue()
-		Me.txtCashValue.Enabled = False
-		Me.txtCashValue.Text = "Enter Cash Value Here"
 	End Sub
 #End Region
 #Region "StepF_rbPrize_ChecedChanged"

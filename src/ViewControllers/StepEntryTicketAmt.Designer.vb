@@ -167,6 +167,7 @@ Partial Class StepEntryTicketAmt
 		'
 		'txtPointsDivisor
 		'
+		Me.txtPointsDivisor.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtPointsDivisor.Location = New System.Drawing.Point(2, 21)
 		Me.txtPointsDivisor.MaxLength = 6
 		Me.txtPointsDivisor.Name = "txtPointsDivisor"
@@ -202,6 +203,7 @@ Partial Class StepEntryTicketAmt
 		'txtTicketsPerPatron
 		'
 		Me.txtTicketsPerPatron.Enabled = False
+		Me.txtTicketsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtTicketsPerPatron.Location = New System.Drawing.Point(57, 37)
 		Me.txtTicketsPerPatron.MaxLength = 6
 		Me.txtTicketsPerPatron.Name = "txtTicketsPerPatron"
@@ -271,6 +273,7 @@ Partial Class StepEntryTicketAmt
 		'txtTicketsEntirePromo
 		'
 		Me.txtTicketsEntirePromo.Enabled = False
+		Me.txtTicketsEntirePromo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtTicketsEntirePromo.Location = New System.Drawing.Point(56, 36)
 		Me.txtTicketsEntirePromo.MaxLength = 6
 		Me.txtTicketsEntirePromo.Name = "txtTicketsEntirePromo"

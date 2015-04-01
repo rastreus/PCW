@@ -161,6 +161,7 @@ Partial Class StepH
 		'txtCommentBox
 		'
 		Me.txtCommentBox.Enabled = False
+		Me.txtCommentBox.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtCommentBox.Location = New System.Drawing.Point(3, 4)
 		Me.txtCommentBox.MaxLength = 300
 		Me.txtCommentBox.Name = "txtCommentBox"

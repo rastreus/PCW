@@ -70,8 +70,9 @@ Partial Class StepB
 		'txtPromoName
 		'
 		Me.txtPromoName.CausesValidation = False
+		Me.txtPromoName.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtPromoName.Location = New System.Drawing.Point(3, 33)
-		Me.txtPromoName.MaxLength = 50
+		Me.txtPromoName.MaxLength = 30
 		Me.txtPromoName.Name = "txtPromoName"
 		Me.txtPromoName.Size = New System.Drawing.Size(284, 20)
 		Me.txtPromoName.TabIndex = 0
