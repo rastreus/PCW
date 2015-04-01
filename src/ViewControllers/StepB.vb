@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports CustomizedTextBox
 
 ''' <summary>
 ''' Second Step; handles PromoName, Recurring and RecurringFrequency.
@@ -50,21 +51,40 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_Load"
+	Private Sub StepB_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		Me.stepB_data = New StepB_Data
+	End Sub
+#End Region
+#Region "StepB_ShowStep"
 	Private promoAcronym As String
 	Private promoMonth As String
 	Private promoYear As String
 	Private promoId As String
+	Private promoNameEntered As Boolean
+	Private promoNameLeft As Boolean
 
-	Private Sub StepB_Load(sender As Object, e As EventArgs) _
-		Handles MyBase.Load
-		Me.stepB_data = New StepB_Data
+	''' <summary>
+	''' Gets Date information on show.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>This Step uses current Date info on show.</remarks>
+	Private Sub StepB_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
 		Me.promoAcronym = New String("")
 		Me.promoMonth = getPromoMonth()
 		Me.promoYear = getPromoYear()
 		Me.promoId = New String("")
-		Me.ActiveControl = Me.txtPromoName
+		Me.promoNameEntered = False
+		Me.promoNameLeft = False
 	End Sub
 
+	''' <summary>
+	''' Returns formatted String of month.
+	''' </summary>
+	''' <returns>Current month as String of two digits.</returns>
+	''' <remarks></remarks>
 	Private Function getPromoMonth() As String
 		Dim monthStr As String = Date.Today.Month.ToString
 		Dim result As String = New String("")
@@ -76,6 +96,11 @@ Public Class StepB
 		Return result
 	End Function
 
+	''' <summary>
+	''' Return formatted String of Year.
+	''' </summary>
+	''' <returns>Current year as String of last two digits.</returns>
+	''' <remarks></remarks>
 	Private Function getPromoYear() As String
 		Dim yearStr = Date.Today.Year.ToString
 		Dim result As String = New String("")
@@ -159,12 +184,22 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
-
+#Region "StepB_txtPromoName_Enter"
+	Private Sub txtPromoName_Enter(sender As Object, e As EventArgs) _
+		Handles txtPromoName.Enter
+		Me.promoNameEntered = True
+	End Sub
+#End Region
+#Region "StepB_txtPromoName_Leave"
 	Private Sub txtPromoName_Leave(sender As Object, e As EventArgs) _
 		Handles txtPromoName.Leave
-		Me.promoAcronym = getPromoAcronym()
-		Me.promoId = Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
-		Me.btnPromoID.Text = Me.promoId
+		If Me.promoNameEntered Then
+			Me.promoAcronym = getPromoAcronym()
+			Me.promoId = getPromoId()
+			SetLblPromoIDText(Me.promoId)
+			Me.promoNameLeft = True
+			Me.ActiveControl = Me.pnlRecurring
+		End If
 	End Sub
 
 	Private Function getPromoAcronym() As String
@@ -177,11 +212,18 @@ Public Class StepB
 		Return acronym
 	End Function
 
-
+	Private Function getPromoId() As String
+		Return Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
+	End Function
+#End Region
 #Region "StepB_btnPromoId_Click"
-	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
-		Handles btnPromoID.Click
-		SetEditPromoId(True)
+	Private Sub lblPromoID_Click(sender As Object, e As EventArgs) _
+		Handles lblPromoID.Click
+		If Me.promoNameLeft Then
+			SetEditPromoId(True)
+			Me.txtEditPromoID.Text = Me.promoAcronym.ToUpper()
+			Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
+		End If
 	End Sub
 
 	Private Sub SetEditPromoId(ByVal bool As Boolean)
@@ -189,4 +231,20 @@ Public Class StepB
 		Me.pnlEditPromoID.Enabled = bool
 	End Sub
 #End Region
+#Region "StepB_btnTxtEditPromoID_Click"
+	Private Sub btnTxtEditPromoID_Click(sender As Object, e As EventArgs) _
+		Handles btnTxtEditPromoID.Click
+		SetEditPromoId(False)
+		Me.promoAcronym = Me.txtEditPromoID.Text
+		Me.promoId = getPromoId()
+		SetLblPromoIDText(Me.promoId)
+		Me.ActiveControl = Me.pnlRecurring
+	End Sub
+
+	Private Sub SetLblPromoIDText(ByVal txt As String)
+		Me.lblPromoID.Text = txt
+	End Sub
+#End Region
+
+
 End Class
