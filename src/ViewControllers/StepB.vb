@@ -196,9 +196,8 @@ Public Class StepB
 		If Me.promoNameEntered Then
 			Me.promoAcronym = getPromoAcronym()
 			Me.promoId = getPromoId()
-			SetLblPromoIDText(Me.promoId)
+			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoId)
 			Me.promoNameLeft = True
-			Me.ActiveControl = Me.pnlRecurring
 		End If
 	End Sub
 
@@ -217,8 +216,8 @@ Public Class StepB
 	End Function
 #End Region
 #Region "StepB_btnPromoId_Click"
-	Private Sub lblPromoID_Click(sender As Object, e As EventArgs) _
-		Handles lblPromoID.Click
+	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
+		Handles btnPromoID.Click
 		If Me.promoNameLeft Then
 			SetEditPromoId(True)
 			Me.txtEditPromoID.Text = Me.promoAcronym.ToUpper()
@@ -234,16 +233,15 @@ Public Class StepB
 #Region "StepB_btnTxtEditPromoID_Click"
 	Private Sub btnTxtEditPromoID_Click(sender As Object, e As EventArgs) _
 		Handles btnTxtEditPromoID.Click
-		SetEditPromoId(False)
 		Me.promoAcronym = Me.txtEditPromoID.Text
 		Me.promoId = getPromoId()
-		SetLblPromoIDText(Me.promoId)
-		Me.ActiveControl = Me.pnlRecurring
+		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoId)
+		SetEditPromoId(False)
 	End Sub
 
-	Private Sub SetLblPromoIDText(ByVal txt As String)
-		Me.lblPromoID.Text = txt
-	End Sub
+	Private Function SetBtnPromoIDText(ByRef txt As String) As String
+		Return txt
+	End Function
 #End Region
 
 
