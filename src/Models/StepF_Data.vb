@@ -5,7 +5,7 @@
 Public Class StepF_Data
 #Region "Properties"
 	Private _promoPayoutCategory As PromoPayoutCategory
-	Private _promoCashValue As Integer
+	Private _promoCashValue As System.Nullable(Of Decimal) = Nothing
 	Private _promoPrize As String
 
 	Public Enum PromoPayoutCategory
@@ -23,11 +23,11 @@ Public Class StepF_Data
 			_promoPayoutCategory = value
 		End Set
 	End Property
-	Public Property CashValue As Decimal
+	Public Property CashValue As System.Nullable(Of Decimal)
 		Get
 			Return _promoCashValue
 		End Get
-		Set(value As Decimal)
+		Set(value As System.Nullable(Of Decimal))
 			_promoCashValue = value
 		End Set
 	End Property

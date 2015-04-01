@@ -217,6 +217,12 @@ Public Class StepD
 		Me.pnlPointCutoffLimit.Visible = bool
 	End Sub
 #End Region
+#Region "StepD_rbPointCutoffLimitYES_CheckedChanged"
+	Private Sub rbPointCutoffLimitYES_CheckedChanged(sender As Object, e As EventArgs) _
+	Handles rbPointCutoffLimitYES.CheckedChanged
+		Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
+	End Sub
+#End Region
 #Region "StepD_rbMultiPartEntryPayout_CheckedChanged"
 	''' <summary>
 	''' Enables/Disables "txtNumOfDaysTiers."
