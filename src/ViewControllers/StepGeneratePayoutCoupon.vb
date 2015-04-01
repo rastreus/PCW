@@ -143,6 +143,41 @@ Public Class StepGeneratePayoutCoupon
 		End If
 	End Sub
 #End Region
+#Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
+	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtOneCoupon.Enter
+		txtMaxAmtOneCoupon.Text = ""
+	End Sub
+	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtOneCoupon.Leave
+		If txtMaxAmtOneCoupon.Text = "" Then
+			txtMaxAmtOneCoupon.Text = "Enter Amt Here"
+		End If
+	End Sub
+	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtAllCoupons.Enter
+		txtMaxAmtAllCoupons.Text = ""
+	End Sub
+	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtAllCoupons.Leave
+		If txtMaxAmtAllCoupons.Text = "" Then
+			txtMaxAmtAllCoupons.Text = "Enter Amt Here"
+		End If
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_rbCouponsPerPatronYES_CheckedChanged"
+	Private Sub rbCouponsPerPatronYES_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbCouponsPerPatronYES.CheckedChanged
+		If Me.rbCouponsPerPatronYES.Checked Then
+			Me.txtCouponsPerPatron.Text = ""
+			Me.txtCouponsPerPatron.Enabled = rbCouponsPerPatronYES.Checked
+			Me.ActiveControl = Me.txtCouponsPerPatron
+		Else
+			Me.txtCouponsPerPatron.Enabled = False
+			Me.txtCouponsPerPatron.Text = "Enter # Here"
+		End If
+	End Sub
+#End Region
 #Region "_KEY_DOWN_PRESS_"
 #Region "StepGeneratePayoutCoupon_txtMaxAmtOneCoupon_KeyDown_KeyPress"
 	Private txtMaxAmtOneCoupon_strCurrency As String

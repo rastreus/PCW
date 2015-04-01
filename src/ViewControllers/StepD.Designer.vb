@@ -172,11 +172,13 @@ Partial Class StepD
 		'
 		Me.txtNumOfDaysTiers.BackColor = System.Drawing.SystemColors.HighlightText
 		Me.txtNumOfDaysTiers.Enabled = False
+		Me.txtNumOfDaysTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtNumOfDaysTiers.Location = New System.Drawing.Point(26, 26)
+		Me.txtNumOfDaysTiers.MaxLength = 2
 		Me.txtNumOfDaysTiers.Name = "txtNumOfDaysTiers"
 		Me.txtNumOfDaysTiers.Size = New System.Drawing.Size(115, 20)
 		Me.txtNumOfDaysTiers.TabIndex = 9
-		Me.txtNumOfDaysTiers.Text = "How many days/tiers?"
+		Me.txtNumOfDaysTiers.Text = "# of days/tiers?"
 		'
 		'pnlAcquisition
 		'
@@ -281,11 +283,13 @@ Partial Class StepD
 		'txtPointCutoffLimit
 		'
 		Me.txtPointCutoffLimit.Enabled = False
+		Me.txtPointCutoffLimit.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtPointCutoffLimit.Location = New System.Drawing.Point(53, 40)
+		Me.txtPointCutoffLimit.MaxLength = 10
 		Me.txtPointCutoffLimit.Name = "txtPointCutoffLimit"
-		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(143, 20)
+		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(143, 23)
 		Me.txtPointCutoffLimit.TabIndex = 10
-		Me.txtPointCutoffLimit.Text = "Enter Point Cutoff limit here."
+		Me.txtPointCutoffLimit.Text = "Enter # Here"
 		'
 		'rbPointCutoffLimitNO
 		'
