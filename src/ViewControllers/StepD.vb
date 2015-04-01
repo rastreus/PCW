@@ -220,7 +220,14 @@ Public Class StepD
 #Region "StepD_rbPointCutoffLimitYES_CheckedChanged"
 	Private Sub rbPointCutoffLimitYES_CheckedChanged(sender As Object, e As EventArgs) _
 	Handles rbPointCutoffLimitYES.CheckedChanged
-		Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
+		If Me.rbPointCutoffLimitYES.Checked Then
+			Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
+			Me.txtPointCutoffLimit.Text = ""
+			Me.ActiveControl = Me.txtPointCutoffLimit
+		Else
+			Me.txtPointCutoffLimit.Text = "Enter Point Cutoff limit here."
+			Me.txtPointCutoffLimit.Enabled = Not Me.rbPointCutoffLimitYES.Checked
+		End If
 	End Sub
 #End Region
 #Region "StepD_rbMultiPartEntryPayout_CheckedChanged"
