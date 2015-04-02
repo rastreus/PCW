@@ -293,6 +293,7 @@ Public Class StepGeneratePayoutCoupon
 			Me.txtEditCouponID.Text = Me.local_promoID
 			Me.editCouponID_IsClosed = False
 			SetEditCouponID(True)
+			PCW.NextEnabled = False
 		End If
 	End Sub
 
@@ -307,6 +308,7 @@ Public Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Text = SetBtnCouponIDText(Me.txtEditCouponID.Text)
 		Me.editCouponID_IsClosed = True
 		SetEditCouponID(False)
+		PCW.NextEnabled = True
 	End Sub
 
 	Private Function SetBtnCouponIDText(ByRef txt As String) As String

@@ -228,9 +228,10 @@ Public Class StepB
 	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
 		Handles btnPromoID.Click
 		If Me.promoNameLeft Then
-			SetEditPromoID(True)
 			Me.txtEditPromoID.Text = Me.promoAcronym.ToUpper()
 			Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
+			PCW.NextEnabled = False
+			SetEditPromoID(True)
 		End If
 	End Sub
 
@@ -246,6 +247,7 @@ Public Class StepB
 		Me.promoID = getPromoID()
 		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 		SetEditPromoID(False)
+		PCW.NextEnabled = True
 	End Sub
 
 	Private Function SetBtnPromoIDText(ByRef txt As String) As String

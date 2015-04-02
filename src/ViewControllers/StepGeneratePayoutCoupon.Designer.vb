@@ -210,8 +210,8 @@ Partial Class StepGeneratePayoutCoupon
 		'btnCouponID
 		'
 		Me.btnCouponID.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnCouponID.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
-		Me.btnCouponID.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.btnCouponID.FlatAppearance.BorderColor = System.Drawing.Color.Black
+		Me.btnCouponID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
 		Me.btnCouponID.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
 		Me.btnCouponID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnCouponID.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
