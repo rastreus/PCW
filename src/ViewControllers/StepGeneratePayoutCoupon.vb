@@ -102,6 +102,8 @@ Public Class StepGeneratePayoutCoupon
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 
+		StepGeneratePayoutCoupon_SetData()
+
 		If Me.Data.CouponAmtPerPatron_Invalid() Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtOneCoupon)
@@ -146,22 +148,14 @@ Public Class StepGeneratePayoutCoupon
 #Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
-		txtMaxAmtOneCoupon.Text = ""
-	End Sub
-	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, e As EventArgs) _
-		Handles txtMaxAmtOneCoupon.Leave
-		If txtMaxAmtOneCoupon.Text = "" Then
-			txtMaxAmtOneCoupon.Text = "Enter Amt Here"
+		If txtMaxAmtOneCoupon.Text = "Enter Amt Here " Then
+			txtMaxAmtOneCoupon.Text = ""
 		End If
 	End Sub
 	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Enter
-		txtMaxAmtAllCoupons.Text = ""
-	End Sub
-	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, e As EventArgs) _
-		Handles txtMaxAmtAllCoupons.Leave
-		If txtMaxAmtAllCoupons.Text = "" Then
-			txtMaxAmtAllCoupons.Text = "Enter Amt Here"
+		If txtMaxAmtAllCoupons.Text = "Enter Amt Here" Then
+			txtMaxAmtAllCoupons.Text = ""
 		End If
 	End Sub
 #End Region
