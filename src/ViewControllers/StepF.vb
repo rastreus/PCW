@@ -77,8 +77,8 @@ Public Class StepF
 
 	Private Sub StepF_ResetControls()
 		Me.rbFreePlayCoupon.Checked = True
-		deactivateTextBox(Me.txtCashValue, "Enter Amt Here")
-		deactivateTextBox(Me.txtPrize, "Enter Prize Here")
+		deactivateTextBox(Me.txtCashValue, BEP_Util.NumStr)
+		deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
 	End Sub
 #End Region
 #Region "StepF_Validation"
@@ -126,7 +126,7 @@ Public Class StepF
 		If Me.rbCashValue.Checked Then
 			activateTextBox(Me.txtCashValue)
 		Else
-			deactivateTextBox(Me.txtCashValue, "Enter Amt Here")
+			deactivateTextBox(Me.txtCashValue, BEP_Util.NumStr)
 		End If
 	End Sub
 #End Region
@@ -137,7 +137,7 @@ Public Class StepF
 		If Me.rbPrize.Checked Then
 			activateTextBox(Me.txtPrize)
 		Else
-			deactivateTextBox(Me.txtPrize, "Enter Prize Here")
+			deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
 		End If
 	End Sub
 #End Region
