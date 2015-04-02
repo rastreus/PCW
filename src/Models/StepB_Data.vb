@@ -4,12 +4,21 @@
 ''' <remarks>This is the Model for StepB (Controller).</remarks>
 Public Class StepB_Data
 #Region "Properties"
+	Private _promoID As String
 	Private _promoName As String
 	Private _promoRecurring As System.Nullable(Of Boolean)
 	Private _promoRecurringFrequency As System.Nullable(Of Char)
 	'ASIDE: I've read that the below Property definitions are implicitly declared.
 	'That is probably both good and true; however, I like to be explicit.
 	'That is why the boilerplate below currently exists and will exist in all Models.
+	Public Property ID As String
+		Get
+			Return _promoID
+		End Get
+		Set(value As String)
+			_promoID = value
+		End Set
+	End Property
 	Public Property Name As String
 		Get
 			Return _promoName
@@ -40,6 +49,15 @@ Public Class StepB_Data
 		Dim invalid As Boolean = False
 
 		If Me.Recurring And Me.RecurringFrequency = "" Then
+			invalid = True
+		End If
+
+		Return invalid
+	End Function
+	Public Function PromoID_Invalid() As Boolean
+		Dim invalid As Boolean = False
+
+		If ID = "EXAMPLE1503" Then
 			invalid = True
 		End If
 

@@ -275,7 +275,7 @@ Partial Class StepB
 		'
 		Me.txtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtEditPromoID.Location = New System.Drawing.Point(3, 3)
-		Me.txtEditPromoID.MaxLength = 10
+		Me.txtEditPromoID.MaxLength = 7
 		Me.txtEditPromoID.Name = "txtEditPromoID"
 		Me.txtEditPromoID.Size = New System.Drawing.Size(77, 23)
 		Me.txtEditPromoID.TabIndex = 0

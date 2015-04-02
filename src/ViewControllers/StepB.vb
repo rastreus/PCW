@@ -27,6 +27,7 @@ Public Class StepB
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
 		Dim frequency As String = New String("W")
+		Me.stepB_data.ID = Me.btnPromoID.Text
 		Me.stepB_data.Name = Me.txtPromoName.Text
 		If Me.rbRecurringYes.Checked Then
 			Me.stepB_data.Recurring = True
@@ -60,7 +61,7 @@ Public Class StepB
 	Private promoAcronym As String
 	Private promoMonth As String
 	Private promoYear As String
-	Private promoId As String
+	Private promoID As String
 	Private promoNameEntered As Boolean
 	Private promoNameLeft As Boolean
 
@@ -75,7 +76,7 @@ Public Class StepB
 		Me.promoAcronym = New String("")
 		Me.promoMonth = getPromoMonth()
 		Me.promoYear = getPromoYear()
-		Me.promoId = New String("")
+		Me.promoID = New String("")
 		Me.promoNameEntered = False
 		Me.promoNameLeft = False
 	End Sub
@@ -140,18 +141,26 @@ Public Class StepB
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 
-		Me.StepB_SetData()
+		StepB_SetData()
 
-		If Me.stepB_data.PromoName_Invalid() Then
+		If Me.Data.PromoID_Invalid() Then
 			cancelContinuingToNextStep = True
-			errString = Me.stepB_data.PromoName_Invalid_GetErrString()
+			errString = "PromoID Invalid."
+			GUI_Util.errPnl(Me.pnlPromoID)
+		Else
+			GUI_Util.regPnl(Me.pnlPromoID)
+		End If
+
+		If Me.Data.PromoName_Invalid() Then
+			cancelContinuingToNextStep = True
+			errString = Me.Data.PromoName_Invalid_GetErrString()
 			GUI_Util.errPnl(Me.pnlPromoName)
 			Me.ActiveControl = Me.txtPromoName
 		Else
 			GUI_Util.regPnl(Me.pnlPromoName)
 		End If
 
-		If Me.stepB_data.Recurring_Period_Invalid() Then
+		If Me.Data.Recurring_Period_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = "Please select Recurring period option."
 			GUI_Util.errPnl(Me.pnlRecurring)
@@ -195,8 +204,8 @@ Public Class StepB
 		Handles txtPromoName.Leave
 		If Me.promoNameEntered Then
 			Me.promoAcronym = getPromoAcronym()
-			Me.promoId = getPromoId()
-			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoId)
+			Me.promoID = getPromoID()
+			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
 		End If
 	End Sub
@@ -211,21 +220,21 @@ Public Class StepB
 		Return acronym
 	End Function
 
-	Private Function getPromoId() As String
+	Private Function getPromoID() As String
 		Return Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
 	End Function
 #End Region
-#Region "StepB_btnPromoId_Click"
+#Region "StepB_btnPromoID_Click"
 	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
 		Handles btnPromoID.Click
 		If Me.promoNameLeft Then
-			SetEditPromoId(True)
+			SetEditPromoID(True)
 			Me.txtEditPromoID.Text = Me.promoAcronym.ToUpper()
 			Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
 		End If
 	End Sub
 
-	Private Sub SetEditPromoId(ByVal bool As Boolean)
+	Private Sub SetEditPromoID(ByVal bool As Boolean)
 		Me.pnlEditPromoID.Visible = bool
 		Me.pnlEditPromoID.Enabled = bool
 	End Sub
@@ -234,15 +243,13 @@ Public Class StepB
 	Private Sub btnTxtEditPromoID_Click(sender As Object, e As EventArgs) _
 		Handles btnTxtEditPromoID.Click
 		Me.promoAcronym = Me.txtEditPromoID.Text
-		Me.promoId = getPromoId()
-		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoId)
-		SetEditPromoId(False)
+		Me.promoID = getPromoID()
+		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
+		SetEditPromoID(False)
 	End Sub
 
 	Private Function SetBtnPromoIDText(ByRef txt As String) As String
 		Return txt
 	End Function
 #End Region
-
-
 End Class

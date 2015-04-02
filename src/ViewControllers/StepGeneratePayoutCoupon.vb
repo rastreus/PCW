@@ -1,7 +1,7 @@
 ﻿Imports TSWizards
 
 ''' <summary>
-''' Handle promo coupon generation.
+''' Handles promo coupon generation.
 ''' </summary>
 ''' <remarks>Does what the name would suggest.</remarks>
 Public Class StepGeneratePayoutCoupon
@@ -54,18 +54,30 @@ Public Class StepGeneratePayoutCoupon
 	End Function
 #End Region
 #Region "StepGeneratePayoutCoupon_Load"
-	Private local_stepB As StepB
-	Private local_promoName As String
-
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
-		Me.local_stepB = PCW.GetStep("StepB")
-		Me.local_promoName = local_stepB.Data.Name
 		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
 		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_ShowStep"
+	Private local_stepB As StepB
+	Private local_promoID As String
+
+	''' <summary>
+	''' Gets PromoID.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>Grabs StepB and shakes it down for the PromoID.</remarks>
+	Private Sub StepB_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		Me.local_stepB = PCW.GetStep("StepB")
+		Me.local_promoID = local_stepB.Data.ID
+		Me.btnCouponID.Text = "CID" & Me.local_promoID
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_ResetStep"
@@ -145,7 +157,7 @@ Public Class StepGeneratePayoutCoupon
 		End If
 	End Sub
 #End Region
-#Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
+#Region "StepGeneratePayoutCoupon_txt_Enter"
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
@@ -268,6 +280,31 @@ Public Class StepGeneratePayoutCoupon
 		End If
 		e.Handled = True
 	End Sub
+#End Region
+#End Region
+#Region "_COUPON_ID_PANELS_"
+#Region "StepGeneratePayoutCoupon_btnCouponID_Click"
+	Private Sub btnCouponID_Click(sender As Object, e As EventArgs) _
+	Handles btnCouponID.Click
+		SetEditCouponID(True)
+		Me.txtEditCouponID.Text = Me.local_promoID
+	End Sub
+
+	Private Sub SetEditCouponID(ByVal bool As Boolean)
+		Me.pnlEditCouponID.Visible = bool
+		Me.pnlEditCouponID.Enabled = bool
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_btnTxtEditCouponID_Click"
+	Private Sub btnTxtEditCouponID_Click(sender As Object, e As EventArgs) _
+	Handles btnTxtEditCouponID.Click
+		Me.btnCouponID.Text = SetBtnCouponIDText(Me.txtEditCouponID.Text)
+		SetEditCouponID(False)
+	End Sub
+
+	Private Function SetBtnCouponIDText(ByRef txt As String) As String
+		Return "CID" & txt
+	End Function
 #End Region
 #End Region
 End Class

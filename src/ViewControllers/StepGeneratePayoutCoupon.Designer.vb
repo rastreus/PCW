@@ -104,23 +104,22 @@ Partial Class StepGeneratePayoutCoupon
 		Me.lblEditCouponID.BackColor = System.Drawing.Color.Transparent
 		Me.lblEditCouponID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblEditCouponID.ForeColor = System.Drawing.Color.White
-		Me.lblEditCouponID.Location = New System.Drawing.Point(82, 3)
+		Me.lblEditCouponID.Location = New System.Drawing.Point(0, 2)
 		Me.lblEditCouponID.Name = "lblEditCouponID"
-		Me.lblEditCouponID.Size = New System.Drawing.Size(37, 23)
+		Me.lblEditCouponID.Size = New System.Drawing.Size(29, 23)
 		Me.lblEditCouponID.TabIndex = 1
-		Me.lblEditCouponID.Text = "1503"
-		Me.lblEditCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.lblEditCouponID.Text = "CID"
+		Me.lblEditCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
 		'txtEditCouponID
 		'
 		Me.txtEditCouponID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtEditCouponID.Location = New System.Drawing.Point(3, 3)
+		Me.txtEditCouponID.Location = New System.Drawing.Point(29, 3)
 		Me.txtEditCouponID.MaxLength = 10
 		Me.txtEditCouponID.Name = "txtEditCouponID"
-		Me.txtEditCouponID.Size = New System.Drawing.Size(77, 23)
+		Me.txtEditCouponID.Size = New System.Drawing.Size(85, 23)
 		Me.txtEditCouponID.TabIndex = 0
-		Me.txtEditCouponID.Text = "EXAMPLE"
-		Me.txtEditCouponID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.txtEditCouponID.Text = "EXAMPLE1513"
 		'
 		'Panel4
 		'
@@ -220,8 +219,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Name = "btnCouponID"
 		Me.btnCouponID.Size = New System.Drawing.Size(101, 23)
 		Me.btnCouponID.TabIndex = 1
-		Me.btnCouponID.Text = "EXAMPLE1503"
-		Me.btnCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnCouponID.Text = "CIDEXAMPLE1503"
 		Me.btnCouponID.UseVisualStyleBackColor = False
 		'
 		'lblCouponIDEdit
