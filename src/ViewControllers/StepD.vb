@@ -81,10 +81,10 @@ Public Class StepD
 
 	Private Sub StepD_ResetControls()
 		Me.rbSingleEntryPayout.Checked = True
-		Me.txtNumOfDaysTiers.Text = "# of days/tiers?"
+		Me.txtNumOfDaysTiers.Text = BEP_Util.DaysTiersStr
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbPointCutoffLimitNO.Checked = True
-		Me.txtPointCutoffLimit.Text = "Enter # Here"
+		Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
 		Me.SetPointCutoffPanel(True)
 		Me.SetDragDropPanel(False)
 	End Sub
@@ -226,7 +226,7 @@ Public Class StepD
 			Me.ActiveControl = Me.txtPointCutoffLimit
 		Else
 			Me.txtPointCutoffLimit.Enabled = False
-			Me.txtPointCutoffLimit.Text = "Enter # Here"
+			Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
 		End If
 	End Sub
 #End Region
@@ -247,7 +247,7 @@ Public Class StepD
 			Me.ActiveControl = Me.txtNumOfDaysTiers
 		Else
 			Me.txtNumOfDaysTiers.Enabled = False
-			Me.txtNumOfDaysTiers.Text = "# of days/tiers?"
+			Me.txtNumOfDaysTiers.Text = BEP_Util.DaysTiersStr
 		End If
 	End Sub
 #End Region

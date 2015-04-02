@@ -8,6 +8,7 @@ Public Class BEP_Util
 #Region "Properties"
 	Private Shared _promoAmtStr As String = "Enter Amt Here"
 	Private Shared _promoNumStr As String = "Enter # Here"
+	Private Shared _promoDaysTiersStr As String = "# of days/tiers?"
 
 	Public Shared ReadOnly Property AmtStr As String
 		Get
@@ -17,6 +18,11 @@ Public Class BEP_Util
 	Public Shared ReadOnly Property NumStr As String
 		Get
 			Return _promoNumStr
+		End Get
+	End Property
+	Public Shared ReadOnly Property DaysTiersStr As String
+		Get
+			Return _promoDaysTiersStr
 		End Get
 	End Property
 #End Region
