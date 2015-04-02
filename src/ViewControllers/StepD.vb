@@ -85,6 +85,7 @@ Public Class StepD
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbPointCutoffLimitNO.Checked = True
 		Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
+		GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
 		Me.SetPointCutoffPanel(True)
 		Me.SetDragDropPanel(False)
 	End Sub
@@ -120,7 +121,7 @@ Public Class StepD
 			errString = "Point Cutoff Limit Invalid Number."
 			GUI_Util.errPnl(Me.pnlPointCutoffLimit)
 		Else
-			GUI_Util.regPnl(Me.pnlPointCutoffLimit)
+			GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep

@@ -79,6 +79,8 @@ Public Class StepF
 		Me.rbFreePlayCoupon.Checked = True
 		deactivateTextBox(Me.txtCashValue, BEP_Util.NumStr)
 		deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
+		GUI_Util.regPnl(Me.pnlCashValue, Color.Gainsboro)
+		GUI_Util.regPnl(Me.pnlPrize, Color.Gainsboro)
 	End Sub
 #End Region
 #Region "StepF_Validation"
@@ -95,7 +97,7 @@ Public Class StepF
 				GUI_Util.errPnl(Me.pnlCashValue)
 				Me.ActiveControl = Me.txtCashValue
 			Else
-				GUI_Util.regPnl(Me.pnlCashValue)
+				GUI_Util.regPnl(Me.pnlCashValue, Color.Gainsboro)
 			End If
 		End If
 
@@ -105,7 +107,7 @@ Public Class StepF
 			GUI_Util.errPnl(Me.pnlPrize)
 			Me.ActiveControl = Me.txtPrize
 		Else
-			GUI_Util.regPnl(Me.pnlPrize)
+			GUI_Util.regPnl(Me.pnlPrize, Color.Gainsboro)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep

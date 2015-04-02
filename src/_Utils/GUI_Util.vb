@@ -12,7 +12,7 @@ Public Class GUI_Util
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
 	Public Shared Sub errPnl(ByRef pnl As System.Windows.Forms.Panel)
-		pnl.BackColor = Color.Crimson
+		pnl.BackColor = System.Drawing.Color.Crimson
 	End Sub
 
 	''' <summary>
@@ -21,7 +21,12 @@ Public Class GUI_Util
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
 	Public Shared Sub regPnl(ByRef pnl As System.Windows.Forms.Panel)
-		pnl.BackColor = SystemColors.ControlDarkDark
+		pnl.BackColor = System.Drawing.SystemColors.ControlDarkDark
+	End Sub
+
+	Public Shared Sub regPnl(ByRef pnl As System.Windows.Forms.Panel, _
+							 ByVal color As System.Drawing.Color)
+		pnl.BackColor = color
 	End Sub
 
 	''' <summary>
