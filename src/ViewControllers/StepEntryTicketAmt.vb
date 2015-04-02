@@ -116,9 +116,9 @@ Public Class StepEntryTicketAmt
 	Private Sub StepEntryTicketAmt_ResetControls()
 		Me.rb1.Checked = True
 		Me.rbTicketsPerPatronNO.Checked = True
-		Me.txtTicketsPerPatron.Text = "Enter # Here"
+		Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		Me.rbTicketsPerPatronNO.Checked = True
-		Me.txtTicketsEntirePromo.Text = "Enter # Here"
+		Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		SetPointsDivisorPnl(False)
 		SetPointsDivisorTxt(False)
 	End Sub
@@ -222,7 +222,7 @@ Public Class StepEntryTicketAmt
 			Me.txtPointsDivisor.Text = ""
 			Me.ActiveControl = Me.txtPointsDivisor
 		Else
-			Me.txtPointsDivisor.Text = "Enter # Here"
+			Me.txtPointsDivisor.Text = BEP_Util.NumStr
 		End If
 	End Sub
 #End Region
@@ -241,7 +241,7 @@ Public Class StepEntryTicketAmt
 			Me.ActiveControl = Me.txtTicketsPerPatron
 		Else
 			Me.txtTicketsPerPatron.Enabled = False
-			Me.txtTicketsPerPatron.Text = "Enter # Here"
+			Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		End If
 	End Sub
 #End Region
@@ -260,7 +260,7 @@ Public Class StepEntryTicketAmt
 			Me.ActiveControl = Me.txtTicketsEntirePromo
 		Else
 			Me.txtTicketsEntirePromo.Enabled = False
-			Me.txtTicketsEntirePromo.Text = "Enter # Here"
+			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		End If
 	End Sub
 #End Region
