@@ -85,9 +85,9 @@ Public Class StepGeneratePayoutCoupon
 		Me.pnlEditCouponID.Enabled = False
 		Me.pnlEditCouponID.Visible = False
 		Me.rbCouponsPerPatronNO.Checked = True
-		Me.txtCouponsPerPatron.Text = "Enter # Here"
-		Me.txtMaxAmtOneCoupon.Text = "Enter Amt Here"
-		Me.txtMaxAmtAllCoupons.Text = "Enter Amt Here"
+		Me.txtCouponsPerPatron.Text = BEP_Util.NumStr
+		Me.txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr
+		Me.txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_Validation"
@@ -148,13 +148,13 @@ Public Class StepGeneratePayoutCoupon
 #Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
-		If txtMaxAmtOneCoupon.Text = "Enter Amt Here " Then
+		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
 			txtMaxAmtOneCoupon.Text = ""
 		End If
 	End Sub
 	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Enter
-		If txtMaxAmtAllCoupons.Text = "Enter Amt Here" Then
+		If txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr Then
 			txtMaxAmtAllCoupons.Text = ""
 		End If
 	End Sub
@@ -168,7 +168,7 @@ Public Class StepGeneratePayoutCoupon
 			Me.ActiveControl = Me.txtCouponsPerPatron
 		Else
 			Me.txtCouponsPerPatron.Enabled = False
-			Me.txtCouponsPerPatron.Text = "Enter # Here"
+			Me.txtCouponsPerPatron.Text = BEP_Util.NumStr
 		End If
 	End Sub
 #End Region
@@ -180,16 +180,45 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub txtMaxAmtOneCoupon_KeyDown(ByVal sender As Object, _
 										   ByVal e As System.Windows.Forms.KeyEventArgs) _
 		Handles txtMaxAmtOneCoupon.KeyDown
-		Me.txtMaxAmtOneCoupon_acceptableKey = txt_KeyDown(e)
+		If (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse
+			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse
+			e.KeyCode = Keys.Back Then
+			Me.txtMaxAmtOneCoupon_acceptableKey = True
+		Else
+			Me.txtMaxAmtOneCoupon_acceptableKey = False
+		End If
 	End Sub
 
 	Private Sub txtMaxAmtOneCoupon_KeyPress(ByVal sender As Object, _
 											ByVal e As System.Windows.Forms.KeyPressEventArgs) _
 		Handles txtMaxAmtOneCoupon.KeyPress
-		e.Handled = txt_KeyPress(e, _
-								 Me.txtMaxAmtOneCoupon_acceptableKey, _
-								 Me.txtMaxAmtOneCoupon_strCurrency, _
-								 Me.txtMaxAmtOneCoupon)
+		' Check for the flag being set in the KeyDown event.
+		If txtMaxAmtOneCoupon_acceptableKey = False Then
+			' Stop the character from being entered into the control since it is non-numerical.
+			e.Handled = True
+			Return
+		Else
+			If e.KeyChar = Convert.ToChar(Keys.Back) Then
+				If txtMaxAmtOneCoupon_strCurrency.Length > 0 Then
+					txtMaxAmtOneCoupon_strCurrency = txtMaxAmtOneCoupon_strCurrency.Substring(0, txtMaxAmtOneCoupon_strCurrency.Length - 1)
+				End If
+			Else
+				txtMaxAmtOneCoupon_strCurrency = txtMaxAmtOneCoupon_strCurrency & e.KeyChar
+			End If
+
+			If txtMaxAmtOneCoupon_strCurrency.Length = 0 Then
+				Me.txtMaxAmtOneCoupon.Text = ""
+			ElseIf txtMaxAmtOneCoupon_strCurrency.Length = 1 Then
+				Me.txtMaxAmtOneCoupon.Text = "0.0" & txtMaxAmtOneCoupon_strCurrency
+			ElseIf txtMaxAmtOneCoupon_strCurrency.Length = 2 Then
+				Me.txtMaxAmtOneCoupon.Text = "0." & txtMaxAmtOneCoupon_strCurrency
+			ElseIf txtMaxAmtOneCoupon_strCurrency.Length > 2 Then
+				Me.txtMaxAmtOneCoupon.Text = txtMaxAmtOneCoupon_strCurrency.Substring(0, txtMaxAmtOneCoupon_strCurrency.Length - 2) & "." & txtMaxAmtOneCoupon_strCurrency.Substring(txtMaxAmtOneCoupon_strCurrency.Length - 2)
+			End If
+			Me.txtMaxAmtOneCoupon.Select(Me.txtMaxAmtOneCoupon.Text.Length, 0)
+
+		End If
+		e.Handled = True
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_txtMaxAmtAllCoupons_KeyDown_KeyPress"
@@ -199,58 +228,46 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub txtMaxAmtAllCoupons_KeyDown(ByVal sender As Object, _
 											ByVal e As System.Windows.Forms.KeyEventArgs) _
 		Handles txtMaxAmtAllCoupons.KeyDown
-		Me.txtMaxAmtAllCoupons_acceptableKey = txt_KeyDown(e)
+		If (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse
+			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse
+			e.KeyCode = Keys.Back Then
+			Me.txtMaxAmtAllCoupons_acceptableKey = True
+		Else
+			Me.txtMaxAmtAllCoupons_acceptableKey = False
+		End If
 	End Sub
 
 	Private Sub txtMaxAmtAllCoupons_KeyPress(ByVal sender As Object, _
 											 ByVal e As System.Windows.Forms.KeyPressEventArgs) _
 		Handles txtMaxAmtAllCoupons.KeyPress
-		e.Handled = txt_KeyPress(e, _
-								 Me.txtMaxAmtAllCoupons_acceptableKey, _
-								 Me.txtMaxAmtAllCoupons_strCurrency, _
-								 Me.txtMaxAmtAllCoupons)
-	End Sub
-#End Region
-#Region "StepGeneratePayoutCoupon_txt_KeyDown"
-	Private Function txt_KeyDown(ByVal e As System.Windows.Forms.KeyEventArgs) As Boolean
-		Return (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse
-			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse
-			e.KeyCode = Keys.Back
-	End Function
-#End Region
-#Region "StepGeneratePayoutCoupon_txt_KeyPress"
-	Private Function txt_KeyPress(ByVal e As System.Windows.Forms.KeyPressEventArgs, _
-							  ByVal acceptableKeyBool As Boolean, _
-							  ByVal strCurreny As String, _
-							  ByRef txtBox As System.Windows.Forms.TextBox) As Boolean
 		' Check for the flag being set in the KeyDown event.
-		If acceptableKeyBool = False Then
+		If txtMaxAmtAllCoupons_acceptableKey = False Then
 			' Stop the character from being entered into the control since it is non-numerical.
-			Return True	'Early Return! Ugly, but gets the job done.
+			e.Handled = True
+			Return
 		Else
 			If e.KeyChar = Convert.ToChar(Keys.Back) Then
-				If strCurreny.Length > 0 Then
-					strCurreny = strCurreny.Substring(0, strCurreny.Length - 1)
+				If txtMaxAmtAllCoupons_strCurrency.Length > 0 Then
+					txtMaxAmtAllCoupons_strCurrency = txtMaxAmtAllCoupons_strCurrency.Substring(0, txtMaxAmtAllCoupons_strCurrency.Length - 1)
 				End If
 			Else
-				strCurreny = strCurreny & e.KeyChar
+				txtMaxAmtAllCoupons_strCurrency = txtMaxAmtAllCoupons_strCurrency & e.KeyChar
 			End If
 
-			Select Case strCurreny.Length
-				Case 0
-					txtBox.Text = ""
-				Case 1
-					txtBox.Text = "0.0" & strCurreny
-				Case 2
-					txtBox.Text = "0." & strCurreny
-				Case Else
-					txtBox.Text = strCurreny.Substring(0, strCurreny.Length - 2) &
-						"." & strCurreny.Substring(strCurreny.Length - 2)
-			End Select
-			txtBox.Select(txtBox.Text.Length, 0)
+			If txtMaxAmtAllCoupons_strCurrency.Length = 0 Then
+				Me.txtMaxAmtAllCoupons.Text = ""
+			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 1 Then
+				Me.txtMaxAmtAllCoupons.Text = "0.0" & txtMaxAmtOneCoupon_strCurrency
+			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 2 Then
+				Me.txtMaxAmtAllCoupons.Text = "0." & txtMaxAmtOneCoupon_strCurrency
+			ElseIf txtMaxAmtAllCoupons_strCurrency.Length > 2 Then
+				Me.txtMaxAmtAllCoupons.Text = txtMaxAmtAllCoupons_strCurrency.Substring(0, txtMaxAmtAllCoupons_strCurrency.Length - 2) & "." & txtMaxAmtAllCoupons_strCurrency.Substring(txtMaxAmtAllCoupons_strCurrency.Length - 2)
+			End If
+			Me.txtMaxAmtAllCoupons.Select(Me.txtMaxAmtAllCoupons.Text.Length, 0)
+
 		End If
-		Return True
-	End Function
+		e.Handled = True
+	End Sub
 #End Region
 #End Region
 End Class

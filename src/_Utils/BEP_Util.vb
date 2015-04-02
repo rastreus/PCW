@@ -5,6 +5,21 @@
 ''' </summary>
 ''' <remarks></remarks>
 Public Class BEP_Util
+#Region "Properties"
+	Private Shared _promoAmtStr As String = "Enter Amt Here"
+	Private Shared _promoNumStr As String = "Enter # Here"
+
+	Public Shared ReadOnly Property AmtStr As String
+		Get
+			Return _promoAmtStr
+		End Get
+	End Property
+	Public Shared ReadOnly Property NumStr As String
+		Get
+			Return _promoNumStr
+		End Get
+	End Property
+#End Region
 #Region "Utility Subroutines"
 	''' <summary>
 	''' Invalid if "0" or Not 1 or more digit.
