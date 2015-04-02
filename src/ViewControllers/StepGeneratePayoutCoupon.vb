@@ -61,6 +61,7 @@ Public Class StepGeneratePayoutCoupon
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
 		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
+		Me.editCouponID_IsClosed = True
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_ShowStep"
@@ -269,9 +270,9 @@ Public Class StepGeneratePayoutCoupon
 			If txtMaxAmtAllCoupons_strCurrency.Length = 0 Then
 				Me.txtMaxAmtAllCoupons.Text = ""
 			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 1 Then
-				Me.txtMaxAmtAllCoupons.Text = "0.0" & txtMaxAmtOneCoupon_strCurrency
+				Me.txtMaxAmtAllCoupons.Text = "0.0" & txtMaxAmtAllCoupons_strCurrency
 			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 2 Then
-				Me.txtMaxAmtAllCoupons.Text = "0." & txtMaxAmtOneCoupon_strCurrency
+				Me.txtMaxAmtAllCoupons.Text = "0." & txtMaxAmtAllCoupons_strCurrency
 			ElseIf txtMaxAmtAllCoupons_strCurrency.Length > 2 Then
 				Me.txtMaxAmtAllCoupons.Text = txtMaxAmtAllCoupons_strCurrency.Substring(0, txtMaxAmtAllCoupons_strCurrency.Length - 2) & "." & txtMaxAmtAllCoupons_strCurrency.Substring(txtMaxAmtAllCoupons_strCurrency.Length - 2)
 			End If
@@ -284,10 +285,15 @@ Public Class StepGeneratePayoutCoupon
 #End Region
 #Region "_COUPON_ID_PANELS_"
 #Region "StepGeneratePayoutCoupon_btnCouponID_Click"
+	Private editCouponID_IsClosed As Boolean
+
 	Private Sub btnCouponID_Click(sender As Object, e As EventArgs) _
 	Handles btnCouponID.Click
-		SetEditCouponID(True)
-		Me.txtEditCouponID.Text = Me.local_promoID
+		If Me.editCouponID_IsClosed Then
+			Me.txtEditCouponID.Text = Me.local_promoID
+			Me.editCouponID_IsClosed = False
+			SetEditCouponID(True)
+		End If
 	End Sub
 
 	Private Sub SetEditCouponID(ByVal bool As Boolean)
@@ -299,6 +305,7 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub btnTxtEditCouponID_Click(sender As Object, e As EventArgs) _
 	Handles btnTxtEditCouponID.Click
 		Me.btnCouponID.Text = SetBtnCouponIDText(Me.txtEditCouponID.Text)
+		Me.editCouponID_IsClosed = True
 		SetEditCouponID(False)
 	End Sub
 
