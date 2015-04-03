@@ -3,6 +3,13 @@
 ''' </summary>
 ''' <remarks>This is the Model for StepH (Controller).</remarks>
 Public Class StepH_Data
+	Implements IPromoData
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("Comment", Comment)
+	End Sub
+#End Region
 #Region "Properties"
 	Private _promoComment As String
 

@@ -56,7 +56,6 @@ Public Class PCW
 		AddStep("StepB", New StepB)
 		AddStep("StepC", New StepC)
 		AddStep("StepD", New StepD)
-		AddStep("StepE", New StepE)
 		AddStep("StepF", New StepF)
 		AddStep("StepEntryTicketAmt", New StepEntryTicketAmt)
 		AddStep("StepGeneratePayoutCoupon", New StepGeneratePayoutCoupon)
@@ -66,6 +65,10 @@ Public Class PCW
 		AddStep("StepX", New StepX)
 	End Sub
 #End Region
+
+	'Public Overloads Function GetStep(ByVal name As String) As IWizardStep
+	'	Return MyBase.GetStep(name)
+	'End Function
 
 	'Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
 	'	Dim entriesQ As System.Collections.Queue = New Queue

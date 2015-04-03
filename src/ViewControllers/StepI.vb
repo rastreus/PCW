@@ -3,28 +3,15 @@
 Public Class StepI
 	Inherits TSWizards.BaseInteriorStep
 
-	Private Sub StepI_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
-		If Not Me.CheckBox1.Checked Then
-			e.Cancel = True
-			Me.Panel2.BackColor = Color.MistyRose
-
-			Dim warningString As String = <a>, do you take responsibility for creating this promo?
-Check that you have read and confirmed the above parameters.
-Otherwise, cancel and attempt the process later.</a>.Value
-
-			CenteredMessagebox.MsgBox.Show(Environment.UserName & warningString, "Are you sure?",
-										   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-		Else
-			Me.Panel2.BackColor = SystemColors.Control
-		End If
-	End Sub
-
-	Private Sub StepI_ShowStep(sender As Object, e As ShowStepEventArgs) Handles MyBase.ShowStep
+#Region "StepI_ShowStep"
+	Private Sub StepI_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Handles MyBase.ShowStep
+		PCW.NextEnabled = False
 		GetPromoString()
 	End Sub
 
 	Private Sub GetPromoString()
-		Dim newPromo As MarketingPromo = New MarketingPromo 'PCW.PCW_GetPromo()
+		Dim newPromo As MarketingPromo = New MarketingPromo	'PCW.PCW_GetPromo()
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
 		'It bothered me that the DateTime wasn't formatted properly.
@@ -149,15 +136,26 @@ Otherwise, cancel and attempt the process later.</a>.Value
 		builder.Append("       Comments: " & newPromo.Comments & vbCrLf)
 		Me.Label1.Text = builder.ToString
 	End Sub
+#End Region
+#Region "StepI_Validation"
+	Private warningString As String = "Check that you have read and confirmed the above parameters; " &
+									  "otherwise, cancel and attempt the process again later."
 
-#Region "StepI_InfoCircle"
-	Private Sub IconButton1_Click(sender As Object, e As EventArgs)
-		Dim infoString As String = <a>Copyright(c) Oaklawn Jockey Club, 2014
-
-Brought to you by the fine folks of the OJC IT Department!</a>.Value
-
-		CenteredMessagebox.MsgBox.Show(infoString, "Information",
-									   MessageBoxButtons.OK, MessageBoxIcon.Information)
+	Private Sub StepI_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
+		If Not Me.cbCreatePromo.Checked Then
+			e.Cancel = True
+			GUI_Util.errPnl(Me.pnlCreatePromo)
+			GUI_Util.msgBox(Me.warningString, "Are you sure?")
+		Else
+			GUI_Util.regPnl(Me.pnlCreatePromo)
+		End If
+	End Sub
+#End Region
+#Region "StepI_cbCreatePromo_CheckedChanged"
+	Private Sub cbCreatePromo_CheckedChanged(sender As Object, e As EventArgs) _
+	Handles cbCreatePromo.CheckedChanged
+		PCW.NextEnabled = Me.cbCreatePromo.Checked
 	End Sub
 #End Region
 End Class

@@ -6,8 +6,19 @@
 ''' <remarks>This Class has a single purpose.</remarks>
 Public Class StepH
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
+
 
 #Region "StepH_Data"
+	Private Property Data1 As IPromoData Implements IWizardStep.Data
+		Get
+			Return Me.stepH_data
+		End Get
+		Set(value As IPromoData)
+
+		End Set
+	End Property
+
 	''' <summary>
 	''' Model for StepH.
 	''' </summary>

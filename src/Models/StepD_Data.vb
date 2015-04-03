@@ -3,6 +3,7 @@
 ''' </summary>
 ''' <remarks>This is the Model for StepD (Controller).</remarks>
 Public Class StepD_Data
+	Implements IPromoData
 #Region "Properties"
 	Private _promoCategory As PromoCategory
 	Private _promoMutiPartDaysTiers As String = Nothing
@@ -98,5 +99,11 @@ Public Class StepD_Data
 		End Select
 		Return result
 	End Function
+#End Region
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("PointCutoffLimit", PointCutoffLimit)
+	End Sub
 #End Region
 End Class

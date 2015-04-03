@@ -3,6 +3,7 @@
 ''' </summary>
 ''' <remarks>This is the Model for StepB (Controller).</remarks>
 Public Class StepB_Data
+	Implements IPromoData
 #Region "Properties"
 	Private _promoID As String
 	Private _promoName As String
@@ -90,5 +91,14 @@ Public Class StepB_Data
 
 		Return errString
 	End Function
+#End Region
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("ID", ID)
+		promoDataHash.Add("Name", Name)
+		promoDataHash.Add("Recurring", Recurring)
+		promoDataHash.Add("RecurringFrequency", RecurringFrequency)
+	End Sub
 #End Region
 End Class

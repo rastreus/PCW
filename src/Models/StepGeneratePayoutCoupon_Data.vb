@@ -3,18 +3,28 @@
 ''' </summary>
 ''' <remarks>This is the Model for StepGeneratePayoutCoupon (Controller).</remarks>
 Public Class StepGeneratePayoutCoupon_Data
+	Implements IPromoData
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("CouponID", CouponID)
+		promoDataHash.Add("CouponAmtPerPatron", CouponAmtPerPatron)
+		promoDataHash.Add("CouponAmtForEntirePromo", CouponAmtForEntirePromo)
+		promoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
+	End Sub
+#End Region
 #Region "Properties"
-	Private _promoCouponId As String = Nothing
+	Private _promoCouponID As String = Nothing
 	Private _promoCouponAmtPerPatron As System.Nullable(Of Decimal) = Nothing
 	Private _promoCouponAmtForEntirePromo As System.Nullable(Of Decimal) = Nothing
 	Private _promoMaxNumOfCouponsPerPatron As System.Nullable(Of Short) = Nothing
 
-	Public Property CouponId As String
+	Public Property CouponID As String
 		Get
-			Return _promoCouponId
+			Return _promoCouponID
 		End Get
 		Set(value As String)
-			_promoCouponId = value
+			_promoCouponID = value
 		End Set
 	End Property
 	Public Property CouponAmtPerPatron As System.Nullable(Of Decimal)

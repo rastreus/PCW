@@ -3,6 +3,16 @@
 ''' </summary>
 ''' <remarks>This is the Model for StepEntryTicketAmt (Controller).</remarks>
 Public Class StepEntryTicketAmt_Data
+	Implements IPromoData
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("PointsDivisor", PointsDivisor)
+		promoDataHash.Add("TicketsPerPatron", TicketsPerPatron)
+		promoDataHash.Add("TicketsForEntirePromo", TicketsForEntirePromo)
+		promoDataHash.Add("PrintTickets", PrintTickets)
+	End Sub
+#End Region
 #Region "Properties"
 	Private _promoTicketAmtCategory As PromoTicketAmtCategory
 	Private _promoPointsDivisor As System.Nullable(Of Short)
