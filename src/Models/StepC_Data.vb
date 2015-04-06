@@ -4,6 +4,24 @@
 ''' <remarks>This is the Model for StepC (Controller).</remarks>
 Public Class StepC_Data
 	Implements IPromoData
+
+#Region "ToPromoStepList"
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+		Implements IPromoData.ToPromoStepList
+		promoStepList.Add(stepName.Name)
+	End Sub
+#End Region
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		promoDataHash.Add("OccursDate", OccursDate)
+		promoDataHash.Add("StartDate", StartDate)
+		promoDataHash.Add("EndDate", EndDate)
+		promoDataHash.Add("RecursOnWeekday", RecursOnWeekday)
+		promoDataHash.Add("EarnsOnWeekday", EarnsOnWeekday)
+		promoDataHash.Add("CountCurrentDay", CountCurrentDay)
+	End Sub
+#End Region
 #Region "Properties"
 	Private _promoOccursDate As System.Nullable(Of Date)
 	Private _promoStartDate As System.Nullable(Of Date)
@@ -91,16 +109,5 @@ Public Class StepC_Data
 
 		Return invalid
 	End Function
-#End Region
-#Region "PrepareData"
-	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
-		Implements IPromoData.PrepareData
-		promoDataHash.Add("OccursDate", OccursDate)
-		promoDataHash.Add("StartDate", StartDate)
-		promoDataHash.Add("EndDate", EndDate)
-		promoDataHash.Add("RecursOnWeekday", RecursOnWeekday)
-		promoDataHash.Add("EarnsOnWeekday", EarnsOnWeekday)
-		promoDataHash.Add("CountCurrentDay", CountCurrentDay)
-	End Sub
 #End Region
 End Class

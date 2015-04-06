@@ -18,6 +18,7 @@ Public Class PCW
 		'Required by the Designer code.
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
+		Me.pcw_data = New PCW_Data
 		Me.cancel.Visible = True
 		Me.back.Visible = True
 	End Sub
@@ -39,7 +40,6 @@ Public Class PCW
 
 	Private Sub PCW_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
-		Me.pcw_data = New PCW_Data
 		Me.infoCircle = New FontAwesomeIcons.IconButton
 	End Sub
 #End Region
@@ -65,10 +65,18 @@ Public Class PCW
 		AddStep("StepX", New StepX)
 	End Sub
 #End Region
-
-	'Public Overloads Function GetStep(ByVal name As String) As IWizardStep
-	'	Return MyBase.GetStep(name)
-	'End Function
+#Region "PCW_GetIWizardStep"
+	Public Function GetIWizardStep(ByVal name As String) As IWizardStep
+		Return MyBase.GetStep(name)
+	End Function
+#End Region
+#Region "PCW_PrepareAllPromoData"
+	Public Sub PrepareAllPromoData()
+		For Each stepName As String In Me.Data.PromoStepList
+			Me.GetIWizardStep(stepName).PromoData.PrepareData(Me.Data.PromoDataHash)
+		Next
+	End Sub
+#End Region
 
 	'Public Function PCW_StepThroughEntriesPayout(ByVal numOfEntries As Short)
 	'	Dim entriesQ As System.Collections.Queue = New Queue

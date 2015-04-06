@@ -8,15 +8,20 @@ Public Class StepH
 	Inherits TSWizards.BaseInteriorStep
 	Implements IWizardStep
 
-
+#Region "StepH_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		stepH_data = New StepH_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
 #Region "StepH_Data"
-	Private Property Data1 As IPromoData Implements IWizardStep.Data
+	Private ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
 		Get
 			Return Me.stepH_data
 		End Get
-		Set(value As IPromoData)
-
-		End Set
 	End Property
 
 	''' <summary>
@@ -36,10 +41,10 @@ Public Class StepH
 	End Sub
 #End Region
 #Region "StepH_Load"
-	Private Sub StepH_Load(sender As Object, e As EventArgs) _
-	Handles MyBase.Load
-		stepH_data = New StepH_Data
-	End Sub
+	'Private Sub StepH_Load(sender As Object, e As EventArgs) _
+	'Handles MyBase.Load
+	'Moved stepH_data initialization to New.
+	'End Sub
 #End Region
 #Region "StepH_ResetStep"
 	Private Sub StepH_ResetStep(sender As Object, e As EventArgs) _

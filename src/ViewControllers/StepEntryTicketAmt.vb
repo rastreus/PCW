@@ -2,7 +2,24 @@
 
 Public Class StepEntryTicketAmt
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
+#Region "StepEntryTicketAmt_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_PromoData"
+	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+		Get
+			Return Me.stepEntryTicketAmt_data
+		End Get
+	End Property
+#End Region
 #Region "StepEntryTicketAmt_Data"
 	''' <summary>
 	''' Model for StepEntryTicketAmt.
@@ -103,7 +120,6 @@ Public Class StepEntryTicketAmt
 										   "then adds the result to a count of visits.")
 		setAmtStr = New String("A static, set amount of tickets; " &
 							   "enter the amount into the box below.")
-		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_ResetStep"

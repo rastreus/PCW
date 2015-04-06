@@ -6,7 +6,24 @@
 ''' <remarks>Does what the name would suggest.</remarks>
 Public Class StepGeneratePayoutCoupon
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
+#Region "StepGeneratePayoutCoupon_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
+#Region "StepGeneratePayoutCoupon_PromoData"
+	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+		Get
+			Return Me.stepGeneratePayoutCoupon_data
+		End Get
+	End Property
+#End Region
 #Region "StepGeneratePayoutCoupon_Data"
 	''' <summary>
 	''' Model for StepGeneratePayoutCoupon.
@@ -25,7 +42,7 @@ Public Class StepGeneratePayoutCoupon
 	''' </summary>
 	''' <remarks>Complexity meets delegation.</remarks>
 	Private Sub StepGeneratePayoutCoupon_SetData()
-		Me.stepGeneratePayoutCoupon_data.CouponId = getCouponId()
+		Me.stepGeneratePayoutCoupon_data.CouponID = getCouponId()
 		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
 		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
 		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
@@ -56,7 +73,6 @@ Public Class StepGeneratePayoutCoupon
 #Region "StepGeneratePayoutCoupon_Load"
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
-		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
 		Me.txtMaxAmtAllCoupons_strCurrency = New String("")

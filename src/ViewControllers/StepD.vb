@@ -6,7 +6,24 @@
 ''' <remarks></remarks>
 Public Class StepD
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
+#Region "StepD_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepD_data = New StepD_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
+#Region "StepD_PromoData"
+	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+		Get
+			Return Me.stepD_data
+		End Get
+	End Property
+#End Region
 #Region "StepD_Data"
 	''' <summary>
 	''' Model for StepD.
@@ -69,7 +86,6 @@ Public Class StepD
 	Private Sub StepD_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
-		Me.stepD_data = New StepD_Data
 	End Sub
 #End Region
 #Region "StepD_ResetStep"

@@ -23,7 +23,7 @@ Partial Class StepI
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
 		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.Label1 = New System.Windows.Forms.Label()
+		Me.lblpromoSummary = New System.Windows.Forms.Label()
 		Me.cbCreatePromo = New System.Windows.Forms.CheckBox()
 		Me.pnlCreatePromo = New System.Windows.Forms.Panel()
 		Me.Panel1.SuspendLayout()
@@ -38,20 +38,20 @@ Partial Class StepI
 		'
 		Me.Panel1.BackColor = System.Drawing.SystemColors.ControlLight
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel1.Controls.Add(Me.Label1)
+		Me.Panel1.Controls.Add(Me.lblpromoSummary)
 		Me.Panel1.Location = New System.Drawing.Point(3, 0)
 		Me.Panel1.Name = "Panel1"
 		Me.Panel1.Size = New System.Drawing.Size(568, 265)
 		Me.Panel1.TabIndex = 1
 		'
-		'Label1
+		'lblpromoSummary
 		'
-		Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Label1.Location = New System.Drawing.Point(3, 2)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(558, 262)
-		Me.Label1.TabIndex = 0
+		Me.lblpromoSummary.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblpromoSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblpromoSummary.Location = New System.Drawing.Point(3, 2)
+		Me.lblpromoSummary.Name = "lblpromoSummary"
+		Me.lblpromoSummary.Size = New System.Drawing.Size(558, 262)
+		Me.lblpromoSummary.TabIndex = 0
 		'
 		'cbCreatePromo
 		'
@@ -98,6 +98,6 @@ Partial Class StepI
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 	Friend WithEvents cbCreatePromo As System.Windows.Forms.CheckBox
 	Friend WithEvents pnlCreatePromo As System.Windows.Forms.Panel
-	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents lblpromoSummary As System.Windows.Forms.Label
 
 End Class

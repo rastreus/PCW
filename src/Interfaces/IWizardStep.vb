@@ -1,3 +1,3 @@
 ﻿Public Interface IWizardStep
-	Property Data As IPromoData
+	ReadOnly Property PromoData As IPromoData
 End Interface

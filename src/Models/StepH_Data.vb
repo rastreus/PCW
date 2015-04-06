@@ -4,6 +4,13 @@
 ''' <remarks>This is the Model for StepH (Controller).</remarks>
 Public Class StepH_Data
 	Implements IPromoData
+
+#Region "ToPromoStepList"
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+		Implements IPromoData.ToPromoStepList
+		promoStepList.Add(stepName.Name)
+	End Sub
+#End Region
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData

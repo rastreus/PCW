@@ -7,7 +7,24 @@ Imports CustomizedTextBox
 ''' <remarks>Ideally each Class should have a single purpose, but this is decent.</remarks>
 Public Class StepB
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
+#Region "StepB_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepB_data = New StepB_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
+#Region "StepB_PromoData"
+	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+		Get
+			Return Me.stepB_data
+		End Get
+	End Property
+#End Region
 #Region "StepB_Data"
 	''' <summary>
 	''' Model for StepB.
@@ -52,10 +69,10 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_Load"
-	Private Sub StepB_Load(sender As Object, e As EventArgs) _
-		Handles MyBase.Load
-		Me.stepB_data = New StepB_Data
-	End Sub
+	'Private Sub StepB_Load(sender As Object, e As EventArgs) _
+	'	Handles MyBase.Load
+	'	'Moved stepB_data initialization to New
+	'End Sub
 #End Region
 #Region "StepB_ShowStep"
 	Private promoAcronym As String

@@ -101,4 +101,10 @@ Public Class StepB_Data
 		promoDataHash.Add("RecurringFrequency", RecurringFrequency)
 	End Sub
 #End Region
+#Region "ToPromoStepList"
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+		Implements IPromoData.ToPromoStepList
+		promoStepList.Add(stepName.Name)
+	End Sub
+#End Region
 End Class

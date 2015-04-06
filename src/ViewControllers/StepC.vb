@@ -6,7 +6,24 @@
 ''' <remarks></remarks>
 Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
+#Region "StepC_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		stepC_data = New StepC_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
+	End Sub
+#End Region
+#Region "StepC_PromoData"
+	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+		Get
+			Return Me.stepC_data
+		End Get
+	End Property
+#End Region
 #Region "StepC_Data"
 	''' <summary>
 	''' Model for StepC.
@@ -144,7 +161,6 @@ Public Class StepC
 		startDayInt = -7
 		endDayInt = -1
 		longDateFormat = New String("dddd, MMMM dd, yyyy")
-		stepC_data = New StepC_Data
 	End Sub
 #End Region
 #Region "StepC_ResetStep"

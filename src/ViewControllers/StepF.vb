@@ -7,6 +7,14 @@
 Public Class StepF
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepF_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepF_data = New StepF_Data
+	End Sub
+#End Region
 #Region "StepF_Data"
 	''' <summary>
 	''' Model for StepF.
@@ -62,10 +70,10 @@ Public Class StepF
 	End Function
 #End Region
 #Region "StepF_Load"
-	Private Sub StepF_Load(sender As Object, e As EventArgs) _
-	Handles MyBase.Load
-		Me.stepF_data = New StepF_Data
-	End Sub
+	'Private Sub StepF_Load(sender As Object, e As EventArgs) _
+	'Handles MyBase.Load
+	'Moved stepF_data initialization to New
+	'End Sub
 #End Region
 #Region "StepF_ResetStep"
 	Private Sub StepF_ResetStep(sender As Object, e As EventArgs) _
