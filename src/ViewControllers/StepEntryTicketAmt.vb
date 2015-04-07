@@ -212,6 +212,11 @@ Public Class StepEntryTicketAmt
 			For Each errStr As String In errStrArray
 				GUI_Util.msgBox(errStr)
 			Next
+		Else
+			Me.NextStep = Me.Data.DetermineStepFlow()
+			If Me.NextStep = "StepH" Then
+				PCW.GetStep("StepH").PreviousStep = "StepEntryTicketAmt"
+			End If
 		End If
 	End Sub
 #End Region

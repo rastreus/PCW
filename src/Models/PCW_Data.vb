@@ -1,4 +1,13 @@
 ﻿Public Class PCW_Data
+#Region "Categories"
+	Public Enum PromoCategory
+		entryAndPayout
+		entryOnly
+		payoutOnly
+		multPart
+		acquisition
+	End Enum
+#End Region
 #Region "Properties"
 	Private _pcwPromoDataHash As Hashtable = New Hashtable()
 	Private _pcwPromoStepList As ArrayList = New ArrayList()

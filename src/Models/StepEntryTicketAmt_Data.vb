@@ -109,4 +109,23 @@ Public Class StepEntryTicketAmt_Data
 		Return (TicketsForEntirePromo < TicketsPerPatron)
 	End Function
 #End Region
+#Region "DetermineStepFlow"
+	''' <summary>
+	''' Queries to PromoCategory to determine where to go.
+	''' </summary>
+	''' <returns>NextStep.</returns>
+	''' <remarks>Trying to keep this as clean as possible.</remarks>
+	Public Function DetermineStepFlow() As String
+		Dim result As String = New String("")
+		Dim local_stepD As StepD = PCW.GetStep("StepD")
+		Dim promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
+		Select Case promoCategory
+			Case PCW_Data.PromoCategory.entryOnly
+				result = "StepH"
+			Case Else
+				result = "StepF"
+		End Select
+		Return result
+	End Function
+#End Region
 End Class

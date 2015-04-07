@@ -40,11 +40,11 @@ Public Class StepD
 	Private Sub StepD_SetData()
 		Me.stepD_data.Category = getPromoCategory()
 		Select Case Me.Data.Category
-			Case PromotionalCreationWizard.StepD_Data.PromoCategory.entryOnly
+			Case PromotionalCreationWizard.PCW_Data.PromoCategory.entryOnly
 				Me.stepD_data.SkipPayout = True
-			Case PromotionalCreationWizard.StepD_Data.PromoCategory.payoutOnly
+			Case PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
 				Me.stepD_data.SkipEntry = True
-			Case PromotionalCreationWizard.StepD_Data.PromoCategory.multPart
+			Case PromotionalCreationWizard.PCW_Data.PromoCategory.multPart
 				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
@@ -58,18 +58,18 @@ Public Class StepD
 		Return result
 	End Function
 
-	Private Function getPromoCategory() As StepD_Data.PromoCategory
-		Dim promoCategory As StepD_Data.PromoCategory
+	Private Function getPromoCategory() As PCW_Data.PromoCategory
+		Dim promoCategory As PCW_Data.PromoCategory
 		If Me.rbSingleEntryPayout.Checked Then
-			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.entryAndPayout
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.entryAndPayout
 		ElseIf Me.rbSingleEntryOnly.Checked Then
-			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.entryOnly
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.entryOnly
 		ElseIf Me.rbSinglePayoutOnly.Checked Then
-			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.payoutOnly
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
 		ElseIf Me.rbMultiPartEntryPayout.Checked Then
-			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.multPart
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.multPart
 		Else
-			promoCategory = PromotionalCreationWizard.StepD_Data.PromoCategory.acquisition
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.acquisition
 		End If
 		Return promoCategory
 	End Function
@@ -121,7 +121,7 @@ Public Class StepD
 		Me.StepD_SetData()
 		Me.Data.CheckForReset()
 
-		If Me.Data.Category = PromotionalCreationWizard.StepD_Data.PromoCategory.multPart And
+		If Me.Data.Category = PromotionalCreationWizard.PCW_Data.PromoCategory.multPart And
 			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."

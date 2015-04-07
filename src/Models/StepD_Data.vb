@@ -26,20 +26,12 @@ Public Class StepD_Data
 #End Region
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
-	Private _promoCategory As PromoCategory
+	Private _promoCategory As PCW_Data.PromoCategory
 	Private _promoMutiPartDaysTiers As String = Nothing
 	Private _promoPointCutoffLimit As System.Nullable(Of Short)
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
-
-	Public Enum PromoCategory
-		entryAndPayout
-		entryOnly
-		payoutOnly
-		multPart
-		acquisition
-	End Enum
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -50,11 +42,11 @@ Public Class StepD_Data
 			_dataAddedToHash = value
 		End Set
 	End Property
-	Public Property Category As PromoCategory
+	Public Property Category As PCW_Data.PromoCategory
 		Get
 			Return _promoCategory
 		End Get
-		Set(value As PromoCategory)
+		Set(value As PCW_Data.PromoCategory)
 			_promoCategory = value
 		End Set
 	End Property
@@ -106,8 +98,8 @@ Public Class StepD_Data
 #End Region
 #Region "CheckForReset"
 	Public Sub CheckForReset()
-		If (Me.Category = PromoCategory.entryAndPayout) Or
-			(Me.Category = PromoCategory.multPart) Then
+		If (Me.Category = PCW_Data.PromoCategory.entryAndPayout) Or
+			(Me.Category = PCW_Data.PromoCategory.multPart) Then
 			PCW.Data.Reset = True
 			PCW.Data.ResetTo = "StepD"
 		End If
@@ -122,7 +114,7 @@ Public Class StepD_Data
 	Public Function DetermineStepFlow() As String
 		Dim result As String = New String("")
 		Select Case Category
-			Case PromoCategory.payoutOnly
+			Case PCW_Data.PromoCategory.payoutOnly
 				result = "StepF"
 			Case Else
 				result = "StepEntryTicketAmt"
