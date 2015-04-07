@@ -89,7 +89,7 @@ Public Class StepC
 	Private Function getSecondaryDays() As String
 		Dim days As String = New String("")
 		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
-			If Not ctrl.Text = Me.primaryDayStr Then
+			If (Not ctrl.Text = Me.primaryDayStr) And ctrl.Checked Then
 				days = days & daysFormat(ctrl.Text)
 			End If
 		Next

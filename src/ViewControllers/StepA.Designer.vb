@@ -130,6 +130,7 @@ Partial Class StepA
 		Me.btnEditPromo.TabIndex = 8
 		Me.btnEditPromo.Text = "Click Here to Edit an Existing Promo! (Disabled WIP)"
 		Me.btnEditPromo.UseVisualStyleBackColor = True
+		Me.btnEditPromo.Visible = False
 		'
 		'Panel1
 		'
