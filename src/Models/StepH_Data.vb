@@ -14,12 +14,29 @@ Public Class StepH_Data
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData
-		promoDataHash.Add("Comment", Comment)
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("Comment") = Comment
+		Else 'Otherwise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("Comment", Comment)
+			DataAddedToHash = True
+		End If
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoComment As String
 
+	Private Property DataAddedToHash As Boolean _
+	Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property Comment As String
 		Get
 			Return _promoComment

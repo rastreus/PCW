@@ -4,6 +4,7 @@
 ''' <remarks>This is the Model for StepD (Controller).</remarks>
 Public Class StepD_Data
 	Implements IPromoData
+
 #Region "ToPromoStepList"
 	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
@@ -13,10 +14,18 @@ Public Class StepD_Data
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData
-		promoDataHash.Add("PointCutoffLimit", PointCutoffLimit)
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("PointCutoffLimit") = PointCutoffLimit
+		Else 'Otherwise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("PointCutoffLimit", PointCutoffLimit)
+			DataAddedToHash = True
+		End If
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoCategory As PromoCategory
 	Private _promoMutiPartDaysTiers As String = Nothing
 	Private _promoPointCutoffLimit As System.Nullable(Of Short)
@@ -32,6 +41,15 @@ Public Class StepD_Data
 		acquisition
 	End Enum
 
+	Private Property DataAddedToHash As Boolean _
+		Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property Category As PromoCategory
 		Get
 			Return _promoCategory

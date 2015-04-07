@@ -14,13 +14,24 @@ Public Class StepEntryTicketAmt_Data
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData
-		promoDataHash.Add("PointsDivisor", PointsDivisor)
-		promoDataHash.Add("TicketsPerPatron", TicketsPerPatron)
-		promoDataHash.Add("TicketsForEntirePromo", TicketsForEntirePromo)
-		promoDataHash.Add("PrintTickets", PrintTickets)
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("PointsDivisor") = PointsDivisor
+			promoDataHash.Item("TicketsPerPatron") = TicketsPerPatron
+			promoDataHash.Item("TicketsForEntirePromo") = TicketsForEntirePromo
+			promoDataHash.Item("PrintTickets") = PrintTickets
+		Else 'Otherwise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("PointsDivisor", PointsDivisor)
+			promoDataHash.Add("TicketsPerPatron", TicketsPerPatron)
+			promoDataHash.Add("TicketsForEntirePromo", TicketsForEntirePromo)
+			promoDataHash.Add("PrintTickets", PrintTickets)
+			DataAddedToHash = True
+		End If
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoTicketAmtCategory As PromoTicketAmtCategory
 	Private _promoPointsDivisor As System.Nullable(Of Short)
 	Private _promoTicketsPerPatron As System.Nullable(Of Short)			'MaxTickets
@@ -34,6 +45,15 @@ Public Class StepEntryTicketAmt_Data
 		calPlusNumOfVisits
 	End Enum
 
+	Private Property DataAddedToHash As Boolean _
+		Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property TicketAmtCategory As PromoTicketAmtCategory
 		Get
 			Return _promoTicketAmtCategory

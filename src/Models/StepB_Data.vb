@@ -4,14 +4,51 @@
 ''' <remarks>This is the Model for StepB (Controller).</remarks>
 Public Class StepB_Data
 	Implements IPromoData
+
+#Region "ToPromoStepList"
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+		Implements IPromoData.ToPromoStepList
+		promoStepList.Add(stepName.Name)
+	End Sub
+#End Region
+#Region "PrepareData"
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("ID") = ID
+			promoDataHash.Item("Name") = Name
+			promoDataHash.Item("Recurring") = Recurring
+			promoDataHash.Item("RecurringFrequency") = RecurringFrequency
+		Else 'Otherwise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("ID", ID)
+			promoDataHash.Add("Name", Name)
+			promoDataHash.Add("Recurring", Recurring)
+			promoDataHash.Add("RecurringFrequency", RecurringFrequency)
+			DataAddedToHash = True
+		End If
+	End Sub
+#End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoID As String
 	Private _promoName As String
 	Private _promoRecurring As System.Nullable(Of Boolean)
 	Private _promoRecurringFrequency As System.Nullable(Of Char)
-	'ASIDE: I've read that the below Property definitions are implicitly declared.
-	'That is probably both good and true; however, I like to be explicit.
+	'ASIDE: It's possible that the below Property definitions are implicitly declared.
+	'That is probably both good and true; however, I enjoy explicit definitions.
 	'That is why the boilerplate below currently exists and will exist in all Models.
+	'Let this be a lesson in programming style: Choose to be explicit over implicit.
+	Private Property DataAddedToHash As Boolean _
+		Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property ID As String
 		Get
 			Return _promoID
@@ -91,20 +128,5 @@ Public Class StepB_Data
 
 		Return errString
 	End Function
-#End Region
-#Region "PrepareData"
-	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
-		Implements IPromoData.PrepareData
-		promoDataHash.Add("ID", ID)
-		promoDataHash.Add("Name", Name)
-		promoDataHash.Add("Recurring", Recurring)
-		promoDataHash.Add("RecurringFrequency", RecurringFrequency)
-	End Sub
-#End Region
-#Region "ToPromoStepList"
-	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
-		Implements IPromoData.ToPromoStepList
-		promoStepList.Add(stepName.Name)
-	End Sub
 #End Region
 End Class

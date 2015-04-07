@@ -14,15 +14,28 @@ Public Class StepC_Data
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData
-		promoDataHash.Add("OccursDate", OccursDate)
-		promoDataHash.Add("StartDate", StartDate)
-		promoDataHash.Add("EndDate", EndDate)
-		promoDataHash.Add("RecursOnWeekday", RecursOnWeekday)
-		promoDataHash.Add("EarnsOnWeekday", EarnsOnWeekday)
-		promoDataHash.Add("CountCurrentDay", CountCurrentDay)
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("OccursDate") = OccursDate
+			promoDataHash.Item("StartDate") = StartDate
+			promoDataHash.Item("EndDate") = EndDate
+			promoDataHash.Item("RecursOnWeekday") = RecursOnWeekday
+			promoDataHash.Item("EarnsOnWeekday") = EarnsOnWeekday
+			promoDataHash.Item("CountCurrentDay") = CountCurrentDay
+		Else 'Othewise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("OccursDate", OccursDate)
+			promoDataHash.Add("StartDate", StartDate)
+			promoDataHash.Add("EndDate", EndDate)
+			promoDataHash.Add("RecursOnWeekday", RecursOnWeekday)
+			promoDataHash.Add("EarnsOnWeekday", EarnsOnWeekday)
+			promoDataHash.Add("CountCurrentDay", CountCurrentDay)
+			DataAddedToHash = True
+		End If
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoOccursDate As System.Nullable(Of Date)
 	Private _promoStartDate As System.Nullable(Of Date)
 	Private _promoEndDate As System.Nullable(Of Date)
@@ -30,6 +43,15 @@ Public Class StepC_Data
 	Private _promoEarnsOnWeekday As String
 	Private _promoCountCurrentDay As Boolean
 
+	Private Property DataAddedToHash As Boolean _
+		Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property OccursDate As System.Nullable(Of Date)
 		Get
 			Return _promoOccursDate

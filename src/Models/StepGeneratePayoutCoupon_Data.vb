@@ -14,18 +14,38 @@ Public Class StepGeneratePayoutCoupon_Data
 #Region "PrepareData"
 	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
 		Implements IPromoData.PrepareData
-		promoDataHash.Add("CouponID", CouponID)
-		promoDataHash.Add("CouponAmtPerPatron", CouponAmtPerPatron)
-		promoDataHash.Add("CouponAmtForEntirePromo", CouponAmtForEntirePromo)
-		promoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
+		'Set the Item if already in the Hashtable
+		If DataAddedToHash Then
+			promoDataHash.Item("CouponID") = CouponID
+			promoDataHash.Item("CouponAmtPerPatron") = CouponAmtPerPatron
+			promoDataHash.Item("CouponAmtForEntirePromo") = CouponAmtForEntirePromo
+			promoDataHash.Item("MaxNumOfCouponsPerPatron") = MaxNumOfCouponsPerPatron
+		Else 'Otherwise, Add the key-value pair to the Hashtable
+			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add("CouponID", CouponID)
+			promoDataHash.Add("CouponAmtPerPatron", CouponAmtPerPatron)
+			promoDataHash.Add("CouponAmtForEntirePromo", CouponAmtForEntirePromo)
+			promoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
+			DataAddedToHash = True
+		End If
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataAddedToHash As Boolean = False
 	Private _promoCouponID As String = Nothing
 	Private _promoCouponAmtPerPatron As System.Nullable(Of Decimal) = Nothing
 	Private _promoCouponAmtForEntirePromo As System.Nullable(Of Decimal) = Nothing
 	Private _promoMaxNumOfCouponsPerPatron As System.Nullable(Of Short) = Nothing
 
+	Private Property DataAddedToHash As Boolean _
+		Implements IPromoData.DataAddedToHash
+		Get
+			Return _dataAddedToHash
+		End Get
+		Set(value As Boolean)
+			_dataAddedToHash = value
+		End Set
+	End Property
 	Public Property CouponID As String
 		Get
 			Return _promoCouponID
