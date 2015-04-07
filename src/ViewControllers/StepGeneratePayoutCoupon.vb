@@ -42,16 +42,15 @@ Public Class StepGeneratePayoutCoupon
 	''' </summary>
 	''' <remarks>Complexity meets delegation.</remarks>
 	Private Sub StepGeneratePayoutCoupon_SetData()
-		Me.stepGeneratePayoutCoupon_data.CouponID = getCouponId()
+		Me.stepGeneratePayoutCoupon_data.CouponID = getCouponID()
 		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
 		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
 		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
 																								Me.txtCouponsPerPatron.Text)
 	End Sub
 
-	Private Function getCouponId() As String
-		Dim result As String = Nothing
-		Return result
+	Private Function getCouponID() As String
+		Return Me.btnCouponID.Text
 	End Function
 
 	Private Function getCouponAmt(ByVal txtInput As String) As System.Nullable(Of Decimal)
