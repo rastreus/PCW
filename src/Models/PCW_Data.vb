@@ -40,6 +40,7 @@
 #End Region
 #Region "GetPromoSummary"
 	Public Function GetPromoSummary() As System.Text.StringBuilder
+		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
 		'PromoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
@@ -49,9 +50,9 @@
 		'builder.Append("      PromoType: " & promoType & vbCrLf)
 		builder.Append("             ID: " & nullIfNothing("ID") & vbCrLf)
 		builder.Append("           Name: " & nullIfNothing("Name") & vbCrLf)
-		builder.Append("           Date: " & formatDateString("OccursDate") & vbCrLf)
-		builder.Append("      StartDate: " & formatDateString("StartDate") & vbCrLf)
-		builder.Append("        EndDate: " & formatDateString("EndDate") & vbCrLf)
+		builder.Append("           Date: " & nullIfNothing("OccursDate", dateFormatStr) & vbCrLf)
+		builder.Append("      StartDate: " & nullIfNothing("StartDate", dateFormatStr) & vbCrLf)
+		builder.Append("        EndDate: " & nullIfNothing("EndDate", dateFormatStr) & vbCrLf)
 		builder.Append("    PointCutoff: " & nullIfNothing("PointCutoffLimit") & vbCrLf)
 		builder.Append("  PointsDivisor: " & nullIfNothing("PointsDivisor") & vbCrLf)
 		builder.Append("     MaxTickets: " & nullIfNothing("TicketsPerPatron") & vbCrLf)
@@ -79,12 +80,12 @@
 		Return result
 	End Function
 
-	Private Function formatDateString(ByVal promoData As String) As String
+	Private Function nullIfNothing(ByVal promoData As String, ByVal dateFormatStr As String) As String
 		Dim result As String = New String("")
-		If IsNothing(PromoDataHash(promoData)) Then
+		If IsNothing(PromoDataHash.Item(promoData)) Then
 			result = "NULL"
 		Else
-			result = String.Format("{0:MM/dd/yyyy}", promoData)
+			result = String.Format(dateFormatStr, PromoDataHash.Item(promoData))
 		End If
 		Return result
 	End Function

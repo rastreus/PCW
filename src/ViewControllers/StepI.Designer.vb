@@ -46,8 +46,9 @@ Partial Class StepI
 		'
 		'lblpromoSummary
 		'
+		Me.lblpromoSummary.BackColor = System.Drawing.Color.Gainsboro
 		Me.lblpromoSummary.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblpromoSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblpromoSummary.ForeColor = System.Drawing.Color.Black
 		Me.lblpromoSummary.Location = New System.Drawing.Point(3, 2)
 		Me.lblpromoSummary.Name = "lblpromoSummary"
 		Me.lblpromoSummary.Size = New System.Drawing.Size(558, 262)
