@@ -55,7 +55,9 @@ Public Class StepC
 			Me.stepC_data.RecursOnWeekday = Nothing
 			Me.stepC_data.CountCurrentDay = Me.cbSameDayPromo.Checked
 		End If
-		If Me.cbSelectAll.Checked Then
+		'If All 7 Days are Checked, then record it as a NULL
+		'No idea why, Ben just said that that's how it should be.
+		If Me.clbPointsEarningDays.CheckedItems.Count = 7 Then
 			Me.stepC_data.EarnsOnWeekday = Nothing
 		Else
 			Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
