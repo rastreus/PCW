@@ -9,6 +9,7 @@ Public Class StepI
 	Private Sub StepI_ShowStep(sender As Object, e As ShowStepEventArgs) _
 	Handles MyBase.ShowStep
 		PCW.NextEnabled = False
+		PCW.PrepareAllPromoData()
 		Me.promoSummary = PCW.Data.GetPromoSummary()
 		Me.lblpromoSummary.Text = Me.promoSummary.ToString
 	End Sub

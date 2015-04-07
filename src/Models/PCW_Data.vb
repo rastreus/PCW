@@ -71,10 +71,10 @@
 
 	Private Function nullIfNothing(ByVal promoData As String) As String
 		Dim result As String = New String("")
-		If IsNothing(PromoDataHash(promoData)) Then
+		If IsNothing(PromoDataHash.Item(promoData)) Then
 			result = "NULL"
 		Else
-			result = PromoDataHash(promoData).ToString
+			result = PromoDataHash.Item(promoData).ToString
 		End If
 		Return result
 	End Function
