@@ -1,4 +1,6 @@
-﻿Public Class PCW_Data
+﻿Imports System.Collections
+
+Public Class PCW_Data
 #Region "Categories"
 	Public Enum PromoCategory
 		entryAndPayout
@@ -9,11 +11,20 @@
 	End Enum
 #End Region
 #Region "Properties"
+	Private _pcwMarketingPromosDBRowsList As ArrayList = New ArrayList()
 	Private _pcwPromoDataHash As Hashtable = New Hashtable()
 	Private _pcwPromoStepList As ArrayList = New ArrayList()
 	Private _pcwReset As Boolean = False
 	Private _pcwResetTo As String = New String("StepA")
 
+	Public Property MarketingPromosDBRowsList As ArrayList
+		Get
+			Return _pcwMarketingPromosDBRowsList
+		End Get
+		Set(value As ArrayList)
+			_pcwMarketingPromosDBRowsList = value
+		End Set
+	End Property
 	Public Property PromoDataHash As Hashtable
 		Get
 			Return _pcwPromoDataHash
@@ -98,5 +109,23 @@
 		End If
 		Return result
 	End Function
+#End Region
+#Region "SubmitPromoDBRowsToMarketingPromosTable"
+	Public Sub SubmitPromoDBRowsToMarketingPromosTable()
+		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global.PromotionalCreationWizard.My.MySettings.Default.ConfigConnectionString)
+		For Each dbRow As MarketingPromo In MarketingPromosDBRowsList
+			tbl.MarketingPromos.InsertOnSubmit(dbRow)
+			Try
+				tbl.SubmitChanges()
+			Catch ex As Exception
+				Dim result As Integer = CenteredMessagebox.MsgBox.Show("Promo not added to MarketingPromos table!", "Error!",
+																	   MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
+
+				If result = DialogResult.Retry Then
+					tbl.SubmitChanges()
+				End If
+			End Try
+		Next
+	End Sub
 #End Region
 End Class

@@ -8,7 +8,8 @@ Public Class StepJ
 	Inherits TSWizards.BaseInteriorStep
 
 #Region "StepJ_ShowStep"
-	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.ValidateStep
+	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
 		'Dim step2 As StepB = PCW.GetStep("Step2")
 		'Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
 		''By default the count variable will be 1;
@@ -43,7 +44,8 @@ Public Class StepJ
 
 	'A lot of this progress bar step was taken from the TSWizards example.
 	'Please refer to it if you have questions about how it all works.
-	Private Sub StepJ_ShowStep(sender As Object, e As ShowStepEventArgs) Handles MyBase.ShowStep
+	Private Sub StepJ_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
 		'Stop the user from going back once they're at the end because it could cause numerous problems.
 		'At this point, it's too late for the user to go back and change anything; there no longer
 		'needs functioning navigation buttons while the user waits for the progress bar.
@@ -61,22 +63,23 @@ Public Class StepJ
 
 	Private Sub DoWork()
 		Dim strCollection As StringCollection = New StringCollection()
-		Dim strArray() As String = {"Name", _
-										"Date", _
-										"StartDate", _
-										"EndDate", _
-										"PointCutoff", _
-										"PointDivisor", _
-										"MaxTickets", _
-										"PromoMaxTickets", _
-										"CouponID", _
-										"Recurring", _
-										"Frequency", _
-										"RecursOnWeekday", _
-										"EarnsOnWeekday", _
-										"CountCurrentDay", _
-										"PrintTickets", _
-										"Comments"}
+		Dim strArray() As String = {"ID", _
+									"Name", _
+									"Date", _
+									"StartDate", _
+									"EndDate", _
+									"PointCutoff", _
+									"PointDivisor", _
+									"MaxTickets", _
+									"PromoMaxTickets", _
+									"CouponID", _
+									"Recurring", _
+									"Frequency", _
+									"RecursOnWeekday", _
+									"EarnsOnWeekday", _
+									"CountCurrentDay", _
+									"PrintTickets", _
+									"Comments"}
 		strCollection.AddRange(strArray)
 
 		BeginPreparing(strCollection.Count)
