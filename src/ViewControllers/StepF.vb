@@ -96,12 +96,15 @@ Public Class StepF
 	Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
 
 		StepF_SetData()
 
 		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.cashValue Then
 			If Me.Data.CashValueInvalid(Me.txtCashValue.Text) Then
 				cancelContinuingToNextStep = True
+				errString = "Cash Value invalid."
+				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlCashValue)
 				Me.ActiveControl = Me.txtCashValue
 			Else
@@ -112,6 +115,8 @@ Public Class StepF
 		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.prize And
 			Me.Data.PrizeIsBlank Then
 			cancelContinuingToNextStep = True
+			errString = "Prize invalid."
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPrize)
 			Me.ActiveControl = Me.txtPrize
 		Else
@@ -120,7 +125,9 @@ Public Class StepF
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
-			GUI_Util.msgBox(errString)
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
 		Else
 			Me.NextStep = Me.Data.DetermineStepFlow()
 			If Me.NextStep = "StepH" Then
