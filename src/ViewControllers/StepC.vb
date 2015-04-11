@@ -272,6 +272,9 @@ Public Class StepC
 			For Each errStr As String In errStrArray
 				GUI_Util.msgBox(errStr)
 			Next
+		Else
+			'Step has been set if no error.
+			Me.stepC_data.StepNotSet = False
 		End If
 	End Sub
 #End Region
@@ -284,6 +287,9 @@ Public Class StepC
 	''' <remarks>This Step can look slightly different depending on Occuring/Recurring</remarks>
 	Private Sub StepC_ShowStep(sender As Object, e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
+		End If
 		If Recurring_Promo() Then
 			Me.pnlRecurringQualifyingPeriod.Enabled = True
 			Me.pnlRecurringQualifyingPeriod.Visible = True
@@ -451,6 +457,9 @@ Public Class StepC
 		If Me.MonthCal.Visible = False Then
 			Me.MonthCal.Visible = True
 		End If
+		If Me.primaryDayBool Then
+			PCW.NextEnabled = True
+		End If
 	End Sub
 #End Region
 #Region "StepC_cbSameDayPromo_CheckedChanged"
@@ -489,10 +498,18 @@ Public Class StepC
 	''' <param name="e"></param>
 	''' <remarks>What if I fat-finger the Primary Day and have to change it?</remarks>
 	Private Sub cbPrimaryDay_DropDown(sender As Object, e As EventArgs) _
-	Handles cbPrimaryDay.DropDown
+		Handles cbPrimaryDay.DropDown
 		If Not IsNothing(cbPrimaryDay.SelectedItem) Then 'Clear it if it's set!
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
 			Me.primaryDayStr = "ASSIGNED A VALUE"
+		End If
+	End Sub
+#End Region
+#Region "StepC_cbPrimaryDay_RollUp"
+	Private Sub cbPrimaryDay_DropDownClosed(sender As Object, e As EventArgs) _
+		Handles cbPrimaryDay.DropDownClosed
+		If Me.startDayBool And Me.endDayBool Then
+			PCW.NextEnabled = True
 		End If
 	End Sub
 #End Region
@@ -541,6 +558,9 @@ Public Class StepC
 										  Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
 			If Me.MonthCal.Visible = False Then
 				Me.MonthCal.Visible = True
+			End If
+			If Me.primaryDayBool Then
+				PCW.NextEnabled = True
 			End If
 		End If
 	End Sub

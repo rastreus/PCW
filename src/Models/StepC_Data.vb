@@ -36,6 +36,7 @@ Public Class StepC_Data
 #End Region
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
+	Private _stepNotSet As Boolean = True
 	Private _promoOccursDate As System.Nullable(Of Date)
 	Private _promoStartDate As System.Nullable(Of Date)
 	Private _promoEndDate As System.Nullable(Of Date)
@@ -50,6 +51,14 @@ Public Class StepC_Data
 		End Get
 		Set(value As Boolean)
 			_dataAddedToHash = value
+		End Set
+	End Property
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
 		End Set
 	End Property
 	Public Property OccursDate As System.Nullable(Of Date)
