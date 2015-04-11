@@ -117,6 +117,7 @@ Public Class StepD
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepD_SetData()
 		Me.Data.CheckForReset()
@@ -125,6 +126,7 @@ Public Class StepD
 			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoType)
 			Me.ActiveControl = Me.txtNumOfDaysTiers
 		Else
@@ -135,6 +137,7 @@ Public Class StepD
 			Me.Data.PointCutoffLimit_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = "Point Cutoff Limit Invalid Number."
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPointCutoffLimit)
 		Else
 			GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
@@ -142,7 +145,9 @@ Public Class StepD
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
-			GUI_Util.msgBox(errString)
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
 		Else
 			Me.NextStep = Me.Data.DetermineStepFlow()
 			If Me.NextStep = "StepF" Then
