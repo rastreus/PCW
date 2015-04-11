@@ -234,6 +234,7 @@ Public Class StepC
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepC_SetData()
 
@@ -241,6 +242,7 @@ Public Class StepC
 			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, Me.endDayBool) Then
 				cancelContinuingToNextStep = True
 				errString = "Qualifying Period Start or End is not established."
+				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
 			Else
 				GUI_Util.regPnl(Me.pnlRecurringQualifyingPeriod)
@@ -249,6 +251,7 @@ Public Class StepC
 			If Me.stepC_data.PrimaryDay_NotEstablished(Me.primaryDayBool) Then
 				cancelContinuingToNextStep = True
 				errString = "Primary Day is not established."
+				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlPrimaryDay)
 			Else
 				GUI_Util.regPnl(Me.pnlPrimaryDay)
@@ -257,6 +260,7 @@ Public Class StepC
 			If Me.stepC_data.OccursDate_NotEstablished(Me.occursDateBool) Then
 				cancelContinuingToNextStep = True
 				errString = "Occurs Date is not established."
+				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlOccursDate)
 			Else
 				GUI_Util.regPnl(Me.pnlOccursDate)
@@ -265,7 +269,9 @@ Public Class StepC
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
-			GUI_Util.msgBox(errString)
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
 		End If
 	End Sub
 #End Region
