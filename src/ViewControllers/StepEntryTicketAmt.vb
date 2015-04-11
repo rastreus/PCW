@@ -260,7 +260,11 @@ Public Class StepEntryTicketAmt
 			Me.txtTicketsPerPatron.Enabled = True
 			Me.txtTicketsPerPatron.Text = ""
 			Me.ActiveControl = Me.txtTicketsPerPatron
+			PCW.NextEnabled = False
 		Else
+			If PCW.NextEnabled = False Then
+				PCW.NextEnabled = True
+			End If
 			Me.txtTicketsPerPatron.Enabled = False
 			Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		End If
@@ -279,9 +283,29 @@ Public Class StepEntryTicketAmt
 			Me.txtTicketsEntirePromo.Enabled = True
 			Me.txtTicketsEntirePromo.Text = ""
 			Me.ActiveControl = Me.txtTicketsEntirePromo
+			PCW.NextEnabled = False
 		Else
+			If PCW.NextEnabled = False Then
+				PCW.NextEnabled = True
+			End If
 			Me.txtTicketsEntirePromo.Enabled = False
 			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
+		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsPerPatron_Leave"
+	Private Sub txtTicketsPerPatron_Leave(sender As Object, e As EventArgs) _
+		Handles txtTicketsPerPatron.Leave
+		If PCW.NextEnabled = False Then
+			PCW.NextEnabled = True
+		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsEntirePromo_Leave"
+	Private Sub txtTicketsEntirePromo_Leave(sender As Object, e As EventArgs) _
+		Handles txtTicketsEntirePromo.Leave
+		If PCW.NextEnabled = False Then
+			PCW.NextEnabled = True
 		End If
 	End Sub
 #End Region
