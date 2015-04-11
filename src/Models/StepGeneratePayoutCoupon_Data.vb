@@ -32,6 +32,7 @@ Public Class StepGeneratePayoutCoupon_Data
 #End Region
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
+	Private _stepNotSet As Boolean = True
 	Private _promoCouponID As String = Nothing
 	Private _promoCouponAmtPerPatron As System.Nullable(Of Decimal) = Nothing
 	Private _promoCouponAmtForEntirePromo As System.Nullable(Of Decimal) = Nothing
@@ -44,6 +45,14 @@ Public Class StepGeneratePayoutCoupon_Data
 		End Get
 		Set(value As Boolean)
 			_dataAddedToHash = value
+		End Set
+	End Property
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
 		End Set
 	End Property
 	Public Property CouponID As String

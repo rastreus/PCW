@@ -70,6 +70,9 @@ Public Class StepGeneratePayoutCoupon
 	End Function
 #End Region
 #Region "StepGeneratePayoutCoupon_Load"
+	Private maxAmtOneCouponBool As Boolean = False
+	Private maxAmtAllCouponsBool As Boolean = False
+
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
@@ -89,8 +92,11 @@ Public Class StepGeneratePayoutCoupon
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Grabs StepB and shakes it down for the PromoID.</remarks>
-	Private Sub StepB_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepGeneratePayoutCoupon_ShowStep(sender As Object, e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
+		End If
 		Me.local_stepB = PCW.GetStep("StepB")
 		Me.local_promoID = local_stepB.Data.ID
 		Me.btnCouponID.Text = "CID" & Me.local_promoID
@@ -176,20 +182,40 @@ Public Class StepGeneratePayoutCoupon
 			For Each errStr As String In errStrArray
 				GUI_Util.msgBox(errStr)
 			Next
+		Else
+			'Step has been set if no error.
+			Me.stepGeneratePayoutCoupon_data.StepNotSet = False
 		End If
 	End Sub
 #End Region
-#Region "StepGeneratePayoutCoupon_txt_Enter"
+#Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
 			txtMaxAmtOneCoupon.Text = ""
 		End If
+		Me.maxAmtOneCouponBool = True
+	End Sub
+	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtOneCoupon.Leave
+		CheckForNext()
 	End Sub
 	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Enter
 		If txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr Then
 			txtMaxAmtAllCoupons.Text = ""
+		End If
+		Me.maxAmtAllCouponsBool = True
+	End Sub
+	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, e As EventArgs) _
+		Handles txtMaxAmtAllCoupons.Leave
+		CheckForNext()
+	End Sub
+	Private Sub CheckForNext()
+		If Me.maxAmtOneCouponBool And Me.maxAmtAllCouponsBool Then
+			If PCW.NextEnabled = False Then
+				PCW.NextEnabled = True
+			End If
 		End If
 	End Sub
 #End Region
