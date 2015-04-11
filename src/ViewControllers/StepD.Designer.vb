@@ -195,8 +195,8 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
@@ -222,9 +222,9 @@ Partial Class StepD
 		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
 		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
 		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
-		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(248, 17)
+		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(184, 17)
 		Me.rbEligiblePlayersOfferList.TabIndex = 8
-		Me.rbEligiblePlayersOfferList.Text = "EligiblePlayers offer list Determines Qualification"
+		Me.rbEligiblePlayersOfferList.Text = "Offer List Determines Qualification"
 		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
 		'
 		'rbSumQualifyingPoints
