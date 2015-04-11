@@ -194,9 +194,9 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
+		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
-		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
@@ -330,9 +330,9 @@ Partial Class StepD
 		Me.pnlDragOffer.Controls.Add(Me.lblDragOffer)
 		Me.pnlDragOffer.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.pnlDragOffer.Enabled = False
-		Me.pnlDragOffer.Location = New System.Drawing.Point(18, 154)
+		Me.pnlDragOffer.Location = New System.Drawing.Point(18, 148)
 		Me.pnlDragOffer.Name = "pnlDragOffer"
-		Me.pnlDragOffer.Size = New System.Drawing.Size(214, 74)
+		Me.pnlDragOffer.Size = New System.Drawing.Size(224, 80)
 		Me.pnlDragOffer.TabIndex = 9
 		Me.pnlDragOffer.Visible = False
 		'
@@ -354,9 +354,9 @@ Partial Class StepD
 		'lblDragOffer
 		'
 		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragOffer.Location = New System.Drawing.Point(3, 13)
+		Me.lblDragOffer.Location = New System.Drawing.Point(7, 4)
 		Me.lblDragOffer.Name = "lblDragOffer"
-		Me.lblDragOffer.Size = New System.Drawing.Size(208, 61)
+		Me.lblDragOffer.Size = New System.Drawing.Size(173, 21)
 		Me.lblDragOffer.TabIndex = 0
 		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
