@@ -40,12 +40,16 @@ Partial Class StepB
 		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
 		Me.lblEditPromoID = New System.Windows.Forms.Label()
 		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
+		Me.pnlPromoType = New System.Windows.Forms.Panel()
+		Me.txtPromoType = New System.Windows.Forms.TextBox()
+		Me.lblPromoType = New System.Windows.Forms.Label()
 		Me.pnlPromoName.SuspendLayout()
 		Me.pnlRecurring.SuspendLayout()
 		Me.Panel1.SuspendLayout()
 		Me.pnlPromoID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlEditPromoID.SuspendLayout()
+		Me.pnlPromoType.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -62,7 +66,7 @@ Partial Class StepB
 		Me.pnlPromoName.CausesValidation = False
 		Me.pnlPromoName.Controls.Add(Me.txtPromoName)
 		Me.pnlPromoName.Controls.Add(Me.lblPromoName)
-		Me.pnlPromoName.Location = New System.Drawing.Point(88, 47)
+		Me.pnlPromoName.Location = New System.Drawing.Point(142, 50)
 		Me.pnlPromoName.Name = "pnlPromoName"
 		Me.pnlPromoName.Size = New System.Drawing.Size(292, 66)
 		Me.pnlPromoName.TabIndex = 0
@@ -97,7 +101,7 @@ Partial Class StepB
 		Me.pnlRecurring.CausesValidation = False
 		Me.pnlRecurring.Controls.Add(Me.lblRecurring)
 		Me.pnlRecurring.Controls.Add(Me.Panel1)
-		Me.pnlRecurring.Location = New System.Drawing.Point(88, 117)
+		Me.pnlRecurring.Location = New System.Drawing.Point(142, 120)
 		Me.pnlRecurring.Name = "pnlRecurring"
 		Me.pnlRecurring.Size = New System.Drawing.Size(292, 132)
 		Me.pnlRecurring.TabIndex = 2
@@ -171,7 +175,7 @@ Partial Class StepB
 		Me.pnlPromoID.CausesValidation = False
 		Me.pnlPromoID.Controls.Add(Me.lblPromoIDtop)
 		Me.pnlPromoID.Controls.Add(Me.pnlPapayaWhip)
-		Me.pnlPromoID.Location = New System.Drawing.Point(386, 47)
+		Me.pnlPromoID.Location = New System.Drawing.Point(440, 50)
 		Me.pnlPromoID.Name = "pnlPromoID"
 		Me.pnlPromoID.Size = New System.Drawing.Size(123, 81)
 		Me.pnlPromoID.TabIndex = 8
@@ -237,7 +241,7 @@ Partial Class StepB
 		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.txtEditPromoID)
 		Me.pnlEditPromoID.Enabled = False
-		Me.pnlEditPromoID.Location = New System.Drawing.Point(386, 134)
+		Me.pnlEditPromoID.Location = New System.Drawing.Point(440, 137)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
 		Me.pnlEditPromoID.Size = New System.Drawing.Size(123, 63)
 		Me.pnlEditPromoID.TabIndex = 0
@@ -283,10 +287,45 @@ Partial Class StepB
 		Me.txtEditPromoID.Text = "EXAMPLE"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
+		'pnlPromoType
+		'
+		Me.pnlPromoType.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPromoType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPromoType.CausesValidation = False
+		Me.pnlPromoType.Controls.Add(Me.txtPromoType)
+		Me.pnlPromoType.Controls.Add(Me.lblPromoType)
+		Me.pnlPromoType.Location = New System.Drawing.Point(41, 50)
+		Me.pnlPromoType.Name = "pnlPromoType"
+		Me.pnlPromoType.Size = New System.Drawing.Size(95, 50)
+		Me.pnlPromoType.TabIndex = 9
+		'
+		'txtPromoType
+		'
+		Me.txtPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPromoType.Location = New System.Drawing.Point(16, 19)
+		Me.txtPromoType.MaxLength = 3
+		Me.txtPromoType.Name = "txtPromoType"
+		Me.txtPromoType.Size = New System.Drawing.Size(55, 23)
+		Me.txtPromoType.TabIndex = 1
+		Me.txtPromoType.Text = "EX: 31B"
+		'
+		'lblPromoType
+		'
+		Me.lblPromoType.BackColor = System.Drawing.Color.Transparent
+		Me.lblPromoType.CausesValidation = False
+		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoType.ForeColor = System.Drawing.Color.White
+		Me.lblPromoType.Location = New System.Drawing.Point(0, 0)
+		Me.lblPromoType.Name = "lblPromoType"
+		Me.lblPromoType.Size = New System.Drawing.Size(96, 16)
+		Me.lblPromoType.TabIndex = 0
+		Me.lblPromoType.Text = "PromoType: "
+		'
 		'StepB
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlPromoType)
 		Me.Controls.Add(Me.pnlPromoID)
 		Me.Controls.Add(Me.pnlEditPromoID)
 		Me.Controls.Add(Me.pnlRecurring)
@@ -302,6 +341,7 @@ Partial Class StepB
 		Me.Controls.SetChildIndex(Me.pnlRecurring, 0)
 		Me.Controls.SetChildIndex(Me.pnlEditPromoID, 0)
 		Me.Controls.SetChildIndex(Me.pnlPromoID, 0)
+		Me.Controls.SetChildIndex(Me.pnlPromoType, 0)
 		Me.pnlPromoName.ResumeLayout(False)
 		Me.pnlPromoName.PerformLayout()
 		Me.pnlRecurring.ResumeLayout(False)
@@ -313,6 +353,8 @@ Partial Class StepB
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlEditPromoID.ResumeLayout(False)
 		Me.pnlEditPromoID.PerformLayout()
+		Me.pnlPromoType.ResumeLayout(False)
+		Me.pnlPromoType.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -334,5 +376,8 @@ Partial Class StepB
 	Friend WithEvents txtEditPromoID As System.Windows.Forms.TextBox
 	Friend WithEvents txtPromoName As CustomizedTextBox.CustomizedTextBox
 	Friend WithEvents btnPromoID As System.Windows.Forms.Button
+	Friend WithEvents pnlPromoType As System.Windows.Forms.Panel
+	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
+	Friend WithEvents lblPromoType As System.Windows.Forms.Label
 
 End Class

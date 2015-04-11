@@ -44,6 +44,7 @@ Public Class StepB
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
 		Dim frequency As String = New String("W")
+		Me.stepB_data.PromoType = Me.txtPromoType.Text
 		Me.stepB_data.ID = Me.btnPromoID.Text
 		Me.stepB_data.Name = Me.txtPromoName.Text
 		If Me.rbRecurringYes.Checked Then
@@ -81,6 +82,7 @@ Public Class StepB
 	Private promoID As String
 	Private promoNameEntered As Boolean
 	Private promoNameLeft As Boolean
+	Private promoTypeEntered As Boolean
 
 	''' <summary>
 	''' Gets Date information on show.
@@ -141,6 +143,8 @@ Public Class StepB
 
 	Private Sub StepB_ResetControls()
 		Me.txtPromoName.Text = ""
+		Me.txtPromoType.Text = "EX: 31B"
+		Me.promoTypeEntered = False
 		Me.rbRecurringNo.Checked = True
 		Me.cbRecurringFrequency.Enabled = False
 		Me.cbRecurringFrequency.SelectedIndex = -1
@@ -157,12 +161,23 @@ Public Class StepB
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
 
 		StepB_SetData()
+
+		If Me.Data.PromoType_Invalid() Then
+			cancelContinuingToNextStep = True
+			errString = "PromoType Invalid."
+			errStrArray.Add(errString)
+			GUI_Util.errPnl(Me.pnlPromoType)
+		Else
+			GUI_Util.regPnl(Me.pnlPromoType)
+		End If
 
 		If Me.Data.PromoID_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = "PromoID Invalid."
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoID)
 		Else
 			GUI_Util.regPnl(Me.pnlPromoID)
@@ -171,8 +186,8 @@ Public Class StepB
 		If Me.Data.PromoName_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = Me.Data.PromoName_Invalid_GetErrString()
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoName)
-			Me.ActiveControl = Me.txtPromoName
 		Else
 			GUI_Util.regPnl(Me.pnlPromoName)
 		End If
@@ -180,8 +195,8 @@ Public Class StepB
 		If Me.Data.Recurring_Period_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = "Please select Recurring period option."
+			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlRecurring)
-			Me.ActiveControl = Me.cbRecurringFrequency
 			Me.cbRecurringFrequency.DroppedDown = True
 		Else
 			GUI_Util.regPnl(Me.pnlRecurring)
@@ -189,7 +204,9 @@ Public Class StepB
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
-			GUI_Util.msgBox(errString)
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
 		End If
 	End Sub
 #End Region
@@ -207,6 +224,15 @@ Public Class StepB
 			Me.cbRecurringFrequency.DroppedDown = True
 		Else
 			Me.cbRecurringFrequency.Enabled = False
+		End If
+	End Sub
+#End Region
+#Region "StepB_txtPromoType_Enter"
+	Private Sub txtPromoType_Enter(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Enter
+		If Me.promoTypeEntered = False Then
+			Me.txtPromoType.Text = ""
+			Me.promoTypeEntered = True
 		End If
 	End Sub
 #End Region
