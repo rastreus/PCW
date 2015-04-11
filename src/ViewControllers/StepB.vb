@@ -92,6 +92,9 @@ Public Class StepB
 	''' <remarks>This Step uses current Date info on show.</remarks>
 	Private Sub StepB_ShowStep(sender As Object, e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
+		End If
 		Me.promoAcronym = New String("")
 		Me.promoMonth = getPromoMonth()
 		Me.promoYear = getPromoYear()
@@ -207,6 +210,9 @@ Public Class StepB
 			For Each errStr As String In errStrArray
 				GUI_Util.msgBox(errStr)
 			Next
+		Else
+			'Step has been set if no error.
+			Me.stepB_data.StepNotSet = False
 		End If
 	End Sub
 #End Region
@@ -236,6 +242,12 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
+#Region "StepB_txtPromoType_Leave"
+	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Leave
+		CheckForNext()
+	End Sub
+#End Region
 #Region "StepB_txtPromoName_Enter"
 	Private Sub txtPromoName_Enter(sender As Object, e As EventArgs) _
 		Handles txtPromoName.Enter
@@ -251,6 +263,7 @@ Public Class StepB
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
 		End If
+		CheckForNext()
 	End Sub
 
 	Private Function getPromoAcronym() As String
@@ -297,4 +310,10 @@ Public Class StepB
 		Return txt
 	End Function
 #End Region
+
+	Private Sub CheckForNext()
+		If promoTypeEntered And promoNameEntered Then
+			PCW.NextEnabled = True
+		End If
+	End Sub
 End Class

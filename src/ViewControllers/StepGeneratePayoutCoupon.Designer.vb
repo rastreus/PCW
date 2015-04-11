@@ -26,11 +26,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnTxtEditCouponID = New System.Windows.Forms.Button()
 		Me.lblEditCouponID = New System.Windows.Forms.Label()
 		Me.txtEditCouponID = New System.Windows.Forms.TextBox()
-		Me.Panel4 = New System.Windows.Forms.Panel()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-		Me.Label6 = New System.Windows.Forms.Label()
-		Me.Label5 = New System.Windows.Forms.Label()
 		Me.pnlCouponID = New System.Windows.Forms.Panel()
 		Me.lblCouponID = New System.Windows.Forms.Label()
 		Me.pnlPapayaWhip = New System.Windows.Forms.Panel()
@@ -53,7 +48,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.txtCouponsPerPatron = New System.Windows.Forms.TextBox()
 		Me.Label7 = New System.Windows.Forms.Label()
 		Me.pnlEditCouponID.SuspendLayout()
-		Me.Panel4.SuspendLayout()
 		Me.pnlCouponID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlMaxAmtAllCoupons.SuspendLayout()
@@ -120,58 +114,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.txtEditCouponID.Size = New System.Drawing.Size(85, 23)
 		Me.txtEditCouponID.TabIndex = 0
 		Me.txtEditCouponID.Text = "EXAMPLE1513"
-		'
-		'Panel4
-		'
-		Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.Panel4.Controls.Add(Me.RadioButton2)
-		Me.Panel4.Controls.Add(Me.RadioButton1)
-		Me.Panel4.Controls.Add(Me.Label6)
-		Me.Panel4.Controls.Add(Me.Label5)
-		Me.Panel4.Location = New System.Drawing.Point(406, 169)
-		Me.Panel4.Name = "Panel4"
-		Me.Panel4.Size = New System.Drawing.Size(175, 111)
-		Me.Panel4.TabIndex = 5
-		'
-		'RadioButton2
-		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.Checked = True
-		Me.RadioButton2.Location = New System.Drawing.Point(3, 83)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(39, 17)
-		Me.RadioButton2.TabIndex = 5
-		Me.RadioButton2.TabStop = True
-		Me.RadioButton2.Text = "No"
-		Me.RadioButton2.UseVisualStyleBackColor = True
-		'
-		'RadioButton1
-		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.Location = New System.Drawing.Point(3, 59)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(43, 17)
-		Me.RadioButton1.TabIndex = 4
-		Me.RadioButton1.Text = "Yes"
-		Me.RadioButton1.UseVisualStyleBackColor = True
-		'
-		'Label6
-		'
-		Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label6.Location = New System.Drawing.Point(3, 18)
-		Me.Label6.Name = "Label6"
-		Me.Label6.Size = New System.Drawing.Size(167, 37)
-		Me.Label6.TabIndex = 3
-		Me.Label6.Text = "If No, coupon value will be the max. value of a single coupon."
-		'
-		'Label5
-		'
-		Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label5.Location = New System.Drawing.Point(0, 2)
-		Me.Label5.Name = "Label5"
-		Me.Label5.Size = New System.Drawing.Size(182, 16)
-		Me.Label5.TabIndex = 1
-		Me.Label5.Text = "Will value be prompted?"
 		'
 		'pnlCouponID
 		'
@@ -422,7 +364,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.Controls.Add(Me.pnlMaxAmtAllCoupons)
 		Me.Controls.Add(Me.pnlMaxAmtOneCoupon)
 		Me.Controls.Add(Me.pnlCouponID)
-		Me.Controls.Add(Me.Panel4)
 		Me.Controls.Add(Me.pnlEditCouponID)
 		Me.Name = "StepGeneratePayoutCoupon"
 		Me.NextStep = "StepH"
@@ -431,15 +372,12 @@ Partial Class StepGeneratePayoutCoupon
 		Me.StepDescription = "Free Play Coupon options are determined here."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlEditCouponID, 0)
-		Me.Controls.SetChildIndex(Me.Panel4, 0)
 		Me.Controls.SetChildIndex(Me.pnlCouponID, 0)
 		Me.Controls.SetChildIndex(Me.pnlMaxAmtOneCoupon, 0)
 		Me.Controls.SetChildIndex(Me.pnlMaxAmtAllCoupons, 0)
 		Me.Controls.SetChildIndex(Me.pnlCouponsPerPatron, 0)
 		Me.pnlEditCouponID.ResumeLayout(False)
 		Me.pnlEditCouponID.PerformLayout()
-		Me.Panel4.ResumeLayout(False)
-		Me.Panel4.PerformLayout()
 		Me.pnlCouponID.ResumeLayout(False)
 		Me.pnlCouponID.PerformLayout()
 		Me.pnlPapayaWhip.ResumeLayout(False)
@@ -457,11 +395,6 @@ Partial Class StepGeneratePayoutCoupon
 
 	End Sub
 	Friend WithEvents pnlEditCouponID As System.Windows.Forms.Panel
-	Friend WithEvents Panel4 As System.Windows.Forms.Panel
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-	Friend WithEvents Label6 As System.Windows.Forms.Label
-	Friend WithEvents Label5 As System.Windows.Forms.Label
 	Friend WithEvents pnlCouponID As System.Windows.Forms.Panel
 	Friend WithEvents lblCouponIDEdit As System.Windows.Forms.Label
 	Friend WithEvents btnCouponID As System.Windows.Forms.Button
