@@ -129,6 +129,7 @@ Public Class StepGeneratePayoutCoupon
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errStrArray As ArrayList = New ArrayList
 
 		StepGeneratePayoutCoupon_SetData()
 
@@ -136,6 +137,7 @@ Public Class StepGeneratePayoutCoupon
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtOneCoupon)
 			errString = "Max Coupon must be a decimal amount i.e. 500.00."
+			errStrArray.Add(errString)
 			Me.ActiveControl = Me.txtMaxAmtOneCoupon
 		Else
 			GUI_Util.regPnl(Me.pnlMaxAmtOneCoupon)
@@ -145,6 +147,7 @@ Public Class StepGeneratePayoutCoupon
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtAllCoupons)
 			errString = "Promo Max Coupon must be a decimal amount i.e. 15000.00."
+			errStrArray.Add(errString)
 			Me.ActiveControl = Me.txtMaxAmtAllCoupons
 		Else
 			If Not Me.Data.BadCouponAmts() Then
@@ -159,6 +162,7 @@ Public Class StepGeneratePayoutCoupon
 				cancelContinuingToNextStep = True
 				GUI_Util.errPnl(Me.pnlMaxAmtAllCoupons)
 				errString = "Promo Max Coupon amount is less than the Max Coupon amount."
+				errStrArray.Add(errString)
 				Me.ActiveControl = Me.txtMaxAmtAllCoupons
 			Else
 				If Not Me.Data.CouponAmtForEntirePromo_Invalid() Then
@@ -169,7 +173,9 @@ Public Class StepGeneratePayoutCoupon
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
-			GUI_Util.msgBox(errString)
+			For Each errStr As String In errStrArray
+				GUI_Util.msgBox(errStr)
+			Next
 		End If
 	End Sub
 #End Region
