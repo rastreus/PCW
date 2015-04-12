@@ -124,11 +124,18 @@
     </Compile>
     <Compile Include="src\Interfaces\IPromoData.vb" />
     <Compile Include="src\Interfaces\IWizardStep.vb" />
+    <Compile Include="src\Models\StepDetermineOfferList_Data.vb" />
     <Compile Include="src\Models\StepD_Data.vb" />
     <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
     <Compile Include="src\Models\StepF_Data.vb" />
     <Compile Include="src\Models\StepGeneratePayoutCoupon_Data.vb" />
     <Compile Include="src\Models\StepH_Data.vb" />
+    <Compile Include="src\ViewControllers\StepDetermineOfferList.Designer.vb">
+      <DependentUpon>StepDetermineOfferList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepDetermineOfferList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\_Utils\GUI_Util.vb" />
     <Compile Include="resources\MarketingPromos.designer.vb">
       <AutoGen>True</AutoGen>
@@ -253,6 +260,8 @@
     <None Include="My Project\app.manifest" />
     <None Include="README.md" />
     <None Include="research\PromoTypeDescriptions.xlsx" />
+    <None Include="research\Target-Lists\Monthly Mailer Target List.csv" />
+    <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
     <None Include="resources\MarketingPromos.dbml.layout">
       <DependentUpon>MarketingPromos.dbml</DependentUpon>
     </None>
@@ -358,6 +367,7 @@
     <Content Include="Future-Developer-README.txt" />
     <Content Include="LICENSE\PromotionalCreationWizard-License.txt" />
     <Content Include="research\PromoTypeBNF.txt" />
+    <Content Include="research\Target-Lists\_Note-About-Target-List.txt" />
     <Content Include="resources\CenteredMessagebox.dll" />
     <Content Include="resources\CustomizedTextBox.dll" />
     <Content Include="resources\FontAwesomeIcons.dll" />

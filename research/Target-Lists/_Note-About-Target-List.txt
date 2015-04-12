@@ -1,0 +1,2 @@
+Monthly Mailer:			CouponTargets;
+Postcard Drawing:      MarketingPromoEligiblePlayers;
