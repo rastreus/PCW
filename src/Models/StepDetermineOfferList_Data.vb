@@ -24,6 +24,10 @@
 
 	Private Sub MakeEligiblePlayersDataTable()
 		Me._dataEligiblePlayersDataTable = New DataTable("EligiblePlayers")
+		EligiblePlayersDataTable.Columns.Add("PromoID", GetType(String))
+		EligiblePlayersDataTable.Columns.Add("PlayerID", GetType(UInt64))
+		EligiblePlayersDataTable.Columns.Add("NumOfTickets", GetType(Integer))
+		EligiblePlayersDataTable.Columns.Add("TicketAmount", GetType(Decimal))
 	End Sub
 #End Region
 #Region "Properties"
@@ -112,7 +116,30 @@
 			Catch ex As Exception
 				'
 			End Try
+		Loop
+	End Sub
+#End Region
+#Region "CSVtoEligiblePlayers"
+	Private Sub CSVtoEligiblePlayersDataTable(ByVal promoID As String)
+		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
+		parser.Delimiters = New String() {","}		'Fields are separated by comma
+		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
+		parser.TrimWhiteSpace = True
 
+		parser.ReadLine()							'First line is skipped, its the headers
+
+		Dim currentRow(13) As String				'Create a String Array
+		Do Until parser.EndOfData = True
+			Try
+				currentRow = parser.ReadFields()
+				EligiblePlayersDataTable.Rows.Add(promoID, _
+												  currentRow(0), _
+												  currentRow(13), _
+												  Nothing)
+
+			Catch ex As Exception
+				'
+			End Try
 		Loop
 	End Sub
 #End Region
