@@ -7,7 +7,7 @@
 	End Sub
 
 	Private Sub MakeCouponTargetsDataTable()
-		Me._dataEligiblePlayersDataTable = New DataTable("CouponTargets")
+		Me._dataCouponTargetsDataTable = New DataTable("CouponTargets")
 		CouponTargetsDataTable.Columns.Add("OfferID", GetType(String))
 		CouponTargetsDataTable.Columns.Add("Coupon", GetType(Short))
 		CouponTargetsDataTable.Columns.Add("Account", GetType(UInt64))

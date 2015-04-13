@@ -380,7 +380,7 @@ Partial Class StepD
 		Me.Controls.Add(Me.pnlPromoType)
 		Me.Name = "StepD"
 		Me.NextStep = "StepEntryTicketAmt"
-		Me.PreviousStep = "StepC"
+		Me.PreviousStep = "StepCanHazSecurity"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Of the five available types, which will this promo be?"
 		Me.Controls.SetChildIndex(Me.pnlPromoType, 0)

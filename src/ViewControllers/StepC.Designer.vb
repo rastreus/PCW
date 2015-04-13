@@ -576,7 +576,7 @@ Partial Class StepC
 		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
 		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Name = "StepC"
-		Me.NextStep = "StepD"
+		Me.NextStep = "StepCanHazSecurity"
 		Me.PreviousStep = "StepB"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Set the date information for the promotional."

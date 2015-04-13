@@ -236,7 +236,7 @@ Public Class StepC
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
 
-		Me.StepC_SetData()
+		StepC_SetData()
 
 		If Recurring_Promo() Then
 			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, Me.endDayBool) Then
