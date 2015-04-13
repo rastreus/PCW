@@ -8,7 +8,7 @@ Public Class StepGetCouponOffers
 		' This call is required by the designer.
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
-		Me.stepGetCouponOffers_data = New StepGetCouponTargets_Data
+		Me.stepGetCouponOffers_data = New StepGetCouponOffers_Data
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_Data"
@@ -16,8 +16,8 @@ Public Class StepGetCouponOffers
 	''' Model for StepStepGetCouponOffers.
 	''' </summary>
 	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
-	Private stepGetCouponOffers_data As StepGetCouponTargets_Data
-	Public ReadOnly Property Data() As StepGetCouponTargets_Data
+	Private stepGetCouponOffers_data As StepGetCouponOffers_Data
+	Public ReadOnly Property Data() As StepGetCouponOffers_Data
 		Get
 			Return Me.stepGetCouponOffers_data
 		End Get
@@ -47,7 +47,7 @@ Public Class StepGetCouponOffers
 	''' <remarks>A lot of controls to get correct.</remarks>
 	Private Sub StepGetCouponOffers_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
-		Me.StepGetCouponOffers_data = New StepGetCouponTargets_Data
+		Me.stepGetCouponOffers_data = New StepGetCouponOffers_Data
 		StepGetCouponOffers_ResetControls()
 	End Sub
 
