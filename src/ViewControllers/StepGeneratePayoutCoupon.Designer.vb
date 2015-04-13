@@ -366,7 +366,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.Controls.Add(Me.pnlCouponID)
 		Me.Controls.Add(Me.pnlEditCouponID)
 		Me.Name = "StepGeneratePayoutCoupon"
-		Me.NextStep = "StepH"
+		Me.NextStep = "StepDetermineOfferList"
 		Me.PreviousStep = "StepF"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Free Play Coupon options are determined here."

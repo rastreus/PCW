@@ -345,6 +345,8 @@ Partial Class StepDetermineOfferList
 		Me.Controls.Add(Me.pnlExclusionDays)
 		Me.ForeColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.Name = "StepDetermineOfferList"
+		Me.NextStep = "StepGatherTargetList"
+		Me.PreviousStep = "StepGeneratePayoutCoupon"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Drag and drop Offer Lists here."
 		Me.Controls.SetChildIndex(Me.Description, 0)

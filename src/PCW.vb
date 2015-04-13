@@ -57,10 +57,11 @@ Public Class PCW
 		AddStep("StepC", New StepC)
 		AddStep("StepCanHazSecurity", New StepCanHazSecurity)
 		AddStep("StepD", New StepD)
-		AddStep("StepDetermineOfferList", New StepDetermineOfferList)
 		AddStep("StepF", New StepF)
 		AddStep("StepEntryTicketAmt", New StepEntryTicketAmt)
 		AddStep("StepGeneratePayoutCoupon", New StepGeneratePayoutCoupon)
+		AddStep("StepDetermineOfferList", New StepDetermineOfferList)
+		'AddStep("StepGatherTargetList", New StepGatherTargetList)
 		AddStep("StepH", New StepH)
 		AddStep("StepI", New StepI)
 		AddStep("StepJ", New StepJ)
@@ -108,7 +109,7 @@ Your changes will not be saved if you do.</a>.Value
 		End If
 	End Function
 #End Region
-
+#Region "Crusty, old, commented-out Code"
 	'#Region "DeterminePromoType"
 	'	'This function routes to other functions,
 	'	'just trying to figure out the promotype.
@@ -598,4 +599,5 @@ Your changes will not be saved if you do.</a>.Value
 	'		Return If(stepG1.txtTicketsPerPatron.Text = "1", True, False)
 	'	End Function
 	'#End Region
+#End Region
 End Class
