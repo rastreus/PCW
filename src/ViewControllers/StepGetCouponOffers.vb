@@ -62,11 +62,6 @@ Public Class StepGetCouponOffers
 		Me.dtpValidEnd.Value = DateTime.Today
 		Me.dtpExcludeStart.Value = DateTime.Today
 		Me.dtpExcludeEnd.Value = DateTime.Today
-		Me.MonthCal.Visible = False
-		Me.MonthCal.Enabled = False
-		Me.MonthCal.TodayDate = DateTime.Today.Date.ToString
-		Me.MonthCal.SetSelectionRange(DateTime.Today.Date.ToString(), _
-									  DateTime.Today.Date.ToString())
 		Me.rbExcludeDaysNO.Checked = True
 		Me.pnlExcludeRange.Enabled = False
 		Me.pnlExclusionDays.Enabled = False
@@ -142,11 +137,6 @@ Public Class StepGetCouponOffers
 	''' <remarks>Make the MonthCal visible too!</remarks>
 	Private Sub checkStartEndValidBools()
 		If Me.validStartBool And Me.validEndBool Then
-			Me.MonthCal.SetSelectionRange(Me.dtpValidStart.Value.Date.ToString(), _
-										  Me.dtpValidEnd.Value.Date.ToString())
-			If Me.MonthCal.Visible = False Then
-				Me.MonthCal.Visible = True
-			End If
 			If Me.btnSubmit.Enabled = False Then
 				Me.btnSubmit.Enabled = True
 			End If

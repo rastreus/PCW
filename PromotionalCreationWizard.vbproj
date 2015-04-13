@@ -125,6 +125,7 @@
     <Compile Include="src\Interfaces\IPromoData.vb" />
     <Compile Include="src\Interfaces\IWizardStep.vb" />
     <Compile Include="src\Models\StepCanHazSecurity_Data.vb" />
+    <Compile Include="src\Models\StepGetCouponOffers_Data.vb" />
     <Compile Include="src\Models\StepGetCouponTargets_Data.vb" />
     <Compile Include="src\Models\StepD_Data.vb" />
     <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
@@ -137,10 +138,10 @@
     <Compile Include="src\ViewControllers\StepCanHazSecurity.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ViewControllers\StepDetermineOfferList.Designer.vb">
-      <DependentUpon>StepDetermineOfferList.vb</DependentUpon>
+    <Compile Include="src\ViewControllers\StepGetCouponOffers.Designer.vb">
+      <DependentUpon>StepGetCouponOffers.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\ViewControllers\StepDetermineOfferList.vb">
+    <Compile Include="src\ViewControllers\StepGetCouponOffers.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\_Utils\GUI_Util.vb" />
@@ -300,8 +301,8 @@
     <EmbeddedResource Include="src\ViewControllers\StepCanHazSecurity.resx">
       <DependentUpon>StepCanHazSecurity.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\ViewControllers\StepDetermineOfferList.resx">
-      <DependentUpon>StepDetermineOfferList.vb</DependentUpon>
+    <EmbeddedResource Include="src\ViewControllers\StepGetCouponOffers.resx">
+      <DependentUpon>StepGetCouponOffers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepEntryTicketAmt.resx">
       <DependentUpon>StepEntryTicketAmt.vb</DependentUpon>

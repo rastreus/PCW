@@ -23,8 +23,6 @@ Partial Class StepGetCouponOffers
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
-		Me.pnlMonthCal = New System.Windows.Forms.Panel()
-		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
 		Me.pnlExclusionDays = New System.Windows.Forms.Panel()
 		Me.cbSelectAll = New System.Windows.Forms.CheckBox()
 		Me.lblExcludedDays = New System.Windows.Forms.Label()
@@ -52,7 +50,24 @@ Partial Class StepGetCouponOffers
 		Me.rbExcludeDaysNO = New System.Windows.Forms.RadioButton()
 		Me.rbExcludeDaysYES = New System.Windows.Forms.RadioButton()
 		Me.lblAskExclude = New System.Windows.Forms.Label()
-		Me.pnlMonthCal.SuspendLayout()
+		Me.pnlFullValidate = New System.Windows.Forms.Panel()
+		Me.pnlFullValidatePapayaWhip = New System.Windows.Forms.Panel()
+		Me.rbFullValidateNO = New System.Windows.Forms.RadioButton()
+		Me.rbFullValidateYES = New System.Windows.Forms.RadioButton()
+		Me.lblFullValidate = New System.Windows.Forms.Label()
+		Me.pnlReprintable = New System.Windows.Forms.Panel()
+		Me.pnlReprintablePapayaWhip = New System.Windows.Forms.Panel()
+		Me.rbReprintableNO = New System.Windows.Forms.RadioButton()
+		Me.rbReprintableYES = New System.Windows.Forms.RadioButton()
+		Me.lblReprintable = New System.Windows.Forms.Label()
+		Me.pnlScanToReceipt = New System.Windows.Forms.Panel()
+		Me.pnlScanToReceiptPapayaWhip = New System.Windows.Forms.Panel()
+		Me.rbScanToReceiptNO = New System.Windows.Forms.RadioButton()
+		Me.rbScanToReceiptYES = New System.Windows.Forms.RadioButton()
+		Me.lblScanToReceipt = New System.Windows.Forms.Label()
+		Me.pnlNote = New System.Windows.Forms.Panel()
+		Me.lblNote = New System.Windows.Forms.Label()
+		Me.txtNote = New System.Windows.Forms.TextBox()
 		Me.pnlExclusionDays.SuspendLayout()
 		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
@@ -63,40 +78,19 @@ Partial Class StepGetCouponOffers
 		Me.pnlCouponOffers.SuspendLayout()
 		Me.pnlAskExclude.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
+		Me.pnlFullValidate.SuspendLayout()
+		Me.pnlFullValidatePapayaWhip.SuspendLayout()
+		Me.pnlReprintable.SuspendLayout()
+		Me.pnlReprintablePapayaWhip.SuspendLayout()
+		Me.pnlScanToReceipt.SuspendLayout()
+		Me.pnlScanToReceiptPapayaWhip.SuspendLayout()
+		Me.pnlNote.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
 		Me.Description.Text = "Drag and drop Offer Lists here."
-		'
-		'pnlMonthCal
-		'
-		Me.pnlMonthCal.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.pnlMonthCal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlMonthCal.Controls.Add(Me.MonthCal)
-		Me.pnlMonthCal.Location = New System.Drawing.Point(3, 100)
-		Me.pnlMonthCal.Name = "pnlMonthCal"
-		Me.pnlMonthCal.Size = New System.Drawing.Size(220, 192)
-		Me.pnlMonthCal.TabIndex = 28
-		'
-		'MonthCal
-		'
-		Me.MonthCal.BackColor = System.Drawing.Color.White
-		Me.MonthCal.Cursor = System.Windows.Forms.Cursors.No
-		Me.MonthCal.Enabled = False
-		Me.MonthCal.ForeColor = System.Drawing.SystemColors.ControlText
-		Me.MonthCal.Location = New System.Drawing.Point(6, 11)
-		Me.MonthCal.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
-		Me.MonthCal.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
-		Me.MonthCal.Name = "MonthCal"
-		Me.MonthCal.ShowToday = False
-		Me.MonthCal.ShowTodayCircle = False
-		Me.MonthCal.TabIndex = 15
-		Me.MonthCal.TitleBackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.MonthCal.TitleForeColor = System.Drawing.Color.Gold
-		Me.MonthCal.TrailingForeColor = System.Drawing.Color.Gray
-		Me.MonthCal.Visible = False
 		'
 		'pnlExclusionDays
 		'
@@ -106,7 +100,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlExclusionDays.Controls.Add(Me.lblExcludedDays)
 		Me.pnlExclusionDays.Controls.Add(Me.clbExcludeDays)
 		Me.pnlExclusionDays.Enabled = False
-		Me.pnlExclusionDays.Location = New System.Drawing.Point(383, 100)
+		Me.pnlExclusionDays.Location = New System.Drawing.Point(385, 102)
 		Me.pnlExclusionDays.Name = "pnlExclusionDays"
 		Me.pnlExclusionDays.Size = New System.Drawing.Size(173, 192)
 		Me.pnlExclusionDays.TabIndex = 27
@@ -156,7 +150,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeStart)
 		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeEnd)
 		Me.pnlExcludeRange.Enabled = False
-		Me.pnlExcludeRange.Location = New System.Drawing.Point(335, 5)
+		Me.pnlExcludeRange.Location = New System.Drawing.Point(338, 5)
 		Me.pnlExcludeRange.Name = "pnlExcludeRange"
 		Me.pnlExcludeRange.Size = New System.Drawing.Size(220, 89)
 		Me.pnlExcludeRange.TabIndex = 29
@@ -302,9 +296,9 @@ Partial Class StepGetCouponOffers
 		Me.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnSubmit.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSubmit.ForeColor = System.Drawing.Color.White
-		Me.btnSubmit.Location = New System.Drawing.Point(6, 158)
+		Me.btnSubmit.Location = New System.Drawing.Point(9, 159)
 		Me.btnSubmit.Name = "btnSubmit"
-		Me.btnSubmit.Size = New System.Drawing.Size(132, 26)
+		Me.btnSubmit.Size = New System.Drawing.Size(140, 26)
 		Me.btnSubmit.TabIndex = 31
 		Me.btnSubmit.Text = "Submit"
 		Me.btnSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -315,11 +309,12 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponOffers.BackColor = System.Drawing.Color.Transparent
 		Me.lblCouponOffers.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblCouponOffers.ForeColor = System.Drawing.Color.White
-		Me.lblCouponOffers.Location = New System.Drawing.Point(3, 0)
+		Me.lblCouponOffers.Location = New System.Drawing.Point(-2, 0)
 		Me.lblCouponOffers.Name = "lblCouponOffers"
-		Me.lblCouponOffers.Size = New System.Drawing.Size(143, 23)
+		Me.lblCouponOffers.Size = New System.Drawing.Size(164, 23)
 		Me.lblCouponOffers.TabIndex = 32
 		Me.lblCouponOffers.Text = "Coupon Offers List:"
+		Me.lblCouponOffers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'pnlCouponOffers
 		'
@@ -328,9 +323,9 @@ Partial Class StepGetCouponOffers
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffersList)
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffers)
 		Me.pnlCouponOffers.Controls.Add(Me.btnSubmit)
-		Me.pnlCouponOffers.Location = New System.Drawing.Point(229, 100)
+		Me.pnlCouponOffers.Location = New System.Drawing.Point(215, 102)
 		Me.pnlCouponOffers.Name = "pnlCouponOffers"
-		Me.pnlCouponOffers.Size = New System.Drawing.Size(148, 192)
+		Me.pnlCouponOffers.Size = New System.Drawing.Size(164, 192)
 		Me.pnlCouponOffers.TabIndex = 33
 		'
 		'lblCouponOffersList
@@ -338,9 +333,9 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponOffersList.BackColor = System.Drawing.Color.Gainsboro
 		Me.lblCouponOffersList.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblCouponOffersList.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.lblCouponOffersList.Location = New System.Drawing.Point(6, 23)
+		Me.lblCouponOffersList.Location = New System.Drawing.Point(9, 23)
 		Me.lblCouponOffersList.Name = "lblCouponOffersList"
-		Me.lblCouponOffersList.Size = New System.Drawing.Size(132, 132)
+		Me.lblCouponOffersList.Size = New System.Drawing.Size(140, 133)
 		Me.lblCouponOffersList.TabIndex = 33
 		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
 		Me.lblCouponOffersList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -351,18 +346,18 @@ Partial Class StepGetCouponOffers
 		Me.pnlAskExclude.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlAskExclude.Controls.Add(Me.pnlPapayaWhip)
 		Me.pnlAskExclude.Controls.Add(Me.lblAskExclude)
-		Me.pnlAskExclude.Location = New System.Drawing.Point(229, 5)
+		Me.pnlAskExclude.Location = New System.Drawing.Point(231, 5)
 		Me.pnlAskExclude.Name = "pnlAskExclude"
 		Me.pnlAskExclude.Size = New System.Drawing.Size(100, 89)
 		Me.pnlAskExclude.TabIndex = 34
 		'
 		'pnlPapayaWhip
 		'
-		Me.pnlPapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPapayaWhip.BackColor = System.Drawing.Color.Pink
 		Me.pnlPapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysNO)
 		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysYES)
-		Me.pnlPapayaWhip.Location = New System.Drawing.Point(6, 21)
+		Me.pnlPapayaWhip.Location = New System.Drawing.Point(6, 26)
 		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
 		Me.pnlPapayaWhip.Size = New System.Drawing.Size(82, 56)
 		Me.pnlPapayaWhip.TabIndex = 1
@@ -393,7 +388,6 @@ Partial Class StepGetCouponOffers
 		'
 		'lblAskExclude
 		'
-		Me.lblAskExclude.AutoSize = True
 		Me.lblAskExclude.BackColor = System.Drawing.Color.Transparent
 		Me.lblAskExclude.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblAskExclude.ForeColor = System.Drawing.Color.White
@@ -402,31 +396,244 @@ Partial Class StepGetCouponOffers
 		Me.lblAskExclude.Size = New System.Drawing.Size(91, 13)
 		Me.lblAskExclude.TabIndex = 0
 		Me.lblAskExclude.Text = "Exclude Days?"
+		Me.lblAskExclude.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'StepDetermineOfferList
+		'pnlFullValidate
+		'
+		Me.pnlFullValidate.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlFullValidate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlFullValidate.Controls.Add(Me.pnlFullValidatePapayaWhip)
+		Me.pnlFullValidate.Controls.Add(Me.lblFullValidate)
+		Me.pnlFullValidate.Location = New System.Drawing.Point(3, 100)
+		Me.pnlFullValidate.Name = "pnlFullValidate"
+		Me.pnlFullValidate.Size = New System.Drawing.Size(100, 89)
+		Me.pnlFullValidate.TabIndex = 35
+		'
+		'pnlFullValidatePapayaWhip
+		'
+		Me.pnlFullValidatePapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlFullValidatePapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlFullValidatePapayaWhip.Controls.Add(Me.rbFullValidateNO)
+		Me.pnlFullValidatePapayaWhip.Controls.Add(Me.rbFullValidateYES)
+		Me.pnlFullValidatePapayaWhip.Location = New System.Drawing.Point(6, 21)
+		Me.pnlFullValidatePapayaWhip.Name = "pnlFullValidatePapayaWhip"
+		Me.pnlFullValidatePapayaWhip.Size = New System.Drawing.Size(82, 56)
+		Me.pnlFullValidatePapayaWhip.TabIndex = 1
+		'
+		'rbFullValidateNO
+		'
+		Me.rbFullValidateNO.AutoSize = True
+		Me.rbFullValidateNO.Checked = True
+		Me.rbFullValidateNO.ForeColor = System.Drawing.Color.Black
+		Me.rbFullValidateNO.Location = New System.Drawing.Point(16, 31)
+		Me.rbFullValidateNO.Name = "rbFullValidateNO"
+		Me.rbFullValidateNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbFullValidateNO.TabIndex = 1
+		Me.rbFullValidateNO.TabStop = True
+		Me.rbFullValidateNO.Text = "No"
+		Me.rbFullValidateNO.UseVisualStyleBackColor = True
+		'
+		'rbFullValidateYES
+		'
+		Me.rbFullValidateYES.AutoSize = True
+		Me.rbFullValidateYES.ForeColor = System.Drawing.Color.Black
+		Me.rbFullValidateYES.Location = New System.Drawing.Point(16, 8)
+		Me.rbFullValidateYES.Name = "rbFullValidateYES"
+		Me.rbFullValidateYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbFullValidateYES.TabIndex = 0
+		Me.rbFullValidateYES.Text = "Yes"
+		Me.rbFullValidateYES.UseVisualStyleBackColor = True
+		'
+		'lblFullValidate
+		'
+		Me.lblFullValidate.BackColor = System.Drawing.Color.Transparent
+		Me.lblFullValidate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblFullValidate.ForeColor = System.Drawing.Color.White
+		Me.lblFullValidate.Location = New System.Drawing.Point(3, 0)
+		Me.lblFullValidate.Name = "lblFullValidate"
+		Me.lblFullValidate.Size = New System.Drawing.Size(91, 13)
+		Me.lblFullValidate.TabIndex = 0
+		Me.lblFullValidate.Text = "Full Validate?"
+		Me.lblFullValidate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'pnlReprintable
+		'
+		Me.pnlReprintable.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlReprintable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlReprintable.Controls.Add(Me.pnlReprintablePapayaWhip)
+		Me.pnlReprintable.Controls.Add(Me.lblReprintable)
+		Me.pnlReprintable.Location = New System.Drawing.Point(109, 100)
+		Me.pnlReprintable.Name = "pnlReprintable"
+		Me.pnlReprintable.Size = New System.Drawing.Size(100, 89)
+		Me.pnlReprintable.TabIndex = 36
+		'
+		'pnlReprintablePapayaWhip
+		'
+		Me.pnlReprintablePapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlReprintablePapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlReprintablePapayaWhip.Controls.Add(Me.rbReprintableNO)
+		Me.pnlReprintablePapayaWhip.Controls.Add(Me.rbReprintableYES)
+		Me.pnlReprintablePapayaWhip.Location = New System.Drawing.Point(6, 21)
+		Me.pnlReprintablePapayaWhip.Name = "pnlReprintablePapayaWhip"
+		Me.pnlReprintablePapayaWhip.Size = New System.Drawing.Size(82, 56)
+		Me.pnlReprintablePapayaWhip.TabIndex = 1
+		'
+		'rbReprintableNO
+		'
+		Me.rbReprintableNO.AutoSize = True
+		Me.rbReprintableNO.Checked = True
+		Me.rbReprintableNO.ForeColor = System.Drawing.Color.Black
+		Me.rbReprintableNO.Location = New System.Drawing.Point(16, 31)
+		Me.rbReprintableNO.Name = "rbReprintableNO"
+		Me.rbReprintableNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbReprintableNO.TabIndex = 1
+		Me.rbReprintableNO.TabStop = True
+		Me.rbReprintableNO.Text = "No"
+		Me.rbReprintableNO.UseVisualStyleBackColor = True
+		'
+		'rbReprintableYES
+		'
+		Me.rbReprintableYES.AutoSize = True
+		Me.rbReprintableYES.ForeColor = System.Drawing.Color.Black
+		Me.rbReprintableYES.Location = New System.Drawing.Point(16, 8)
+		Me.rbReprintableYES.Name = "rbReprintableYES"
+		Me.rbReprintableYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbReprintableYES.TabIndex = 0
+		Me.rbReprintableYES.Text = "Yes"
+		Me.rbReprintableYES.UseVisualStyleBackColor = True
+		'
+		'lblReprintable
+		'
+		Me.lblReprintable.BackColor = System.Drawing.Color.Transparent
+		Me.lblReprintable.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblReprintable.ForeColor = System.Drawing.Color.White
+		Me.lblReprintable.Location = New System.Drawing.Point(3, 0)
+		Me.lblReprintable.Name = "lblReprintable"
+		Me.lblReprintable.Size = New System.Drawing.Size(91, 13)
+		Me.lblReprintable.TabIndex = 0
+		Me.lblReprintable.Text = "Reprintable?"
+		Me.lblReprintable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'pnlScanToReceipt
+		'
+		Me.pnlScanToReceipt.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlScanToReceipt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlScanToReceipt.Controls.Add(Me.pnlScanToReceiptPapayaWhip)
+		Me.pnlScanToReceipt.Controls.Add(Me.lblScanToReceipt)
+		Me.pnlScanToReceipt.Location = New System.Drawing.Point(3, 195)
+		Me.pnlScanToReceipt.Name = "pnlScanToReceipt"
+		Me.pnlScanToReceipt.Size = New System.Drawing.Size(100, 89)
+		Me.pnlScanToReceipt.TabIndex = 37
+		'
+		'pnlScanToReceiptPapayaWhip
+		'
+		Me.pnlScanToReceiptPapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlScanToReceiptPapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlScanToReceiptPapayaWhip.Controls.Add(Me.rbScanToReceiptNO)
+		Me.pnlScanToReceiptPapayaWhip.Controls.Add(Me.rbScanToReceiptYES)
+		Me.pnlScanToReceiptPapayaWhip.Location = New System.Drawing.Point(6, 21)
+		Me.pnlScanToReceiptPapayaWhip.Name = "pnlScanToReceiptPapayaWhip"
+		Me.pnlScanToReceiptPapayaWhip.Size = New System.Drawing.Size(82, 56)
+		Me.pnlScanToReceiptPapayaWhip.TabIndex = 1
+		'
+		'rbScanToReceiptNO
+		'
+		Me.rbScanToReceiptNO.AutoSize = True
+		Me.rbScanToReceiptNO.Checked = True
+		Me.rbScanToReceiptNO.ForeColor = System.Drawing.Color.Black
+		Me.rbScanToReceiptNO.Location = New System.Drawing.Point(16, 31)
+		Me.rbScanToReceiptNO.Name = "rbScanToReceiptNO"
+		Me.rbScanToReceiptNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbScanToReceiptNO.TabIndex = 1
+		Me.rbScanToReceiptNO.TabStop = True
+		Me.rbScanToReceiptNO.Text = "No"
+		Me.rbScanToReceiptNO.UseVisualStyleBackColor = True
+		'
+		'rbScanToReceiptYES
+		'
+		Me.rbScanToReceiptYES.AutoSize = True
+		Me.rbScanToReceiptYES.ForeColor = System.Drawing.Color.Black
+		Me.rbScanToReceiptYES.Location = New System.Drawing.Point(16, 8)
+		Me.rbScanToReceiptYES.Name = "rbScanToReceiptYES"
+		Me.rbScanToReceiptYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbScanToReceiptYES.TabIndex = 0
+		Me.rbScanToReceiptYES.Text = "Yes"
+		Me.rbScanToReceiptYES.UseVisualStyleBackColor = True
+		'
+		'lblScanToReceipt
+		'
+		Me.lblScanToReceipt.BackColor = System.Drawing.Color.Transparent
+		Me.lblScanToReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblScanToReceipt.ForeColor = System.Drawing.Color.White
+		Me.lblScanToReceipt.Location = New System.Drawing.Point(3, 0)
+		Me.lblScanToReceipt.Name = "lblScanToReceipt"
+		Me.lblScanToReceipt.Size = New System.Drawing.Size(95, 13)
+		Me.lblScanToReceipt.TabIndex = 0
+		Me.lblScanToReceipt.Text = "Scan to Receipt?"
+		Me.lblScanToReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'pnlNote
+		'
+		Me.pnlNote.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlNote.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlNote.Controls.Add(Me.txtNote)
+		Me.pnlNote.Controls.Add(Me.lblNote)
+		Me.pnlNote.Location = New System.Drawing.Point(109, 195)
+		Me.pnlNote.Name = "pnlNote"
+		Me.pnlNote.Size = New System.Drawing.Size(100, 89)
+		Me.pnlNote.TabIndex = 38
+		'
+		'lblNote
+		'
+		Me.lblNote.BackColor = System.Drawing.Color.Transparent
+		Me.lblNote.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblNote.ForeColor = System.Drawing.Color.White
+		Me.lblNote.Location = New System.Drawing.Point(3, 0)
+		Me.lblNote.Name = "lblNote"
+		Me.lblNote.Size = New System.Drawing.Size(91, 13)
+		Me.lblNote.TabIndex = 0
+		Me.lblNote.Text = "Note?"
+		Me.lblNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'txtNote
+		'
+		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtNote.Location = New System.Drawing.Point(2, 43)
+		Me.txtNote.MaxLength = 14
+		Me.txtNote.Name = "txtNote"
+		Me.txtNote.Size = New System.Drawing.Size(91, 20)
+		Me.txtNote.TabIndex = 1
+		Me.txtNote.Text = "EX: Small Note"
+		'
+		'StepGetCouponOffers
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlNote)
+		Me.Controls.Add(Me.pnlScanToReceipt)
+		Me.Controls.Add(Me.pnlReprintable)
+		Me.Controls.Add(Me.pnlFullValidate)
 		Me.Controls.Add(Me.pnlAskExclude)
 		Me.Controls.Add(Me.pnlCouponOffers)
 		Me.Controls.Add(Me.pnlValidPeriod)
 		Me.Controls.Add(Me.pnlExcludeRange)
-		Me.Controls.Add(Me.pnlMonthCal)
 		Me.Controls.Add(Me.pnlExclusionDays)
 		Me.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Name = "StepDetermineOfferList"
+		Me.Name = "StepGetCouponOffers"
 		Me.NextStep = "StepGatherTargetList"
 		Me.PreviousStep = "StepGeneratePayoutCoupon"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Drag and drop Offer Lists here."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlExclusionDays, 0)
-		Me.Controls.SetChildIndex(Me.pnlMonthCal, 0)
 		Me.Controls.SetChildIndex(Me.pnlExcludeRange, 0)
 		Me.Controls.SetChildIndex(Me.pnlValidPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlCouponOffers, 0)
 		Me.Controls.SetChildIndex(Me.pnlAskExclude, 0)
-		Me.pnlMonthCal.ResumeLayout(False)
+		Me.Controls.SetChildIndex(Me.pnlFullValidate, 0)
+		Me.Controls.SetChildIndex(Me.pnlReprintable, 0)
+		Me.Controls.SetChildIndex(Me.pnlScanToReceipt, 0)
+		Me.Controls.SetChildIndex(Me.pnlNote, 0)
 		Me.pnlExclusionDays.ResumeLayout(False)
 		Me.pnlExclusionDays.PerformLayout()
 		Me.pnlExcludeRange.ResumeLayout(False)
@@ -437,40 +644,66 @@ Partial Class StepGetCouponOffers
 		Me.pnlValidEnd.ResumeLayout(False)
 		Me.pnlCouponOffers.ResumeLayout(False)
 		Me.pnlAskExclude.ResumeLayout(False)
-		Me.pnlAskExclude.PerformLayout()
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlPapayaWhip.PerformLayout()
+		Me.pnlFullValidate.ResumeLayout(False)
+		Me.pnlFullValidatePapayaWhip.ResumeLayout(False)
+		Me.pnlFullValidatePapayaWhip.PerformLayout()
+		Me.pnlReprintable.ResumeLayout(False)
+		Me.pnlReprintablePapayaWhip.ResumeLayout(False)
+		Me.pnlReprintablePapayaWhip.PerformLayout()
+		Me.pnlScanToReceipt.ResumeLayout(False)
+		Me.pnlScanToReceiptPapayaWhip.ResumeLayout(False)
+		Me.pnlScanToReceiptPapayaWhip.PerformLayout()
+		Me.pnlNote.ResumeLayout(False)
+		Me.pnlNote.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents pnlMonthCal As System.Windows.Forms.Panel
-	Friend WithEvents MonthCal As System.Windows.Forms.MonthCalendar
-	Friend WithEvents pnlExclusionDays As System.Windows.Forms.Panel
-	Friend WithEvents cbSelectAll As System.Windows.Forms.CheckBox
-	Friend WithEvents lblExcludedDays As System.Windows.Forms.Label
-	Friend WithEvents clbExcludeDays As System.Windows.Forms.CheckedListBox
-	Friend WithEvents pnlExcludeRange As System.Windows.Forms.Panel
-	Friend WithEvents pnlExcludeStart As System.Windows.Forms.Panel
-	Friend WithEvents dtpExcludeStart As System.Windows.Forms.DateTimePicker
-	Friend WithEvents lblExcludeStart As System.Windows.Forms.Label
-	Friend WithEvents pnlExcludeEnd As System.Windows.Forms.Panel
-	Friend WithEvents dtpExcludeEnd As System.Windows.Forms.DateTimePicker
-	Friend WithEvents lblExcludeEnd As System.Windows.Forms.Label
-	Friend WithEvents pnlValidPeriod As System.Windows.Forms.Panel
-	Friend WithEvents pnlValidStart As System.Windows.Forms.Panel
-	Friend WithEvents dtpValidStart As System.Windows.Forms.DateTimePicker
-	Friend WithEvents lblValidStart As System.Windows.Forms.Label
-	Friend WithEvents pnlValidEnd As System.Windows.Forms.Panel
-	Friend WithEvents dtpValidEnd As System.Windows.Forms.DateTimePicker
-	Friend WithEvents lblValidEnd As System.Windows.Forms.Label
-	Friend WithEvents btnSubmit As System.Windows.Forms.Button
-	Friend WithEvents lblCouponOffers As System.Windows.Forms.Label
-	Friend WithEvents pnlCouponOffers As System.Windows.Forms.Panel
-	Friend WithEvents lblCouponOffersList As System.Windows.Forms.Label
-	Friend WithEvents pnlAskExclude As System.Windows.Forms.Panel
-	Friend WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
-	Friend WithEvents rbExcludeDaysNO As System.Windows.Forms.RadioButton
-	Friend WithEvents rbExcludeDaysYES As System.Windows.Forms.RadioButton
-	Friend WithEvents lblAskExclude As System.Windows.Forms.Label
+	Private WithEvents pnlFullValidate As System.Windows.Forms.Panel
+	Private WithEvents pnlFullValidatePapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents rbFullValidateNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbFullValidateYES As System.Windows.Forms.RadioButton
+	Private WithEvents lblFullValidate As System.Windows.Forms.Label
+	Private WithEvents pnlReprintable As System.Windows.Forms.Panel
+	Private WithEvents pnlReprintablePapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents rbReprintableNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbReprintableYES As System.Windows.Forms.RadioButton
+	Private WithEvents lblReprintable As System.Windows.Forms.Label
+	Private WithEvents pnlScanToReceipt As System.Windows.Forms.Panel
+	Private WithEvents pnlScanToReceiptPapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents rbScanToReceiptNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbScanToReceiptYES As System.Windows.Forms.RadioButton
+	Private WithEvents lblScanToReceipt As System.Windows.Forms.Label
+	Private WithEvents pnlNote As System.Windows.Forms.Panel
+	Private WithEvents txtNote As System.Windows.Forms.TextBox
+	Private WithEvents lblNote As System.Windows.Forms.Label
+	Private WithEvents pnlExclusionDays As System.Windows.Forms.Panel
+	Private WithEvents cbSelectAll As System.Windows.Forms.CheckBox
+	Private WithEvents lblExcludedDays As System.Windows.Forms.Label
+	Private WithEvents clbExcludeDays As System.Windows.Forms.CheckedListBox
+	Private WithEvents pnlExcludeRange As System.Windows.Forms.Panel
+	Private WithEvents pnlExcludeStart As System.Windows.Forms.Panel
+	Private WithEvents dtpExcludeStart As System.Windows.Forms.DateTimePicker
+	Private WithEvents lblExcludeStart As System.Windows.Forms.Label
+	Private WithEvents pnlExcludeEnd As System.Windows.Forms.Panel
+	Private WithEvents dtpExcludeEnd As System.Windows.Forms.DateTimePicker
+	Private WithEvents lblExcludeEnd As System.Windows.Forms.Label
+	Private WithEvents pnlValidPeriod As System.Windows.Forms.Panel
+	Private WithEvents pnlValidStart As System.Windows.Forms.Panel
+	Private WithEvents dtpValidStart As System.Windows.Forms.DateTimePicker
+	Private WithEvents lblValidStart As System.Windows.Forms.Label
+	Private WithEvents pnlValidEnd As System.Windows.Forms.Panel
+	Private WithEvents dtpValidEnd As System.Windows.Forms.DateTimePicker
+	Private WithEvents lblValidEnd As System.Windows.Forms.Label
+	Private WithEvents btnSubmit As System.Windows.Forms.Button
+	Private WithEvents lblCouponOffers As System.Windows.Forms.Label
+	Private WithEvents pnlCouponOffers As System.Windows.Forms.Panel
+	Private WithEvents lblCouponOffersList As System.Windows.Forms.Label
+	Private WithEvents pnlAskExclude As System.Windows.Forms.Panel
+	Private WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents rbExcludeDaysNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbExcludeDaysYES As System.Windows.Forms.RadioButton
+	Private WithEvents lblAskExclude As System.Windows.Forms.Label
 
 End Class
