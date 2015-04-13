@@ -40,22 +40,22 @@ Partial Class StepD
 		Me.rbSumLifetimePoints = New System.Windows.Forms.RadioButton()
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
+		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
+		Me.pnlDragOffer = New System.Windows.Forms.Panel()
+		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.lblDragOffer = New System.Windows.Forms.Label()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.txtPointCutoffLimit = New System.Windows.Forms.TextBox()
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.pnlDragOffer = New System.Windows.Forms.Panel()
-		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.lblDragOffer = New System.Windows.Forms.Label()
-		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
-		Me.pnlPointCutoffLimit.SuspendLayout()
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnlPointCutoffLimit.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -222,9 +222,9 @@ Partial Class StepD
 		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
 		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
 		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
-		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(184, 17)
+		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(192, 17)
 		Me.rbEligiblePlayersOfferList.TabIndex = 8
-		Me.rbEligiblePlayersOfferList.Text = "Offer List Determines Qualification"
+		Me.rbEligiblePlayersOfferList.Text = "Target List Determines Qualification"
 		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
 		'
 		'rbSumQualifyingPoints
@@ -267,6 +267,56 @@ Partial Class StepD
 		Me.Panel7.Name = "Panel7"
 		Me.Panel7.Size = New System.Drawing.Size(255, 35)
 		Me.Panel7.TabIndex = 11
+		'
+		'lblPlayerEligibility
+		'
+		Me.lblPlayerEligibility.AutoSize = True
+		Me.lblPlayerEligibility.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPlayerEligibility.ForeColor = System.Drawing.Color.White
+		Me.lblPlayerEligibility.Location = New System.Drawing.Point(0, 0)
+		Me.lblPlayerEligibility.Name = "lblPlayerEligibility"
+		Me.lblPlayerEligibility.Size = New System.Drawing.Size(259, 16)
+		Me.lblPlayerEligibility.TabIndex = 4
+		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
+		'
+		'pnlDragOffer
+		'
+		Me.pnlDragOffer.AllowDrop = True
+		Me.pnlDragOffer.BackColor = System.Drawing.Color.LemonChiffon
+		Me.pnlDragOffer.Controls.Add(Me.SuccessIcon)
+		Me.pnlDragOffer.Controls.Add(Me.lblDragOffer)
+		Me.pnlDragOffer.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.pnlDragOffer.Enabled = False
+		Me.pnlDragOffer.Location = New System.Drawing.Point(18, 148)
+		Me.pnlDragOffer.Name = "pnlDragOffer"
+		Me.pnlDragOffer.Size = New System.Drawing.Size(224, 80)
+		Me.pnlDragOffer.TabIndex = 9
+		Me.pnlDragOffer.Visible = False
+		'
+		'SuccessIcon
+		'
+		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.SuccessIcon.Enabled = False
+		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.Location = New System.Drawing.Point(187, 4)
+		Me.SuccessIcon.Name = "SuccessIcon"
+		Me.SuccessIcon.Size = New System.Drawing.Size(24, 24)
+		Me.SuccessIcon.TabIndex = 5
+		Me.SuccessIcon.TabStop = False
+		Me.SuccessIcon.ToolTipText = Nothing
+		Me.SuccessIcon.Visible = False
+		'
+		'lblDragOffer
+		'
+		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDragOffer.Location = New System.Drawing.Point(7, 4)
+		Me.lblDragOffer.Name = "lblDragOffer"
+		Me.lblDragOffer.Size = New System.Drawing.Size(173, 21)
+		Me.lblDragOffer.TabIndex = 0
+		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
+		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'pnlPointCutoffLimit
 		'
@@ -322,56 +372,6 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'pnlDragOffer
-		'
-		Me.pnlDragOffer.AllowDrop = True
-		Me.pnlDragOffer.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlDragOffer.Controls.Add(Me.SuccessIcon)
-		Me.pnlDragOffer.Controls.Add(Me.lblDragOffer)
-		Me.pnlDragOffer.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.pnlDragOffer.Enabled = False
-		Me.pnlDragOffer.Location = New System.Drawing.Point(18, 148)
-		Me.pnlDragOffer.Name = "pnlDragOffer"
-		Me.pnlDragOffer.Size = New System.Drawing.Size(224, 80)
-		Me.pnlDragOffer.TabIndex = 9
-		Me.pnlDragOffer.Visible = False
-		'
-		'SuccessIcon
-		'
-		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.SuccessIcon.Enabled = False
-		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.Location = New System.Drawing.Point(187, 4)
-		Me.SuccessIcon.Name = "SuccessIcon"
-		Me.SuccessIcon.Size = New System.Drawing.Size(24, 24)
-		Me.SuccessIcon.TabIndex = 5
-		Me.SuccessIcon.TabStop = False
-		Me.SuccessIcon.ToolTipText = Nothing
-		Me.SuccessIcon.Visible = False
-		'
-		'lblDragOffer
-		'
-		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragOffer.Location = New System.Drawing.Point(7, 4)
-		Me.lblDragOffer.Name = "lblDragOffer"
-		Me.lblDragOffer.Size = New System.Drawing.Size(173, 21)
-		Me.lblDragOffer.TabIndex = 0
-		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
-		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		'
-		'lblPlayerEligibility
-		'
-		Me.lblPlayerEligibility.AutoSize = True
-		Me.lblPlayerEligibility.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblPlayerEligibility.ForeColor = System.Drawing.Color.White
-		Me.lblPlayerEligibility.Location = New System.Drawing.Point(0, 0)
-		Me.lblPlayerEligibility.Name = "lblPlayerEligibility"
-		Me.lblPlayerEligibility.Size = New System.Drawing.Size(259, 16)
-		Me.lblPlayerEligibility.TabIndex = 4
-		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
-		'
 		'StepD
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -394,10 +394,10 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
 		Me.pnlSumMethod.PerformLayout()
-		Me.pnlPointCutoffLimit.ResumeLayout(False)
-		Me.pnlPointCutoffLimit.PerformLayout()
 		Me.pnlDragOffer.ResumeLayout(False)
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlPointCutoffLimit.ResumeLayout(False)
+		Me.pnlPointCutoffLimit.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub

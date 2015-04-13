@@ -39,9 +39,14 @@ Partial Public Class MarketingPromosDataContext
     End Sub
   #End Region
 	
+	Public Sub New()
+		MyBase.New(Global.PromotionalCreationWizard.My.MySettings.Default.GamingConnectionString, mappingSource)
+		OnCreated
+	End Sub
+	
 	Public Sub New(ByVal connection As String)
 		MyBase.New(connection, mappingSource)
-		OnCreated()
+		OnCreated
 	End Sub
 	
 	Public Sub New(ByVal connection As System.Data.IDbConnection)

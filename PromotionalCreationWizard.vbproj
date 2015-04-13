@@ -290,6 +290,9 @@
       <DependentUpon>StepC.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\ViewControllers\StepDetermineOfferList.resx">
+      <DependentUpon>StepDetermineOfferList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepEntryTicketAmt.resx">
       <DependentUpon>StepEntryTicketAmt.vb</DependentUpon>
       <SubType>Designer</SubType>

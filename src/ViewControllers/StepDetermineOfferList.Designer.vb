@@ -22,8 +22,22 @@ Partial Class StepDetermineOfferList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    End Sub
+		Me.SuspendLayout()
+		'
+		'Description
+		'
+		Me.Description.Size = New System.Drawing.Size(578, 72)
+		Me.Description.Text = "Drag and drop Offer Lists here."
+		'
+		'StepDetermineOfferList
+		'
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Name = "StepDetermineOfferList"
+		Me.Size = New System.Drawing.Size(594, 293)
+		Me.StepDescription = "Drag and drop Offer Lists here."
+		Me.ResumeLayout(False)
+
+	End Sub
 
 End Class

@@ -65,6 +65,16 @@ Namespace My
                 Me("ConfigConnectionString") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DBSERVER2;Initial Catalog=Gaming;Integrated Security=True")>  _
+        Public ReadOnly Property GamingConnectionString() As String
+            Get
+                Return CType(Me("GamingConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
