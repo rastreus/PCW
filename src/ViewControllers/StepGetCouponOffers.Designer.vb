@@ -1,35 +1,35 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class StepDetermineOfferList
+Partial Class StepGetCouponOffers
 	Inherits TSWizards.BaseInteriorStep
 
-    'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
+	'UserControl overrides dispose to clean up the component list.
+	<System.Diagnostics.DebuggerNonUserCode()> _
+	Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+		Try
 			If disposing AndAlso components IsNot Nothing Then
-				Me.stepDetermineOfferList_data.Dispose()
+				Me.stepGetCouponOffers_data.Dispose()
 				components.Dispose()
 			End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
+		Finally
+			MyBase.Dispose(disposing)
+		End Try
+	End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+	'Required by the Windows Form Designer
+	Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
+	'NOTE: The following procedure is required by the Windows Form Designer
+	'It can be modified using the Windows Form Designer.  
+	'Do not modify it using the code editor.
+	<System.Diagnostics.DebuggerStepThrough()> _
+	Private Sub InitializeComponent()
 		Me.pnlMonthCal = New System.Windows.Forms.Panel()
 		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
 		Me.pnlExclusionDays = New System.Windows.Forms.Panel()
 		Me.cbSelectAll = New System.Windows.Forms.CheckBox()
 		Me.lblExcludedDays = New System.Windows.Forms.Label()
-		Me.clbExcludedDays = New System.Windows.Forms.CheckedListBox()
-		Me.pnlExcludePeriod = New System.Windows.Forms.Panel()
+		Me.clbExcludeDays = New System.Windows.Forms.CheckedListBox()
+		Me.pnlExcludeRange = New System.Windows.Forms.Panel()
 		Me.pnlExcludeStart = New System.Windows.Forms.Panel()
 		Me.dtpExcludeStart = New System.Windows.Forms.DateTimePicker()
 		Me.lblExcludeStart = New System.Windows.Forms.Label()
@@ -47,15 +47,22 @@ Partial Class StepDetermineOfferList
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.pnlCouponOffers = New System.Windows.Forms.Panel()
 		Me.lblCouponOffersList = New System.Windows.Forms.Label()
+		Me.pnlAskExclude = New System.Windows.Forms.Panel()
+		Me.pnlPapayaWhip = New System.Windows.Forms.Panel()
+		Me.rbExcludeDaysNO = New System.Windows.Forms.RadioButton()
+		Me.rbExcludeDaysYES = New System.Windows.Forms.RadioButton()
+		Me.lblAskExclude = New System.Windows.Forms.Label()
 		Me.pnlMonthCal.SuspendLayout()
 		Me.pnlExclusionDays.SuspendLayout()
-		Me.pnlExcludePeriod.SuspendLayout()
+		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
 		Me.pnlExcludeEnd.SuspendLayout()
 		Me.pnlValidPeriod.SuspendLayout()
 		Me.pnlValidStart.SuspendLayout()
 		Me.pnlValidEnd.SuspendLayout()
 		Me.pnlCouponOffers.SuspendLayout()
+		Me.pnlAskExclude.SuspendLayout()
+		Me.pnlPapayaWhip.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -97,10 +104,11 @@ Partial Class StepDetermineOfferList
 		Me.pnlExclusionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlExclusionDays.Controls.Add(Me.cbSelectAll)
 		Me.pnlExclusionDays.Controls.Add(Me.lblExcludedDays)
-		Me.pnlExclusionDays.Controls.Add(Me.clbExcludedDays)
-		Me.pnlExclusionDays.Location = New System.Drawing.Point(229, 100)
+		Me.pnlExclusionDays.Controls.Add(Me.clbExcludeDays)
+		Me.pnlExclusionDays.Enabled = False
+		Me.pnlExclusionDays.Location = New System.Drawing.Point(383, 100)
 		Me.pnlExclusionDays.Name = "pnlExclusionDays"
-		Me.pnlExclusionDays.Size = New System.Drawing.Size(172, 192)
+		Me.pnlExclusionDays.Size = New System.Drawing.Size(173, 192)
 		Me.pnlExclusionDays.TabIndex = 27
 		'
 		'cbSelectAll
@@ -110,7 +118,7 @@ Partial Class StepDetermineOfferList
 		Me.cbSelectAll.CheckState = System.Windows.Forms.CheckState.Checked
 		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSelectAll.ForeColor = System.Drawing.Color.Lime
-		Me.cbSelectAll.Location = New System.Drawing.Point(21, 163)
+		Me.cbSelectAll.Location = New System.Drawing.Point(33, 168)
 		Me.cbSelectAll.Name = "cbSelectAll"
 		Me.cbSelectAll.Size = New System.Drawing.Size(80, 17)
 		Me.cbSelectAll.TabIndex = 7
@@ -123,33 +131,35 @@ Partial Class StepDetermineOfferList
 		Me.lblExcludedDays.ForeColor = System.Drawing.Color.White
 		Me.lblExcludedDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblExcludedDays.Name = "lblExcludedDays"
-		Me.lblExcludedDays.Size = New System.Drawing.Size(165, 49)
+		Me.lblExcludedDays.Size = New System.Drawing.Size(161, 54)
 		Me.lblExcludedDays.TabIndex = 0
-		Me.lblExcludedDays.Text = "On which day(s), within the exclusion period, will offer be excluded?"
+		Me.lblExcludedDays.Text = "On which day(s), in exclusion range, will offer be excluded?"
+		Me.lblExcludedDays.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'clbExcludedDays
+		'clbExcludeDays
 		'
-		Me.clbExcludedDays.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.clbExcludedDays.CheckOnClick = True
-		Me.clbExcludedDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.clbExcludedDays.FormattingEnabled = True
-		Me.clbExcludedDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
-		Me.clbExcludedDays.Location = New System.Drawing.Point(19, 52)
-		Me.clbExcludedDays.Name = "clbExcludedDays"
-		Me.clbExcludedDays.Size = New System.Drawing.Size(103, 109)
-		Me.clbExcludedDays.TabIndex = 6
-		Me.clbExcludedDays.ThreeDCheckBoxes = True
+		Me.clbExcludeDays.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.clbExcludeDays.CheckOnClick = True
+		Me.clbExcludeDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.clbExcludeDays.FormattingEnabled = True
+		Me.clbExcludeDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+		Me.clbExcludeDays.Location = New System.Drawing.Point(31, 57)
+		Me.clbExcludeDays.Name = "clbExcludeDays"
+		Me.clbExcludeDays.Size = New System.Drawing.Size(103, 109)
+		Me.clbExcludeDays.TabIndex = 6
+		Me.clbExcludeDays.ThreeDCheckBoxes = True
 		'
-		'pnlExcludePeriod
+		'pnlExcludeRange
 		'
-		Me.pnlExcludePeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.pnlExcludePeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.pnlExcludePeriod.Controls.Add(Me.pnlExcludeStart)
-		Me.pnlExcludePeriod.Controls.Add(Me.pnlExcludeEnd)
-		Me.pnlExcludePeriod.Location = New System.Drawing.Point(229, 5)
-		Me.pnlExcludePeriod.Name = "pnlExcludePeriod"
-		Me.pnlExcludePeriod.Size = New System.Drawing.Size(220, 89)
-		Me.pnlExcludePeriod.TabIndex = 29
+		Me.pnlExcludeRange.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlExcludeRange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeStart)
+		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeEnd)
+		Me.pnlExcludeRange.Enabled = False
+		Me.pnlExcludeRange.Location = New System.Drawing.Point(335, 5)
+		Me.pnlExcludeRange.Name = "pnlExcludeRange"
+		Me.pnlExcludeRange.Size = New System.Drawing.Size(220, 89)
+		Me.pnlExcludeRange.TabIndex = 29
 		'
 		'pnlExcludeStart
 		'
@@ -179,7 +189,7 @@ Partial Class StepDetermineOfferList
 		Me.lblExcludeStart.Name = "lblExcludeStart"
 		Me.lblExcludeStart.Size = New System.Drawing.Size(106, 48)
 		Me.lblExcludeStart.TabIndex = 0
-		Me.lblExcludeStart.Text = "When does the exclusion period start?"
+		Me.lblExcludeStart.Text = "When does the exclusion range start?"
 		'
 		'pnlExcludeEnd
 		'
@@ -209,7 +219,7 @@ Partial Class StepDetermineOfferList
 		Me.lblExcludeEnd.Name = "lblExcludeEnd"
 		Me.lblExcludeEnd.Size = New System.Drawing.Size(105, 48)
 		Me.lblExcludeEnd.TabIndex = 0
-		Me.lblExcludeEnd.Text = "When does the exclusion period end?"
+		Me.lblExcludeEnd.Text = "When does the exclusion range end?"
 		'
 		'pnlValidPeriod
 		'
@@ -285,6 +295,7 @@ Partial Class StepDetermineOfferList
 		'btnSubmit
 		'
 		Me.btnSubmit.BackColor = System.Drawing.Color.MediumPurple
+		Me.btnSubmit.Enabled = False
 		Me.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkViolet
 		Me.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
@@ -317,7 +328,7 @@ Partial Class StepDetermineOfferList
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffersList)
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffers)
 		Me.pnlCouponOffers.Controls.Add(Me.btnSubmit)
-		Me.pnlCouponOffers.Location = New System.Drawing.Point(407, 100)
+		Me.pnlCouponOffers.Location = New System.Drawing.Point(229, 100)
 		Me.pnlCouponOffers.Name = "pnlCouponOffers"
 		Me.pnlCouponOffers.Size = New System.Drawing.Size(148, 192)
 		Me.pnlCouponOffers.TabIndex = 33
@@ -334,13 +345,72 @@ Partial Class StepDetermineOfferList
 		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
 		Me.lblCouponOffersList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
+		'pnlAskExclude
+		'
+		Me.pnlAskExclude.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlAskExclude.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlAskExclude.Controls.Add(Me.pnlPapayaWhip)
+		Me.pnlAskExclude.Controls.Add(Me.lblAskExclude)
+		Me.pnlAskExclude.Location = New System.Drawing.Point(229, 5)
+		Me.pnlAskExclude.Name = "pnlAskExclude"
+		Me.pnlAskExclude.Size = New System.Drawing.Size(100, 89)
+		Me.pnlAskExclude.TabIndex = 34
+		'
+		'pnlPapayaWhip
+		'
+		Me.pnlPapayaWhip.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysNO)
+		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysYES)
+		Me.pnlPapayaWhip.Location = New System.Drawing.Point(6, 21)
+		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
+		Me.pnlPapayaWhip.Size = New System.Drawing.Size(82, 56)
+		Me.pnlPapayaWhip.TabIndex = 1
+		'
+		'rbExcludeDaysNO
+		'
+		Me.rbExcludeDaysNO.AutoSize = True
+		Me.rbExcludeDaysNO.Checked = True
+		Me.rbExcludeDaysNO.ForeColor = System.Drawing.Color.Black
+		Me.rbExcludeDaysNO.Location = New System.Drawing.Point(16, 31)
+		Me.rbExcludeDaysNO.Name = "rbExcludeDaysNO"
+		Me.rbExcludeDaysNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbExcludeDaysNO.TabIndex = 1
+		Me.rbExcludeDaysNO.TabStop = True
+		Me.rbExcludeDaysNO.Text = "No"
+		Me.rbExcludeDaysNO.UseVisualStyleBackColor = True
+		'
+		'rbExcludeDaysYES
+		'
+		Me.rbExcludeDaysYES.AutoSize = True
+		Me.rbExcludeDaysYES.ForeColor = System.Drawing.Color.Black
+		Me.rbExcludeDaysYES.Location = New System.Drawing.Point(16, 8)
+		Me.rbExcludeDaysYES.Name = "rbExcludeDaysYES"
+		Me.rbExcludeDaysYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbExcludeDaysYES.TabIndex = 0
+		Me.rbExcludeDaysYES.Text = "Yes"
+		Me.rbExcludeDaysYES.UseVisualStyleBackColor = True
+		'
+		'lblAskExclude
+		'
+		Me.lblAskExclude.AutoSize = True
+		Me.lblAskExclude.BackColor = System.Drawing.Color.Transparent
+		Me.lblAskExclude.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblAskExclude.ForeColor = System.Drawing.Color.White
+		Me.lblAskExclude.Location = New System.Drawing.Point(3, 0)
+		Me.lblAskExclude.Name = "lblAskExclude"
+		Me.lblAskExclude.Size = New System.Drawing.Size(91, 13)
+		Me.lblAskExclude.TabIndex = 0
+		Me.lblAskExclude.Text = "Exclude Days?"
+		'
 		'StepDetermineOfferList
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlAskExclude)
 		Me.Controls.Add(Me.pnlCouponOffers)
 		Me.Controls.Add(Me.pnlValidPeriod)
-		Me.Controls.Add(Me.pnlExcludePeriod)
+		Me.Controls.Add(Me.pnlExcludeRange)
 		Me.Controls.Add(Me.pnlMonthCal)
 		Me.Controls.Add(Me.pnlExclusionDays)
 		Me.ForeColor = System.Drawing.SystemColors.ControlDarkDark
@@ -352,19 +422,24 @@ Partial Class StepDetermineOfferList
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlExclusionDays, 0)
 		Me.Controls.SetChildIndex(Me.pnlMonthCal, 0)
-		Me.Controls.SetChildIndex(Me.pnlExcludePeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlExcludeRange, 0)
 		Me.Controls.SetChildIndex(Me.pnlValidPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlCouponOffers, 0)
+		Me.Controls.SetChildIndex(Me.pnlAskExclude, 0)
 		Me.pnlMonthCal.ResumeLayout(False)
 		Me.pnlExclusionDays.ResumeLayout(False)
 		Me.pnlExclusionDays.PerformLayout()
-		Me.pnlExcludePeriod.ResumeLayout(False)
+		Me.pnlExcludeRange.ResumeLayout(False)
 		Me.pnlExcludeStart.ResumeLayout(False)
 		Me.pnlExcludeEnd.ResumeLayout(False)
 		Me.pnlValidPeriod.ResumeLayout(False)
 		Me.pnlValidStart.ResumeLayout(False)
 		Me.pnlValidEnd.ResumeLayout(False)
 		Me.pnlCouponOffers.ResumeLayout(False)
+		Me.pnlAskExclude.ResumeLayout(False)
+		Me.pnlAskExclude.PerformLayout()
+		Me.pnlPapayaWhip.ResumeLayout(False)
+		Me.pnlPapayaWhip.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -373,8 +448,8 @@ Partial Class StepDetermineOfferList
 	Friend WithEvents pnlExclusionDays As System.Windows.Forms.Panel
 	Friend WithEvents cbSelectAll As System.Windows.Forms.CheckBox
 	Friend WithEvents lblExcludedDays As System.Windows.Forms.Label
-	Friend WithEvents clbExcludedDays As System.Windows.Forms.CheckedListBox
-	Friend WithEvents pnlExcludePeriod As System.Windows.Forms.Panel
+	Friend WithEvents clbExcludeDays As System.Windows.Forms.CheckedListBox
+	Friend WithEvents pnlExcludeRange As System.Windows.Forms.Panel
 	Friend WithEvents pnlExcludeStart As System.Windows.Forms.Panel
 	Friend WithEvents dtpExcludeStart As System.Windows.Forms.DateTimePicker
 	Friend WithEvents lblExcludeStart As System.Windows.Forms.Label
@@ -392,5 +467,10 @@ Partial Class StepDetermineOfferList
 	Friend WithEvents lblCouponOffers As System.Windows.Forms.Label
 	Friend WithEvents pnlCouponOffers As System.Windows.Forms.Panel
 	Friend WithEvents lblCouponOffersList As System.Windows.Forms.Label
+	Friend WithEvents pnlAskExclude As System.Windows.Forms.Panel
+	Friend WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
+	Friend WithEvents rbExcludeDaysNO As System.Windows.Forms.RadioButton
+	Friend WithEvents rbExcludeDaysYES As System.Windows.Forms.RadioButton
+	Friend WithEvents lblAskExclude As System.Windows.Forms.Label
 
 End Class

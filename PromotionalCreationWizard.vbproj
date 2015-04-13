@@ -125,7 +125,7 @@
     <Compile Include="src\Interfaces\IPromoData.vb" />
     <Compile Include="src\Interfaces\IWizardStep.vb" />
     <Compile Include="src\Models\StepCanHazSecurity_Data.vb" />
-    <Compile Include="src\Models\StepDetermineOfferList_Data.vb" />
+    <Compile Include="src\Models\StepGetCouponTargets_Data.vb" />
     <Compile Include="src\Models\StepD_Data.vb" />
     <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
     <Compile Include="src\Models\StepF_Data.vb" />

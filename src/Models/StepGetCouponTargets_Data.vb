@@ -1,4 +1,4 @@
-﻿Public Class StepDetermineOfferList_Data
+﻿Public Class StepGetCouponTargets_Data
 	Implements IDisposable
 
 #Region "IDisposable Support"
