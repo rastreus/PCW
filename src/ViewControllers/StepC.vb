@@ -80,7 +80,7 @@ Public Class StepC
 	''' <returns>A single-character String representation of the Primary Day.</returns>
 	''' <remarks></remarks>
 	Private Function getPrimaryDay() As String
-		Return daysFormat(Me.primaryDayStr)
+		Return BEP_Util.daysFormat(Me.primaryDayStr)
 	End Function
 
 	''' <summary>
@@ -92,7 +92,7 @@ Public Class StepC
 		Dim days As String = New String("")
 		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
 			If (Not ctrl.Text = Me.primaryDayStr) And ctrl.Checked Then
-				days = days & daysFormat(ctrl.Text)
+				days = days & BEP_Util.daysFormat(ctrl.Text)
 			End If
 		Next
 		Return days
@@ -106,39 +106,12 @@ Public Class StepC
 	Private Function getEarnsOnWeekday() As String
 		Dim days As String = New String("")
 		For Each item In Me.clbPointsEarningDays.CheckedItems
-			days = days & daysFormat(item.ToString)
+			days = days & BEP_Util.daysFormat(item.ToString)
 		Next
 		If days = "" Then
 			days = Nothing
 		End If
 		Return days
-	End Function
-
-	''' <summary>
-	''' Formats days to what the database expects.
-	''' </summary>
-	''' <param name="inputDay"></param>
-	''' <returns>A single-character String representing the inputDay.</returns>
-	''' <remarks>The pride and joy of StepC_SetData.</remarks>
-	Private Function daysFormat(ByVal inputDay As String) As String
-		Dim returnDay As String = New String("")
-		Select Case inputDay
-			Case "Sunday"
-				returnDay = "N"
-			Case "Monday"
-				returnDay = "M"
-			Case "Tuesday"
-				returnDay = "T"
-			Case "Wednesday"
-				returnDay = "W"
-			Case "Thursday"
-				returnDay = "R"
-			Case "Friday"
-				returnDay = "F"
-			Case "Saturday"
-				returnDay = "S"
-		End Select
-		Return returnDay
 	End Function
 #End Region
 #Region "StepC_Load"

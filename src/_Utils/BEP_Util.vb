@@ -34,6 +34,32 @@ Public Class BEP_Util
 #End Region
 #Region "Utility Subroutines"
 	''' <summary>
+	''' Formats days to what the database expects.
+	''' </summary>
+	''' <param name="inputDay"></param>
+	''' <returns>A single-character String representing the inputDay.</returns>
+	''' <remarks>Used by StepC and StepGetCouponOffers.</remarks>
+	Public Shared Function daysFormat(ByVal inputDay As String) As String
+		Dim returnDay As String = New String("")
+		Select Case inputDay
+			Case "Sunday"
+				returnDay = "N"
+			Case "Monday"
+				returnDay = "M"
+			Case "Tuesday"
+				returnDay = "T"
+			Case "Wednesday"
+				returnDay = "W"
+			Case "Thursday"
+				returnDay = "R"
+			Case "Friday"
+				returnDay = "F"
+			Case "Saturday"
+				returnDay = "S"
+		End Select
+		Return returnDay
+	End Function
+	''' <summary>
 	''' Invalid if "0" or Not 1 or more digit.
 	''' </summary>
 	''' <param name="inputString"></param>

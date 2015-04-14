@@ -25,8 +25,91 @@ Public Class StepGetCouponOffers
 #End Region
 #Region "StepGetCouponOffers_SetData"
 	Private Sub StepGetCouponOffers_SetData()
-
+		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = New StepGetCouponOffers_Data.CouponOffersStruct
+		couponOffer._offerID = getOfferID()
+		couponOffer._couponNum = getCouponNum()
+		couponOffer._validStart = getValidStart()
+		couponOffer._validEnd = getValidEnd()
+		couponOffer._excludeDays = getExcludeDays()
+		couponOffer._excludeStart = getExcludeStart()
+		couponOffer._excludeEnd = getExcludeEnd()
+		couponOffer._fullValidate = getFullValidate()
+		couponOffer._reprintable = getReprintable()
+		couponOffer._scanToReceipt = getScanToReceipt()
+		couponOffer._note = getNote()
+		Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
 	End Sub
+
+	Private Function getOfferID() As String
+		Dim local_stepGeneratePayoutCoupon As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
+		Return local_stepGeneratePayoutCoupon.Data.CouponID
+	End Function
+
+	Private Function getCouponNum() As Integer
+		Throw New NotImplementedException
+		'Not sure the best way to implement this one.
+		'Think about it and come back later.
+	End Function
+
+	Private Function getValidStart() As Date
+		Return Me.dtpValidStart.Value.Date
+	End Function
+
+	Private Function getValidEnd() As Date
+		Return Me.dtpValidEnd.Value.Date
+	End Function
+
+	Private Function getExcludeDays() As String
+		Dim result As String = If(Me.rbExcludeDaysYES.Checked, _
+								  buildExclueDaysString(),
+								  Nothing)
+		Return result
+	End Function
+
+	Private Function buildExclueDaysString() As String
+		Dim days As String = New String("")
+		For Each item In Me.clbExcludeDays.CheckedItems
+			days = days & BEP_Util.daysFormat(item.ToString)
+		Next
+		Return days
+	End Function
+
+	Private Function getExcludeStart() As Date?
+		Dim result As System.Nullable(Of DateTime) = If(Me.rbExcludeDaysYES.Checked, _
+														Me.dtpExcludeStart.Value.Date, _
+														Nothing)
+		Return result
+	End Function
+
+	Private Function getExcludeEnd() As Date?
+		Dim result As System.Nullable(Of DateTime) = If(Me.rbExcludeDaysYES.Checked, _
+														Me.dtpExcludeEnd.Value.Date, _
+														Nothing)
+		Return result
+	End Function
+
+	Private Function getFullValidate() As Boolean
+		Return Me.rbFullValidateYES.Checked
+	End Function
+
+	Private Function getReprintable() As Boolean
+		Return Me.rbReprintableYES.Checked
+	End Function
+
+	Private Function getScanToReceipt() As Boolean
+		Return Me.rbScanToReceiptYES.Checked
+	End Function
+
+	Private Function getNote() As String
+		Dim result As String = New String("")
+		If Me.txtNote.Text = "EX: Small Note" Or
+			Me.txtNote.Text = "" Then
+			result = Nothing
+		Else
+			result = Me.txtNote.Text
+		End If
+		Return result
+	End Function
 #End Region
 #Region "StepGetCouponOffers_Load"
 	Private validStartBool As Boolean
@@ -155,7 +238,7 @@ Public Class StepGetCouponOffers
 #Region "StepGetCouponOffers_btnSubmit_Click"
 	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
-		'SetData
+		StepGetCouponOffers_SetData()
 		'ValidateData
 		'If Not Valid, Cancel and Alert
 		'Else
