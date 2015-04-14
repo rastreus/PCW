@@ -49,6 +49,42 @@
 								   False)
 		Return result
 	End Function
+#Region "Is_CouponOffer_Valid"
+	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffersStruct) As Boolean
+		Dim result As Boolean = True
+		If ValidEnd_Before_ValidStart(couponOffer._validEnd, _
+									  couponOffer._validStart) Or
+			ExcludeRange_Not_Within_ValidPeriod(couponOffer._validEnd, _
+												couponOffer._validStart, _
+												couponOffer._excludeEnd, _
+												couponOffer._excludeStart) Then
+			result = False 'No, The Coupon Offer is not valid.
+		End If
+		Return result
+	End Function
+	Private Function ValidEnd_Before_ValidStart(ByVal validEnd As DateTime, _
+												ByVal validStart As DateTime) As Boolean
+		Dim result As Boolean = False
+		Dim compare As Integer = Date.Compare(validEnd, validStart)
+		If compare < 0 Then
+			result = True 'Yes, ValidEnd is earlier than ValidStart.
+		End If
+		Return result
+	End Function
+	Private Function ExcludeRange_Not_Within_ValidPeriod(ByVal validEnd As DateTime, _
+														 ByVal validStart As DateTime, _
+														 ByVal excludeEnd As DateTime, _
+														 ByVal excludeStart As DateTime) As Boolean
+		Dim result As Boolean = False
+		Dim compareStarts As Integer = Date.Compare(excludeStart, validStart)
+		Dim compareEnds As Integer = Date.Compare(excludeEnd, validEnd)
+		If compareStarts < 0 Or
+			compareEnds < 0 Then
+			result = True 'Yes, Exclude Range is not within the Valid Period.
+		End If
+		Return result
+	End Function
+#End Region
 #End Region
 #Region "AddCouponOfferToHash"
 	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffersStruct)
@@ -59,5 +95,14 @@
 			'Possibly trying to add a Coupon which already has a key
 		End Try
 	End Sub
+#End Region
+#Region "GetCouponOfferListString"
+	Public Function GetCouponOfferListString() As String
+		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+		For Each key As String In CouponOffersHash.Keys
+			builder.Append("Coupon Number: " & key & vbCrLf)
+		Next
+		Return builder.ToString()
+	End Function
 #End Region
 End Class

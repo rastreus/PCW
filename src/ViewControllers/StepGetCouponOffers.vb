@@ -24,7 +24,7 @@ Public Class StepGetCouponOffers
 	End Property
 #End Region
 #Region "StepGetCouponOffers_SetData"
-	Private Sub StepGetCouponOffers_SetData()
+	Private Function StepGetCouponOffers_SetData() As StepGetCouponOffers_Data.CouponOffersStruct
 		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = New StepGetCouponOffers_Data.CouponOffersStruct
 		couponOffer._offerID = getOfferID()
 		couponOffer._couponNum = getCouponNum()
@@ -37,8 +37,8 @@ Public Class StepGetCouponOffers
 		couponOffer._reprintable = getReprintable()
 		couponOffer._scanToReceipt = getScanToReceipt()
 		couponOffer._note = getNote()
-		Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
-	End Sub
+		Return couponOffer
+	End Function
 
 	Private Function getOfferID() As String
 		Dim local_stepGeneratePayoutCoupon As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
@@ -252,13 +252,34 @@ Public Class StepGetCouponOffers
 #Region "StepGetCouponOffers_btnSubmit_Click"
 	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
-		StepGetCouponOffers_SetData()
-		'ValidateData
-		'If Not Valid, Cancel and Alert
-		'Else
-		'Add to CouponOffers ArrayList (StepGetCouponOffers_data)
-		'Alert "Create another Coupon Offer or Continue"
-		'If PCW.NextEnabled = False Then; PCW.NextEnabled = True; End If
+		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
+		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = StepGetCouponOffers_SetData()
+		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer)
+		If couponOfferIsValid Then
+			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
+			Me.StepGetCouponOffers_ResetControls()
+			Me.lblCouponOffersList.Text = RefreshLabelList()
+			If firstOfferList Then
+				GUI_Util.msgBox("Add another Coupon Offer or press Next to continue.", _
+							"Coupon Offers Options",
+							"Information")
+			End If
+			If (PCW.NextEnabled = False) Then
+				PCW.NextEnabled = True
+			End If
+			GUI_Util.regPnl(Me.pnlCouponOffers)
+		Else
+			GUI_Util.errPnl(Me.pnlCouponOffers)
+			GUI_Util.msgBox("Coupon Offer Invalid.")
+		End If
 	End Sub
+#End Region
+#Region "StepGetCouponOffers_RefreshLableList"
+	Private Function RefreshLabelList()
+		Dim result As String = If(Me.Data.No_CouponOffers_Created(), _
+								  "Click 'Submit' below to add Coupon Offers to this Coupon ID.", _
+								  Me.Data.GetCouponOfferListString())
+		Return result
+	End Function
 #End Region
 End Class
