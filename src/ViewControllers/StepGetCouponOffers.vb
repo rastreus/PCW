@@ -160,9 +160,23 @@ Public Class StepGetCouponOffers
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepGetCouponOffers_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		'Confirm that there is one or more CouponOffer
+		Dim cancelContinuingToNextStep As Boolean = False
+		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+
+		If Me.Data.No_CouponOffers_Created() Then
+			cancelContinuingToNextStep = True
+			errString = "No Coupon Offers have been created."
+			GUI_Util.errPnl(Me.pnlCouponOffers)
+		Else
+			GUI_Util.regPnl(Me.pnlCouponOffers)
+		End If
+
+		e.Cancel = cancelContinuingToNextStep
+		If cancelContinuingToNextStep Then
+			GUI_Util.msgBox(errString)
+		End If
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_ShowStep"

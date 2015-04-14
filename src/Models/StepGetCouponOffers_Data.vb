@@ -42,6 +42,14 @@
 		End Set
 	End Property
 #End Region
+#Region "Validity Checks"
+	Public Function No_CouponOffers_Created() As Boolean
+		Dim result As Boolean = If(CouponOffersHash.Count = 0, _
+								   True, _
+								   False)
+		Return result
+	End Function
+#End Region
 #Region "AddCouponOfferToHash"
 	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffersStruct)
 		Try
