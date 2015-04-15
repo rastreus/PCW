@@ -178,7 +178,7 @@ Partial Class StepH
 		Me.Controls.Add(Me.pnlInsertComment)
 		Me.Name = "StepH"
 		Me.NextStep = "StepI"
-		Me.PreviousStep = "StepGeneratePayoutCoupon"
+		Me.PreviousStep = "StepGetCouponTargets"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "This comment will be inserted into the database row."
 		Me.Controls.SetChildIndex(Me.Description, 0)

@@ -144,6 +144,12 @@
     <Compile Include="src\ViewControllers\StepGetCouponOffers.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponTargets.Designer.vb">
+      <DependentUpon>StepGetCouponTargets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponTargets.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\_Utils\GUI_Util.vb" />
     <Compile Include="resources\MarketingPromos.designer.vb">
       <AutoGen>True</AutoGen>
@@ -323,6 +329,9 @@
     <EmbeddedResource Include="src\ViewControllers\StepF.resx">
       <DependentUpon>StepF.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ViewControllers\StepGetCouponTargets.resx">
+      <DependentUpon>StepGetCouponTargets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepH.resx">
       <DependentUpon>StepH.vb</DependentUpon>
