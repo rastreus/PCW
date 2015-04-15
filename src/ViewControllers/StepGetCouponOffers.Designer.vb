@@ -65,8 +65,8 @@ Partial Class StepGetCouponOffers
 		Me.rbScanToReceiptYES = New System.Windows.Forms.RadioButton()
 		Me.lblScanToReceipt = New System.Windows.Forms.Label()
 		Me.pnlNote = New System.Windows.Forms.Panel()
-		Me.lblNote = New System.Windows.Forms.Label()
 		Me.txtNote = New System.Windows.Forms.TextBox()
+		Me.lblNote = New System.Windows.Forms.Label()
 		Me.pnlExclusionDays.SuspendLayout()
 		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
@@ -582,6 +582,16 @@ Partial Class StepGetCouponOffers
 		Me.pnlNote.Size = New System.Drawing.Size(100, 89)
 		Me.pnlNote.TabIndex = 38
 		'
+		'txtNote
+		'
+		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtNote.Location = New System.Drawing.Point(2, 43)
+		Me.txtNote.MaxLength = 14
+		Me.txtNote.Name = "txtNote"
+		Me.txtNote.Size = New System.Drawing.Size(91, 20)
+		Me.txtNote.TabIndex = 1
+		Me.txtNote.Text = "EX: Small Note"
+		'
 		'lblNote
 		'
 		Me.lblNote.BackColor = System.Drawing.Color.Transparent
@@ -593,16 +603,6 @@ Partial Class StepGetCouponOffers
 		Me.lblNote.TabIndex = 0
 		Me.lblNote.Text = "Note?"
 		Me.lblNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		'
-		'txtNote
-		'
-		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtNote.Location = New System.Drawing.Point(2, 43)
-		Me.txtNote.MaxLength = 14
-		Me.txtNote.Name = "txtNote"
-		Me.txtNote.Size = New System.Drawing.Size(91, 20)
-		Me.txtNote.TabIndex = 1
-		Me.txtNote.Text = "EX: Small Note"
 		'
 		'StepGetCouponOffers
 		'
@@ -619,7 +619,7 @@ Partial Class StepGetCouponOffers
 		Me.Controls.Add(Me.pnlExclusionDays)
 		Me.ForeColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.Name = "StepGetCouponOffers"
-		Me.NextStep = "StepGatherTargetList"
+		Me.NextStep = "StepGetCouponTargets"
 		Me.PreviousStep = "StepGeneratePayoutCoupon"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Drag and drop Offer Lists here."
