@@ -4,6 +4,7 @@
 	Public Sub New()
 		_dataCouponOffersHash = New Hashtable
 		_dataCouponOffersStruct = New CouponOffersStruct
+		_promoSkipTargetImport = False
 	End Sub
 #End Region
 #Region "Structures"
@@ -24,6 +25,7 @@
 #Region "Properties"
 	Private _dataCouponOffersHash As Hashtable
 	Private _dataCouponOffersStruct As CouponOffersStruct
+	Private _promoSkipTargetImport As Boolean
 
 	Private Property CouponOffersHash As Hashtable
 		Get
@@ -41,6 +43,24 @@
 			_dataCouponOffersStruct = value
 		End Set
 	End Property
+#Region "SkipTargetImport"
+	''' <summary>
+	''' Getter/Setter for _promoSkipTargetImport Boolean.
+	''' </summary>
+	''' <value>Pass True/False to Setter.</value>
+	''' <returns>True/False.</returns>
+	''' <remarks>
+	''' StepGetCouponTargets MUST BE SKIPPED IF WILDCARD COUPON OFFER.
+	''' </remarks>
+	Public Property SkipTargetImport As Boolean
+		Get
+			Return _promoSkipTargetImport
+		End Get
+		Set(value As Boolean)
+			_promoSkipTargetImport = value
+		End Set
+	End Property
+#End Region
 #End Region
 #Region "Validity Checks"
 	Public Function No_CouponOffers_Created() As Boolean
@@ -85,6 +105,17 @@
 		Return result
 	End Function
 #End Region
+#End Region
+#Region "GetCouponNumber"
+	Public Function GetCouponNumber(ByVal wildcardBool As Boolean) As Integer
+		Dim result As Integer = 0
+		If wildcardBool Then
+			result = 0
+		Else
+			result = CouponOffersHash.Count + 1
+		End If
+		Return result
+	End Function
 #End Region
 #Region "AddCouponOfferToHash"
 	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffersStruct)

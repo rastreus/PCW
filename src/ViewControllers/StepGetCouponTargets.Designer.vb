@@ -23,8 +23,9 @@ Partial Class StepGetCouponTargets
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
 		Me.pnlTargtListImport = New System.Windows.Forms.Panel()
-		Me.cbPathToTargetList = New System.Windows.Forms.ComboBox()
+		Me.btnFileBrowser = New System.Windows.Forms.Button()
 		Me.pnlDragTargetList = New System.Windows.Forms.Panel()
+		Me.lblDragHere = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.pnlCouponNumberForTargetList = New System.Windows.Forms.Panel()
 		Me.Label2 = New System.Windows.Forms.Label()
@@ -36,7 +37,6 @@ Partial Class StepGetCouponTargets
 		Me.lblCouponOffersList = New System.Windows.Forms.Label()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.btnSubmit = New System.Windows.Forms.Button()
-		Me.lblDragHere = New System.Windows.Forms.Label()
 		Me.pnlTargtListImport.SuspendLayout()
 		Me.pnlDragTargetList.SuspendLayout()
 		Me.pnlCouponNumberForTargetList.SuspendLayout()
@@ -53,7 +53,7 @@ Partial Class StepGetCouponTargets
 		'
 		Me.pnlTargtListImport.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlTargtListImport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlTargtListImport.Controls.Add(Me.cbPathToTargetList)
+		Me.pnlTargtListImport.Controls.Add(Me.btnFileBrowser)
 		Me.pnlTargtListImport.Controls.Add(Me.pnlDragTargetList)
 		Me.pnlTargtListImport.Controls.Add(Me.Label1)
 		Me.pnlTargtListImport.Location = New System.Drawing.Point(74, 33)
@@ -61,17 +61,20 @@ Partial Class StepGetCouponTargets
 		Me.pnlTargtListImport.Size = New System.Drawing.Size(278, 103)
 		Me.pnlTargtListImport.TabIndex = 1
 		'
-		'cbPathToTargetList
+		'btnFileBrowser
 		'
-		Me.cbPathToTargetList.BackColor = System.Drawing.Color.PapayaWhip
-		Me.cbPathToTargetList.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbPathToTargetList.ForeColor = System.Drawing.Color.Black
-		Me.cbPathToTargetList.FormattingEnabled = True
-		Me.cbPathToTargetList.Location = New System.Drawing.Point(3, 73)
-		Me.cbPathToTargetList.Name = "cbPathToTargetList"
-		Me.cbPathToTargetList.Size = New System.Drawing.Size(268, 21)
-		Me.cbPathToTargetList.TabIndex = 35
-		Me.cbPathToTargetList.Text = "C:\path\to\file\targetList.csv"
+		Me.btnFileBrowser.BackColor = System.Drawing.Color.PapayaWhip
+		Me.btnFileBrowser.FlatAppearance.BorderColor = System.Drawing.Color.Orange
+		Me.btnFileBrowser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold
+		Me.btnFileBrowser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkKhaki
+		Me.btnFileBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnFileBrowser.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnFileBrowser.Location = New System.Drawing.Point(3, 73)
+		Me.btnFileBrowser.Name = "btnFileBrowser"
+		Me.btnFileBrowser.Size = New System.Drawing.Size(268, 23)
+		Me.btnFileBrowser.TabIndex = 35
+		Me.btnFileBrowser.Text = "C:\path\to\file\targetList.csv"
+		Me.btnFileBrowser.UseVisualStyleBackColor = False
 		'
 		'pnlDragTargetList
 		'
@@ -82,6 +85,16 @@ Partial Class StepGetCouponTargets
 		Me.pnlDragTargetList.Name = "pnlDragTargetList"
 		Me.pnlDragTargetList.Size = New System.Drawing.Size(268, 44)
 		Me.pnlDragTargetList.TabIndex = 34
+		'
+		'lblDragHere
+		'
+		Me.lblDragHere.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDragHere.Location = New System.Drawing.Point(60, 6)
+		Me.lblDragHere.Name = "lblDragHere"
+		Me.lblDragHere.Size = New System.Drawing.Size(155, 30)
+		Me.lblDragHere.TabIndex = 0
+		Me.lblDragHere.Text = "Drag Target List Here Or Click Button Below"
+		Me.lblDragHere.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'Label1
 		'
@@ -218,16 +231,6 @@ Partial Class StepGetCouponTargets
 		Me.btnSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnSubmit.UseVisualStyleBackColor = False
 		'
-		'lblDragHere
-		'
-		Me.lblDragHere.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragHere.Location = New System.Drawing.Point(60, 11)
-		Me.lblDragHere.Name = "lblDragHere"
-		Me.lblDragHere.Size = New System.Drawing.Size(155, 17)
-		Me.lblDragHere.TabIndex = 0
-		Me.lblDragHere.Text = "Drag Target List Here"
-		Me.lblDragHere.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		'
 		'StepGetCouponTargets
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -261,12 +264,12 @@ Partial Class StepGetCouponTargets
 	Private WithEvents btnSubmit As System.Windows.Forms.Button
 	Friend WithEvents pnlDragTargetList As System.Windows.Forms.Panel
 	Private WithEvents Label1 As System.Windows.Forms.Label
-	Friend WithEvents cbPathToTargetList As System.Windows.Forms.ComboBox
 	Friend WithEvents pnlAquamarine As System.Windows.Forms.Panel
 	Private WithEvents Label2 As System.Windows.Forms.Label
 	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
 	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
 	Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
 	Friend WithEvents lblDragHere As System.Windows.Forms.Label
+	Friend WithEvents btnFileBrowser As System.Windows.Forms.Button
 
 End Class

@@ -7,6 +7,15 @@
 Public Class GUI_Util
 #Region "Utility Subroutines"
 	''' <summary>
+	''' Changes "BackColor" of Panel to represent success.
+	''' </summary>
+	''' <param name="pnl">The panel whose BackColor will be changed.</param>
+	''' <remarks>More delegation to clean code.</remarks>
+	Public Shared Sub successPnl(ByRef pnl As System.Windows.Forms.Panel)
+		pnl.BackColor = System.Drawing.Color.Lime
+	End Sub
+
+	''' <summary>
 	''' Changes "BackColor" of Panel to represent an error.
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>

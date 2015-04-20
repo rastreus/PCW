@@ -27,7 +27,7 @@ Public Class StepGetCouponOffers
 	Private Function StepGetCouponOffers_SetData() As StepGetCouponOffers_Data.CouponOffersStruct
 		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = New StepGetCouponOffers_Data.CouponOffersStruct
 		couponOffer._offerID = getOfferID()
-		couponOffer._couponNum = getCouponNum()
+		couponOffer._couponNum = Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
 		couponOffer._validStart = getValidStart()
 		couponOffer._validEnd = getValidEnd()
 		couponOffer._excludeDays = getExcludeDays()
@@ -43,12 +43,6 @@ Public Class StepGetCouponOffers
 	Private Function getOfferID() As String
 		Dim local_stepGeneratePayoutCoupon As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
 		Return local_stepGeneratePayoutCoupon.Data.CouponID
-	End Function
-
-	Private Function getCouponNum() As Integer
-		Throw New NotImplementedException
-		'Not sure the best way to implement this one.
-		'Think about it and come back later.
 	End Function
 
 	Private Function getValidStart() As Date
@@ -114,11 +108,13 @@ Public Class StepGetCouponOffers
 #Region "StepGetCouponOffers_Load"
 	Private validStartBool As Boolean
 	Private validEndBool As Boolean
+	Private wildcardMsgBool As Boolean
 
 	Private Sub StepGetCouponOffers_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
 		Me.validStartBool = False
 		Me.validEndBool = False
+		Me.wildcardMsgBool = False
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_ResetStep"
@@ -141,6 +137,7 @@ Public Class StepGetCouponOffers
 	Private Sub StepGetCouponOffers_ResetControls()
 		Me.validStartBool = False
 		Me.validEndBool = False
+		Me.wildcardMsgBool = False
 		Me.dtpValidStart.Value = DateTime.Today
 		Me.dtpValidEnd.Value = DateTime.Today
 		Me.dtpExcludeStart.Value = DateTime.Today
@@ -176,6 +173,14 @@ Public Class StepGetCouponOffers
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
+		Else
+			If Me.Data.SkipTargetImport Then
+				Me.NextStep = "StepH"
+				PCW.GetStep("StepH").PreviousStep = "StepGetCouponOffers"
+			Else
+				Me.NextStep = "StepGetCouponTargets"
+				PCW.GetStep("StepH").PreviousStep = "StepGetCouponTargets"
+			End If
 		End If
 	End Sub
 #End Region
@@ -186,7 +191,7 @@ Public Class StepGetCouponOffers
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Don't enable the "Next>" button until we're ready!</remarks>
-	Private Sub StepC_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepGetCouponOffers_ShowStep(sender As Object, e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		If PCW.NextEnabled = True Then
 			PCW.NextEnabled = False
@@ -259,11 +264,14 @@ Public Class StepGetCouponOffers
 			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
 			Me.StepGetCouponOffers_ResetControls()
 			Me.lblCouponOffersList.Text = RefreshLabelList()
-			If firstOfferList Then
+			If firstOfferList And Not Me.wildcardMsgBool Then
 				GUI_Util.msgBox("Add another Coupon Offer or press Next to continue.", _
-							"Coupon Offers Options",
-							"Information")
+								"Coupon Offers Options", _
+								"Information")
 			End If
+			Me.Data.SkipTargetImport = If(Me.rbCouponWildcardYES.Checked, _
+										  True, _
+										  False)
 			If (PCW.NextEnabled = False) Then
 				PCW.NextEnabled = True
 			End If
@@ -281,5 +289,19 @@ Public Class StepGetCouponOffers
 								  Me.Data.GetCouponOfferListString())
 		Return result
 	End Function
+#End Region
+#Region "StepGetCouponOffers_rbCouponWildcardYES_CheckedChanged"
+	Private Sub rbCouponWildcardYES_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbCouponWildcardYES.CheckedChanged
+		If rbCouponWildcardYES.Checked Then
+			If Me.wildcardMsgBool = False Then
+				Me.wildcardMsgBool = True
+				GUI_Util.msgBox("Wildcard Offers add Targets at the time of coupon creation. " & _
+								"There is no option to import a Target list for a Wildcard Offer.", _
+								"NO TARGET IMPORT!", _
+								"Information")
+			End If
+		End If
+	End Sub
 #End Region
 End Class
