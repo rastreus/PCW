@@ -68,11 +68,11 @@ Partial Class StepGetCouponOffers
 		Me.txtNote = New System.Windows.Forms.TextBox()
 		Me.lblNote = New System.Windows.Forms.Label()
 		Me.pnlCouponWildcard = New System.Windows.Forms.Panel()
-		Me.lblCouponWildcard = New System.Windows.Forms.Label()
-		Me.pnlYellow = New System.Windows.Forms.Panel()
-		Me.rbCouponWildcardYES = New System.Windows.Forms.RadioButton()
-		Me.rbCouponWildcardNO = New System.Windows.Forms.RadioButton()
 		Me.Label1 = New System.Windows.Forms.Label()
+		Me.pnlYellow = New System.Windows.Forms.Panel()
+		Me.rbCouponWildcardNO = New System.Windows.Forms.RadioButton()
+		Me.rbCouponWildcardYES = New System.Windows.Forms.RadioButton()
+		Me.lblCouponWildcard = New System.Windows.Forms.Label()
 		Me.pnlExclusionDays.SuspendLayout()
 		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
@@ -115,8 +115,6 @@ Partial Class StepGetCouponOffers
 		'cbSelectAll
 		'
 		Me.cbSelectAll.AutoSize = True
-		Me.cbSelectAll.Checked = True
-		Me.cbSelectAll.CheckState = System.Windows.Forms.CheckState.Checked
 		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSelectAll.ForeColor = System.Drawing.Color.Lime
 		Me.cbSelectAll.Location = New System.Drawing.Point(33, 168)
@@ -364,7 +362,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlPapayaWhip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysNO)
 		Me.pnlPapayaWhip.Controls.Add(Me.rbExcludeDaysYES)
-		Me.pnlPapayaWhip.Location = New System.Drawing.Point(6, 26)
+		Me.pnlPapayaWhip.Location = New System.Drawing.Point(6, 21)
 		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
 		Me.pnlPapayaWhip.Size = New System.Drawing.Size(82, 56)
 		Me.pnlPapayaWhip.TabIndex = 1
@@ -624,6 +622,50 @@ Partial Class StepGetCouponOffers
 		Me.pnlCouponWildcard.Size = New System.Drawing.Size(164, 63)
 		Me.pnlCouponWildcard.TabIndex = 39
 		'
+		'Label1
+		'
+		Me.Label1.AutoSize = True
+		Me.Label1.BackColor = System.Drawing.Color.Transparent
+		Me.Label1.ForeColor = System.Drawing.Color.White
+		Me.Label1.Location = New System.Drawing.Point(6, 15)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(136, 13)
+		Me.Label1.TabIndex = 3
+		Me.Label1.Text = "EX: ""Bring A Friend"" Promo"
+		'
+		'pnlYellow
+		'
+		Me.pnlYellow.BackColor = System.Drawing.Color.Yellow
+		Me.pnlYellow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlYellow.Controls.Add(Me.rbCouponWildcardNO)
+		Me.pnlYellow.Controls.Add(Me.rbCouponWildcardYES)
+		Me.pnlYellow.Location = New System.Drawing.Point(9, 31)
+		Me.pnlYellow.Name = "pnlYellow"
+		Me.pnlYellow.Size = New System.Drawing.Size(140, 25)
+		Me.pnlYellow.TabIndex = 2
+		'
+		'rbCouponWildcardNO
+		'
+		Me.rbCouponWildcardNO.AutoSize = True
+		Me.rbCouponWildcardNO.Checked = True
+		Me.rbCouponWildcardNO.Location = New System.Drawing.Point(78, 3)
+		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
+		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbCouponWildcardNO.TabIndex = 1
+		Me.rbCouponWildcardNO.TabStop = True
+		Me.rbCouponWildcardNO.Text = "No"
+		Me.rbCouponWildcardNO.UseVisualStyleBackColor = True
+		'
+		'rbCouponWildcardYES
+		'
+		Me.rbCouponWildcardYES.AutoSize = True
+		Me.rbCouponWildcardYES.Location = New System.Drawing.Point(29, 3)
+		Me.rbCouponWildcardYES.Name = "rbCouponWildcardYES"
+		Me.rbCouponWildcardYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbCouponWildcardYES.TabIndex = 0
+		Me.rbCouponWildcardYES.Text = "Yes"
+		Me.rbCouponWildcardYES.UseVisualStyleBackColor = True
+		'
 		'lblCouponWildcard
 		'
 		Me.lblCouponWildcard.BackColor = System.Drawing.Color.Transparent
@@ -635,50 +677,6 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponWildcard.TabIndex = 1
 		Me.lblCouponWildcard.Text = "Is this a Wildcard Offer?"
 		Me.lblCouponWildcard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		'
-		'pnlYellow
-		'
-		Me.pnlYellow.BackColor = System.Drawing.Color.Yellow
-		Me.pnlYellow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlYellow.Controls.Add(Me.rbCouponWildcardNO)
-		Me.pnlYellow.Controls.Add(Me.rbCouponWildcardYES)
-		Me.pnlYellow.Location = New System.Drawing.Point(1, 31)
-		Me.pnlYellow.Name = "pnlYellow"
-		Me.pnlYellow.Size = New System.Drawing.Size(156, 25)
-		Me.pnlYellow.TabIndex = 2
-		'
-		'rbCouponWildcardYES
-		'
-		Me.rbCouponWildcardYES.AutoSize = True
-		Me.rbCouponWildcardYES.Location = New System.Drawing.Point(37, 3)
-		Me.rbCouponWildcardYES.Name = "rbCouponWildcardYES"
-		Me.rbCouponWildcardYES.Size = New System.Drawing.Size(43, 17)
-		Me.rbCouponWildcardYES.TabIndex = 0
-		Me.rbCouponWildcardYES.Text = "Yes"
-		Me.rbCouponWildcardYES.UseVisualStyleBackColor = True
-		'
-		'rbCouponWildcardNO
-		'
-		Me.rbCouponWildcardNO.AutoSize = True
-		Me.rbCouponWildcardNO.Checked = True
-		Me.rbCouponWildcardNO.Location = New System.Drawing.Point(86, 3)
-		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
-		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbCouponWildcardNO.TabIndex = 1
-		Me.rbCouponWildcardNO.TabStop = True
-		Me.rbCouponWildcardNO.Text = "No"
-		Me.rbCouponWildcardNO.UseVisualStyleBackColor = True
-		'
-		'Label1
-		'
-		Me.Label1.AutoSize = True
-		Me.Label1.BackColor = System.Drawing.Color.Transparent
-		Me.Label1.ForeColor = System.Drawing.Color.White
-		Me.Label1.Location = New System.Drawing.Point(6, 15)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(136, 13)
-		Me.Label1.TabIndex = 3
-		Me.Label1.Text = "EX: ""Bring A Friend"" Promo"
 		'
 		'StepGetCouponOffers
 		'

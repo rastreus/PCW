@@ -160,9 +160,9 @@ Partial Class StepGetCouponTargets
 		Me.RadioButton2.AutoSize = True
 		Me.RadioButton2.Location = New System.Drawing.Point(62, 34)
 		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(135, 17)
+		Me.RadioButton2.Size = New System.Drawing.Size(173, 17)
 		Me.RadioButton2.TabIndex = 1
-		Me.RadioButton2.Text = "Imported Coupon Offer:"
+		Me.RadioButton2.Text = "Specify Imported Coupon Offer:"
 		Me.RadioButton2.UseVisualStyleBackColor = True
 		'
 		'RadioButton1
