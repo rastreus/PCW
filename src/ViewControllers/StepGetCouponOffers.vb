@@ -142,11 +142,18 @@ Public Class StepGetCouponOffers
 		Me.dtpValidEnd.Value = DateTime.Today
 		Me.dtpExcludeStart.Value = DateTime.Today
 		Me.dtpExcludeEnd.Value = DateTime.Today
+		Me.rbFullValidateNO.Checked = True
+		Me.rbReprintableNO.Checked = True
+		Me.rbScanToReceiptNO.Checked = True
+		Me.rbCouponWildcardNO.Checked = True
 		Me.rbExcludeDaysNO.Checked = True
 		Me.pnlExcludeRange.Enabled = False
 		Me.pnlExclusionDays.Enabled = False
+		Me.txtNote.Text = "EX: Small Note"
 		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
-		Me.cbSelectAll.Checked = True
+		ExcludeDaysCheckState(False)
+		Me.clbExcludeDays.ClearSelected()
+		Me.cbSelectAll.Checked = False
 		Me.btnSubmit.Enabled = False
 	End Sub
 #End Region
@@ -203,15 +210,15 @@ Public Class StepGetCouponOffers
 	''' Checks all the Items in clbExcludeDays.
 	''' </summary>
 	''' <remarks></remarks>
-	Private Sub SelectAll()
+	Private Sub ExcludeDaysCheckState(ByVal checkState As Boolean)
 		For item As Integer = 0 To Me.clbExcludeDays.Items.Count - 1
-			Me.clbExcludeDays.SetItemChecked(item, Me.cbSelectAll.Checked)
+			Me.clbExcludeDays.SetItemChecked(item, checkState)
 		Next
 	End Sub
 
 	Private Sub cbSelectAll_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles cbSelectAll.CheckedChanged
-		SelectAll()
+		ExcludeDaysCheckState(Me.cbSelectAll.Checked)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidStart_CloseUp"
@@ -301,6 +308,14 @@ Public Class StepGetCouponOffers
 								"NO TARGET IMPORT!", _
 								"Information")
 			End If
+		End If
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_txtNote_Enter"
+	Private Sub txtNote_Enter(sender As Object, e As EventArgs) _
+	Handles txtNote.Enter
+		If Me.txtNote.Text = "EX: Small Note" Then
+			Me.txtNote.Text = ""
 		End If
 	End Sub
 #End Region

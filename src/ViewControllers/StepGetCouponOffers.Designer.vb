@@ -120,7 +120,8 @@ Partial Class StepGetCouponOffers
 		Me.cbSelectAll.Location = New System.Drawing.Point(33, 168)
 		Me.cbSelectAll.Name = "cbSelectAll"
 		Me.cbSelectAll.Size = New System.Drawing.Size(80, 17)
-		Me.cbSelectAll.TabIndex = 7
+		Me.cbSelectAll.TabIndex = 0
+		Me.cbSelectAll.TabStop = False
 		Me.cbSelectAll.Text = "Select All"
 		Me.cbSelectAll.UseVisualStyleBackColor = True
 		'
@@ -138,6 +139,7 @@ Partial Class StepGetCouponOffers
 		'clbExcludeDays
 		'
 		Me.clbExcludeDays.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.clbExcludeDays.CausesValidation = False
 		Me.clbExcludeDays.CheckOnClick = True
 		Me.clbExcludeDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.clbExcludeDays.FormattingEnabled = True
@@ -145,8 +147,10 @@ Partial Class StepGetCouponOffers
 		Me.clbExcludeDays.Location = New System.Drawing.Point(31, 57)
 		Me.clbExcludeDays.Name = "clbExcludeDays"
 		Me.clbExcludeDays.Size = New System.Drawing.Size(103, 109)
-		Me.clbExcludeDays.TabIndex = 6
+		Me.clbExcludeDays.TabIndex = 0
+		Me.clbExcludeDays.TabStop = False
 		Me.clbExcludeDays.ThreeDCheckBoxes = True
+		Me.clbExcludeDays.UseTabStops = False
 		'
 		'pnlExcludeRange
 		'
@@ -178,7 +182,8 @@ Partial Class StepGetCouponOffers
 		Me.dtpExcludeStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpExcludeStart.Name = "dtpExcludeStart"
 		Me.dtpExcludeStart.Size = New System.Drawing.Size(95, 20)
-		Me.dtpExcludeStart.TabIndex = 1
+		Me.dtpExcludeStart.TabIndex = 0
+		Me.dtpExcludeStart.TabStop = False
 		'
 		'lblExcludeStart
 		'
@@ -208,7 +213,8 @@ Partial Class StepGetCouponOffers
 		Me.dtpExcludeEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpExcludeEnd.Name = "dtpExcludeEnd"
 		Me.dtpExcludeEnd.Size = New System.Drawing.Size(95, 20)
-		Me.dtpExcludeEnd.TabIndex = 2
+		Me.dtpExcludeEnd.TabIndex = 0
+		Me.dtpExcludeEnd.TabStop = False
 		'
 		'lblExcludeEnd
 		'
@@ -249,7 +255,8 @@ Partial Class StepGetCouponOffers
 		Me.dtpValidStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpValidStart.Name = "dtpValidStart"
 		Me.dtpValidStart.Size = New System.Drawing.Size(95, 20)
-		Me.dtpValidStart.TabIndex = 1
+		Me.dtpValidStart.TabIndex = 0
+		Me.dtpValidStart.TabStop = False
 		'
 		'lblValidStart
 		'
@@ -279,7 +286,8 @@ Partial Class StepGetCouponOffers
 		Me.dtpValidEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpValidEnd.Name = "dtpValidEnd"
 		Me.dtpValidEnd.Size = New System.Drawing.Size(95, 20)
-		Me.dtpValidEnd.TabIndex = 2
+		Me.dtpValidEnd.TabIndex = 0
+		Me.dtpValidEnd.TabStop = False
 		'
 		'lblValidEnd
 		'
@@ -375,8 +383,7 @@ Partial Class StepGetCouponOffers
 		Me.rbExcludeDaysNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbExcludeDaysNO.Name = "rbExcludeDaysNO"
 		Me.rbExcludeDaysNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbExcludeDaysNO.TabIndex = 1
-		Me.rbExcludeDaysNO.TabStop = True
+		Me.rbExcludeDaysNO.TabIndex = 0
 		Me.rbExcludeDaysNO.Text = "No"
 		Me.rbExcludeDaysNO.UseVisualStyleBackColor = True
 		'
@@ -433,8 +440,7 @@ Partial Class StepGetCouponOffers
 		Me.rbFullValidateNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbFullValidateNO.Name = "rbFullValidateNO"
 		Me.rbFullValidateNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbFullValidateNO.TabIndex = 1
-		Me.rbFullValidateNO.TabStop = True
+		Me.rbFullValidateNO.TabIndex = 0
 		Me.rbFullValidateNO.Text = "No"
 		Me.rbFullValidateNO.UseVisualStyleBackColor = True
 		'
@@ -491,8 +497,7 @@ Partial Class StepGetCouponOffers
 		Me.rbReprintableNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbReprintableNO.Name = "rbReprintableNO"
 		Me.rbReprintableNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbReprintableNO.TabIndex = 1
-		Me.rbReprintableNO.TabStop = True
+		Me.rbReprintableNO.TabIndex = 0
 		Me.rbReprintableNO.Text = "No"
 		Me.rbReprintableNO.UseVisualStyleBackColor = True
 		'
@@ -549,8 +554,7 @@ Partial Class StepGetCouponOffers
 		Me.rbScanToReceiptNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbScanToReceiptNO.Name = "rbScanToReceiptNO"
 		Me.rbScanToReceiptNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbScanToReceiptNO.TabIndex = 1
-		Me.rbScanToReceiptNO.TabStop = True
+		Me.rbScanToReceiptNO.TabIndex = 0
 		Me.rbScanToReceiptNO.Text = "No"
 		Me.rbScanToReceiptNO.UseVisualStyleBackColor = True
 		'
@@ -651,8 +655,7 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO.Location = New System.Drawing.Point(78, 3)
 		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
 		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbCouponWildcardNO.TabIndex = 1
-		Me.rbCouponWildcardNO.TabStop = True
+		Me.rbCouponWildcardNO.TabIndex = 0
 		Me.rbCouponWildcardNO.Text = "No"
 		Me.rbCouponWildcardNO.UseVisualStyleBackColor = True
 		'

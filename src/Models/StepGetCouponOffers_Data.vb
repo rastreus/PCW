@@ -98,8 +98,8 @@
 		Dim result As Boolean = False
 		Dim compareStarts As Integer = Date.Compare(excludeStart, validStart)
 		Dim compareEnds As Integer = Date.Compare(excludeEnd, validEnd)
-		If compareStarts < 0 Or
-			compareEnds < 0 Then
+		If (compareStarts < 0) Or
+			(compareEnds > 0) Then
 			result = True 'Yes, Exclude Range is not within the Valid Period.
 		End If
 		Return result
