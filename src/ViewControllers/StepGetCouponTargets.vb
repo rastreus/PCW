@@ -22,6 +22,16 @@ Public Class StepGetCouponTargets
 		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
 	End Sub
 #End Region
+#Region "StepGetCouponTarget_ShowStep"
+	Private Sub StepGetCouponTarget_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		Dim local_offers As StepGetCouponOffers = PCW.GetStep("StepGetCouponOffers")
+		Dim couponOffers As ArrayList = local_offers.Data.GetCouponOfferNumbersAsArrayList()
+		For Each offer As String In couponOffers
+			Me.cbImportedOffers.Items.Add(offer)
+		Next
+	End Sub
+#End Region
 #Region "StepGetCouponTargets_cbPathToTargetList_DragEnter"
 	Private Sub SetPathText(ByVal s As String)
 		Me.btnFileBrowser.Text = s
@@ -72,6 +82,20 @@ Public Class StepGetCouponTargets
 			If Dir(fileDialog.FileName) <> "" Then
 				SetPathText(fileDialog.FileName)
 				Success()
+			End If
+		End If
+	End Sub
+#End Region
+#Region "StepGetCouponTarget_rbImportedOffers_CheckedChanged"
+	Private Sub rbImportedOffers_CheckedChanged(sender As Object, e As EventArgs) _
+		Handles rbImportedOffers.CheckedChanged
+		If Me.rbImportedOffers.Checked Then
+			Me.cbImportedOffers.Enabled = True
+			Me.cbImportedOffers.DroppedDown = True
+		Else
+			Me.cbImportedOffers.Enabled = False
+			If Me.cbImportedOffers.DroppedDown = True Then
+				Me.cbImportedOffers.DroppedDown = False
 			End If
 		End If
 	End Sub

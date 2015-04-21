@@ -136,4 +136,13 @@
 		Return builder.ToString()
 	End Function
 #End Region
+#Region "GetCouponOfferNumbers"
+	Public Function GetCouponOfferNumbersAsArrayList() As ArrayList
+		Dim result As ArrayList = New ArrayList
+		For Each key As String In CouponOffersHash.Keys
+			result.Add(key)
+		Next
+		Return result
+	End Function
+#End Region
 End Class

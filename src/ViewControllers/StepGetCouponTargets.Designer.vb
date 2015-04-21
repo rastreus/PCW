@@ -30,9 +30,9 @@ Partial Class StepGetCouponTargets
 		Me.pnlCouponNumberForTargetList = New System.Windows.Forms.Panel()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.pnlAquamarine = New System.Windows.Forms.Panel()
-		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-		Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+		Me.cbImportedOffers = New System.Windows.Forms.ComboBox()
+		Me.rbImportedOffers = New System.Windows.Forms.RadioButton()
+		Me.rbWildcard = New System.Windows.Forms.RadioButton()
 		Me.pnlCouponOffers = New System.Windows.Forms.Panel()
 		Me.lblCouponOffersList = New System.Windows.Forms.Label()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
@@ -135,47 +135,47 @@ Partial Class StepGetCouponTargets
 		'
 		Me.pnlAquamarine.BackColor = System.Drawing.Color.Aquamarine
 		Me.pnlAquamarine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlAquamarine.Controls.Add(Me.ComboBox1)
-		Me.pnlAquamarine.Controls.Add(Me.RadioButton2)
-		Me.pnlAquamarine.Controls.Add(Me.RadioButton1)
+		Me.pnlAquamarine.Controls.Add(Me.cbImportedOffers)
+		Me.pnlAquamarine.Controls.Add(Me.rbImportedOffers)
+		Me.pnlAquamarine.Controls.Add(Me.rbWildcard)
 		Me.pnlAquamarine.Location = New System.Drawing.Point(3, 26)
 		Me.pnlAquamarine.Name = "pnlAquamarine"
 		Me.pnlAquamarine.Size = New System.Drawing.Size(268, 92)
 		Me.pnlAquamarine.TabIndex = 0
 		'
-		'ComboBox1
+		'cbImportedOffers
 		'
-		Me.ComboBox1.BackColor = System.Drawing.Color.Gainsboro
-		Me.ComboBox1.Enabled = False
-		Me.ComboBox1.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.ComboBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.ComboBox1.FormattingEnabled = True
-		Me.ComboBox1.Location = New System.Drawing.Point(82, 57)
-		Me.ComboBox1.Name = "ComboBox1"
-		Me.ComboBox1.Size = New System.Drawing.Size(121, 23)
-		Me.ComboBox1.TabIndex = 2
+		Me.cbImportedOffers.BackColor = System.Drawing.Color.Gainsboro
+		Me.cbImportedOffers.Enabled = False
+		Me.cbImportedOffers.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbImportedOffers.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.cbImportedOffers.FormattingEnabled = True
+		Me.cbImportedOffers.Location = New System.Drawing.Point(82, 57)
+		Me.cbImportedOffers.Name = "cbImportedOffers"
+		Me.cbImportedOffers.Size = New System.Drawing.Size(121, 23)
+		Me.cbImportedOffers.TabIndex = 2
 		'
-		'RadioButton2
+		'rbImportedOffers
 		'
-		Me.RadioButton2.AutoSize = True
-		Me.RadioButton2.Location = New System.Drawing.Point(62, 34)
-		Me.RadioButton2.Name = "RadioButton2"
-		Me.RadioButton2.Size = New System.Drawing.Size(173, 17)
-		Me.RadioButton2.TabIndex = 1
-		Me.RadioButton2.Text = "Specify Imported Coupon Offer:"
-		Me.RadioButton2.UseVisualStyleBackColor = True
+		Me.rbImportedOffers.AutoSize = True
+		Me.rbImportedOffers.Location = New System.Drawing.Point(62, 34)
+		Me.rbImportedOffers.Name = "rbImportedOffers"
+		Me.rbImportedOffers.Size = New System.Drawing.Size(173, 17)
+		Me.rbImportedOffers.TabIndex = 1
+		Me.rbImportedOffers.Text = "Specify Imported Coupon Offer:"
+		Me.rbImportedOffers.UseVisualStyleBackColor = True
 		'
-		'RadioButton1
+		'rbWildcard
 		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.Checked = True
-		Me.RadioButton1.Location = New System.Drawing.Point(62, 11)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(82, 17)
-		Me.RadioButton1.TabIndex = 0
-		Me.RadioButton1.TabStop = True
-		Me.RadioButton1.Text = "Wildcard (0)"
-		Me.RadioButton1.UseVisualStyleBackColor = True
+		Me.rbWildcard.AutoSize = True
+		Me.rbWildcard.Checked = True
+		Me.rbWildcard.Location = New System.Drawing.Point(62, 11)
+		Me.rbWildcard.Name = "rbWildcard"
+		Me.rbWildcard.Size = New System.Drawing.Size(82, 17)
+		Me.rbWildcard.TabIndex = 0
+		Me.rbWildcard.TabStop = True
+		Me.rbWildcard.Text = "Wildcard (0)"
+		Me.rbWildcard.UseVisualStyleBackColor = True
 		'
 		'pnlCouponOffers
 		'
@@ -266,9 +266,9 @@ Partial Class StepGetCouponTargets
 	Private WithEvents Label1 As System.Windows.Forms.Label
 	Friend WithEvents pnlAquamarine As System.Windows.Forms.Panel
 	Private WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-	Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+	Friend WithEvents rbImportedOffers As System.Windows.Forms.RadioButton
+	Friend WithEvents rbWildcard As System.Windows.Forms.RadioButton
+	Friend WithEvents cbImportedOffers As System.Windows.Forms.ComboBox
 	Friend WithEvents lblDragHere As System.Windows.Forms.Label
 	Friend WithEvents btnFileBrowser As System.Windows.Forms.Button
 
