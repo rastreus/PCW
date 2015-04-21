@@ -11,6 +11,9 @@ Public Class StepGetCouponTargets
 
 	Private Sub ResetControls()
 		Me.lblDragHere.Text = "Drag Target List Here or Click Button Below"
+		Me.btnFileBrowser.Text = "C:\path\to\file\targetList.csv"
+		Me.btnSubmit.Enabled = False
+		Me.rbWildcard.Checked = True
 	End Sub
 #End Region
 #Region "StepGetCouponTarget_Load"
@@ -30,11 +33,15 @@ Public Class StepGetCouponTargets
 		For Each offer As String In couponOffers
 			Me.cbImportedOffers.Items.Add(offer)
 		Next
+		PCW.NextEnabled = False
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_cbPathToTargetList_DragEnter"
 	Private Sub SetPathText(ByVal s As String)
 		Me.btnFileBrowser.Text = s
+		If Me.btnSubmit.Enabled = False Then
+			Me.btnSubmit.Enabled = True
+		End If
 	End Sub
 
 	Private Sub pnlDragTargetList_DragEnter(sender As Object, e As DragEventArgs) _
@@ -97,6 +104,16 @@ Public Class StepGetCouponTargets
 			If Me.cbImportedOffers.DroppedDown = True Then
 				Me.cbImportedOffers.DroppedDown = False
 			End If
+		End If
+	End Sub
+#End Region
+#Region "StepGetCouponTarget_btnSubmit_Click"
+	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
+		Handles btnSubmit.Click
+		'Parse File Path
+		'Add to Label: File Path - Coupon Number
+		If (PCW.NextEnabled = False) Then
+			PCW.NextEnabled = True
 		End If
 	End Sub
 #End Region
