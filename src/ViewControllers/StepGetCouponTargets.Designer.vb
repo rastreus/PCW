@@ -7,7 +7,8 @@ Partial Class StepGetCouponTargets
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
+				components.Dispose()
+				Me.stepGetCouponTargets_data.Dispose()
             End If
         Finally
             MyBase.Dispose(disposing)
