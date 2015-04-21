@@ -64,6 +64,7 @@
 	End Sub
 #End Region
 #Region "Properties"
+	Private _dataCouponTargetsList As ArrayList = New ArrayList
 	Private _dataEligiblePlayersCSVFilePath As String = New String("")
 	Private _dataCouponTargetsCSVFilePath As String = New String("")
 	Private _dataEligiblePlayersCouponNum As Integer = New Integer
@@ -121,7 +122,7 @@
 	End Property
 #End Region
 #Region "CSVtoCouponTargets"
-	Private Sub CSVtoCouponTargetsDataTable(ByVal couponNum As Integer)
+	Public Sub CSVtoCouponTargetsDataTable()
 		Dim parser As New FileIO.TextFieldParser(CouponTargetsCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -134,7 +135,7 @@
 			Try
 				currentRow = parser.ReadFields()
 				CouponTargetsDataTable.Rows.Add(currentRow(0), _
-												couponNum, _
+												CouponTargetsCouponNum, _
 												currentRow(1), _
 												getZip(currentRow(7)), _
 												removeDollarReturnDecimal(currentRow(12)), _
@@ -150,6 +151,11 @@
 				'
 			End Try
 		Loop
+		AddDataTableToCouponTargetsList()
+	End Sub
+
+	Private Sub AddDataTableToCouponTargetsList()
+		_dataCouponTargetsList.Add(CouponTargetsDataTable)
 	End Sub
 #End Region
 #Region "CSVtoEligiblePlayers"
@@ -207,6 +213,14 @@
 			End Try
 		End If
 		Return returningDecimal
+	End Function
+#End Region
+#Region "Validity Checks"
+	Public Function No_CouponTargets_Created() As Boolean
+		Dim result As Boolean = If(_dataCouponTargetsList.Count = 0, _
+								   True, _
+								   False)
+		Return result
 	End Function
 #End Region
 End Class

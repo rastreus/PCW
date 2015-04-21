@@ -3,6 +3,37 @@
 Public Class StepGetCouponTargets
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepGetCouponTargets_New"
+	Public Sub New()
+		' This call is required by the designer.
+		InitializeComponent()
+		' Add any initialization after the InitializeComponent() call.
+		Me.stepGetCouponTargets_data = New StepGetCouponTargets_Data
+	End Sub
+#End Region
+#Region "StepGetCouponTargets_Data"
+	''' <summary>
+	''' Model for StepStepGetCouponTargets.
+	''' </summary>
+	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	Private stepGetCouponTargets_data As StepGetCouponTargets_Data
+	Public ReadOnly Property Data() As StepGetCouponTargets_Data
+		Get
+			Return Me.stepGetCouponTargets_data
+		End Get
+	End Property
+#End Region
+#Region "StepGetCouponTarget_Load"
+	Private Delegate Sub DelegateSetPathText(ByVal s As String)
+	Private m_DelegateSetPathText As DelegateSetPathText
+	Private TargetsList As ArrayList
+
+	Private Sub StepGetCouponTarget_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
+		TargetsList = New ArrayList
+	End Sub
+#End Region
 #Region "StepGetCouponTarget_Reset"
 	Private Sub StepGetCouponTarget_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
@@ -14,15 +45,6 @@ Public Class StepGetCouponTargets
 		Me.btnFileBrowser.Text = "C:\path\to\file\targetList.csv"
 		Me.btnSubmit.Enabled = False
 		Me.rbWildcard.Checked = True
-	End Sub
-#End Region
-#Region "StepGetCouponTarget_Load"
-	Private Delegate Sub DelegateSetPathText(ByVal s As String)
-	Private m_DelegateSetPathText As DelegateSetPathText
-
-	Private Sub StepGetCouponTarget_Load(sender As Object, e As EventArgs) _
-		Handles MyBase.Load
-		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
 	End Sub
 #End Region
 #Region "StepGetCouponTarget_ShowStep"
@@ -110,11 +132,37 @@ Public Class StepGetCouponTargets
 #Region "StepGetCouponTarget_btnSubmit_Click"
 	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
-		'Parse File Path
-		'Add to Label: File Path - Coupon Number
+		Dim firstTargetList As Boolean = Me.Data.No_CouponTargets_Created()
+		Me.Data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text
+		Me.Data.CouponTargetsCouponNum = GetCouponNumber()
+		Me.Data.CSVtoCouponTargetsDataTable()
+		Me.TargetsList.Add(GetCouponTargetListsLabel())
+		Me.lblCouponTargetLists.Text = RefreshLabelList()
 		If (PCW.NextEnabled = False) Then
 			PCW.NextEnabled = True
 		End If
 	End Sub
 #End Region
+	Private Function GetCouponNumber() As Integer
+		Dim result As String = New String("!")
+		result = If(Me.rbWildcard.Checked, _
+					0, _
+					Me.cbImportedOffers.SelectedItem)
+		Return result
+	End Function
+	Private Function GetFileNameAsString() As String
+		Dim filePath As String = Me.btnFileBrowser.Text
+		Dim parts As String() = filePath.Split(New Char() {"\"c})
+		Return parts.Last()
+	End Function
+	Private Function GetCouponTargetListsLabel()
+		Return GetCouponNumber().ToString() & ": " & GetFileNameAsString()
+	End Function
+	Private Function RefreshLabelList()
+		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+		For Each listStr As String In Me.TargetsList
+			builder.Append(listStr & vbCrLf)
+		Next
+		Return builder.ToString()
+	End Function
 End Class

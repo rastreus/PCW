@@ -34,7 +34,7 @@ Partial Class StepGetCouponTargets
 		Me.rbImportedOffers = New System.Windows.Forms.RadioButton()
 		Me.rbWildcard = New System.Windows.Forms.RadioButton()
 		Me.pnlCouponOffers = New System.Windows.Forms.Panel()
-		Me.lblCouponOffersList = New System.Windows.Forms.Label()
+		Me.lblCouponTargetLists = New System.Windows.Forms.Label()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.btnSubmit = New System.Windows.Forms.Button()
 		Me.pnlTargtListImport.SuspendLayout()
@@ -181,7 +181,7 @@ Partial Class StepGetCouponTargets
 		'
 		Me.pnlCouponOffers.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlCouponOffers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffersList)
+		Me.pnlCouponOffers.Controls.Add(Me.lblCouponTargetLists)
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffers)
 		Me.pnlCouponOffers.Controls.Add(Me.btnSubmit)
 		Me.pnlCouponOffers.Location = New System.Drawing.Point(358, 33)
@@ -189,17 +189,17 @@ Partial Class StepGetCouponTargets
 		Me.pnlCouponOffers.Size = New System.Drawing.Size(164, 234)
 		Me.pnlCouponOffers.TabIndex = 34
 		'
-		'lblCouponOffersList
+		'lblCouponTargetLists
 		'
-		Me.lblCouponOffersList.BackColor = System.Drawing.Color.Gainsboro
-		Me.lblCouponOffersList.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblCouponOffersList.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.lblCouponOffersList.Location = New System.Drawing.Point(9, 23)
-		Me.lblCouponOffersList.Name = "lblCouponOffersList"
-		Me.lblCouponOffersList.Size = New System.Drawing.Size(140, 175)
-		Me.lblCouponOffersList.TabIndex = 33
-		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Targets."
-		Me.lblCouponOffersList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.lblCouponTargetLists.BackColor = System.Drawing.Color.Gainsboro
+		Me.lblCouponTargetLists.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCouponTargetLists.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblCouponTargetLists.Location = New System.Drawing.Point(9, 23)
+		Me.lblCouponTargetLists.Name = "lblCouponTargetLists"
+		Me.lblCouponTargetLists.Size = New System.Drawing.Size(140, 175)
+		Me.lblCouponTargetLists.TabIndex = 33
+		Me.lblCouponTargetLists.Text = "Click 'Submit' below to add Coupon Targets."
+		Me.lblCouponTargetLists.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'lblCouponOffers
 		'
@@ -259,7 +259,7 @@ Partial Class StepGetCouponTargets
 	Friend WithEvents pnlTargtListImport As System.Windows.Forms.Panel
 	Friend WithEvents pnlCouponNumberForTargetList As System.Windows.Forms.Panel
 	Private WithEvents pnlCouponOffers As System.Windows.Forms.Panel
-	Private WithEvents lblCouponOffersList As System.Windows.Forms.Label
+	Private WithEvents lblCouponTargetLists As System.Windows.Forms.Label
 	Private WithEvents lblCouponOffers As System.Windows.Forms.Label
 	Private WithEvents btnSubmit As System.Windows.Forms.Button
 	Friend WithEvents pnlDragTargetList As System.Windows.Forms.Panel

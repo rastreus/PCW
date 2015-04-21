@@ -24,7 +24,7 @@ Public Class StepGetCouponOffers
 	End Property
 #End Region
 #Region "StepGetCouponOffers_SetData"
-	Private Function StepGetCouponOffers_SetData() As StepGetCouponOffers_Data.CouponOffersStruct
+	Private Function StepGetCouponOffers_GetData() As StepGetCouponOffers_Data.CouponOffersStruct
 		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = New StepGetCouponOffers_Data.CouponOffersStruct
 		couponOffer._offerID = getOfferID()
 		couponOffer._couponNum = Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
@@ -265,7 +265,7 @@ Public Class StepGetCouponOffers
 	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
-		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = StepGetCouponOffers_SetData()
+		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = StepGetCouponOffers_GetData()
 		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer)
 		If couponOfferIsValid Then
 			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
