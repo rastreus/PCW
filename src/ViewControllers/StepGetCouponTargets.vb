@@ -52,7 +52,6 @@ Public Class StepGetCouponTargets
 		Handles MyBase.ShowStep
 		AddImportedOffers()
 		PCW.NextEnabled = False
-		Me.ActiveControl = Me.pnlDragTargetList
 	End Sub
 
 	Private Sub AddImportedOffers()
@@ -136,17 +135,24 @@ Public Class StepGetCouponTargets
 	End Sub
 #End Region
 #Region "StepGetCouponTarget_btnSubmit_Click"
-	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
+	Private Async Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
+		Me.btnSubmit.Enabled = False
 		Dim firstTargetList As Boolean = Me.Data.No_CouponTargets_Created()
 		Me.Data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text
 		Me.Data.CouponTargetsCouponNum = GetCouponNumber()
-		Me.Data.CSVtoCouponTargetsDataTable()
-		Me.TargetsList.Add(GetCouponTargetListsLabel())
+		Me.targetsList.Add(GetCouponTargetListsLabel())
 		Me.lblCouponTargetLists.Text = RefreshLabelList()
+		Me.UseWaitCursor = True
+		Await Task.Run(Sub()
+						   Me.Data.CSVtoCouponTargetsDataTable()
+					   End Sub)
+		'Only Enable once sure the CSV in a DataTable
+		Me.UseWaitCursor = False
 		If (PCW.NextEnabled = False) Then
 			PCW.NextEnabled = True
 		End If
+		Me.btnSubmit.Enabled = True
 	End Sub
 #End Region
 	Private Function GetCouponNumber() As Integer

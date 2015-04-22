@@ -24,6 +24,7 @@ Partial Class StepGetCouponTargets
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
 		Me.pnlTargtListImport = New System.Windows.Forms.Panel()
+		Me.lblClickButtonBelow = New System.Windows.Forms.Label()
 		Me.btnFileBrowser = New System.Windows.Forms.Button()
 		Me.pnlDragTargetList = New System.Windows.Forms.Panel()
 		Me.lblDragHere = New System.Windows.Forms.Label()
@@ -38,7 +39,6 @@ Partial Class StepGetCouponTargets
 		Me.lblCouponTargetLists = New System.Windows.Forms.Label()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.btnSubmit = New System.Windows.Forms.Button()
-		Me.lblClickButtonBelow = New System.Windows.Forms.Label()
 		Me.pnlTargtListImport.SuspendLayout()
 		Me.pnlDragTargetList.SuspendLayout()
 		Me.pnlCouponNumberForTargetList.SuspendLayout()
@@ -64,6 +64,17 @@ Partial Class StepGetCouponTargets
 		Me.pnlTargtListImport.Size = New System.Drawing.Size(278, 118)
 		Me.pnlTargtListImport.TabIndex = 1
 		'
+		'lblClickButtonBelow
+		'
+		Me.lblClickButtonBelow.BackColor = System.Drawing.Color.Transparent
+		Me.lblClickButtonBelow.ForeColor = System.Drawing.Color.White
+		Me.lblClickButtonBelow.Location = New System.Drawing.Point(3, 74)
+		Me.lblClickButtonBelow.Name = "lblClickButtonBelow"
+		Me.lblClickButtonBelow.Size = New System.Drawing.Size(268, 12)
+		Me.lblClickButtonBelow.TabIndex = 36
+		Me.lblClickButtonBelow.Text = "(Or Click Button Below)"
+		Me.lblClickButtonBelow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
 		'btnFileBrowser
 		'
 		Me.btnFileBrowser.BackColor = System.Drawing.Color.PapayaWhip
@@ -81,14 +92,14 @@ Partial Class StepGetCouponTargets
 		'
 		'pnlDragTargetList
 		'
+		Me.pnlDragTargetList.AllowDrop = True
 		Me.pnlDragTargetList.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlDragTargetList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDragTargetList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlDragTargetList.Controls.Add(Me.lblDragHere)
 		Me.pnlDragTargetList.Location = New System.Drawing.Point(3, 23)
 		Me.pnlDragTargetList.Name = "pnlDragTargetList"
 		Me.pnlDragTargetList.Size = New System.Drawing.Size(268, 48)
-		Me.pnlDragTargetList.TabIndex = 1
-		Me.pnlDragTargetList.TabStop = True
+		Me.pnlDragTargetList.TabIndex = 0
 		'
 		'lblDragHere
 		'
@@ -234,17 +245,6 @@ Partial Class StepGetCouponTargets
 		Me.btnSubmit.Text = "Submit"
 		Me.btnSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnSubmit.UseVisualStyleBackColor = False
-		'
-		'lblClickButtonBelow
-		'
-		Me.lblClickButtonBelow.BackColor = System.Drawing.Color.Transparent
-		Me.lblClickButtonBelow.ForeColor = System.Drawing.Color.White
-		Me.lblClickButtonBelow.Location = New System.Drawing.Point(3, 74)
-		Me.lblClickButtonBelow.Name = "lblClickButtonBelow"
-		Me.lblClickButtonBelow.Size = New System.Drawing.Size(268, 12)
-		Me.lblClickButtonBelow.TabIndex = 36
-		Me.lblClickButtonBelow.Text = "(Or Click Button Below)"
-		Me.lblClickButtonBelow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'StepGetCouponTargets
 		'
