@@ -9,6 +9,7 @@ Public Class StepGetCouponTargets
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
 		Me.stepGetCouponTargets_data = New StepGetCouponTargets_Data
+		Me.TargetsList = New ArrayList
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_Data"
@@ -26,12 +27,11 @@ Public Class StepGetCouponTargets
 #Region "StepGetCouponTarget_Load"
 	Private Delegate Sub DelegateSetPathText(ByVal s As String)
 	Private m_DelegateSetPathText As DelegateSetPathText
-	Private TargetsList As ArrayList
+	Private targetsList As ArrayList
 
 	Private Sub StepGetCouponTarget_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
 		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
-		TargetsList = New ArrayList
 	End Sub
 #End Region
 #Region "StepGetCouponTarget_Reset"
@@ -41,7 +41,7 @@ Public Class StepGetCouponTargets
 	End Sub
 
 	Private Sub ResetControls()
-		Me.lblDragHere.Text = "Drag Target List Here or Click Button Below"
+		Me.lblDragHere.Text = "Drag Target List Here"
 		Me.btnFileBrowser.Text = "C:\path\to\file\targetList.csv"
 		Me.btnSubmit.Enabled = False
 		Me.rbWildcard.Checked = True
@@ -50,12 +50,18 @@ Public Class StepGetCouponTargets
 #Region "StepGetCouponTarget_ShowStep"
 	Private Sub StepGetCouponTarget_ShowStep(sender As Object, e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		AddImportedOffers()
+		PCW.NextEnabled = False
+		Me.ActiveControl = Me.pnlDragTargetList
+	End Sub
+
+	Private Sub AddImportedOffers()
 		Dim local_offers As StepGetCouponOffers = PCW.GetStep("StepGetCouponOffers")
 		Dim couponOffers As ArrayList = local_offers.Data.GetCouponOfferNumbersAsArrayList()
+		Me.cbImportedOffers.Items.Clear()
 		For Each offer As String In couponOffers
 			Me.cbImportedOffers.Items.Add(offer)
 		Next
-		PCW.NextEnabled = False
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_cbPathToTargetList_DragEnter"

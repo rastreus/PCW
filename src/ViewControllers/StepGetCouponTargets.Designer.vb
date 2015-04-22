@@ -38,6 +38,7 @@ Partial Class StepGetCouponTargets
 		Me.lblCouponTargetLists = New System.Windows.Forms.Label()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.btnSubmit = New System.Windows.Forms.Button()
+		Me.lblClickButtonBelow = New System.Windows.Forms.Label()
 		Me.pnlTargtListImport.SuspendLayout()
 		Me.pnlDragTargetList.SuspendLayout()
 		Me.pnlCouponNumberForTargetList.SuspendLayout()
@@ -54,12 +55,13 @@ Partial Class StepGetCouponTargets
 		'
 		Me.pnlTargtListImport.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlTargtListImport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlTargtListImport.Controls.Add(Me.lblClickButtonBelow)
 		Me.pnlTargtListImport.Controls.Add(Me.btnFileBrowser)
 		Me.pnlTargtListImport.Controls.Add(Me.pnlDragTargetList)
 		Me.pnlTargtListImport.Controls.Add(Me.Label1)
 		Me.pnlTargtListImport.Location = New System.Drawing.Point(74, 33)
 		Me.pnlTargtListImport.Name = "pnlTargtListImport"
-		Me.pnlTargtListImport.Size = New System.Drawing.Size(278, 103)
+		Me.pnlTargtListImport.Size = New System.Drawing.Size(278, 118)
 		Me.pnlTargtListImport.TabIndex = 1
 		'
 		'btnFileBrowser
@@ -70,7 +72,7 @@ Partial Class StepGetCouponTargets
 		Me.btnFileBrowser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkKhaki
 		Me.btnFileBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnFileBrowser.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnFileBrowser.Location = New System.Drawing.Point(3, 73)
+		Me.btnFileBrowser.Location = New System.Drawing.Point(3, 89)
 		Me.btnFileBrowser.Name = "btnFileBrowser"
 		Me.btnFileBrowser.Size = New System.Drawing.Size(268, 23)
 		Me.btnFileBrowser.TabIndex = 35
@@ -84,17 +86,18 @@ Partial Class StepGetCouponTargets
 		Me.pnlDragTargetList.Controls.Add(Me.lblDragHere)
 		Me.pnlDragTargetList.Location = New System.Drawing.Point(3, 23)
 		Me.pnlDragTargetList.Name = "pnlDragTargetList"
-		Me.pnlDragTargetList.Size = New System.Drawing.Size(268, 44)
-		Me.pnlDragTargetList.TabIndex = 34
+		Me.pnlDragTargetList.Size = New System.Drawing.Size(268, 48)
+		Me.pnlDragTargetList.TabIndex = 1
+		Me.pnlDragTargetList.TabStop = True
 		'
 		'lblDragHere
 		'
 		Me.lblDragHere.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragHere.Location = New System.Drawing.Point(60, 6)
+		Me.lblDragHere.Location = New System.Drawing.Point(60, 13)
 		Me.lblDragHere.Name = "lblDragHere"
-		Me.lblDragHere.Size = New System.Drawing.Size(155, 30)
+		Me.lblDragHere.Size = New System.Drawing.Size(155, 20)
 		Me.lblDragHere.TabIndex = 0
-		Me.lblDragHere.Text = "Drag Target List Here Or Click Button Below"
+		Me.lblDragHere.Text = "Drag Target List Here"
 		Me.lblDragHere.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'Label1
@@ -115,9 +118,9 @@ Partial Class StepGetCouponTargets
 		Me.pnlCouponNumberForTargetList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCouponNumberForTargetList.Controls.Add(Me.Label2)
 		Me.pnlCouponNumberForTargetList.Controls.Add(Me.pnlAquamarine)
-		Me.pnlCouponNumberForTargetList.Location = New System.Drawing.Point(74, 142)
+		Me.pnlCouponNumberForTargetList.Location = New System.Drawing.Point(74, 157)
 		Me.pnlCouponNumberForTargetList.Name = "pnlCouponNumberForTargetList"
-		Me.pnlCouponNumberForTargetList.Size = New System.Drawing.Size(278, 125)
+		Me.pnlCouponNumberForTargetList.Size = New System.Drawing.Size(278, 110)
 		Me.pnlCouponNumberForTargetList.TabIndex = 2
 		'
 		'Label2
@@ -139,19 +142,19 @@ Partial Class StepGetCouponTargets
 		Me.pnlAquamarine.Controls.Add(Me.cbImportedOffers)
 		Me.pnlAquamarine.Controls.Add(Me.rbImportedOffers)
 		Me.pnlAquamarine.Controls.Add(Me.rbWildcard)
-		Me.pnlAquamarine.Location = New System.Drawing.Point(3, 26)
+		Me.pnlAquamarine.Location = New System.Drawing.Point(3, 23)
 		Me.pnlAquamarine.Name = "pnlAquamarine"
-		Me.pnlAquamarine.Size = New System.Drawing.Size(268, 92)
+		Me.pnlAquamarine.Size = New System.Drawing.Size(268, 81)
 		Me.pnlAquamarine.TabIndex = 0
 		'
 		'cbImportedOffers
 		'
-		Me.cbImportedOffers.BackColor = System.Drawing.Color.Gainsboro
+		Me.cbImportedOffers.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.cbImportedOffers.Enabled = False
 		Me.cbImportedOffers.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbImportedOffers.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.cbImportedOffers.ForeColor = System.Drawing.Color.Black
 		Me.cbImportedOffers.FormattingEnabled = True
-		Me.cbImportedOffers.Location = New System.Drawing.Point(82, 57)
+		Me.cbImportedOffers.Location = New System.Drawing.Point(82, 49)
 		Me.cbImportedOffers.Name = "cbImportedOffers"
 		Me.cbImportedOffers.Size = New System.Drawing.Size(121, 23)
 		Me.cbImportedOffers.TabIndex = 2
@@ -159,7 +162,7 @@ Partial Class StepGetCouponTargets
 		'rbImportedOffers
 		'
 		Me.rbImportedOffers.AutoSize = True
-		Me.rbImportedOffers.Location = New System.Drawing.Point(62, 34)
+		Me.rbImportedOffers.Location = New System.Drawing.Point(62, 26)
 		Me.rbImportedOffers.Name = "rbImportedOffers"
 		Me.rbImportedOffers.Size = New System.Drawing.Size(173, 17)
 		Me.rbImportedOffers.TabIndex = 1
@@ -170,7 +173,7 @@ Partial Class StepGetCouponTargets
 		'
 		Me.rbWildcard.AutoSize = True
 		Me.rbWildcard.Checked = True
-		Me.rbWildcard.Location = New System.Drawing.Point(62, 11)
+		Me.rbWildcard.Location = New System.Drawing.Point(62, 3)
 		Me.rbWildcard.Name = "rbWildcard"
 		Me.rbWildcard.Size = New System.Drawing.Size(82, 17)
 		Me.rbWildcard.TabIndex = 0
@@ -232,6 +235,17 @@ Partial Class StepGetCouponTargets
 		Me.btnSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnSubmit.UseVisualStyleBackColor = False
 		'
+		'lblClickButtonBelow
+		'
+		Me.lblClickButtonBelow.BackColor = System.Drawing.Color.Transparent
+		Me.lblClickButtonBelow.ForeColor = System.Drawing.Color.White
+		Me.lblClickButtonBelow.Location = New System.Drawing.Point(3, 74)
+		Me.lblClickButtonBelow.Name = "lblClickButtonBelow"
+		Me.lblClickButtonBelow.Size = New System.Drawing.Size(268, 12)
+		Me.lblClickButtonBelow.TabIndex = 36
+		Me.lblClickButtonBelow.Text = "(Or Click Button Below)"
+		Me.lblClickButtonBelow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
 		'StepGetCouponTargets
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -272,5 +286,6 @@ Partial Class StepGetCouponTargets
 	Friend WithEvents cbImportedOffers As System.Windows.Forms.ComboBox
 	Friend WithEvents lblDragHere As System.Windows.Forms.Label
 	Friend WithEvents btnFileBrowser As System.Windows.Forms.Button
+	Friend WithEvents lblClickButtonBelow As System.Windows.Forms.Label
 
 End Class
