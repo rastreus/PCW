@@ -216,6 +216,13 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
+#Region "StepB_CheckForNext"
+	Private Sub CheckForNext()
+		If promoTypeEntered And promoNameEntered Then
+			PCW.NextEnabled = True
+		End If
+	End Sub
+#End Region
 #Region "StepB_rbRecurringYes_CheckedChanged"
 	''' <summary>
 	''' Handles the GUI reaction for the Yes/No RadioButton.
@@ -280,6 +287,14 @@ Public Class StepB
 		Return Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
 	End Function
 #End Region
+#Region "StepB_btnSetPromoName_Click"
+	Private Sub btnSetPromoName_Click(sender As Object, e As EventArgs) _
+		Handles btnSetPromoName.Click
+		If Me.promoNameEntered Then
+			Me.ActiveControl = Me.pnlPromoName
+		End If
+	End Sub
+#End Region
 #Region "StepB_btnPromoID_Click"
 	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
 		Handles btnPromoID.Click
@@ -310,10 +325,4 @@ Public Class StepB
 		Return txt
 	End Function
 #End Region
-
-	Private Sub CheckForNext()
-		If promoTypeEntered And promoNameEntered Then
-			PCW.NextEnabled = True
-		End If
-	End Sub
 End Class

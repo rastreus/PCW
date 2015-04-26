@@ -43,6 +43,7 @@ Partial Class StepB
 		Me.pnlPromoType = New System.Windows.Forms.Panel()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
+		Me.btnSetPromoName = New System.Windows.Forms.Button()
 		Me.pnlPromoName.SuspendLayout()
 		Me.pnlRecurring.SuspendLayout()
 		Me.Panel1.SuspendLayout()
@@ -64,6 +65,7 @@ Partial Class StepB
 		Me.pnlPromoName.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPromoName.CausesValidation = False
+		Me.pnlPromoName.Controls.Add(Me.btnSetPromoName)
 		Me.pnlPromoName.Controls.Add(Me.txtPromoName)
 		Me.pnlPromoName.Controls.Add(Me.lblPromoName)
 		Me.pnlPromoName.Location = New System.Drawing.Point(142, 50)
@@ -78,7 +80,7 @@ Partial Class StepB
 		Me.txtPromoName.Location = New System.Drawing.Point(3, 33)
 		Me.txtPromoName.MaxLength = 30
 		Me.txtPromoName.Name = "txtPromoName"
-		Me.txtPromoName.Size = New System.Drawing.Size(284, 20)
+		Me.txtPromoName.Size = New System.Drawing.Size(172, 20)
 		Me.txtPromoName.TabIndex = 0
 		Me.txtPromoName.TabStop = False
 		'
@@ -321,6 +323,24 @@ Partial Class StepB
 		Me.lblPromoType.TabIndex = 0
 		Me.lblPromoType.Text = "PromoType: "
 		'
+		'btnSetPromoName
+		'
+		Me.btnSetPromoName.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetPromoName.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPromoName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPromoName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPromoName.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPromoName.ForeColor = System.Drawing.Color.White
+		Me.btnSetPromoName.Location = New System.Drawing.Point(181, 33)
+		Me.btnSetPromoName.Name = "btnSetPromoName"
+		Me.btnSetPromoName.Size = New System.Drawing.Size(52, 20)
+		Me.btnSetPromoName.TabIndex = 0
+		Me.btnSetPromoName.TabStop = False
+		Me.btnSetPromoName.Text = "Set"
+		Me.btnSetPromoName.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetPromoName.UseVisualStyleBackColor = False
+		'
 		'StepB
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -379,5 +399,6 @@ Partial Class StepB
 	Friend WithEvents pnlPromoType As System.Windows.Forms.Panel
 	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
 	Friend WithEvents lblPromoType As System.Windows.Forms.Label
+	Friend WithEvents btnSetPromoName As System.Windows.Forms.Button
 
 End Class
