@@ -46,12 +46,12 @@ Public Class SQL_Util
 	''' <returns>The existing promo.</returns>
 	''' <remarks>THIS IS ONLY USED BY THE PAE.</remarks>
 	Public Shared Function Return_Existing_Promo(ByVal existing_promoName As String) As MarketingPromo
-		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global _
-																			  .PromotionalCreationWizard _
-																			  .My _
-																			  .MySettings _
-																			  .Default _
-																			  .ConfigConnectionString)
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
 		Dim existing_promo As New MarketingPromo
 		Dim trimmed_existing_promoName As String = existing_promoName.Trim
 
@@ -71,12 +71,12 @@ Public Class SQL_Util
 	''' <remarks>This function is very similar to Existing_Promo.</remarks>
 	Public Shared Function Existing_Coupon(ByVal new_couponID As String) As Boolean
 		Dim returningBool As Boolean = False
-		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global _
-																			  .PromotionalCreationWizard _
-																			  .My _
-																			  .MySettings _
-																			  .Default _
-																			  .ConfigConnectionString)
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
 
 		Dim trimmed_new_couponID As String = new_couponID.Trim
 
