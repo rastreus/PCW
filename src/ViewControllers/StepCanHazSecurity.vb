@@ -48,10 +48,12 @@ Public Class StepCanHazSecurity
 	''' </summary>
 	''' <returns>Either the DateTime or Nothing.</returns>
 	''' <remarks>b/c VB.NET If ternary is too weird not to use!</remarks>
-	Private Function getOverrideTime() As Nullable(Of DateTime)
-		Dim result As Nullable(Of DateTime) = If(Me.rbSecurityYES.Checked, _
-												 Me.dtpOverrideTime.Value, _
-												 Nothing)
+	Private Function getOverrideTime() As String
+		Dim result As String = If(Me.rbSecurityYES.Checked, _
+								  ParseTime(Me.txtOverrideTimeHours.Text, _
+											Me.txtOverrideTimeMinutes.Text,
+											Me.rbOverrideTimePM.Checked), _
+								  Nothing)
 		Return result
 	End Function
 
@@ -60,10 +62,21 @@ Public Class StepCanHazSecurity
 	''' </summary>
 	''' <returns>Either the DateTime or Nothing.</returns>
 	''' <remarks>b/c VB.NET If ternary is too weird not to use!</remarks>
-	Private Function getCutoffTime() As Nullable(Of DateTime)
-		Dim result As Nullable(Of DateTime) = If(Me.rbSecurityYES.Checked, _
-												  Me.dtpCutoffTime.Value, _
-												  Nothing)
+	Private Function getCutoffTime() As String
+		Dim result As String = If(Me.rbSecurityYES.Checked, _
+								  ParseTime(Me.txtCutoffTimeHours.Text, _
+											Me.txtCutoffTimeMinutes.Text,
+											Me.rbCutoffTimePM.Checked), _
+								  Nothing)
+		Return result
+	End Function
+
+	Private Function ParseTime(ByVal hours As String, _
+							   ByVal minutes As String, _
+							   ByVal pmChecked As Boolean) As String
+		Dim result As String = New String("!")
+		Dim ampm As String = If(pmChecked, "P", "A")
+		result = hours & minutes & ampm
 		Return result
 	End Function
 #End Region
@@ -88,8 +101,10 @@ Public Class StepCanHazSecurity
 		Me.rbSecurityNO.Checked = True
 		Me.pnlOverrideTime.Enabled = False
 		Me.pnlCutoffTime.Enabled = False
-		Me.dtpOverrideTime.Value = DateTime.Today.Date
-		Me.dtpCutoffTime.Value = DateTime.Today.Date
+		Me.txtOverrideTimeHours.Text = "HH"
+		Me.txtCutoffTimeHours.Text = "HH"
+		Me.txtOverrideTimeMinutes.Text = "mm"
+		Me.txtCutoffTimeMinutes.Text = "mm"
 	End Sub
 #End Region
 #Region "StepCanHazSecurity_Validation"

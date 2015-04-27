@@ -24,8 +24,8 @@
 #End Region
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
-	Private _promoOverrideTime As DateTime
-	Private _promoCutoffTime As DateTime
+	Private _promoOverrideTime As String
+	Private _promoCutoffTime As String
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -36,19 +36,19 @@
 			_dataAddedToHash = value
 		End Set
 	End Property
-	Public Property OverrideTime As DateTime
+	Public Property OverrideTime As String
 		Get
 			Return _promoOverrideTime
 		End Get
-		Set(value As DateTime)
+		Set(value As String)
 			_promoOverrideTime = value
 		End Set
 	End Property
-	Public Property CutoffTime As DateTime
+	Public Property CutoffTime As String
 		Get
 			Return _promoCutoffTime
 		End Get
-		Set(value As DateTime)
+		Set(value As String)
 			_promoCutoffTime = value
 		End Set
 	End Property
