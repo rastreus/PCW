@@ -116,23 +116,23 @@ Public Class StepCanHazSecurity
 
 		StepCanHazSecurity_SetData()
 
-		If Me.Data.OverrideTime_Invalid() Then
-			cancelContinuingToNextStep = True
-			errString = "Override Time is invalid; not in time range."
-			errStrArray.Add(errString)
-			GUI_Util.errPnl(Me.pnlOverrideTime)
-		Else
-			GUI_Util.regPnl(Me.pnlOverrideTime)
-		End If
+		'If Me.Data.OverrideTime_Invalid() Then
+		'	cancelContinuingToNextStep = True
+		'	errString = "Override Time is invalid; not in time range."
+		'	errStrArray.Add(errString)
+		'	GUI_Util.errPnl(Me.pnlOverrideTime)
+		'Else
+		'	GUI_Util.regPnl(Me.pnlOverrideTime)
+		'End If
 
-		If Me.Data.CutoffTime_Invalid() Then
-			cancelContinuingToNextStep = True
-			errString = "Cutoff Time is invalid; not in time range."
-			errStrArray.Add(errString)
-			GUI_Util.errPnl(Me.pnlCutoffTime)
-		Else
-			GUI_Util.regPnl(Me.pnlCutoffTime)
-		End If
+		'If Me.Data.CutoffTime_Invalid() Then
+		'	cancelContinuingToNextStep = True
+		'	errString = "Cutoff Time is invalid; not in time range."
+		'	errStrArray.Add(errString)
+		'	GUI_Util.errPnl(Me.pnlCutoffTime)
+		'Else
+		'	GUI_Util.regPnl(Me.pnlCutoffTime)
+		'End If
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
@@ -144,7 +144,7 @@ Public Class StepCanHazSecurity
 #End Region
 #Region "StepCanHazSecurity_rbSecurityYES_CheckedChanged"
 	Private Sub rbSecurityYES_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles rbSecurityYES.CheckedChanged
+		Handles rbSecurityYES.CheckedChanged
 		If rbSecurityYES.Checked Then
 			Me.pnlOverrideTime.Enabled = True
 			Me.pnlCutoffTime.Enabled = True
@@ -153,5 +153,82 @@ Public Class StepCanHazSecurity
 			Me.pnlCutoffTime.Enabled = False
 		End If
 	End Sub
+#End Region
+#Region "_TEXTBOX_KEYPRESS_"
+#If False Then
+ASIDE: Limits the textboxes to only allow numeric input.
+A user is able to paste non-numeric input into the textbox.
+Each TextBox is validated for invalid (non-numeric) characters.
+#End If
+#Region "StepCanHazSecurity_txtOverrideTimeHours_KeyPress"
+	Private Sub txtOverrideTimeHours_KeyPress(sender As Object, _
+										   e As KeyPressEventArgs) _
+		Handles txtOverrideTimeHours.KeyPress
+		If Not Char.IsDigit(e.KeyChar) And
+			Not Char.IsControl(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+#End Region
+#Region "StepCanHazSecurity_txtOverrideTimeMinutes_KeyPress"
+	Private Sub txtOverrideTimeMinutes_KeyPress(sender As Object, _
+												 e As KeyPressEventArgs) _
+		Handles txtOverrideTimeMinutes.KeyPress
+		If Not Char.IsDigit(e.KeyChar) And
+			Not Char.IsControl(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+#End Region
+#Region "StepCanHazSecurity_txtCutoffTimeHours_KeyPress"
+	Private Sub txtCutoffTimeHours_KeyPress(sender As Object, _
+											 e As KeyPressEventArgs) _
+		Handles txtCutoffTimeHours.KeyPress
+		If Not Char.IsDigit(e.KeyChar) And
+			Not Char.IsControl(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+#End Region
+#Region "StepCanHazSecurity_txtCutoffTimeMinutes_KeyPress"
+	Private Sub txtCutoffTimeMinutes_KeyPress(sender As Object, _
+											   e As KeyPressEventArgs) _
+		Handles txtCutoffTimeMinutes.KeyPress
+		If Not Char.IsDigit(e.KeyChar) And
+			Not Char.IsControl(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+#End Region
+#End Region
+#Region "_TIME_ENTER_"
+	Private Sub txtOverrideTimeHours_Enter(sender As Object, _
+											e As EventArgs) _
+	Handles txtOverrideTimeHours.Enter
+		Me.txtOverrideTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
+	End Sub
+	Private Sub txtCutoffTimeHours_Enter(sender As Object, _
+											  e As EventArgs) _
+		Handles txtCutoffTimeHours.Enter
+		Me.txtCutoffTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
+	End Sub
+	Private Sub txtOverrideTimeMinutes_Enter(sender As Object, _
+												  e As EventArgs) _
+		Handles txtOverrideTimeMinutes.Enter
+		Me.txtOverrideTimeMinutes.Text = ClearMinutes(Me.txtOverrideTimeMinutes.Text)
+	End Sub
+	Private Sub txtCutoffTimeMinutes_Enter(sender As Object, _
+												e As EventArgs) _
+		Handles txtCutoffTimeMinutes.Enter
+		Me.txtCutoffTimeMinutes.Text = ClearMinutes(Me.txtCutoffTimeMinutes.Text)
+	End Sub
+	Private Function ClearHours(ByVal hours As String) As String
+		Dim result As String = If(hours = "HH", "", hours)
+		Return result
+	End Function
+	Private Function ClearMinutes(ByVal minutes As String) As String
+		Dim result As String = If(minutes = "mm", "", minutes)
+		Return result
+	End Function
 #End Region
 End Class
