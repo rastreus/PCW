@@ -58,6 +58,34 @@ Public Class PCW_Data
 		End Set
 	End Property
 #End Region
+#Region "GetMarketingPromo"
+	Public Function GetMarketingPromo() As MarketingPromo
+		Dim newPromo As MarketingPromo = New MarketingPromo
+		newPromo.PromoID = PromoDataHash.Item("ID")
+		newPromo.PromoName = PromoDataHash.Item("Name")
+		newPromo.PromoType = PromoDataHash.Item("Type")
+		newPromo.PromoDate = PromoDataHash.Item("OccursDate")
+		newPromo.StartDate = PromoDataHash.Item("StartDate")
+		newPromo.EndDate = PromoDataHash.Item("EndDate")
+		newPromo.PointCutoff = PromoDataHash.Item("PointCutoffLimit")
+		newPromo.PointDivisor = PromoDataHash.Item("PointsDivisor")
+		newPromo.MaxTickets = PromoDataHash.Item("TicketsPerPatron")
+		newPromo.PromoMaxTickets = PromoDataHash.Item("TicketsForEntirePromo")
+		newPromo.MaxCoupon = PromoDataHash.Item("CouponAmtPerPatron")
+		newPromo.PromoMaxCoupon = PromoDataHash.Item("CouponAmtForEntirePromo")
+		newPromo.CouponID = PromoDataHash.Item("CouponID")
+		newPromo.Recurring = PromoDataHash.Item("Recurring")
+		newPromo.Frequency = PromoDataHash.Item("RecurringFrequency")
+		newPromo.RecursOnWeekday = PromoDataHash.Item("RecursOnWeekday")
+		newPromo.EarnsOnWeekday = PromoDataHash.Item("EarnsOnWeekday")
+		newPromo.CountCurrentDay = PromoDataHash.Item("CountCurrentDay")
+		newPromo.OverrideTime = PromoDataHash.Item("OverrideTime")
+		newPromo.CutoffTime = PromoDataHash.Item("CutoffTime")
+		newPromo.PrintTickets = PromoDataHash.Item("PrintTickets")
+		newPromo.Comments = PromoDataHash.Item("Comment")
+		Return newPromo
+	End Function
+#End Region
 #Region "GetPromoSummary"
 	Public Function GetPromoSummary() As System.Text.StringBuilder
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")

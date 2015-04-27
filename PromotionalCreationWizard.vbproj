@@ -120,6 +120,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
     </Compile>
+    <Compile Include="resources\PCWLINQ2SQL.vb">
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="src\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -156,14 +159,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\_Utils\GUI_Util.vb" />
-    <Compile Include="resources\MarketingPromos.designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="resources\MarketingPromos.vb">
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
-    </Compile>
     <Compile Include="src\Models\PCW_Data.vb" />
     <Compile Include="src\Models\StepB_Data.vb" />
     <Compile Include="src\Models\StepC_Data.vb" />
@@ -284,9 +279,6 @@
     <None Include="research\PromoTypeDescriptions.xlsx" />
     <None Include="research\Target-Lists\Monthly Mailer Target List.csv" />
     <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
-    <None Include="resources\MarketingPromos.dbml.layout">
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="src\PCW.resx">
       <DependentUpon>PCW.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -359,11 +351,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\MarketingPromos.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MarketingPromos.designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

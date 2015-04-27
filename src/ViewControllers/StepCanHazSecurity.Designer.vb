@@ -28,15 +28,27 @@ Partial Class StepCanHazSecurity
 		Me.rbSecurityYES = New System.Windows.Forms.RadioButton()
 		Me.lblSecurity = New System.Windows.Forms.Label()
 		Me.pnlOverrideTime = New System.Windows.Forms.Panel()
-		Me.dtpOverrideTime = New System.Windows.Forms.DateTimePicker()
 		Me.lblOverrideTime = New System.Windows.Forms.Label()
+		Me.txtOverrideTimeHours = New System.Windows.Forms.TextBox()
+		Me.lblTimeColon1 = New System.Windows.Forms.Label()
+		Me.txtOverrideTimeMinutes = New System.Windows.Forms.TextBox()
+		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
+		Me.rbOverrideTimeAM = New System.Windows.Forms.RadioButton()
+		Me.rbOverrideTimePM = New System.Windows.Forms.RadioButton()
 		Me.pnlCutoffTime = New System.Windows.Forms.Panel()
-		Me.dtpCutoffTime = New System.Windows.Forms.DateTimePicker()
+		Me.Panel2 = New System.Windows.Forms.Panel()
+		Me.rbCutoffTimePM = New System.Windows.Forms.RadioButton()
+		Me.rbCutoffTimeAM = New System.Windows.Forms.RadioButton()
+		Me.txtCutoffTimeMinutes = New System.Windows.Forms.TextBox()
+		Me.lblTimeColon2 = New System.Windows.Forms.Label()
+		Me.txtCutoffTimeHours = New System.Windows.Forms.TextBox()
 		Me.lblCutoffTime = New System.Windows.Forms.Label()
 		Me.pnlSecurity.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlOverrideTime.SuspendLayout()
+		Me.pnlPaleTurquoise.SuspendLayout()
 		Me.pnlCutoffTime.SuspendLayout()
+		Me.Panel2.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -47,12 +59,12 @@ Partial Class StepCanHazSecurity
 		'pnlSecurity
 		'
 		Me.pnlSecurity.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.pnlSecurity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlSecurity.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlSecurity.Controls.Add(Me.pnlPapayaWhip)
 		Me.pnlSecurity.Controls.Add(Me.lblSecurity)
-		Me.pnlSecurity.Location = New System.Drawing.Point(123, 99)
+		Me.pnlSecurity.Location = New System.Drawing.Point(140, 88)
 		Me.pnlSecurity.Name = "pnlSecurity"
-		Me.pnlSecurity.Size = New System.Drawing.Size(160, 99)
+		Me.pnlSecurity.Size = New System.Drawing.Size(160, 112)
 		Me.pnlSecurity.TabIndex = 1
 		'
 		'pnlPapayaWhip
@@ -104,26 +116,16 @@ Partial Class StepCanHazSecurity
 		'
 		Me.pnlOverrideTime.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlOverrideTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlOverrideTime.Controls.Add(Me.dtpOverrideTime)
+		Me.pnlOverrideTime.Controls.Add(Me.pnlPaleTurquoise)
+		Me.pnlOverrideTime.Controls.Add(Me.txtOverrideTimeMinutes)
+		Me.pnlOverrideTime.Controls.Add(Me.lblTimeColon1)
+		Me.pnlOverrideTime.Controls.Add(Me.txtOverrideTimeHours)
 		Me.pnlOverrideTime.Controls.Add(Me.lblOverrideTime)
 		Me.pnlOverrideTime.Enabled = False
-		Me.pnlOverrideTime.Location = New System.Drawing.Point(289, 99)
+		Me.pnlOverrideTime.Location = New System.Drawing.Point(306, 88)
 		Me.pnlOverrideTime.Name = "pnlOverrideTime"
-		Me.pnlOverrideTime.Size = New System.Drawing.Size(164, 47)
+		Me.pnlOverrideTime.Size = New System.Drawing.Size(150, 53)
 		Me.pnlOverrideTime.TabIndex = 29
-		'
-		'dtpOverrideTime
-		'
-		Me.dtpOverrideTime.CustomFormat = "MM/dd/yyyy HH:mm:ss"
-		Me.dtpOverrideTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.dtpOverrideTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-		Me.dtpOverrideTime.Location = New System.Drawing.Point(3, 16)
-		Me.dtpOverrideTime.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
-		Me.dtpOverrideTime.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
-		Me.dtpOverrideTime.Name = "dtpOverrideTime"
-		Me.dtpOverrideTime.ShowUpDown = True
-		Me.dtpOverrideTime.Size = New System.Drawing.Size(148, 20)
-		Me.dtpOverrideTime.TabIndex = 30
 		'
 		'lblOverrideTime
 		'
@@ -138,30 +140,164 @@ Partial Class StepCanHazSecurity
 		Me.lblOverrideTime.Text = "Override Time"
 		Me.lblOverrideTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
+		'txtOverrideTimeHours
+		'
+		Me.txtOverrideTimeHours.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.txtOverrideTimeHours.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtOverrideTimeHours.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.txtOverrideTimeHours.Location = New System.Drawing.Point(3, 16)
+		Me.txtOverrideTimeHours.MaxLength = 2
+		Me.txtOverrideTimeHours.Name = "txtOverrideTimeHours"
+		Me.txtOverrideTimeHours.Size = New System.Drawing.Size(26, 26)
+		Me.txtOverrideTimeHours.TabIndex = 0
+		Me.txtOverrideTimeHours.TabStop = False
+		Me.txtOverrideTimeHours.Text = "HH"
+		Me.txtOverrideTimeHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		'
+		'lblTimeColon1
+		'
+		Me.lblTimeColon1.BackColor = System.Drawing.Color.Transparent
+		Me.lblTimeColon1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTimeColon1.ForeColor = System.Drawing.Color.WhiteSmoke
+		Me.lblTimeColon1.Location = New System.Drawing.Point(35, 19)
+		Me.lblTimeColon1.Name = "lblTimeColon1"
+		Me.lblTimeColon1.Size = New System.Drawing.Size(10, 26)
+		Me.lblTimeColon1.TabIndex = 0
+		Me.lblTimeColon1.Text = ":"
+		Me.lblTimeColon1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		'
+		'txtOverrideTimeMinutes
+		'
+		Me.txtOverrideTimeMinutes.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.txtOverrideTimeMinutes.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtOverrideTimeMinutes.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.txtOverrideTimeMinutes.Location = New System.Drawing.Point(51, 16)
+		Me.txtOverrideTimeMinutes.MaxLength = 2
+		Me.txtOverrideTimeMinutes.Name = "txtOverrideTimeMinutes"
+		Me.txtOverrideTimeMinutes.Size = New System.Drawing.Size(26, 26)
+		Me.txtOverrideTimeMinutes.TabIndex = 0
+		Me.txtOverrideTimeMinutes.TabStop = False
+		Me.txtOverrideTimeMinutes.Text = "mm"
+		'
+		'pnlPaleTurquoise
+		'
+		Me.pnlPaleTurquoise.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlPaleTurquoise.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPaleTurquoise.Controls.Add(Me.rbOverrideTimePM)
+		Me.pnlPaleTurquoise.Controls.Add(Me.rbOverrideTimeAM)
+		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(92, 3)
+		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
+		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(49, 39)
+		Me.pnlPaleTurquoise.TabIndex = 30
+		'
+		'rbOverrideTimeAM
+		'
+		Me.rbOverrideTimeAM.AutoSize = True
+		Me.rbOverrideTimeAM.Location = New System.Drawing.Point(3, 2)
+		Me.rbOverrideTimeAM.Name = "rbOverrideTimeAM"
+		Me.rbOverrideTimeAM.Size = New System.Drawing.Size(41, 17)
+		Me.rbOverrideTimeAM.TabIndex = 0
+		Me.rbOverrideTimeAM.Text = "AM"
+		Me.rbOverrideTimeAM.UseVisualStyleBackColor = True
+		'
+		'rbOverrideTimePM
+		'
+		Me.rbOverrideTimePM.AutoSize = True
+		Me.rbOverrideTimePM.Checked = True
+		Me.rbOverrideTimePM.Location = New System.Drawing.Point(3, 19)
+		Me.rbOverrideTimePM.Name = "rbOverrideTimePM"
+		Me.rbOverrideTimePM.Size = New System.Drawing.Size(41, 17)
+		Me.rbOverrideTimePM.TabIndex = 1
+		Me.rbOverrideTimePM.TabStop = True
+		Me.rbOverrideTimePM.Text = "PM"
+		Me.rbOverrideTimePM.UseVisualStyleBackColor = True
+		'
 		'pnlCutoffTime
 		'
 		Me.pnlCutoffTime.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlCutoffTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlCutoffTime.Controls.Add(Me.dtpCutoffTime)
+		Me.pnlCutoffTime.Controls.Add(Me.Panel2)
+		Me.pnlCutoffTime.Controls.Add(Me.txtCutoffTimeMinutes)
+		Me.pnlCutoffTime.Controls.Add(Me.lblTimeColon2)
+		Me.pnlCutoffTime.Controls.Add(Me.txtCutoffTimeHours)
 		Me.pnlCutoffTime.Controls.Add(Me.lblCutoffTime)
 		Me.pnlCutoffTime.Enabled = False
-		Me.pnlCutoffTime.Location = New System.Drawing.Point(289, 151)
+		Me.pnlCutoffTime.Location = New System.Drawing.Point(306, 147)
 		Me.pnlCutoffTime.Name = "pnlCutoffTime"
-		Me.pnlCutoffTime.Size = New System.Drawing.Size(164, 47)
+		Me.pnlCutoffTime.Size = New System.Drawing.Size(150, 53)
 		Me.pnlCutoffTime.TabIndex = 30
 		'
-		'dtpCutoffTime
+		'Panel2
 		'
-		Me.dtpCutoffTime.CustomFormat = "MM/dd/yyyy HH:mm:ss"
-		Me.dtpCutoffTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.dtpCutoffTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-		Me.dtpCutoffTime.Location = New System.Drawing.Point(3, 16)
-		Me.dtpCutoffTime.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
-		Me.dtpCutoffTime.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
-		Me.dtpCutoffTime.Name = "dtpCutoffTime"
-		Me.dtpCutoffTime.ShowUpDown = True
-		Me.dtpCutoffTime.Size = New System.Drawing.Size(148, 20)
-		Me.dtpCutoffTime.TabIndex = 30
+		Me.Panel2.BackColor = System.Drawing.Color.Lavender
+		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel2.Controls.Add(Me.rbCutoffTimePM)
+		Me.Panel2.Controls.Add(Me.rbCutoffTimeAM)
+		Me.Panel2.Location = New System.Drawing.Point(92, 3)
+		Me.Panel2.Name = "Panel2"
+		Me.Panel2.Size = New System.Drawing.Size(49, 39)
+		Me.Panel2.TabIndex = 30
+		'
+		'rbCutoffTimePM
+		'
+		Me.rbCutoffTimePM.AutoSize = True
+		Me.rbCutoffTimePM.Checked = True
+		Me.rbCutoffTimePM.Location = New System.Drawing.Point(3, 19)
+		Me.rbCutoffTimePM.Name = "rbCutoffTimePM"
+		Me.rbCutoffTimePM.Size = New System.Drawing.Size(41, 17)
+		Me.rbCutoffTimePM.TabIndex = 1
+		Me.rbCutoffTimePM.TabStop = True
+		Me.rbCutoffTimePM.Text = "PM"
+		Me.rbCutoffTimePM.UseVisualStyleBackColor = True
+		'
+		'rbCutoffTimeAM
+		'
+		Me.rbCutoffTimeAM.AutoSize = True
+		Me.rbCutoffTimeAM.Location = New System.Drawing.Point(3, 2)
+		Me.rbCutoffTimeAM.Name = "rbCutoffTimeAM"
+		Me.rbCutoffTimeAM.Size = New System.Drawing.Size(41, 17)
+		Me.rbCutoffTimeAM.TabIndex = 0
+		Me.rbCutoffTimeAM.Text = "AM"
+		Me.rbCutoffTimeAM.UseVisualStyleBackColor = True
+		'
+		'txtCutoffTimeMinutes
+		'
+		Me.txtCutoffTimeMinutes.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.txtCutoffTimeMinutes.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtCutoffTimeMinutes.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.txtCutoffTimeMinutes.Location = New System.Drawing.Point(51, 16)
+		Me.txtCutoffTimeMinutes.MaxLength = 2
+		Me.txtCutoffTimeMinutes.Name = "txtCutoffTimeMinutes"
+		Me.txtCutoffTimeMinutes.Size = New System.Drawing.Size(26, 26)
+		Me.txtCutoffTimeMinutes.TabIndex = 0
+		Me.txtCutoffTimeMinutes.TabStop = False
+		Me.txtCutoffTimeMinutes.Text = "mm"
+		'
+		'lblTimeColon2
+		'
+		Me.lblTimeColon2.BackColor = System.Drawing.Color.Transparent
+		Me.lblTimeColon2.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTimeColon2.ForeColor = System.Drawing.Color.WhiteSmoke
+		Me.lblTimeColon2.Location = New System.Drawing.Point(35, 19)
+		Me.lblTimeColon2.Name = "lblTimeColon2"
+		Me.lblTimeColon2.Size = New System.Drawing.Size(10, 26)
+		Me.lblTimeColon2.TabIndex = 0
+		Me.lblTimeColon2.Text = ":"
+		Me.lblTimeColon2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		'
+		'txtCutoffTimeHours
+		'
+		Me.txtCutoffTimeHours.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.txtCutoffTimeHours.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtCutoffTimeHours.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.txtCutoffTimeHours.Location = New System.Drawing.Point(3, 16)
+		Me.txtCutoffTimeHours.MaxLength = 2
+		Me.txtCutoffTimeHours.Name = "txtCutoffTimeHours"
+		Me.txtCutoffTimeHours.Size = New System.Drawing.Size(26, 26)
+		Me.txtCutoffTimeHours.TabIndex = 0
+		Me.txtCutoffTimeHours.TabStop = False
+		Me.txtCutoffTimeHours.Text = "HH"
+		Me.txtCutoffTimeHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
 		'lblCutoffTime
 		'
@@ -197,8 +333,12 @@ Partial Class StepCanHazSecurity
 		Me.pnlPapayaWhip.PerformLayout()
 		Me.pnlOverrideTime.ResumeLayout(False)
 		Me.pnlOverrideTime.PerformLayout()
+		Me.pnlPaleTurquoise.ResumeLayout(False)
+		Me.pnlPaleTurquoise.PerformLayout()
 		Me.pnlCutoffTime.ResumeLayout(False)
 		Me.pnlCutoffTime.PerformLayout()
+		Me.Panel2.ResumeLayout(False)
+		Me.Panel2.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -208,10 +348,20 @@ Partial Class StepCanHazSecurity
 	Friend WithEvents rbSecurityNO As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSecurityYES As System.Windows.Forms.RadioButton
 	Friend WithEvents pnlOverrideTime As System.Windows.Forms.Panel
-	Friend WithEvents dtpOverrideTime As System.Windows.Forms.DateTimePicker
 	Friend WithEvents lblOverrideTime As System.Windows.Forms.Label
+	Friend WithEvents pnlPaleTurquoise As System.Windows.Forms.Panel
+	Friend WithEvents rbOverrideTimePM As System.Windows.Forms.RadioButton
+	Friend WithEvents rbOverrideTimeAM As System.Windows.Forms.RadioButton
+	Friend WithEvents txtOverrideTimeMinutes As System.Windows.Forms.TextBox
+	Private WithEvents lblTimeColon1 As System.Windows.Forms.Label
+	Friend WithEvents txtOverrideTimeHours As System.Windows.Forms.TextBox
 	Friend WithEvents pnlCutoffTime As System.Windows.Forms.Panel
-	Friend WithEvents dtpCutoffTime As System.Windows.Forms.DateTimePicker
+	Friend WithEvents Panel2 As System.Windows.Forms.Panel
+	Friend WithEvents rbCutoffTimePM As System.Windows.Forms.RadioButton
+	Friend WithEvents rbCutoffTimeAM As System.Windows.Forms.RadioButton
+	Friend WithEvents txtCutoffTimeMinutes As System.Windows.Forms.TextBox
+	Private WithEvents lblTimeColon2 As System.Windows.Forms.Label
+	Friend WithEvents txtCutoffTimeHours As System.Windows.Forms.TextBox
 	Friend WithEvents lblCutoffTime As System.Windows.Forms.Label
 
 End Class
