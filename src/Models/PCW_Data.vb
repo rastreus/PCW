@@ -58,8 +58,13 @@ Public Class PCW_Data
 		End Set
 	End Property
 #End Region
+#Region "AddPromoToList"
+	Public Sub AddPromoToList()
+		MarketingPromosDBRowsList.Add(GetMarketingPromo())
+	End Sub
+#End Region
 #Region "GetMarketingPromo"
-	Public Function GetMarketingPromo() As MarketingPromo
+	Private Function GetMarketingPromo() As MarketingPromo
 		Dim newPromo As MarketingPromo = New MarketingPromo
 		newPromo.PromoID = PromoDataHash.Item("ID")
 		newPromo.PromoName = PromoDataHash.Item("Name")

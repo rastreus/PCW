@@ -210,7 +210,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtCutoffTimeHours_Enter(sender As Object, _
 											  e As EventArgs) _
 		Handles txtCutoffTimeHours.Enter
-		Me.txtCutoffTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
+		Me.txtCutoffTimeHours.Text = ClearHours(Me.txtCutoffTimeHours.Text)
 	End Sub
 	Private Sub txtOverrideTimeMinutes_Enter(sender As Object, _
 												  e As EventArgs) _
