@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Gaming" Class="PCWLINQ2SQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.MarketingPromos" Member="MarketingPromos">
+    <Type Name="MarketingPromo">
+      <Column Name="PromoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PromoName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PromoType" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="PromoDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PointCutoff" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PointDivisor" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaxTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PromoMaxTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaxCoupon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="PromoMaxCoupon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="CouponID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Recurring" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Frequency" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="RecursOnWeekday" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="EarnsOnWeekday" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="CountCurrentDay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OverrideTime" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="CutoffTime" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="PrintTickets" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MarketingPromoEligiblePlayers" Member="MarketingPromoEligiblePlayers">
+    <Type Name="MarketingPromoEligiblePlayer">
+      <Column Name="PromoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NumOfTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="TicketAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CouponOffers" Member="CouponOffers">
+    <Type Name="CouponOffer">
+      <Column Name="OfferID" Type="System.String" DbType="NVarChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CouponNumber" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ValidStart" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ValidEnd" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExcludeDays" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="ExcludeStart" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ExcludeEnd" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FullValidate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Reprintable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ScanToReceipt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CouponTargets" Member="CouponTargets">
+    <Type Name="CouponTarget">
+      <Column Name="OfferID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Coupon" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Account" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="AvgTheo" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Latency" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="BaseCoupon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="ZoneAddon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="OtherAddon" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="TotalCoupon" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="TestCoupon" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

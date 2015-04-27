@@ -115,6 +115,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="resources\PCWLINQ2SQL.designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="src\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -267,6 +272,9 @@
     <Compile Include="src\_Utils\BEP_Util.vb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\PCWLINQ2SQL.dbml.layout">
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="src\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -368,6 +376,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\PCWLINQ2SQL.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PCWLINQ2SQL.designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="resources\TSWizards.dll" />
   </ItemGroup>
   <ItemGroup>

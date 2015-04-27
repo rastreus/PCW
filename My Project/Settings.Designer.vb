@@ -54,18 +54,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DBSERVER2;Initial Catalog=Gaming;Integrated Security=True")>  _
-        Public Property ConfigConnectionString() As String
-            Get
-                Return CType(Me("ConfigConnectionString"),String)
-            End Get
-            Set
-                Me("ConfigConnectionString") = value
-            End Set
-        End Property
-        
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _

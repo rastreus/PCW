@@ -13,12 +13,12 @@ Public Class SQL_Util
 	''' <remarks>Why would anyone want to make a promotional which has already been made?</remarks>
 	Public Shared Function Existing_Promo(ByVal new_promoName As String) As Boolean
 		Dim returningBool As Boolean = False
-		Dim tbl As MarketingPromosDataContext = New MarketingPromosDataContext(Global _
-																			  .PromotionalCreationWizard _
-																			  .My _
-																			  .MySettings _
-																			  .Default _
-																			  .ConfigConnectionString)
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
 
 		Dim trimmed_new_promoName As String = new_promoName.Trim
 
