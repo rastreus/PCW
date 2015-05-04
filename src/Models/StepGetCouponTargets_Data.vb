@@ -71,6 +71,7 @@
 	Private _dataCouponTargetsCouponNum As Integer = New Integer
 	Private _dataEligiblePlayersDataTable As DataTable
 	Private _dataCouponTargetsDataTable As DataTable
+	Private _promoSameForAllDaysTiers As Boolean
 
 	Public Property EligiblePlayersCSVFilePath As String
 		Get
@@ -118,6 +119,14 @@
 		End Get
 		Set(value As DataTable)
 			_dataCouponTargetsDataTable = value
+		End Set
+	End Property
+	Public Property SameForAllDaysTiers As Boolean
+		Get
+			Return _promoSameForAllDaysTiers
+		End Get
+		Set(value As Boolean)
+			_promoSameForAllDaysTiers = value
 		End Set
 	End Property
 #End Region

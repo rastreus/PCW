@@ -34,7 +34,7 @@ Public Class StepGetCouponTargets
 		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_Reset"
+#Region "StepGetCouponTarget_ResetStep"
 	Private Sub StepGetCouponTarget_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		ResetControls()
@@ -47,8 +47,20 @@ Public Class StepGetCouponTargets
 		Me.rbWildcard.Checked = True
 	End Sub
 #End Region
+#Region "StepGetCouponTarget_Validation"
+	Private Sub StepGetCouponTarget_Validation(sender As Object, _
+													e As System.ComponentModel.CancelEventArgs) _
+		Handles Me.ValidateStep
+		Dim local_stepD As StepD = PCW.GetStep("StepD")
+		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
+		Me.stepGetCouponTargets_data.SameForAllDaysTiers = If(SameForAllDaysTiers(local_promoCategory), _
+															  True, _
+															  False)
+	End Sub
+#End Region
 #Region "StepGetCouponTarget_ShowStep"
-	Private Sub StepGetCouponTarget_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepGetCouponTarget_ShowStep(sender As Object, _
+												  e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		AddImportedOffers()
 		PCW.NextEnabled = False
@@ -62,6 +74,20 @@ Public Class StepGetCouponTargets
 			Me.cbImportedOffers.Items.Add(offer)
 		Next
 	End Sub
+#End Region
+#Region "StepGetCouponTarget_SameForAllDaysTiers"
+	Private Function SameForAllDaysTiers(ByVal promoCategory As PCW_Data.PromoCategory) As Boolean
+		Dim result As Boolean = False
+		If promoCategory = PCW_Data.PromoCategory.multPart Then
+			Dim dialogResult As DialogResult = CenteredMessagebox.MsgBox.Show("Do all Days/Tiers use the same" & _
+																			  "Coupon Offers & Coupon Targets?", _
+																			  "Reuse Offers and Targets?", _
+																			  MessageBoxButtons.YesNo, _
+																			  MessageBoxIcon.Exclamation)
+			result = If(dialogResult = Windows.Forms.DialogResult.Yes, True, False)
+		End If
+		Return result
+	End Function
 #End Region
 #Region "StepGetCouponTargets_cbPathToTargetList_DragEnter"
 	Private Sub SetPathText(ByVal s As String)
@@ -172,7 +198,7 @@ Public Class StepGetCouponTargets
 	End Function
 	Private Function RefreshLabelList()
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
-		For Each listStr As String In Me.TargetsList
+		For Each listStr As String In Me.targetsList
 			builder.Append(listStr & vbCrLf)
 		Next
 		Return builder.ToString()
