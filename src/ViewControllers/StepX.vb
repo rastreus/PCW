@@ -19,14 +19,6 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 		GUI_Util.msgBox(str, "Information", "Information")
 	End Sub
 #End Region
-#Region "StepX_Load"
-	Private pcw_data As PCW_Data
-
-	Private Sub StepX_Load(sender As Object, e As EventArgs) _
-		Handles MyBase.Load
-		pcw_data = New PCW_Data
-	End Sub
-#End Region
 #Region "StepX_ShowStep"
 	''' <summary>
 	''' Stops user from going back.
@@ -47,6 +39,7 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	Protected Overrides Sub OnFinish()
 		If PCW.Data.Reset Then
 			PCW.ResetSteps()
+			PCW.BackEnabled = True
 			PCW.MoveTo(PCW.Data.ResetTo)
 		Else
 			MyBase.OnFinish()
@@ -55,7 +48,7 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 #End Region
 #Region "StepX_cbPCWRerun_CheckedChanged"
 	Private Sub cbPCWRerun_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles cbPCWRerun.CheckedChanged
+		Handles cbPCWRerun.CheckedChanged
 		PCW.Data.Reset = Me.cbPCWRerun.Checked
 	End Sub
 #End Region
