@@ -1,6 +1,32 @@
 ﻿Imports System.Collections
 
 Public Class PCW_Data
+#Region "Fields"
+	Public Enum PromoFields
+		ID
+		Name
+		Type
+		OccursDate
+		StartDate
+		EndDate
+		PointCutoffLimit
+		PointsDivisor
+		TicketsPerPatron
+		TicketsForEntirePromo
+		CouponAmtPerPatron
+		CouponAmtForEntirePromo
+		CouponID
+		Recurring
+		RecurringFrequency
+		RecursOnWeekday
+		EarnsOnWeekday
+		CountCurrentDay
+		OverrideTime
+		CutoffTime
+		PrintTickets
+		Comment
+	End Enum
+#End Region
 #Region "Categories"
 	Public Enum PromoCategory
 		entryAndPayout
