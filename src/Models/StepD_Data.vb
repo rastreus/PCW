@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepD.
 ''' </summary>
 ''' <remarks>This is the Model for StepD (Controller).</remarks>
@@ -16,10 +18,10 @@ Public Class StepD_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("PointCutoffLimit") = PointCutoffLimit
+			promoDataHash.Item(Key.PointCutoffLimit) = PointCutoffLimit
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("PointCutoffLimit", PointCutoffLimit)
+			promoDataHash.Add(Key.PointCutoffLimit, PointCutoffLimit)
 			DataAddedToHash = True
 		End If
 	End Sub

@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepC. 
 ''' </summary>
 ''' <remarks>This is the Model for StepC (Controller).</remarks>
@@ -16,20 +18,20 @@ Public Class StepC_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("OccursDate") = OccursDate
-			promoDataHash.Item("StartDate") = StartDate
-			promoDataHash.Item("EndDate") = EndDate
-			promoDataHash.Item("RecursOnWeekday") = RecursOnWeekday
-			promoDataHash.Item("EarnsOnWeekday") = EarnsOnWeekday
-			promoDataHash.Item("CountCurrentDay") = CountCurrentDay
+			promoDataHash.Item(Key.OccursDate) = OccursDate
+			promoDataHash.Item(Key.StartDate) = StartDate
+			promoDataHash.Item(Key.EndDate) = EndDate
+			promoDataHash.Item(Key.RecursOnWeekday) = RecursOnWeekday
+			promoDataHash.Item(Key.EarnsOnWeekday) = EarnsOnWeekday
+			promoDataHash.Item(Key.CountCurrentDay) = CountCurrentDay
 		Else 'Othewise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("OccursDate", OccursDate)
-			promoDataHash.Add("StartDate", StartDate)
-			promoDataHash.Add("EndDate", EndDate)
-			promoDataHash.Add("RecursOnWeekday", RecursOnWeekday)
-			promoDataHash.Add("EarnsOnWeekday", EarnsOnWeekday)
-			promoDataHash.Add("CountCurrentDay", CountCurrentDay)
+			promoDataHash.Add(Key.OccursDate, OccursDate)
+			promoDataHash.Add(Key.StartDate, StartDate)
+			promoDataHash.Add(Key.EndDate, EndDate)
+			promoDataHash.Add(Key.RecursOnWeekday, RecursOnWeekday)
+			promoDataHash.Add(Key.EarnsOnWeekday, EarnsOnWeekday)
+			promoDataHash.Add(Key.CountCurrentDay, CountCurrentDay)
 			DataAddedToHash = True
 		End If
 	End Sub

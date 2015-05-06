@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepB. 
 ''' </summary>
 ''' <remarks>This is the Model for StepB (Controller).</remarks>
@@ -16,16 +18,16 @@ Public Class StepB_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("ID") = ID
-			promoDataHash.Item("Name") = Name
-			promoDataHash.Item("Recurring") = Recurring
-			promoDataHash.Item("RecurringFrequency") = RecurringFrequency
+			promoDataHash.Item(Key.ID) = ID
+			promoDataHash.Item(Key.Name) = Name
+			promoDataHash.Item(Key.Recurring) = Recurring
+			promoDataHash.Item(Key.RecurringFrequency) = RecurringFrequency
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("ID", ID)
-			promoDataHash.Add("Name", Name)
-			promoDataHash.Add("Recurring", Recurring)
-			promoDataHash.Add("RecurringFrequency", RecurringFrequency)
+			promoDataHash.Add(Key.ID, ID)
+			promoDataHash.Add(Key.Name, Name)
+			promoDataHash.Add(Key.Recurring, Recurring)
+			promoDataHash.Add(Key.RecurringFrequency, RecurringFrequency)
 			DataAddedToHash = True
 		End If
 	End Sub

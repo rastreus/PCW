@@ -1,4 +1,6 @@
-﻿Public Class StepCanHazSecurity_Data
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+Public Class StepCanHazSecurity_Data
 	Implements IPromoData
 
 #Region "ToPromoStepList"
@@ -12,12 +14,12 @@
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("OverrideTime") = OverrideTime
-			promoDataHash.Item("CutoffTime") = CutoffTime
+			promoDataHash.Item(Key.OverrideTime) = OverrideTime
+			promoDataHash.Item(Key.CutoffTime) = CutoffTime
 		Else 'Othewise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("OverrideTime", OverrideTime)
-			promoDataHash.Add("CutoffTime", CutoffTime)
+			promoDataHash.Add(Key.OverrideTime, OverrideTime)
+			promoDataHash.Add(Key.CutoffTime, CutoffTime)
 			DataAddedToHash = True
 		End If
 	End Sub

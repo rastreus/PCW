@@ -1,7 +1,8 @@
 ﻿Imports System.Collections
+Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
 
 Public Class PCW_Data
-#Region "Fields"
+#Region "Fields (Key)"
 	Public Enum PromoFields
 		ID
 		Name
@@ -15,6 +16,7 @@ Public Class PCW_Data
 		TicketsForEntirePromo
 		CouponAmtPerPatron
 		CouponAmtForEntirePromo
+		MaxNumOfCouponsPerPatron
 		CouponID
 		Recurring
 		RecurringFrequency
@@ -92,28 +94,28 @@ Public Class PCW_Data
 #Region "GetMarketingPromo"
 	Private Function GetMarketingPromo() As MarketingPromo
 		Dim newPromo As MarketingPromo = New MarketingPromo
-		newPromo.PromoID = PromoDataHash.Item("ID")
-		newPromo.PromoName = PromoDataHash.Item("Name")
-		newPromo.PromoType = PromoDataHash.Item("Type")
-		newPromo.PromoDate = PromoDataHash.Item("OccursDate")
-		newPromo.StartDate = PromoDataHash.Item("StartDate")
-		newPromo.EndDate = PromoDataHash.Item("EndDate")
-		newPromo.PointCutoff = PromoDataHash.Item("PointCutoffLimit")
-		newPromo.PointDivisor = PromoDataHash.Item("PointsDivisor")
-		newPromo.MaxTickets = PromoDataHash.Item("TicketsPerPatron")
-		newPromo.PromoMaxTickets = PromoDataHash.Item("TicketsForEntirePromo")
-		newPromo.MaxCoupon = PromoDataHash.Item("CouponAmtPerPatron")
-		newPromo.PromoMaxCoupon = PromoDataHash.Item("CouponAmtForEntirePromo")
-		newPromo.CouponID = PromoDataHash.Item("CouponID")
-		newPromo.Recurring = PromoDataHash.Item("Recurring")
-		newPromo.Frequency = PromoDataHash.Item("RecurringFrequency")
-		newPromo.RecursOnWeekday = PromoDataHash.Item("RecursOnWeekday")
-		newPromo.EarnsOnWeekday = PromoDataHash.Item("EarnsOnWeekday")
-		newPromo.CountCurrentDay = PromoDataHash.Item("CountCurrentDay")
-		newPromo.OverrideTime = PromoDataHash.Item("OverrideTime")
-		newPromo.CutoffTime = PromoDataHash.Item("CutoffTime")
-		newPromo.PrintTickets = PromoDataHash.Item("PrintTickets")
-		newPromo.Comments = PromoDataHash.Item("Comment")
+		newPromo.PromoID = PromoDataHash.Item(Key.ID)
+		newPromo.PromoName = PromoDataHash.Item(Key.Name)
+		newPromo.PromoType = PromoDataHash.Item(Key.Type)
+		newPromo.PromoDate = PromoDataHash.Item(Key.OccursDate)
+		newPromo.StartDate = PromoDataHash.Item(Key.StartDate)
+		newPromo.EndDate = PromoDataHash.Item(Key.EndDate)
+		newPromo.PointCutoff = PromoDataHash.Item(Key.PointCutoffLimit)
+		newPromo.PointDivisor = PromoDataHash.Item(Key.PointsDivisor)
+		newPromo.MaxTickets = PromoDataHash.Item(Key.TicketsPerPatron)
+		newPromo.PromoMaxTickets = PromoDataHash.Item(Key.TicketsForEntirePromo)
+		newPromo.MaxCoupon = PromoDataHash.Item(Key.CouponAmtPerPatron)
+		newPromo.PromoMaxCoupon = PromoDataHash.Item(Key.CouponAmtForEntirePromo)
+		newPromo.CouponID = PromoDataHash.Item(Key.CouponID)
+		newPromo.Recurring = PromoDataHash.Item(Key.Recurring)
+		newPromo.Frequency = PromoDataHash.Item(Key.RecurringFrequency)
+		newPromo.RecursOnWeekday = PromoDataHash.Item(Key.RecursOnWeekday)
+		newPromo.EarnsOnWeekday = PromoDataHash.Item(Key.EarnsOnWeekday)
+		newPromo.CountCurrentDay = PromoDataHash.Item(Key.CountCurrentDay)
+		newPromo.OverrideTime = PromoDataHash.Item(Key.OverrideTime)
+		newPromo.CutoffTime = PromoDataHash.Item(Key.CutoffTime)
+		newPromo.PrintTickets = PromoDataHash.Item(Key.PrintTickets)
+		newPromo.Comments = PromoDataHash.Item(Key.Comment)
 		Return newPromo
 	End Function
 #End Region
@@ -122,49 +124,49 @@ Public Class PCW_Data
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
-		'PromoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
+		'PromoDataHash.Add(Key.MaxNumOfCouponsPerPatron, MaxNumOfCouponsPerPatron)
 
 		'Now that the NULL formalities are out of the way,
 		'we can actually build the string that the user will read.
 		'builder.Append("      PromoType: " & promoType & vbCrLf)
-		builder.Append("             ID: " & nullIfNothing("ID") & vbCrLf)
-		builder.Append("           Name: " & nullIfNothing("Name") & vbCrLf)
-		builder.Append("           Date: " & nullIfNothing("OccursDate", dateFormatStr) & vbCrLf)
-		builder.Append("      StartDate: " & nullIfNothing("StartDate", dateFormatStr) & vbCrLf)
-		builder.Append("        EndDate: " & nullIfNothing("EndDate", dateFormatStr) & vbCrLf)
-		builder.Append("    PointCutoff: " & nullIfNothing("PointCutoffLimit") & vbCrLf)
-		builder.Append("  PointsDivisor: " & nullIfNothing("PointsDivisor") & vbCrLf)
-		builder.Append("     MaxTickets: " & nullIfNothing("TicketsPerPatron") & vbCrLf)
-		builder.Append("PromoMaxTickets: " & nullIfNothing("TicketsForEntirePromo") & vbCrLf)
-		builder.Append("      MaxCoupon: " & nullIfNothing("CouponAmtPerPatron") & vbCrLf)
-		builder.Append(" PromoMaxCoupon: " & nullIfNothing("CouponAmtForEntirePromo") & vbCrLf)
-		builder.Append("       CouponID: " & nullIfNothing("CouponID") & vbCrLf)
-		builder.Append("      Recurring: " & nullIfNothing("Recurring") & vbCrLf)
-		builder.Append("      Frequency: " & nullIfNothing("RecurringFrequency") & vbCrLf)
-		builder.Append("RecursOnWeekday: " & nullIfNothing("RecursOnWeekday") & vbCrLf)
-		builder.Append(" EarnsOnWeekday: " & nullIfNothing("EarnsOnWeekday") & vbCrLf)
-		builder.Append("CountCurrentDay: " & nullIfNothing("CountCurrentDay") & vbCrLf)
-		builder.Append("   PrintTickets: " & nullIfNothing("PrintTickets") & vbCrLf)
-		builder.Append("        Comment: " & nullIfNothing("Comment") & vbCrLf)
+		builder.Append("             ID: " & nullIfNothing(Key.ID) & vbCrLf)
+		builder.Append("           Name: " & nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append("           Date: " & nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
+		builder.Append("      StartDate: " & nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
+		builder.Append("        EndDate: " & nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
+		builder.Append("    PointCutoff: " & nullIfNothing(Key.PointCutoffLimit) & vbCrLf)
+		builder.Append("  PointsDivisor: " & nullIfNothing(Key.PointsDivisor) & vbCrLf)
+		builder.Append("     MaxTickets: " & nullIfNothing(Key.TicketsPerPatron) & vbCrLf)
+		builder.Append("PromoMaxTickets: " & nullIfNothing(Key.TicketsForEntirePromo) & vbCrLf)
+		builder.Append("      MaxCoupon: " & nullIfNothing(Key.CouponAmtPerPatron) & vbCrLf)
+		builder.Append(" PromoMaxCoupon: " & nullIfNothing(Key.CouponAmtForEntirePromo) & vbCrLf)
+		builder.Append("       CouponID: " & nullIfNothing(Key.CouponID) & vbCrLf)
+		builder.Append("      Recurring: " & nullIfNothing(Key.Recurring) & vbCrLf)
+		builder.Append("      Frequency: " & nullIfNothing(Key.RecurringFrequency) & vbCrLf)
+		builder.Append("RecursOnWeekday: " & nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
+		builder.Append(" EarnsOnWeekday: " & nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
+		builder.Append("CountCurrentDay: " & nullIfNothing(Key.CountCurrentDay) & vbCrLf)
+		builder.Append("   PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
+		builder.Append("        Comment: " & nullIfNothing(Key.Comment) & vbCrLf)
 		Return builder
 	End Function
 
-	Private Function nullIfNothing(ByVal promoData As String) As String
+	Private Function nullIfNothing(ByVal key As PromoFields) As String
 		Dim result As String = New String("")
-		If IsNothing(PromoDataHash.Item(promoData)) Then
+		If IsNothing(PromoDataHash.Item(key)) Then
 			result = "NULL"
 		Else
-			result = PromoDataHash.Item(promoData).ToString
+			result = PromoDataHash.Item(key).ToString
 		End If
 		Return result
 	End Function
 
-	Private Function nullIfNothing(ByVal promoData As String, ByVal dateFormatStr As String) As String
+	Private Function nullIfNothing(ByVal key As PromoFields, ByVal dateFormatStr As String) As String
 		Dim result As String = New String("")
-		If IsNothing(PromoDataHash.Item(promoData)) Then
+		If IsNothing(PromoDataHash.Item(key)) Then
 			result = "NULL"
 		Else
-			result = String.Format(dateFormatStr, PromoDataHash.Item(promoData))
+			result = String.Format(dateFormatStr, PromoDataHash.Item(key))
 		End If
 		Return result
 	End Function

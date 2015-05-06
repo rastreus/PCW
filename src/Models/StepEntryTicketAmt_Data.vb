@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepEntryTicketAmt.
 ''' </summary>
 ''' <remarks>This is the Model for StepEntryTicketAmt (Controller).</remarks>
@@ -16,16 +18,16 @@ Public Class StepEntryTicketAmt_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("PointsDivisor") = PointsDivisor
-			promoDataHash.Item("TicketsPerPatron") = TicketsPerPatron
-			promoDataHash.Item("TicketsForEntirePromo") = TicketsForEntirePromo
-			promoDataHash.Item("PrintTickets") = PrintTickets
+			promoDataHash.Item(Key.PointsDivisor) = PointsDivisor
+			promoDataHash.Item(Key.TicketsPerPatron) = TicketsPerPatron
+			promoDataHash.Item(Key.TicketsForEntirePromo) = TicketsForEntirePromo
+			promoDataHash.Item(Key.PrintTickets) = PrintTickets
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("PointsDivisor", PointsDivisor)
-			promoDataHash.Add("TicketsPerPatron", TicketsPerPatron)
-			promoDataHash.Add("TicketsForEntirePromo", TicketsForEntirePromo)
-			promoDataHash.Add("PrintTickets", PrintTickets)
+			promoDataHash.Add(Key.PointsDivisor, PointsDivisor)
+			promoDataHash.Add(Key.TicketsPerPatron, TicketsPerPatron)
+			promoDataHash.Add(Key.TicketsForEntirePromo, TicketsForEntirePromo)
+			promoDataHash.Add(Key.PrintTickets, PrintTickets)
 			DataAddedToHash = True
 		End If
 	End Sub

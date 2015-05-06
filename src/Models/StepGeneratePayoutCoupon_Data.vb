@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepGeneratePayoutCoupon.
 ''' </summary>
 ''' <remarks>This is the Model for StepGeneratePayoutCoupon (Controller).</remarks>
@@ -16,16 +18,16 @@ Public Class StepGeneratePayoutCoupon_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("CouponID") = CouponID
-			promoDataHash.Item("CouponAmtPerPatron") = CouponAmtPerPatron
-			promoDataHash.Item("CouponAmtForEntirePromo") = CouponAmtForEntirePromo
-			promoDataHash.Item("MaxNumOfCouponsPerPatron") = MaxNumOfCouponsPerPatron
+			promoDataHash.Item(Key.CouponID) = CouponID
+			promoDataHash.Item(Key.CouponAmtPerPatron) = CouponAmtPerPatron
+			promoDataHash.Item(Key.CouponAmtForEntirePromo) = CouponAmtForEntirePromo
+			promoDataHash.Item(Key.MaxNumOfCouponsPerPatron) = MaxNumOfCouponsPerPatron
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("CouponID", CouponID)
-			promoDataHash.Add("CouponAmtPerPatron", CouponAmtPerPatron)
-			promoDataHash.Add("CouponAmtForEntirePromo", CouponAmtForEntirePromo)
-			promoDataHash.Add("MaxNumOfCouponsPerPatron", MaxNumOfCouponsPerPatron)
+			promoDataHash.Add(Key.CouponID, CouponID)
+			promoDataHash.Add(Key.CouponAmtPerPatron, CouponAmtPerPatron)
+			promoDataHash.Add(Key.CouponAmtForEntirePromo, CouponAmtForEntirePromo)
+			promoDataHash.Add(Key.MaxNumOfCouponsPerPatron, MaxNumOfCouponsPerPatron)
 			DataAddedToHash = True
 		End If
 	End Sub

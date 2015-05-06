@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+
+''' <summary>
 ''' Contains data and validity checks for StepH.
 ''' </summary>
 ''' <remarks>This is the Model for StepH (Controller).</remarks>
@@ -16,10 +18,10 @@ Public Class StepH_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item("Comment") = Comment
+			promoDataHash.Item(Key.Comment) = Comment
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add("Comment", Comment)
+			promoDataHash.Add(Key.Comment, Comment)
 			DataAddedToHash = True
 		End If
 	End Sub
