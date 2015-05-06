@@ -32,6 +32,7 @@ Public Class StepEntryTicketAmt_Data
 #End Region
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
+	Private _stepNotSet As Boolean = True
 	Private _promoTicketAmtCategory As PromoTicketAmtCategory
 	Private _promoPointsDivisor As System.Nullable(Of Short)
 	Private _promoTicketsPerPatron As System.Nullable(Of Short)			'MaxTickets
@@ -52,6 +53,14 @@ Public Class StepEntryTicketAmt_Data
 		End Get
 		Set(value As Boolean)
 			_dataAddedToHash = value
+		End Set
+	End Property
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
 		End Set
 	End Property
 	Public Property TicketAmtCategory As PromoTicketAmtCategory

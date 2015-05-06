@@ -49,9 +49,9 @@ Partial Class StepEntryTicketAmt
 		Me.pnlAmtDescription = New System.Windows.Forms.Panel()
 		Me.lblAmtDesc = New System.Windows.Forms.Label()
 		Me.pnlPromoTypeForEntry = New System.Windows.Forms.Panel()
-		Me.lblPromoType = New System.Windows.Forms.Label()
-		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
+		Me.txtPromoType = New System.Windows.Forms.TextBox()
+		Me.lblPromoType = New System.Windows.Forms.Label()
 		Me.pnlTicketsAmount.SuspendLayout()
 		Me.pnlPointsDivisor.SuspendLayout()
 		Me.pnlTicketPerPatron.SuspendLayout()
@@ -376,26 +376,6 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPromoTypeForEntry.Size = New System.Drawing.Size(80, 125)
 		Me.pnlPromoTypeForEntry.TabIndex = 14
 		'
-		'lblPromoType
-		'
-		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblPromoType.ForeColor = System.Drawing.Color.White
-		Me.lblPromoType.Location = New System.Drawing.Point(3, 3)
-		Me.lblPromoType.Name = "lblPromoType"
-		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
-		Me.lblPromoType.TabIndex = 15
-		Me.lblPromoType.Text = "Promo Type:"
-		'
-		'txtPromoType
-		'
-		Me.txtPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtPromoType.Location = New System.Drawing.Point(3, 87)
-		Me.txtPromoType.MaxLength = 3
-		Me.txtPromoType.Name = "txtPromoType"
-		Me.txtPromoType.Size = New System.Drawing.Size(70, 23)
-		Me.txtPromoType.TabIndex = 16
-		Me.txtPromoType.Text = "EX: 31B"
-		'
 		'lblPromoTypeQuestion
 		'
 		Me.lblPromoTypeQuestion.BackColor = System.Drawing.Color.Transparent
@@ -405,6 +385,26 @@ Partial Class StepEntryTicketAmt
 		Me.lblPromoTypeQuestion.Size = New System.Drawing.Size(67, 41)
 		Me.lblPromoTypeQuestion.TabIndex = 17
 		Me.lblPromoTypeQuestion.Text = "What is the Entry's Type?"
+		'
+		'txtPromoType
+		'
+		Me.txtPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPromoType.Location = New System.Drawing.Point(3, 87)
+		Me.txtPromoType.MaxLength = 3
+		Me.txtPromoType.Name = "txtPromoType"
+		Me.txtPromoType.Size = New System.Drawing.Size(70, 23)
+		Me.txtPromoType.TabIndex = 16
+		Me.txtPromoType.Text = "EX: 25"
+		'
+		'lblPromoType
+		'
+		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoType.ForeColor = System.Drawing.Color.White
+		Me.lblPromoType.Location = New System.Drawing.Point(3, 3)
+		Me.lblPromoType.Name = "lblPromoType"
+		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
+		Me.lblPromoType.TabIndex = 15
+		Me.lblPromoType.Text = "Promo Type:"
 		'
 		'StepEntryTicketAmt
 		'

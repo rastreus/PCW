@@ -128,6 +128,7 @@ Public Class StepEntryTicketAmt
 	Private Sub StepEntryTicketAmt_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepEntryTicketAmt_data = New StepEntryTicketAmt_Data
+		Me.promoTypeEntered = False
 		StepEntryTicketAmt_ResetControls()
 	End Sub
 
@@ -137,6 +138,7 @@ Public Class StepEntryTicketAmt
 		Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		Me.rbTicketsPerPatronNO.Checked = True
 		Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
+		Me.txtPromoType.Text = "EX: 25"
 		SetPointsDivisorPnl(False)
 		SetPointsDivisorTxt(False)
 	End Sub
@@ -215,10 +217,26 @@ Public Class StepEntryTicketAmt
 				GUI_Util.msgBox(errStr)
 			Next
 		Else
+			'Step has been set if no error.
+			Me.stepEntryTicketAmt_data.StepNotSet = False
 			Me.NextStep = Me.Data.DetermineStepFlow()
 			If Me.NextStep = "StepH" Then
 				PCW.GetStep("StepH").PreviousStep = "StepEntryTicketAmt"
 			End If
+		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_ShowStep"
+	''' <summary>
+	''' Shows the Step controls.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>We MUST have the PromoType, disable "Next>" until we get it.</remarks>
+	Private Sub StepEntryTicketAmt_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
 		End If
 	End Sub
 #End Region
@@ -242,9 +260,11 @@ Public Class StepEntryTicketAmt
 
 	Private Sub SetPointsDivisorTxt(ByVal bool As Boolean)
 		If bool Then
+			PCW.NextEnabled = False
 			Me.txtPointsDivisor.Text = ""
 			Me.ActiveControl = Me.txtPointsDivisor
 		Else
+			NextEnabled()
 			Me.txtPointsDivisor.Text = BEP_Util.NumStr
 		End If
 	End Sub
@@ -287,9 +307,7 @@ Public Class StepEntryTicketAmt
 			Me.ActiveControl = Me.txtTicketsEntirePromo
 			PCW.NextEnabled = False
 		Else
-			If PCW.NextEnabled = False Then
-				PCW.NextEnabled = True
-			End If
+			NextEnabled()
 			Me.txtTicketsEntirePromo.Enabled = False
 			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		End If
@@ -298,17 +316,19 @@ Public Class StepEntryTicketAmt
 #Region "StepEntryTicketAmt_txtTicketsPerPatron_Leave"
 	Private Sub txtTicketsPerPatron_Leave(sender As Object, e As EventArgs) _
 		Handles txtTicketsPerPatron.Leave
-		If PCW.NextEnabled = False Then
-			PCW.NextEnabled = True
-		End If
+		NextEnabled()
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtTicketsEntirePromo_Leave"
 	Private Sub txtTicketsEntirePromo_Leave(sender As Object, e As EventArgs) _
 		Handles txtTicketsEntirePromo.Leave
-		If PCW.NextEnabled = False Then
-			PCW.NextEnabled = True
-		End If
+		NextEnabled()
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtPointsDivisor_Leave"
+	Private Sub txtPointsDivisor_Leave(sender As Object, e As EventArgs) _
+		Handles txtPointsDivisor.Leave
+		NextEnabled()
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtPromoType_Enter"
@@ -323,7 +343,20 @@ Public Class StepEntryTicketAmt
 #Region "StepEntryTicketAmt_txtPromoType_Leave"
 	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
 		Handles txtPromoType.Leave
-		'CheckForNext()
+		CheckForNext()
+	End Sub
+
+	Private Sub CheckForNext()
+		If Me.promoTypeEntered Then
+			PCW.NextEnabled = True
+		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_NextEnabled"
+	Private Sub NextEnabled()
+		If PCW.NextEnabled = False Then
+			PCW.NextEnabled = True
+		End If
 	End Sub
 #End Region
 #Region "_MOUSE_ENTER_LEAVE_"
