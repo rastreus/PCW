@@ -279,9 +279,7 @@ Public Class StepGetCouponOffers
 			Me.Data.SkipTargetImport = If(Me.rbCouponWildcardYES.Checked, _
 										  True, _
 										  False)
-			If (PCW.NextEnabled = False) Then
-				PCW.NextEnabled = True
-			End If
+			GUI_Util.NextEnabled()
 			GUI_Util.regPnl(Me.pnlCouponOffers)
 		Else
 			GUI_Util.errPnl(Me.pnlCouponOffers)

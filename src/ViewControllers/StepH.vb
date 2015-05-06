@@ -136,7 +136,7 @@ Public Class StepH
 				Me.IconTick.InActiveColor = Color.Lime
 				Me.lblNumerator.ForeColor = Color.White
 				Me.pnl140Characters.BackColor = SystemColors.ControlDarkDark
-				PCW.NextEnabled = True
+				GUI_Util.NextEnabled()
 			End If
 			Me.lblNumerator.Text = (140 - Me.txtCommentBox.Text.Length).ToString
 		End If

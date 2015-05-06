@@ -175,9 +175,7 @@ Public Class StepGetCouponTargets
 					   End Sub)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
-		If (PCW.NextEnabled = False) Then
-			PCW.NextEnabled = True
-		End If
+		GUI_Util.NextEnabled()
 		Me.btnSubmit.Enabled = True
 	End Sub
 #End Region

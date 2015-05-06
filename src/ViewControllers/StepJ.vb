@@ -124,7 +124,7 @@ Public Class StepJ
 			Me.Invoke(New AsyncCallback(AddressOf Me.DonePreparing), New Object() {result})
 			Return
 		End If
-		PCW.NextEnabled = True
+		GUI_Util.NextEnabled()
 	End Sub
 
 	Private Sub ProcessPromoQueue(ByVal PCWq As Queue(Of MarketingPromo))

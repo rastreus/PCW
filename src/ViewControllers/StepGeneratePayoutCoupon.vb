@@ -213,9 +213,7 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 	Private Sub CheckForNext()
 		If Me.maxAmtOneCouponBool And Me.maxAmtAllCouponsBool Then
-			If PCW.NextEnabled = False Then
-				PCW.NextEnabled = True
-			End If
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region
@@ -355,7 +353,7 @@ Public Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Text = SetBtnCouponIDText(Me.txtEditCouponID.Text)
 		Me.editCouponID_IsClosed = True
 		SetEditCouponID(False)
-		PCW.NextEnabled = True
+		GUI_Util.NextEnabled()
 	End Sub
 
 	Private Function SetBtnCouponIDText(ByRef txt As String) As String

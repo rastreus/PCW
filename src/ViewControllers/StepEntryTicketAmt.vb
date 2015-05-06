@@ -284,9 +284,7 @@ Public Class StepEntryTicketAmt
 			Me.ActiveControl = Me.txtTicketsPerPatron
 			PCW.NextEnabled = False
 		Else
-			If PCW.NextEnabled = False Then
-				PCW.NextEnabled = True
-			End If
+			GUI_Util.NextEnabled()
 			Me.txtTicketsPerPatron.Enabled = False
 			Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		End If

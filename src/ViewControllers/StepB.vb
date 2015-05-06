@@ -216,7 +216,7 @@ Public Class StepB
 #Region "StepB_CheckForNext"
 	Private Sub CheckForNext()
 		If promoNameEntered Then
-			PCW.NextEnabled = True
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region
@@ -300,7 +300,7 @@ Public Class StepB
 		Me.promoID = getPromoID()
 		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 		SetEditPromoID(False)
-		PCW.NextEnabled = True
+		GUI_Util.NextEnabled()
 	End Sub
 
 	Private Function SetBtnPromoIDText(ByRef txt As String) As String

@@ -430,9 +430,7 @@ Public Class StepC
 		If Me.MonthCal.Visible = False Then
 			Me.MonthCal.Visible = True
 		End If
-		If PCW.NextEnabled = False Then
-			PCW.NextEnabled = True
-		End If
+		GUI_Util.NextEnabled()
 	End Sub
 #End Region
 #Region "StepC_cbSameDayPromo_CheckedChanged"
@@ -482,7 +480,7 @@ Public Class StepC
 	Private Sub cbPrimaryDay_DropDownClosed(sender As Object, e As EventArgs) _
 		Handles cbPrimaryDay.DropDownClosed
 		If Me.startDayBool And Me.endDayBool Then
-			PCW.NextEnabled = True
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region
@@ -533,7 +531,7 @@ Public Class StepC
 				Me.MonthCal.Visible = True
 			End If
 			If Me.primaryDayBool Then
-				PCW.NextEnabled = True
+				GUI_Util.NextEnabled()
 			End If
 		End If
 	End Sub
