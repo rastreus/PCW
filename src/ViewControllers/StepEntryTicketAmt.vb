@@ -228,7 +228,7 @@ Public Class StepEntryTicketAmt
 #End Region
 #Region "StepEntryTicketAmt_ShowStep"
 	''' <summary>
-	''' Shows the Step controls.
+	''' Disables the "Next>" button.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -264,7 +264,7 @@ Public Class StepEntryTicketAmt
 			Me.txtPointsDivisor.Text = ""
 			Me.ActiveControl = Me.txtPointsDivisor
 		Else
-			NextEnabled()
+			GUI_Util.NextEnabled()
 			Me.txtPointsDivisor.Text = BEP_Util.NumStr
 		End If
 	End Sub
@@ -307,7 +307,7 @@ Public Class StepEntryTicketAmt
 			Me.ActiveControl = Me.txtTicketsEntirePromo
 			PCW.NextEnabled = False
 		Else
-			NextEnabled()
+			GUI_Util.NextEnabled()
 			Me.txtTicketsEntirePromo.Enabled = False
 			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		End If
@@ -316,19 +316,19 @@ Public Class StepEntryTicketAmt
 #Region "StepEntryTicketAmt_txtTicketsPerPatron_Leave"
 	Private Sub txtTicketsPerPatron_Leave(sender As Object, e As EventArgs) _
 		Handles txtTicketsPerPatron.Leave
-		NextEnabled()
+		GUI_Util.NextEnabled()
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtTicketsEntirePromo_Leave"
 	Private Sub txtTicketsEntirePromo_Leave(sender As Object, e As EventArgs) _
 		Handles txtTicketsEntirePromo.Leave
-		NextEnabled()
+		GUI_Util.NextEnabled()
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtPointsDivisor_Leave"
 	Private Sub txtPointsDivisor_Leave(sender As Object, e As EventArgs) _
 		Handles txtPointsDivisor.Leave
-		NextEnabled()
+		GUI_Util.NextEnabled()
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtPromoType_Enter"
@@ -348,14 +348,7 @@ Public Class StepEntryTicketAmt
 
 	Private Sub CheckForNext()
 		If Me.promoTypeEntered Then
-			PCW.NextEnabled = True
-		End If
-	End Sub
-#End Region
-#Region "StepEntryTicketAmt_NextEnabled"
-	Private Sub NextEnabled()
-		If PCW.NextEnabled = False Then
-			PCW.NextEnabled = True
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region

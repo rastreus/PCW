@@ -4,6 +4,7 @@
 ''' <remarks>This is the Model for StepF (Controller).</remarks>
 Public Class StepF_Data
 #Region "Properties"
+	Private _stepNotSet As Boolean = True
 	Private _promoPayoutCategory As PromoPayoutCategory
 	Private _promoCashValue As System.Nullable(Of Decimal) = Nothing
 	Private _promoPrize As String
@@ -15,6 +16,14 @@ Public Class StepF_Data
 		prize
 	End Enum
 
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
+		End Set
+	End Property
 	Public Property PayoutCatgory As PromoPayoutCategory
 		Get
 			Return _promoPayoutCategory

@@ -7,6 +7,16 @@
 Public Class GUI_Util
 #Region "Utility Subroutines"
 	''' <summary>
+	''' Enables the "Next>" button if it's currently disabled.
+	''' </summary>
+	''' <remarks></remarks>
+	Public Shared Sub NextEnabled()
+		If PCW.NextEnabled = False Then
+			PCW.NextEnabled = True
+		End If
+	End Sub
+
+	''' <summary>
 	''' Changes "BackColor" of Panel to represent success.
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>

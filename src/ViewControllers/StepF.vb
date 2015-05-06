@@ -70,10 +70,12 @@ Public Class StepF
 	End Function
 #End Region
 #Region "StepF_Load"
-	'Private Sub StepF_Load(sender As Object, e As EventArgs) _
-	'Handles MyBase.Load
-	'Moved stepF_data initialization to New
-	'End Sub
+	Private promoTypeEntered As Boolean
+
+	Private Sub StepF_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		Me.promoTypeEntered = False
+	End Sub
 #End Region
 #Region "StepF_ResetStep"
 	Private Sub StepF_ResetStep(sender As Object, e As EventArgs) _
@@ -129,10 +131,26 @@ Public Class StepF
 				GUI_Util.msgBox(errStr)
 			Next
 		Else
+			'Step has been set if no error.
+			Me.stepF_data.StepNotSet = False
 			Me.NextStep = Me.Data.DetermineStepFlow()
 			If Me.NextStep = "StepH" Then
 				PCW.GetStep("StepH").PreviousStep = "StepF"
 			End If
+		End If
+	End Sub
+#End Region
+#Region "StepF_ShowStep"
+	''' <summary>
+	''' Disables the "Next>" button.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>We MUST have the PromoType, disable "Next>" until we get it.</remarks>
+	Private Sub StepF_ShowStep(sender As Object, e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
 		End If
 	End Sub
 #End Region
@@ -155,6 +173,27 @@ Public Class StepF
 			activateTextBox(Me.txtPrize)
 		Else
 			deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
+		End If
+	End Sub
+#End Region
+#Region "StepF_txtPromoType_Enter"
+	Private Sub txtPromoType_Enter(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Enter
+		If Me.promoTypeEntered = False Then
+			Me.txtPromoType.Text = ""
+			Me.promoTypeEntered = True
+		End If
+	End Sub
+#End Region
+#Region "StepF_txtPromoType_Leave"
+	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Leave
+		CheckForNext()
+	End Sub
+
+	Private Sub CheckForNext()
+		If Me.promoTypeEntered Then
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region

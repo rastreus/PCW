@@ -25,6 +25,7 @@ Partial Class StepF
 		Me.pnlPayout = New System.Windows.Forms.Panel()
 		Me.pnlCashValue = New System.Windows.Forms.Panel()
 		Me.txtCashValue = New System.Windows.Forms.TextBox()
+		Me.lblMoney1 = New System.Windows.Forms.Label()
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.pnlPrize = New System.Windows.Forms.Panel()
@@ -35,10 +36,14 @@ Partial Class StepF
 		Me.rbPrize = New System.Windows.Forms.RadioButton()
 		Me.rbCashValue = New System.Windows.Forms.RadioButton()
 		Me.pnlLavender = New System.Windows.Forms.Panel()
-		Me.lblMoney1 = New System.Windows.Forms.Label()
+		Me.pnlPromoTypeForPayout = New System.Windows.Forms.Panel()
+		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
+		Me.txtPromoType = New System.Windows.Forms.TextBox()
+		Me.lblPromoType = New System.Windows.Forms.Label()
 		Me.pnlPayout.SuspendLayout()
 		Me.pnlCashValue.SuspendLayout()
 		Me.pnlPrize.SuspendLayout()
+		Me.pnlPromoTypeForPayout.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -60,7 +65,7 @@ Partial Class StepF
 		Me.pnlPayout.Controls.Add(Me.rbPrize)
 		Me.pnlPayout.Controls.Add(Me.rbCashValue)
 		Me.pnlPayout.Controls.Add(Me.pnlLavender)
-		Me.pnlPayout.Location = New System.Drawing.Point(145, 52)
+		Me.pnlPayout.Location = New System.Drawing.Point(167, 63)
 		Me.pnlPayout.Name = "pnlPayout"
 		Me.pnlPayout.Size = New System.Drawing.Size(313, 197)
 		Me.pnlPayout.TabIndex = 2
@@ -86,6 +91,18 @@ Partial Class StepF
 		Me.txtCashValue.Size = New System.Drawing.Size(106, 20)
 		Me.txtCashValue.TabIndex = 7
 		Me.txtCashValue.Text = "Enter Amt Here"
+		'
+		'lblMoney1
+		'
+		Me.lblMoney1.AutoSize = True
+		Me.lblMoney1.BackColor = System.Drawing.Color.Transparent
+		Me.lblMoney1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblMoney1.Location = New System.Drawing.Point(4, 5)
+		Me.lblMoney1.Name = "lblMoney1"
+		Me.lblMoney1.Size = New System.Drawing.Size(18, 19)
+		Me.lblMoney1.TabIndex = 11
+		Me.lblMoney1.Text = "$"
+		Me.lblMoney1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
 		'Label3
 		'
@@ -198,22 +215,53 @@ Partial Class StepF
 		Me.pnlLavender.Size = New System.Drawing.Size(279, 159)
 		Me.pnlLavender.TabIndex = 11
 		'
-		'lblMoney1
+		'pnlPromoTypeForPayout
 		'
-		Me.lblMoney1.AutoSize = True
-		Me.lblMoney1.BackColor = System.Drawing.Color.Transparent
-		Me.lblMoney1.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblMoney1.Location = New System.Drawing.Point(4, 5)
-		Me.lblMoney1.Name = "lblMoney1"
-		Me.lblMoney1.Size = New System.Drawing.Size(18, 19)
-		Me.lblMoney1.TabIndex = 11
-		Me.lblMoney1.Text = "$"
-		Me.lblMoney1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.pnlPromoTypeForPayout.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPromoTypeForPayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoTypeForPayout.Controls.Add(Me.lblPromoTypeQuestion)
+		Me.pnlPromoTypeForPayout.Controls.Add(Me.txtPromoType)
+		Me.pnlPromoTypeForPayout.Controls.Add(Me.lblPromoType)
+		Me.pnlPromoTypeForPayout.Location = New System.Drawing.Point(81, 63)
+		Me.pnlPromoTypeForPayout.Name = "pnlPromoTypeForPayout"
+		Me.pnlPromoTypeForPayout.Size = New System.Drawing.Size(80, 125)
+		Me.pnlPromoTypeForPayout.TabIndex = 15
+		'
+		'lblPromoTypeQuestion
+		'
+		Me.lblPromoTypeQuestion.BackColor = System.Drawing.Color.Transparent
+		Me.lblPromoTypeQuestion.ForeColor = System.Drawing.Color.White
+		Me.lblPromoTypeQuestion.Location = New System.Drawing.Point(6, 41)
+		Me.lblPromoTypeQuestion.Name = "lblPromoTypeQuestion"
+		Me.lblPromoTypeQuestion.Size = New System.Drawing.Size(67, 41)
+		Me.lblPromoTypeQuestion.TabIndex = 17
+		Me.lblPromoTypeQuestion.Text = "What is the Payout's Type?"
+		'
+		'txtPromoType
+		'
+		Me.txtPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPromoType.Location = New System.Drawing.Point(3, 87)
+		Me.txtPromoType.MaxLength = 3
+		Me.txtPromoType.Name = "txtPromoType"
+		Me.txtPromoType.Size = New System.Drawing.Size(70, 23)
+		Me.txtPromoType.TabIndex = 16
+		Me.txtPromoType.Text = "EX: 31B"
+		'
+		'lblPromoType
+		'
+		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoType.ForeColor = System.Drawing.Color.White
+		Me.lblPromoType.Location = New System.Drawing.Point(3, 3)
+		Me.lblPromoType.Name = "lblPromoType"
+		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
+		Me.lblPromoType.TabIndex = 15
+		Me.lblPromoType.Text = "Promo Type:"
 		'
 		'StepF
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlPromoTypeForPayout)
 		Me.Controls.Add(Me.pnlPayout)
 		Me.Name = "StepF"
 		Me.NextStep = "StepGeneratePayoutCoupon"
@@ -222,12 +270,15 @@ Partial Class StepF
 		Me.StepDescription = "This is where the category of the promo payout will be determined."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlPayout, 0)
+		Me.Controls.SetChildIndex(Me.pnlPromoTypeForPayout, 0)
 		Me.pnlPayout.ResumeLayout(False)
 		Me.pnlPayout.PerformLayout()
 		Me.pnlCashValue.ResumeLayout(False)
 		Me.pnlCashValue.PerformLayout()
 		Me.pnlPrize.ResumeLayout(False)
 		Me.pnlPrize.PerformLayout()
+		Me.pnlPromoTypeForPayout.ResumeLayout(False)
+		Me.pnlPromoTypeForPayout.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -245,5 +296,9 @@ Partial Class StepF
 	Friend WithEvents Label2 As System.Windows.Forms.Label
 	Friend WithEvents pnlLavender As System.Windows.Forms.Panel
 	Friend WithEvents lblMoney1 As System.Windows.Forms.Label
+	Friend WithEvents pnlPromoTypeForPayout As System.Windows.Forms.Panel
+	Friend WithEvents lblPromoTypeQuestion As System.Windows.Forms.Label
+	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
+	Friend WithEvents lblPromoType As System.Windows.Forms.Label
 
 End Class
