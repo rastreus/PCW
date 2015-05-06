@@ -82,7 +82,6 @@ Public Class StepB
 	Private promoID As String
 	Private promoNameEntered As Boolean
 	Private promoNameLeft As Boolean
-	Private promoTypeEntered As Boolean
 
 	''' <summary>
 	''' Gets Date information on show.
@@ -146,8 +145,6 @@ Public Class StepB
 
 	Private Sub StepB_ResetControls()
 		Me.txtPromoName.Text = ""
-		Me.txtPromoType.Text = "EX: 31B"
-		Me.promoTypeEntered = False
 		Me.rbRecurringNo.Checked = True
 		Me.cbRecurringFrequency.Enabled = False
 		Me.cbRecurringFrequency.SelectedIndex = -1
@@ -218,7 +215,7 @@ Public Class StepB
 #End Region
 #Region "StepB_CheckForNext"
 	Private Sub CheckForNext()
-		If promoTypeEntered And promoNameEntered Then
+		If promoNameEntered Then
 			PCW.NextEnabled = True
 		End If
 	End Sub
@@ -238,21 +235,6 @@ Public Class StepB
 		Else
 			Me.cbRecurringFrequency.Enabled = False
 		End If
-	End Sub
-#End Region
-#Region "StepB_txtPromoType_Enter"
-	Private Sub txtPromoType_Enter(sender As Object, e As EventArgs) _
-		Handles txtPromoType.Enter
-		If Me.promoTypeEntered = False Then
-			Me.txtPromoType.Text = ""
-			Me.promoTypeEntered = True
-		End If
-	End Sub
-#End Region
-#Region "StepB_txtPromoType_Leave"
-	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
-		Handles txtPromoType.Leave
-		CheckForNext()
 	End Sub
 #End Region
 #Region "StepB_txtPromoName_Enter"

@@ -98,10 +98,10 @@ Public Class StepD_Data
 #End Region
 #Region "CheckForReset"
 	Public Sub CheckForReset()
-		If (Me.Category = PCW_Data.PromoCategory.entryAndPayout) Or
-			(Me.Category = PCW_Data.PromoCategory.multPart) Then
+		If Me.Category = PCW_Data.PromoCategory.multPart Then
 			PCW.Data.Reset = True
-			PCW.Data.ResetTo = "StepD"
+			'Single Entry w/ multiple Payouts
+			PCW.Data.ResetTo = "StepF"
 		End If
 	End Sub
 #End Region

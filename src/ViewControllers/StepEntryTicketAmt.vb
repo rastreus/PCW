@@ -105,6 +105,7 @@ Public Class StepEntryTicketAmt
 	Dim calStr As String
 	Dim calPlusNumOfVisitsStr As String
 	Dim setAmtStr As String
+	Private promoTypeEntered As Boolean
 
 	Private Sub StepEntryTicketAmt_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
@@ -120,6 +121,7 @@ Public Class StepEntryTicketAmt
 										   "then adds the result to a count of visits.")
 		setAmtStr = New String("A static, set amount of tickets; " &
 							   "enter the amount into the box below.")
+		promoTypeEntered = False
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_ResetStep"
@@ -307,6 +309,21 @@ Public Class StepEntryTicketAmt
 		If PCW.NextEnabled = False Then
 			PCW.NextEnabled = True
 		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtPromoType_Enter"
+	Private Sub txtPromoType_Enter(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Enter
+		If Me.promoTypeEntered = False Then
+			Me.txtPromoType.Text = ""
+			Me.promoTypeEntered = True
+		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtPromoType_Leave"
+	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
+		Handles txtPromoType.Leave
+		'CheckForNext()
 	End Sub
 #End Region
 #Region "_MOUSE_ENTER_LEAVE_"

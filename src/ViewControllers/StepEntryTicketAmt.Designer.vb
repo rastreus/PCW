@@ -48,11 +48,16 @@ Partial Class StepEntryTicketAmt
 		Me.lblDescription = New System.Windows.Forms.Label()
 		Me.pnlAmtDescription = New System.Windows.Forms.Panel()
 		Me.lblAmtDesc = New System.Windows.Forms.Label()
+		Me.pnlPromoTypeForEntry = New System.Windows.Forms.Panel()
+		Me.lblPromoType = New System.Windows.Forms.Label()
+		Me.txtPromoType = New System.Windows.Forms.TextBox()
+		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.pnlTicketsAmount.SuspendLayout()
 		Me.pnlPointsDivisor.SuspendLayout()
 		Me.pnlTicketPerPatron.SuspendLayout()
 		Me.pnlTicketsEntirePromo.SuspendLayout()
 		Me.pnlAmtDescription.SuspendLayout()
+		Me.pnlPromoTypeForEntry.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -71,7 +76,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsAmount.Controls.Add(Me.Label2)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnl1)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnlCountAndCal)
-		Me.pnlTicketsAmount.Location = New System.Drawing.Point(224, 43)
+		Me.pnlTicketsAmount.Location = New System.Drawing.Point(268, 63)
 		Me.pnlTicketsAmount.Name = "pnlTicketsAmount"
 		Me.pnlTicketsAmount.Size = New System.Drawing.Size(160, 172)
 		Me.pnlTicketsAmount.TabIndex = 2
@@ -159,7 +164,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPointsDivisor.Controls.Add(Me.txtPointsDivisor)
 		Me.pnlPointsDivisor.Controls.Add(Me.lblPointsDivisor)
 		Me.pnlPointsDivisor.Enabled = False
-		Me.pnlPointsDivisor.Location = New System.Drawing.Point(278, 221)
+		Me.pnlPointsDivisor.Location = New System.Drawing.Point(322, 241)
 		Me.pnlPointsDivisor.Name = "pnlPointsDivisor"
 		Me.pnlPointsDivisor.Size = New System.Drawing.Size(106, 49)
 		Me.pnlPointsDivisor.TabIndex = 11
@@ -195,7 +200,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketPerPatron.Controls.Add(Me.rbTicketPerPatronYES)
 		Me.pnlTicketPerPatron.Controls.Add(Me.Panel1)
 		Me.pnlTicketPerPatron.Controls.Add(Me.lblTicketsPerPatron)
-		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(390, 43)
+		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(434, 63)
 		Me.pnlTicketPerPatron.Name = "pnlTicketPerPatron"
 		Me.pnlTicketPerPatron.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketPerPatron.TabIndex = 4
@@ -265,7 +270,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.rbTicketsEntirePromoYES)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.Panel2)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.lblTicketsEntirePromo)
-		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(390, 132)
+		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(434, 152)
 		Me.pnlTicketsEntirePromo.Name = "pnlTicketsEntirePromo"
 		Me.pnlTicketsEntirePromo.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketsEntirePromo.TabIndex = 5
@@ -343,7 +348,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlAmtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlAmtDescription.Controls.Add(Me.lblDescription)
 		Me.pnlAmtDescription.Controls.Add(Me.lblAmtDesc)
-		Me.pnlAmtDescription.Location = New System.Drawing.Point(41, 43)
+		Me.pnlAmtDescription.Location = New System.Drawing.Point(85, 63)
 		Me.pnlAmtDescription.Name = "pnlAmtDescription"
 		Me.pnlAmtDescription.Size = New System.Drawing.Size(177, 172)
 		Me.pnlAmtDescription.TabIndex = 13
@@ -359,10 +364,53 @@ Partial Class StepEntryTicketAmt
 		Me.lblAmtDesc.TabIndex = 14
 		Me.lblAmtDesc.Text = "Amount Description:"
 		'
+		'pnlPromoTypeForEntry
+		'
+		Me.pnlPromoTypeForEntry.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlPromoTypeForEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoTypeForEntry.Controls.Add(Me.lblPromoTypeQuestion)
+		Me.pnlPromoTypeForEntry.Controls.Add(Me.txtPromoType)
+		Me.pnlPromoTypeForEntry.Controls.Add(Me.lblPromoType)
+		Me.pnlPromoTypeForEntry.Location = New System.Drawing.Point(3, 63)
+		Me.pnlPromoTypeForEntry.Name = "pnlPromoTypeForEntry"
+		Me.pnlPromoTypeForEntry.Size = New System.Drawing.Size(80, 125)
+		Me.pnlPromoTypeForEntry.TabIndex = 14
+		'
+		'lblPromoType
+		'
+		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoType.ForeColor = System.Drawing.Color.White
+		Me.lblPromoType.Location = New System.Drawing.Point(3, 3)
+		Me.lblPromoType.Name = "lblPromoType"
+		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
+		Me.lblPromoType.TabIndex = 15
+		Me.lblPromoType.Text = "Promo Type:"
+		'
+		'txtPromoType
+		'
+		Me.txtPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPromoType.Location = New System.Drawing.Point(3, 87)
+		Me.txtPromoType.MaxLength = 3
+		Me.txtPromoType.Name = "txtPromoType"
+		Me.txtPromoType.Size = New System.Drawing.Size(70, 23)
+		Me.txtPromoType.TabIndex = 16
+		Me.txtPromoType.Text = "EX: 31B"
+		'
+		'lblPromoTypeQuestion
+		'
+		Me.lblPromoTypeQuestion.BackColor = System.Drawing.Color.Transparent
+		Me.lblPromoTypeQuestion.ForeColor = System.Drawing.Color.White
+		Me.lblPromoTypeQuestion.Location = New System.Drawing.Point(6, 41)
+		Me.lblPromoTypeQuestion.Name = "lblPromoTypeQuestion"
+		Me.lblPromoTypeQuestion.Size = New System.Drawing.Size(67, 41)
+		Me.lblPromoTypeQuestion.TabIndex = 17
+		Me.lblPromoTypeQuestion.Text = "What is the Entry's Type?"
+		'
 		'StepEntryTicketAmt
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlPromoTypeForEntry)
 		Me.Controls.Add(Me.pnlPointsDivisor)
 		Me.Controls.Add(Me.pnlTicketsEntirePromo)
 		Me.Controls.Add(Me.pnlTicketPerPatron)
@@ -379,6 +427,7 @@ Partial Class StepEntryTicketAmt
 		Me.Controls.SetChildIndex(Me.pnlTicketsEntirePromo, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlPointsDivisor, 0)
+		Me.Controls.SetChildIndex(Me.pnlPromoTypeForEntry, 0)
 		Me.pnlTicketsAmount.ResumeLayout(False)
 		Me.pnlTicketsAmount.PerformLayout()
 		Me.pnlPointsDivisor.ResumeLayout(False)
@@ -389,6 +438,8 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsEntirePromo.PerformLayout()
 		Me.pnlAmtDescription.ResumeLayout(False)
 		Me.pnlAmtDescription.PerformLayout()
+		Me.pnlPromoTypeForEntry.ResumeLayout(False)
+		Me.pnlPromoTypeForEntry.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -418,5 +469,9 @@ Partial Class StepEntryTicketAmt
 	Friend WithEvents lblAmtDesc As System.Windows.Forms.Label
 	Friend WithEvents Panel1 As System.Windows.Forms.Panel
 	Friend WithEvents Panel2 As System.Windows.Forms.Panel
+	Friend WithEvents pnlPromoTypeForEntry As System.Windows.Forms.Panel
+	Friend WithEvents lblPromoTypeQuestion As System.Windows.Forms.Label
+	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
+	Friend WithEvents lblPromoType As System.Windows.Forms.Label
 
 End Class
