@@ -171,6 +171,13 @@ Public Class PCW_Data
 		payoutPromo.MaxTickets = Nothing
 		Return payoutPromo
 	End Function
+
+	Private Function GetPayoutPromoType()
+		Dim promoType As String = New String("!")
+		Dim local_stepF As StepF = PCW.GetStep("StepF")
+		promoType = local_stepF.Data.PromoType
+		Return promoType
+	End Function
 #End Region
 #Region "GetPromoSummary"
 	Public Function GetPromoSummary() As System.Text.StringBuilder

@@ -8,6 +8,7 @@ Public Class StepF_Data
 	Private _promoPayoutCategory As PromoPayoutCategory
 	Private _promoCashValue As System.Nullable(Of Decimal) = Nothing
 	Private _promoPrize As String
+	Private _pcwPromoType As String
 
 	Public Enum PromoPayoutCategory
 		freePlayCoupon
@@ -48,6 +49,14 @@ Public Class StepF_Data
 			_promoPrize = value
 		End Set
 	End Property
+	Public Property PromoType As String
+		Get
+			Return _pcwPromoType
+		End Get
+		Set(value As String)
+			_pcwPromoType = value
+		End Set
+	End Property
 #End Region
 #Region "Validity Checks"
 	Public Function CashValueInvalid(ByVal cashValueStr As String) As Boolean
@@ -55,6 +64,12 @@ Public Class StepF_Data
 	End Function
 	Public Function PrizeIsBlank() As Boolean
 		Return (Prize = "")
+	End Function
+	Public Function BadPromoType() As Boolean
+		Dim result As Boolean = If(PromoType = "" Or PromoType = "EX: 31B",
+								   True,
+								   False)
+		Return result
 	End Function
 #End Region
 #Region "DetermineStepFlow"

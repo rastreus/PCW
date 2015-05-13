@@ -32,6 +32,7 @@ Public Class StepF
 		Me.stepF_data.PayoutCatgory = getPromoPayoutCategory()
 		Me.stepF_data.CashValue = getCashValue()
 		Me.stepF_data.Prize = getPrize()
+		Me.stepF_data.PromoType = Me.txtPromoType.Text
 	End Sub
 
 	Private Function getPrize() As String
@@ -123,6 +124,17 @@ Public Class StepF
 			Me.ActiveControl = Me.txtPrize
 		Else
 			GUI_Util.regPnl(Me.pnlPrize, Color.Gainsboro)
+		End If
+
+		If Me.Data.BadPromoType() Then
+			cancelContinuingToNextStep = True
+			errString = "Promo Type is invalid."
+			errStrArray.Add(errString)
+			GUI_Util.errPnl(Me.pnlPromoTypeForPayout)
+			Me.txtPromoType.Text = ""
+			Me.ActiveControl = Me.txtPromoType
+		Else
+			GUI_Util.regPnl(Me.pnlPromoTypeForPayout)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep
