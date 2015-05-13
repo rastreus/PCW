@@ -44,7 +44,7 @@ Public Class StepD
 				Me.stepD_data.SkipPayout = True
 			Case PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
 				Me.stepD_data.SkipEntry = True
-			Case PromotionalCreationWizard.PCW_Data.PromoCategory.multPart
+			Case PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart
 				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
@@ -67,7 +67,7 @@ Public Class StepD
 		ElseIf Me.rbSinglePayoutOnly.Checked Then
 			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
 		ElseIf Me.rbMultiPartEntryPayout.Checked Then
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.multPart
+			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart
 		Else
 			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.acquisition
 		End If
@@ -122,7 +122,7 @@ Public Class StepD
 		Me.StepD_SetData()
 		Me.Data.CheckForReset()
 
-		If Me.Data.Category = PromotionalCreationWizard.PCW_Data.PromoCategory.multPart And
+		If Me.Data.Category = PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart And
 			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."

@@ -78,7 +78,7 @@ Public Class StepGetCouponTargets
 #Region "StepGetCouponTarget_SameForAllDaysTiers"
 	Private Function SameForAllDaysTiers(ByVal promoCategory As PCW_Data.PromoCategory) As Boolean
 		Dim result As Boolean = False
-		If promoCategory = PCW_Data.PromoCategory.multPart Then
+		If promoCategory = PCW_Data.PromoCategory.multiPart Then
 			Dim dialogResult As DialogResult = CenteredMessagebox.MsgBox.Show("Do all Days/Tiers use the same" & _
 																			  "Coupon Offers & Coupon Targets?", _
 																			  "Reuse Offers and Targets?", _

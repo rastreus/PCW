@@ -34,7 +34,7 @@ Public Class PCW_Data
 		entryAndPayout
 		entryOnly
 		payoutOnly
-		multPart
+		multiPart
 		acquisition
 	End Enum
 #End Region
