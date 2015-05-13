@@ -217,8 +217,35 @@ Public Class PCW_Data
 		Return result
 	End Function
 #End Region
-#Region "SubmitPromoDBRowsToMarketingPromosTable"
-	Public Sub SubmitPromoDBRowsToMarketingPromosTable()
+#Region "SubmitPromoToList"
+	Public Sub SubmitPromoToList()
+		Dim local_stepD As StepD = PCW.GetStep("StepD")
+		Dim local_promoCategory As PromoCategory = local_stepD.Data.Category
+		Dim entryPromo As MarketingPromo
+		Dim payoutPromo As MarketingPromo
+		Select Case local_promoCategory
+			Case PromoCategory.entryAndPayout
+				entryPromo = GetMarketingPromoEntry()
+				payoutPromo = GetMarketingPromoPayout()
+				Me.MarketingPromosDBRowsList.Add(entryPromo)
+				Me.MarketingPromosDBRowsList.Add(payoutPromo)
+			Case PromoCategory.entryOnly
+				entryPromo = GetMarketingPromoEntry()
+				payoutPromo = Nothing
+				Me.MarketingPromosDBRowsList.Add(entryPromo)
+			Case PromoCategory.payoutOnly
+				entryPromo = Nothing
+				payoutPromo = GetMarketingPromoPayout()
+				Me.MarketingPromosDBRowsList.Add(payoutPromo)
+			Case PromoCategory.multiPart
+				'If out what all needs to be done
+			Case PromoCategory.acquisition
+				'Needs to be implemented (05/13/15)
+		End Select
+	End Sub
+#End Region
+#Region "SubmitListToDB"
+	Public Sub SubmitListToDB()
 		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
 																	  .PromotionalCreationWizard _
 																	  .My _
