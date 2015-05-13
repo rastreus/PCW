@@ -44,7 +44,6 @@ Public Class StepB
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
 		Dim frequency As String = New String("W")
-		Me.stepB_data.PromoType = Me.txtPromoType.Text
 		Me.stepB_data.ID = Me.btnPromoID.Text
 		Me.stepB_data.Name = Me.txtPromoName.Text
 		If Me.rbRecurringYes.Checked Then
@@ -164,15 +163,6 @@ Public Class StepB
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepB_SetData()
-
-		If Me.Data.PromoType_Invalid() Then
-			cancelContinuingToNextStep = True
-			errString = "PromoType Invalid."
-			errStrArray.Add(errString)
-			GUI_Util.errPnl(Me.pnlPromoType)
-		Else
-			GUI_Util.regPnl(Me.pnlPromoType)
-		End If
 
 		If Me.Data.PromoID_Invalid() Then
 			cancelContinuingToNextStep = True

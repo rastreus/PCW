@@ -35,7 +35,6 @@ Public Class StepB_Data
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
 	Private _stepNotSet As Boolean = True
-	Private _promoType As String
 	Private _promoID As String
 	Private _promoName As String
 	Private _promoRecurring As System.Nullable(Of Boolean)
@@ -59,14 +58,6 @@ Public Class StepB_Data
 		End Get
 		Set(value As Boolean)
 			_stepNotSet = value
-		End Set
-	End Property
-	Public Property PromoType As String
-		Get
-			Return _promoType
-		End Get
-		Set(value As String)
-			_promoType = value
 		End Set
 	End Property
 	Public Property ID As String
@@ -107,15 +98,6 @@ Public Class StepB_Data
 		Dim invalid As Boolean = False
 
 		If Me.Recurring And Me.RecurringFrequency = "" Then
-			invalid = True
-		End If
-
-		Return invalid
-	End Function
-	Public Function PromoType_Invalid() As Boolean
-		Dim invalid As Boolean = False
-
-		If PromoType = "EX: 31B" Or PromoType = "" Then
 			invalid = True
 		End If
 
