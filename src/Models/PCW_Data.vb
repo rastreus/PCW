@@ -115,8 +115,54 @@ Public Class PCW_Data
 		newPromo.OverrideTime = PromoDataHash.Item(Key.OverrideTime)
 		newPromo.CutoffTime = PromoDataHash.Item(Key.CutoffTime)
 		newPromo.PrintTickets = PromoDataHash.Item(Key.PrintTickets)
-		newPromo.Comments = PromoDataHash.Item(Key.Comment)
+		newPromo.Comments = GetPromoComment()
 		Return newPromo
+	End Function
+#End Region
+#Region "GetPromoComment"
+	''' <summary>
+	''' Returns the comment with PCW stamping.
+	''' </summary>
+	''' <returns>"PCW;05132015;rdillin"</returns>
+	''' <remarks>A security feature which tags each promo created by PCW with date and username.</remarks>
+	Private Function GetPromoComment() As String
+		Dim dateFormatStr As String = New String("{0:MMddyyyy}")
+		Dim comment As String = PromoDataHash.Item(Key.Comment)
+		comment = comment & _
+				  "PCW;" & _
+				  String.Format(dateFormatStr, Date.Today.ToString) & ";" & _
+				  Environment.UserName.ToString
+		Return comment
+	End Function
+#End Region
+#Region "GetMarketingPromoEntry"
+	''' <summary>
+	''' Returns an Entry Promo.
+	''' </summary>
+	''' <returns>Promo of the "Entry" Category.</returns>
+	''' <remarks>I'm not sure why those fields wouldn't be Nothing already, but now it is certian.</remarks>
+	Private Function GetMarketingPromoEntry() As MarketingPromo
+		Dim entryPromo As MarketingPromo = GetMarketingPromo()
+		entryPromo.PromoName = "Entries - " & entryPromo.PromoName
+		entryPromo.MaxCoupon = Nothing
+		entryPromo.PromoMaxCoupon = Nothing
+		entryPromo.CouponID = Nothing
+		Return entryPromo
+	End Function
+#End Region
+#Region "GetMarketingPromoPayout"
+	''' <summary>
+	''' Returns a Payout Promo.
+	''' </summary>
+	''' <returns>Promo of the "Payout" Category.</returns>
+	''' <remarks>Likewise, not sure why these fields wouldn't be Nothing, but now it is certain.</remarks>
+	Private Function GetMarketingPromoPayout() As MarketingPromo
+		Dim payoutPromo As MarketingPromo = GetMarketingPromo()
+		payoutPromo.PromoName = "Payouts - " & payoutPromo.PromoName
+		payoutPromo.PointCutoff = Nothing
+		payoutPromo.PointDivisor = Nothing
+		payoutPromo.MaxTickets = Nothing
+		Return payoutPromo
 	End Function
 #End Region
 #Region "GetPromoSummary"
