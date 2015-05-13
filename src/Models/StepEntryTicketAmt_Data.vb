@@ -40,6 +40,7 @@ Public Class StepEntryTicketAmt_Data
 	Private _promoTicketsPerPatron As System.Nullable(Of Short)			'MaxTickets
 	Private _promoTicketsForEntirePromo As System.Nullable(Of Short)	'PromoMaxTickets
 	Private _promoPrintTickets As System.Nullable(Of Boolean)
+	Private _pcwPromoType As String
 
 	Public Enum PromoTicketAmtCategory
 		one
@@ -105,6 +106,14 @@ Public Class StepEntryTicketAmt_Data
 			_promoPrintTickets = value
 		End Set
 	End Property
+	Public Property PromoType As String
+		Get
+			Return _pcwPromoType
+		End Get
+		Set(value As String)
+			_pcwPromoType = value
+		End Set
+	End Property
 #End Region
 #Region "Validity_Checks"
 	Public Function PointsDivisor_Invalid() As Boolean
@@ -118,6 +127,12 @@ Public Class StepEntryTicketAmt_Data
 	End Function
 	Public Function BadTicketLimits() As Boolean
 		Return (TicketsForEntirePromo < TicketsPerPatron)
+	End Function
+	Public Function BadPromoType() As Boolean
+		Dim result As Boolean = If(PromoType = "" Or PromoType = "EX: 25",
+								   True,
+								   False)
+		Return result
 	End Function
 #End Region
 #Region "DetermineStepFlow"

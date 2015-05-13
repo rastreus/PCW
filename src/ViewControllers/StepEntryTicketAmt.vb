@@ -45,7 +45,19 @@ Public Class StepEntryTicketAmt
 		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, _
 																		   Me.txtTicketsEntirePromo.Text)
 		Me.stepEntryTicketAmt_data.PrintTickets = True
+		Me.stepEntryTicketAmt_data.PromoType = getPromoType()
 	End Sub
+
+	''' <summary>
+	''' Grabs the PromoType from the TextBox control.
+	''' </summary>
+	''' <returns>Me.txtPromoType.Text</returns>
+	''' <remarks>This is simple.</remarks>
+	Private Function getPromoType() As String
+		Dim result As String = New String("!")
+		result = Me.txtPromoType.Text
+		Return result
+	End Function
 
 	''' <summary>
 	''' Used to get TicketsPerPatron and TicketsForEntirePromo.
@@ -209,6 +221,17 @@ Public Class StepEntryTicketAmt
 			Else
 				GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
 			End If
+		End If
+
+		If Me.Data.BadPromoType() Then
+			cancelContinuingToNextStep = True
+			GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
+			errString = "The Promo Type is invalid."
+			errStrArray.Add(errString)
+			Me.txtPromoType.Text = ""
+			Me.ActiveControl = Me.txtTicketsEntirePromo
+		Else
+			GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep

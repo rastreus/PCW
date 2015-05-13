@@ -96,7 +96,6 @@ Public Class PCW_Data
 		Dim newPromo As MarketingPromo = New MarketingPromo
 		newPromo.PromoID = PromoDataHash.Item(Key.ID)
 		newPromo.PromoName = PromoDataHash.Item(Key.Name)
-		newPromo.PromoType = PromoDataHash.Item(Key.Type)
 		newPromo.PromoDate = PromoDataHash.Item(Key.OccursDate)
 		newPromo.StartDate = PromoDataHash.Item(Key.StartDate)
 		newPromo.EndDate = PromoDataHash.Item(Key.EndDate)
@@ -144,10 +143,18 @@ Public Class PCW_Data
 	Private Function GetMarketingPromoEntry() As MarketingPromo
 		Dim entryPromo As MarketingPromo = GetMarketingPromo()
 		entryPromo.PromoName = "Entries - " & entryPromo.PromoName
+		entryPromo.PromoType = GetEntryPromoType()
 		entryPromo.MaxCoupon = Nothing
 		entryPromo.PromoMaxCoupon = Nothing
 		entryPromo.CouponID = Nothing
 		Return entryPromo
+	End Function
+
+	Private Function GetEntryPromoType()
+		Dim promoType As String = New String("!")
+		Dim local_stepEntryTicketAmt As StepEntryTicketAmt = PCW.GetStep("StepEntryTicketAmt")
+		promoType = local_stepEntryTicketAmt.Data.PromoType
+		Return promoType
 	End Function
 #End Region
 #Region "GetMarketingPromoPayout"
