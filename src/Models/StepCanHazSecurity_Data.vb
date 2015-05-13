@@ -57,18 +57,67 @@ Public Class StepCanHazSecurity_Data
 #End Region
 #Region "Validity Checks"
 	Public Function OverrideTime_Invalid() As Boolean
-		Return Are_Times_Invalid(OverrideTime)
+		Return Time_Is_Invalid(OverrideTime)
 	End Function
 
 	Public Function CutoffTime_Invalid() As Boolean
-		Return Are_Times_Invalid(CutoffTime)
+		Return Time_Is_Invalid(CutoffTime)
 	End Function
 
-	Private Function Are_Times_Invalid(ByVal dateToCompare As Date) As Boolean
-		Dim local_stepC As StepC = PCW.GetStep("StepC")
-		Dim compare As Integer = Date.Compare(dateToCompare, local_stepC.Data.EndDate)
+	Private Function Time_Is_Invalid(ByVal timeStr As String) As Boolean
 		Dim result As Boolean = False
-		If (compare > 0) Then
+		If Not_Five_Chars(timeStr) Or
+			Time_Not_Set(timeStr) Or
+			Hours_Are_Invalid(timeStr) Or
+			Minutes_Are_Invalid(timeStr) Then
+			result = True
+		End If
+		Return result
+	End Function
+
+	Private Function Not_Five_Chars(ByVal timeStr As String) As Boolean
+		Dim result As Boolean = If(timeStr.Length < 5,
+								   True,
+								   False)
+		Return result
+	End Function
+
+	Private Function Time_Not_Set(ByVal timeStr As String) As Boolean
+		Dim result As Boolean = If((timeStr = "A" Or timeStr = "P"),
+								   True,
+								   False)
+		Return result
+	End Function
+
+	Private Function Hours_Are_Invalid(ByVal timeStr As String) As Boolean
+		Dim result As Boolean = False
+		Dim hoursStr As String = New String("!")
+		Dim hours As Short = 0
+		Try
+			hoursStr = timeStr.Substring(0, 2)
+			hours = Short.Parse(hoursStr)
+		Catch ex As Exception
+			'Handle Exception
+		End Try
+		If hours < 1 Or
+			hours > 12 Then
+			result = True
+		End If
+		Return result
+	End Function
+
+	Private Function Minutes_Are_Invalid(ByVal timeStr As String) As Boolean
+		Dim result As Boolean = False
+		Dim minutesStr As String = New String("!")
+		Dim minutes As Short = 0
+		Try
+			minutesStr = timeStr.Substring(2, 2)
+			minutes = Short.Parse(minutesStr)
+		Catch ex As Exception
+			'Handle Exception
+		End Try
+		If minutes < 0 Or
+			minutes > 59 Then
 			result = True
 		End If
 		Return result

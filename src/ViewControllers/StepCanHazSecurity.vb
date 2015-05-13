@@ -77,8 +77,27 @@ Public Class StepCanHazSecurity
 		Dim result As String = New String("!")
 		Dim ampm As String = If(pmChecked, "P", "A")
 		result = hours & minutes & ampm
+		result = result.Trim
 		Return result
 	End Function
+#End Region
+#Region "StepCanHazSecurity_Load"
+	Private OverrideTimeHoursEntered As Boolean
+	Private OverrideTimeMinutesEntered As Boolean
+	Private CutoffTimeHoursEntered As Boolean
+	Private CutoffTimeMinutesEntered As Boolean
+
+	Private Sub StepC_Load(sender As Object, e As EventArgs) _
+		Handles MyBase.Load
+		SetBoolsToFalse()
+	End Sub
+
+	Private Sub SetBoolsToFalse()
+		OverrideTimeHoursEntered = False
+		OverrideTimeMinutesEntered = False
+		CutoffTimeHoursEntered = False
+		CutoffTimeMinutesEntered = False
+	End Sub
 #End Region
 #Region "StepCanHazSecurity_ResetStep"
 	''' <summary>
@@ -90,6 +109,7 @@ Public Class StepCanHazSecurity
 	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepCanHazSecurity_data = New StepCanHazSecurity_Data
+		SetBoolsToFalse()
 		StepCanHazSecurity_ResetControls()
 	End Sub
 
@@ -116,23 +136,25 @@ Public Class StepCanHazSecurity
 
 		StepCanHazSecurity_SetData()
 
-		'If Me.Data.OverrideTime_Invalid() Then
-		'	cancelContinuingToNextStep = True
-		'	errString = "Override Time is invalid; not in time range."
-		'	errStrArray.Add(errString)
-		'	GUI_Util.errPnl(Me.pnlOverrideTime)
-		'Else
-		'	GUI_Util.regPnl(Me.pnlOverrideTime)
-		'End If
+		If Me.rbSecurityYES.Checked Then
+			If Me.Data.OverrideTime_Invalid() Then
+				cancelContinuingToNextStep = True
+				errString = "Override Time is invalid; not in time range."
+				errStrArray.Add(errString)
+				GUI_Util.errPnl(Me.pnlOverrideTime)
+			Else
+				GUI_Util.regPnl(Me.pnlOverrideTime)
+			End If
 
-		'If Me.Data.CutoffTime_Invalid() Then
-		'	cancelContinuingToNextStep = True
-		'	errString = "Cutoff Time is invalid; not in time range."
-		'	errStrArray.Add(errString)
-		'	GUI_Util.errPnl(Me.pnlCutoffTime)
-		'Else
-		'	GUI_Util.regPnl(Me.pnlCutoffTime)
-		'End If
+			If Me.Data.CutoffTime_Invalid() Then
+				cancelContinuingToNextStep = True
+				errString = "Cutoff Time is invalid; not in time range."
+				errStrArray.Add(errString)
+				GUI_Util.errPnl(Me.pnlCutoffTime)
+			Else
+				GUI_Util.regPnl(Me.pnlCutoffTime)
+			End If
+		End If
 
 		e.Cancel = cancelContinuingToNextStep
 		If cancelContinuingToNextStep Then
@@ -142,13 +164,25 @@ Public Class StepCanHazSecurity
 		End If
 	End Sub
 #End Region
+#Region "StepCanHazSecurity_CheckForNext"
+	Private Sub CheckForNext()
+		If OverrideTimeHoursEntered And
+			OverrideTimeMinutesEntered And
+			CutoffTimeHoursEntered And
+			CutoffTimeMinutesEntered Then
+			GUI_Util.NextEnabled()
+		End If
+	End Sub
+#End Region
 #Region "StepCanHazSecurity_rbSecurityYES_CheckedChanged"
 	Private Sub rbSecurityYES_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbSecurityYES.CheckedChanged
 		If rbSecurityYES.Checked Then
+			PCW.NextEnabled = False
 			Me.pnlOverrideTime.Enabled = True
 			Me.pnlCutoffTime.Enabled = True
 		Else
+			GUI_Util.NextEnabled()
 			Me.pnlOverrideTime.Enabled = False
 			Me.pnlCutoffTime.Enabled = False
 		End If
@@ -205,22 +239,30 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtOverrideTimeHours_Enter(sender As Object, _
 											e As EventArgs) _
 	Handles txtOverrideTimeHours.Enter
+		Me.OverrideTimeHoursEntered = True
 		Me.txtOverrideTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
+		CheckForNext()
 	End Sub
 	Private Sub txtCutoffTimeHours_Enter(sender As Object, _
 											  e As EventArgs) _
 		Handles txtCutoffTimeHours.Enter
+		Me.CutoffTimeHoursEntered = True
 		Me.txtCutoffTimeHours.Text = ClearHours(Me.txtCutoffTimeHours.Text)
+		CheckForNext()
 	End Sub
 	Private Sub txtOverrideTimeMinutes_Enter(sender As Object, _
 												  e As EventArgs) _
 		Handles txtOverrideTimeMinutes.Enter
+		Me.OverrideTimeMinutesEntered = True
 		Me.txtOverrideTimeMinutes.Text = ClearMinutes(Me.txtOverrideTimeMinutes.Text)
+		CheckForNext()
 	End Sub
 	Private Sub txtCutoffTimeMinutes_Enter(sender As Object, _
 												e As EventArgs) _
 		Handles txtCutoffTimeMinutes.Enter
+		Me.CutoffTimeMinutesEntered = True
 		Me.txtCutoffTimeMinutes.Text = ClearMinutes(Me.txtCutoffTimeMinutes.Text)
+		CheckForNext()
 	End Sub
 	Private Function ClearHours(ByVal hours As String) As String
 		Dim result As String = If(hours = "HH", "", hours)
