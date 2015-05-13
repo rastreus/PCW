@@ -7,41 +7,14 @@ Imports System.Collections.Specialized
 Public Class StepJ
 	Inherits TSWizards.BaseInteriorStep
 
-#Region "StepJ_ShowStep"
+#Region "StepJ_Validation"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		'Dim step2 As StepB = PCW.GetStep("Step2")
-		'Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
-		''By default the count variable will be 1;
-		''however, if this is a "Multi-Part Sequencial,"
-		''the count will be the supplied number.
-		'Dim count As Short = 1
-		'If step2.RadioButton6.Checked Then
-		'	count = Short.Parse(step2.TextBox2.Text)
-		'End If
-
-		'If (step2.RadioButton7.Checked Or step2.RadioButton6.Checked) And (count > 1) Then 'Needs to "Loop" for additional days
-		'	SubmitPromoIntoQueue(PCW.PCW_GetPromo)
-		'	Me.NextStep = "Step5"
-		'	CenteredMessagebox.MsgBox.Show("Now figure the requirements for next entry.", "Entries!",
-		'								   MessageBoxButtons.OK, MessageBoxIcon.Hand)
-		'	PCW.ResetSteps()
-		'	Thread.Sleep(600)
-		'	PCW.MoveNext()
-		'ElseIf step2.RadioButton7.Checked Or
-		'		(step2.RadioButton6.Checked And (count = 1)) Then 'Multi-Part Single Instance Or End of "Loop"
-		'	SubmitPromoIntoQueue(PCW.PCW_GetPromo)
-		'	Me.NextStep = "StepN"
-		'	ProcessPromoQueue(PCWq)
-		'	Thread.Sleep(600)
-		'	PCW.MoveNext()
-		'Else 'ERROR!
-		'	'Not entirely sure why we would ever get here, but it's good to have a catch just in case
-		'	CenteredMessagebox.MsgBox.Show("StepJ: Loop Logic Error (Error Code 142857)", "ERROR!",
-		'								   MessageBoxButtons.OK, MessageBoxIcon.Error)
-		'End If
+		PCW.Data.SubmitPromosToList()
+		PCW.Data.SubmitListToDB()
 	End Sub
-
+#End Region
+#Region "StepJ_ShowStep"
 	'A lot of this progress bar step was taken from the TSWizards example.
 	'Please refer to it if you have questions about how it all works.
 	Private Sub StepJ_ShowStep(sender As Object, e As ShowStepEventArgs) _
@@ -125,58 +98,6 @@ Public Class StepJ
 			Return
 		End If
 		GUI_Util.NextEnabled()
-	End Sub
-
-	Private Sub ProcessPromoQueue(ByVal PCWq As Queue(Of MarketingPromo))
-		Dim key_count As Short = PCWq.Count
-		Dim proxyLoop As Collection = New Collection
-		'Done
-		For Each key As Object In PCWq
-			proxyLoop.Add(key)
-		Next
-
-		For Each key As Object In proxyLoop
-			'SubmitPromoIntoTable(PCWq.Dequeue())
-			CenteredMessagebox.MsgBox.Show(PCWq.Dequeue().ToString, "DEBUG",
-										   MessageBoxButtons.OK, MessageBoxIcon.None)
-		Next
-	End Sub
-
-	Private Function IsEntries()
-		Dim var As Boolean = False
-		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
-
-		If PCWq.Count = 0 Then
-			var = True
-		End If
-
-		Return var
-	End Function
-
-	Private Sub SubmitPromoIntoQueue(ByVal newPromo As MarketingPromo)
-		Dim PCWq As Queue(Of MarketingPromo) = SingletonQueue.Instance()
-		PCWq.Enqueue(newPromo)
-	End Sub
-
-	Private Sub SubmitPromoIntoTable(ByVal newPromo As MarketingPromo)
-		'Insert the new promo into MarketingPromos table
-		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																	  .PromotionalCreationWizard _
-																	  .My _
-																	  .MySettings _
-																	  .Default _
-																	  .GamingConnectionString)
-		tbl.MarketingPromos.InsertOnSubmit(newPromo)
-		Try
-			tbl.SubmitChanges()
-		Catch ex As Exception
-			Dim result As Integer = CenteredMessagebox.MsgBox.Show("Oh no! Promo not added to MarketingPromo table!", "No!",
-																   MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
-
-			If result = DialogResult.Retry Then
-				tbl.SubmitChanges()
-			End If
-		End Try
 	End Sub
 
 	Private Delegate Sub IntDelegate(num As Integer)

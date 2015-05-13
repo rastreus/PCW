@@ -217,8 +217,8 @@ Public Class PCW_Data
 		Return result
 	End Function
 #End Region
-#Region "SubmitPromoToList"
-	Public Sub SubmitPromoToList()
+#Region "SubmitPromosToList"
+	Public Sub SubmitPromosToList()
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PromoCategory = local_stepD.Data.Category
 		Dim entryPromo As MarketingPromo
