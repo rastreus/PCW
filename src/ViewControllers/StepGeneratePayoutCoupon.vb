@@ -70,6 +70,7 @@ Public Class StepGeneratePayoutCoupon
 	End Function
 #End Region
 #Region "StepGeneratePayoutCoupon_Load"
+	Private couponsPerPatronBool As Boolean = False
 	Private maxAmtOneCouponBool As Boolean = False
 	Private maxAmtAllCouponsBool As Boolean = False
 
@@ -110,6 +111,9 @@ Public Class StepGeneratePayoutCoupon
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
 		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
+		Me.couponsPerPatronBool = False
+		Me.maxAmtOneCouponBool = False
+		Me.maxAmtAllCouponsBool = False
 		StepGeneratePayoutCoupon_ResetControls()
 	End Sub
 
@@ -189,6 +193,13 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
+	Private Sub txtCouponsPerPatron_Enter(sender As Object, _
+											   e As EventArgs) _
+		Handles txtCouponsPerPatron.Enter
+		If Me.rbCouponsPerPatronYES.Checked Then
+			Me.couponsPerPatronBool = True
+		End If
+	End Sub
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
@@ -228,6 +239,34 @@ Public Class StepGeneratePayoutCoupon
 			Me.txtCouponsPerPatron.Enabled = False
 			Me.txtCouponsPerPatron.Text = BEP_Util.NumStr
 		End If
+	End Sub
+#End Region
+#Region "StepGenaratePayoutCoupon_btnSet"
+	''' <summary>
+	''' "Submit" the contents of TextBox.
+	''' </summary>
+	''' <param name="enteredBool"></param>
+	''' <remarks>For people that don't use the 'Tab' key.</remarks>
+	Private Sub btnSet(ByVal enteredBool As Boolean)
+		If enteredBool Then
+			Me.ActiveControl = Me.pnlCouponsPerPatron
+		End If
+	End Sub
+
+	Private Sub btnSetCouponsPerPatron_Click(sender As Object, _
+												  e As EventArgs) _
+		Handles btnSetCouponsPerPatron.Click
+		btnSet(Me.couponsPerPatronBool)
+	End Sub
+	Private Sub btnSetMaxAmtOneCoupon_Click(sender As Object, _
+												 e As EventArgs) _
+		Handles btnSetMaxAmtOneCoupon.Click
+		btnSet(Me.maxAmtOneCouponBool)
+	End Sub
+	Private Sub btnSetMaxAmtAllCoupons_Click(sender As Object, _
+												  e As EventArgs) _
+		Handles btnSetMaxAmtAllCoupons.Click
+		btnSet(Me.maxAmtAllCouponsBool)
 	End Sub
 #End Region
 #Region "_KEY_DOWN_PRESS_"

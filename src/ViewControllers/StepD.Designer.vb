@@ -316,7 +316,7 @@ Partial Class StepD
 		Me.lblDragOffer.Name = "lblDragOffer"
 		Me.lblDragOffer.Size = New System.Drawing.Size(173, 21)
 		Me.lblDragOffer.TabIndex = 0
-		Me.lblDragOffer.Text = "(Drag Offer List .CSV File Here)"
+		Me.lblDragOffer.Text = "(Drag Target List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'pnlPointCutoffLimit
