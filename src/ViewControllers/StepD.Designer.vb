@@ -120,6 +120,7 @@ Partial Class StepD
 		'
 		Me.rbAcquisition.AutoSize = True
 		Me.rbAcquisition.BackColor = System.Drawing.Color.Lavender
+		Me.rbAcquisition.Enabled = False
 		Me.rbAcquisition.Location = New System.Drawing.Point(7, 184)
 		Me.rbAcquisition.Name = "rbAcquisition"
 		Me.rbAcquisition.Size = New System.Drawing.Size(76, 17)
