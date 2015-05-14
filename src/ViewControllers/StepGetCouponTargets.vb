@@ -24,7 +24,7 @@ Public Class StepGetCouponTargets
 		End Get
 	End Property
 #End Region
-#Region "StepGetCouponTarget_Load"
+#Region "StepGetCouponTargets_Load"
 	Private Delegate Sub DelegateSetPathText(ByVal s As String)
 	Private m_DelegateSetPathText As DelegateSetPathText
 	Private targetsList As ArrayList
@@ -34,7 +34,7 @@ Public Class StepGetCouponTargets
 		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_ResetStep"
+#Region "StepGetCouponTargets_ResetStep"
 	Private Sub StepGetCouponTarget_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		ResetControls()
@@ -47,7 +47,7 @@ Public Class StepGetCouponTargets
 		Me.rbWildcard.Checked = True
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_Validation"
+#Region "StepGetCouponTargets_Validation"
 	Private Sub StepGetCouponTarget_Validation(sender As Object, _
 													e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
@@ -58,7 +58,7 @@ Public Class StepGetCouponTargets
 															  False)
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_ShowStep"
+#Region "StepGetCouponTargets_ShowStep"
 	Private Sub StepGetCouponTarget_ShowStep(sender As Object, _
 												  e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
@@ -75,7 +75,7 @@ Public Class StepGetCouponTargets
 		Next
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_SameForAllDaysTiers"
+#Region "StepGetCouponTargets_SameForAllDaysTiers"
 	Private Function SameForAllDaysTiers(ByVal promoCategory As PCW_Data.PromoCategory) As Boolean
 		Dim result As Boolean = False
 		If promoCategory = PCW_Data.PromoCategory.multiPart Then
@@ -146,7 +146,7 @@ Public Class StepGetCouponTargets
 		End If
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_rbImportedOffers_CheckedChanged"
+#Region "StepGetCouponTargets_rbImportedOffers_CheckedChanged"
 	Private Sub rbImportedOffers_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbImportedOffers.CheckedChanged
 		If Me.rbImportedOffers.Checked Then
@@ -160,7 +160,7 @@ Public Class StepGetCouponTargets
 		End If
 	End Sub
 #End Region
-#Region "StepGetCouponTarget_btnSubmit_Click"
+#Region "StepGetCouponTargets_btnSubmit_Click"
 	Private Async Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
 		Me.btnSubmit.Enabled = False
@@ -179,6 +179,7 @@ Public Class StepGetCouponTargets
 		Me.btnSubmit.Enabled = True
 	End Sub
 #End Region
+#Region "StepGetCouponTargets_GetCouponNumber"
 	Private Function GetCouponNumber() As Integer
 		Dim result As String = New String("!")
 		result = If(Me.rbWildcard.Checked, _
@@ -186,14 +187,20 @@ Public Class StepGetCouponTargets
 					Me.cbImportedOffers.SelectedItem)
 		Return result
 	End Function
+#End Region
+#Region "StepGetCouponTargets_GetFileNameAsString"
 	Private Function GetFileNameAsString() As String
 		Dim filePath As String = Me.btnFileBrowser.Text
 		Dim parts As String() = filePath.Split(New Char() {"\"c})
 		Return parts.Last()
 	End Function
+#End Region
+#Region "StepGetCouponTargets_GetCouponTargetListLabel"
 	Private Function GetCouponTargetListsLabel()
 		Return GetCouponNumber().ToString() & ": " & GetFileNameAsString()
 	End Function
+#End Region
+#Region "StepGetCouponTargets_RefreshLabelList"
 	Private Function RefreshLabelList()
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 		For Each listStr As String In Me.targetsList
@@ -201,4 +208,5 @@ Public Class StepGetCouponTargets
 		Next
 		Return builder.ToString()
 	End Function
+#End Region
 End Class
