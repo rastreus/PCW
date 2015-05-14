@@ -14,9 +14,11 @@ Public Class StepJ
 	End Sub
 
 	Private Async Sub SubmitToDB()
+		Dim local_stepD As StepD = PCW.GetStep("StepD")
+		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		'Not sure if this Await actually works?
 		Await Task.Run(Sub()
-						   PCW.Data.SubmitPromosToList()
+						   PCW.Data.SubmitPromosToList(local_promoCategory)
 						   PCW.Data.SubmitListToDB()
 						   PCW.Data.SubmitOtherTblsToDB()
 					   End Sub)

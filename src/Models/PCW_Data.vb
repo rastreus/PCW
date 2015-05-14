@@ -234,9 +234,7 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "SubmitPromosToList"
-	Public Sub SubmitPromosToList()
-		Dim local_stepD As StepD = PCW.GetStep("StepD")
-		Dim local_promoCategory As PromoCategory = local_stepD.Data.Category
+	Public Sub SubmitPromosToList(ByVal local_promoCategory As PromoCategory)
 		Dim entryPromo As MarketingPromo
 		Dim payoutPromo As MarketingPromo
 		Select Case local_promoCategory
@@ -301,7 +299,7 @@ Public Class PCW_Data
 		End If
 	End Sub
 
-	Private Sub SubmitDataTableToDB(ByVal DBTableNameStr As String, _
+	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")> Private Sub SubmitDataTableToDB(ByVal DBTableNameStr As String, _
 											 ByVal table As DataTable)
 		Dim connection As SqlConnection
 		Dim command As SqlCommand
