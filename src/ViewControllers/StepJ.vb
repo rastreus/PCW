@@ -16,11 +16,18 @@ Public Class StepJ
 	Private Async Sub SubmitToDB()
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
+		Dim local_stepGetCouponTargets As StepGetCouponTargets = PCW.GetStep("StepGetCouponTargets")
+		Dim local_usesEligiblePlayersTable As Boolean = local_stepD.Data.UsesEligiblePlayersTable
+		Dim local_eligiblePlayersDataTable As DataTable = local_stepD.Data.EligiblePlayersDataTable
+		Dim local_couponTargetsList As ArrayList = local_stepGetCouponTargets.Data.CouponTargetsList
 		'Not sure if this Await actually works?
 		Await Task.Run(Sub()
 						   PCW.Data.SubmitPromosToList(local_promoCategory)
 						   PCW.Data.SubmitListToDB()
-						   PCW.Data.SubmitOtherTblsToDB()
+						   PCW.Data.SubmitOtherTblsToDB(local_usesEligiblePlayersTable, _
+														local_eligiblePlayersDataTable, _
+														local_promoCategory, _
+														local_couponTargetsList)
 					   End Sub)
 	End Sub
 #End Region

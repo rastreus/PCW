@@ -284,16 +284,15 @@ Public Class PCW_Data
 	End Sub
 #End Region
 #Region "SubmitOtherTblsToDB"
-	Public Sub SubmitOtherTblsToDB()
-		Dim local_stepD As StepD = PCW.GetStep("StepD")
-		Dim local_stepGetCouponTargets As StepGetCouponTargets = PCW.GetStep("StepGetCouponTargets")
-		Dim local_usesEligiblePlayersTable As Boolean = local_stepD.Data.UsesEligiblePlayersTable
-		Dim local_couponTargetsList As ArrayList = local_stepGetCouponTargets.Data.CouponTargetsList
+	Public Sub SubmitOtherTblsToDB(ByRef local_usesEligiblePlayersTable As Boolean, _
+								   ByRef local_eligiblePlayersDataTable As DataTable, _
+								   ByRef local_promoCategory As PromoCategory, _
+								   ByRef local_couponTargetsList As ArrayList)
 		If local_usesEligiblePlayersTable Then
 			SubmitDataTableToDB("MarketingPromoEligiblePlayers", _
-								local_stepD.Data.EligiblePlayersDataTable)
+								local_eligiblePlayersDataTable)
 		End If
-		If local_stepD.Data.Category = Not PromoCategory.entryOnly Then
+		If local_promoCategory = Not PromoCategory.entryOnly Then
 			For Each targetListDataTable As DataTable In local_couponTargetsList
 				SubmitDataTableToDB("CouponTargets", _
 									targetListDataTable)
