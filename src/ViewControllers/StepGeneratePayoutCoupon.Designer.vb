@@ -84,13 +84,14 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnTxtEditCouponID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnTxtEditCouponID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnTxtEditCouponID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnTxtEditCouponID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnTxtEditCouponID.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnTxtEditCouponID.ForeColor = System.Drawing.Color.White
 		Me.btnTxtEditCouponID.Location = New System.Drawing.Point(3, 32)
 		Me.btnTxtEditCouponID.Name = "btnTxtEditCouponID"
-		Me.btnTxtEditCouponID.Size = New System.Drawing.Size(111, 23)
+		Me.btnTxtEditCouponID.Size = New System.Drawing.Size(111, 20)
 		Me.btnTxtEditCouponID.TabIndex = 2
 		Me.btnTxtEditCouponID.Text = "Set ID"
+		Me.btnTxtEditCouponID.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnTxtEditCouponID.UseVisualStyleBackColor = False
 		'
 		'lblEditCouponID

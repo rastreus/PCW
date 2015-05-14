@@ -277,6 +277,7 @@ Partial Class StepB
 		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(111, 20)
 		Me.btnTxtEditPromoID.TabIndex = 2
 		Me.btnTxtEditPromoID.Text = "Set ID"
+		Me.btnTxtEditPromoID.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnTxtEditPromoID.UseVisualStyleBackColor = False
 		'
 		'lblEditPromoID
