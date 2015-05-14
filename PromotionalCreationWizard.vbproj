@@ -228,12 +228,6 @@
     <Compile Include="src\ViewControllers\StepD.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\ViewControllers\StepE.Designer.vb">
-      <DependentUpon>StepE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="src\ViewControllers\StepE.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="src\ViewControllers\StepF.Designer.vb">
       <DependentUpon>StepF.vb</DependentUpon>
     </Compile>
@@ -320,10 +314,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepD.resx">
       <DependentUpon>StepD.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\ViewControllers\StepE.resx">
-      <DependentUpon>StepE.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ViewControllers\StepF.resx">
@@ -416,62 +406,62 @@
   <ItemGroup>
     <PublishFile Include="Future-Developer-README.txt">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="research\PromoTypeBNF.txt">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="research\Target-Lists\_Note-About-Target-List.txt">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="resources\CenteredMessagebox.dll">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="resources\CustomizedTextBox.dll">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="resources\FontAwesomeIcons.dll">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
