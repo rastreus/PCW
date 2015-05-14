@@ -76,9 +76,17 @@ Public Class StepCanHazSecurity
 							   ByVal pmChecked As Boolean) As String
 		Dim result As String = New String("!")
 		Dim ampm As String = If(pmChecked, "P", "A")
+		hours = PrependZeroIfOneDigit(hours)
 		result = hours & minutes & ampm
 		result = result.Trim
 		Return result
+	End Function
+
+	Private Function PrependZeroIfOneDigit(ByVal timeStr As String) As String
+		If timeStr.Length = 1 Then
+			timeStr = "0" & timeStr
+		End If
+		Return timeStr
 	End Function
 #End Region
 #Region "StepCanHazSecurity_Load"
