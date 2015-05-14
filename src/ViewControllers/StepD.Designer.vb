@@ -8,6 +8,7 @@ Partial Class StepD
 		Try
 			If disposing AndAlso components IsNot Nothing Then
 				components.Dispose()
+				Me.stepD_data.Dispose()
 			End If
 		Finally
 			MyBase.Dispose(disposing)

@@ -157,9 +157,7 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "CSVtoEligiblePlayers"
-	Public Sub CSVtoEligiblePlayersDataTable()
-		Dim local_stepB As StepB = PCW.GetStep("StepB")
-		Dim local_promoID As String = local_stepB.Data.ID
+	Public Sub CSVtoEligiblePlayersDataTable(ByVal promoID As String)
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -171,7 +169,7 @@ Public Class StepD_Data
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				EligiblePlayersDataTable.Rows.Add(local_promoID, _
+				EligiblePlayersDataTable.Rows.Add(promoID, _
 												  currentRow(0), _
 												  currentRow(13), _
 												  Nothing)

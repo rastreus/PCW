@@ -79,11 +79,15 @@ Public Class StepD
 	End Function
 
 	Private Async Sub setEligiblePlayersCSV()
+		Dim local_StepB As StepB = New StepB
+		Dim local_promoID As String = New String("!")
 		PCW.NextEnabled = False
 		Me.UseWaitCursor = True
 		Me.Data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
+		local_StepB = PCW.GetStep("StepB")
+		local_promoID = local_StepB.Data.ID
 		Await Task.Run(Sub()
-						   Me.Data.CSVtoEligiblePlayersDataTable()
+						   Me.Data.CSVtoEligiblePlayersDataTable(local_promoID)
 					   End Sub)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
