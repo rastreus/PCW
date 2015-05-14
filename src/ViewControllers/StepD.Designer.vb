@@ -223,9 +223,9 @@ Partial Class StepD
 		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
 		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
 		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
-		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(192, 17)
+		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(228, 17)
 		Me.rbEligiblePlayersOfferList.TabIndex = 8
-		Me.rbEligiblePlayersOfferList.Text = "Target List Determines Qualification"
+		Me.rbEligiblePlayersOfferList.Text = "EligiblePlayers List Determines Qualification"
 		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
 		'
 		'rbSumQualifyingPoints
@@ -301,7 +301,7 @@ Partial Class StepD
 		Me.SuccessIcon.Enabled = False
 		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
 		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.Location = New System.Drawing.Point(187, 4)
+		Me.SuccessIcon.Location = New System.Drawing.Point(183, 10)
 		Me.SuccessIcon.Name = "SuccessIcon"
 		Me.SuccessIcon.Size = New System.Drawing.Size(24, 24)
 		Me.SuccessIcon.TabIndex = 5
@@ -312,11 +312,11 @@ Partial Class StepD
 		'lblDragOffer
 		'
 		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragOffer.Location = New System.Drawing.Point(7, 4)
+		Me.lblDragOffer.Location = New System.Drawing.Point(3, 34)
 		Me.lblDragOffer.Name = "lblDragOffer"
-		Me.lblDragOffer.Size = New System.Drawing.Size(173, 21)
+		Me.lblDragOffer.Size = New System.Drawing.Size(218, 21)
 		Me.lblDragOffer.TabIndex = 0
-		Me.lblDragOffer.Text = "(Drag Target List .CSV File Here)"
+		Me.lblDragOffer.Text = "(Drag EligiblePlayers List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'pnlPointCutoffLimit
