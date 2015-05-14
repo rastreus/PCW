@@ -28,6 +28,8 @@ Public Class StepCanHazSecurity_Data
 	Private _dataAddedToHash As Boolean = False
 	Private _promoOverrideTime As String
 	Private _promoCutoffTime As String
+	Private _pcwOverrideTime_errString As String
+	Private _pcwCutoffTime_errString As String
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -54,23 +56,47 @@ Public Class StepCanHazSecurity_Data
 			_promoCutoffTime = value
 		End Set
 	End Property
+	Public Property OverrideTime_errString As String
+		Get
+			Return _pcwOverrideTime_errString
+		End Get
+		Set(value As String)
+			_pcwOverrideTime_errString = value
+		End Set
+	End Property
+	Public Property CutoffTime_errString As String
+		Get
+			Return _pcwCutoffTime_errString
+		End Get
+		Set(value As String)
+			_pcwCutoffTime_errString = value
+		End Set
+	End Property
 #End Region
 #Region "Validity Checks"
 	Public Function OverrideTime_Invalid() As Boolean
-		Return Time_Is_Invalid(OverrideTime)
+		Return Time_Is_Invalid(OverrideTime, OverrideTime_errString)
 	End Function
 
 	Public Function CutoffTime_Invalid() As Boolean
-		Return Time_Is_Invalid(CutoffTime)
+		Return Time_Is_Invalid(CutoffTime, CutoffTime_errString)
 	End Function
 
-	Private Function Time_Is_Invalid(ByVal timeStr As String) As Boolean
+	Private Function Time_Is_Invalid(ByVal timeStr As String, _
+									 ByRef errString As String) As Boolean
 		Dim result As Boolean = False
-		If Not_Five_Chars(timeStr) Or
-			Time_Not_Set(timeStr) Or
-			Hours_Are_Invalid(timeStr) Or
-			Minutes_Are_Invalid(timeStr) Then
+		If Not_Five_Chars(timeStr) Then
 			result = True
+			errString = "Not proper format"
+		ElseIf Time_Not_Set(timeStr) Then
+			result = True
+			errString = "Time not set"
+		ElseIf Hours_Are_Invalid(timeStr) Then
+			result = True
+			errString = "Hours are invalid (< 1 Or > 12)"
+		ElseIf Minutes_Are_Invalid(timeStr) Then
+			result = True
+			errString = "Minutes are invalid (> 59)"
 		End If
 		Return result
 	End Function

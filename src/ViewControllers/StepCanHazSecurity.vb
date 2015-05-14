@@ -147,7 +147,7 @@ Public Class StepCanHazSecurity
 		If Me.rbSecurityYES.Checked Then
 			If Me.Data.OverrideTime_Invalid() Then
 				cancelContinuingToNextStep = True
-				errString = "Override Time is invalid; not in time range."
+				errString = "Override Time: " & Me.Data.OverrideTime_errString
 				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlOverrideTime)
 			Else
@@ -156,7 +156,7 @@ Public Class StepCanHazSecurity
 
 			If Me.Data.CutoffTime_Invalid() Then
 				cancelContinuingToNextStep = True
-				errString = "Cutoff Time is invalid; not in time range."
+				errString = "Cutoff Time: " & Me.Data.CutoffTime_errString
 				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlCutoffTime)
 			Else
