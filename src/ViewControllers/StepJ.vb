@@ -10,26 +10,27 @@ Public Class StepJ
 #Region "StepJ_Validation"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		SubmitToDB()
+		Dim statusStr As String = SubmitToDB()
+		If statusStr = Not "" Then
+			GUI_Util.msgBox(statusStr)
+		End If
 	End Sub
 
-	Private Async Sub SubmitToDB()
+	Private Function SubmitToDB() As String
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		Dim local_stepGetCouponTargets As StepGetCouponTargets = PCW.GetStep("StepGetCouponTargets")
 		Dim local_usesEligiblePlayersTable As Boolean = local_stepD.Data.UsesEligiblePlayersTable
 		Dim local_eligiblePlayersDataTable As DataTable = local_stepD.Data.EligiblePlayersDataTable
 		Dim local_couponTargetsList As ArrayList = local_stepGetCouponTargets.Data.CouponTargetsList
-		'Not sure if this Await actually works?
-		Await Task.Run(Sub()
-						   PCW.Data.SubmitPromosToList(local_promoCategory)
-						   PCW.Data.SubmitListToDB()
-						   PCW.Data.SubmitOtherTblsToDB(local_usesEligiblePlayersTable, _
-														local_eligiblePlayersDataTable, _
-														local_promoCategory, _
-														local_couponTargetsList)
-					   End Sub)
-	End Sub
+		PCW.Data.SubmitPromosToList(local_promoCategory)
+		Dim statusStr As String = PCW.Data.SubmitListToDB()
+		PCW.Data.SubmitOtherTblsToDB(local_usesEligiblePlayersTable, _
+									 local_eligiblePlayersDataTable, _
+									 local_promoCategory, _
+									 local_couponTargetsList)
+		Return statusStr
+	End Function
 #End Region
 #Region "StepJ_ShowStep"
 	'A lot of this progress bar step was taken from the TSWizards example.

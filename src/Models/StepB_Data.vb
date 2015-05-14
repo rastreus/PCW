@@ -84,11 +84,11 @@ Public Class StepB_Data
 			_promoRecurring = value
 		End Set
 	End Property
-	Public Property RecurringFrequency As String
+	Public Property RecurringFrequency As System.Nullable(Of Char)
 		Get
 			Return _promoRecurringFrequency
 		End Get
-		Set(ByVal value As String)
+		Set(ByVal value As System.Nullable(Of Char))
 			_promoRecurringFrequency = value
 		End Set
 	End Property

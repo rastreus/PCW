@@ -108,165 +108,164 @@ Partial Public Class MarketingPromo
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _PromoID As Short
-	
+	Private _PromoID As String
+
 	Private _PromoName As String
-	
+
 	Private _PromoType As String
-	
+
 	Private _PromoDate As System.Nullable(Of Date)
-	
+
 	Private _StartDate As System.Nullable(Of Date)
-	
+
 	Private _EndDate As System.Nullable(Of Date)
-	
+
 	Private _PointCutoff As System.Nullable(Of Short)
-	
+
 	Private _PointDivisor As System.Nullable(Of Short)
-	
+
 	Private _MaxTickets As System.Nullable(Of Short)
-	
+
 	Private _PromoMaxTickets As System.Nullable(Of Short)
-	
+
 	Private _MaxCoupon As System.Nullable(Of Decimal)
-	
+
 	Private _PromoMaxCoupon As System.Nullable(Of Decimal)
-	
+
 	Private _CouponID As String
-	
+
 	Private _Recurring As System.Nullable(Of Boolean)
-	
+
 	Private _Frequency As System.Nullable(Of Char)
-	
+
 	Private _RecursOnWeekday As String
-	
+
 	Private _EarnsOnWeekday As String
-	
+
 	Private _CountCurrentDay As Boolean
-	
+
 	Private _OverrideTime As String
-	
+
 	Private _CutoffTime As String
-	
+
 	Private _PrintTickets As System.Nullable(Of Boolean)
-	
+
 	Private _Comments As String
-	
-    #Region "Extensibility Method Definitions"
-    Partial Private Sub OnLoaded()
-    End Sub
-    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
-    End Sub
-    Partial Private Sub OnCreated()
-    End Sub
-    Partial Private Sub OnPromoIDChanging(value As Short)
-    End Sub
-    Partial Private Sub OnPromoIDChanged()
-    End Sub
-    Partial Private Sub OnPromoNameChanging(value As String)
-    End Sub
-    Partial Private Sub OnPromoNameChanged()
-    End Sub
-    Partial Private Sub OnPromoTypeChanging(value As String)
-    End Sub
-    Partial Private Sub OnPromoTypeChanged()
-    End Sub
-    Partial Private Sub OnPromoDateChanging(value As System.Nullable(Of Date))
-    End Sub
-    Partial Private Sub OnPromoDateChanged()
-    End Sub
-    Partial Private Sub OnStartDateChanging(value As System.Nullable(Of Date))
-    End Sub
-    Partial Private Sub OnStartDateChanged()
-    End Sub
-    Partial Private Sub OnEndDateChanging(value As System.Nullable(Of Date))
-    End Sub
-    Partial Private Sub OnEndDateChanged()
-    End Sub
-    Partial Private Sub OnPointCutoffChanging(value As System.Nullable(Of Short))
-    End Sub
-    Partial Private Sub OnPointCutoffChanged()
-    End Sub
-    Partial Private Sub OnPointDivisorChanging(value As System.Nullable(Of Short))
-    End Sub
-    Partial Private Sub OnPointDivisorChanged()
-    End Sub
-    Partial Private Sub OnMaxTicketsChanging(value As System.Nullable(Of Short))
-    End Sub
-    Partial Private Sub OnMaxTicketsChanged()
-    End Sub
-    Partial Private Sub OnPromoMaxTicketsChanging(value As System.Nullable(Of Short))
-    End Sub
-    Partial Private Sub OnPromoMaxTicketsChanged()
-    End Sub
-    Partial Private Sub OnMaxCouponChanging(value As System.Nullable(Of Decimal))
-    End Sub
-    Partial Private Sub OnMaxCouponChanged()
-    End Sub
-    Partial Private Sub OnPromoMaxCouponChanging(value As System.Nullable(Of Decimal))
-    End Sub
-    Partial Private Sub OnPromoMaxCouponChanged()
-    End Sub
-    Partial Private Sub OnCouponIDChanging(value As String)
-    End Sub
-    Partial Private Sub OnCouponIDChanged()
-    End Sub
-    Partial Private Sub OnRecurringChanging(value As System.Nullable(Of Boolean))
-    End Sub
-    Partial Private Sub OnRecurringChanged()
-    End Sub
-    Partial Private Sub OnFrequencyChanging(value As System.Nullable(Of Char))
-    End Sub
-    Partial Private Sub OnFrequencyChanged()
-    End Sub
-    Partial Private Sub OnRecursOnWeekdayChanging(value As String)
-    End Sub
-    Partial Private Sub OnRecursOnWeekdayChanged()
-    End Sub
-    Partial Private Sub OnEarnsOnWeekdayChanging(value As String)
-    End Sub
-    Partial Private Sub OnEarnsOnWeekdayChanged()
-    End Sub
-    Partial Private Sub OnCountCurrentDayChanging(value As Boolean)
-    End Sub
-    Partial Private Sub OnCountCurrentDayChanged()
-    End Sub
-    Partial Private Sub OnOverrideTimeChanging(value As String)
-    End Sub
-    Partial Private Sub OnOverrideTimeChanged()
-    End Sub
-    Partial Private Sub OnCutoffTimeChanging(value As String)
-    End Sub
-    Partial Private Sub OnCutoffTimeChanged()
-    End Sub
-    Partial Private Sub OnPrintTicketsChanging(value As System.Nullable(Of Boolean))
-    End Sub
-    Partial Private Sub OnPrintTicketsChanged()
-    End Sub
-    Partial Private Sub OnCommentsChanging(value As String)
-    End Sub
-    Partial Private Sub OnCommentsChanged()
-    End Sub
-    #End Region
-	
-	Public Sub New()
-		MyBase.New
-		OnCreated
+
+#Region "Extensibility Method Definitions"
+	Partial Private Sub OnLoaded()
 	End Sub
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_PromoID", AutoSync:=AutoSync.OnInsert, DbType:="SmallInt NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property PromoID() As Short
+	Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+	End Sub
+	Partial Private Sub OnCreated()
+	End Sub
+	Partial Private Sub OnPromoIDChanging(value As String)
+	End Sub
+	Partial Private Sub OnPromoIDChanged()
+	End Sub
+	Partial Private Sub OnPromoNameChanging(value As String)
+	End Sub
+	Partial Private Sub OnPromoNameChanged()
+	End Sub
+	Partial Private Sub OnPromoTypeChanging(value As String)
+	End Sub
+	Partial Private Sub OnPromoTypeChanged()
+	End Sub
+	Partial Private Sub OnPromoDateChanging(value As System.Nullable(Of Date))
+	End Sub
+	Partial Private Sub OnPromoDateChanged()
+	End Sub
+	Partial Private Sub OnStartDateChanging(value As System.Nullable(Of Date))
+	End Sub
+	Partial Private Sub OnStartDateChanged()
+	End Sub
+	Partial Private Sub OnEndDateChanging(value As System.Nullable(Of Date))
+	End Sub
+	Partial Private Sub OnEndDateChanged()
+	End Sub
+	Partial Private Sub OnPointCutoffChanging(value As System.Nullable(Of Short))
+	End Sub
+	Partial Private Sub OnPointCutoffChanged()
+	End Sub
+	Partial Private Sub OnPointDivisorChanging(value As System.Nullable(Of Short))
+	End Sub
+	Partial Private Sub OnPointDivisorChanged()
+	End Sub
+	Partial Private Sub OnMaxTicketsChanging(value As System.Nullable(Of Short))
+	End Sub
+	Partial Private Sub OnMaxTicketsChanged()
+	End Sub
+	Partial Private Sub OnPromoMaxTicketsChanging(value As System.Nullable(Of Short))
+	End Sub
+	Partial Private Sub OnPromoMaxTicketsChanged()
+	End Sub
+	Partial Private Sub OnMaxCouponChanging(value As System.Nullable(Of Decimal))
+	End Sub
+	Partial Private Sub OnMaxCouponChanged()
+	End Sub
+	Partial Private Sub OnPromoMaxCouponChanging(value As System.Nullable(Of Decimal))
+	End Sub
+	Partial Private Sub OnPromoMaxCouponChanged()
+	End Sub
+	Partial Private Sub OnCouponIDChanging(value As String)
+	End Sub
+	Partial Private Sub OnCouponIDChanged()
+	End Sub
+	Partial Private Sub OnRecurringChanging(value As System.Nullable(Of Boolean))
+	End Sub
+	Partial Private Sub OnRecurringChanged()
+	End Sub
+	Partial Private Sub OnFrequencyChanging(value As System.Nullable(Of Char))
+	End Sub
+	Partial Private Sub OnFrequencyChanged()
+	End Sub
+	Partial Private Sub OnRecursOnWeekdayChanging(value As String)
+	End Sub
+	Partial Private Sub OnRecursOnWeekdayChanged()
+	End Sub
+	Partial Private Sub OnEarnsOnWeekdayChanging(value As String)
+	End Sub
+	Partial Private Sub OnEarnsOnWeekdayChanged()
+	End Sub
+	Partial Private Sub OnCountCurrentDayChanging(value As Boolean)
+	End Sub
+	Partial Private Sub OnCountCurrentDayChanged()
+	End Sub
+	Partial Private Sub OnOverrideTimeChanging(value As String)
+	End Sub
+	Partial Private Sub OnOverrideTimeChanged()
+	End Sub
+	Partial Private Sub OnCutoffTimeChanging(value As String)
+	End Sub
+	Partial Private Sub OnCutoffTimeChanged()
+	End Sub
+	Partial Private Sub OnPrintTicketsChanging(value As System.Nullable(Of Boolean))
+	End Sub
+	Partial Private Sub OnPrintTicketsChanged()
+	End Sub
+	Partial Private Sub OnCommentsChanging(value As String)
+	End Sub
+	Partial Private Sub OnCommentsChanged()
+	End Sub
+#End Region
+
+	Public Sub New()
+		MyBase.New()
+		OnCreated()
+	End Sub
+
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_PromoID", AutoSync:=AutoSync.OnInsert, DbType:="NVarChar(16) NOT NULL IDENTITY", CanBeNull:=False, IsPrimaryKey:=True, IsDbGenerated:=True)> _
+	Public Property PromoID() As String
 		Get
 			Return Me._PromoID
 		End Get
-		Set
-			If ((Me._PromoID = value)  _
-						= false) Then
+		Set(value As String)
+			If (String.Equals(Me._PromoID, value) = False) Then
 				Me.OnPromoIDChanging(value)
-				Me.SendPropertyChanging
+				Me.SendPropertyChanging()
 				Me._PromoID = value
 				Me.SendPropertyChanged("PromoID")
-				Me.OnPromoIDChanged
+				Me.OnPromoIDChanged()
 			End If
 		End Set
 	End Property

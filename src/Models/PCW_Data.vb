@@ -261,7 +261,8 @@ Public Class PCW_Data
 	End Sub
 #End Region
 #Region "SubmitListToDB"
-	Public Sub SubmitListToDB()
+	Public Function SubmitListToDB() As String
+		Dim statusStr As String = New String("")
 		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
 																	  .PromotionalCreationWizard _
 																	  .My _
@@ -273,15 +274,11 @@ Public Class PCW_Data
 			Try
 				tbl.SubmitChanges()
 			Catch ex As Exception
-				Dim result As Integer = CenteredMessagebox.MsgBox.Show("Promo not added to MarketingPromos table!", "Error!",
-																	   MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
-
-				If result = DialogResult.Retry Then
-					tbl.SubmitChanges()
-				End If
+				statusStr = "Promo not added to MarketingPromos table!"
 			End Try
 		Next
-	End Sub
+		Return statusStr
+	End Function
 #End Region
 #Region "SubmitOtherTblsToDB"
 	Public Sub SubmitOtherTblsToDB(ByRef local_usesEligiblePlayersTable As Boolean, _

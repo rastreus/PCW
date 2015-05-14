@@ -43,7 +43,7 @@ Public Class StepB
 	''' </summary>
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
-		Dim frequency As String = New String("W")
+		Dim frequency As Char = New Char()
 		Me.stepB_data.ID = Me.btnPromoID.Text
 		Me.stepB_data.Name = Me.txtPromoName.Text
 		If Me.rbRecurringYes.Checked Then
