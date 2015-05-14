@@ -10,8 +10,16 @@ Public Class StepJ
 #Region "StepJ_Validation"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		PCW.Data.SubmitPromosToList()
-		PCW.Data.SubmitListToDB()
+		SubmitToDB()
+	End Sub
+
+	Private Async Sub SubmitToDB()
+		'Not sure if this Await actually works?
+		Await Task.Run(Sub()
+						   PCW.Data.SubmitPromosToList()
+						   PCW.Data.SubmitListToDB()
+						   PCW.Data.SubmitOtherTblsToDB()
+					   End Sub)
 	End Sub
 #End Region
 #Region "StepJ_ShowStep"

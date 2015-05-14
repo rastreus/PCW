@@ -50,6 +50,7 @@ Public Class StepD
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
 		If Me.rbEligiblePlayersList.Checked And
 			Me.successBool Then
+			Me.stepD_data.UsesEligiblePlayersTable = True
 			setEligiblePlayersCSV()
 		End If
 	End Sub

@@ -79,6 +79,7 @@ Public Class StepD_Data
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
+	Private _dataUsesEligiblePlayersTable As Boolean = False
 	Private _dataEligiblePlayersCSVFilePath As String = New String("")
 	Private _dataEligiblePlayersDataTable As DataTable
 
@@ -137,6 +138,14 @@ Public Class StepD_Data
 		End Get
 		Set(value As Boolean)
 			_promoSkipPayout = value
+		End Set
+	End Property
+	Public Property UsesEligiblePlayersTable As Boolean
+		Get
+			Return _dataUsesEligiblePlayersTable
+		End Get
+		Set(value As Boolean)
+			_dataUsesEligiblePlayersTable = value
 		End Set
 	End Property
 	Public Property EligiblePlayersCSVFilePath As String

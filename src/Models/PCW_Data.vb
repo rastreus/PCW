@@ -1,4 +1,6 @@
 ﻿Imports System.Collections
+Imports System.Data
+Imports System.Data.SqlClient
 Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
 
 Public Class PCW_Data
@@ -254,7 +256,7 @@ Public Class PCW_Data
 			Case PromoCategory.multiPart
 				'If out what all needs to be done
 			Case PromoCategory.acquisition
-				'Needs to be implemented (05/13/15)
+				'Needs to be implemented (As of: 05/13/15)
 		End Select
 	End Sub
 #End Region
@@ -279,6 +281,47 @@ Public Class PCW_Data
 				End If
 			End Try
 		Next
+	End Sub
+#End Region
+#Region "SubmitOtherTblsToDB"
+	Public Sub SubmitOtherTblsToDB()
+		Dim local_stepD As StepD = PCW.GetStep("StepD")
+		Dim local_stepGetCouponTargets As StepGetCouponTargets = PCW.GetStep("StepGetCouponTargets")
+		Dim local_usesEligiblePlayersTable As Boolean = local_stepD.Data.UsesEligiblePlayersTable
+		Dim local_couponTargetsList As ArrayList = local_stepGetCouponTargets.Data.CouponTargetsList
+		If local_usesEligiblePlayersTable Then
+			SubmitDataTableToDB("MarketingPromoEligiblePlayers", _
+								local_stepD.Data.EligiblePlayersDataTable)
+		End If
+		If local_stepD.Data.Category = Not PromoCategory.entryOnly Then
+			For Each targetListDataTable As DataTable In local_couponTargetsList
+				SubmitDataTableToDB("CouponTargets", _
+									targetListDataTable)
+			Next
+		End If
+	End Sub
+
+	Private Sub SubmitDataTableToDB(ByVal DBTableNameStr As String, _
+											 ByVal table As DataTable)
+		Dim connection As SqlConnection
+		Dim command As SqlCommand
+		Dim dataAdapter As SqlDataAdapter
+		Try
+			connection = New SqlConnection(Global _
+										  .PromotionalCreationWizard _
+										  .My _
+										  .MySettings _
+										  .Default _
+										  .GamingConnectionString)
+			command = New SqlCommand("SELECT * FROM " & DBTableNameStr, _
+									 connection)
+			dataAdapter = New SqlDataAdapter(command)
+			dataAdapter.Fill(table)
+			connection.Open()
+			dataAdapter.Update(table)
+		Catch ex As Exception
+			'Handel Exception
+		End Try
 	End Sub
 #End Region
 End Class

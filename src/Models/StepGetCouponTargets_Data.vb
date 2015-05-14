@@ -60,6 +60,14 @@
 	Private _dataCouponTargetsDataTable As DataTable
 	Private _promoSameForAllDaysTiers As Boolean
 
+	Public Property CouponTargetsList As ArrayList
+		Get
+			Return _dataCouponTargetsList
+		End Get
+		Set(value As ArrayList)
+			_dataCouponTargetsList = value
+		End Set
+	End Property
 	Public Property CouponTargetsCSVFilePath As String
 		Get
 			Return _dataCouponTargetsCSVFilePath
