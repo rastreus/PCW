@@ -9,7 +9,6 @@
 		If Not Me.disposedValue Then
 			If disposing Then
 				' TODO: dispose managed state (managed objects).
-				Me._dataEligiblePlayersDataTable.Dispose()
 				Me._dataCouponTargetsDataTable.Dispose()
 			End If
 
@@ -36,7 +35,6 @@
 #Region "New"
 	Public Sub New()
 		MakeCouponTargetsDataTable()
-		MakeEligiblePlayersDataTable()
 	End Sub
 
 	Private Sub MakeCouponTargetsDataTable()
@@ -54,33 +52,14 @@
 		CouponTargetsDataTable.Columns.Add("TestCoupon", GetType(Boolean))
 		CouponTargetsDataTable.Columns.Add("CreateDate", GetType(Date))
 	End Sub
-
-	Private Sub MakeEligiblePlayersDataTable()
-		Me._dataEligiblePlayersDataTable = New DataTable("EligiblePlayers")
-		EligiblePlayersDataTable.Columns.Add("PromoID", GetType(String))
-		EligiblePlayersDataTable.Columns.Add("PlayerID", GetType(UInt64))
-		EligiblePlayersDataTable.Columns.Add("NumOfTickets", GetType(Integer))
-		EligiblePlayersDataTable.Columns.Add("TicketAmount", GetType(Decimal))
-	End Sub
 #End Region
 #Region "Properties"
 	Private _dataCouponTargetsList As ArrayList = New ArrayList
-	Private _dataEligiblePlayersCSVFilePath As String = New String("")
 	Private _dataCouponTargetsCSVFilePath As String = New String("")
-	Private _dataEligiblePlayersCouponNum As Integer = New Integer
 	Private _dataCouponTargetsCouponNum As Integer = New Integer
-	Private _dataEligiblePlayersDataTable As DataTable
 	Private _dataCouponTargetsDataTable As DataTable
 	Private _promoSameForAllDaysTiers As Boolean
 
-	Public Property EligiblePlayersCSVFilePath As String
-		Get
-			Return _dataEligiblePlayersCSVFilePath
-		End Get
-		Set(value As String)
-			_dataEligiblePlayersCSVFilePath = value
-		End Set
-	End Property
 	Public Property CouponTargetsCSVFilePath As String
 		Get
 			Return _dataCouponTargetsCSVFilePath
@@ -89,28 +68,12 @@
 			_dataCouponTargetsCSVFilePath = value
 		End Set
 	End Property
-	Public Property EligiblePlayersCouponNum As Integer
-		Get
-			Return _dataEligiblePlayersCouponNum
-		End Get
-		Set(value As Integer)
-			_dataEligiblePlayersCouponNum = value
-		End Set
-	End Property
 	Public Property CouponTargetsCouponNum As Integer
 		Get
 			Return _dataCouponTargetsCouponNum
 		End Get
 		Set(value As Integer)
 			_dataCouponTargetsCouponNum = value
-		End Set
-	End Property
-	Public Property EligiblePlayersDataTable As DataTable
-		Get
-			Return _dataEligiblePlayersDataTable
-		End Get
-		Set(value As DataTable)
-			_dataEligiblePlayersDataTable = value
 		End Set
 	End Property
 	Public Property CouponTargetsDataTable As DataTable
@@ -130,7 +93,7 @@
 		End Set
 	End Property
 #End Region
-#Region "CSVtoCouponTargets"
+#Region "CSVtoCouponTargetsDataTable"
 	Public Sub CSVtoCouponTargetsDataTable()
 		Dim parser As New FileIO.TextFieldParser(CouponTargetsCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
@@ -165,30 +128,6 @@
 
 	Private Sub AddDataTableToCouponTargetsList()
 		_dataCouponTargetsList.Add(CouponTargetsDataTable)
-	End Sub
-#End Region
-#Region "CSVtoEligiblePlayers"
-	Private Sub CSVtoEligiblePlayersDataTable(ByVal promoID As String)
-		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
-		parser.Delimiters = New String() {","}		'Fields are separated by comma
-		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
-		parser.TrimWhiteSpace = True
-
-		parser.ReadLine()							'First line is skipped, its the headers
-
-		Dim currentRow(13) As String				'Create a String Array
-		Do Until parser.EndOfData = True
-			Try
-				currentRow = parser.ReadFields()
-				EligiblePlayersDataTable.Rows.Add(promoID, _
-												  currentRow(0), _
-												  currentRow(13), _
-												  Nothing)
-
-			Catch ex As Exception
-				'
-			End Try
-		Loop
 	End Sub
 #End Region
 #Region "CSVtoDataTable_Util"
