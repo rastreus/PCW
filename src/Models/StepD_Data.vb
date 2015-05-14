@@ -79,8 +79,7 @@ Public Class StepD_Data
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
-	Private _dataEligiblePlayersCSVFilePath As String = New String("!")
-	Private _dataEligiblePlayersCouponNum As Integer = New Integer
+	Private _dataEligiblePlayersCSVFilePath As String = New String("")
 	Private _dataEligiblePlayersDataTable As DataTable
 
 	Private Property DataAddedToHash As Boolean _
@@ -148,14 +147,6 @@ Public Class StepD_Data
 			_dataEligiblePlayersCSVFilePath = value
 		End Set
 	End Property
-	Public Property EligiblePlayersCouponNum As Integer
-		Get
-			Return _dataEligiblePlayersCouponNum
-		End Get
-		Set(value As Integer)
-			_dataEligiblePlayersCouponNum = value
-		End Set
-	End Property
 	Public Property EligiblePlayersDataTable As DataTable
 		Get
 			Return _dataEligiblePlayersDataTable
@@ -166,7 +157,9 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "CSVtoEligiblePlayers"
-	Private Sub CSVtoEligiblePlayersDataTable(ByVal promoID As String)
+	Public Sub CSVtoEligiblePlayersDataTable()
+		Dim local_stepB As StepB = PCW.GetStep("StepB")
+		Dim local_promoID As String = local_stepB.Data.ID
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -178,7 +171,7 @@ Public Class StepD_Data
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				EligiblePlayersDataTable.Rows.Add(promoID, _
+				EligiblePlayersDataTable.Rows.Add(local_promoID, _
 												  currentRow(0), _
 												  currentRow(13), _
 												  Nothing)

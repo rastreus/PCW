@@ -35,7 +35,7 @@ Partial Class StepD
 		Me.pnlAcquisition = New System.Windows.Forms.Panel()
 		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
 		Me.pnlSumMethod = New System.Windows.Forms.Panel()
-		Me.rbEligiblePlayersOfferList = New System.Windows.Forms.RadioButton()
+		Me.rbEligiblePlayersList = New System.Windows.Forms.RadioButton()
 		Me.rbSumQualifyingPoints = New System.Windows.Forms.RadioButton()
 		Me.rbSumLifetimePoints = New System.Windows.Forms.RadioButton()
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
@@ -207,7 +207,7 @@ Partial Class StepD
 		'
 		Me.pnlSumMethod.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlSumMethod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlSumMethod.Controls.Add(Me.rbEligiblePlayersOfferList)
+		Me.pnlSumMethod.Controls.Add(Me.rbEligiblePlayersList)
 		Me.pnlSumMethod.Controls.Add(Me.rbSumQualifyingPoints)
 		Me.pnlSumMethod.Controls.Add(Me.rbSumLifetimePoints)
 		Me.pnlSumMethod.Controls.Add(Me.rbAutoQualification)
@@ -217,16 +217,16 @@ Partial Class StepD
 		Me.pnlSumMethod.Size = New System.Drawing.Size(255, 120)
 		Me.pnlSumMethod.TabIndex = 10
 		'
-		'rbEligiblePlayersOfferList
+		'rbEligiblePlayersList
 		'
-		Me.rbEligiblePlayersOfferList.AutoSize = True
-		Me.rbEligiblePlayersOfferList.BackColor = System.Drawing.Color.LemonChiffon
-		Me.rbEligiblePlayersOfferList.Location = New System.Drawing.Point(3, 93)
-		Me.rbEligiblePlayersOfferList.Name = "rbEligiblePlayersOfferList"
-		Me.rbEligiblePlayersOfferList.Size = New System.Drawing.Size(228, 17)
-		Me.rbEligiblePlayersOfferList.TabIndex = 8
-		Me.rbEligiblePlayersOfferList.Text = "EligiblePlayers List Determines Qualification"
-		Me.rbEligiblePlayersOfferList.UseVisualStyleBackColor = False
+		Me.rbEligiblePlayersList.AutoSize = True
+		Me.rbEligiblePlayersList.BackColor = System.Drawing.Color.LemonChiffon
+		Me.rbEligiblePlayersList.Location = New System.Drawing.Point(3, 93)
+		Me.rbEligiblePlayersList.Name = "rbEligiblePlayersList"
+		Me.rbEligiblePlayersList.Size = New System.Drawing.Size(228, 17)
+		Me.rbEligiblePlayersList.TabIndex = 8
+		Me.rbEligiblePlayersList.Text = "EligiblePlayers List Determines Qualification"
+		Me.rbEligiblePlayersList.UseVisualStyleBackColor = False
 		'
 		'rbSumQualifyingPoints
 		'
@@ -415,7 +415,7 @@ Partial Class StepD
 	Friend WithEvents pnlAcquisition As System.Windows.Forms.Panel
 	Friend WithEvents pnlPlayerEligibility As System.Windows.Forms.Panel
 	Friend WithEvents lblPlayerEligibility As System.Windows.Forms.Label
-	Friend WithEvents rbEligiblePlayersOfferList As System.Windows.Forms.RadioButton
+	Friend WithEvents rbEligiblePlayersList As System.Windows.Forms.RadioButton
 	Friend WithEvents rbAutoQualification As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSumLifetimePoints As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSumQualifyingPoints As System.Windows.Forms.RadioButton

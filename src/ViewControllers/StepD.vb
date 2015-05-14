@@ -48,6 +48,10 @@ Public Class StepD
 				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
+		If Me.rbEligiblePlayersList.Checked And
+			Me.successBool Then
+			setEligiblePlayersCSV()
+		End If
 	End Sub
 
 	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
@@ -73,6 +77,18 @@ Public Class StepD
 		End If
 		Return promoCategory
 	End Function
+
+	Private Async Sub setEligiblePlayersCSV()
+		PCW.NextEnabled = False
+		Me.UseWaitCursor = True
+		Me.Data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
+		Await Task.Run(Sub()
+						   Me.Data.CSVtoEligiblePlayersDataTable()
+					   End Sub)
+		'Only Enable once sure the CSV in a DataTable
+		Me.UseWaitCursor = False
+		GUI_Util.NextEnabled()
+	End Sub
 #End Region
 #Region "StepD_Delegates"
 	Private Delegate Sub DelegateChangeLabelText(ByVal s As String)
@@ -83,6 +99,8 @@ Public Class StepD
 	End Sub
 #End Region
 #Region "StepD_Load"
+	Private successBool As Boolean = False
+
 	Private Sub StepD_Load(sender As Object, e As EventArgs) _
 	Handles MyBase.Load
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
@@ -92,6 +110,7 @@ Public Class StepD
 	Private Sub StepD_ResetStep(sender As Object, e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepD_data = New StepD_Data
+		Me.successBool = False
 		StepD_ResetControls()
 	End Sub
 
@@ -158,8 +177,8 @@ Public Class StepD
 #End Region
 #Region "StepD_SetDragDropPanel"
 	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, e As EventArgs) _
-		Handles rbEligiblePlayersOfferList.CheckedChanged
-		SetDragDropPanel(Me.rbEligiblePlayersOfferList.Checked)
+		Handles rbEligiblePlayersList.CheckedChanged
+		SetDragDropPanel(Me.rbEligiblePlayersList.Checked)
 	End Sub
 
 	Private Sub SetDragDropPanel(ByVal bool As Boolean)
@@ -202,32 +221,34 @@ Public Class StepD
 				Dim s As String = a.GetValue(0).ToString
 				Me.BeginInvoke(m_DelegateChangeLabelText, New Object() {s})
 				DragDropSuccessIcon()
+				Me.successBool = True
 			End If
 		Catch ex As Exception
 			Trace.WriteLine("Error in DragDrop Sub: " + ex.Message)
 			ChangeLabelText("FAILURE: " + ex.Message)
 			DragDropFailureIcon()
+			Me.successBool = False
 		End Try
 	End Sub
 #End Region
 #Region "StepD_SetPointCutoffPanel"
 	Private Sub rbSumQualifyingPoints_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbSumQualifyingPoints.CheckedChanged
-		If Not rbEligiblePlayersOfferList.Checked Then
+		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbSumQualifyingPoints.Checked)
 		End If
 	End Sub
 
 	Private Sub rbSumLifetimePoints_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbSumLifetimePoints.CheckedChanged
-		If Not rbEligiblePlayersOfferList.Checked Then
+		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbSumLifetimePoints.Checked)
 		End If
 	End Sub
 
 	Private Sub rbAutoQualification_CheckedChanged(sender As Object, e As EventArgs) _
 		Handles rbAutoQualification.CheckedChanged
-		If Not rbEligiblePlayersOfferList.Checked Then
+		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbAutoQualification.Checked)
 		End If
 	End Sub
