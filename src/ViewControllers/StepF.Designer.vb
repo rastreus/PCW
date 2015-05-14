@@ -188,6 +188,7 @@ Partial Class StepF
 		'
 		Me.rbPrize.AutoSize = True
 		Me.rbPrize.BackColor = System.Drawing.Color.Lavender
+		Me.rbPrize.Enabled = False
 		Me.rbPrize.Location = New System.Drawing.Point(29, 143)
 		Me.rbPrize.Name = "rbPrize"
 		Me.rbPrize.Size = New System.Drawing.Size(48, 17)
@@ -199,6 +200,7 @@ Partial Class StepF
 		'
 		Me.rbCashValue.AutoSize = True
 		Me.rbCashValue.BackColor = System.Drawing.Color.Lavender
+		Me.rbCashValue.Enabled = False
 		Me.rbCashValue.Location = New System.Drawing.Point(29, 103)
 		Me.rbCashValue.Name = "rbCashValue"
 		Me.rbCashValue.Size = New System.Drawing.Size(70, 17)
