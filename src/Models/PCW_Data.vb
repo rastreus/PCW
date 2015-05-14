@@ -116,9 +116,16 @@ Public Class PCW_Data
 		newPromo.CountCurrentDay = PromoDataHash.Item(Key.CountCurrentDay)
 		newPromo.OverrideTime = PromoDataHash.Item(Key.OverrideTime)
 		newPromo.CutoffTime = PromoDataHash.Item(Key.CutoffTime)
-		newPromo.PrintTickets = PromoDataHash.Item(Key.PrintTickets)
+		newPromo.PrintTickets = GetPrintTickets()
 		newPromo.Comments = GetPromoComment()
 		Return newPromo
+	End Function
+#End Region
+#Region "GetPrintTickets"
+	Private Function GetPrintTickets() As Boolean
+		'PromoDataHash.Item(Key.PrintTickets)
+		'PrintTickets cannot be NULL
+		Return True
 	End Function
 #End Region
 #Region "GetPromoComment"
