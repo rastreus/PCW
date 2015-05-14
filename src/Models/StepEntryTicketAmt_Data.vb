@@ -18,12 +18,14 @@ Public Class StepEntryTicketAmt_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
+			promoDataHash.Item(Key.EntryPromoType) = PromoType
 			promoDataHash.Item(Key.PointsDivisor) = PointsDivisor
 			promoDataHash.Item(Key.TicketsPerPatron) = TicketsPerPatron
 			promoDataHash.Item(Key.TicketsForEntirePromo) = TicketsForEntirePromo
 			promoDataHash.Item(Key.PrintTickets) = PrintTickets
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
+			promoDataHash.Add(Key.EntryPromoType, PromoType)
 			promoDataHash.Add(Key.PointsDivisor, PointsDivisor)
 			promoDataHash.Add(Key.TicketsPerPatron, TicketsPerPatron)
 			promoDataHash.Add(Key.TicketsForEntirePromo, TicketsForEntirePromo)

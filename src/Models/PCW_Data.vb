@@ -8,7 +8,8 @@ Public Class PCW_Data
 	Public Enum PromoFields
 		ID
 		Name
-		Type
+		EntryPromoType
+		PayoutPromoType
 		OccursDate
 		StartDate
 		EndDate
@@ -153,10 +154,7 @@ Public Class PCW_Data
 	End Function
 
 	Private Function GetEntryPromoType()
-		Dim promoType As String = New String("!")
-		Dim local_stepEntryTicketAmt As StepEntryTicketAmt = PCW.GetStep("StepEntryTicketAmt")
-		promoType = local_stepEntryTicketAmt.Data.PromoType
-		Return promoType
+		Return PromoDataHash.Item(Key.EntryPromoType)
 	End Function
 #End Region
 #Region "GetMarketingPromoPayout"
@@ -175,10 +173,7 @@ Public Class PCW_Data
 	End Function
 
 	Private Function GetPayoutPromoType()
-		Dim promoType As String = New String("!")
-		Dim local_stepF As StepF = PCW.GetStep("StepF")
-		promoType = local_stepF.Data.PromoType
-		Return promoType
+		Return PromoDataHash.Item(Key.PayoutPromoType)
 	End Function
 #End Region
 #Region "GetPromoSummary"
