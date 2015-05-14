@@ -158,10 +158,8 @@ Public Class StepD
 #End Region
 #Region "StepD_SetDragDropPanel"
 	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles rbEligiblePlayersOfferList.CheckedChanged
-		If rbEligiblePlayersOfferList.Checked Then
-			SetDragDropPanel(Me.rbEligiblePlayersOfferList.Checked)
-		End If
+		Handles rbEligiblePlayersOfferList.CheckedChanged
+		SetDragDropPanel(Me.rbEligiblePlayersOfferList.Checked)
 	End Sub
 
 	Private Sub SetDragDropPanel(ByVal bool As Boolean)
@@ -169,7 +167,7 @@ Public Class StepD
 		Me.pnlDragOffer.Visible = bool
 		If Not bool Then
 			Me.SuccessIcon.Visible = bool
-			ChangeLabelText("(Drag Offer List Here)")
+			ChangeLabelText("(Drag EligiblePlayers List .CSV File Here)")
 		End If
 	End Sub
 
