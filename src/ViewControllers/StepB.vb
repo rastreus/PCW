@@ -166,7 +166,8 @@ Public Class StepB
 
 		If Me.Data.PromoID_Invalid() Then
 			cancelContinuingToNextStep = True
-			errString = "PromoID Invalid."
+			errString = "PromoID Invalid: " & _
+						 Me.Data.Get_PromoID_errString()
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoID)
 		Else
@@ -175,7 +176,8 @@ Public Class StepB
 
 		If Me.Data.PromoName_Invalid() Then
 			cancelContinuingToNextStep = True
-			errString = Me.Data.PromoName_Invalid_GetErrString()
+			errString = "PromoName Invalid: " & _
+						 Me.Data.Get_PromoName_errString()
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoName)
 		Else
