@@ -254,7 +254,7 @@ Partial Public Class MarketingPromo
 		OnCreated()
 	End Sub
 
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_PromoID", AutoSync:=AutoSync.OnInsert, DbType:="NVarChar(16) NOT NULL IDENTITY", CanBeNull:=False, IsPrimaryKey:=True, IsDbGenerated:=True)> _
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_PromoID", DbType:="NVarChar(16) NOT NULL IDENTITY", CanBeNull:=False, IsPrimaryKey:=True)> _
 	Public Property PromoID() As String
 		Get
 			Return Me._PromoID
