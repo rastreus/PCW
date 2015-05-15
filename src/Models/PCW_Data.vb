@@ -97,7 +97,6 @@ Public Class PCW_Data
 #Region "GetMarketingPromo"
 	Private Function GetMarketingPromo() As MarketingPromo
 		Dim newPromo As MarketingPromo = New MarketingPromo
-		newPromo.PromoID = PromoDataHash.Item(Key.ID)
 		newPromo.PromoName = PromoDataHash.Item(Key.Name)
 		newPromo.PromoDate = PromoDataHash.Item(Key.OccursDate)
 		newPromo.StartDate = PromoDataHash.Item(Key.StartDate)
@@ -152,6 +151,7 @@ Public Class PCW_Data
 	''' <remarks>I'm not sure why those fields wouldn't be Nothing already, but now it is certian.</remarks>
 	Private Function GetMarketingPromoEntry() As MarketingPromo
 		Dim entryPromo As MarketingPromo = GetMarketingPromo()
+		entryPromo.PromoID = GetEntryPromoID()
 		entryPromo.PromoName = "Entries - " & entryPromo.PromoName
 		entryPromo.PromoType = GetEntryPromoType()
 		entryPromo.MaxCoupon = Nothing
@@ -160,7 +160,13 @@ Public Class PCW_Data
 		Return entryPromo
 	End Function
 
-	Private Function GetEntryPromoType()
+	Private Function GetEntryPromoID() As String
+		Dim result As String = New String("!")
+		result = PromoDataHash.Item(Key.ID) & "E"
+		Return result
+	End Function
+
+	Private Function GetEntryPromoType() As String
 		Return PromoDataHash.Item(Key.EntryPromoType)
 	End Function
 #End Region
@@ -172,14 +178,22 @@ Public Class PCW_Data
 	''' <remarks>Likewise, not sure why these fields wouldn't be Nothing, but now it is certain.</remarks>
 	Private Function GetMarketingPromoPayout() As MarketingPromo
 		Dim payoutPromo As MarketingPromo = GetMarketingPromo()
+		payoutPromo.PromoID = GetPayoutPromoID()
 		payoutPromo.PromoName = "Payouts - " & payoutPromo.PromoName
+		payoutPromo.PromoType = GetPayoutPromoType()
 		payoutPromo.PointCutoff = Nothing
 		payoutPromo.PointDivisor = Nothing
 		payoutPromo.MaxTickets = Nothing
 		Return payoutPromo
 	End Function
 
-	Private Function GetPayoutPromoType()
+	Private Function GetPayoutPromoID() As String
+		Dim result As String = New String("!")
+		result = PromoDataHash.Item(Key.ID) & "P"
+		Return result
+	End Function
+
+	Private Function GetPayoutPromoType() As String
 		Return PromoDataHash.Item(Key.PayoutPromoType)
 	End Function
 #End Region
