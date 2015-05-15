@@ -138,7 +138,7 @@ Public Class PCW_Data
 		Dim dateFormatStr As String = New String("{0:MMddyyyy}")
 		Dim comment As String = PromoDataHash.Item(Key.Comment)
 		comment = comment & _
-				  "PCW;" & _
+				  ";PCW;" & _
 				  String.Format(dateFormatStr, Date.Today.ToString) & ";" & _
 				  Environment.UserName.ToString
 		Return comment
