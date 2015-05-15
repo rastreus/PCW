@@ -76,7 +76,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsAmount.Controls.Add(Me.Label2)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnl1)
 		Me.pnlTicketsAmount.Controls.Add(Me.pnlCountAndCal)
-		Me.pnlTicketsAmount.Location = New System.Drawing.Point(268, 63)
+		Me.pnlTicketsAmount.Location = New System.Drawing.Point(282, 22)
 		Me.pnlTicketsAmount.Name = "pnlTicketsAmount"
 		Me.pnlTicketsAmount.Size = New System.Drawing.Size(160, 172)
 		Me.pnlTicketsAmount.TabIndex = 2
@@ -164,7 +164,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPointsDivisor.Controls.Add(Me.txtPointsDivisor)
 		Me.pnlPointsDivisor.Controls.Add(Me.lblPointsDivisor)
 		Me.pnlPointsDivisor.Enabled = False
-		Me.pnlPointsDivisor.Location = New System.Drawing.Point(322, 241)
+		Me.pnlPointsDivisor.Location = New System.Drawing.Point(448, 121)
 		Me.pnlPointsDivisor.Name = "pnlPointsDivisor"
 		Me.pnlPointsDivisor.Size = New System.Drawing.Size(106, 49)
 		Me.pnlPointsDivisor.TabIndex = 11
@@ -200,7 +200,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketPerPatron.Controls.Add(Me.rbTicketPerPatronYES)
 		Me.pnlTicketPerPatron.Controls.Add(Me.Panel1)
 		Me.pnlTicketPerPatron.Controls.Add(Me.lblTicketsPerPatron)
-		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(434, 63)
+		Me.pnlTicketPerPatron.Location = New System.Drawing.Point(122, 200)
 		Me.pnlTicketPerPatron.Name = "pnlTicketPerPatron"
 		Me.pnlTicketPerPatron.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketPerPatron.TabIndex = 4
@@ -270,7 +270,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.rbTicketsEntirePromoYES)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.Panel2)
 		Me.pnlTicketsEntirePromo.Controls.Add(Me.lblTicketsEntirePromo)
-		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(434, 152)
+		Me.pnlTicketsEntirePromo.Location = New System.Drawing.Point(282, 200)
 		Me.pnlTicketsEntirePromo.Name = "pnlTicketsEntirePromo"
 		Me.pnlTicketsEntirePromo.Size = New System.Drawing.Size(154, 83)
 		Me.pnlTicketsEntirePromo.TabIndex = 5
@@ -348,7 +348,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlAmtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlAmtDescription.Controls.Add(Me.lblDescription)
 		Me.pnlAmtDescription.Controls.Add(Me.lblAmtDesc)
-		Me.pnlAmtDescription.Location = New System.Drawing.Point(85, 63)
+		Me.pnlAmtDescription.Location = New System.Drawing.Point(99, 22)
 		Me.pnlAmtDescription.Name = "pnlAmtDescription"
 		Me.pnlAmtDescription.Size = New System.Drawing.Size(177, 172)
 		Me.pnlAmtDescription.TabIndex = 13
@@ -371,7 +371,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPromoTypeForEntry.Controls.Add(Me.lblPromoTypeQuestion)
 		Me.pnlPromoTypeForEntry.Controls.Add(Me.txtPromoType)
 		Me.pnlPromoTypeForEntry.Controls.Add(Me.lblPromoType)
-		Me.pnlPromoTypeForEntry.Location = New System.Drawing.Point(3, 63)
+		Me.pnlPromoTypeForEntry.Location = New System.Drawing.Point(13, 22)
 		Me.pnlPromoTypeForEntry.Name = "pnlPromoTypeForEntry"
 		Me.pnlPromoTypeForEntry.Size = New System.Drawing.Size(80, 125)
 		Me.pnlPromoTypeForEntry.TabIndex = 14
