@@ -11,7 +11,7 @@ Public Class StepJ
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim statusStr As String = SubmitToDB()
-		If statusStr = Not "" Then
+		If Not (statusStr = "") Then
 			GUI_Util.msgBox(statusStr)
 		End If
 	End Sub
