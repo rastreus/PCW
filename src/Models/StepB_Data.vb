@@ -106,7 +106,9 @@ Public Class StepB_Data
 	Public Function PromoID_Invalid() As Boolean
 		Dim invalid As Boolean = False
 
-		If ID = "EXAMPLE1503" Or ID = "" Then
+		If (ID = "EXAMPLE1503") Or _
+			(ID = "") Or _
+			(SQL_Util.Existing_PromoID(Me.ID)) Then
 			invalid = True
 		End If
 

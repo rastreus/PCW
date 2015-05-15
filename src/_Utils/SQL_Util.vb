@@ -62,9 +62,44 @@ Public Class SQL_Util
 		Return existing_promo
 	End Function
 #End Region
+#Region "Existing_PromoID"
+	''' <summary>
+	''' Queries the ID field to see if there is an existing promo with the same ID.
+	''' </summary>
+	''' <param name="new_promoID"></param>
+	''' <returns>The existance of the coupon ID.</returns>
+	''' <remarks>This function is very similar to Existing_Promo.</remarks>
+	Public Shared Function Existing_PromoID(ByVal new_promoID As String) As Boolean
+		Dim returningBool As Boolean = False
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
+
+		Dim trimmed_new_promoID As String = new_promoID.Trim
+		Dim trimmed_new_promoID_entry As String = trimmed_new_promoID & "E"
+		Dim trimmed_new_promoID_payout As String = trimmed_new_promoID & "P"
+
+		Dim existing_promoID_entry = (From promoID In tbl.MarketingPromos
+									  Where promoID.PromoID = trimmed_new_promoID_entry
+									  Select promoID.PromoID).FirstOrDefault
+		Dim existing_promoID_payout = (From promoID In tbl.MarketingPromos
+									   Where promoID.PromoID = trimmed_new_promoID_payout
+									   Select promoID.PromoID).FirstOrDefault
+
+		If Not String.IsNullOrEmpty(existing_promoID_entry) Or
+			Not String.IsNullOrEmpty(existing_promoID_payout) Then
+			returningBool = True
+		End If
+
+		Return returningBool
+	End Function
+#End Region
 #Region "Existing_Coupon"
 	''' <summary>
-	''' Queries the ID filed to see if there is an existing coupon with the same ID.
+	''' Queries the ID field to see if there is an existing coupon with the same ID.
 	''' </summary>
 	''' <param name="new_couponID"></param>
 	''' <returns>The existance of the coupon ID.</returns>
