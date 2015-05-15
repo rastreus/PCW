@@ -50,7 +50,8 @@ Public Class PCW
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>THIS IS AN IMPORTANT SUB!</remarks>
-	Private Sub PCW_LoadSteps(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+	Private Sub PCW_LoadSteps(ByVal sender As System.Object, _
+							  ByVal e As System.EventArgs) _
 		Handles MyBase.LoadSteps
 		AddStep("StepA", New StepA)
 		AddStep("StepB", New StepB)

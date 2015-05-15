@@ -8,13 +8,15 @@ Public Class StepF_Data
 	Implements IPromoData
 
 #Region "ToPromoStepList"
-	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, _
+							   ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
 		promoStepList.Add(stepName.Name)
 	End Sub
 #End Region
 #Region "PrepareData"
-	Public Sub PrepareData(ByRef promoDataHash As Hashtable) Implements IPromoData.PrepareData
+	Public Sub PrepareData(ByRef promoDataHash As Hashtable) _
+		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
 			promoDataHash.Item(Key.PayoutPromoType) = PromoType

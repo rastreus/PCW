@@ -6,6 +6,7 @@
 ''' <remarks></remarks>
 Public Class StepF
 	Inherits TSWizards.BaseInteriorStep
+	Implements IWizardStep
 
 #Region "StepF_New"
 	Public Sub New()
@@ -14,6 +15,14 @@ Public Class StepF
 		' Add any initialization after the InitializeComponent() call.
 		Me.stepF_data = New StepF_Data
 	End Sub
+#End Region
+#Region "StepF_PromoData"
+	Public ReadOnly Property PromoData As IPromoData _
+	Implements IWizardStep.PromoData
+		Get
+			Return Me.stepF_data
+		End Get
+	End Property
 #End Region
 #Region "StepF_Data"
 	''' <summary>
@@ -32,7 +41,7 @@ Public Class StepF
 		Me.stepF_data.PayoutCatgory = getPromoPayoutCategory()
 		Me.stepF_data.CashValue = getCashValue()
 		Me.stepF_data.Prize = getPrize()
-		Me.stepF_data.PromoType = Me.txtPromoType.Text
+		Me.stepF_data.PromoType = Me.txtPromoType.Text.Trim
 	End Sub
 
 	Private Function getPrize() As String

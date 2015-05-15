@@ -14,7 +14,8 @@ Public Class StepEntryTicketAmt
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_PromoData"
-	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Public ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepEntryTicketAmt_data
 		End Get
