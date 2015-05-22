@@ -14,6 +14,7 @@ Public Class StepF
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
 		Me.stepF_data = New StepF_Data
+		Me.Data.ToPromoStepList(Me, PCW.Data.PromoStepList)
 	End Sub
 #End Region
 #Region "StepF_PromoData"

@@ -1,7 +1,4 @@
-﻿Imports System.Collections
-Imports System.Data
-Imports System.Data.SqlClient
-Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
 
 Public Class PCW_Data
 #Region "Fields (Key)"
