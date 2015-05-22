@@ -6,52 +6,7 @@
 ''' <remarks>This is the Model for StepD (Controller).</remarks>
 Public Class StepD_Data
 	Implements IPromoData
-	Implements IDisposable
 
-#Region "IDisposable Support"
-	Private disposedValue As Boolean ' To detect redundant calls
-
-	' IDisposable
-	Protected Overridable Sub Dispose(disposing As Boolean)
-		If Not Me.disposedValue Then
-			If disposing Then
-				' TODO: dispose managed state (managed objects).
-				Me._dataEligiblePlayersDataTable.Dispose()
-			End If
-
-			' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
-			' TODO: set large fields to null.
-		End If
-		Me.disposedValue = True
-	End Sub
-
-	' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
-	'Protected Overrides Sub Finalize()
-	'    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-	'    Dispose(False)
-	'    MyBase.Finalize()
-	'End Sub
-
-	' This code added by Visual Basic to correctly implement the disposable pattern.
-	Public Sub Dispose() Implements IDisposable.Dispose
-		' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
-		Dispose(True)
-		GC.SuppressFinalize(Me)
-	End Sub
-#End Region
-#Region "New"
-	Public Sub New()
-		MakeEligiblePlayersDataTable()
-	End Sub
-
-	Private Sub MakeEligiblePlayersDataTable()
-		Me._dataEligiblePlayersDataTable = New DataTable("EligiblePlayers")
-		EligiblePlayersDataTable.Columns.Add("PromoID", GetType(String))
-		EligiblePlayersDataTable.Columns.Add("PlayerID", GetType(UInt64))
-		EligiblePlayersDataTable.Columns.Add("NumOfTickets", GetType(Integer))
-		EligiblePlayersDataTable.Columns.Add("TicketAmount", GetType(Decimal))
-	End Sub
-#End Region
 #Region "ToPromoStepList"
 	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
@@ -79,9 +34,7 @@ Public Class StepD_Data
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
-	Private _dataUsesEligiblePlayersTable As Boolean = False
 	Private _dataEligiblePlayersCSVFilePath As String = New String("")
-	Private _dataEligiblePlayersDataTable As DataTable
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -140,14 +93,6 @@ Public Class StepD_Data
 			_promoSkipPayout = value
 		End Set
 	End Property
-	Public Property UsesEligiblePlayersTable As Boolean
-		Get
-			Return _dataUsesEligiblePlayersTable
-		End Get
-		Set(value As Boolean)
-			_dataUsesEligiblePlayersTable = value
-		End Set
-	End Property
 	Public Property EligiblePlayersCSVFilePath As String
 		Get
 			Return _dataEligiblePlayersCSVFilePath
@@ -156,17 +101,10 @@ Public Class StepD_Data
 			_dataEligiblePlayersCSVFilePath = value
 		End Set
 	End Property
-	Public Property EligiblePlayersDataTable As DataTable
-		Get
-			Return _dataEligiblePlayersDataTable
-		End Get
-		Set(value As DataTable)
-			_dataEligiblePlayersDataTable = value
-		End Set
-	End Property
 #End Region
-#Region "CSVtoEligiblePlayers"
-	Public Sub CSVtoEligiblePlayersDataTable(ByVal promoID As String)
+#Region "CSVtoEligiblePlayersList"
+	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String, _
+										ByRef list As List(Of MarketingPromoEligiblePlayer))
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -178,15 +116,23 @@ Public Class StepD_Data
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				EligiblePlayersDataTable.Rows.Add(promoID, _
-												  currentRow(0), _
-												  currentRow(13), _
-												  Nothing)
-
+				ParseIntoList(currentRow, promoID, list)
 			Catch ex As Exception
-				'
+				'Handle Exception
 			End Try
 		Loop
+	End Sub
+#End Region
+#Region "ParseIntoList"
+	Private Sub ParseIntoList(ByRef currentRow As String(), _
+							  ByRef promoID As String, _
+							  ByRef list As List(Of MarketingPromoEligiblePlayer))
+		Dim eligiblePlayers As MarketingPromoEligiblePlayer = New MarketingPromoEligiblePlayer()
+		eligiblePlayers.PromoID = promoID
+		eligiblePlayers.PlayerID = currentRow(0)
+		eligiblePlayers.NumOfTickets = currentRow(13)
+		eligiblePlayers.TicketAmount = Nothing
+		list.Add(eligiblePlayers)
 	End Sub
 #End Region
 #Region "Validity Checks"

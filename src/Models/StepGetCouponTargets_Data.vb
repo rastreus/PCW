@@ -1,73 +1,10 @@
 ﻿Public Class StepGetCouponTargets_Data
-	Implements IDisposable
 
-#Region "IDisposable Support"
-	Private disposedValue As Boolean ' To detect redundant calls
-
-	' IDisposable
-	Protected Overridable Sub Dispose(disposing As Boolean)
-		If Not Me.disposedValue Then
-			If disposing Then
-				' TODO: dispose managed state (managed objects).
-				Me._dataCouponTargetsDataTable.Dispose()
-			End If
-
-			' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
-			' TODO: set large fields to null.
-		End If
-		Me.disposedValue = True
-	End Sub
-
-	' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
-	'Protected Overrides Sub Finalize()
-	'    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-	'    Dispose(False)
-	'    MyBase.Finalize()
-	'End Sub
-
-	' This code added by Visual Basic to correctly implement the disposable pattern.
-	Public Sub Dispose() Implements IDisposable.Dispose
-		' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
-		Dispose(True)
-		GC.SuppressFinalize(Me)
-	End Sub
-#End Region
-#Region "New"
-	Public Sub New()
-		MakeCouponTargetsDataTable()
-	End Sub
-
-	Private Sub MakeCouponTargetsDataTable()
-		Me._dataCouponTargetsDataTable = New DataTable("CouponTargets")
-		CouponTargetsDataTable.Columns.Add("OfferID", GetType(String))
-		CouponTargetsDataTable.Columns.Add("Coupon", GetType(Short))
-		CouponTargetsDataTable.Columns.Add("Account", GetType(UInt64))
-		CouponTargetsDataTable.Columns.Add("Zip", GetType(UInt64))
-		CouponTargetsDataTable.Columns.Add("AvgTheo", GetType(Decimal))
-		CouponTargetsDataTable.Columns.Add("Latency", GetType(Integer))
-		CouponTargetsDataTable.Columns.Add("BaseCoupon", GetType(Decimal))
-		CouponTargetsDataTable.Columns.Add("ZoneAddon", GetType(Decimal))
-		CouponTargetsDataTable.Columns.Add("OtherAddon", GetType(Decimal))
-		CouponTargetsDataTable.Columns.Add("TotalCoupon", GetType(Decimal))
-		CouponTargetsDataTable.Columns.Add("TestCoupon", GetType(Boolean))
-		CouponTargetsDataTable.Columns.Add("CreateDate", GetType(Date))
-	End Sub
-#End Region
 #Region "Properties"
-	Private _dataCouponTargetsList As ArrayList = New ArrayList
 	Private _dataCouponTargetsCSVFilePath As String = New String("")
 	Private _dataCouponTargetsCouponNum As Integer = New Integer
-	Private _dataCouponTargetsDataTable As DataTable
 	Private _promoSameForAllDaysTiers As Boolean
 
-	Public Property CouponTargetsList As ArrayList
-		Get
-			Return _dataCouponTargetsList
-		End Get
-		Set(value As ArrayList)
-			_dataCouponTargetsList = value
-		End Set
-	End Property
 	Public Property CouponTargetsCSVFilePath As String
 		Get
 			Return _dataCouponTargetsCSVFilePath
@@ -84,14 +21,6 @@
 			_dataCouponTargetsCouponNum = value
 		End Set
 	End Property
-	Public Property CouponTargetsDataTable As DataTable
-		Get
-			Return _dataCouponTargetsDataTable
-		End Get
-		Set(value As DataTable)
-			_dataCouponTargetsDataTable = value
-		End Set
-	End Property
 	Public Property SameForAllDaysTiers As Boolean
 		Get
 			Return _promoSameForAllDaysTiers
@@ -101,8 +30,8 @@
 		End Set
 	End Property
 #End Region
-#Region "CSVtoCouponTargetsDataTable"
-	Public Sub CSVtoCouponTargetsDataTable()
+#Region "CSVtoCouponTargetsList"
+	Public Sub CSVtoCouponTargetsList(ByRef list As List(Of CouponTarget))
 		Dim parser As New FileIO.TextFieldParser(CouponTargetsCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -114,28 +43,30 @@
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				CouponTargetsDataTable.Rows.Add(currentRow(0), _
-												CouponTargetsCouponNum, _
-												currentRow(1), _
-												getZip(currentRow(7)), _
-												removeDollarReturnDecimal(currentRow(12)), _
-												getInt(currentRow(11)), _
-												removeDollarReturnDecimal(currentRow(13)), _
-												removeDollarReturnDecimal(currentRow(16)), _
-												Nothing, _
-												removeDollarReturnDecimal(currentRow(17)), _
-												0,
-												Date.Today.Date)
-
+				ParseIntoList(currentRow, list)
 			Catch ex As Exception
-				'
+				'Handle Exception
 			End Try
 		Loop
-		AddDataTableToCouponTargetsList()
 	End Sub
-
-	Private Sub AddDataTableToCouponTargetsList()
-		_dataCouponTargetsList.Add(CouponTargetsDataTable)
+#End Region
+#Region "ParseIntoList"
+	Private Sub ParseIntoList(ByRef currentRow As String(), _
+							  ByRef list As List(Of CouponTarget))
+		Dim couponTarget As CouponTarget = New CouponTarget()
+		couponTarget.OfferID = currentRow(0)
+		couponTarget.Coupon = CouponTargetsCouponNum
+		couponTarget.Account = currentRow(1)
+		couponTarget.Zip = getZip(currentRow(7))
+		couponTarget.AvgTheo = removeDollarReturnDecimal(currentRow(12))
+		couponTarget.Latency = getInt(currentRow(11))
+		couponTarget.BaseCoupon = removeDollarReturnDecimal(currentRow(13))
+		couponTarget.ZoneAddon = removeDollarReturnDecimal(currentRow(16))
+		couponTarget.OtherAddon = Nothing
+		couponTarget.TotalCoupon = removeDollarReturnDecimal(currentRow(17))
+		couponTarget.TestCoupon = 0
+		couponTarget.CreateDate = Date.Today.Date
+		list.Add(couponTarget)
 	End Sub
 #End Region
 #Region "CSVtoDataTable_Util"
@@ -172,11 +103,16 @@
 	End Function
 #End Region
 #Region "Validity Checks"
-	Public Function No_CouponTargets_Created() As Boolean
-		Dim result As Boolean = If(_dataCouponTargetsList.Count = 0, _
-								   True, _
-								   False)
-		Return result
-	End Function
+	'
+	'Not sure what this was being used for?
+	'Commented out for the time-being.
+	'As of: 05/22/2015; GRD
+	'
+	'Public Function No_CouponTargets_Created() As Boolean
+	'	Dim result As Boolean = If(_dataCouponTargetsList.Count = 0, _
+	'							   True, _
+	'							   False)
+	'	Return result
+	'End Function
 #End Region
 End Class

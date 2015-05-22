@@ -39,6 +39,7 @@ Public Class StepD
 #Region "StepD_SetData"
 	Private Sub StepD_SetData()
 		Me.stepD_data.Category = getPromoCategory()
+		PCW.Data.CurrentPromoCategory = Me.Data.Category
 		Select Case Me.Data.Category
 			Case PromotionalCreationWizard.PCW_Data.PromoCategory.entryOnly
 				Me.stepD_data.SkipPayout = True
@@ -50,7 +51,7 @@ Public Class StepD
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
 		If Me.rbEligiblePlayersList.Checked And
 			Me.successBool Then
-			Me.stepD_data.UsesEligiblePlayersTable = True
+			PCW.Data.UsesEligiblePlayers = True
 			setEligiblePlayersCSV()
 		End If
 	End Sub
@@ -88,7 +89,8 @@ Public Class StepD
 		local_StepB = PCW.GetStep("StepB")
 		local_promoID = local_StepB.Data.ID
 		Await Task.Run(Sub()
-						   Me.Data.CSVtoEligiblePlayersDataTable(local_promoID)
+						   Me.Data.CSVtoEligiblePlayersList(local_promoID, _
+															PCW.Data.EligiblePlayerList)
 					   End Sub)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False

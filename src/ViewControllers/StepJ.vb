@@ -10,26 +10,34 @@ Public Class StepJ
 #Region "StepJ_Validation"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		Dim statusStr As String = SubmitToDB()
-		If Not (statusStr = "") Then
-			GUI_Util.msgBox(statusStr)
-		End If
+		Dim statusStrArray(3) As String
+		statusStrArray = SubmitToDB()
+		For Each statusStr As String In statusStrArray
+			If Not IsNothing(statusStr) Then
+				GUI_Util.msgBox(statusStr)
+			End If
+		Next
 	End Sub
 
-	Private Function SubmitToDB() As String
+	Private Function SubmitToDB() As String()
+		Dim statusStrArray(3) As String
+		statusStrArray(0) = Nothing
+		statusStrArray(1) = Nothing
+		statusStrArray(2) = Nothing
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
-		Dim local_stepGetCouponTargets As StepGetCouponTargets = PCW.GetStep("StepGetCouponTargets")
-		Dim local_usesEligiblePlayersTable As Boolean = local_stepD.Data.UsesEligiblePlayersTable
-		Dim local_eligiblePlayersDataTable As DataTable = local_stepD.Data.EligiblePlayersDataTable
-		Dim local_couponTargetsList As ArrayList = local_stepGetCouponTargets.Data.CouponTargetsList
 		PCW.Data.SubmitPromosToList(local_promoCategory)
-		Dim statusStr As String = PCW.Data.SubmitListToDB()
-		PCW.Data.SubmitOtherTblsToDB(local_usesEligiblePlayersTable, _
-									 local_eligiblePlayersDataTable, _
-									 local_promoCategory, _
-									 local_couponTargetsList)
-		Return statusStr
+		Dim promoStatusStr As String = PCW.Data.SubmitListToDB()
+		Dim couponTargetStatusStr As String = PCW.Data.SubmitCouponTargtListToDB()
+		Dim eligiblePlayerStatusStr As String = PCW.Data.SubmitEligiblePlayersToDB()
+		statusStrArray(0) = promoStatusStr
+		If Not IsNothing(couponTargetStatusStr) Then
+			statusStrArray(1) = couponTargetStatusStr
+		End If
+		If Not IsNothing(eligiblePlayerStatusStr) Then
+			statusStrArray(2) = eligiblePlayerStatusStr
+		End If
+		Return statusStrArray
 	End Function
 #End Region
 #Region "StepJ_ShowStep"

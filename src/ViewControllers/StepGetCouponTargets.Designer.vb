@@ -8,7 +8,6 @@ Partial Class StepGetCouponTargets
         Try
             If disposing AndAlso components IsNot Nothing Then
 				components.Dispose()
-				Me.stepGetCouponTargets_data.Dispose()
             End If
         Finally
             MyBase.Dispose(disposing)

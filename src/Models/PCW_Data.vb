@@ -47,6 +47,10 @@ Public Class PCW_Data
 	Private _pcwPromoStepList As ArrayList = New ArrayList()
 	Private _pcwReset As Boolean = False
 	Private _pcwResetTo As String = New String("StepA")
+	Private _pcwCurrentPromoCategory As PromoCategory
+	Private _pcwUsesEligiblePlayers As Boolean = False
+	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
+	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
 
 	Public Property MarketingPromosDBRowsList As ArrayList
 		Get
@@ -86,6 +90,38 @@ Public Class PCW_Data
 		End Get
 		Set(value As String)
 			_pcwResetTo = value
+		End Set
+	End Property
+	Public Property CurrentPromoCategory As PromoCategory
+		Get
+			Return _pcwCurrentPromoCategory
+		End Get
+		Set(value As PromoCategory)
+			_pcwCurrentPromoCategory = value
+		End Set
+	End Property
+	Public Property UsesEligiblePlayers As Boolean
+		Get
+			Return _pcwUsesEligiblePlayers
+		End Get
+		Set(value As Boolean)
+			_pcwUsesEligiblePlayers = value
+		End Set
+	End Property
+	Public Property EligiblePlayerList As List(Of MarketingPromoEligiblePlayer)
+		Get
+			Return _pcwEligiblePlayerList
+		End Get
+		Set(value As List(Of MarketingPromoEligiblePlayer))
+			_pcwEligiblePlayerList = value
+		End Set
+	End Property
+	Public Property CouponTargetList As List(Of CouponTarget)
+		Get
+			Return _pcwCouponTargetList
+		End Get
+		Set(value As List(Of CouponTarget))
+			_pcwCouponTargetList = value
 		End Set
 	End Property
 #End Region
@@ -289,44 +325,60 @@ Public Class PCW_Data
 		Return statusStr
 	End Function
 #End Region
-#Region "SubmitOtherTblsToDB"
-	Public Sub SubmitOtherTblsToDB(ByRef local_usesEligiblePlayersTable As Boolean, _
-								   ByRef local_eligiblePlayersDataTable As DataTable, _
-								   ByRef local_promoCategory As PromoCategory, _
-								   ByRef local_couponTargetsList As ArrayList)
-		If local_usesEligiblePlayersTable Then
-			SubmitDataTableToDB("MarketingPromoEligiblePlayers", _
-								local_eligiblePlayersDataTable)
+#Region "SubmitEligiblePlayersToDB"
+	Public Function SubmitEligiblePlayersToDB() As String
+		Dim statusStr As String = Nothing
+		If UsesEligiblePlayers Then
+			statusStr = ProcessEligiblePlayersToDB()
 		End If
-		If local_promoCategory = Not PromoCategory.entryOnly Then
-			For Each targetListDataTable As DataTable In local_couponTargetsList
-				SubmitDataTableToDB("CouponTargets", _
-									targetListDataTable)
-			Next
+		Return statusStr
+	End Function
+	
+	Private Function ProcessEligiblePlayersToDB() As String
+		Dim statusStr As String = New String("")
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
+		For Each dbRow As MarketingPromoEligiblePlayer In EligiblePlayerList
+			tbl.MarketingPromoEligiblePlayers.InsertOnSubmit(dbRow)
+			Try
+				tbl.SubmitChanges()
+			Catch ex As Exception
+				statusStr = "Promo not added to EligiblePlayers table!"
+			End Try
+		Next
+		Return statusStr
+	End Function
+#End Region
+#Region "SubmitCouponTargetListToDB"
+	Public Function SubmitCouponTargtListToDB() As String
+		Dim statusStr As String = Nothing
+		If CurrentPromoCategory = Not PromoCategory.entryOnly Then
+			statusStr = ProcessCouponTargetListToDB()
 		End If
-	End Sub
+		Return statusStr
+	End Function
 
-	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")> Private Sub SubmitDataTableToDB(ByVal DBTableNameStr As String, _
-											 ByVal table As DataTable)
-		Dim connection As SqlConnection
-		Dim command As SqlCommand
-		Dim dataAdapter As SqlDataAdapter
-		Try
-			connection = New SqlConnection(Global _
-										  .PromotionalCreationWizard _
-										  .My _
-										  .MySettings _
-										  .Default _
-										  .GamingConnectionString)
-			command = New SqlCommand("SELECT * FROM " & DBTableNameStr, _
-									 connection)
-			dataAdapter = New SqlDataAdapter(command)
-			dataAdapter.Fill(table)
-			connection.Open()
-			dataAdapter.Update(table)
-		Catch ex As Exception
-			'Handel Exception
-		End Try
-	End Sub
+	Private Function ProcessCouponTargetListToDB() As String
+		Dim statusStr As String = New String("")
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
+		For Each dbRow As CouponTarget In CouponTargetList
+			tbl.CouponTargets.InsertOnSubmit(dbRow)
+			Try
+				tbl.SubmitChanges()
+			Catch ex As Exception
+				statusStr = "Promo not added to CouponTargets table!"
+			End Try
+		Next
+		Return statusStr
+	End Function
 #End Region
 End Class
