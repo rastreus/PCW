@@ -43,7 +43,10 @@ Public Class StepB
 	''' </summary>
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
-		Dim frequency As Char = New Char()
+		Dim frequency As System.Nullable(Of Char) = New System.Nullable(Of Char)
+		'Frequency needs to be set in case Promo is Not Recurring.
+		'Ideally, this should be Nothing, but not sure if GPM can handles it.
+		frequency = "W"	'Nothing
 		Me.stepB_data.ID = Me.btnPromoID.Text
 		Me.stepB_data.Name = Me.txtPromoName.Text
 		If Me.rbRecurringYes.Checked Then
@@ -60,7 +63,7 @@ Public Class StepB
 				Case "Yearly"
 					frequency = "Y"
 				Case Else
-					frequency = "W"
+					frequency = "W"	'Nothing
 			End Select
 		Else
 			Me.stepB_data.Recurring = False
