@@ -13,7 +13,8 @@ Public Class StepJ
 		Dim statusStrArray(3) As String
 		statusStrArray = SubmitToDB()
 		For Each statusStr As String In statusStrArray
-			If Not IsNothing(statusStr) Then
+			If Not IsNothing(statusStr) And
+				Not (statusStr = "") Then
 				GUI_Util.msgBox(statusStr)
 			End If
 		Next
