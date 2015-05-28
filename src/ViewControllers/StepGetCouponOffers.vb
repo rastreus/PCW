@@ -23,20 +23,20 @@ Public Class StepGetCouponOffers
 		End Get
 	End Property
 #End Region
-#Region "StepGetCouponOffers_SetData"
-	Private Function StepGetCouponOffers_GetData() As StepGetCouponOffers_Data.CouponOffersStruct
-		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = New StepGetCouponOffers_Data.CouponOffersStruct
-		couponOffer._offerID = getOfferID()
-		couponOffer._couponNum = Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
-		couponOffer._validStart = getValidStart()
-		couponOffer._validEnd = getValidEnd()
-		couponOffer._excludeDays = getExcludeDays()
-		couponOffer._excludeStart = getExcludeStart()
-		couponOffer._excludeEnd = getExcludeEnd()
-		couponOffer._fullValidate = getFullValidate()
-		couponOffer._reprintable = getReprintable()
-		couponOffer._scanToReceipt = getScanToReceipt()
-		couponOffer._note = getNote()
+#Region "StepGetCouponOffers_GetData"
+	Private Function StepGetCouponOffers_GetData() As CouponOffer
+		Dim couponOffer As CouponOffer = New CouponOffer
+		couponOffer.OfferID = getOfferID()
+		couponOffer.CouponNumber = Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
+		couponOffer.ValidStart = getValidStart()
+		couponOffer.ValidEnd = getValidEnd()
+		couponOffer.ExcludeDays = getExcludeDays()
+		couponOffer.ExcludeStart = getExcludeStart()
+		couponOffer.ExcludeEnd = getExcludeEnd()
+		couponOffer.FullValidate = getFullValidate()
+		couponOffer.Reprintable = getReprintable()
+		couponOffer.ScanToReceipt = getScanToReceipt()
+		couponOffer.Note = getNote()
 		Return couponOffer
 	End Function
 
@@ -265,7 +265,8 @@ Public Class StepGetCouponOffers
 	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
-		Dim couponOffer As StepGetCouponOffers_Data.CouponOffersStruct = StepGetCouponOffers_GetData()
+		Dim couponOffer As CouponOffer = New CouponOffer()
+		couponOffer = StepGetCouponOffers_GetData()
 		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer)
 		If couponOfferIsValid Then
 			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)

@@ -48,6 +48,7 @@ Public Class PCW_Data
 	Private _pcwUsesEligiblePlayers As Boolean = False
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
+	Private _pcwCouponOffersHash As Hashtable = New Hashtable()
 
 	Public Property MarketingPromosDBRowsList As ArrayList
 		Get
@@ -119,6 +120,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As List(Of CouponTarget))
 			_pcwCouponTargetList = value
+		End Set
+	End Property
+	Public Property CouponOffersHash As Hashtable
+		Get
+			Return _pcwCouponOffersHash
+		End Get
+		Set(value As Hashtable)
+			_pcwCouponOffersHash = value
 		End Set
 	End Property
 #End Region
@@ -345,6 +354,26 @@ Public Class PCW_Data
 				tbl.SubmitChanges()
 			Catch ex As Exception
 				statusStr = "Promo not added to EligiblePlayers table!"
+			End Try
+		Next
+		Return statusStr
+	End Function
+#End Region
+#Region "SubmitCouponOffersHashToDB"
+	Public Function SubmitCouponOffersHashToDB() As String
+		Dim statusStr As String = New String("")
+		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																	  .PromotionalCreationWizard _
+																	  .My _
+																	  .MySettings _
+																	  .Default _
+																	  .GamingConnectionString)
+		For Each dbRow As CouponOffer In CouponOffersHash.Values
+			tbl.CouponOffers.InsertOnSubmit(dbRow)
+			Try
+				tbl.SubmitChanges()
+			Catch ex As Exception
+				statusStr = "Promo not added to CouponOffers table!"
 			End Try
 		Next
 		Return statusStr

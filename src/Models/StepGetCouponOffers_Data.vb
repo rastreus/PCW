@@ -3,28 +3,13 @@
 #Region "New"
 	Public Sub New()
 		_dataCouponOffersHash = New Hashtable
-		_dataCouponOffersStruct = New CouponOffersStruct
+		_dataCouponOffer = New CouponOffer
 		_promoSkipTargetImport = False
 	End Sub
 #End Region
-#Region "Structures"
-	Structure CouponOffersStruct
-		Public _offerID As String
-		Public _couponNum As Integer
-		Public _validStart As DateTime
-		Public _validEnd As DateTime
-		Public _excludeDays As String
-		Public _excludeStart As System.Nullable(Of DateTime)
-		Public _excludeEnd As System.Nullable(Of DateTime)
-		Public _fullValidate As Boolean
-		Public _reprintable As Boolean
-		Public _scanToReceipt As Boolean
-		Public _note As String
-	End Structure
-#End Region
 #Region "Properties"
 	Private _dataCouponOffersHash As Hashtable
-	Private _dataCouponOffersStruct As CouponOffersStruct
+	Private _dataCouponOffer As CouponOffer
 	Private _promoSkipTargetImport As Boolean
 
 	Private Property CouponOffersHash As Hashtable
@@ -35,12 +20,12 @@
 			_dataCouponOffersHash = value
 		End Set
 	End Property
-	Public Property CouponOffers As CouponOffersStruct
+	Public Property CouponOffers As CouponOffer
 		Get
-			Return _dataCouponOffersStruct
+			Return _dataCouponOffer
 		End Get
-		Set(value As CouponOffersStruct)
-			_dataCouponOffersStruct = value
+		Set(value As CouponOffer)
+			_dataCouponOffer = value
 		End Set
 	End Property
 #Region "SkipTargetImport"
@@ -70,14 +55,18 @@
 		Return result
 	End Function
 #Region "Is_CouponOffer_Valid"
-	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffersStruct) As Boolean
+	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffer) As Boolean
 		Dim result As Boolean = True
-		If ValidEnd_Before_ValidStart(couponOffer._validEnd, _
-									  couponOffer._validStart) Or
-			ExcludeRange_Not_Within_ValidPeriod(couponOffer._validEnd, _
-												couponOffer._validStart, _
-												couponOffer._excludeEnd, _
-												couponOffer._excludeStart) Then
+		Dim _validStart As DateTime = couponOffer.ValidStart
+		Dim _validEnd As DateTime = couponOffer.ValidEnd
+		Dim _excludeStart As System.Nullable(Of DateTime) = couponOffer.ExcludeStart
+		Dim _excludeEnd As System.Nullable(Of DateTime) = couponOffer.ExcludeEnd
+		If ValidEnd_Before_ValidStart(_validEnd, _
+									  _validStart) Or
+			ExcludeRange_Not_Within_ValidPeriod(_validEnd, _
+												_validStart, _
+												_excludeEnd, _
+												_excludeStart) Then
 			result = False 'No, The Coupon Offer is not valid.
 		End If
 		Return result
@@ -118,12 +107,13 @@
 	End Function
 #End Region
 #Region "AddCouponOfferToHash"
-	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffersStruct)
+	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffer)
 		Try
-			CouponOffersHash.Add(couponOffer._couponNum.ToString, _
+			CouponOffersHash.Add(couponOffer.CouponNumber.ToString.Trim, _
 								 couponOffer)
 		Catch ex As Exception
-			'Possibly trying to add a Coupon which already has a key
+			'Handle Exception
+			'Possibly trying to add a Coupon which already has a key?
 		End Try
 	End Sub
 #End Region
