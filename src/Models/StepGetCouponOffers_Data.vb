@@ -111,6 +111,7 @@
 		Try
 			CouponOffersHash.Add(couponOffer.CouponNumber.ToString.Trim, _
 								 couponOffer)
+			PCW.Data.CouponOffersList.Add(couponOffer)
 		Catch ex As Exception
 			'Handle Exception
 			'Possibly trying to add a Coupon which already has a key?

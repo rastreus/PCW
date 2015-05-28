@@ -48,7 +48,7 @@ Public Class PCW_Data
 	Private _pcwUsesEligiblePlayers As Boolean = False
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
-	Private _pcwCouponOffersHash As Hashtable = New Hashtable()
+	Private _pcwCouponOffersList As List(Of CouponOffer) = New List(Of CouponOffer)
 
 	Public Property MarketingPromosDBRowsList As ArrayList
 		Get
@@ -122,12 +122,12 @@ Public Class PCW_Data
 			_pcwCouponTargetList = value
 		End Set
 	End Property
-	Public Property CouponOffersHash As Hashtable
+	Public Property CouponOffersList As List(Of CouponOffer)
 		Get
-			Return _pcwCouponOffersHash
+			Return _pcwCouponOffersList
 		End Get
-		Set(value As Hashtable)
-			_pcwCouponOffersHash = value
+		Set(value As List(Of CouponOffer))
+			_pcwCouponOffersList = value
 		End Set
 	End Property
 #End Region
@@ -359,8 +359,8 @@ Public Class PCW_Data
 		Return statusStr
 	End Function
 #End Region
-#Region "SubmitCouponOffersHashToDB"
-	Public Function SubmitCouponOffersHashToDB() As String
+#Region "SubmitCouponOffersListToDB"
+	Public Function SubmitCouponOffersListToDB() As String
 		Dim statusStr As String = New String("")
 		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
 																	  .PromotionalCreationWizard _
@@ -368,7 +368,7 @@ Public Class PCW_Data
 																	  .MySettings _
 																	  .Default _
 																	  .GamingConnectionString)
-		For Each dbRow As CouponOffer In CouponOffersHash.Values
+		For Each dbRow As CouponOffer In CouponOffersList
 			tbl.CouponOffers.InsertOnSubmit(dbRow)
 			Try
 				tbl.SubmitChanges()

@@ -30,7 +30,7 @@ Public Class StepJ
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		PCW.Data.SubmitPromosToList(local_promoCategory)
 		Dim promoStatusStr As String = PCW.Data.SubmitListToDB()
-		Dim couponOffersStatusStr As String = PCW.Data.SubmitCouponOffersHashToDB()
+		Dim couponOffersStatusStr As String = PCW.Data.SubmitCouponOffersListToDB()
 		Dim couponTargetStatusStr As String = PCW.Data.SubmitCouponTargtListToDB()
 		Dim eligiblePlayerStatusStr As String = PCW.Data.SubmitEligiblePlayersToDB()
 		statusStrArray(0) = promoStatusStr
