@@ -25,7 +25,7 @@ Public Class StepJ
 		statusStrArray(0) = Nothing
 		statusStrArray(1) = Nothing
 		statusStrArray(2) = Nothing
-		statusStrArray(4) = Nothing
+		statusStrArray(3) = Nothing
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		PCW.Data.SubmitPromosToList(local_promoCategory)
@@ -34,15 +34,9 @@ Public Class StepJ
 		Dim couponTargetStatusStr As String = PCW.Data.SubmitCouponTargtListToDB()
 		Dim eligiblePlayerStatusStr As String = PCW.Data.SubmitEligiblePlayersToDB()
 		statusStrArray(0) = promoStatusStr
-		If Not IsNothing(couponOffersStatusStr) Then
-			statusStrArray(1) = couponOffersStatusStr
-		End If
-		If Not IsNothing(couponTargetStatusStr) Then
-			statusStrArray(2) = couponTargetStatusStr
-		End If
-		If Not IsNothing(eligiblePlayerStatusStr) Then
-			statusStrArray(3) = eligiblePlayerStatusStr
-		End If
+		statusStrArray(1) = couponOffersStatusStr
+		statusStrArray(2) = couponTargetStatusStr
+		statusStrArray(3) = eligiblePlayerStatusStr
 		Return statusStrArray
 	End Function
 #End Region
