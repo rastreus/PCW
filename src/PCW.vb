@@ -19,6 +19,7 @@ Public Class PCW
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
 		Me.pcw_data = New PCW_Data
+		Me.pcw_couponID = New String("WTF?!")
 		Me.cancel.Visible = True
 		Me.back.Visible = True
 	End Sub
@@ -32,6 +33,18 @@ Public Class PCW
 		End Get
 		Set(value As PCW_Data)
 			Me.pcw_data = value
+		End Set
+	End Property
+#End Region
+#Region "PCW_CouponID"
+	Private pcw_couponID As String
+
+	Public Property CouponID() As String
+		Get
+			Return Me.pcw_couponID
+		End Get
+		Set(value As String)
+			Me.pcw_couponID = value
 		End Set
 	End Property
 #End Region
@@ -79,11 +92,6 @@ Public Class PCW
 		For Each stepName As String In Me.Data.PromoStepList
 			Me.GetIWizardStep(stepName).PromoData.PrepareData(Me.Data.PromoDataHash)
 		Next
-	End Sub
-#End Region
-#Region "PCW_SetCouponID"
-	Public Sub SetCouponID(ByRef couponID As String)
-		Me.pcw_data.CouponID = couponID
 	End Sub
 #End Region
 #Region "PCW_CancelEnabled"

@@ -31,7 +31,8 @@
 	End Property
 #End Region
 #Region "CSVtoCouponTargetsList"
-	Public Sub CSVtoCouponTargetsList(ByRef list As List(Of CouponTarget))
+	Public Sub CSVtoCouponTargetsList(ByRef list As List(Of CouponTarget), _
+									  ByRef couponID As String)
 		Dim parser As New FileIO.TextFieldParser(CouponTargetsCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -43,7 +44,7 @@
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				list.Add(ParseIntoList(currentRow))
+				list.Add(ParseIntoList(currentRow, couponID))
 			Catch ex As Exception
 				'Handle Exception
 			End Try
@@ -51,9 +52,10 @@
 	End Sub
 #End Region
 #Region "ParseIntoList"
-	Private Function ParseIntoList(ByRef currentRow As String()) As CouponTarget
+	Private Function ParseIntoList(ByRef currentRow As String(), _
+								   ByRef couponID As String) As CouponTarget
 		Dim couponTarget As CouponTarget = New CouponTarget()
-		couponTarget.OfferID = PCW.Data.CouponID
+		couponTarget.OfferID = couponID
 		couponTarget.Coupon = CouponTargetsCouponNum
 		couponTarget.Account = currentRow(1)
 		couponTarget.Zip = getZip(currentRow(7))

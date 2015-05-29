@@ -170,7 +170,8 @@ Public Class StepGetCouponTargets
 		Me.lblCouponTargetLists.Text = RefreshLabelList()
 		Me.UseWaitCursor = True
 		Await Task.Run(Sub()
-						   Me.Data.CSVtoCouponTargetsList(PCW.Data.CouponTargetList)
+						   Me.Data.CSVtoCouponTargetsList(PCW.Data.CouponTargetList, _
+														  PCW.CouponID)
 					   End Sub)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
