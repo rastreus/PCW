@@ -81,6 +81,11 @@ Public Class PCW
 		Next
 	End Sub
 #End Region
+#Region "PCW_SetCouponID"
+	Public Sub SetCouponID(ByRef couponID As String)
+		Me.pcw_data.CouponID = couponID
+	End Sub
+#End Region
 #Region "PCW_CancelEnabled"
 	'Disable the Cancel Button at the end
 	Public Sub CancelEnabled(state As Boolean)

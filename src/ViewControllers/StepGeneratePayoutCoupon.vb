@@ -43,7 +43,7 @@ Public Class StepGeneratePayoutCoupon
 	''' <remarks>Complexity meets delegation.</remarks>
 	Private Sub StepGeneratePayoutCoupon_SetData()
 		Me.stepGeneratePayoutCoupon_data.CouponID = getCouponID()
-		PCW.Data.CouponID = Me.Data.CouponID
+		PCW.SetCouponID(Me.stepGeneratePayoutCoupon_data.CouponID)
 		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
 		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
 		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
