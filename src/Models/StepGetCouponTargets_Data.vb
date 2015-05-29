@@ -53,7 +53,7 @@
 #Region "ParseIntoList"
 	Private Function ParseIntoList(ByRef currentRow As String()) As CouponTarget
 		Dim couponTarget As CouponTarget = New CouponTarget()
-		couponTarget.OfferID = currentRow(0)
+		couponTarget.OfferID = PCW.Data.CouponID
 		couponTarget.Coupon = CouponTargetsCouponNum
 		couponTarget.Account = currentRow(1)
 		couponTarget.Zip = getZip(currentRow(7))

@@ -51,6 +51,7 @@ Public Class PCW_Data
 	Private _pcwResetTo As String = New String("StepA")
 	Private _pcwCurrentPromoCategory As PromoCategory
 	Private _pcwUsesEligiblePlayers As Boolean = False
+	Private _pcwCouponID As String = New String("!")
 	Private _pcwMarketingPromosList As List(Of MarketingPromo) = New List(Of MarketingPromo)
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
@@ -107,6 +108,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As Boolean)
 			_pcwUsesEligiblePlayers = value
+		End Set
+	End Property
+	Public Property CouponID As String
+		Get
+			Return _pcwCouponID
+		End Get
+		Set(value As String)
+			_pcwCouponID = value
 		End Set
 	End Property
 	Public Property MarketingPromosList As List(Of MarketingPromo)
