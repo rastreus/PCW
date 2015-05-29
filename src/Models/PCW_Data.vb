@@ -39,24 +39,27 @@ Public Class PCW_Data
 	End Enum
 #End Region
 #Region "Properties"
-	Private _pcwMarketingPromosDBRowsList As ArrayList = New ArrayList()
+	Private _pcwDataContext As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
+																				  .PromotionalCreationWizard _
+																				  .My _
+																				  .MySettings _
+																				  .Default _
+																				  .GamingConnectionString)
 	Private _pcwPromoDataHash As Hashtable = New Hashtable()
 	Private _pcwPromoStepList As ArrayList = New ArrayList()
 	Private _pcwReset As Boolean = False
 	Private _pcwResetTo As String = New String("StepA")
 	Private _pcwCurrentPromoCategory As PromoCategory
 	Private _pcwUsesEligiblePlayers As Boolean = False
+	Private _pcwMarketingPromosList As List(Of MarketingPromo) = New List(Of MarketingPromo)
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
 	Private _pcwCouponOffersList As List(Of CouponOffer) = New List(Of CouponOffer)
 
-	Public Property MarketingPromosDBRowsList As ArrayList
+	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
-			Return _pcwMarketingPromosDBRowsList
+			Return _pcwDataContext
 		End Get
-		Set(value As ArrayList)
-			_pcwMarketingPromosDBRowsList = value
-		End Set
 	End Property
 	Public Property PromoDataHash As Hashtable
 		Get
@@ -104,6 +107,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As Boolean)
 			_pcwUsesEligiblePlayers = value
+		End Set
+	End Property
+	Public Property MarketingPromosList As List(Of MarketingPromo)
+		Get
+			Return _pcwMarketingPromosList
+		End Get
+		Set(value As List(Of MarketingPromo))
+			_pcwMarketingPromosList = value
 		End Set
 	End Property
 	Public Property EligiblePlayerList As List(Of MarketingPromoEligiblePlayer)
@@ -294,16 +305,16 @@ Public Class PCW_Data
 			Case PromoCategory.entryAndPayout
 				entryPromo = GetMarketingPromoEntry()
 				payoutPromo = GetMarketingPromoPayout()
-				Me.MarketingPromosDBRowsList.Add(entryPromo)
-				Me.MarketingPromosDBRowsList.Add(payoutPromo)
+				Me.MarketingPromosList.Add(entryPromo)
+				Me.MarketingPromosList.Add(payoutPromo)
 			Case PromoCategory.entryOnly
 				entryPromo = GetMarketingPromoEntry()
 				payoutPromo = Nothing
-				Me.MarketingPromosDBRowsList.Add(entryPromo)
+				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.payoutOnly
 				entryPromo = Nothing
 				payoutPromo = GetMarketingPromoPayout()
-				Me.MarketingPromosDBRowsList.Add(payoutPromo)
+				Me.MarketingPromosList.Add(payoutPromo)
 			Case PromoCategory.multiPart
 				'If out what all needs to be done
 			Case PromoCategory.acquisition
@@ -320,7 +331,7 @@ Public Class PCW_Data
 																	  .MySettings _
 																	  .Default _
 																	  .GamingConnectionString)
-		For Each dbRow As MarketingPromo In MarketingPromosDBRowsList
+		For Each dbRow As MarketingPromo In MarketingPromosList
 			tbl.MarketingPromos.InsertOnSubmit(dbRow)
 			Try
 				tbl.SubmitChanges()
@@ -396,14 +407,12 @@ Public Class PCW_Data
 																	  .MySettings _
 																	  .Default _
 																	  .GamingConnectionString)
-		For Each dbRow As CouponTarget In CouponTargetList
-			tbl.CouponTargets.InsertOnSubmit(dbRow)
-			Try
-				tbl.SubmitChanges()
-			Catch ex As Exception
-				statusStr = "Promo not added to CouponTargets table!"
-			End Try
-		Next
+		tbl.CouponTargets.InsertAllOnSubmit(CouponTargetList)
+		Try
+			tbl.SubmitChanges()
+		Catch ex As Exception
+			statusStr = "Promo not added to CouponTargets table!"
+		End Try
 		Return statusStr
 	End Function
 #End Region
