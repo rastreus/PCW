@@ -10,35 +10,8 @@ Public Class StepJ
 #Region "StepJ_Validation"
 	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
-		Dim statusStrArray(4) As String
-		statusStrArray = SubmitToDB()
-		For Each statusStr As String In statusStrArray
-			If Not IsNothing(statusStr) And
-				Not (statusStr = "") Then
-				GUI_Util.msgBox(statusStr)
-			End If
-		Next
+		PCW.Data.SubmitListsToDB()
 	End Sub
-
-	Private Function SubmitToDB() As String()
-		Dim statusStrArray(4) As String
-		statusStrArray(0) = Nothing
-		statusStrArray(1) = Nothing
-		statusStrArray(2) = Nothing
-		statusStrArray(3) = Nothing
-		Dim local_stepD As StepD = PCW.GetStep("StepD")
-		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
-		PCW.Data.SubmitPromosToList(local_promoCategory)
-		Dim promoStatusStr As String = PCW.Data.SubmitListToDB()
-		Dim couponOffersStatusStr As String = PCW.Data.SubmitCouponOffersListToDB()
-		Dim couponTargetStatusStr As String = PCW.Data.SubmitCouponTargtListToDB()
-		Dim eligiblePlayerStatusStr As String = PCW.Data.SubmitEligiblePlayersToDB()
-		statusStrArray(0) = promoStatusStr
-		statusStrArray(1) = couponOffersStatusStr
-		statusStrArray(2) = couponTargetStatusStr
-		statusStrArray(3) = eligiblePlayerStatusStr
-		Return statusStrArray
-	End Function
 #End Region
 #Region "StepJ_ShowStep"
 	'A lot of this progress bar step was taken from the TSWizards example.

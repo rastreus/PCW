@@ -163,19 +163,16 @@ Public Class PCW_Data
 		newPromo.CountCurrentDay = PromoDataHash.Item(Key.CountCurrentDay)
 		newPromo.OverrideTime = PromoDataHash.Item(Key.OverrideTime)
 		newPromo.CutoffTime = PromoDataHash.Item(Key.CutoffTime)
-		newPromo.PrintTickets = GetPrintTickets()
+		newPromo.PrintTickets = True 'GetPrintTickets()
 		newPromo.Comments = GetPromoComment()
 		Return newPromo
 	End Function
-#End Region
-#Region "GetPrintTickets"
+
 	Private Function GetPrintTickets() As Boolean
-		'PromoDataHash.Item(Key.PrintTickets)
 		'PrintTickets cannot be NULL
-		Return True
+		Return PromoDataHash.Item(Key.PrintTickets)
 	End Function
-#End Region
-#Region "GetPromoComment"
+
 	''' <summary>
 	''' Returns the comment with PCW stamping.
 	''' </summary>
@@ -298,10 +295,10 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "SubmitPromosToList"
-	Public Sub SubmitPromosToList(ByVal local_promoCategory As PromoCategory)
+	Private Sub SubmitPromosToList()
 		Dim entryPromo As MarketingPromo
 		Dim payoutPromo As MarketingPromo
-		Select Case local_promoCategory
+		Select Case CurrentPromoCategory
 			Case PromoCategory.entryAndPayout
 				entryPromo = GetMarketingPromoEntry()
 				payoutPromo = GetMarketingPromoPayout()
@@ -322,98 +319,36 @@ Public Class PCW_Data
 		End Select
 	End Sub
 #End Region
-#Region "SubmitListToDB"
-	Public Function SubmitListToDB() As String
-		Dim statusStr As String = New String("")
-		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																	  .PromotionalCreationWizard _
-																	  .My _
-																	  .MySettings _
-																	  .Default _
-																	  .GamingConnectionString)
-		For Each dbRow As MarketingPromo In MarketingPromosList
-			tbl.MarketingPromos.InsertOnSubmit(dbRow)
-			Try
-				tbl.SubmitChanges()
-			Catch ex As Exception
-				statusStr = "Promo not added to MarketingPromos table!"
-			End Try
-		Next
-		Return statusStr
-	End Function
+#Region "SubmitListsToDB"
+	Public Sub SubmitListsToDB()
+		SubmitPromosToList()
+		DataContext.MarketingPromos.InsertAllOnSubmit(MarketingPromosList)
+		If SubmitEligiblePlayersToDB() Then
+			DataContext.MarketingPromoEligiblePlayers.InsertAllOnSubmit(EligiblePlayerList)
+		End If
+		If SubmitCouponListsToDB() Then
+			DataContext.CouponOffers.InsertAllOnSubmit(CouponOffersList)
+			DataContext.CouponTargets.InsertAllOnSubmit(CouponTargetList)
+		End If
+		DataContext.SubmitChanges()
+	End Sub
 #End Region
 #Region "SubmitEligiblePlayersToDB"
-	Public Function SubmitEligiblePlayersToDB() As String
-		Dim statusStr As String = Nothing
+	Private Function SubmitEligiblePlayersToDB() As Boolean
+		Dim result As Boolean = False
 		If UsesEligiblePlayers Then
-			statusStr = ProcessEligiblePlayersToDB()
+			result = True
 		End If
-		Return statusStr
-	End Function
-	
-	Private Function ProcessEligiblePlayersToDB() As String
-		Dim statusStr As String = New String("")
-		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																	  .PromotionalCreationWizard _
-																	  .My _
-																	  .MySettings _
-																	  .Default _
-																	  .GamingConnectionString)
-		For Each dbRow As MarketingPromoEligiblePlayer In EligiblePlayerList
-			tbl.MarketingPromoEligiblePlayers.InsertOnSubmit(dbRow)
-			Try
-				tbl.SubmitChanges()
-			Catch ex As Exception
-				statusStr = "Promo not added to EligiblePlayers table!"
-			End Try
-		Next
-		Return statusStr
+		Return result
 	End Function
 #End Region
-#Region "SubmitCouponOffersListToDB"
-	Public Function SubmitCouponOffersListToDB() As String
-		Dim statusStr As String = New String("")
-		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																	  .PromotionalCreationWizard _
-																	  .My _
-																	  .MySettings _
-																	  .Default _
-																	  .GamingConnectionString)
-		For Each dbRow As CouponOffer In CouponOffersList
-			tbl.CouponOffers.InsertOnSubmit(dbRow)
-			Try
-				tbl.SubmitChanges()
-			Catch ex As Exception
-				statusStr = "Promo not added to CouponOffers table!"
-			End Try
-		Next
-		Return statusStr
-	End Function
-#End Region
-#Region "SubmitCouponTargetListToDB"
-	Public Function SubmitCouponTargtListToDB() As String
-		Dim statusStr As String = Nothing
+#Region "SubmitCouponListsToDB"
+	Private Function SubmitCouponListsToDB() As Boolean
+		Dim result As Boolean = False
 		If CurrentPromoCategory = Not PromoCategory.entryOnly Then
-			statusStr = ProcessCouponTargetListToDB()
+			result = True
 		End If
-		Return statusStr
-	End Function
-
-	Private Function ProcessCouponTargetListToDB() As String
-		Dim statusStr As String = New String("")
-		Dim tbl As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																	  .PromotionalCreationWizard _
-																	  .My _
-																	  .MySettings _
-																	  .Default _
-																	  .GamingConnectionString)
-		tbl.CouponTargets.InsertAllOnSubmit(CouponTargetList)
-		Try
-			tbl.SubmitChanges()
-		Catch ex As Exception
-			statusStr = "Promo not added to CouponTargets table!"
-		End Try
-		Return statusStr
+		Return result
 	End Function
 #End Region
 End Class
