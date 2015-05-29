@@ -43,7 +43,7 @@
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				ParseIntoList(currentRow, list)
+				list.Add(ParseIntoList(currentRow))
 			Catch ex As Exception
 				'Handle Exception
 			End Try
@@ -51,8 +51,7 @@
 	End Sub
 #End Region
 #Region "ParseIntoList"
-	Private Sub ParseIntoList(ByRef currentRow As String(), _
-							  ByRef list As List(Of CouponTarget))
+	Private Function ParseIntoList(ByRef currentRow As String()) As CouponTarget
 		Dim couponTarget As CouponTarget = New CouponTarget()
 		couponTarget.OfferID = currentRow(0)
 		couponTarget.Coupon = CouponTargetsCouponNum
@@ -66,8 +65,8 @@
 		couponTarget.TotalCoupon = removeDollarReturnDecimal(currentRow(17))
 		couponTarget.TestCoupon = 0
 		couponTarget.CreateDate = Date.Today.Date
-		list.Add(couponTarget)
-	End Sub
+		Return couponTarget
+	End Function
 #End Region
 #Region "CSVtoDataTable_Util"
 	Private Function getZip(ByVal input As String) As UInt64
