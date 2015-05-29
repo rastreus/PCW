@@ -13,11 +13,11 @@
 			_dataCouponTargetsCSVFilePath = value
 		End Set
 	End Property
-	Public Property CouponTargetsCouponNum As Integer
+	Public Property CouponTargetsCouponNum As Byte
 		Get
 			Return _dataCouponTargetsCouponNum
 		End Get
-		Set(value As Integer)
+		Set(value As Byte)
 			_dataCouponTargetsCouponNum = value
 		End Set
 	End Property
@@ -58,17 +58,16 @@
 		couponTarget.Account = currentRow(1)
 		couponTarget.Zip = getZip(currentRow(7))
 		couponTarget.AvgTheo = removeDollarReturnDecimal(currentRow(12))
-		couponTarget.Latency = getInt(currentRow(11))
+		couponTarget.Latency = getTruncatedDecimal(currentRow(11))
 		couponTarget.BaseCoupon = removeDollarReturnDecimal(currentRow(13))
 		couponTarget.ZoneAddon = removeDollarReturnDecimal(currentRow(16))
 		couponTarget.OtherAddon = Nothing
 		couponTarget.TotalCoupon = removeDollarReturnDecimal(currentRow(17))
-		couponTarget.TestCoupon = 0
+		couponTarget.TestCoupon = False
 		couponTarget.CreateDate = Date.Today.Date
 		Return couponTarget
 	End Function
-#End Region
-#Region "CSVtoDataTable_Util"
+
 	Private Function getZip(ByVal input As String) As UInt64
 		Dim zip As UInt64
 		If input.Length > 5 Then
@@ -78,8 +77,8 @@
 		End If
 		Return zip
 	End Function
-	Private Function getInt(ByVal input As Decimal) As Integer
-		Dim truncation As Integer = Math.Truncate(input)
+	Private Function getTruncatedDecimal(ByVal input As Decimal) As Decimal
+		Dim truncation As Decimal = Math.Truncate(input)
 		Return truncation
 	End Function
 	Private Function removeDollarReturnDecimal(ByVal input As String) As Decimal
