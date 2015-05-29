@@ -378,7 +378,10 @@ Public Class PCW_Data
 #Region "SubmitCouponListsToDB"
 	Private Function SubmitCouponListsToDB() As Boolean
 		Dim result As Boolean = False
-		If CurrentPromoCategory = Not PromoCategory.entryOnly Then
+		If (CurrentPromoCategory = PromoCategory.entryAndPayout) Or _
+		   (CurrentPromoCategory = PromoCategory.payoutOnly) Or _
+		   (CurrentPromoCategory = PromoCategory.multiPart) Or _
+		   (CurrentPromoCategory = PromoCategory.acquisition) Then
 			result = True
 		End If
 		Return result

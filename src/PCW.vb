@@ -19,7 +19,6 @@ Public Class PCW
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
 		Me.pcw_data = New PCW_Data
-		Me.pcw_couponID = New String("WTF?!")
 		Me.cancel.Visible = True
 		Me.back.Visible = True
 	End Sub
@@ -33,18 +32,6 @@ Public Class PCW
 		End Get
 		Set(value As PCW_Data)
 			Me.pcw_data = value
-		End Set
-	End Property
-#End Region
-#Region "PCW_CouponID"
-	Private pcw_couponID As String
-
-	Public Property CouponID() As String
-		Get
-			Return Me.pcw_couponID
-		End Get
-		Set(value As String)
-			Me.pcw_couponID = value
 		End Set
 	End Property
 #End Region

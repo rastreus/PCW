@@ -62,8 +62,15 @@ Public Class StepGetCouponTargets
 	Private Sub StepGetCouponTarget_ShowStep(sender As Object, _
 												  e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		SetCouponID()
 		AddImportedOffers()
 		PCW.NextEnabled = False
+	End Sub
+
+	Private Sub SetCouponID()
+		Dim local_genpayoff As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
+		Dim local_couponID As String = local_genpayoff.Data.CouponID
+		Me.stepGetCouponTargets_data.CouponID = local_couponID
 	End Sub
 
 	Private Sub AddImportedOffers()
@@ -170,8 +177,7 @@ Public Class StepGetCouponTargets
 		Me.lblCouponTargetLists.Text = RefreshLabelList()
 		Me.UseWaitCursor = True
 		Await Task.Run(Sub()
-						   Me.Data.CSVtoCouponTargetsList(PCW.Data.CouponTargetList, _
-														  PCW.CouponID)
+						   Me.Data.CSVtoCouponTargetsList(PCW.Data.CouponTargetList)
 					   End Sub)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False

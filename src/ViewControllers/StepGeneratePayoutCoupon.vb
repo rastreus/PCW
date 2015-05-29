@@ -189,7 +189,6 @@ Public Class StepGeneratePayoutCoupon
 		Else
 			'Step has been set if no error.
 			Me.stepGeneratePayoutCoupon_data.StepNotSet = False
-			PCW.CouponID = Me.Data.CouponID
 		End If
 	End Sub
 #End Region
