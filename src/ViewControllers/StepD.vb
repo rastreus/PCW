@@ -18,7 +18,8 @@ Public Class StepD
 	End Sub
 #End Region
 #Region "StepD_PromoData"
-	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Public ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepD_data
 		End Get
@@ -85,10 +86,11 @@ Public Class StepD
 		Dim local_promoID As String = New String("!")
 		PCW.NextEnabled = False
 		Me.UseWaitCursor = True
-		Me.Data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
+		Me.stepD_data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
 		local_StepB = PCW.GetStep("StepB")
 		local_promoID = local_StepB.Data.ID
-		Me.Data.CSVtoEligiblePlayersList(local_promoID, PCW.Data.EligiblePlayerList)
+		Me.stepD_data.CSVtoEligiblePlayersList(local_promoID, _
+											   PCW.Data.EligiblePlayerList)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
 		GUI_Util.NextEnabled()
@@ -106,7 +108,7 @@ Public Class StepD
 	Private successBool As Boolean = False
 
 	Private Sub StepD_Load(sender As Object, e As EventArgs) _
-	Handles MyBase.Load
+		Handles MyBase.Load
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 #End Region
@@ -264,7 +266,7 @@ Public Class StepD
 #End Region
 #Region "StepD_rbPointCutoffLimitYES_CheckedChanged"
 	Private Sub rbPointCutoffLimitYES_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles rbPointCutoffLimitYES.CheckedChanged
+		Handles rbPointCutoffLimitYES.CheckedChanged
 		If Me.rbPointCutoffLimitYES.Checked Then
 			Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
 			Me.txtPointCutoffLimit.Text = ""
@@ -285,7 +287,7 @@ Public Class StepD
 	''' Otherwise, put that thing back the way it was.
 	''' </remarks>
 	Private Sub rbMultiPartEntryPayout_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles rbMultiPartEntryPayout.CheckedChanged
+		Handles rbMultiPartEntryPayout.CheckedChanged
 		If Me.rbMultiPartEntryPayout.Checked Then
 			Me.txtNumOfDaysTiers.Text = ""
 			Me.txtNumOfDaysTiers.Enabled = True
