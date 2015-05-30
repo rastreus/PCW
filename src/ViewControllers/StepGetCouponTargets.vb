@@ -168,17 +168,16 @@ Public Class StepGetCouponTargets
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_btnSubmit_Click"
-	Private Async Sub btnSubmit_Click(sender As Object, e As EventArgs) _
+	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
 		Handles btnSubmit.Click
 		Me.btnSubmit.Enabled = False
-		Me.Data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text
-		Me.Data.CouponTargetsCouponNum = GetCouponNumber()
+		Me.stepGetCouponTargets_data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text
+		Me.stepGetCouponTargets_data.CouponTargetsCouponNum = GetCouponNumber()
 		Me.targetsList.Add(GetCouponTargetListsLabel())
 		Me.lblCouponTargetLists.Text = RefreshLabelList()
 		Me.UseWaitCursor = True
-		Await Task.Run(Sub()
-						   Me.Data.CSVtoCouponTargetsList(PCW.Data.CouponTargetList)
-					   End Sub)
+		Me.stepGetCouponTargets_data.CSVtoCouponTargetsList()
+		GUI_Util.msgBox(PCW.Data.CouponTargetList.Count.ToString)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
 		GUI_Util.NextEnabled()
