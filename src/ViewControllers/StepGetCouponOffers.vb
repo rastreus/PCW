@@ -267,7 +267,8 @@ Public Class StepGetCouponOffers
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
 		Dim couponOffer As CouponOffer = New CouponOffer()
 		couponOffer = StepGetCouponOffers_GetData()
-		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer)
+		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer, _
+																		 Me.rbExcludeDaysYES.Checked)
 		If couponOfferIsValid Then
 			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
 			Me.StepGetCouponOffers_ResetControls()

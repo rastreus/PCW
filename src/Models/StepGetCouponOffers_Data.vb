@@ -55,18 +55,20 @@
 		Return result
 	End Function
 #Region "Is_CouponOffer_Valid"
-	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffer) As Boolean
+	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffer, _
+										 ByRef willExcludeDays As Boolean) As Boolean
 		Dim result As Boolean = True
 		Dim _validStart As DateTime = couponOffer.ValidStart
 		Dim _validEnd As DateTime = couponOffer.ValidEnd
 		Dim _excludeStart As System.Nullable(Of DateTime) = couponOffer.ExcludeStart
 		Dim _excludeEnd As System.Nullable(Of DateTime) = couponOffer.ExcludeEnd
 		If ValidEnd_Before_ValidStart(_validEnd, _
-									  _validStart) Or
+									  _validStart) Or _
+			(willExcludeDays And _
 			ExcludeRange_Not_Within_ValidPeriod(_validEnd, _
 												_validStart, _
 												_excludeEnd, _
-												_excludeStart) Then
+												_excludeStart)) Then
 			result = False 'No, The Coupon Offer is not valid.
 		End If
 		Return result
