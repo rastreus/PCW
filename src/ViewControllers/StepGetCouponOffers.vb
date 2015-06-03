@@ -69,16 +69,18 @@ Public Class StepGetCouponOffers
 	End Function
 
 	Private Function getExcludeStart() As Date?
-		Dim result As System.Nullable(Of DateTime) = If(Me.rbExcludeDaysYES.Checked, _
-														Me.dtpExcludeStart.Value.Date, _
-														Nothing)
+		Dim result As System.Nullable(Of Date) = Nothing
+		If Me.rbExcludeDaysYES.Checked Then
+			result = Me.dtpExcludeStart.Value.Date
+		End If
 		Return result
 	End Function
 
 	Private Function getExcludeEnd() As Date?
-		Dim result As System.Nullable(Of DateTime) = If(Me.rbExcludeDaysYES.Checked, _
-														Me.dtpExcludeEnd.Value.Date, _
-														Nothing)
+		Dim result As System.Nullable(Of Date) = Nothing
+		If Me.rbExcludeDaysYES.Checked Then
+			result = Me.dtpExcludeEnd.Value.Date
+		End If
 		Return result
 	End Function
 

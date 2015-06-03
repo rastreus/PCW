@@ -1,4 +1,5 @@
 ﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+Imports System.Data.SqlClient
 
 Public Class PCW_Data
 	Implements IDisposable
@@ -363,7 +364,11 @@ Public Class PCW_Data
 			DataContext.CouponOffers.InsertAllOnSubmit(CouponOffersList)
 			DataContext.CouponTargets.InsertAllOnSubmit(CouponTargetList)
 		End If
-		DataContext.SubmitChanges()
+		Try
+			DataContext.SubmitChanges()
+		Catch ex As SqlException
+			GUI_Util.msgBox(ex.Message)
+		End Try
 	End Sub
 #End Region
 #Region "SubmitEligiblePlayersToDB"
