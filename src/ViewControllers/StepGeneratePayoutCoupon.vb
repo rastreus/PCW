@@ -143,6 +143,16 @@ Public Class StepGeneratePayoutCoupon
 
 		StepGeneratePayoutCoupon_SetData()
 
+		If Me.Data.CouponID_Invalid() Then
+			cancelContinuingToNextStep = True
+			GUI_Util.errPnl(Me.pnlCouponID)
+			errString = "ERROR: CouponID is greater than 12 characters!"
+			errStrArray.Add(errString)
+			Me.ActiveControl = Me.pnlCouponID
+		Else
+			GUI_Util.regPnl(Me.pnlCouponID)
+		End If
+
 		If Me.Data.CouponAmtPerPatron_Invalid() Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtOneCoupon)

@@ -97,6 +97,13 @@ Public Class StepGeneratePayoutCoupon_Data
 	End Function
 #End Region
 #Region "Validity Checks"
+	Public Function CouponID_Invalid() As Boolean
+		Dim result As Boolean = False
+		If (CouponID.Length > 12) Then
+			result = True
+		End If
+		Return result
+	End Function
 	Public Function CouponAmtPerPatron_Invalid() As Boolean
 		Return IsNothing(CouponAmtPerPatron)
 	End Function
