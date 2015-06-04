@@ -221,6 +221,22 @@ Public Class PCW_Data
 				  Environment.UserName.ToString
 		Return comment
 	End Function
+
+	''' <summary>
+	''' Checks the length of the PromoID and processes accordingly.
+	''' </summary>
+	''' <param name="letterType">"E" or "P"</param>
+	''' <returns>The PromoID of correct length with appended letterType.</returns>
+	''' <remarks>DRYs up GetEntryPromoID and GetPayoutPromoID.</remarks>
+	Private Function ProcessPromoID(ByVal letterType As String) As String
+		Dim result As String = New String("!")
+		If PromoDataHash.Item(Key.ID).ToString.Length <= 15 Then
+			result = PromoDataHash.Item(Key.ID) & letterType
+		ElseIf PromoDataHash.Item(Key.ID).ToString.Length >= 16 Then
+			result = PromoDataHash.Item(Key.ID).ToString.Substring(0, 14) & letterType
+		End If
+		Return result
+	End Function
 #End Region
 #Region "GetMarketingPromoEntry"
 	''' <summary>
@@ -241,7 +257,7 @@ Public Class PCW_Data
 
 	Private Function GetEntryPromoID() As String
 		Dim result As String = New String("!")
-		result = PromoDataHash.Item(Key.ID) & "E"
+		result = ProcessPromoID("E")
 		Return result
 	End Function
 
@@ -268,7 +284,7 @@ Public Class PCW_Data
 
 	Private Function GetPayoutPromoID() As String
 		Dim result As String = New String("!")
-		result = PromoDataHash.Item(Key.ID) & "P"
+		result = ProcessPromoID("P")
 		Return result
 	End Function
 

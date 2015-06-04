@@ -100,9 +100,12 @@ Public Class StepF_Data
 		Return (Prize = "")
 	End Function
 	Public Function BadPromoType() As Boolean
-		Dim result As Boolean = If(PromoType = "" Or PromoType = "EX: 31B",
-								   True,
-								   False)
+		Dim result As Boolean = False
+		If (PromoType = "") Or _
+			(PromoType = "EX: 31B") Or _
+			(PromoType.Length > 3) Then
+			result = True
+		End If
 		Return result
 	End Function
 #End Region
