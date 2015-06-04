@@ -89,13 +89,22 @@ Public Class StepH
 
 		StepH_SetData()
 
-		If Me.rbYES.Checked And
-			Me.Data.CommentIsBlank Then
-			cancelContinuingToNextStep = True
-			GUI_Util.errPnl(Me.pnlCommentBox)
-			errString = "BLANK: Insert a Comment."
-		Else
-			GUI_Util.regPnl(Me.pnlCommentBox)
+		If Me.rbYES.Checked Then
+			If Me.Data.CommentIsBlank Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlCommentBox)
+				errString = "BLANK: Insert a Comment."
+			Else
+				GUI_Util.regPnl(Me.pnlCommentBox)
+			End If
+
+			If Me.Data.CommentIsTooLong Then
+				cancelContinuingToNextStep = True
+				GUI_Util.errPnl(Me.pnlCommentBox)
+				errString = "ERROR: Comment is too long."
+			Else
+				GUI_Util.regPnl(Me.pnlCommentBox)
+			End If
 		End If
 
 		e.Cancel = cancelContinuingToNextStep

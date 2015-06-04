@@ -50,7 +50,18 @@ Public Class StepH_Data
 #End Region
 #Region "Validity Checks"
 	Public Function CommentIsBlank() As Boolean
-		Return (Comment = "")
+		Dim result As Boolean = False
+		If (Comment = "") Then
+			result = True
+		End If
+		Return result
+	End Function
+	Public Function CommentIsTooLong() As Boolean
+		Dim result As Boolean = False
+		If (Comment.Length > 200) Then 'Room for appended content
+			result = True
+		End If
+		Return result
 	End Function
 #End Region
 End Class
