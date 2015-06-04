@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Handles payout category and redirects to the next Step.
@@ -105,7 +106,8 @@ Public Class StepF
 	End Sub
 #End Region
 #Region "StepF_Validation"
-	Private Sub StepF_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepF_Validation(sender As Object, _
+								 e As CancelEventArgs) _
 	Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
@@ -169,11 +171,12 @@ Public Class StepF
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>We MUST have the PromoType, disable "Next>" until we get it.</remarks>
-	Private Sub StepF_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepF_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
-		If Me.Data.StepNotSet Then
-			PCW.NextEnabled = False
-		End If
+		'If Me.Data.StepNotSet Then
+		'	PCW.NextEnabled = False
+		'End If
 	End Sub
 #End Region
 #Region "StepF_rbCashValue_CheckedChanged"
