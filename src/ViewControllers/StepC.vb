@@ -18,7 +18,8 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_PromoData"
-	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Public ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepC_data
 		End Get
@@ -124,18 +125,20 @@ Public Class StepC
 	Private startDayInt As Integer
 	Private endDayInt As Integer
 	Private longDateFormat As String
+	Private firstTimeOccursDateBool As Boolean
 
 	Private Sub StepC_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
-		primaryDayStr = New String("ASSIGNED A VALUE")
-		primaryDayBool = False
-		recurringFlagBool = Nothing
-		occursDateBool = False
-		startDayBool = False
-		endDayBool = False
-		startDayInt = -7
-		endDayInt = -1
-		longDateFormat = New String("dddd, MMMM dd, yyyy")
+		Me.primaryDayStr = New String("ASSIGNED A VALUE")
+		Me.primaryDayBool = False
+		Me.recurringFlagBool = Nothing
+		Me.occursDateBool = False
+		Me.startDayBool = False
+		Me.endDayBool = False
+		Me.startDayInt = -7
+		Me.endDayInt = -1
+		Me.longDateFormat = New String("dddd, MMMM dd, yyyy")
+		Me.firstTimeOccursDateBool = False
 	End Sub
 #End Region
 #Region "StepC_ResetStep"
@@ -404,6 +407,17 @@ Public Class StepC
 	Private Sub setStartEndQualifyingLabels(ByVal local_startDay As String, ByVal local_endDay As String)
 		Me.lblQualifyingStart.Text = local_startDay
 		Me.lblQualifyingEnd.Text = local_endDay
+	End Sub
+#End Region
+#Region "StepC_dtpOccursDate_DropDown"
+	Private Sub dtpOccursDate_DropDown(sender As Object, e As EventArgs) _
+		Handles dtpOccursDate.DropDown
+		If Not Me.firstTimeOccursDateBool Then
+			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
+			Me.primaryDayStr = "ASSIGNED A VALUE"
+		Else
+			Me.firstTimeOccursDateBool = True
+		End If
 	End Sub
 #End Region
 #Region "StepC_dtpOccursDate_CloseUp"
