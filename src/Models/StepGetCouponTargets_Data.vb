@@ -82,7 +82,7 @@
 
 	Private Function getZip(ByVal input As String) As UInt64
 		Dim zip As UInt64
-		If input.Length > 5 Then
+		If input.Length > 10 Then
 			zip = UInt64.Parse(input.Substring(0, 5))
 		Else
 			zip = UInt64.Parse(input)
