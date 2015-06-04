@@ -3,12 +3,14 @@ Imports System
 Imports System.Threading
 Imports System.Collections
 Imports System.Collections.Specialized
+Imports System.ComponentModel
 
 Public Class StepJ
 	Inherits TSWizards.BaseInteriorStep
 
 #Region "StepJ_Validation"
-	Private Sub StepJ_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepJ_Validation(sender As Object, _
+								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		PCW.Data.SubmitListsToDB()
 	End Sub
@@ -16,13 +18,16 @@ Public Class StepJ
 #Region "StepJ_ShowStep"
 	'A lot of this progress bar step was taken from the TSWizards example.
 	'Please refer to it if you have questions about how it all works.
-	Private Sub StepJ_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepJ_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
-		'Stop the user from going back once they're at the end because it could cause numerous problems.
-		'At this point, it's too late for the user to go back and change anything; there no longer
-		'needs functioning navigation buttons while the user waits for the progress bar.
-		'CancelEnabled is different from the other two because it is a Public Sub of PCW
-		'while the other two are properties of a TSWizard.BaseWizard.
+		'Stop the user from going back once they're at the end because it
+		'could cause numerous problems. At this point, it's too late for
+		'the user to go back and change anything; there no longer
+		'needs functioning navigation buttons while the user waits for the
+		'progress bar. CancelEnabled is different from the other two because
+		'it is a Public Sub of PCW while the other two are properties of a
+		'TSWizard.BaseWizard.
 		PCW.ControlBox = False
 		PCW.CancelEnabled(False)
 		PCW.BackEnabled = False
@@ -30,7 +35,8 @@ Public Class StepJ
 		'The next two lines actually start the progress bar.
 		'Nothing would happen on this Step without these two lines.
 		Dim mi As MethodInvoker = New MethodInvoker(AddressOf Me.DoWork)
-		mi.BeginInvoke(New AsyncCallback(AddressOf Me.DonePreparing), Nothing)
+		mi.BeginInvoke(New AsyncCallback(AddressOf Me.DonePreparing), _
+					   Nothing)
 	End Sub
 
 	Private Sub DoWork()
@@ -65,7 +71,8 @@ Public Class StepJ
 
 	Private Sub BeginPreparing(items As Integer)
 		If InvokeRequired Then
-			Me.Invoke(New IntDelegate(AddressOf Me.BeginPreparing), New Object() {items})
+			Me.Invoke(New IntDelegate(AddressOf Me.BeginPreparing), _
+					  New Object() {items})
 			Return
 		End If
 
@@ -75,7 +82,8 @@ Public Class StepJ
 
 	Private Sub Preparing(item As String)
 		If InvokeRequired Then
-			Me.Invoke(New StringDelegate(AddressOf Me.Preparing), New Object() {item})
+			Me.Invoke(New StringDelegate(AddressOf Me.Preparing), _
+					  New Object() {item})
 			Return
 		End If
 
@@ -84,7 +92,8 @@ Public Class StepJ
 
 	Private Sub Prepared()
 		If InvokeRequired Then
-			Me.Invoke(New MethodInvoker(AddressOf Me.Prepared), New Object() {})
+			Me.Invoke(New MethodInvoker(AddressOf Me.Prepared), _
+					  New Object() {})
 			Return
 		End If
 
@@ -93,7 +102,8 @@ Public Class StepJ
 
 	Private Sub DonePreparing(result As IAsyncResult)
 		If InvokeRequired Then
-			Me.Invoke(New AsyncCallback(AddressOf Me.DonePreparing), New Object() {result})
+			Me.Invoke(New AsyncCallback(AddressOf Me.DonePreparing), _
+					  New Object() {result})
 			Return
 		End If
 		GUI_Util.NextEnabled()
