@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Third Step; handles all the date information
@@ -127,7 +128,8 @@ Public Class StepC
 	Private longDateFormat As String
 	Private firstTimeOccursDateBool As Boolean
 
-	Private Sub StepC_Load(sender As Object, e As EventArgs) _
+	Private Sub StepC_Load(sender As Object, _
+						   e As EventArgs) _
 		Handles MyBase.Load
 		Me.primaryDayStr = New String("ASSIGNED A VALUE")
 		Me.primaryDayBool = False
@@ -148,7 +150,8 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>A lot of controls to get correct.</remarks>
-	Private Sub StepC_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepC_ResetStep(sender As Object, _
+								e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepC_data = New StepC_Data
 		StepC_ResetControls()
@@ -159,6 +162,7 @@ Public Class StepC
 	''' </summary>
 	''' <remarks>Just in case user changes between Recurring/Occuring.</remarks>
 	Private Sub StepC_ResetControls()
+		Me.primaryDayStr = "ASSIGNED A VALUE"
 		Me.primaryDayBool = False
 		Me.dtpOccursDate.Value = Date.Today
 		Me.dtpQualifyingStart.Value = Date.Today
@@ -170,6 +174,10 @@ Public Class StepC
 		Me.recurringFlagBool = Nothing
 		Me.startDayBool = False
 		Me.endDayBool = False
+		Me.startDayInt = -7
+		Me.endDayInt = -1
+		Me.longDateFormat = New String("dddd, MMMM dd, yyyy")
+		Me.firstTimeOccursDateBool = False
 		Me.MonthCal.SelectionStart = Date.Today
 		Me.MonthCal.SelectionEnd = Date.Today
 		Me.MonthCal.TodayDate = Date.Today
@@ -206,7 +214,8 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepC_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepC_Validation(sender As Object, _
+								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
@@ -215,7 +224,8 @@ Public Class StepC
 		StepC_SetData()
 
 		If Recurring_Promo() Then
-			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, Me.endDayBool) Then
+			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, _
+															 Me.endDayBool) Then
 				cancelContinuingToNextStep = True
 				errString = "Qualifying Period Start or End is not established."
 				errStrArray.Add(errString)
@@ -261,7 +271,8 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>This Step can look slightly different depending on Occuring/Recurring</remarks>
-	Private Sub StepC_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepC_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		If Me.Data.StepNotSet Then
 			PCW.NextEnabled = False
@@ -326,7 +337,8 @@ Public Class StepC
 		Next
 	End Sub
 
-	Private Sub cbSelectAll_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub cbSelectAll_CheckedChanged(sender As Object, _
+										   e As EventArgs) _
 		Handles cbSelectAll.CheckedChanged
 		SelectAll()
 	End Sub
@@ -410,7 +422,8 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_dtpOccursDate_DropDown"
-	Private Sub dtpOccursDate_DropDown(sender As Object, e As EventArgs) _
+	Private Sub dtpOccursDate_DropDown(sender As Object, _
+									   e As EventArgs) _
 		Handles dtpOccursDate.DropDown
 		If Not Me.firstTimeOccursDateBool Then
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
@@ -427,13 +440,28 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>This probably does way too much! Be careful!</remarks>
-	Private Sub dtpOccursDate_CloseUp(sender As Object, e As EventArgs) _
+	Private Sub dtpOccursDate_CloseUp(sender As Object, _
+									  e As EventArgs) _
 	Handles dtpOccursDate.CloseUp
 		'Local vars because of all those dot operators to get to what is needed!
-		Dim local_startDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat) 'Math + Format
-		Dim local_endDay As String = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)	   'Math + Format
+		Dim local_startDay As String = Me.dtpOccursDate _
+										 .Value _
+										 .Date _
+										 .AddDays(Me.startDayInt) _
+										 .ToString(Me.longDateFormat)	'Math + Format
 		'
-		Me.primaryDayStr = Me.dtpOccursDate.Value.Date.DayOfWeek.ToString()	'Assign the Primary Day to the variable
+		Dim local_endDay As String = Me.dtpOccursDate _
+									   .Value _
+									   .Date _
+									   .AddDays(Me.endDayInt) _
+									   .ToString(Me.longDateFormat)		'Math + Format
+		'
+		Me.primaryDayStr = Me.dtpOccursDate _
+							 .Value _
+							 .Date _
+							 .DayOfWeek _
+							 .ToString()	'Assign Primary Day to var
+		'
 		setStartEndQualifyingLabels(local_startDay, local_endDay)
 		Me.MonthCal.SetSelectionRange(local_startDay, local_endDay)
 		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
@@ -454,22 +482,36 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Only happens if the Qualifying period has been set.</remarks>
-	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, _
+											  e As EventArgs) _
 		Handles cbSameDayPromo.CheckedChanged
 		Dim local_startDay As String = New String("")
 		Dim local_endDay As String = New String("")
 		If Me.occursDateBool Then
-			If Me.cbSameDayPromo.Checked Then 'Weird maths to figure the Qualifying Range
+			If Me.cbSameDayPromo.Checked Then '"Weird" maths for Qualifying Range
 				Me.startDayInt = -6
 				Me.endDayInt = 0
 			Else
 				Me.startDayInt = -7
 				Me.endDayInt = -1
 			End If
-			local_startDay = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt).ToString(Me.longDateFormat)
-			local_endDay = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt).ToString(Me.longDateFormat)
-			setStartEndQualifyingLabels(local_startDay, local_endDay)
-			Me.MonthCal.SetSelectionRange(local_startDay, local_endDay)	'UI/UX flair! Plus it's fun.
+			'
+			local_startDay = Me.dtpOccursDate _
+							   .Value _
+							   .Date _
+							   .AddDays(Me.startDayInt) _
+							   .ToString(Me.longDateFormat)
+			'
+			local_endDay = Me.dtpOccursDate _
+							 .Value _
+							 .Date _
+							 .AddDays(Me.endDayInt) _
+							 .ToString(Me.longDateFormat)
+			'
+			setStartEndQualifyingLabels(local_startDay, _
+										local_endDay)
+			Me.MonthCal.SetSelectionRange(local_startDay, _
+										  local_endDay)	'UI/UX flair! (^_^)
 		End If
 	End Sub
 #End Region
@@ -482,7 +524,8 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>What if I fat-finger the Primary Day and have to change it?</remarks>
-	Private Sub cbPrimaryDay_DropDown(sender As Object, e As EventArgs) _
+	Private Sub cbPrimaryDay_DropDown(sender As Object, _
+									  e As EventArgs) _
 		Handles cbPrimaryDay.DropDown
 		If Not IsNothing(cbPrimaryDay.SelectedItem) Then 'Clear it if it's set!
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
@@ -491,7 +534,8 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_cbPrimaryDay_DropDownClosed"
-	Private Sub cbPrimaryDay_DropDownClosed(sender As Object, e As EventArgs) _
+	Private Sub cbPrimaryDay_DropDownClosed(sender As Object, _
+											e As EventArgs) _
 		Handles cbPrimaryDay.DropDownClosed
 		If Me.startDayBool And Me.endDayBool Then
 			GUI_Util.NextEnabled()
@@ -505,7 +549,8 @@ Public Class StepC
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Thankfully VS is Intelligent.</remarks>
-	Private Sub cbPrimaryDay_SelectionChangeCommitted(sender As Object, e As EventArgs) _
+	Private Sub cbPrimaryDay_SelectionChangeCommitted(sender As Object, _
+													  e As EventArgs) _
 		Handles cbPrimaryDay.SelectionChangeCommitted
 		If Me.primaryDayBool = False Then '"Break the (bool) seal!"
 			Me.primaryDayBool = True
@@ -515,7 +560,8 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_dtpQualifyingStart_CloseUp"
-	Private Sub dtpQualifyingStart_CloseUp(sender As Object, e As EventArgs) _
+	Private Sub dtpQualifyingStart_CloseUp(sender As Object, _
+										   e As EventArgs) _
 	Handles dtpQualifyingStart.CloseUp
 		If Me.startDayBool = False Then	'"Break the (bool) seal!"
 			Me.startDayBool = True
@@ -524,7 +570,8 @@ Public Class StepC
 	End Sub
 #End Region
 #Region "StepC_dtpQualifyingEnd_CloseUp"
-	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, e As EventArgs) _
+	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, _
+										 e As EventArgs) _
 	Handles dtpQualifyingEnd.CloseUp
 		If Me.endDayBool = False Then '"Break the (bool) seal!"
 			Me.endDayBool = True
