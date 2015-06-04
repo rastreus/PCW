@@ -182,7 +182,8 @@ Public Class StepD
 	End Sub
 #End Region
 #Region "StepD_SetDragDropPanel"
-	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, _
+														  e As EventArgs) _
 		Handles rbEligiblePlayersList.CheckedChanged
 		SetDragDropPanel(Me.rbEligiblePlayersList.Checked)
 	End Sub
@@ -196,7 +197,8 @@ Public Class StepD
 		End If
 	End Sub
 
-	Private Sub pnlDragOffer_DragEnter(sender As Object, e As DragEventArgs) _
+	Private Sub pnlDragOffer_DragEnter(sender As Object, _
+									   e As DragEventArgs) _
 		Handles pnlDragOffer.DragEnter
 		If e.Data.GetDataPresent(DataFormats.FileDrop) Then
 			e.Effect = DragDropEffects.Copy
@@ -219,40 +221,48 @@ Public Class StepD
 		Me.SuccessIcon.Visible = True
 	End Sub
 
-	Private Sub pnlDragOffer_DragDrop(sender As Object, e As DragEventArgs) _
+	Private Sub pnlDragOffer_DragDrop(sender As Object, _
+									  e As DragEventArgs) _
 		Handles pnlDragOffer.DragDrop
 		Try
-			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop), Array)
+			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop),  _
+								   Array)
 			If Not IsNothing(a) Then
 				Dim s As String = a.GetValue(0).ToString
-				Me.BeginInvoke(m_DelegateChangeLabelText, New Object() {s})
+				Me.BeginInvoke(m_DelegateChangeLabelText, _
+							   New Object() {s})
 				DragDropSuccessIcon()
 				Me.successBool = True
 			End If
 		Catch ex As Exception
-			Trace.WriteLine("Error in DragDrop Sub: " + ex.Message)
-			ChangeLabelText("FAILURE: " + ex.Message)
+			Trace.WriteLine("Error in DragDrop Sub: " _
+							+ ex.Message)
+			ChangeLabelText("FAILURE: " _
+							+ ex.Message)
 			DragDropFailureIcon()
 			Me.successBool = False
 		End Try
 	End Sub
 #End Region
 #Region "StepD_SetPointCutoffPanel"
-	Private Sub rbSumQualifyingPoints_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbSumQualifyingPoints_CheckedChanged(sender As Object, _
+													 e As EventArgs) _
 		Handles rbSumQualifyingPoints.CheckedChanged
 		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbSumQualifyingPoints.Checked)
 		End If
 	End Sub
 
-	Private Sub rbSumLifetimePoints_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbSumLifetimePoints_CheckedChanged(sender As Object, _
+												   e As EventArgs) _
 		Handles rbSumLifetimePoints.CheckedChanged
 		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbSumLifetimePoints.Checked)
 		End If
 	End Sub
 
-	Private Sub rbAutoQualification_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbAutoQualification_CheckedChanged(sender As Object, _
+												   e As EventArgs) _
 		Handles rbAutoQualification.CheckedChanged
 		If Not rbEligiblePlayersList.Checked Then
 			SetPointCutoffPanel(Me.rbAutoQualification.Checked)
@@ -265,7 +275,8 @@ Public Class StepD
 	End Sub
 #End Region
 #Region "StepD_rbPointCutoffLimitYES_CheckedChanged"
-	Private Sub rbPointCutoffLimitYES_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbPointCutoffLimitYES_CheckedChanged(sender As Object, _
+													 e As EventArgs) _
 		Handles rbPointCutoffLimitYES.CheckedChanged
 		If Me.rbPointCutoffLimitYES.Checked Then
 			Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
@@ -286,7 +297,8 @@ Public Class StepD
 	''' <remarks>If MULTI-PART SEQUENCIAL INSTANCES is selected, please enable the textbox.
 	''' Otherwise, put that thing back the way it was.
 	''' </remarks>
-	Private Sub rbMultiPartEntryPayout_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbMultiPartEntryPayout_CheckedChanged(sender As Object, _
+													  e As EventArgs) _
 		Handles rbMultiPartEntryPayout.CheckedChanged
 		If Me.rbMultiPartEntryPayout.Checked Then
 			Me.txtNumOfDaysTiers.Text = ""
