@@ -19,7 +19,7 @@ Public Class StepF
 #End Region
 #Region "StepF_PromoData"
 	Public ReadOnly Property PromoData As IPromoData _
-	Implements IWizardStep.PromoData
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepF_data
 		End Get
