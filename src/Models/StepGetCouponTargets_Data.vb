@@ -75,8 +75,8 @@
 		couponTarget.ZoneAddon = removeDollarReturnDecimal(currentRow(16))
 		couponTarget.OtherAddon = Nothing
 		couponTarget.TotalCoupon = removeDollarReturnDecimal(currentRow(17))
-		couponTarget.TestCoupon = False
-		couponTarget.CreateDate = Date.Today.Date
+		couponTarget.TestCoupon = IsTestCoupon()
+		couponTarget.CreateDate = DateTime.Now
 		Return couponTarget
 	End Function
 
@@ -110,6 +110,13 @@
 			End Try
 		End If
 		Return returningDecimal
+	End Function
+	Private Function IsTestCoupon() As Boolean
+		Dim result As Boolean = False
+#If DEBUG Then
+		result = True
+#End If
+		Return result
 	End Function
 #End Region
 #Region "Validity Checks"
