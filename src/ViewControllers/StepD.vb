@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Fourth Step; handles promo category and player eligiblity.
@@ -107,13 +108,15 @@ Public Class StepD
 #Region "StepD_Load"
 	Private successBool As Boolean = False
 
-	Private Sub StepD_Load(sender As Object, e As EventArgs) _
+	Private Sub StepD_Load(sender As Object, _
+						   e As EventArgs) _
 		Handles MyBase.Load
 		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 #End Region
 #Region "StepD_ResetStep"
-	Private Sub StepD_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepD_ResetStep(sender As Object, _
+								e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepD_data = New StepD_Data
 		Me.successBool = False
@@ -138,7 +141,8 @@ Public Class StepD
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepD_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepD_Validation(sender As Object, _
+								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
