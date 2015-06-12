@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 ''' <summary>
 ''' The "Comment" Step; naturally, handles the comment.
@@ -18,7 +19,8 @@ Public Class StepH
 	End Sub
 #End Region
 #Region "StepH_Data"
-	Private ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Private ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepH_data
 		End Get
@@ -47,7 +49,8 @@ Public Class StepH
 	'End Sub
 #End Region
 #Region "StepH_ResetStep"
-	Private Sub StepH_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepH_ResetStep(sender As Object, _
+								e As EventArgs) _
 		Handles MyBase.ResetStep
 		stepH_data = New StepH_Data
 		StepH_ResetControls()
@@ -82,8 +85,9 @@ Public Class StepH
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepH_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
-	Handles Me.ValidateStep
+	Private Sub StepH_Validation(sender As Object, _
+								 e As CancelEventArgs) _
+		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 
@@ -114,8 +118,9 @@ Public Class StepH
 	End Sub
 #End Region
 #Region "StepH_rbNo_CheckedChanged"
-	Private Sub rbNo_CheckedChanged(sender As Object, e As EventArgs) _
-	Handles rbNO.CheckedChanged
+	Private Sub rbNo_CheckedChanged(sender As Object, _
+									e As EventArgs) _
+		Handles rbNO.CheckedChanged
 		If Me.rbYES.Checked Then
 			Me.IconTick.ActiveColor = Color.Lime
 			Me.IconTick.InActiveColor = Color.Lime
@@ -129,8 +134,9 @@ Public Class StepH
 	End Sub
 #End Region
 #Region "StepH_txtCommentBox_TextChanged"
-	Private Sub txtCommentBox_TextChanged(sender As Object, e As EventArgs) _
-	Handles txtCommentBox.TextChanged
+	Private Sub txtCommentBox_TextChanged(sender As Object, _
+										  e As EventArgs) _
+		Handles txtCommentBox.TextChanged
 		If Me.txtCommentBox.Enabled Then
 			If (140 - Me.txtCommentBox.Text.Length) < 0 Then
 				PCW.NextEnabled = False
