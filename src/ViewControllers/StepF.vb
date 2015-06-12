@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.Windows.Forms
 Imports System.ComponentModel
 
 ''' <summary>
@@ -84,13 +85,15 @@ Public Class StepF
 #Region "StepF_Load"
 	Private promoTypeEntered As Boolean
 
-	Private Sub StepF_Load(sender As Object, e As EventArgs) _
+	Private Sub StepF_Load(sender As Object, _
+						   e As EventArgs) _
 		Handles MyBase.Load
 		Me.promoTypeEntered = False
 	End Sub
 #End Region
 #Region "StepF_ResetStep"
-	Private Sub StepF_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepF_ResetStep(sender As Object, _
+								e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepF_data = New StepF_Data
 		Me.NextStep = "StepGeneratePayoutCoupon"
@@ -108,7 +111,7 @@ Public Class StepF
 #Region "StepF_Validation"
 	Private Sub StepF_Validation(sender As Object, _
 								 e As CancelEventArgs) _
-	Handles Me.ValidateStep
+		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
@@ -181,7 +184,8 @@ Public Class StepF
 #End Region
 #Region "StepF_rbCashValue_CheckedChanged"
 	'Cash Value Changed
-	Private Sub rbCashValue_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbCashValue_CheckedChanged(sender As Object, _
+										   e As EventArgs) _
 		Handles rbCashValue.CheckedChanged
 		If Me.rbCashValue.Checked Then
 			activateTextBox(Me.txtCashValue)
@@ -192,7 +196,8 @@ Public Class StepF
 #End Region
 #Region "StepF_rbPrize_ChecedChanged"
 	'Prize Changed
-	Private Sub rbPrize_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbPrize_CheckedChanged(sender As Object, _
+									   e As EventArgs) _
 		Handles rbPrize.CheckedChanged
 		If Me.rbPrize.Checked Then
 			activateTextBox(Me.txtPrize)
@@ -202,7 +207,8 @@ Public Class StepF
 	End Sub
 #End Region
 #Region "StepF_txtPromoType_Enter"
-	Private Sub txtPromoType_Enter(sender As Object, e As EventArgs) _
+	Private Sub txtPromoType_Enter(sender As Object, _
+								   e As EventArgs) _
 		Handles txtPromoType.Enter
 		If Me.promoTypeEntered = False Then
 			Me.txtPromoType.Text = ""
@@ -211,7 +217,8 @@ Public Class StepF
 	End Sub
 #End Region
 #Region "StepF_txtPromoType_Leave"
-	Private Sub txtPromoType_Leave(sender As Object, e As EventArgs) _
+	Private Sub txtPromoType_Leave(sender As Object, _
+								   e As EventArgs) _
 		Handles txtPromoType.Leave
 		CheckForNext()
 	End Sub
@@ -227,14 +234,15 @@ Public Class StepF
 ASIDE: An exercise in keeping code DRY.
 #End If
 #Region "activateTextBox"
-	Private Sub activateTextBox(ByVal textBox As System.Windows.Forms.TextBox)
+	Private Sub activateTextBox(ByVal textBox As TextBox)
 		textBox.Enabled = True
 		textBox.Text = ""
 		Me.ActiveControl = textBox
 	End Sub
 #End Region
 #Region "deactivateTextBox"
-	Private Sub deactivateTextBox(ByVal textBox As System.Windows.Forms.TextBox, ByVal text As String)
+	Private Sub deactivateTextBox(ByVal textBox As TextBox, _
+								  ByVal text As String)
 		textBox.Enabled = False
 		textBox.Text = text
 	End Sub

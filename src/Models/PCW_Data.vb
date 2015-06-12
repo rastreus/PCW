@@ -334,12 +334,14 @@ Public Class PCW_Data
 		Return result
 	End Function
 
-	Private Function nullIfNothing(ByVal key As PromoFields, ByVal dateFormatStr As String) As String
+	Private Function nullIfNothing(ByVal key As PromoFields, _
+								   ByVal dateFormatStr As String) As String
 		Dim result As String = New String("")
 		If IsNothing(PromoDataHash.Item(key)) Then
 			result = "NULL"
 		Else
-			result = String.Format(dateFormatStr, PromoDataHash.Item(key))
+			result = String.Format(dateFormatStr, _
+								   PromoDataHash.Item(key))
 		End If
 		Return result
 	End Function
