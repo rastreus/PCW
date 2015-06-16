@@ -31,6 +31,7 @@ Partial Class StepD
 		Me.lblPromoType = New System.Windows.Forms.Label()
 		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
+		Me.pnlPayoutParameters = New System.Windows.Forms.Panel()
 		Me.txtNumOfDaysTiers = New System.Windows.Forms.TextBox()
 		Me.pnlAcquisition = New System.Windows.Forms.Panel()
 		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
@@ -49,8 +50,11 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
+		Me.cbPayoutParametersYES = New System.Windows.Forms.CheckBox()
+		Me.Label1 = New System.Windows.Forms.Label()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
+		Me.pnlPayoutParameters.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
 		Me.pnlDragOffer.SuspendLayout()
@@ -121,7 +125,7 @@ Partial Class StepD
 		Me.rbAcquisition.AutoSize = True
 		Me.rbAcquisition.BackColor = System.Drawing.Color.Lavender
 		Me.rbAcquisition.Enabled = False
-		Me.rbAcquisition.Location = New System.Drawing.Point(7, 184)
+		Me.rbAcquisition.Location = New System.Drawing.Point(7, 205)
 		Me.rbAcquisition.Name = "rbAcquisition"
 		Me.rbAcquisition.Size = New System.Drawing.Size(76, 17)
 		Me.rbAcquisition.TabIndex = 6
@@ -163,11 +167,24 @@ Partial Class StepD
 		'
 		Me.pnlMultiPart.BackColor = System.Drawing.Color.PaleTurquoise
 		Me.pnlMultiPart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMultiPart.Controls.Add(Me.pnlPayoutParameters)
 		Me.pnlMultiPart.Controls.Add(Me.txtNumOfDaysTiers)
 		Me.pnlMultiPart.Location = New System.Drawing.Point(3, 107)
 		Me.pnlMultiPart.Name = "pnlMultiPart"
-		Me.pnlMultiPart.Size = New System.Drawing.Size(251, 57)
+		Me.pnlMultiPart.Size = New System.Drawing.Size(251, 78)
 		Me.pnlMultiPart.TabIndex = 13
+		'
+		'pnlPayoutParameters
+		'
+		Me.pnlPayoutParameters.BackColor = System.Drawing.Color.Turquoise
+		Me.pnlPayoutParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPayoutParameters.Controls.Add(Me.cbPayoutParametersYES)
+		Me.pnlPayoutParameters.Controls.Add(Me.Label1)
+		Me.pnlPayoutParameters.Enabled = False
+		Me.pnlPayoutParameters.Location = New System.Drawing.Point(148, 26)
+		Me.pnlPayoutParameters.Name = "pnlPayoutParameters"
+		Me.pnlPayoutParameters.Size = New System.Drawing.Size(96, 45)
+		Me.pnlPayoutParameters.TabIndex = 10
 		'
 		'txtNumOfDaysTiers
 		'
@@ -185,7 +202,7 @@ Partial Class StepD
 		'
 		Me.pnlAcquisition.BackColor = System.Drawing.Color.Lavender
 		Me.pnlAcquisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlAcquisition.Location = New System.Drawing.Point(3, 170)
+		Me.pnlAcquisition.Location = New System.Drawing.Point(3, 191)
 		Me.pnlAcquisition.Name = "pnlAcquisition"
 		Me.pnlAcquisition.Size = New System.Drawing.Size(251, 43)
 		Me.pnlAcquisition.TabIndex = 14
@@ -373,12 +390,35 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
+		'cbPayoutParametersYES
+		'
+		Me.cbPayoutParametersYES.AutoSize = True
+		Me.cbPayoutParametersYES.BackColor = System.Drawing.Color.Transparent
+		Me.cbPayoutParametersYES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbPayoutParametersYES.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(45, 21)
+		Me.cbPayoutParametersYES.Name = "cbPayoutParametersYES"
+		Me.cbPayoutParametersYES.Size = New System.Drawing.Size(47, 17)
+		Me.cbPayoutParametersYES.TabIndex = 0
+		Me.cbPayoutParametersYES.Text = "Yes"
+		Me.cbPayoutParametersYES.UseVisualStyleBackColor = False
+		'
+		'Label1
+		'
+		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Location = New System.Drawing.Point(1, 2)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(95, 29)
+		Me.Label1.TabIndex = 1
+		Me.Label1.Text = "Are all parameters equal?"
+		'
 		'StepD
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.pnlPlayerEligibility)
 		Me.Controls.Add(Me.pnlPromoType)
+		Me.ForeColor = System.Drawing.SystemColors.ControlText
 		Me.Name = "StepD"
 		Me.NextStep = "StepEntryTicketAmt"
 		Me.PreviousStep = "StepCanHazSecurity"
@@ -391,6 +431,8 @@ Partial Class StepD
 		Me.pnlPromoType.PerformLayout()
 		Me.pnlMultiPart.ResumeLayout(False)
 		Me.pnlMultiPart.PerformLayout()
+		Me.pnlPayoutParameters.ResumeLayout(False)
+		Me.pnlPayoutParameters.PerformLayout()
 		Me.pnlPlayerEligibility.ResumeLayout(False)
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
@@ -429,5 +471,8 @@ Partial Class StepD
 	Friend WithEvents lblPointCutoffLimit As System.Windows.Forms.Label
 	Friend WithEvents pnlSumMethod As System.Windows.Forms.Panel
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel
+	Friend WithEvents pnlPayoutParameters As System.Windows.Forms.Panel
+	Friend WithEvents cbPayoutParametersYES As System.Windows.Forms.CheckBox
+	Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
