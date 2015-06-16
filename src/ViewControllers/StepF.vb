@@ -2,6 +2,10 @@
 Imports System.Windows.Forms
 Imports System.ComponentModel
 
+Imports PayoutCategory = PromotionalCreationWizard _
+						 .StepF_Data _
+						 .PromoPayoutCategory
+
 ''' <summary>
 ''' Handles payout category and redirects to the next Step.
 ''' </summary>
@@ -49,7 +53,7 @@ Public Class StepF
 
 	Private Function getPrize() As String
 		Dim result As String = Nothing
-		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.prize Then
+		If Me.Data.PayoutCatgory = PayoutCategory.prize Then
 			result = Me.txtPrize.Text
 		End If
 		Return result
@@ -57,7 +61,7 @@ Public Class StepF
 
 	Private Function getCashValue() As System.Nullable(Of Decimal)
 		Dim result As System.Nullable(Of Decimal) = Nothing
-		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.cashValue Then
+		If Me.Data.PayoutCatgory = PayoutCategory.cashValue Then
 			result = Decimal.Parse(Me.txtCashValue.Text)
 		End If
 		Return result
@@ -71,13 +75,13 @@ Public Class StepF
 	Private Function getPromoPayoutCategory() As StepF_Data.PromoPayoutCategory
 		Dim promoPayoutCategory As StepF_Data.PromoPayoutCategory = New StepF_Data.PromoPayoutCategory
 		If Me.rbFreePlayCoupon.Checked Then
-			promoPayoutCategory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.freePlayCoupon
+			promoPayoutCategory = PayoutCategory.freePlayCoupon
 		ElseIf Me.rbRandomPrize.Checked Then
-			promoPayoutCategory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.randomPrize
+			promoPayoutCategory = PayoutCategory.randomPrize
 		ElseIf Me.rbCashValue.Checked Then
-			promoPayoutCategory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.cashValue
+			promoPayoutCategory = PayoutCategory.cashValue
 		Else
-			promoPayoutCategory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.prize
+			promoPayoutCategory = PayoutCategory.prize
 		End If
 		Return promoPayoutCategory
 	End Function
@@ -118,7 +122,7 @@ Public Class StepF
 
 		StepF_SetData()
 
-		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.cashValue Then
+		If Me.Data.PayoutCatgory = PayoutCategory.cashValue Then
 			If Me.Data.CashValueInvalid(Me.txtCashValue.Text) Then
 				cancelContinuingToNextStep = True
 				errString = "Cash Value invalid."
@@ -130,7 +134,7 @@ Public Class StepF
 			End If
 		End If
 
-		If Me.Data.PayoutCatgory = PromotionalCreationWizard.StepF_Data.PromoPayoutCategory.prize And
+		If Me.Data.PayoutCatgory = PayoutCategory.prize And
 			Me.Data.PrizeIsBlank Then
 			cancelContinuingToNextStep = True
 			errString = "Prize invalid."
@@ -190,7 +194,8 @@ Public Class StepF
 		If Me.rbCashValue.Checked Then
 			activateTextBox(Me.txtCashValue)
 		Else
-			deactivateTextBox(Me.txtCashValue, BEP_Util.NumStr)
+			deactivateTextBox(Me.txtCashValue, _
+							  BEP_Util.NumStr)
 		End If
 	End Sub
 #End Region
@@ -202,7 +207,8 @@ Public Class StepF
 		If Me.rbPrize.Checked Then
 			activateTextBox(Me.txtPrize)
 		Else
-			deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
+			deactivateTextBox(Me.txtPrize, _
+							  BEP_Util.PrizeStr)
 		End If
 	End Sub
 #End Region
