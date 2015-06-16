@@ -129,6 +129,8 @@ Public Class StepD
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbPointCutoffLimitNO.Checked = True
 		Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
+		Me.pnlPayoutParameters.Enabled = False
+		Me.cbPayoutParametersYES.Checked = False
 		GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
 		Me.SetPointCutoffPanel(True)
 		Me.SetDragDropPanel(False)
@@ -307,10 +309,23 @@ Public Class StepD
 		If Me.rbMultiPartEntryPayout.Checked Then
 			Me.txtNumOfDaysTiers.Text = ""
 			Me.txtNumOfDaysTiers.Enabled = True
+			Me.pnlPayoutParameters.Enabled = True
 			Me.ActiveControl = Me.txtNumOfDaysTiers
 		Else
 			Me.txtNumOfDaysTiers.Enabled = False
 			Me.txtNumOfDaysTiers.Text = BEP_Util.DaysTiersStr
+			Me.pnlPayoutParameters.Enabled = False
+		End If
+	End Sub
+#End Region
+#Region "StepD_cbPayoutParametersYES_CheckedChanged"
+	Private Sub cbPayoutParametersYES_CheckedChanged(sender As Object, _
+												 e As EventArgs) _
+		Handles cbPayoutParametersYES.CheckedChanged
+		If Me.cbPayoutParametersYES.Checked Then
+			Me.cbPayoutParametersYES.ForeColor = SystemColors.ControlText
+		Else
+			Me.cbPayoutParametersYES.ForeColor = SystemColors.ControlDark
 		End If
 	End Sub
 #End Region
