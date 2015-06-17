@@ -48,7 +48,7 @@ Public Class StepD
 			Case PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
 				Me.stepD_data.SkipEntry = True
 			Case PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart
-				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfDaysTiers.Text
+				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfTiers.Text
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
 		If Me.rbEligiblePlayersList.Checked And
@@ -125,7 +125,7 @@ Public Class StepD
 
 	Private Sub StepD_ResetControls()
 		Me.rbSingleEntryPayout.Checked = True
-		Me.txtNumOfDaysTiers.Text = BEP_Util.DaysTiersStr
+		Me.txtNumOfTiers.Text = BEP_Util.DaysTiersStr
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbPointCutoffLimitNO.Checked = True
 		Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
@@ -159,7 +159,7 @@ Public Class StepD
 			errString = "MutiPart Days/Tiers Invalid Number."
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoType)
-			Me.ActiveControl = Me.txtNumOfDaysTiers
+			Me.ActiveControl = Me.txtNumOfTiers
 		Else
 			GUI_Util.regPnl(Me.pnlPromoType)
 		End If
@@ -307,13 +307,13 @@ Public Class StepD
 													  e As EventArgs) _
 		Handles rbMultiPartEntryPayout.CheckedChanged
 		If Me.rbMultiPartEntryPayout.Checked Then
-			Me.txtNumOfDaysTiers.Text = ""
-			Me.txtNumOfDaysTiers.Enabled = True
+			Me.txtNumOfTiers.Text = ""
+			Me.txtNumOfTiers.Enabled = True
 			Me.pnlPayoutParameters.Enabled = True
-			Me.ActiveControl = Me.txtNumOfDaysTiers
+			Me.ActiveControl = Me.txtNumOfTiers
 		Else
-			Me.txtNumOfDaysTiers.Enabled = False
-			Me.txtNumOfDaysTiers.Text = BEP_Util.DaysTiersStr
+			Me.txtNumOfTiers.Enabled = False
+			Me.txtNumOfTiers.Text = BEP_Util.DaysTiersStr
 			Me.pnlPayoutParameters.Enabled = False
 		End If
 	End Sub

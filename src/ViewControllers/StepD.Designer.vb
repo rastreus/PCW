@@ -32,7 +32,9 @@ Partial Class StepD
 		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
 		Me.pnlPayoutParameters = New System.Windows.Forms.Panel()
-		Me.txtNumOfDaysTiers = New System.Windows.Forms.TextBox()
+		Me.cbPayoutParametersYES = New System.Windows.Forms.CheckBox()
+		Me.Label1 = New System.Windows.Forms.Label()
+		Me.txtNumOfTiers = New System.Windows.Forms.TextBox()
 		Me.pnlAcquisition = New System.Windows.Forms.Panel()
 		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
 		Me.pnlSumMethod = New System.Windows.Forms.Panel()
@@ -50,8 +52,10 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.cbPayoutParametersYES = New System.Windows.Forms.CheckBox()
-		Me.Label1 = New System.Windows.Forms.Label()
+		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
+		Me.rbDAYS = New System.Windows.Forms.RadioButton()
+		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+		Me.lblNumOfDays = New System.Windows.Forms.Label()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlPayoutParameters.SuspendLayout()
@@ -60,6 +64,7 @@ Partial Class StepD
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlPointCutoffLimit.SuspendLayout()
+		Me.pnlDaysTiers.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -115,9 +120,9 @@ Partial Class StepD
 		Me.rbMultiPartEntryPayout.BackColor = System.Drawing.Color.PaleTurquoise
 		Me.rbMultiPartEntryPayout.Location = New System.Drawing.Point(7, 112)
 		Me.rbMultiPartEntryPayout.Name = "rbMultiPartEntryPayout"
-		Me.rbMultiPartEntryPayout.Size = New System.Drawing.Size(240, 17)
+		Me.rbMultiPartEntryPayout.Size = New System.Drawing.Size(245, 17)
 		Me.rbMultiPartEntryPayout.TabIndex = 8
-		Me.rbMultiPartEntryPayout.Text = "Multi-Part Sequential Event: Entry and Payout"
+		Me.rbMultiPartEntryPayout.Text = "Multi-Part Sequential Event: Entry and Payouts"
 		Me.rbMultiPartEntryPayout.UseVisualStyleBackColor = False
 		'
 		'rbAcquisition
@@ -167,8 +172,8 @@ Partial Class StepD
 		'
 		Me.pnlMultiPart.BackColor = System.Drawing.Color.PaleTurquoise
 		Me.pnlMultiPart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMultiPart.Controls.Add(Me.pnlDaysTiers)
 		Me.pnlMultiPart.Controls.Add(Me.pnlPayoutParameters)
-		Me.pnlMultiPart.Controls.Add(Me.txtNumOfDaysTiers)
 		Me.pnlMultiPart.Location = New System.Drawing.Point(3, 107)
 		Me.pnlMultiPart.Name = "pnlMultiPart"
 		Me.pnlMultiPart.Size = New System.Drawing.Size(251, 78)
@@ -176,7 +181,7 @@ Partial Class StepD
 		'
 		'pnlPayoutParameters
 		'
-		Me.pnlPayoutParameters.BackColor = System.Drawing.Color.Turquoise
+		Me.pnlPayoutParameters.BackColor = System.Drawing.Color.PowderBlue
 		Me.pnlPayoutParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPayoutParameters.Controls.Add(Me.cbPayoutParametersYES)
 		Me.pnlPayoutParameters.Controls.Add(Me.Label1)
@@ -186,17 +191,41 @@ Partial Class StepD
 		Me.pnlPayoutParameters.Size = New System.Drawing.Size(96, 45)
 		Me.pnlPayoutParameters.TabIndex = 10
 		'
-		'txtNumOfDaysTiers
+		'cbPayoutParametersYES
 		'
-		Me.txtNumOfDaysTiers.BackColor = System.Drawing.SystemColors.HighlightText
-		Me.txtNumOfDaysTiers.Enabled = False
-		Me.txtNumOfDaysTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtNumOfDaysTiers.Location = New System.Drawing.Point(26, 26)
-		Me.txtNumOfDaysTiers.MaxLength = 2
-		Me.txtNumOfDaysTiers.Name = "txtNumOfDaysTiers"
-		Me.txtNumOfDaysTiers.Size = New System.Drawing.Size(115, 20)
-		Me.txtNumOfDaysTiers.TabIndex = 9
-		Me.txtNumOfDaysTiers.Text = "# of days/tiers?"
+		Me.cbPayoutParametersYES.AutoSize = True
+		Me.cbPayoutParametersYES.BackColor = System.Drawing.Color.Transparent
+		Me.cbPayoutParametersYES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbPayoutParametersYES.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(45, 21)
+		Me.cbPayoutParametersYES.Name = "cbPayoutParametersYES"
+		Me.cbPayoutParametersYES.Size = New System.Drawing.Size(47, 17)
+		Me.cbPayoutParametersYES.TabIndex = 0
+		Me.cbPayoutParametersYES.Text = "Yes"
+		Me.cbPayoutParametersYES.UseVisualStyleBackColor = False
+		'
+		'Label1
+		'
+		Me.Label1.BackColor = System.Drawing.Color.Transparent
+		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Location = New System.Drawing.Point(1, 2)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(95, 29)
+		Me.Label1.TabIndex = 1
+		Me.Label1.Text = "Are all parameters equal?"
+		'
+		'txtNumOfTiers
+		'
+		Me.txtNumOfTiers.BackColor = System.Drawing.SystemColors.HighlightText
+		Me.txtNumOfTiers.Enabled = False
+		Me.txtNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtNumOfTiers.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.txtNumOfTiers.Location = New System.Drawing.Point(55, 20)
+		Me.txtNumOfTiers.MaxLength = 2
+		Me.txtNumOfTiers.Name = "txtNumOfTiers"
+		Me.txtNumOfTiers.Size = New System.Drawing.Size(66, 20)
+		Me.txtNumOfTiers.TabIndex = 9
+		Me.txtNumOfTiers.Text = "# of Tiers"
 		'
 		'pnlAcquisition
 		'
@@ -390,27 +419,54 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'cbPayoutParametersYES
+		'pnlDaysTiers
 		'
-		Me.cbPayoutParametersYES.AutoSize = True
-		Me.cbPayoutParametersYES.BackColor = System.Drawing.Color.Transparent
-		Me.cbPayoutParametersYES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbPayoutParametersYES.ForeColor = System.Drawing.SystemColors.ControlDark
-		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(45, 21)
-		Me.cbPayoutParametersYES.Name = "cbPayoutParametersYES"
-		Me.cbPayoutParametersYES.Size = New System.Drawing.Size(47, 17)
-		Me.cbPayoutParametersYES.TabIndex = 0
-		Me.cbPayoutParametersYES.Text = "Yes"
-		Me.cbPayoutParametersYES.UseVisualStyleBackColor = False
+		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
+		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
+		Me.pnlDaysTiers.Controls.Add(Me.RadioButton1)
+		Me.pnlDaysTiers.Controls.Add(Me.rbDAYS)
+		Me.pnlDaysTiers.Controls.Add(Me.txtNumOfTiers)
+		Me.pnlDaysTiers.Location = New System.Drawing.Point(18, 26)
+		Me.pnlDaysTiers.Name = "pnlDaysTiers"
+		Me.pnlDaysTiers.Size = New System.Drawing.Size(126, 45)
+		Me.pnlDaysTiers.TabIndex = 5
 		'
-		'Label1
+		'rbDAYS
 		'
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(1, 2)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(95, 29)
-		Me.Label1.TabIndex = 1
-		Me.Label1.Text = "Are all parameters equal?"
+		Me.rbDAYS.AutoSize = True
+		Me.rbDAYS.BackColor = System.Drawing.Color.Transparent
+		Me.rbDAYS.Checked = True
+		Me.rbDAYS.Location = New System.Drawing.Point(2, 2)
+		Me.rbDAYS.Name = "rbDAYS"
+		Me.rbDAYS.Size = New System.Drawing.Size(49, 17)
+		Me.rbDAYS.TabIndex = 10
+		Me.rbDAYS.TabStop = True
+		Me.rbDAYS.Text = "Days"
+		Me.rbDAYS.UseVisualStyleBackColor = False
+		'
+		'RadioButton1
+		'
+		Me.RadioButton1.AutoSize = True
+		Me.RadioButton1.BackColor = System.Drawing.Color.Transparent
+		Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.RadioButton1.Location = New System.Drawing.Point(2, 20)
+		Me.RadioButton1.Name = "RadioButton1"
+		Me.RadioButton1.Size = New System.Drawing.Size(48, 17)
+		Me.RadioButton1.TabIndex = 11
+		Me.RadioButton1.Text = "Tiers"
+		Me.RadioButton1.UseVisualStyleBackColor = False
+		'
+		'lblNumOfDays
+		'
+		Me.lblNumOfDays.AutoSize = True
+		Me.lblNumOfDays.BackColor = System.Drawing.Color.Transparent
+		Me.lblNumOfDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblNumOfDays.Location = New System.Drawing.Point(56, 5)
+		Me.lblNumOfDays.Name = "lblNumOfDays"
+		Me.lblNumOfDays.Size = New System.Drawing.Size(61, 13)
+		Me.lblNumOfDays.TabIndex = 12
+		Me.lblNumOfDays.Text = "# of Days"
 		'
 		'StepD
 		'
@@ -430,7 +486,6 @@ Partial Class StepD
 		Me.pnlPromoType.ResumeLayout(False)
 		Me.pnlPromoType.PerformLayout()
 		Me.pnlMultiPart.ResumeLayout(False)
-		Me.pnlMultiPart.PerformLayout()
 		Me.pnlPayoutParameters.ResumeLayout(False)
 		Me.pnlPayoutParameters.PerformLayout()
 		Me.pnlPlayerEligibility.ResumeLayout(False)
@@ -441,12 +496,14 @@ Partial Class StepD
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
+		Me.pnlDaysTiers.ResumeLayout(False)
+		Me.pnlDaysTiers.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
 	Friend WithEvents pnlPromoType As System.Windows.Forms.Panel
 	Friend WithEvents rbSingleEntryPayout As System.Windows.Forms.RadioButton
-	Friend WithEvents txtNumOfDaysTiers As System.Windows.Forms.TextBox
+	Friend WithEvents txtNumOfTiers As System.Windows.Forms.TextBox
 	Friend WithEvents rbMultiPartEntryPayout As System.Windows.Forms.RadioButton
 	Friend WithEvents rbAcquisition As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSingleEntryOnly As System.Windows.Forms.RadioButton
@@ -474,5 +531,9 @@ Partial Class StepD
 	Friend WithEvents pnlPayoutParameters As System.Windows.Forms.Panel
 	Friend WithEvents cbPayoutParametersYES As System.Windows.Forms.CheckBox
 	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents pnlDaysTiers As System.Windows.Forms.Panel
+	Friend WithEvents lblNumOfDays As System.Windows.Forms.Label
+	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+	Friend WithEvents rbDAYS As System.Windows.Forms.RadioButton
 
 End Class
