@@ -1,6 +1,10 @@
 ﻿Imports TSWizards
 Imports System.ComponentModel
 
+Imports Category = PromotionalCreationWizard _
+				   .PCW_Data _
+				   .PromoCategory
+
 ''' <summary>
 ''' Fourth Step; handles promo category and player eligiblity.
 ''' </summary>
@@ -43,14 +47,15 @@ Public Class StepD
 		Me.stepD_data.Category = getPromoCategory()
 		PCW.Data.CurrentPromoCategory = Me.Data.Category
 		Select Case Me.Data.Category
-			Case PromotionalCreationWizard.PCW_Data.PromoCategory.entryOnly
+			Case Category.entryOnly
 				Me.stepD_data.SkipPayout = True
-			Case PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
+			Case Category.payoutOnly
 				Me.stepD_data.SkipEntry = True
-			Case PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart
+			Case Category.multiPart
 				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfTiers.Text
 		End Select
-		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, Me.txtPointCutoffLimit.Text)
+		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
+															 Me.txtPointCutoffLimit.Text)
 		If Me.rbEligiblePlayersList.Checked And
 			Me.successBool Then
 			PCW.Data.UsesEligiblePlayers = True
@@ -58,7 +63,8 @@ Public Class StepD
 		End If
 	End Sub
 
-	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
+	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, _
+										 ByVal txtInput As String) As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
@@ -69,15 +75,15 @@ Public Class StepD
 	Private Function getPromoCategory() As PCW_Data.PromoCategory
 		Dim promoCategory As PCW_Data.PromoCategory
 		If Me.rbSingleEntryPayout.Checked Then
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.entryAndPayout
+			promoCategory = Category.entryAndPayout
 		ElseIf Me.rbSingleEntryOnly.Checked Then
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.entryOnly
+			promoCategory = Category.entryOnly
 		ElseIf Me.rbSinglePayoutOnly.Checked Then
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.payoutOnly
+			promoCategory = Category.payoutOnly
 		ElseIf Me.rbMultiPartEntryPayout.Checked Then
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart
+			promoCategory = Category.multiPart
 		Else
-			promoCategory = PromotionalCreationWizard.PCW_Data.PromoCategory.acquisition
+			promoCategory = Category.acquisition
 		End If
 		Return promoCategory
 	End Function
@@ -153,7 +159,7 @@ Public Class StepD
 		Me.StepD_SetData()
 		Me.Data.CheckForReset()
 
-		If Me.Data.Category = PromotionalCreationWizard.PCW_Data.PromoCategory.multiPart And
+		If Me.Data.Category = Category.multiPart And
 			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."
