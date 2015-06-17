@@ -232,6 +232,17 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
+#Region "StepB_cbRecurringFrequency_DropDownClosed"
+	Private Sub cbRecurringFrequency_DropDownClosed(ByVal sender As Object, _
+													ByVal e As EventArgs) _
+		Handles cbRecurringFrequency.DropDownClosed
+		If cbRecurringFrequency.SelectedItem = "Daily" Then
+			PCW.Data.DaysBool = True
+		Else
+			PCW.Data.DaysBool = False
+		End If
+	End Sub
+#End Region
 #Region "StepB_txtPromoName_Enter"
 	Private Sub txtPromoName_Enter(sender As Object, e As EventArgs) _
 		Handles txtPromoName.Enter

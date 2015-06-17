@@ -193,6 +193,24 @@ Public Class StepD
 		End If
 	End Sub
 #End Region
+#Region "StepD_ShowStep"
+	''' <summary>
+	''' Shows the Step controls.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks></remarks>
+	Private Sub Stepd_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
+		Handles MyBase.ShowStep
+		If PCW.Data.DaysBool And _
+			(Not IsNothing(PCW.Data.NumOfDays)) Then
+			Me.lblNumOfDays.Text = PCW.Data.NumOfDays.ToString
+		Else
+			Me.lblNumOfDays.Text = "# of Days"
+		End If
+	End Sub
+#End Region
 #Region "StepD_SetDragDropPanel"
 	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, _
 														  e As EventArgs) _

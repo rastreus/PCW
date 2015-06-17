@@ -89,6 +89,8 @@ Public Class PCW_Data
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
 	Private _pcwCouponOffersList As List(Of CouponOffer) = New List(Of CouponOffer)
+	Private _pcwDaysBool As Boolean = False
+	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
@@ -173,6 +175,22 @@ Public Class PCW_Data
 		End Get
 		Set(value As List(Of CouponOffer))
 			_pcwCouponOffersList = value
+		End Set
+	End Property
+	Public Property DaysBool As Boolean
+		Get
+			Return _pcwDaysBool
+		End Get
+		Set(value As Boolean)
+			_pcwDaysBool = value
+		End Set
+	End Property
+	Public Property NumOfDays As System.Nullable(Of Short)
+		Get
+			Return _pcwNumOfDays
+		End Get
+		Set(value As System.Nullable(Of Short))
+			_pcwNumOfDays = value
 		End Set
 	End Property
 #End Region

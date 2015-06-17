@@ -50,6 +50,9 @@ Public Class StepC
 			Me.stepC_data.EndDate = Me.dtpQualifyingEnd.Value.Date
 			Me.stepC_data.RecursOnWeekday = getRecursOnWeekday()
 			Me.stepC_data.CountCurrentDay = False
+			If PCW.Data.DaysBool Then
+				PCW.Data.NumOfDays = SetNumOfDays(Me.Data.StartDate, Me.Data.EndDate)
+			End If
 		Else 'Occurring Promo
 			Me.stepC_data.OccursDate = Me.dtpOccursDate.Value.Date
 			Me.stepC_data.StartDate = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt)
@@ -65,6 +68,18 @@ Public Class StepC
 			Me.stepC_data.EarnsOnWeekday = getEarnsOnWeekday()
 		End If
 	End Sub
+
+	Private Function SetNumOfDays(ByVal startDate As Date, _
+								  ByVal endDate As Date) As System.Nullable(Of Short)
+		Dim ts As TimeSpan = endDate.Subtract(startDate)
+		Dim result As System.Nullable(Of Short) = Nothing
+		If Convert.ToInt16(ts.Days) >= 0 Then
+			result = Convert.ToInt16(ts.Days) + 1
+		Else
+			result = Nothing
+		End If
+		Return result
+	End Function
 
 	''' <summary>
 	''' Concatenates the Primary and Secondary Days.
@@ -442,7 +457,7 @@ Public Class StepC
 	''' <remarks>This probably does way too much! Be careful!</remarks>
 	Private Sub dtpOccursDate_CloseUp(sender As Object, _
 									  e As EventArgs) _
-	Handles dtpOccursDate.CloseUp
+		Handles dtpOccursDate.CloseUp
 		'Local vars because of all those dot operators to get to what is needed!
 		Dim local_startDay As String = Me.dtpOccursDate _
 										 .Value _

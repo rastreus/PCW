@@ -31,10 +31,14 @@ Partial Class StepD
 		Me.lblPromoType = New System.Windows.Forms.Label()
 		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
+		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
+		Me.lblNumOfDays = New System.Windows.Forms.Label()
+		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+		Me.rbDAYS = New System.Windows.Forms.RadioButton()
+		Me.txtNumOfTiers = New System.Windows.Forms.TextBox()
 		Me.pnlPayoutParameters = New System.Windows.Forms.Panel()
 		Me.cbPayoutParametersYES = New System.Windows.Forms.CheckBox()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.txtNumOfTiers = New System.Windows.Forms.TextBox()
 		Me.pnlAcquisition = New System.Windows.Forms.Panel()
 		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
 		Me.pnlSumMethod = New System.Windows.Forms.Panel()
@@ -52,19 +56,15 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
-		Me.rbDAYS = New System.Windows.Forms.RadioButton()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-		Me.lblNumOfDays = New System.Windows.Forms.Label()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
+		Me.pnlDaysTiers.SuspendLayout()
 		Me.pnlPayoutParameters.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlPointCutoffLimit.SuspendLayout()
-		Me.pnlDaysTiers.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -179,6 +179,66 @@ Partial Class StepD
 		Me.pnlMultiPart.Size = New System.Drawing.Size(251, 78)
 		Me.pnlMultiPart.TabIndex = 13
 		'
+		'pnlDaysTiers
+		'
+		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
+		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
+		Me.pnlDaysTiers.Controls.Add(Me.RadioButton1)
+		Me.pnlDaysTiers.Controls.Add(Me.rbDAYS)
+		Me.pnlDaysTiers.Controls.Add(Me.txtNumOfTiers)
+		Me.pnlDaysTiers.Location = New System.Drawing.Point(18, 26)
+		Me.pnlDaysTiers.Name = "pnlDaysTiers"
+		Me.pnlDaysTiers.Size = New System.Drawing.Size(126, 45)
+		Me.pnlDaysTiers.TabIndex = 5
+		'
+		'lblNumOfDays
+		'
+		Me.lblNumOfDays.AutoSize = True
+		Me.lblNumOfDays.BackColor = System.Drawing.Color.Transparent
+		Me.lblNumOfDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblNumOfDays.Location = New System.Drawing.Point(56, 5)
+		Me.lblNumOfDays.Name = "lblNumOfDays"
+		Me.lblNumOfDays.Size = New System.Drawing.Size(61, 13)
+		Me.lblNumOfDays.TabIndex = 12
+		Me.lblNumOfDays.Text = "# of Days"
+		'
+		'RadioButton1
+		'
+		Me.RadioButton1.AutoSize = True
+		Me.RadioButton1.BackColor = System.Drawing.Color.Transparent
+		Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.RadioButton1.Location = New System.Drawing.Point(2, 20)
+		Me.RadioButton1.Name = "RadioButton1"
+		Me.RadioButton1.Size = New System.Drawing.Size(48, 17)
+		Me.RadioButton1.TabIndex = 11
+		Me.RadioButton1.Text = "Tiers"
+		Me.RadioButton1.UseVisualStyleBackColor = False
+		'
+		'rbDAYS
+		'
+		Me.rbDAYS.AutoSize = True
+		Me.rbDAYS.BackColor = System.Drawing.Color.Transparent
+		Me.rbDAYS.Location = New System.Drawing.Point(2, 2)
+		Me.rbDAYS.Name = "rbDAYS"
+		Me.rbDAYS.Size = New System.Drawing.Size(49, 17)
+		Me.rbDAYS.TabIndex = 10
+		Me.rbDAYS.Text = "Days"
+		Me.rbDAYS.UseVisualStyleBackColor = False
+		'
+		'txtNumOfTiers
+		'
+		Me.txtNumOfTiers.BackColor = System.Drawing.SystemColors.HighlightText
+		Me.txtNumOfTiers.Enabled = False
+		Me.txtNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtNumOfTiers.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.txtNumOfTiers.Location = New System.Drawing.Point(55, 20)
+		Me.txtNumOfTiers.MaxLength = 2
+		Me.txtNumOfTiers.Name = "txtNumOfTiers"
+		Me.txtNumOfTiers.Size = New System.Drawing.Size(66, 20)
+		Me.txtNumOfTiers.TabIndex = 9
+		Me.txtNumOfTiers.Text = "# of Tiers"
+		'
 		'pnlPayoutParameters
 		'
 		Me.pnlPayoutParameters.BackColor = System.Drawing.Color.PowderBlue
@@ -213,19 +273,6 @@ Partial Class StepD
 		Me.Label1.Size = New System.Drawing.Size(95, 29)
 		Me.Label1.TabIndex = 1
 		Me.Label1.Text = "Are all parameters equal?"
-		'
-		'txtNumOfTiers
-		'
-		Me.txtNumOfTiers.BackColor = System.Drawing.SystemColors.HighlightText
-		Me.txtNumOfTiers.Enabled = False
-		Me.txtNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtNumOfTiers.ForeColor = System.Drawing.SystemColors.ControlDark
-		Me.txtNumOfTiers.Location = New System.Drawing.Point(55, 20)
-		Me.txtNumOfTiers.MaxLength = 2
-		Me.txtNumOfTiers.Name = "txtNumOfTiers"
-		Me.txtNumOfTiers.Size = New System.Drawing.Size(66, 20)
-		Me.txtNumOfTiers.TabIndex = 9
-		Me.txtNumOfTiers.Text = "# of Tiers"
 		'
 		'pnlAcquisition
 		'
@@ -419,55 +466,6 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'pnlDaysTiers
-		'
-		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
-		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
-		Me.pnlDaysTiers.Controls.Add(Me.RadioButton1)
-		Me.pnlDaysTiers.Controls.Add(Me.rbDAYS)
-		Me.pnlDaysTiers.Controls.Add(Me.txtNumOfTiers)
-		Me.pnlDaysTiers.Location = New System.Drawing.Point(18, 26)
-		Me.pnlDaysTiers.Name = "pnlDaysTiers"
-		Me.pnlDaysTiers.Size = New System.Drawing.Size(126, 45)
-		Me.pnlDaysTiers.TabIndex = 5
-		'
-		'rbDAYS
-		'
-		Me.rbDAYS.AutoSize = True
-		Me.rbDAYS.BackColor = System.Drawing.Color.Transparent
-		Me.rbDAYS.Checked = True
-		Me.rbDAYS.Location = New System.Drawing.Point(2, 2)
-		Me.rbDAYS.Name = "rbDAYS"
-		Me.rbDAYS.Size = New System.Drawing.Size(49, 17)
-		Me.rbDAYS.TabIndex = 10
-		Me.rbDAYS.TabStop = True
-		Me.rbDAYS.Text = "Days"
-		Me.rbDAYS.UseVisualStyleBackColor = False
-		'
-		'RadioButton1
-		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.BackColor = System.Drawing.Color.Transparent
-		Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ControlDark
-		Me.RadioButton1.Location = New System.Drawing.Point(2, 20)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(48, 17)
-		Me.RadioButton1.TabIndex = 11
-		Me.RadioButton1.Text = "Tiers"
-		Me.RadioButton1.UseVisualStyleBackColor = False
-		'
-		'lblNumOfDays
-		'
-		Me.lblNumOfDays.AutoSize = True
-		Me.lblNumOfDays.BackColor = System.Drawing.Color.Transparent
-		Me.lblNumOfDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblNumOfDays.Location = New System.Drawing.Point(56, 5)
-		Me.lblNumOfDays.Name = "lblNumOfDays"
-		Me.lblNumOfDays.Size = New System.Drawing.Size(61, 13)
-		Me.lblNumOfDays.TabIndex = 12
-		Me.lblNumOfDays.Text = "# of Days"
-		'
 		'StepD
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -486,6 +484,8 @@ Partial Class StepD
 		Me.pnlPromoType.ResumeLayout(False)
 		Me.pnlPromoType.PerformLayout()
 		Me.pnlMultiPart.ResumeLayout(False)
+		Me.pnlDaysTiers.ResumeLayout(False)
+		Me.pnlDaysTiers.PerformLayout()
 		Me.pnlPayoutParameters.ResumeLayout(False)
 		Me.pnlPayoutParameters.PerformLayout()
 		Me.pnlPlayerEligibility.ResumeLayout(False)
@@ -496,8 +496,6 @@ Partial Class StepD
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
-		Me.pnlDaysTiers.ResumeLayout(False)
-		Me.pnlDaysTiers.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
