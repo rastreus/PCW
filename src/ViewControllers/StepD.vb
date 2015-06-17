@@ -131,7 +131,7 @@ Public Class StepD
 
 	Private Sub StepD_ResetControls()
 		Me.rbSingleEntryPayout.Checked = True
-		Me.txtNumOfTiers.Text = BEP_Util.DaysTiersStr
+		Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbPointCutoffLimitNO.Checked = True
 		Me.txtPointCutoffLimit.Text = BEP_Util.NumStr
@@ -205,9 +205,10 @@ Public Class StepD
 		Handles MyBase.ShowStep
 		If PCW.Data.DaysBool And _
 			(Not IsNothing(PCW.Data.NumOfDays)) Then
+			Me.rbDAYS.Checked = True
 			Me.lblNumOfDays.Text = PCW.Data.NumOfDays.ToString
 		Else
-			Me.lblNumOfDays.Text = "# of Days"
+			Me.lblNumOfDays.Text = BEP_Util.DaysStr
 		End If
 	End Sub
 #End Region
@@ -331,25 +332,71 @@ Public Class StepD
 													  e As EventArgs) _
 		Handles rbMultiPartEntryPayout.CheckedChanged
 		If Me.rbMultiPartEntryPayout.Checked Then
+			If (Not Me.rbDAYS.Checked) And _
+				(Not Me.rbTIERS.Checked) Then
+				PCW.NextEnabled = False
+			End If
+			Me.pnlDaysTiers.Enabled = True
+			Me.pnlPayoutParameters.Enabled = True
+		Else
+			GUI_Util.NextEnabled()
+			Me.pnlDaysTiers.Enabled = False
+			Me.pnlPayoutParameters.Enabled = False
+		End If
+	End Sub
+#End Region
+#Region "StepD_rbDAYS_CheckedChanged"
+	Private Sub rbDAYS_CheckedChanged(sender As Object, _
+									  e As EventArgs) _
+		Handles rbDAYS.CheckedChanged
+		If Me.rbDAYS.Checked Then
+			Me.rbDAYS.ForeColor = SystemColors.ControlText
+			Me.lblNumOfDays.ForeColor = SystemColors.ControlText
+		Else
+			Me.rbDAYS.ForeColor = SystemColors.ControlDark
+			Me.lblNumOfDays.ForeColor = SystemColors.ControlDark
+		End If
+		GUI_Util.NextEnabled()
+	End Sub
+#End Region
+#Region "StepD_rbTIERS_CheckedChanged"
+	Private Sub rbTIERS_CheckedChanged(sender As Object, _
+									   e As EventArgs) _
+		Handles rbTIERS.CheckedChanged
+		If Me.rbTIERS.Checked Then
+			Me.cbPayoutParametersYES.Checked = True
+			Me.rbTIERS.ForeColor = SystemColors.ControlText
+			Me.txtNumOfTiers.ForeColor = SystemColors.ControlText
 			Me.txtNumOfTiers.Text = ""
 			Me.txtNumOfTiers.Enabled = True
-			Me.pnlPayoutParameters.Enabled = True
 			Me.ActiveControl = Me.txtNumOfTiers
 		Else
+			Me.cbPayoutParametersYES.Checked = False
+			Me.rbTIERS.ForeColor = SystemColors.ControlDark
+			Me.txtNumOfTiers.ForeColor = SystemColors.ControlDark
 			Me.txtNumOfTiers.Enabled = False
-			Me.txtNumOfTiers.Text = BEP_Util.DaysTiersStr
-			Me.pnlPayoutParameters.Enabled = False
+			Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		End If
 	End Sub
 #End Region
 #Region "StepD_cbPayoutParametersYES_CheckedChanged"
 	Private Sub cbPayoutParametersYES_CheckedChanged(sender As Object, _
-												 e As EventArgs) _
+													 e As EventArgs) _
 		Handles cbPayoutParametersYES.CheckedChanged
 		If Me.cbPayoutParametersYES.Checked Then
 			Me.cbPayoutParametersYES.ForeColor = SystemColors.ControlText
+			If Me.rbDAYS.Checked Then
+				GUI_Util.msgBox("Typically a 'Muti-Part of Days' uses " &
+								"the same Payout parameters for each day", _
+								"ARE YOU SURE?")
+			End If
 		Else
 			Me.cbPayoutParametersYES.ForeColor = SystemColors.ControlDark
+			If Me.rbTIERS.Checked Then
+				GUI_Util.msgBox("Typically a 'Muti-Part of Tiers' uses " &
+								"different Payout parameters for each tier", _
+								"ARE YOU SURE?")
+			End If
 		End If
 	End Sub
 #End Region

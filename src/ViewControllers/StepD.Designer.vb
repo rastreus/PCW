@@ -33,7 +33,7 @@ Partial Class StepD
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
 		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
 		Me.lblNumOfDays = New System.Windows.Forms.Label()
-		Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+		Me.rbTIERS = New System.Windows.Forms.RadioButton()
 		Me.rbDAYS = New System.Windows.Forms.RadioButton()
 		Me.txtNumOfTiers = New System.Windows.Forms.TextBox()
 		Me.pnlPayoutParameters = New System.Windows.Forms.Panel()
@@ -184,9 +184,10 @@ Partial Class StepD
 		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
 		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
-		Me.pnlDaysTiers.Controls.Add(Me.RadioButton1)
+		Me.pnlDaysTiers.Controls.Add(Me.rbTIERS)
 		Me.pnlDaysTiers.Controls.Add(Me.rbDAYS)
 		Me.pnlDaysTiers.Controls.Add(Me.txtNumOfTiers)
+		Me.pnlDaysTiers.Enabled = False
 		Me.pnlDaysTiers.Location = New System.Drawing.Point(18, 26)
 		Me.pnlDaysTiers.Name = "pnlDaysTiers"
 		Me.pnlDaysTiers.Size = New System.Drawing.Size(126, 45)
@@ -197,28 +198,30 @@ Partial Class StepD
 		Me.lblNumOfDays.AutoSize = True
 		Me.lblNumOfDays.BackColor = System.Drawing.Color.Transparent
 		Me.lblNumOfDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblNumOfDays.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.lblNumOfDays.Location = New System.Drawing.Point(56, 5)
 		Me.lblNumOfDays.Name = "lblNumOfDays"
 		Me.lblNumOfDays.Size = New System.Drawing.Size(61, 13)
 		Me.lblNumOfDays.TabIndex = 12
 		Me.lblNumOfDays.Text = "# of Days"
 		'
-		'RadioButton1
+		'rbTIERS
 		'
-		Me.RadioButton1.AutoSize = True
-		Me.RadioButton1.BackColor = System.Drawing.Color.Transparent
-		Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ControlDark
-		Me.RadioButton1.Location = New System.Drawing.Point(2, 20)
-		Me.RadioButton1.Name = "RadioButton1"
-		Me.RadioButton1.Size = New System.Drawing.Size(48, 17)
-		Me.RadioButton1.TabIndex = 11
-		Me.RadioButton1.Text = "Tiers"
-		Me.RadioButton1.UseVisualStyleBackColor = False
+		Me.rbTIERS.AutoSize = True
+		Me.rbTIERS.BackColor = System.Drawing.Color.Transparent
+		Me.rbTIERS.ForeColor = System.Drawing.SystemColors.ControlDark
+		Me.rbTIERS.Location = New System.Drawing.Point(2, 20)
+		Me.rbTIERS.Name = "rbTIERS"
+		Me.rbTIERS.Size = New System.Drawing.Size(48, 17)
+		Me.rbTIERS.TabIndex = 11
+		Me.rbTIERS.Text = "Tiers"
+		Me.rbTIERS.UseVisualStyleBackColor = False
 		'
 		'rbDAYS
 		'
 		Me.rbDAYS.AutoSize = True
 		Me.rbDAYS.BackColor = System.Drawing.Color.Transparent
+		Me.rbDAYS.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.rbDAYS.Location = New System.Drawing.Point(2, 2)
 		Me.rbDAYS.Name = "rbDAYS"
 		Me.rbDAYS.Size = New System.Drawing.Size(49, 17)
@@ -531,7 +534,7 @@ Partial Class StepD
 	Friend WithEvents Label1 As System.Windows.Forms.Label
 	Friend WithEvents pnlDaysTiers As System.Windows.Forms.Panel
 	Friend WithEvents lblNumOfDays As System.Windows.Forms.Label
-	Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+	Friend WithEvents rbTIERS As System.Windows.Forms.RadioButton
 	Friend WithEvents rbDAYS As System.Windows.Forms.RadioButton
 
 End Class
