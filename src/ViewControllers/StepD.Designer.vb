@@ -199,7 +199,7 @@ Partial Class StepD
 		'
 		'btnSetNumOfTiers
 		'
-		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.Gainsboro
 		Me.btnSetNumOfTiers.Enabled = False
 		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
 		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink

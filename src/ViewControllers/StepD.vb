@@ -378,12 +378,14 @@ Public Class StepD
 			Me.txtNumOfTiers.ForeColor = SystemColors.ControlText
 			Me.txtNumOfTiers.Enabled = True
 			Me.btnSetNumOfTiers.Enabled = True
+			Me.btnSetNumOfTiers.BackColor = Color.HotPink
 		Else
 			Me.cbPayoutParametersYES.Checked = False
 			Me.rbTIERS.ForeColor = SystemColors.ControlDark
 			Me.txtNumOfTiers.ForeColor = SystemColors.ControlDark
 			Me.txtNumOfTiers.Enabled = False
 			Me.btnSetNumOfTiers.Enabled = False
+			Me.btnSetNumOfTiers.BackColor = Color.Gainsboro
 			Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		End If
 	End Sub
