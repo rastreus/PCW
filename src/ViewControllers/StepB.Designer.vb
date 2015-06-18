@@ -66,12 +66,13 @@ Partial Class StepB
 		Me.pnlPromoName.Controls.Add(Me.lblPromoName)
 		Me.pnlPromoName.Location = New System.Drawing.Point(142, 50)
 		Me.pnlPromoName.Name = "pnlPromoName"
-		Me.pnlPromoName.Size = New System.Drawing.Size(292, 66)
+		Me.pnlPromoName.Size = New System.Drawing.Size(257, 66)
 		Me.pnlPromoName.TabIndex = 0
 		'
 		'btnSetPromoName
 		'
-		Me.btnSetPromoName.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetPromoName.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoName.Enabled = False
 		Me.btnSetPromoName.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
 		Me.btnSetPromoName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetPromoName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
@@ -119,7 +120,7 @@ Partial Class StepB
 		Me.pnlRecurring.Controls.Add(Me.Panel1)
 		Me.pnlRecurring.Location = New System.Drawing.Point(142, 120)
 		Me.pnlRecurring.Name = "pnlRecurring"
-		Me.pnlRecurring.Size = New System.Drawing.Size(292, 132)
+		Me.pnlRecurring.Size = New System.Drawing.Size(257, 132)
 		Me.pnlRecurring.TabIndex = 2
 		'
 		'lblRecurring
@@ -191,7 +192,7 @@ Partial Class StepB
 		Me.pnlPromoID.CausesValidation = False
 		Me.pnlPromoID.Controls.Add(Me.lblPromoIDtop)
 		Me.pnlPromoID.Controls.Add(Me.pnlPapayaWhip)
-		Me.pnlPromoID.Location = New System.Drawing.Point(440, 50)
+		Me.pnlPromoID.Location = New System.Drawing.Point(405, 50)
 		Me.pnlPromoID.Name = "pnlPromoID"
 		Me.pnlPromoID.Size = New System.Drawing.Size(123, 81)
 		Me.pnlPromoID.TabIndex = 8
@@ -257,7 +258,7 @@ Partial Class StepB
 		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.txtEditPromoID)
 		Me.pnlEditPromoID.Enabled = False
-		Me.pnlEditPromoID.Location = New System.Drawing.Point(440, 137)
+		Me.pnlEditPromoID.Location = New System.Drawing.Point(405, 137)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
 		Me.pnlEditPromoID.Size = New System.Drawing.Size(123, 63)
 		Me.pnlEditPromoID.TabIndex = 0

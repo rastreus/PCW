@@ -244,13 +244,17 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_txtPromoName_Enter"
-	Private Sub txtPromoName_Enter(sender As Object, e As EventArgs) _
+	Private Sub txtPromoName_Enter(sender As Object, _
+								   e As EventArgs) _
 		Handles txtPromoName.Enter
 		Me.promoNameEntered = True
+		Me.btnSetPromoName.BackColor = Color.HotPink
+		Me.btnSetPromoName.Enabled = True
 	End Sub
 #End Region
 #Region "StepB_txtPromoName_Leave"
-	Private Sub txtPromoName_Leave(sender As Object, e As EventArgs) _
+	Private Sub txtPromoName_Leave(sender As Object, _
+								   e As EventArgs) _
 		Handles txtPromoName.Leave
 		If Me.promoNameEntered Then
 			Me.promoAcronym = getPromoAcronym()
@@ -272,13 +276,17 @@ Public Class StepB
 	End Function
 
 	Private Function getPromoID() As String
-		Return Me.promoAcronym.ToUpper() & Me.promoYear & Me.promoMonth
+		Return Me.promoAcronym.ToUpper() & _
+			   Me.promoYear & _
+			   Me.promoMonth
 	End Function
 #End Region
 #Region "StepB_btnSetPromoName_Click"
-	Private Sub btnSetPromoName_Click(sender As Object, e As EventArgs) _
+	Private Sub btnSetPromoName_Click(sender As Object, _
+									  e As EventArgs) _
 		Handles btnSetPromoName.Click
-		If Me.promoNameEntered Then
+		If Me.promoNameEntered And _
+			(Not Me.txtPromoName.Text = "") Then
 			Me.ActiveControl = Me.pnlPromoName
 		End If
 	End Sub
