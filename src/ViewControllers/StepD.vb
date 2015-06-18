@@ -166,7 +166,7 @@ Public Class StepD
 		Me.Data.CheckForReset()
 
 		If Me.Data.Category = Category.multiPart And
-			Not BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
+			BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."
 			errStrArray.Add(errString)
@@ -377,11 +377,13 @@ Public Class StepD
 			Me.rbTIERS.ForeColor = SystemColors.ControlText
 			Me.txtNumOfTiers.ForeColor = SystemColors.ControlText
 			Me.txtNumOfTiers.Enabled = True
+			Me.btnSetNumOfTiers.Enabled = True
 		Else
 			Me.cbPayoutParametersYES.Checked = False
 			Me.rbTIERS.ForeColor = SystemColors.ControlDark
 			Me.txtNumOfTiers.ForeColor = SystemColors.ControlDark
 			Me.txtNumOfTiers.Enabled = False
+			Me.btnSetNumOfTiers.Enabled = False
 			Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		End If
 	End Sub
@@ -397,7 +399,14 @@ Public Class StepD
 	Private Sub txtNumOfTiers_Leave(sender As Object, _
 									e As EventArgs) _
 		Handles txtNumOfTiers.Leave
-		GUI_Util.NextEnabled()
+		If Me.txtTierBool And _
+			(Not Me.txtNumOfTiers.Text = BEP_Util.TiersStr And _
+			 Not Me.txtNumOfTiers.Text = "") Then
+			GUI_Util.NextEnabled()
+		ElseIf (Me.txtNumOfTiers.Text = BEP_Util.TiersStr Or _
+				Me.txtNumOfTiers.Text = "") Then
+			PCW.NextEnabled = False
+		End If
 	End Sub
 #End Region
 #Region "StepD_cbPayoutParametersYES_CheckedChanged"
@@ -441,12 +450,7 @@ Public Class StepD
 	Private Sub btnSetNumOfTiers_Click(sender As Object, _
 									   e As EventArgs) _
 		Handles btnSetNumOfTiers.Click
-		btnSet(Me.txtTierBool)
-	End Sub
-	Private Sub btnSet(ByVal enteredBool As Boolean)
-		If enteredBool Then
-			Me.ActiveControl = Me.pnlDaysTiers
-		End If
+		Me.ActiveControl = Me.pnlDaysTiers
 	End Sub
 #End Region
 End Class

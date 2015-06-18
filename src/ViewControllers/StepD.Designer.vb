@@ -32,6 +32,7 @@ Partial Class StepD
 		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
 		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
+		Me.btnSetNumOfTiers = New System.Windows.Forms.Button()
 		Me.lblNumOfDays = New System.Windows.Forms.Label()
 		Me.rbTIERS = New System.Windows.Forms.RadioButton()
 		Me.rbDAYS = New System.Windows.Forms.RadioButton()
@@ -57,7 +58,6 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.btnSetNumOfTiers = New System.Windows.Forms.Button()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlDaysTiers.SuspendLayout()
@@ -196,6 +196,25 @@ Partial Class StepD
 		Me.pnlDaysTiers.Name = "pnlDaysTiers"
 		Me.pnlDaysTiers.Size = New System.Drawing.Size(171, 45)
 		Me.pnlDaysTiers.TabIndex = 5
+		'
+		'btnSetNumOfTiers
+		'
+		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetNumOfTiers.Enabled = False
+		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetNumOfTiers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetNumOfTiers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetNumOfTiers.ForeColor = System.Drawing.Color.White
+		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(127, 20)
+		Me.btnSetNumOfTiers.Name = "btnSetNumOfTiers"
+		Me.btnSetNumOfTiers.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetNumOfTiers.TabIndex = 13
+		Me.btnSetNumOfTiers.TabStop = False
+		Me.btnSetNumOfTiers.Text = "Set"
+		Me.btnSetNumOfTiers.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetNumOfTiers.UseVisualStyleBackColor = False
 		'
 		'lblNumOfDays
 		'
@@ -484,24 +503,6 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.Size = New System.Drawing.Size(235, 37)
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
-		'
-		'btnSetNumOfTiers
-		'
-		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetNumOfTiers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetNumOfTiers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetNumOfTiers.ForeColor = System.Drawing.Color.White
-		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(127, 20)
-		Me.btnSetNumOfTiers.Name = "btnSetNumOfTiers"
-		Me.btnSetNumOfTiers.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetNumOfTiers.TabIndex = 13
-		Me.btnSetNumOfTiers.TabStop = False
-		Me.btnSetNumOfTiers.Text = "Set"
-		Me.btnSetNumOfTiers.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSetNumOfTiers.UseVisualStyleBackColor = False
 		'
 		'StepD
 		'
