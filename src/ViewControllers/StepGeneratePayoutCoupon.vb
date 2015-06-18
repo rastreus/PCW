@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Handles promo coupon generation.
@@ -61,7 +62,8 @@ Public Class StepGeneratePayoutCoupon
 		Return result
 	End Function
 
-	Private Function getMaxNumOfCouponsPerPatron(ByVal yesChecked As Boolean, ByVal txtInput As String) As System.Nullable(Of Short)
+	Private Function getMaxNumOfCouponsPerPatron(ByVal yesChecked As Boolean, _
+												 ByVal txtInput As String) As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
@@ -93,7 +95,8 @@ Public Class StepGeneratePayoutCoupon
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Grabs StepB and shakes it down for the PromoID.</remarks>
-	Private Sub StepGeneratePayoutCoupon_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepGeneratePayoutCoupon_ShowStep(sender As Object, _
+												  e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		If Me.Data.StepNotSet Then
 			PCW.NextEnabled = False
@@ -135,7 +138,8 @@ Public Class StepGeneratePayoutCoupon
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepGeneratePayoutCoupon_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepGeneratePayoutCoupon_Validation(sender As Object, _
+													e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
@@ -204,36 +208,41 @@ Public Class StepGeneratePayoutCoupon
 #End Region
 #Region "StepGeneratePayoutCoupon_txt_Enter_Leave"
 	Private Sub txtCouponsPerPatron_Enter(sender As Object, _
-											   e As EventArgs) _
+										  e As EventArgs) _
 		Handles txtCouponsPerPatron.Enter
 		If Me.rbCouponsPerPatronYES.Checked Then
 			Me.couponsPerPatronBool = True
 		End If
 	End Sub
-	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, e As EventArgs) _
+	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, _
+										 e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
 			txtMaxAmtOneCoupon.Text = ""
 		End If
 		Me.maxAmtOneCouponBool = True
 	End Sub
-	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, e As EventArgs) _
+	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, _
+										 e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Leave
 		CheckForNext()
 	End Sub
-	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, e As EventArgs) _
+	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, _
+										  e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Enter
 		If txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr Then
 			txtMaxAmtAllCoupons.Text = ""
 		End If
 		Me.maxAmtAllCouponsBool = True
 	End Sub
-	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, e As EventArgs) _
+	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, _
+										  e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Leave
 		CheckForNext()
 	End Sub
 	Private Sub CheckForNext()
-		If Me.maxAmtOneCouponBool And Me.maxAmtAllCouponsBool Then
+		If Me.maxAmtOneCouponBool And _
+			Me.maxAmtAllCouponsBool Then
 			GUI_Util.NextEnabled()
 		End If
 	End Sub
@@ -264,17 +273,17 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 
 	Private Sub btnSetCouponsPerPatron_Click(sender As Object, _
-												  e As EventArgs) _
+											 e As EventArgs) _
 		Handles btnSetCouponsPerPatron.Click
 		btnSet(Me.couponsPerPatronBool)
 	End Sub
 	Private Sub btnSetMaxAmtOneCoupon_Click(sender As Object, _
-												 e As EventArgs) _
+											e As EventArgs) _
 		Handles btnSetMaxAmtOneCoupon.Click
 		btnSet(Me.maxAmtOneCouponBool)
 	End Sub
 	Private Sub btnSetMaxAmtAllCoupons_Click(sender As Object, _
-												  e As EventArgs) _
+											 e As EventArgs) _
 		Handles btnSetMaxAmtAllCoupons.Click
 		btnSet(Me.maxAmtAllCouponsBool)
 	End Sub

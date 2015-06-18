@@ -246,27 +246,27 @@ Each TextBox is validated for invalid (non-numeric) characters.
 #Region "_TIME_ENTER_"
 	Private Sub txtOverrideTimeHours_Enter(sender As Object, _
 											e As EventArgs) _
-	Handles txtOverrideTimeHours.Enter
+		Handles txtOverrideTimeHours.Enter
 		Me.OverrideTimeHoursEntered = True
 		Me.txtOverrideTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
 		CheckForNext()
 	End Sub
 	Private Sub txtCutoffTimeHours_Enter(sender As Object, _
-											  e As EventArgs) _
+										 e As EventArgs) _
 		Handles txtCutoffTimeHours.Enter
 		Me.CutoffTimeHoursEntered = True
 		Me.txtCutoffTimeHours.Text = ClearHours(Me.txtCutoffTimeHours.Text)
 		CheckForNext()
 	End Sub
 	Private Sub txtOverrideTimeMinutes_Enter(sender As Object, _
-												  e As EventArgs) _
+											 e As EventArgs) _
 		Handles txtOverrideTimeMinutes.Enter
 		Me.OverrideTimeMinutesEntered = True
 		Me.txtOverrideTimeMinutes.Text = ClearMinutes(Me.txtOverrideTimeMinutes.Text)
 		CheckForNext()
 	End Sub
 	Private Sub txtCutoffTimeMinutes_Enter(sender As Object, _
-												e As EventArgs) _
+										   e As EventArgs) _
 		Handles txtCutoffTimeMinutes.Enter
 		Me.CutoffTimeMinutesEntered = True
 		Me.txtCutoffTimeMinutes.Text = ClearMinutes(Me.txtCutoffTimeMinutes.Text)
