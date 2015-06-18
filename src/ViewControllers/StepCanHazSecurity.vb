@@ -245,7 +245,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 #End Region
 #Region "_TIME_ENTER_"
 	Private Sub txtOverrideTimeHours_Enter(sender As Object, _
-											e As EventArgs) _
+										   e As EventArgs) _
 		Handles txtOverrideTimeHours.Enter
 		Me.OverrideTimeHoursEntered = True
 		Me.txtOverrideTimeHours.Text = ClearHours(Me.txtOverrideTimeHours.Text)
