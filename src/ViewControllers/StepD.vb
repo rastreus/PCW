@@ -52,7 +52,11 @@ Public Class StepD
 			Case Category.payoutOnly
 				Me.stepD_data.SkipEntry = True
 			Case Category.multiPart
-				Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfTiers.Text
+				If Me.rbDAYS.Checked Then
+					Me.stepD_data.MuliPartDaysTiers = Me.lblNumOfDays.Text
+				ElseIf Me.rbTIERS.Checked Then
+					Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfTiers.Text
+				End If
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
 															 Me.txtPointCutoffLimit.Text)
@@ -113,6 +117,7 @@ Public Class StepD
 #End Region
 #Region "StepD_Load"
 	Private successBool As Boolean = False
+	Private txtTierBool As Boolean = False
 
 	Private Sub StepD_Load(sender As Object, _
 						   e As EventArgs) _
@@ -126,6 +131,7 @@ Public Class StepD
 		Handles MyBase.ResetStep
 		Me.stepD_data = New StepD_Data
 		Me.successBool = False
+		Me.txtTierBool = False
 		StepD_ResetControls()
 	End Sub
 
@@ -364,12 +370,13 @@ Public Class StepD
 									   e As EventArgs) _
 		Handles rbTIERS.CheckedChanged
 		If Me.rbTIERS.Checked Then
+			If Me.txtTierBool = False Then
+				PCW.NextEnabled = False
+			End If
 			Me.cbPayoutParametersYES.Checked = True
 			Me.rbTIERS.ForeColor = SystemColors.ControlText
 			Me.txtNumOfTiers.ForeColor = SystemColors.ControlText
-			Me.txtNumOfTiers.Text = ""
 			Me.txtNumOfTiers.Enabled = True
-			Me.ActiveControl = Me.txtNumOfTiers
 		Else
 			Me.cbPayoutParametersYES.Checked = False
 			Me.rbTIERS.ForeColor = SystemColors.ControlDark
@@ -377,6 +384,20 @@ Public Class StepD
 			Me.txtNumOfTiers.Enabled = False
 			Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		End If
+	End Sub
+#End Region
+#Region "StepD_txtNumOfTiers_Enter_Leave"
+	Private Sub txtNumOfTiers_Enter(sender As Object, _
+									e As EventArgs) _
+		Handles txtNumOfTiers.Enter
+		Me.txtTierBool = True
+		Me.txtNumOfTiers.Text = ""
+		Me.ActiveControl = Me.txtNumOfTiers
+	End Sub
+	Private Sub txtNumOfTiers_Leave(sender As Object, _
+									e As EventArgs) _
+		Handles txtNumOfTiers.Leave
+		GUI_Util.NextEnabled()
 	End Sub
 #End Region
 #Region "StepD_cbPayoutParametersYES_CheckedChanged"
@@ -397,6 +418,34 @@ Public Class StepD
 								"different Payout parameters for each tier", _
 								"ARE YOU SURE?")
 			End If
+		End If
+	End Sub
+#End Region
+#Region "StepD_txtNumOfTiers_KeyPress"
+	''' <summary>
+	''' Limits the textbox to only allow numeric input.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	''' <remarks>A user is able to paste non-numeric input into the textbox.</remarks>
+	Private Sub txtNumOfTiers_KeyPress(sender As Object, _
+									   e As KeyPressEventArgs) _
+		Handles txtNumOfTiers.KeyPress
+		If Not Char.IsDigit(e.KeyChar) And
+			Not Char.IsControl(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+#End Region
+#Region "StepD_btnSetNumOfTiers_Click"
+	Private Sub btnSetNumOfTiers_Click(sender As Object, _
+									   e As EventArgs) _
+		Handles btnSetNumOfTiers.Click
+		btnSet(Me.txtTierBool)
+	End Sub
+	Private Sub btnSet(ByVal enteredBool As Boolean)
+		If enteredBool Then
+			Me.ActiveControl = Me.pnlDaysTiers
 		End If
 	End Sub
 #End Region

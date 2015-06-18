@@ -40,6 +40,7 @@ Partial Class StepD
 		Me.cbPayoutParametersYES = New System.Windows.Forms.CheckBox()
 		Me.lblPaymentParameters = New System.Windows.Forms.Label()
 		Me.pnlAcquisition = New System.Windows.Forms.Panel()
+		Me.lblSTILLINDEVELOPMENT = New System.Windows.Forms.Label()
 		Me.pnlPlayerEligibility = New System.Windows.Forms.Panel()
 		Me.pnlSumMethod = New System.Windows.Forms.Panel()
 		Me.rbEligiblePlayersList = New System.Windows.Forms.RadioButton()
@@ -56,7 +57,7 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.lblSTILLINDEVELOPMENT = New System.Windows.Forms.Label()
+		Me.btnSetNumOfTiers = New System.Windows.Forms.Button()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlDaysTiers.SuspendLayout()
@@ -72,7 +73,7 @@ Partial Class StepD
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "Of the five available types, which will this promo be?"
+		Me.Description.Text = "Of the five available categories, which will this promo be?"
 		'
 		'pnlPromoType
 		'
@@ -185,14 +186,15 @@ Partial Class StepD
 		'
 		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
 		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDaysTiers.Controls.Add(Me.btnSetNumOfTiers)
 		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
 		Me.pnlDaysTiers.Controls.Add(Me.rbTIERS)
 		Me.pnlDaysTiers.Controls.Add(Me.rbDAYS)
 		Me.pnlDaysTiers.Controls.Add(Me.txtNumOfTiers)
 		Me.pnlDaysTiers.Enabled = False
-		Me.pnlDaysTiers.Location = New System.Drawing.Point(18, 26)
+		Me.pnlDaysTiers.Location = New System.Drawing.Point(6, 26)
 		Me.pnlDaysTiers.Name = "pnlDaysTiers"
-		Me.pnlDaysTiers.Size = New System.Drawing.Size(126, 45)
+		Me.pnlDaysTiers.Size = New System.Drawing.Size(171, 45)
 		Me.pnlDaysTiers.TabIndex = 5
 		'
 		'lblNumOfDays
@@ -251,9 +253,9 @@ Partial Class StepD
 		Me.pnlPayoutParameters.Controls.Add(Me.cbPayoutParametersYES)
 		Me.pnlPayoutParameters.Controls.Add(Me.lblPaymentParameters)
 		Me.pnlPayoutParameters.Enabled = False
-		Me.pnlPayoutParameters.Location = New System.Drawing.Point(148, 26)
+		Me.pnlPayoutParameters.Location = New System.Drawing.Point(183, 26)
 		Me.pnlPayoutParameters.Name = "pnlPayoutParameters"
-		Me.pnlPayoutParameters.Size = New System.Drawing.Size(96, 45)
+		Me.pnlPayoutParameters.Size = New System.Drawing.Size(64, 45)
 		Me.pnlPayoutParameters.TabIndex = 10
 		'
 		'cbPayoutParametersYES
@@ -262,7 +264,7 @@ Partial Class StepD
 		Me.cbPayoutParametersYES.BackColor = System.Drawing.Color.Transparent
 		Me.cbPayoutParametersYES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbPayoutParametersYES.ForeColor = System.Drawing.SystemColors.ControlDark
-		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(45, 21)
+		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(9, 27)
 		Me.cbPayoutParametersYES.Name = "cbPayoutParametersYES"
 		Me.cbPayoutParametersYES.Size = New System.Drawing.Size(47, 17)
 		Me.cbPayoutParametersYES.TabIndex = 0
@@ -273,11 +275,11 @@ Partial Class StepD
 		'
 		Me.lblPaymentParameters.BackColor = System.Drawing.Color.Transparent
 		Me.lblPaymentParameters.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblPaymentParameters.Location = New System.Drawing.Point(1, 2)
+		Me.lblPaymentParameters.Location = New System.Drawing.Point(-1, 0)
 		Me.lblPaymentParameters.Name = "lblPaymentParameters"
-		Me.lblPaymentParameters.Size = New System.Drawing.Size(95, 29)
+		Me.lblPaymentParameters.Size = New System.Drawing.Size(64, 29)
 		Me.lblPaymentParameters.TabIndex = 1
-		Me.lblPaymentParameters.Text = "Are all parameters equal?"
+		Me.lblPaymentParameters.Text = "Are Payouts equal?"
 		'
 		'pnlAcquisition
 		'
@@ -288,6 +290,17 @@ Partial Class StepD
 		Me.pnlAcquisition.Name = "pnlAcquisition"
 		Me.pnlAcquisition.Size = New System.Drawing.Size(251, 43)
 		Me.pnlAcquisition.TabIndex = 14
+		'
+		'lblSTILLINDEVELOPMENT
+		'
+		Me.lblSTILLINDEVELOPMENT.AutoSize = True
+		Me.lblSTILLINDEVELOPMENT.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblSTILLINDEVELOPMENT.ForeColor = System.Drawing.Color.SlateBlue
+		Me.lblSTILLINDEVELOPMENT.Location = New System.Drawing.Point(84, 14)
+		Me.lblSTILLINDEVELOPMENT.Name = "lblSTILLINDEVELOPMENT"
+		Me.lblSTILLINDEVELOPMENT.Size = New System.Drawing.Size(158, 14)
+		Me.lblSTILLINDEVELOPMENT.TabIndex = 0
+		Me.lblSTILLINDEVELOPMENT.Text = "(Not Enabled: In Development)"
 		'
 		'pnlPlayerEligibility
 		'
@@ -472,16 +485,23 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'lblSTILLINDEVELOPMENT
+		'btnSetNumOfTiers
 		'
-		Me.lblSTILLINDEVELOPMENT.AutoSize = True
-		Me.lblSTILLINDEVELOPMENT.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblSTILLINDEVELOPMENT.ForeColor = System.Drawing.Color.SlateBlue
-		Me.lblSTILLINDEVELOPMENT.Location = New System.Drawing.Point(84, 14)
-		Me.lblSTILLINDEVELOPMENT.Name = "lblSTILLINDEVELOPMENT"
-		Me.lblSTILLINDEVELOPMENT.Size = New System.Drawing.Size(158, 14)
-		Me.lblSTILLINDEVELOPMENT.TabIndex = 0
-		Me.lblSTILLINDEVELOPMENT.Text = "(Not Enabled: In Development)"
+		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetNumOfTiers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetNumOfTiers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetNumOfTiers.ForeColor = System.Drawing.Color.White
+		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(127, 20)
+		Me.btnSetNumOfTiers.Name = "btnSetNumOfTiers"
+		Me.btnSetNumOfTiers.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetNumOfTiers.TabIndex = 13
+		Me.btnSetNumOfTiers.TabStop = False
+		Me.btnSetNumOfTiers.Text = "Set"
+		Me.btnSetNumOfTiers.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetNumOfTiers.UseVisualStyleBackColor = False
 		'
 		'StepD
 		'
@@ -494,7 +514,7 @@ Partial Class StepD
 		Me.NextStep = "StepEntryTicketAmt"
 		Me.PreviousStep = "StepCanHazSecurity"
 		Me.Size = New System.Drawing.Size(594, 293)
-		Me.StepDescription = "Of the five available types, which will this promo be?"
+		Me.StepDescription = "Of the five available categories, which will this promo be?"
 		Me.Controls.SetChildIndex(Me.pnlPromoType, 0)
 		Me.Controls.SetChildIndex(Me.pnlPlayerEligibility, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
@@ -553,5 +573,6 @@ Partial Class StepD
 	Friend WithEvents rbTIERS As System.Windows.Forms.RadioButton
 	Friend WithEvents rbDAYS As System.Windows.Forms.RadioButton
 	Friend WithEvents lblSTILLINDEVELOPMENT As System.Windows.Forms.Label
+	Friend WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
 
 End Class
