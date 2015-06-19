@@ -232,14 +232,28 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
+#Region "StepB_cbRecurringFrequency_DropDown"
+	Private Sub cbRecurringFrequency_DropDown(sender As Object, _
+											  e As EventArgs) _
+		Handles cbRecurringFrequency.DropDown
+		PCW.NextEnabled = False
+	End Sub
+#End Region
 #Region "StepB_cbRecurringFrequency_DropDownClosed"
-	Private Sub cbRecurringFrequency_DropDownClosed(ByVal sender As Object, _
-													ByVal e As EventArgs) _
+	Private Sub cbRecurringFrequency_DropDownClosed(sender As Object, _
+													e As EventArgs) _
 		Handles cbRecurringFrequency.DropDownClosed
+		Dim readyForNext As Boolean = False
 		If cbRecurringFrequency.SelectedItem = "Daily" Then
 			PCW.Data.DaysBool = True
+			readyForNext = True
+		ElseIf (Not cbRecurringFrequency.SelectedItem = "") Then
+			readyForNext = True
 		Else
 			PCW.Data.DaysBool = False
+		End If
+		If readyForNext Then
+			GUI_Util.NextEnabled()
 		End If
 	End Sub
 #End Region

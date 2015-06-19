@@ -616,8 +616,16 @@ Public Class StepC
 			If Me.MonthCal.Visible = False Then
 				Me.MonthCal.Visible = True
 			End If
-			If Me.primaryDayBool Then
+			If Me.primaryDayBool And _
+				(Not Me.stepC_data.EndDate_Before_StartDate(Me.dtpQualifyingEnd.Value.Date, _
+															Me.dtpQualifyingStart.Value.Date)) Then
 				GUI_Util.NextEnabled()
+			ElseIf Me.stepC_data.EndDate_Before_StartDate(Me.dtpQualifyingEnd.Value.Date, _
+														  Me.dtpQualifyingStart.Value.Date) Then
+				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
+				GUI_Util.msgBox("EndDate Before StartDate!")
+			Else
+				GUI_Util.regPnl(Me.pnlRecurringQualifyingPeriod)
 			End If
 		End If
 	End Sub
