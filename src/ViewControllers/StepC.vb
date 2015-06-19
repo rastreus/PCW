@@ -257,6 +257,16 @@ Public Class StepC
 			Else
 				GUI_Util.regPnl(Me.pnlPrimaryDay)
 			End If
+
+			If Me.stepC_data.EndDate_Before_StartDate(Me.Data.EndDate, _
+													  Me.Data.StartDate) Then
+				cancelContinuingToNextStep = True
+				errString = "EndDate is before StartDate!"
+				errStrArray.Add(errString)
+				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
+			Else
+				GUI_Util.regPnl(Me.pnlRecurringQualifyingPeriod)
+			End If
 		Else 'Occurring Promo
 			If Me.stepC_data.OccursDate_NotEstablished(Me.occursDateBool) Then
 				cancelContinuingToNextStep = True
