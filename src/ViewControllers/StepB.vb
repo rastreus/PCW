@@ -167,20 +167,20 @@ Public Class StepB
 
 		StepB_SetData()
 
-		If Me.Data.PromoID_Invalid() Then
+		If Me.Data.PromoID_Invalid(Me.Data.ID) Then
 			cancelContinuingToNextStep = True
 			errString = "PromoID Invalid: " & _
-						 Me.Data.Get_PromoID_errString()
+						 Me.Data.Get_PromoID_errString(Me.Data.ID)
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoID)
 		Else
 			GUI_Util.regPnl(Me.pnlPromoID)
 		End If
 
-		If Me.Data.PromoName_Invalid() Then
+		If Me.Data.PromoName_Invalid(Me.Data.Name) Then
 			cancelContinuingToNextStep = True
 			errString = "PromoName Invalid: " & _
-						 Me.Data.Get_PromoName_errString()
+						 Me.Data.Get_PromoName_errString(Me.Data.Name)
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoName)
 		Else
@@ -222,7 +222,8 @@ Public Class StepB
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Intice user to give RecurringFrequency using DroppedDown.</remarks>
-	Private Sub rbRecurringYes_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbRecurringYes_CheckedChanged(sender As Object, _
+											  e As EventArgs) _
 		Handles rbRecurringYes.CheckedChanged
 		If rbRecurringYes.Checked Then
 			Me.cbRecurringFrequency.Enabled = True
@@ -270,13 +271,20 @@ Public Class StepB
 	Private Sub txtPromoName_Leave(sender As Object, _
 								   e As EventArgs) _
 		Handles txtPromoName.Leave
-		If Me.promoNameEntered Then
+		If Me.promoNameEntered And _
+			(Not Me.Data.PromoName_Invalid(Me.txtPromoName.Text)) Then
 			Me.promoAcronym = getPromoAcronym()
 			Me.promoID = getPromoID()
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
+			GUI_Util.NextEnabled()
+		ElseIf Me.Data.PromoName_Invalid(Me.txtPromoName.Text) Then
+			GUI_Util.errPnl(Me.pnlPromoName)
+			GUI_Util.msgBox("PromoName Invalid: " & _
+							Me.Data.Get_PromoName_errString(Me.txtPromoName.Text))
+		Else
+			GUI_Util.regPnl(Me.pnlPromoName)
 		End If
-		CheckForNext()
 	End Sub
 
 	Private Function getPromoAcronym() As String
@@ -306,7 +314,8 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_btnPromoID_Click"
-	Private Sub btnPromoID_Click(sender As Object, e As EventArgs) _
+	Private Sub btnPromoID_Click(sender As Object, _
+								 e As EventArgs) _
 		Handles btnPromoID.Click
 		If Me.promoNameLeft Then
 			Me.txtEditPromoID.Text = Me.promoAcronym.ToUpper()
@@ -322,15 +331,35 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_btnTxtEditPromoID_Click"
-	Private Sub btnTxtEditPromoID_Click(sender As Object, e As EventArgs) _
+	Private Sub btnTxtEditPromoID_Click(sender As Object, _
+										e As EventArgs) _
 		Handles btnTxtEditPromoID.Click
+		Dim tempPromoAcronym As String = New String("!")
+		Dim tempPromoID As String = New String("!")
+		Dim errID As String = New String("!")
+		tempPromoAcronym = Me.promoAcronym
+		tempPromoID = Me.promoID
+		'
 		Me.promoAcronym = Me.txtEditPromoID.Text
 		Me.promoID = getPromoID()
 		Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
-		SetEditPromoID(False)
-		GUI_Util.NextEnabled()
+		If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
+			'SET IT ALL BACK
+			errID = Me.btnPromoID.Text
+			Me.promoAcronym = tempPromoAcronym
+			Me.promoID = tempPromoID
+			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
+			GUI_Util.errPnl(Me.pnlPromoID)
+			GUI_Util.msgBox("PromoID Invalid: " & _
+							Me.Data.Get_PromoID_errString(errID))
+		Else
+			GUI_Util.regPnl(Me.pnlPromoID)
+			SetEditPromoID(False)
+			GUI_Util.NextEnabled()
+		End If
 	End Sub
 
+	'Mostly positive that this was done for DEBUG and not corrected.
 	Private Function SetBtnPromoIDText(ByRef txt As String) As String
 		Return txt
 	End Function

@@ -21,20 +21,25 @@ Public Class SQL_Util
 																	  .GamingConnectionString)
 
 		Dim trimmed_new_promoName As String = new_promoName.Trim
+		Dim trimmed_new_promoName_entry As String = "Entries - " & trimmed_new_promoName
+		Dim trimmed_new_promoName_payout As String = "Payouts - " & trimmed_new_promoName
 
-		Dim existing_promoName = (From name In tbl.MarketingPromos
-								  Where name.PromoName = trimmed_new_promoName
-								  Select name.PromoName).FirstOrDefault
+		Dim existing_promoName_entry = (From name In tbl.MarketingPromos
+										Where name.PromoName = trimmed_new_promoName_entry
+										Select name.PromoName).FirstOrDefault
+		Dim existing_promoName_payout = (From name In tbl.MarketingPromos
+										 Where name.PromoName = trimmed_new_promoName_payout
+										 Select name.PromoName).FirstOrDefault
 
 		'Will be NULL (VB value of Nothing) if they are not the same;
 		'however, if existing_promoName is not NULL, check to be sure.
 		'No need to assume incorrectly.
-		If Not String.IsNullOrEmpty(existing_promoName) Then
-			If trimmed_new_promoName.ToLower = existing_promoName.ToLower Then
-				returningBool = True
-			End If
+		If (Not String.IsNullOrEmpty(existing_promoName_entry) Or _
+			Not String.IsNullOrEmpty(existing_promoName_payout)) Then
+			'If (trimmed_new_promoName_entry.ToLower = existing_promoName_entry.ToLower) Or _
+			'    (trimmed_new_promoName_payout.ToLower = existing_promoName_payout.ToLower) Then
+			returningBool = True
 		End If
-
 		Return returningBool
 	End Function
 #End Region

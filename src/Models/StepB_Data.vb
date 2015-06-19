@@ -103,48 +103,48 @@ Public Class StepB_Data
 
 		Return invalid
 	End Function
-	Public Function PromoID_Invalid() As Boolean
+	Public Function PromoID_Invalid(ByVal id As String) As Boolean
 		Dim invalid As Boolean = False
 
-		If (ID = "EXAMPLE1503") Or _
-			(ID = "") Or _
-			(ID.Length > 9) Or _
-			(SQL_Util.Existing_PromoID(Me.ID)) Then
+		If (id = "EXAMPLE1503") Or _
+			(id = "") Or _
+			(id.Length > 9) Or _
+			(SQL_Util.Existing_PromoID(id)) Then
 			invalid = True
 		End If
 
 		Return invalid
 	End Function
-	Public Function Get_PromoID_errString() As String
+	Public Function Get_PromoID_errString(ByVal id As String) As String
 		Dim errString As String = New String("!")
-		If (ID = "EXAMPLE1503") Or
-			(ID = "") Then
+		If (id = "EXAMPLE1503") Or
+			(id = "") Then
 			errString = "ID not set"
-		ElseIf (SQL_Util.Existing_PromoID(Me.ID)) Then
+		ElseIf (SQL_Util.Existing_PromoID(id)) Then
 			errString = "ID already exists."
 		End If
 		Return errString
 	End Function
-	Public Function PromoName_Invalid() As Boolean
+	Public Function PromoName_Invalid(ByVal name As String) As Boolean
 		Dim invalid As Boolean = False
 
-		If (Me.Name = "") Or _
-			(Me.Name.Length > 50) Or _
-			(SQL_Util.Existing_Promo(Me.Name)) Then
+		If (name = "") Or _
+			(name.Length > 50) Or _
+			(SQL_Util.Existing_Promo(name)) Then
 			invalid = True
 		End If
 
 		Return invalid
 	End Function
-	Public Function Get_PromoName_errString() As String
+	Public Function Get_PromoName_errString(ByVal name As String) As String
 		'Assign a value to a declared variable to avoid NULL errors.
 		Dim errString As String = New String("!")
 
-		If Me.Name = "" Then
+		If name = "" Then
 			errString = "Name not set"
-		ElseIf Me.Name.Length > 50 Then
+		ElseIf name.Length > 50 Then
 			errString = "Cannot be more than 50 chars"
-		ElseIf SQL_Util.Existing_Promo(Me.Name) Then
+		ElseIf SQL_Util.Existing_Promo(name) Then
 			errString = "Name already exists"
 		Else
 			errString = "ERROR IN: Get_PromoName_errString"
