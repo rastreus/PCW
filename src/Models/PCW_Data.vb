@@ -450,13 +450,17 @@ Public Class PCW_Data
 	Private Sub ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
 												  ByVal payoutNumber As Short)
 		Dim YACO As CouponOffer = New CouponOffer 'Yet Another CouponOffer
+		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
 			YACO = couponOfferDBRow
 			YACO.OfferID = YACO.OfferID.Substring(0, (YACO.OfferID.Length - 1)) & _
 												  payoutNumber.ToString
 			YACO.ValidStart = payoutDate
 			YACO.ValidEnd = payoutDate
-			Me.CouponOffersList.Add(YACO)
+			tempList.Add(YACO)
+		Next
+		For Each newCouponOffer As CouponOffer In tempList
+			Me.CouponOffersList.Add(newCouponOffer)
 		Next
 	End Sub
 #End Region
@@ -469,11 +473,15 @@ Public Class PCW_Data
 
 	Private Sub ProcessMultiPartCouponTargetAppend(ByVal payoutNumber As Short)
 		Dim YACT As CouponTarget = New CouponTarget	'Yet Another CouponTarget
+		Dim tempList As List(Of CouponTarget) = New List(Of CouponTarget)
 		For Each couponTargetDBRow As CouponTarget In CouponTargetList
 			YACT = couponTargetDBRow
 			YACT.OfferID = YACT.OfferID.Substring(0, (YACT.OfferID.Length - 1)) & _
 												  payoutNumber.ToString
-			Me.CouponTargetList.Add(YACT)
+			tempList.Add(YACT)
+		Next
+		For Each newCouponTarget As CouponTarget In tempList
+			Me.CouponTargetList.Add(newCouponTarget)
 		Next
 	End Sub
 #End Region
