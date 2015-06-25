@@ -86,10 +86,14 @@ Public Class PCW_Data
 	Private _pcwCurrentPromoCategory As PromoCategory
 	Private _pcwUsesEligiblePlayers As Boolean = False
 	Private _pcwUsesCouponTargetsList As Boolean = False
-	Private _pcwMarketingPromosList As List(Of MarketingPromo) = New List(Of MarketingPromo)
-	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
-	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
-	Private _pcwCouponOffersList As List(Of CouponOffer) = New List(Of CouponOffer)
+	Private _pcwMarketingPromosList As List(Of MarketingPromo) = _
+								   New List(Of MarketingPromo)
+	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = _
+								  New List(Of MarketingPromoEligiblePlayer)
+	Private _pcwCouponTargetList As List(Of CouponTarget) = _
+								New List(Of CouponTarget)
+	Private _pcwCouponOffersList As List(Of CouponOffer) = _
+								New List(Of CouponOffer)
 	Private _pcwDaysBool As Boolean = False
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 
