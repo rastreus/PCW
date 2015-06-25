@@ -109,13 +109,13 @@ Public Class StepF_Data
 		Return result
 	End Function
 #End Region
-#Region "DetermineStepFlow"
+#Region "DetermineNextStep"
 	''' <summary>
-	''' Queries to PayoutCategory to determine where to go.
+	''' Queries to PayoutCategory to determine where to go next.
 	''' </summary>
 	''' <returns>NextStep.</returns>
 	''' <remarks>Trying to keep this as clean as possible.</remarks>
-	Public Function DetermineStepFlow() As String
+	Public Function DetermineNextStep() As String
 		Dim result As String = New String("")
 		Select Case PayoutCatgory
 			Case PromoPayoutCategory.freePlayCoupon
@@ -125,6 +125,19 @@ Public Class StepF_Data
 			Case Else
 				result = "StepH"
 		End Select
+		Return result
+	End Function
+#End Region
+#Region "DetermineFutureStep"
+	Public Function DetermineFutureStep() As String
+		Dim result As String = New String("")
+		If (PromoType = "31B") Or _
+			(PromoType = "31C") Or _
+			(PromoType = "34") Then
+			result = "StepH"
+		Else
+			result = "StepGetCouponTargets"
+		End If
 		Return result
 	End Function
 #End Region

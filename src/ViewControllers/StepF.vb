@@ -164,7 +164,11 @@ Public Class StepF
 		Else
 			'Step has been set if no error.
 			Me.stepF_data.StepNotSet = False
-			Me.NextStep = Me.Data.DetermineStepFlow()
+			Me.NextStep = Me.Data.DetermineNextStep()
+			PCW.GetStep("StepGetCouponOffers").NextStep = Me.Data.DetermineFutureStep()
+			If Me.Data.DetermineFutureStep() = "StepH" Then
+				PCW.GetStep("StepH").PreviousStep = "StepGetCouponOffers"
+			End If
 			If Me.NextStep = "StepH" Then
 				PCW.GetStep("StepH").PreviousStep = "StepF"
 			End If

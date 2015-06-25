@@ -384,10 +384,114 @@ Public Class PCW_Data
 				Me.MarketingPromosList.Add(payoutPromo)
 			Case PromoCategory.multiPart
 				'If out what all needs to be done
+				entryPromo = GetMarketingPromoEntry()
+				payoutPromo = GetMarketingPromoPayout()
+				ProcessAllMultiPartPayouts(payoutPromo)
+				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.acquisition
 				'Needs to be implemented (As of: 05/13/15)
+				'Hasn't been implemented (As of: 06/23/15)
 		End Select
 	End Sub
+#End Region
+#Region "ProcessAllMultiPartPayouts"
+	Private Sub ProcessAllMultiPartPayouts(ByVal payoutPromo As MarketingPromo)
+		'This only works for Days; refactor for Tiers.
+		Dim aPayoutPromo As MarketingPromo = New MarketingPromo
+		Dim startDate As DateTime = payoutPromo.StartDate
+		Dim endDate As DateTime = payoutPromo.EndDate
+		Dim currDate As DateTime = startDate
+		Dim payoutNumber As Short = 1
+		Dim usesTargetList As Boolean = SubmitCouponTargetsToDB()
+
+		While (currDate <= endDate)
+			aPayoutPromo = ProcessMultiPartPayout(payoutPromo, _
+												  currDate, _
+												  payoutNumber)
+			Me.MarketingPromosList.Add(aPayoutPromo)
+			If payoutNumber = 1 Then
+				ProcessMultiPartCouponOfferInPlace(currDate, payoutNumber)
+				If usesTargetList Then
+					ProcessMultiPartCouponTargetInPlace(payoutNumber)
+				End If
+			ElseIf payoutNumber > 1 Then
+				ProcessMultiPartCouponOfferAppend(currDate, payoutNumber)
+				If usesTargetList Then
+					ProcessMultiPartCouponTargetAppend(payoutNumber)
+				End If
+			End If
+			currDate = currDate.AddDays(1)
+			payoutNumber = payoutNumber + 1
+		End While
+	End Sub
+
+#Region "ProcessMultiPartCouponOffer"
+	Private Sub ProcessMultiPartCouponOfferInPlace(ByVal payoutDate As DateTime, _
+												   ByVal payoutNumber As Short)
+		For Each couponOfferDBRow As CouponOffer In CouponOffersList
+			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & payoutNumber.ToString
+			couponOfferDBRow.ValidStart = payoutDate
+			couponOfferDBRow.ValidEnd = payoutDate
+			couponOfferDBRow.ExcludeDays = Nothing
+			couponOfferDBRow.ExcludeStart = Nothing
+			couponOfferDBRow.ExcludeEnd = Nothing
+		Next
+	End Sub
+
+	Private Sub ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
+												  ByVal payoutNumber As Short)
+		Dim YACO As CouponOffer = New CouponOffer 'Yet Another CouponOffer
+		For Each couponOfferDBRow As CouponOffer In CouponOffersList
+			YACO = couponOfferDBRow
+			YACO.OfferID = YACO.OfferID.Substring(0, (YACO.OfferID.Length - 1)) & _
+												  payoutNumber.ToString
+			YACO.ValidStart = payoutDate
+			YACO.ValidEnd = payoutDate
+			Me.CouponOffersList.Add(YACO)
+		Next
+	End Sub
+#End Region
+#Region "ProcessMultiPartCouponTarget"
+	Private Sub ProcessMultiPartCouponTargetInPlace(ByVal payoutNumber As Short)
+		For Each couponTargetDBRow As CouponTarget In CouponTargetList
+			couponTargetDBRow.OfferID = couponTargetDBRow.OfferID & payoutNumber.ToString
+		Next
+	End Sub
+
+	Private Sub ProcessMultiPartCouponTargetAppend(ByVal payoutNumber As Short)
+		Dim YACT As CouponTarget = New CouponTarget	'Yet Another CouponTarget
+		For Each couponTargetDBRow As CouponTarget In CouponTargetList
+			YACT = couponTargetDBRow
+			YACT.OfferID = YACT.OfferID.Substring(0, (YACT.OfferID.Length - 1)) & _
+												  payoutNumber.ToString
+			Me.CouponTargetList.Add(YACT)
+		Next
+	End Sub
+#End Region
+
+	Private Function ProcessMultiPartPayout(ByVal payoutPromo As MarketingPromo, _
+											ByVal payoutDate As DateTime, _
+											ByVal payoutNumber As Short) As MarketingPromo
+		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
+		Dim num As String = payoutNumber.ToString
+		anotherPayoutPromo.PromoID = GetPayoutPromoID() & num
+		anotherPayoutPromo.PromoName = "Payouts " & _
+									   num & _
+									   "- " & _
+									   anotherPayoutPromo.PromoName
+		anotherPayoutPromo.PromoType = GetPayoutPromoType()
+		anotherPayoutPromo.StartDate = payoutDate
+		anotherPayoutPromo.EndDate = payoutDate
+		anotherPayoutPromo.PointCutoff = Nothing
+		anotherPayoutPromo.PointDivisor = Nothing
+		anotherPayoutPromo.MaxTickets = Nothing
+		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
+		anotherPayoutPromo.Recurring = False
+		anotherPayoutPromo.Frequency = "W"
+		anotherPayoutPromo.RecursOnWeekday = Nothing
+		anotherPayoutPromo.EarnsOnWeekday = Nothing
+		Return anotherPayoutPromo
+	End Function
 #End Region
 #Region "SubmitListsToDB"
 	Public Sub SubmitListsToDB()
@@ -396,8 +500,10 @@ Public Class PCW_Data
 		If SubmitEligiblePlayersToDB() Then
 			DataContext.MarketingPromoEligiblePlayers.InsertAllOnSubmit(EligiblePlayerList)
 		End If
-		If SubmitCouponListsToDB() Then
+		If SubmitCouponOffersToDB() Then
 			DataContext.CouponOffers.InsertAllOnSubmit(CouponOffersList)
+		End If
+		If SubmitCouponTargetsToDB() Then
 			DataContext.CouponTargets.InsertAllOnSubmit(CouponTargetList)
 		End If
 		Try
@@ -417,12 +523,25 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "SubmitCouponListsToDB"
-	Private Function SubmitCouponListsToDB() As Boolean
+	Private Function SubmitCouponOffersToDB() As Boolean
 		Dim result As Boolean = False
 		If (CurrentPromoCategory = PromoCategory.entryAndPayout) Or _
 		   (CurrentPromoCategory = PromoCategory.payoutOnly) Or _
 		   (CurrentPromoCategory = PromoCategory.multiPart) Or _
 		   (CurrentPromoCategory = PromoCategory.acquisition) Then
+			result = True
+		End If
+		Return result
+	End Function
+#End Region
+#Region "SubmitCouponTargetsToDB"
+	Private Function SubmitCouponTargetsToDB() As Boolean
+		Dim result As Boolean = False
+		Dim payoutType As String = New String("")
+		payoutType = GetPayoutPromoType()
+		If (payoutType = "31B") Or _
+		   (payoutType = "31C") Or _
+		   (payoutType = "34") Then
 			result = True
 		End If
 		Return result
