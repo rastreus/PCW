@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 Public Class StepGetCouponTargets
 	Inherits TSWizards.BaseInteriorStep
@@ -49,22 +50,26 @@ Public Class StepGetCouponTargets
 #End Region
 #Region "StepGetCouponTargets_Validation"
 	Private Sub StepGetCouponTarget_Validation(sender As Object, _
-													e As System.ComponentModel.CancelEventArgs) _
+											   e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		Me.stepGetCouponTargets_data.SameForAllDaysTiers = If(SameForAllDaysTiers(local_promoCategory), _
 															  True, _
 															  False)
+		'Step has been set if no error.
+		Me.stepGetCouponTargets_data.StepNotSet = False
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_ShowStep"
 	Private Sub StepGetCouponTarget_ShowStep(sender As Object, _
-												  e As ShowStepEventArgs) _
+											 e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		SetCouponID()
 		AddImportedOffers()
-		PCW.NextEnabled = False
+		If Me.Data.StepNotSet Then
+			PCW.NextEnabled = False
+		End If
 	End Sub
 
 	Private Sub SetCouponID()
@@ -168,7 +173,8 @@ Public Class StepGetCouponTargets
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_btnSubmit_Click"
-	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
+	Private Sub btnSubmit_Click(sender As Object, _
+								e As EventArgs) _
 		Handles btnSubmit.Click
 		Me.btnSubmit.Enabled = False
 		Me.stepGetCouponTargets_data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text

@@ -1,11 +1,20 @@
 ﻿Public Class StepGetCouponTargets_Data
 
 #Region "Properties"
+	Private _stepNotSet As Boolean = True
 	Private _dataCouponTargetsCSVFilePath As String = New String("")
 	Private _dataCouponTargetsCouponNum As Integer = New Integer
 	Private _promoSameForAllDaysTiers As Boolean
 	Private _dataCouponID As String
 
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
+		End Set
+	End Property
 	Public Property CouponTargetsCSVFilePath As String
 		Get
 			Return _dataCouponTargetsCSVFilePath
