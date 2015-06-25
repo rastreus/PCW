@@ -494,6 +494,7 @@ Public Class PCW_Data
 											ByVal payoutDate As DateTime, _
 											ByVal payoutNumber As Short) As MarketingPromo
 		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
+		anotherPayoutPromo = payoutPromo
 		Dim num As String = payoutNumber.ToString
 		anotherPayoutPromo.PromoID = GetPayoutPromoID() & num
 		anotherPayoutPromo.PromoName = "Payouts " & _
