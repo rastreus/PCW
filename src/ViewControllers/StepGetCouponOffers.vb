@@ -1,4 +1,5 @@
 ﻿Imports TSWizards
+Imports System.ComponentModel
 
 Public Class StepGetCouponOffers
 	Inherits TSWizards.BaseInteriorStep
@@ -113,7 +114,8 @@ Public Class StepGetCouponOffers
 	Private wildcardMsgBool As Boolean
 	Private skipTargetImport As Boolean = False
 
-	Private Sub StepGetCouponOffers_Load(sender As Object, e As EventArgs) _
+	Private Sub StepGetCouponOffers_Load(sender As Object, _
+										 e As EventArgs) _
 		Handles MyBase.Load
 		Me.validStartBool = False
 		Me.validEndBool = False
@@ -167,7 +169,8 @@ Public Class StepGetCouponOffers
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepGetCouponOffers_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepGetCouponOffers_Validation(sender As Object, _
+											   e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
@@ -184,6 +187,8 @@ Public Class StepGetCouponOffers
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
 		Else
+			'Step has been set if no error.
+			Me.stepGetCouponOffers_data.StepNotSet = False
 			If Me.skipTargetImport Then
 				Me.NextStep = "StepH"
 				PCW.GetStep("StepH").PreviousStep = "StepGetCouponOffers"
@@ -204,7 +209,7 @@ Public Class StepGetCouponOffers
 	Private Sub StepGetCouponOffers_ShowStep(sender As Object, _
 											 e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
-		If PCW.NextEnabled = True Then
+		If Me.Data.StepNotSet Then
 			PCW.NextEnabled = False
 		End If
 		If Not PCW.Data.UsesCouponTargetsList Then

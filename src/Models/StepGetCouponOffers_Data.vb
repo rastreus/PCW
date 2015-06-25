@@ -8,10 +8,19 @@
 	End Sub
 #End Region
 #Region "Properties"
+	Private _stepNotSet As Boolean = True
 	Private _dataCouponOffersHash As Hashtable
 	Private _dataCouponOffer As CouponOffer
 	Private _promoSkipTargetImport As Boolean
 
+	Public Property StepNotSet As Boolean
+		Get
+			Return _stepNotSet
+		End Get
+		Set(value As Boolean)
+			_stepNotSet = value
+		End Set
+	End Property
 	Private Property CouponOffersHash As Hashtable
 		Get
 			Return _dataCouponOffersHash
