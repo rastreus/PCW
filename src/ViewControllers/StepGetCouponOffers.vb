@@ -234,7 +234,8 @@ Public Class StepGetCouponOffers
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidStart_CloseUp"
-	Private Sub dtpValidStart_CloseUp(sender As Object, e As EventArgs) _
+	Private Sub dtpValidStart_CloseUp(sender As Object, _
+									  e As EventArgs) _
 		Handles dtpValidStart.CloseUp
 		If Me.validStartBool = False Then	'"Break the (Bool) seal!"
 			Me.validStartBool = True
@@ -243,7 +244,8 @@ Public Class StepGetCouponOffers
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidEnd_CloseUp"
-	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, e As EventArgs) _
+	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, _
+										 e As EventArgs) _
 		Handles dtpValidEnd.CloseUp
 		If Me.validEndBool = False Then		'"Break the (Bool) seal!"
 			Me.validEndBool = True
@@ -265,7 +267,8 @@ Public Class StepGetCouponOffers
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_rbExcludeDaysYES_CheckedChanged"
-	Private Sub rbExcludeDaysYES_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbExcludeDaysYES_CheckedChanged(sender As Object, _
+												e As EventArgs) _
 		Handles rbExcludeDaysYES.CheckedChanged
 		If Me.rbExcludeDaysYES.Checked Then
 			Me.pnlExcludeRange.Enabled = True
@@ -274,10 +277,12 @@ Public Class StepGetCouponOffers
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_btnSubmit_Click"
-	Private Sub btnSubmit_Click(sender As Object, e As EventArgs) _
+	Private Sub btnSubmit_Click(sender As Object, _
+								e As EventArgs) _
 		Handles btnSubmit.Click
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
 		Dim couponOffer As CouponOffer = New CouponOffer()
+		Me.btnSubmit.Enabled = False
 		couponOffer = StepGetCouponOffers_GetData()
 		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer, _
 																		 Me.rbExcludeDaysYES.Checked)
@@ -296,6 +301,7 @@ Public Class StepGetCouponOffers
 			GUI_Util.NextEnabled()
 			GUI_Util.regPnl(Me.pnlCouponOffers)
 		Else
+			Me.btnSubmit.Enabled = True
 			GUI_Util.errPnl(Me.pnlCouponOffers)
 			GUI_Util.msgBox("Coupon Offer Invalid.")
 		End If
@@ -310,7 +316,8 @@ Public Class StepGetCouponOffers
 	End Function
 #End Region
 #Region "StepGetCouponOffers_rbCouponWildcardYES_CheckedChanged"
-	Private Sub rbCouponWildcardYES_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbCouponWildcardYES_CheckedChanged(sender As Object, _
+												   e As EventArgs) _
 		Handles rbCouponWildcardYES.CheckedChanged
 		If rbCouponWildcardYES.Checked Then
 			If Me.wildcardMsgBool = False Then
@@ -324,7 +331,8 @@ Public Class StepGetCouponOffers
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_txtNote_Enter"
-	Private Sub txtNote_Enter(sender As Object, e As EventArgs) _
+	Private Sub txtNote_Enter(sender As Object, _
+							  e As EventArgs) _
 	Handles txtNote.Enter
 		If Me.txtNote.Text = "EX: Small Note" Then
 			Me.txtNote.Text = ""
