@@ -48,12 +48,25 @@
 #End Region
 #End Region
 #Region "Validity Checks"
+#Region "No_CouponOffers_Created"
 	Public Function No_CouponOffers_Created() As Boolean
 		Dim result As Boolean = If(CouponOffersHash.Count = 0, _
 								   True, _
 								   False)
 		Return result
 	End Function
+#End Region
+#Region "DetermineNextStep"
+	Public Function DetermineNextStep(ByVal bool As Boolean) As String
+		Dim result As String = New String("")
+		If bool Then
+			result = "StepGetCouponTargets"
+		Else
+			result = "StepH"
+		End If
+		Return result
+	End Function
+#End Region
 #Region "Is_CouponOffer_Valid"
 	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffer, _
 										 ByRef willExcludeDays As Boolean) As Boolean

@@ -165,9 +165,11 @@ Public Class StepF
 			'Step has been set if no error.
 			Me.stepF_data.StepNotSet = False
 			Me.NextStep = Me.Data.DetermineNextStep()
-			PCW.GetStep("StepGetCouponOffers").NextStep = Me.Data.DetermineFutureStep()
-			If Me.Data.DetermineFutureStep() = "StepH" Then
-				PCW.GetStep("StepH").PreviousStep = "StepGetCouponOffers"
+			Dim usesCouponTargetList As Boolean = Me.Data.WillUseCouponTargetsList()
+			If usesCouponTargetList Then
+				PCW.Data.UsesCouponTargetsList = True
+			Else
+				PCW.Data.UsesCouponTargetsList = False
 			End If
 			If Me.NextStep = "StepH" Then
 				PCW.GetStep("StepH").PreviousStep = "StepF"

@@ -111,6 +111,7 @@ Public Class StepGetCouponOffers
 	Private validStartBool As Boolean
 	Private validEndBool As Boolean
 	Private wildcardMsgBool As Boolean
+	Private skipTargetImport As Boolean = False
 
 	Private Sub StepGetCouponOffers_Load(sender As Object, e As EventArgs) _
 		Handles MyBase.Load
@@ -183,7 +184,7 @@ Public Class StepGetCouponOffers
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
 		Else
-			If Me.Data.SkipTargetImport Then
+			If Me.skipTargetImport Then
 				Me.NextStep = "StepH"
 				PCW.GetStep("StepH").PreviousStep = "StepGetCouponOffers"
 			Else
@@ -200,10 +201,14 @@ Public Class StepGetCouponOffers
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Don't enable the "Next>" button until we're ready!</remarks>
-	Private Sub StepGetCouponOffers_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepGetCouponOffers_ShowStep(sender As Object, _
+											 e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		If PCW.NextEnabled = True Then
 			PCW.NextEnabled = False
+		End If
+		If Not PCW.Data.UsesCouponTargetsList Then
+			Me.skipTargetImport = True
 		End If
 	End Sub
 #End Region

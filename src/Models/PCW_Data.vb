@@ -85,6 +85,7 @@ Public Class PCW_Data
 	Private _pcwResetTo As String = New String("StepA")
 	Private _pcwCurrentPromoCategory As PromoCategory
 	Private _pcwUsesEligiblePlayers As Boolean = False
+	Private _pcwUsesCouponTargetsList As Boolean = False
 	Private _pcwMarketingPromosList As List(Of MarketingPromo) = New List(Of MarketingPromo)
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = New List(Of MarketingPromoEligiblePlayer)
 	Private _pcwCouponTargetList As List(Of CouponTarget) = New List(Of CouponTarget)
@@ -143,6 +144,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As Boolean)
 			_pcwUsesEligiblePlayers = value
+		End Set
+	End Property
+	Public Property UsesCouponTargetsList As Boolean
+		Get
+			Return _pcwUsesCouponTargetsList
+		End Get
+		Set(value As Boolean)
+			_pcwUsesCouponTargetsList = value
 		End Set
 	End Property
 	Public Property MarketingPromosList As List(Of MarketingPromo)
@@ -536,13 +545,13 @@ Public Class PCW_Data
 #End Region
 #Region "SubmitCouponTargetsToDB"
 	Private Function SubmitCouponTargetsToDB() As Boolean
-		Dim result As Boolean = False
+		Dim result As Boolean = True
 		Dim payoutType As String = New String("")
 		payoutType = GetPayoutPromoType()
 		If (payoutType = "31B") Or _
 		   (payoutType = "31C") Or _
 		   (payoutType = "34") Then
-			result = True
+			result = False
 		End If
 		Return result
 	End Function

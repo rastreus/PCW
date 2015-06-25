@@ -128,15 +128,13 @@ Public Class StepF_Data
 		Return result
 	End Function
 #End Region
-#Region "DetermineFutureStep"
-	Public Function DetermineFutureStep() As String
-		Dim result As String = New String("")
+#Region "WillUseCouponTargetsList"
+	Public Function WillUseCouponTargetsList() As Boolean
+		Dim result As Boolean = True
 		If (PromoType = "31B") Or _
 			(PromoType = "31C") Or _
 			(PromoType = "34") Then
-			result = "StepH"
-		Else
-			result = "StepGetCouponTargets"
+			result = False
 		End If
 		Return result
 	End Function
