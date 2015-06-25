@@ -42,7 +42,7 @@ Public Class StepEntryTicketAmt_Data
 	Private _promoPointsDivisor As System.Nullable(Of Short)
 	Private _promoTicketsPerPatron As System.Nullable(Of Short)			'MaxTickets
 	Private _promoTicketsForEntirePromo As System.Nullable(Of Short)	'PromoMaxTickets
-	Private _promoPrintTickets As System.Nullable(Of Boolean)
+	Private _promoPrintTickets As Boolean								'NOT NULLABLE!
 	Private _pcwPromoType As String
 
 	Public Enum PromoTicketAmtCategory
@@ -101,11 +101,11 @@ Public Class StepEntryTicketAmt_Data
 			_promoTicketsForEntirePromo = value
 		End Set
 	End Property
-	Public Property PrintTickets As System.Nullable(Of Boolean)
+	Public Property PrintTickets As Boolean
 		Get
 			Return _promoPrintTickets
 		End Get
-		Set(value As System.Nullable(Of Boolean))
+		Set(value As Boolean)
 			_promoPrintTickets = value
 		End Set
 	End Property
