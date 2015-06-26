@@ -410,6 +410,8 @@ Public Class PCW_Data
 #Region "ProcessAllMultiPartPayouts"
 	Private Sub ProcessAllMultiPartPayouts(ByVal payoutPromo As MarketingPromo)
 		'This only works for Days; refactor for Tiers.
+		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim accList As List(Of CouponOffer) = New List(Of CouponOffer)
 		Dim startDate As DateTime = payoutPromo.StartDate
 		Dim endDate As DateTime = payoutPromo.EndDate
 		Dim currDate As DateTime = startDate
@@ -427,8 +429,11 @@ Public Class PCW_Data
 					ProcessMultiPartCouponTargetInPlace(payoutNumber)
 				End If
 			ElseIf payoutNumber > 1 Then
-				ProcessMultiPartCouponOfferAppend(currDate, _
-												  payoutNumber)
+				tempList = ProcessMultiPartCouponOfferAppend(currDate, _
+															 payoutNumber)
+				For Each coupOff As CouponOffer In tempList
+					accList.Add(coupOff)
+				Next
 				If usesTargetList Then
 					ProcessMultiPartCouponTargetAppend(payoutNumber)
 				End If
@@ -436,8 +441,36 @@ Public Class PCW_Data
 			currDate = currDate.AddDays(1)
 			payoutNumber = payoutNumber + 1
 		End While
+		For Each co As CouponOffer In accList
+			Me.CouponOffersList.Add(co)
+		Next
 	End Sub
 
+#Region "ProcessMultiPartPayout"
+	Private Function ProcessMultiPartPayout(ByVal payoutDate As DateTime, _
+										ByVal payoutNumber As Short) As MarketingPromo
+		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
+		anotherPayoutPromo = GetMarketingPromoPayout()
+		Dim num As String = payoutNumber.ToString
+		anotherPayoutPromo.PromoID = GetPayoutPromoID() & num
+		anotherPayoutPromo.PromoName = "Payouts " _
+									 & num _
+									 & " - " _
+									 & PromoDataHash.Item(Key.Name)
+		anotherPayoutPromo.PromoType = GetPayoutPromoType()
+		anotherPayoutPromo.StartDate = payoutDate
+		anotherPayoutPromo.EndDate = payoutDate
+		anotherPayoutPromo.PointCutoff = Nothing
+		anotherPayoutPromo.PointDivisor = Nothing
+		anotherPayoutPromo.MaxTickets = Nothing
+		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
+		anotherPayoutPromo.Recurring = False
+		anotherPayoutPromo.Frequency = "W"
+		anotherPayoutPromo.RecursOnWeekday = Nothing
+		anotherPayoutPromo.EarnsOnWeekday = Nothing
+		Return anotherPayoutPromo
+	End Function
+#End Region
 #Region "ProcessMultiPartCouponOffer"
 	Private Sub ProcessMultiPartCouponOfferInPlace(ByVal payoutDate As DateTime, _
 												   ByVal payoutNumber As Short)
@@ -452,23 +485,29 @@ Public Class PCW_Data
 		Next
 	End Sub
 
-	Private Sub ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
-												  ByVal payoutNumber As Short)
+	Private Function ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
+													   ByVal payoutNumber As Short) As List(Of CouponOffer)
 		Dim YACO As CouponOffer	'Yet Another CouponOffer
 		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
 			YACO = New CouponOffer
-			YACO = couponOfferDBRow
+			YACO.OfferID = couponOfferDBRow.OfferID
 			YACO.OfferID = YACO.OfferID.Substring(0, (YACO.OfferID.Length - 1)) & _
 												  payoutNumber.ToString
+			YACO.CouponNumber = couponOfferDBRow.CouponNumber
 			YACO.ValidStart = payoutDate
 			YACO.ValidEnd = payoutDate
+			YACO.ExcludeDays = Nothing
+			YACO.ExcludeStart = Nothing
+			YACO.ExcludeEnd = Nothing
+			YACO.FullValidate = couponOfferDBRow.FullValidate
+			YACO.Reprintable = couponOfferDBRow.Reprintable
+			YACO.Note = couponOfferDBRow.Note
+			YACO.ScanToReceipt = couponOfferDBRow.ScanToReceipt
 			tempList.Add(YACO)
 		Next
-		For Each newCouponOffer As CouponOffer In tempList
-			Me.CouponOffersList.Add(newCouponOffer)
-		Next
-	End Sub
+		Return tempList
+	End Function
 #End Region
 #Region "ProcessMultiPartCouponTarget"
 	Private Sub ProcessMultiPartCouponTargetInPlace(ByVal payoutNumber As Short)
@@ -493,30 +532,6 @@ Public Class PCW_Data
 		Next
 	End Sub
 #End Region
-
-	Private Function ProcessMultiPartPayout(ByVal payoutDate As DateTime, _
-											ByVal payoutNumber As Short) As MarketingPromo
-		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
-		anotherPayoutPromo = GetMarketingPromoPayout()
-		Dim num As String = payoutNumber.ToString
-		anotherPayoutPromo.PromoID = GetPayoutPromoID() & num
-		anotherPayoutPromo.PromoName = "Payouts " _
-									 & num _
-									 & " - " _
-									 & PromoDataHash.Item(Key.Name)
-		anotherPayoutPromo.PromoType = GetPayoutPromoType()
-		anotherPayoutPromo.StartDate = payoutDate
-		anotherPayoutPromo.EndDate = payoutDate
-		anotherPayoutPromo.PointCutoff = Nothing
-		anotherPayoutPromo.PointDivisor = Nothing
-		anotherPayoutPromo.MaxTickets = Nothing
-		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
-		anotherPayoutPromo.Recurring = False
-		anotherPayoutPromo.Frequency = "W"
-		anotherPayoutPromo.RecursOnWeekday = Nothing
-		anotherPayoutPromo.EarnsOnWeekday = Nothing
-		Return anotherPayoutPromo
-	End Function
 #End Region
 #Region "SubmitListsToDB"
 	Public Sub SubmitListsToDB()
