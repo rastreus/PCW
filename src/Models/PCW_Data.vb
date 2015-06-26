@@ -410,8 +410,10 @@ Public Class PCW_Data
 #Region "ProcessAllMultiPartPayouts"
 	Private Sub ProcessAllMultiPartPayouts(ByVal payoutPromo As MarketingPromo)
 		'This only works for Days; refactor for Tiers.
-		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
-		Dim accList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim coTempList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim coAccList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim ctTempList As List(Of CouponTarget) = New List(Of CouponTarget)
+		Dim ctAccList As List(Of CouponTarget) = New List(Of CouponTarget)
 		Dim startDate As DateTime = payoutPromo.StartDate
 		Dim endDate As DateTime = payoutPromo.EndDate
 		Dim currDate As DateTime = startDate
@@ -429,21 +431,29 @@ Public Class PCW_Data
 					ProcessMultiPartCouponTargetInPlace(payoutNumber)
 				End If
 			ElseIf payoutNumber > 1 Then
-				tempList = ProcessMultiPartCouponOfferAppend(currDate, _
-															 payoutNumber)
-				For Each coupOff As CouponOffer In tempList
-					accList.Add(coupOff)
+				coTempList = ProcessMultiPartCouponOfferAppend(currDate, _
+															   payoutNumber)
+				For Each coupOff As CouponOffer In coTempList
+					coAccList.Add(coupOff)
 				Next
 				If usesTargetList Then
-					ProcessMultiPartCouponTargetAppend(payoutNumber)
+					ctTempList = ProcessMultiPartCouponTargetAppend(payoutNumber)
+					For Each coupTarg As CouponTarget In ctTempList
+						ctAccList.Add(coupTarg)
+					Next
 				End If
 			End If
 			currDate = currDate.AddDays(1)
 			payoutNumber = payoutNumber + 1
 		End While
-		For Each co As CouponOffer In accList
+		For Each co As CouponOffer In coAccList
 			Me.CouponOffersList.Add(co)
 		Next
+		If usesTargetList Then
+			For Each ct As CouponTarget In ctAccList
+				Me.CouponTargetList.Add(ct)
+			Next
+		End If
 	End Sub
 
 #Region "ProcessMultiPartPayout"
@@ -486,7 +496,8 @@ Public Class PCW_Data
 	End Sub
 
 	Private Function ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
-													   ByVal payoutNumber As Short) As List(Of CouponOffer)
+													   ByVal payoutNumber As Short) _
+													   As List(Of CouponOffer)
 		Dim YACO As CouponOffer	'Yet Another CouponOffer
 		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
@@ -517,20 +528,30 @@ Public Class PCW_Data
 		Next
 	End Sub
 
-	Private Sub ProcessMultiPartCouponTargetAppend(ByVal payoutNumber As Short)
+	Private Function ProcessMultiPartCouponTargetAppend(ByVal payoutNumber As Short) _
+														As List(Of CouponTarget)
 		Dim YACT As CouponTarget 'Yet Another CouponTarget
 		Dim tempList As List(Of CouponTarget) = New List(Of CouponTarget)
 		For Each couponTargetDBRow As CouponTarget In CouponTargetList
 			YACT = New CouponTarget
-			YACT = couponTargetDBRow
+			YACT.OfferID = couponTargetDBRow.OfferID
 			YACT.OfferID = YACT.OfferID.Substring(0, (YACT.OfferID.Length - 1)) & _
 												  payoutNumber.ToString
+			YACT.Coupon = couponTargetDBRow.Coupon
+			YACT.Account = couponTargetDBRow.Account
+			YACT.Zip = couponTargetDBRow.Zip
+			YACT.AvgTheo = couponTargetDBRow.AvgTheo
+			YACT.Latency = couponTargetDBRow.Latency
+			YACT.BaseCoupon = couponTargetDBRow.BaseCoupon
+			YACT.ZoneAddon = couponTargetDBRow.ZoneAddon
+			YACT.OtherAddon = couponTargetDBRow.OtherAddon
+			YACT.TotalCoupon = couponTargetDBRow.TotalCoupon
+			YACT.TestCoupon = couponTargetDBRow.TestCoupon
+			YACT.CreateDate = couponTargetDBRow.CreateDate
 			tempList.Add(YACT)
 		Next
-		For Each newCouponTarget As CouponTarget In tempList
-			Me.CouponTargetList.Add(newCouponTarget)
-		Next
-	End Sub
+		Return tempList
+	End Function
 #End Region
 #End Region
 #Region "SubmitListsToDB"
