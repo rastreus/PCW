@@ -410,7 +410,6 @@ Public Class PCW_Data
 #Region "ProcessAllMultiPartPayouts"
 	Private Sub ProcessAllMultiPartPayouts(ByVal payoutPromo As MarketingPromo)
 		'This only works for Days; refactor for Tiers.
-		Dim aPayoutPromo As MarketingPromo
 		Dim startDate As DateTime = payoutPromo.StartDate
 		Dim endDate As DateTime = payoutPromo.EndDate
 		Dim currDate As DateTime = startDate
@@ -418,11 +417,9 @@ Public Class PCW_Data
 		Dim usesTargetList As Boolean = SubmitCouponTargetsToDB()
 
 		While (currDate <= endDate)
-			aPayoutPromo = New MarketingPromo
-			aPayoutPromo = ProcessMultiPartPayout(payoutPromo, _
-												  currDate, _
-												  payoutNumber)
-			Me.MarketingPromosList.Add(aPayoutPromo)
+			Me.MarketingPromosList.Add( _
+				ProcessMultiPartPayout(currDate, _
+									   payoutNumber))
 			If payoutNumber = 1 Then
 				ProcessMultiPartCouponOfferInPlace(currDate, _
 												   payoutNumber)
@@ -497,18 +494,16 @@ Public Class PCW_Data
 	End Sub
 #End Region
 
-	Private Function ProcessMultiPartPayout(ByVal payoutPromo As MarketingPromo, _
-											ByVal payoutDate As DateTime, _
-											ByVal payoutNumber As Short) _
-											As MarketingPromo
+	Private Function ProcessMultiPartPayout(ByVal payoutDate As DateTime, _
+											ByVal payoutNumber As Short) As MarketingPromo
 		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
-		anotherPayoutPromo = payoutPromo
+		anotherPayoutPromo = GetMarketingPromoPayout()
 		Dim num As String = payoutNumber.ToString
 		anotherPayoutPromo.PromoID = GetPayoutPromoID() & num
-		anotherPayoutPromo.PromoName = "Payouts " & _
-									   num & _
-									   "- " & _
-									   anotherPayoutPromo.PromoName
+		anotherPayoutPromo.PromoName = "Payouts " _
+									 & num _
+									 & " - " _
+									 & PromoDataHash.Item(Key.Name)
 		anotherPayoutPromo.PromoType = GetPayoutPromoType()
 		anotherPayoutPromo.StartDate = payoutDate
 		anotherPayoutPromo.EndDate = payoutDate
