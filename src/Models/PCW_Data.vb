@@ -423,12 +423,14 @@ Public Class PCW_Data
 												  payoutNumber)
 			Me.MarketingPromosList.Add(aPayoutPromo)
 			If payoutNumber = 1 Then
-				ProcessMultiPartCouponOfferInPlace(currDate, payoutNumber)
+				ProcessMultiPartCouponOfferInPlace(currDate, _
+												   payoutNumber)
 				If usesTargetList Then
 					ProcessMultiPartCouponTargetInPlace(payoutNumber)
 				End If
 			ElseIf payoutNumber > 1 Then
-				ProcessMultiPartCouponOfferAppend(currDate, payoutNumber)
+				ProcessMultiPartCouponOfferAppend(currDate, _
+												  payoutNumber)
 				If usesTargetList Then
 					ProcessMultiPartCouponTargetAppend(payoutNumber)
 				End If
@@ -442,7 +444,8 @@ Public Class PCW_Data
 	Private Sub ProcessMultiPartCouponOfferInPlace(ByVal payoutDate As DateTime, _
 												   ByVal payoutNumber As Short)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
-			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & payoutNumber.ToString
+			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & _
+									   payoutNumber.ToString
 			couponOfferDBRow.ValidStart = payoutDate
 			couponOfferDBRow.ValidEnd = payoutDate
 			couponOfferDBRow.ExcludeDays = Nothing
@@ -471,7 +474,8 @@ Public Class PCW_Data
 #Region "ProcessMultiPartCouponTarget"
 	Private Sub ProcessMultiPartCouponTargetInPlace(ByVal payoutNumber As Short)
 		For Each couponTargetDBRow As CouponTarget In CouponTargetList
-			couponTargetDBRow.OfferID = couponTargetDBRow.OfferID & payoutNumber.ToString
+			couponTargetDBRow.OfferID = couponTargetDBRow.OfferID & _
+										payoutNumber.ToString
 		Next
 	End Sub
 
@@ -492,7 +496,8 @@ Public Class PCW_Data
 
 	Private Function ProcessMultiPartPayout(ByVal payoutPromo As MarketingPromo, _
 											ByVal payoutDate As DateTime, _
-											ByVal payoutNumber As Short) As MarketingPromo
+											ByVal payoutNumber As Short) _
+											As MarketingPromo
 		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
 		anotherPayoutPromo = payoutPromo
 		Dim num As String = payoutNumber.ToString
@@ -518,15 +523,23 @@ Public Class PCW_Data
 #Region "SubmitListsToDB"
 	Public Sub SubmitListsToDB()
 		SubmitPromosToList()
-		DataContext.MarketingPromos.InsertAllOnSubmit(MarketingPromosList)
+		DataContext _
+			.MarketingPromos _
+			.InsertAllOnSubmit(MarketingPromosList)
 		If SubmitEligiblePlayersToDB() Then
-			DataContext.MarketingPromoEligiblePlayers.InsertAllOnSubmit(EligiblePlayerList)
+			DataContext _
+				.MarketingPromoEligiblePlayers _
+				.InsertAllOnSubmit(EligiblePlayerList)
 		End If
 		If SubmitCouponOffersToDB() Then
-			DataContext.CouponOffers.InsertAllOnSubmit(CouponOffersList)
+			DataContext _
+				.CouponOffers _
+				.InsertAllOnSubmit(CouponOffersList)
 		End If
 		If SubmitCouponTargetsToDB() Then
-			DataContext.CouponTargets.InsertAllOnSubmit(CouponTargetList)
+			DataContext _
+				.CouponTargets _
+				.InsertAllOnSubmit(CouponTargetList)
 		End If
 		Try
 			DataContext.SubmitChanges()
