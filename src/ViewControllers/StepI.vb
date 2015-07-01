@@ -42,7 +42,7 @@ Public Class StepI
 			PCW.Data.NumOfDiffs = PCW.Data.NumOfDiffs - 1
 			Me.NextStep = "StepF"
 			PCW.ResetSteps()
-			GUI_Util.msgBox("Now give info. for next Payout")
+			GUI_Util.msgBox("Now give info for next Payout.")
 		Else
 			Me.NextStep = "StepJ"
 		End If

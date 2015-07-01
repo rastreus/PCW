@@ -107,6 +107,7 @@ Public Class PCW_Data
 	Private _pcwDaysBool As Boolean = False
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 	Private _pcwNumOfDiffs As System.Nullable(Of Short) = Nothing
+	Private _pcwPayoutDiffNum As Short = 1
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
@@ -231,6 +232,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As System.Nullable(Of Short))
 			value = _pcwNumOfDiffs
+		End Set
+	End Property
+	Private Property PayoutDiffNum As Short
+		Get
+			Return _pcwPayoutDiffNum
+		End Get
+		Set(value As Short)
+			_pcwPayoutDiffNum = value
 		End Set
 	End Property
 
@@ -421,13 +430,13 @@ Public Class PCW_Data
 				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.payoutOnly
 				entryPromo = Nothing
+				payoutPromo = GetMarketingPromoPayout()
 				If Not IsNothing(CurrentMultiPartCategory) Then
 					If CurrentMultiPartCategory = _
 						MultiPartCategory.multiPartDiff Then
-						ProcessAllMultiPartPayoutsDiff()
+						ProcessAllMultiPartPayoutsDiff(payoutPromo)
 					End If
 				Else
-					payoutPromo = GetMarketingPromoPayout()
 					Me.MarketingPromosList.Add(payoutPromo)
 				End If
 			Case PromoCategory.multiPart
@@ -438,7 +447,7 @@ Public Class PCW_Data
 					MultiPartCategory.multiPartSame Then
 					ProcessAllMultiPartPayoutsSame(payoutPromo)
 				Else
-					ProcessAllMultiPartPayoutsDiff()
+					ProcessAllMultiPartPayoutsDiff(payoutPromo)
 				End If
 				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.acquisition
@@ -495,21 +504,44 @@ Public Class PCW_Data
 			Next
 		End If
 	End Sub
-	Private Sub ProcessAllMultiPartPayoutsDiff()
+	Private Sub ProcessAllMultiPartPayoutsDiff(ByVal payoutPromo As MarketingPromo)
+		Dim coTempList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim coAccList As List(Of CouponOffer) = New List(Of CouponOffer)
+		Dim ctTempList As List(Of CouponTarget) = New List(Of CouponTarget)
+		Dim ctAccList As List(Of CouponTarget) = New List(Of CouponTarget)
 		Dim usesTargetList As Boolean = _
 			SubmitCouponTargetsToDB()
 		Dim payoutDate As DateTime = New DateTime
 		Dim payoutNumber As Short = New Short
-		payoutNumber = Me.NumOfDiffs 'GetCalcDiffNum()
+		Dim currDate As DateTime = payoutPromo.StartDate
+		payoutNumber = Me.PayoutDiffNum
 		payoutDate = PromoDataHash.Item(Key.StartDate)
+		If payoutNumber > 1 Then
+			currDate = currDate.AddDays((payoutNumber - 1))
+		End If
 		Me.MarketingPromosList.Add( _
 			ProcessMultiPartPayout(payoutDate, _
 								   payoutNumber))
-		ProcessMultiPartCouponOfferInPlace(payoutDate, _
-										   payoutNumber)
-		If usesTargetList Then
-			ProcessMultiPartCouponTargetInPlace(payoutNumber)
+		If payoutNumber = 1 Then
+			ProcessMultiPartCouponOfferInPlace(payoutDate, _
+											   payoutNumber)
+			If usesTargetList Then
+				ProcessMultiPartCouponTargetInPlace(payoutNumber)
+			End If
+		ElseIf payoutNumber > 1 Then
+			coTempList = ProcessMultiPartCouponOfferAppend(currDate, _
+														   payoutNumber)
+			For Each coupOff As CouponOffer In coTempList
+				coAccList.Add(coupOff)
+			Next
+			If usesTargetList Then
+				ctTempList = ProcessMultiPartCouponTargetAppend(payoutNumber)
+				For Each coupTarg As CouponTarget In ctTempList
+					ctAccList.Add(coupTarg)
+				Next
+			End If
 		End If
+		Me.PayoutDiffNum = Me.PayoutDiffNum + 1
 	End Sub
 
 #Region "ProcessMultiPartPayout"
