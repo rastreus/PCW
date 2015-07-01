@@ -4,6 +4,9 @@ Imports System.ComponentModel
 Imports Category = PromotionalCreationWizard _
 				   .PCW_Data _
 				   .PromoCategory
+Imports MultiPart = PromotionalCreationWizard _
+					.PCW_Data _
+					.MultiPartCategory
 
 ''' <summary>
 ''' Fourth Step; handles promo category and player eligiblity.
@@ -53,9 +56,24 @@ Public Class StepD
 				Me.stepD_data.SkipEntry = True
 			Case Category.multiPart
 				If Me.rbDAYS.Checked Then
-					Me.stepD_data.MuliPartDaysTiers = Me.lblNumOfDays.Text
+					Me.stepD_data.MultiPartDaysTiers = Me.lblNumOfDays.Text
 				ElseIf Me.rbTIERS.Checked Then
-					Me.stepD_data.MuliPartDaysTiers = Me.txtNumOfTiers.Text
+					Me.stepD_data.MultiPartDaysTiers = Me.txtNumOfTiers.Text
+				End If
+				If (Me.rbDAYS.Checked And Me.cbPayoutParametersYES.Checked) Or _
+					(Me.rbTIERS.Checked And Me.cbPayoutParametersYES.Checked) Then
+					Me.stepD_data.MultiPartCategory = MultiPart.multiPartSame
+					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartSame
+				ElseIf Me.rbDAYS.Checked And _
+					(Not Me.cbPayoutParametersYES.Checked) Then
+					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
+					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
+					PCW.Data.NumOfDiffs = Short.Parse(Me.lblNumOfDays.Text)
+				ElseIf Me.rbTIERS.Checked And _
+					(Not Me.cbPayoutParametersYES.Checked) Then
+					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
+					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
+					PCW.Data.NumOfDiffs = Short.Parse(Me.txtNumOfTiers.Text)
 				End If
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
@@ -166,7 +184,7 @@ Public Class StepD
 		Me.Data.CheckForReset()
 
 		If Me.Data.Category = Category.multiPart And
-			BEP_Util.invalidNum(Me.Data.MuliPartDaysTiers) Then
+			BEP_Util.invalidNum(Me.Data.MultiPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."
 			errStrArray.Add(errString)
@@ -183,7 +201,8 @@ Public Class StepD
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPointCutoffLimit)
 		Else
-			GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
+			GUI_Util.regPnl(Me.pnlPointCutoffLimit, _
+							Color.PapayaWhip)
 		End If
 
 		e.Cancel = cancelContinuingToNextStep

@@ -30,12 +30,13 @@ Public Class StepD_Data
 #Region "Properties"
 	Private _dataAddedToHash As Boolean = False
 	Private _promoCategory As PCW_Data.PromoCategory
-	Private _promoMutiPartDaysTiers As String = Nothing
+	Private _promoMultiPartDaysTiers As String = Nothing
 	Private _promoPointCutoffLimit As System.Nullable(Of Short)
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
 	Private _dataEligiblePlayersCSVFilePath As String = New String("")
+	Private _promoMultiPartCategory As PCW_Data.MultiPartCategory
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -54,12 +55,20 @@ Public Class StepD_Data
 			_promoCategory = value
 		End Set
 	End Property
-	Public Property MuliPartDaysTiers As String
+	Public Property MultiPartCategory As PCW_Data.MultiPartCategory
 		Get
-			Return _promoMutiPartDaysTiers
+			Return _promoMultiPartCategory
+		End Get
+		Set(value As PCW_Data.MultiPartCategory)
+			_promoMultiPartCategory = value
+		End Set
+	End Property
+	Public Property MultiPartDaysTiers As String
+		Get
+			Return _promoMultiPartDaysTiers
 		End Get
 		Set(value As String)
-			_promoMutiPartDaysTiers = value
+			_promoMultiPartDaysTiers = value
 		End Set
 	End Property
 	Public Property PointCutoffLimit As System.Nullable(Of Short)
@@ -143,7 +152,12 @@ Public Class StepD_Data
 #End Region
 #Region "CheckForReset"
 	Public Sub CheckForReset()
-		If Me.Category = PCW_Data.PromoCategory.multiPart Then
+		If (Me.Category = PCW_Data _
+						 .PromoCategory _
+						 .multiPart) And _
+			(Me.MultiPartCategory = PCW_Data _
+									.MultiPartCategory _
+									.multiPartDiff) Then
 			PCW.Data.Reset = True
 			'Single Entry w/ multiple Payouts
 			PCW.Data.ResetTo = "StepF"

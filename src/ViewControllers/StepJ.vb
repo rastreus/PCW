@@ -13,6 +13,7 @@ Public Class StepJ
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		PCW.Data.SubmitListsToDB()
+		PCW.Data.ClearListsAfterSubmit()
 	End Sub
 #End Region
 #Region "StepJ_ShowStep"
@@ -40,24 +41,27 @@ Public Class StepJ
 	End Sub
 
 	Private Sub DoWork()
-		Dim strCollection As StringCollection = New StringCollection()
-		Dim strArray() As String = {"ID", _
-									"Name", _
-									"Date", _
-									"StartDate", _
-									"EndDate", _
-									"PointCutoff", _
-									"PointDivisor", _
-									"MaxTickets", _
-									"PromoMaxTickets", _
-									"CouponID", _
-									"Recurring", _
-									"Frequency", _
-									"RecursOnWeekday", _
-									"EarnsOnWeekday", _
-									"CountCurrentDay", _
-									"PrintTickets", _
-									"Comments"}
+		Dim strCollection As StringCollection
+		strCollection = New StringCollection()
+		Dim strArray() As String = { _
+										"ID", _
+										"Name", _
+										"Date", _
+										"StartDate", _
+										"EndDate", _
+										"PointCutoff", _
+										"PointDivisor", _
+										"MaxTickets", _
+										"PromoMaxTickets", _
+										"CouponID", _
+										"Recurring", _
+										"Frequency", _
+										"RecursOnWeekday", _
+										"EarnsOnWeekday", _
+										"CountCurrentDay", _
+										"PrintTickets", _
+										"Comments" _
+									}
 		strCollection.AddRange(strArray)
 
 		BeginPreparing(strCollection.Count)
@@ -75,7 +79,6 @@ Public Class StepJ
 					  New Object() {items})
 			Return
 		End If
-
 		Me.ProgressBar1.Maximum = items * 10
 		Me.ProgressBar1.Value = 10
 	End Sub
@@ -86,7 +89,6 @@ Public Class StepJ
 					  New Object() {item})
 			Return
 		End If
-
 		Me.Label2.Text = item
 	End Sub
 
@@ -96,7 +98,6 @@ Public Class StepJ
 					  New Object() {})
 			Return
 		End If
-
 		Me.ProgressBar1.PerformStep()
 	End Sub
 

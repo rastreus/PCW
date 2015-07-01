@@ -73,7 +73,8 @@ Public Class StepF
 	''' <returns>PromoPayoutCategory.</returns>
 	''' <remarks></remarks>
 	Private Function getPromoPayoutCategory() As StepF_Data.PromoPayoutCategory
-		Dim promoPayoutCategory As StepF_Data.PromoPayoutCategory = New StepF_Data.PromoPayoutCategory
+		Dim promoPayoutCategory As StepF_Data.PromoPayoutCategory
+		promoPayoutCategory = New StepF_Data.PromoPayoutCategory
 		If Me.rbFreePlayCoupon.Checked Then
 			promoPayoutCategory = PayoutCategory.freePlayCoupon
 		ElseIf Me.rbRandomPrize.Checked Then
@@ -165,7 +166,8 @@ Public Class StepF
 			'Step has been set if no error.
 			Me.stepF_data.StepNotSet = False
 			Me.NextStep = Me.Data.DetermineNextStep()
-			Dim usesCouponTargetList As Boolean = Me.Data.WillUseCouponTargetsList()
+			Dim usesCouponTargetList As Boolean
+			usesCouponTargetList = Me.Data.WillUseCouponTargetsList()
 			If usesCouponTargetList Then
 				PCW.Data.UsesCouponTargetsList = True
 			Else

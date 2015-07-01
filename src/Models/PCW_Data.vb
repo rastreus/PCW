@@ -1,4 +1,6 @@
-﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+﻿Imports Key = PromotionalCreationWizard _
+			  .PCW_Data _
+			  .PromoFields
 Imports System.Data.SqlClient
 
 Public Class PCW_Data
@@ -63,7 +65,7 @@ Public Class PCW_Data
 		Comment
 	End Enum
 #End Region
-#Region "Categories"
+#Region "PromoCategory"
 	Public Enum PromoCategory
 		entryAndPayout
 		entryOnly
@@ -72,13 +74,20 @@ Public Class PCW_Data
 		acquisition
 	End Enum
 #End Region
+#Region "MultiPartCategory"
+	Public Enum MultiPartCategory
+		multiPartSame 'Regular Days, Irregular Tiers
+		multiPartDiff 'Irregular Days, Regular Tiers
+	End Enum
+#End Region
 #Region "Properties"
-	Private _pcwDataContext As PCWLINQ2SQLDataContext = New PCWLINQ2SQLDataContext(Global _
-																				  .PromotionalCreationWizard _
-																				  .My _
-																				  .MySettings _
-																				  .Default _
-																				  .GamingConnectionString)
+	Private _pcwDataContext As PCWLINQ2SQLDataContext = _
+		New PCWLINQ2SQLDataContext(Global _
+								   .PromotionalCreationWizard _
+								   .My _
+								   .MySettings _
+								   .Default _
+								   .GamingConnectionString)
 	Private _pcwPromoDataHash As Hashtable = New Hashtable()
 	Private _pcwPromoStepList As ArrayList = New ArrayList()
 	Private _pcwReset As Boolean = False
@@ -86,6 +95,7 @@ Public Class PCW_Data
 	Private _pcwCurrentPromoCategory As PromoCategory
 	Private _pcwUsesEligiblePlayers As Boolean = False
 	Private _pcwUsesCouponTargetsList As Boolean = False
+	Private _pcwMultiPartCategory As MultiPartCategory
 	Private _pcwMarketingPromosList As List(Of MarketingPromo) = _
 								   New List(Of MarketingPromo)
 	Private _pcwEligiblePlayerList As List(Of MarketingPromoEligiblePlayer) = _
@@ -96,6 +106,7 @@ Public Class PCW_Data
 								New List(Of CouponOffer)
 	Private _pcwDaysBool As Boolean = False
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
+	Private _pcwNumOfDiffs As System.Nullable(Of Short) = Nothing
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
@@ -158,6 +169,14 @@ Public Class PCW_Data
 			_pcwUsesCouponTargetsList = value
 		End Set
 	End Property
+	Public Property CurrentMultiPartCategory As MultiPartCategory
+		Get
+			Return _pcwMultiPartCategory
+		End Get
+		Set(value As MultiPartCategory)
+			_pcwMultiPartCategory = value
+		End Set
+	End Property
 	Public Property MarketingPromosList As List(Of MarketingPromo)
 		Get
 			Return _pcwMarketingPromosList
@@ -206,6 +225,15 @@ Public Class PCW_Data
 			_pcwNumOfDays = value
 		End Set
 	End Property
+	Public Property NumOfDiffs As System.Nullable(Of Short)
+		Get
+			Return _pcwNumOfDiffs
+		End Get
+		Set(value As System.Nullable(Of Short))
+			value = _pcwNumOfDiffs
+		End Set
+	End Property
+
 #End Region
 #Region "GetMarketingPromo"
 	Private Function GetMarketingPromo() As MarketingPromo
@@ -378,7 +406,7 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "SubmitPromosToList"
-	Private Sub SubmitPromosToList()
+	Public Sub SubmitPromosToList()
 		Dim entryPromo As MarketingPromo
 		Dim payoutPromo As MarketingPromo
 		Select Case CurrentPromoCategory
@@ -393,13 +421,25 @@ Public Class PCW_Data
 				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.payoutOnly
 				entryPromo = Nothing
-				payoutPromo = GetMarketingPromoPayout()
-				Me.MarketingPromosList.Add(payoutPromo)
+				If Not IsNothing(CurrentMultiPartCategory) Then
+					If CurrentMultiPartCategory = _
+						MultiPartCategory.multiPartDiff Then
+						ProcessAllMultiPartPayoutsDiff()
+					End If
+				Else
+					payoutPromo = GetMarketingPromoPayout()
+					Me.MarketingPromosList.Add(payoutPromo)
+				End If
 			Case PromoCategory.multiPart
 				'If out what all needs to be done
 				entryPromo = GetMarketingPromoEntry()
 				payoutPromo = GetMarketingPromoPayout()
-				ProcessAllMultiPartPayouts(payoutPromo)
+				If CurrentMultiPartCategory = _
+					MultiPartCategory.multiPartSame Then
+					ProcessAllMultiPartPayoutsSame(payoutPromo)
+				Else
+					ProcessAllMultiPartPayoutsDiff()
+				End If
 				Me.MarketingPromosList.Add(entryPromo)
 			Case PromoCategory.acquisition
 				'Needs to be implemented (As of: 05/13/15)
@@ -408,7 +448,7 @@ Public Class PCW_Data
 	End Sub
 #End Region
 #Region "ProcessAllMultiPartPayouts"
-	Private Sub ProcessAllMultiPartPayouts(ByVal payoutPromo As MarketingPromo)
+	Private Sub ProcessAllMultiPartPayoutsSame(ByVal payoutPromo As MarketingPromo)
 		'This only works for Days; refactor for Tiers.
 		Dim coTempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		Dim coAccList As List(Of CouponOffer) = New List(Of CouponOffer)
@@ -455,10 +495,27 @@ Public Class PCW_Data
 			Next
 		End If
 	End Sub
+	Private Sub ProcessAllMultiPartPayoutsDiff()
+		Dim usesTargetList As Boolean = _
+			SubmitCouponTargetsToDB()
+		Dim payoutDate As DateTime = New DateTime
+		Dim payoutNumber As Short = New Short
+		payoutNumber = Me.NumOfDiffs 'GetCalcDiffNum()
+		payoutDate = PromoDataHash.Item(Key.StartDate)
+		Me.MarketingPromosList.Add( _
+			ProcessMultiPartPayout(payoutDate, _
+								   payoutNumber))
+		ProcessMultiPartCouponOfferInPlace(payoutDate, _
+										   payoutNumber)
+		If usesTargetList Then
+			ProcessMultiPartCouponTargetInPlace(payoutNumber)
+		End If
+	End Sub
 
 #Region "ProcessMultiPartPayout"
 	Private Function ProcessMultiPartPayout(ByVal payoutDate As DateTime, _
-										ByVal payoutNumber As Short) As MarketingPromo
+											ByVal payoutNumber As Short) _
+											As MarketingPromo
 		Dim anotherPayoutPromo As MarketingPromo = New MarketingPromo
 		anotherPayoutPromo = GetMarketingPromoPayout()
 		Dim num As String = payoutNumber.ToString
@@ -556,7 +613,7 @@ Public Class PCW_Data
 #End Region
 #Region "SubmitListsToDB"
 	Public Sub SubmitListsToDB()
-		SubmitPromosToList()
+		'SubmitPromosToList() 'THIS HAS TO HAPPEN INDEPENDENTLY
 		DataContext _
 			.MarketingPromos _
 			.InsertAllOnSubmit(MarketingPromosList)
@@ -580,6 +637,20 @@ Public Class PCW_Data
 		Catch ex As SqlException
 			GUI_Util.msgBox(ex.Message)
 		End Try
+	End Sub
+#End Region
+#Region "ClearListsAfterSubmit"
+	Public Sub ClearListsAfterSubmit()
+		Me.MarketingPromosList.Clear()
+		If SubmitEligiblePlayersToDB() Then
+			Me.EligiblePlayerList.Clear()
+		End If
+		If SubmitCouponOffersToDB() Then
+			Me.CouponOffersList.Clear()
+		End If
+		If SubmitCouponTargetsToDB() Then
+			Me.CouponTargetList.Clear()
+		End If
 	End Sub
 #End Region
 #Region "SubmitEligiblePlayersToDB"

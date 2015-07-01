@@ -8,7 +8,8 @@ Public Class StepX
 	Inherits TSWizards.BaseExteriorStep
 
 #Region "StepX_InfoCircle"
-	Private Sub stepX_InfoCircle_Click(sender As Object, e As EventArgs) _
+	Private Sub stepX_InfoCircle_Click(sender As Object, _
+									   e As EventArgs) _
 		Handles stepX_InfoCircle.Click
 		Dim copyStr As String = "Copyright " & ChrW(169)
 		Dim infoStr As String = <a>Oaklawn Jockey Club, 2014-2015
@@ -26,7 +27,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Too late for the user to go back and change anything.</remarks>
-	Private Sub StepX_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepX_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		PCW.BackEnabled = False
 	End Sub
@@ -40,6 +42,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 		If PCW.Data.Reset Then
 			PCW.ResetSteps()
 			PCW.BackEnabled = True
+			PCW.ControlBox = True
+			PCW.CancelEnabled(True)
 			PCW.MoveTo(PCW.Data.ResetTo)
 		Else
 			MyBase.OnFinish()
@@ -47,7 +51,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	End Sub
 #End Region
 #Region "StepX_cbPCWRerun_CheckedChanged"
-	Private Sub cbPCWRerun_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub cbPCWRerun_CheckedChanged(sender As Object, _
+										  e As EventArgs) _
 		Handles cbPCWRerun.CheckedChanged
 		PCW.Data.Reset = Me.cbPCWRerun.Checked
 	End Sub
