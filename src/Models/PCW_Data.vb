@@ -106,7 +106,7 @@ Public Class PCW_Data
 								New List(Of CouponOffer)
 	Private _pcwDaysBool As Boolean = False
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
-	Private _pcwNumOfDiffs As System.Nullable(Of Short) = Nothing
+	Private _pcwNumOfDiffs As Short
 	Private _pcwPayoutDiffNum As Short = 1
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
@@ -226,12 +226,12 @@ Public Class PCW_Data
 			_pcwNumOfDays = value
 		End Set
 	End Property
-	Public Property NumOfDiffs As System.Nullable(Of Short)
+	Public Property NumOfDiffs As Short
 		Get
 			Return _pcwNumOfDiffs
 		End Get
-		Set(value As System.Nullable(Of Short))
-			value = _pcwNumOfDiffs
+		Set(value As Short)
+			_pcwNumOfDiffs = value
 		End Set
 	End Property
 	Private Property PayoutDiffNum As Short
