@@ -104,6 +104,8 @@ Public Class PCW_Data
 								New List(Of CouponTarget)
 	Private _pcwCouponOffersList As List(Of CouponOffer) = _
 								New List(Of CouponOffer)
+	Private _pcwTEMPCOList As List(Of CouponOffer) = _
+						  New List(Of CouponOffer)
 	Private _pcwDaysBool As Boolean = False
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 	Private _pcwNumOfDiffs As Short
@@ -208,6 +210,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As List(Of CouponOffer))
 			_pcwCouponOffersList = value
+		End Set
+	End Property
+	Private Property TEMPCOList As List(Of CouponOffer)
+		Get
+			Return _pcwTEMPCOList
+		End Get
+		Set(value As List(Of CouponOffer))
+			_pcwTEMPCOList = value
 		End Set
 	End Property
 	Public Property DaysBool As Boolean
@@ -505,41 +515,30 @@ Public Class PCW_Data
 		End If
 	End Sub
 	Private Sub ProcessAllMultiPartPayoutsDiff(ByVal payoutPromo As MarketingPromo)
-		Dim coTempList As List(Of CouponOffer) = New List(Of CouponOffer)
-		Dim coAccList As List(Of CouponOffer) = New List(Of CouponOffer)
-		Dim ctTempList As List(Of CouponTarget) = New List(Of CouponTarget)
-		Dim ctAccList As List(Of CouponTarget) = New List(Of CouponTarget)
 		Dim usesTargetList As Boolean = _
 			SubmitCouponTargetsToDB()
-		Dim payoutDate As DateTime = New DateTime
 		Dim payoutNumber As Short = New Short
-		Dim currDate As DateTime = payoutPromo.StartDate
+		Dim payoutDate As DateTime = payoutPromo.StartDate
 		payoutNumber = Me.PayoutDiffNum
-		payoutDate = PromoDataHash.Item(Key.StartDate)
 		If payoutNumber > 1 Then
-			currDate = currDate.AddDays((payoutNumber - 1))
+			payoutDate = payoutDate.AddDays(payoutNumber - 1)
 		End If
 		Me.MarketingPromosList.Add( _
 			ProcessMultiPartPayout(payoutDate, _
 								   payoutNumber))
-		If payoutNumber = 1 Then
-			ProcessMultiPartCouponOfferInPlace(payoutDate, _
-											   payoutNumber)
-			If usesTargetList Then
-				ProcessMultiPartCouponTargetInPlace(payoutNumber)
-			End If
-		ElseIf payoutNumber > 1 Then
-			coTempList = ProcessMultiPartCouponOfferAppend(currDate, _
-														   payoutNumber)
-			For Each coupOff As CouponOffer In coTempList
-				coAccList.Add(coupOff)
+		ProcessMultiPartCouponOfferInPlace(payoutDate, _
+										   payoutNumber)
+		For Each co As CouponOffer In CouponOffersList
+			TEMPCOList.Add(co)
+		Next
+		CouponOffersList.Clear()
+		If NumOfDiffs <= 1 Then
+			For Each co As CouponOffer In TEMPCOList
+				CouponOffersList.Add(co)
 			Next
-			If usesTargetList Then
-				ctTempList = ProcessMultiPartCouponTargetAppend(payoutNumber)
-				For Each coupTarg As CouponTarget In ctTempList
-					ctAccList.Add(coupTarg)
-				Next
-			End If
+		End If
+		If usesTargetList Then
+			ProcessMultiPartCouponTargetInPlace(payoutNumber)
 		End If
 		Me.PayoutDiffNum = Me.PayoutDiffNum + 1
 	End Sub
