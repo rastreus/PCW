@@ -193,9 +193,17 @@ Public Class StepCanHazSecurity
 			Dim errString As String = New String("!")
 			If Me.Data.Time_Is_Invalid(getOverrideTime(),
 									   errString) Then
+				Me.OverrideTimeHoursEntered = False
+				Me.OverrideTimeMinutesEntered = False
+				Me.txtOverrideTimeHours.Text = "HH"
+				Me.txtOverrideTimeMinutes.Text = "mm"
+				Me.btnSubmitOverrideTime.Enabled = False
+				Me.btnSubmitOverrideTime.BackColor = Color.Gainsboro
 				GUI_Util.errPnl(Me.pnlOverrideTime)
+				PCW.NextEnabled = False
 				GUI_Util.msgBox("Override Time: " & _
 								errString)
+				Me.ActiveControl = Me.pnlOverrideTime
 			Else
 				GUI_Util.regPnl(Me.pnlOverrideTime)
 				CheckForNext()
@@ -208,9 +216,17 @@ Public Class StepCanHazSecurity
 			Dim errString As String = New String("!")
 			If Me.Data.Time_Is_Invalid(getCutoffTime(),
 									   errString) Then
+				Me.CutoffTimeHoursEntered = False
+				Me.CutoffTimeMinutesEntered = False
+				Me.txtCutoffTimeHours.Text = "HH"
+				Me.txtCutoffTimeMinutes.Text = "mm"
+				Me.btnSubmitCutoffTime.Enabled = False
+				Me.btnSubmitCutoffTime.BackColor = Color.Gainsboro
 				GUI_Util.errPnl(Me.pnlCutoffTime)
+				PCW.NextEnabled = False
 				GUI_Util.msgBox("Cutoff Time: " & _
 								errString)
+				Me.ActiveControl = Me.pnlCutoffTime
 			Else
 				GUI_Util.regPnl(Me.pnlCutoffTime)
 				CheckForNext()

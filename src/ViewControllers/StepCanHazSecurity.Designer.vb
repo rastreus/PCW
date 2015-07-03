@@ -28,6 +28,7 @@ Partial Class StepCanHazSecurity
 		Me.rbSecurityYES = New System.Windows.Forms.RadioButton()
 		Me.lblSecurity = New System.Windows.Forms.Label()
 		Me.pnlOverrideTime = New System.Windows.Forms.Panel()
+		Me.btnSubmitOverrideTime = New System.Windows.Forms.Button()
 		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
 		Me.rbOverrideTimePM = New System.Windows.Forms.RadioButton()
 		Me.rbOverrideTimeAM = New System.Windows.Forms.RadioButton()
@@ -36,6 +37,7 @@ Partial Class StepCanHazSecurity
 		Me.txtOverrideTimeHours = New System.Windows.Forms.TextBox()
 		Me.lblOverrideTime = New System.Windows.Forms.Label()
 		Me.pnlCutoffTime = New System.Windows.Forms.Panel()
+		Me.btnSubmitCutoffTime = New System.Windows.Forms.Button()
 		Me.Panel2 = New System.Windows.Forms.Panel()
 		Me.rbCutoffTimePM = New System.Windows.Forms.RadioButton()
 		Me.rbCutoffTimeAM = New System.Windows.Forms.RadioButton()
@@ -43,8 +45,6 @@ Partial Class StepCanHazSecurity
 		Me.lblTimeColon2 = New System.Windows.Forms.Label()
 		Me.txtCutoffTimeHours = New System.Windows.Forms.TextBox()
 		Me.lblCutoffTime = New System.Windows.Forms.Label()
-		Me.btnSubmitCutoffTime = New System.Windows.Forms.Button()
-		Me.btnSubmitOverrideTime = New System.Windows.Forms.Button()
 		Me.pnlSecurity.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlOverrideTime.SuspendLayout()
@@ -129,6 +129,23 @@ Partial Class StepCanHazSecurity
 		Me.pnlOverrideTime.Name = "pnlOverrideTime"
 		Me.pnlOverrideTime.Size = New System.Drawing.Size(140, 75)
 		Me.pnlOverrideTime.TabIndex = 29
+		'
+		'btnSubmitOverrideTime
+		'
+		Me.btnSubmitOverrideTime.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSubmitOverrideTime.Enabled = False
+		Me.btnSubmitOverrideTime.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSubmitOverrideTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSubmitOverrideTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSubmitOverrideTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSubmitOverrideTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSubmitOverrideTime.ForeColor = System.Drawing.Color.White
+		Me.btnSubmitOverrideTime.Location = New System.Drawing.Point(3, 48)
+		Me.btnSubmitOverrideTime.Name = "btnSubmitOverrideTime"
+		Me.btnSubmitOverrideTime.Size = New System.Drawing.Size(74, 20)
+		Me.btnSubmitOverrideTime.TabIndex = 32
+		Me.btnSubmitOverrideTime.Text = "Set"
+		Me.btnSubmitOverrideTime.UseVisualStyleBackColor = False
 		'
 		'pnlPaleTurquoise
 		'
@@ -231,6 +248,23 @@ Partial Class StepCanHazSecurity
 		Me.pnlCutoffTime.Size = New System.Drawing.Size(140, 75)
 		Me.pnlCutoffTime.TabIndex = 30
 		'
+		'btnSubmitCutoffTime
+		'
+		Me.btnSubmitCutoffTime.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSubmitCutoffTime.Enabled = False
+		Me.btnSubmitCutoffTime.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSubmitCutoffTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSubmitCutoffTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSubmitCutoffTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSubmitCutoffTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSubmitCutoffTime.ForeColor = System.Drawing.Color.White
+		Me.btnSubmitCutoffTime.Location = New System.Drawing.Point(3, 48)
+		Me.btnSubmitCutoffTime.Name = "btnSubmitCutoffTime"
+		Me.btnSubmitCutoffTime.Size = New System.Drawing.Size(74, 20)
+		Me.btnSubmitCutoffTime.TabIndex = 31
+		Me.btnSubmitCutoffTime.Text = "Set"
+		Me.btnSubmitCutoffTime.UseVisualStyleBackColor = False
+		'
 		'Panel2
 		'
 		Me.Panel2.BackColor = System.Drawing.Color.Lavender
@@ -315,40 +349,6 @@ Partial Class StepCanHazSecurity
 		Me.lblCutoffTime.TabIndex = 29
 		Me.lblCutoffTime.Text = "Cutoff Time"
 		Me.lblCutoffTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		'
-		'btnSubmitCutoffTime
-		'
-		Me.btnSubmitCutoffTime.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSubmitCutoffTime.Enabled = False
-		Me.btnSubmitCutoffTime.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSubmitCutoffTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSubmitCutoffTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSubmitCutoffTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSubmitCutoffTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSubmitCutoffTime.ForeColor = System.Drawing.Color.White
-		Me.btnSubmitCutoffTime.Location = New System.Drawing.Point(3, 48)
-		Me.btnSubmitCutoffTime.Name = "btnSubmitCutoffTime"
-		Me.btnSubmitCutoffTime.Size = New System.Drawing.Size(74, 20)
-		Me.btnSubmitCutoffTime.TabIndex = 31
-		Me.btnSubmitCutoffTime.Text = "Submit"
-		Me.btnSubmitCutoffTime.UseVisualStyleBackColor = False
-		'
-		'btnSubmitOverrideTime
-		'
-		Me.btnSubmitOverrideTime.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSubmitOverrideTime.Enabled = False
-		Me.btnSubmitOverrideTime.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSubmitOverrideTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSubmitOverrideTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSubmitOverrideTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSubmitOverrideTime.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSubmitOverrideTime.ForeColor = System.Drawing.Color.White
-		Me.btnSubmitOverrideTime.Location = New System.Drawing.Point(3, 48)
-		Me.btnSubmitOverrideTime.Name = "btnSubmitOverrideTime"
-		Me.btnSubmitOverrideTime.Size = New System.Drawing.Size(74, 20)
-		Me.btnSubmitOverrideTime.TabIndex = 32
-		Me.btnSubmitOverrideTime.Text = "Submit"
-		Me.btnSubmitOverrideTime.UseVisualStyleBackColor = False
 		'
 		'StepCanHazSecurity
 		'
