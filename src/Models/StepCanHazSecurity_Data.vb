@@ -1,4 +1,6 @@
-﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+﻿Imports Key = PromotionalCreationWizard _
+			  .PCW_Data _
+			  .PromoFields
 
 Public Class StepCanHazSecurity_Data
 	Implements IPromoData
@@ -75,11 +77,13 @@ Public Class StepCanHazSecurity_Data
 #End Region
 #Region "Validity Checks"
 	Public Function OverrideTime_Invalid() As Boolean
-		Return Time_Is_Invalid(OverrideTime, OverrideTime_errString)
+		Return Time_Is_Invalid(OverrideTime, _
+							   OverrideTime_errString)
 	End Function
 
 	Public Function CutoffTime_Invalid() As Boolean
-		Return Time_Is_Invalid(CutoffTime, CutoffTime_errString)
+		Return Time_Is_Invalid(CutoffTime, _
+							   CutoffTime_errString)
 	End Function
 
 	Private Function Time_Is_Invalid(ByVal timeStr As String, _
