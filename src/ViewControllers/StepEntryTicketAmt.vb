@@ -45,12 +45,16 @@ Public Class StepEntryTicketAmt
 	''' </summary>
 	''' <remarks>Complexity meets delegation.</remarks>
 	Private Sub StepEntryTicketAmt_SetData()
-		Me.stepEntryTicketAmt_data.TicketAmtCategory = getTicketAmtCategory()
-		Me.stepEntryTicketAmt_data.PointsDivisor = getPointsDivisor(Me.Data.TicketAmtCategory)
-		Me.stepEntryTicketAmt_data.TicketsPerPatron = getTicketsLimit(Me.rbTicketPerPatronYES.Checked, _
-																	  Me.txtTicketsPerPatron.Text)
-		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, _
-																		   Me.txtTicketsEntirePromo.Text)
+		Me.stepEntryTicketAmt_data.TicketAmtCategory = _
+			getTicketAmtCategory()
+		Me.stepEntryTicketAmt_data.PointsDivisor = _
+			getPointsDivisor(Me.Data.TicketAmtCategory)
+		Me.stepEntryTicketAmt_data.TicketsPerPatron = _
+			getTicketsLimit(Me.rbTicketPerPatronYES.Checked, _
+							Me.txtTicketsPerPatron.Text)
+		Me.stepEntryTicketAmt_data.TicketsForEntirePromo = _
+			getTicketsLimit(Me.rbTicketsEntirePromoYES.Checked, _
+							Me.txtTicketsEntirePromo.Text)
 		Me.stepEntryTicketAmt_data.PrintTickets = True
 		Me.stepEntryTicketAmt_data.PromoType = getPromoType()
 	End Sub
@@ -74,7 +78,8 @@ Public Class StepEntryTicketAmt
 	''' <returns>Ticket Limit.</returns>
 	''' <remarks>Remember, kids: Keep code DRY!</remarks>
 	Private Function getTicketsLimit(ByVal yesChecked As Boolean, _
-									 ByVal txtInput As String) As System.Nullable(Of Short)
+									 ByVal txtInput As String) _
+									 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
@@ -83,16 +88,18 @@ Public Class StepEntryTicketAmt
 	End Function
 
 	''' <summary>
-	''' If (Cal Or Cal+#ofVisits) And (Not invalidNum), get Points Divisor from TextBox.
+	''' If (Cal Or Cal+#ofVisits) And (Not invalidNum),
+	''' get Points Divisor from TextBox.
 	''' </summary>
 	''' <param name="local_ticketAmtCategory">TicketAmtCategory.</param>
 	''' <returns>Get me Points Divisor Or Nothing!</returns>
 	''' <remarks>This is sloppy; needs refactoring.</remarks>
-	Private Function getPointsDivisor(ByVal local_ticketAmtCategory As Category) As System.Nullable(Of Short)
+	Private Function getPointsDivisor(ByVal _ticketAmtCategory As Category) _
+									  As System.Nullable(Of Short)
 		Dim pointsDivisor As System.Nullable(Of Short) = Nothing
 		Dim pointsDivisorStr As String = Me.txtPointsDivisor.Text
-		If ((local_ticketAmtCategory = Category.calculated) Or
-			(local_ticketAmtCategory = Category.calPlusNumOfVisits)) And
+		If ((_ticketAmtCategory = Category.calculated) Or
+			(_ticketAmtCategory = Category.calPlusNumOfVisits)) And
 			(Not BEP_Util.invalidNum(pointsDivisorStr)) Then
 			pointsDivisor = Short.Parse(pointsDivisorStr)
 		End If
@@ -103,7 +110,8 @@ Public Class StepEntryTicketAmt
 	''' Finds the Checked RadioButton to determine TicketAmtCategory.
 	''' </summary>
 	''' <returns>TicketAmtCategory.</returns>
-	''' <remarks>At this point, I'm beginning to question myself.</remarks>
+	''' <remarks>At this point,
+	''' I'm beginning to question myself.</remarks>
 	Private Function getTicketAmtCategory() As Category
 		Dim promoTicketAmtCategory As Category = New Category
 		If Me.rbCalPlusNumOfVisits.Checked Then
@@ -130,17 +138,24 @@ Public Class StepEntryTicketAmt
 	Private Sub StepEntryTicketAmt_Load(sender As Object, _
 										e As EventArgs) _
 		Handles MyBase.Load
-		defaultStr = New String("Move mouse pointer over amount for description.")
+		defaultStr = New String("Move mouse pointer over " & _
+								"amount for description.")
 		oneStr = New String("One: a single entry ticket.")
-		numOfVisitsStr = New String("Counts the number of visits within the qualifying period " &
-									"in which the account earned points. The counted number " &
+		numOfVisitsStr = New String("Counts the number of visits within " & _
+									"the qualifying period " & _
+									"in which the account earned points. " & _
+									"The counted number " & _
 									"is the amount of entry tickets.")
-		calStr = New String("Sums points accured within the qualifying period, " &
+		calStr = New String("Sums points accured within " & _
+							"the qualifying period, " & _
 							"divides the total by the points divisor.")
-		calPlusNumOfVisitsStr = New String("Sums points accured within the qualifying period, " &
-										   "divides the total by the points divisor, " &
-										   "then adds the result to a count of visits.")
-		setAmtStr = New String("A static, set amount of tickets; " &
+		calPlusNumOfVisitsStr = New String("Sums points accured within " & _
+										   "the qualifying period, " & _
+										   "divides the total by the " & _
+										   "points divisor, " & _
+										   "then adds the result to a " & _
+										   "count of visits.")
+		setAmtStr = New String("A static, set amount of tickets; " & _
 							   "enter the amount into the box below.")
 		promoTypeEntered = False
 	End Sub
@@ -167,16 +182,18 @@ Public Class StepEntryTicketAmt
 #End Region
 #Region "StepEntryTicketAmt_Validation"
 	''' <summary>
-	''' Asks StepEntryTicketAmt_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepEntryTicketAmt_Data to validate data
+	''' and then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepEntryTicketAmt_Validation(sender As Object, _
 											  e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepEntryTicketAmt_SetData()
@@ -195,12 +212,14 @@ Public Class StepEntryTicketAmt
 			End If
 		End If
 
-		If Me.rbTicketPerPatronYES.Checked And Me.rbTicketsEntirePromoYES.Checked Then
+		If Me.rbTicketPerPatronYES.Checked And _
+			Me.rbTicketsEntirePromoYES.Checked Then
 			If Me.Data.BadTicketLimits() Then
 				cancelContinuingToNextStep = True
 				GUI_Util.errPnl(Me.pnlTicketPerPatron)
 				GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
-				errString = "Tickets For Entire Promo is less than Tickets Per Patron."
+				errString = "Tickets For Entire Promo is " & _
+							"less than Tickets Per Patron."
 				errStrArray.Add(errString)
 			Else
 				GUI_Util.regPnl(Me.pnlTicketPerPatron)
@@ -212,7 +231,8 @@ Public Class StepEntryTicketAmt
 			If Me.Data.TicketsPerPatron_Invalid() Then
 				cancelContinuingToNextStep = True
 				GUI_Util.errPnl(Me.pnlTicketPerPatron)
-				errString = "The Limit # of Tickets per patron is invalid."
+				errString = "The Limit # of Tickets " & _
+							"per patron is invalid."
 				errStrArray.Add(errString)
 				Me.txtTicketsPerPatron.Text = ""
 				Me.ActiveControl = Me.txtTicketsPerPatron
@@ -225,7 +245,8 @@ Public Class StepEntryTicketAmt
 			If Me.Data.TicketsForEntirePromo_Invalid() Then
 				cancelContinuingToNextStep = True
 				GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
-				errString = "The Limit # of Tickets for entire promo is invalid."
+				errString = "The Limit # of Tickets for " & _
+							"entire promo is invalid."
 				errStrArray.Add(errString)
 				Me.txtTicketsEntirePromo.Text = ""
 				Me.ActiveControl = Me.txtTicketsEntirePromo
@@ -316,7 +337,7 @@ Public Class StepEntryTicketAmt
 	Private Sub rbTicketsPerPatronNO_CheckedChanged(sender As Object, _
 													e As EventArgs) _
 		Handles rbTicketsPerPatronNO.CheckedChanged
-		If Not Me.rbTicketsPerPatronNO.Checked Then
+		If Me.rbTicketPerPatronYES.Checked Then
 			Me.txtTicketsPerPatron.Enabled = True
 			Me.txtTicketsPerPatron.Text = ""
 			Me.ActiveControl = Me.txtTicketsPerPatron
@@ -325,6 +346,10 @@ Public Class StepEntryTicketAmt
 			GUI_Util.NextEnabled()
 			Me.txtTicketsPerPatron.Enabled = False
 			Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
+			Me.btnSetTicketsPerPatron.BackColor = Color.Gainsboro
+			Me.btnSetTicketsPerPatron.Enabled = False
+			Me.btnSetTicketsEntirePromo.BackColor = Color.HotPink
+			Me.btnSetTicketsEntirePromo.Enabled = True
 		End If
 	End Sub
 #End Region
@@ -338,7 +363,7 @@ Public Class StepEntryTicketAmt
 	Private Sub rbTicketsEntirePromoNO_CheckedChanged(sender As Object, _
 													  e As EventArgs) _
 		Handles rbTicketsEntirePromoNO.CheckedChanged
-		If Not Me.rbTicketsEntirePromoNO.Checked Then
+		If Me.rbTicketPerPatronYES.Checked Then
 			Me.txtTicketsEntirePromo.Enabled = True
 			Me.txtTicketsEntirePromo.Text = ""
 			Me.ActiveControl = Me.txtTicketsEntirePromo
@@ -348,6 +373,22 @@ Public Class StepEntryTicketAmt
 			Me.txtTicketsEntirePromo.Enabled = False
 			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		End If
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsPerPatron_Enter"
+	Private Sub txtTicketsPerPatron_Enter(sender As Object, _
+										  e As EventArgs) _
+		Handles txtTicketsPerPatron.Enter
+		Me.btnSetTicketsPerPatron.BackColor = Color.HotPink
+		Me.btnSetTicketsPerPatron.Enabled = True
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtTicketsEntirePromo_Enter"
+	Private Sub txtTicketsEntirePromo_Enter(sender As Object, _
+											e As EventArgs) _
+		Handles txtTicketsEntirePromo.Enter
+		Me.btnSetTicketsEntirePromo.BackColor = Color.HotPink
+		Me.btnSetTicketsEntirePromo.Enabled = True
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtTicketsPerPatron_Leave"
@@ -469,7 +510,8 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtPointsDivisor_KeyPress(sender As Object, _
 										  e As KeyPressEventArgs) _
 		Handles txtPointsDivisor.KeyPress
-		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+		If Not Char.IsDigit(e.KeyChar) And _
+			Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
@@ -478,7 +520,8 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtTicketsPerPatron_KeyPress(sender As Object, _
 											 e As KeyPressEventArgs) _
 		Handles txtTicketsPerPatron.KeyPress
-		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+		If Not Char.IsDigit(e.KeyChar) And _
+			Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
@@ -487,10 +530,34 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtTicketsEntirePromo_KeyPress(sender As Object, _
 											   e As KeyPressEventArgs) _
 		Handles txtTicketsEntirePromo.KeyPress
-		If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+		If Not Char.IsDigit(e.KeyChar) And _
+			Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
 #End Region
+#End Region
+#Region "_SET_BTN_"
+	Private Sub btnSetTicketsPerPatron_Click(sender As Object, _
+										 e As EventArgs) _
+	Handles btnSetTicketsPerPatron.Click
+		Me.ActiveControl = Me.pnlTicketPerPatron
+	End Sub
+	Private Sub btnSetTicketsEntirePromo_Click(sender As Object, _
+											   e As EventArgs) _
+		Handles btnSetTicketsEntirePromo.Click
+		Me.ActiveControl = Me.pnlTicketsEntirePromo
+	End Sub
+	Private Sub btnSetPointsDivisor_Click(sender As Object, _
+										  e As EventArgs) _
+		Handles btnSetPointsDivisor.Click
+		Me.ActiveControl = Me.pnlPointsDivisor
+	End Sub
+
+	Private Sub btnSetPromoType_Click(sender As Object, _
+									  e As EventArgs) _
+		Handles btnSetPromoType.Click
+		Me.ActiveControl = Me.pnlPromoTypeForEntry
+	End Sub
 #End Region
 End Class
