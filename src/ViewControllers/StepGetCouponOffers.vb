@@ -129,7 +129,8 @@ Public Class StepGetCouponOffers
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>A lot of controls to get correct.</remarks>
-	Private Sub StepGetCouponOffers_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepGetCouponOffers_ResetStep(sender As Object, _
+											  e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepGetCouponOffers_data = New StepGetCouponOffers_Data
 		StepGetCouponOffers_ResetControls()
@@ -155,7 +156,10 @@ Public Class StepGetCouponOffers
 		Me.pnlExcludeRange.Enabled = False
 		Me.pnlExclusionDays.Enabled = False
 		Me.txtNote.Text = "EX: Small Note"
-		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
+		Me.btnSetNote.BackColor = Color.Gainsboro
+		Me.btnSetNote.Enabled = False
+		Me.lblCouponOffersList.Text = "Click 'Submit' below to add " & _
+									  "Coupon Offers to this Coupon ID."
 		ExcludeDaysCheckState(False)
 		Me.clbExcludeDays.ClearSelected()
 		Me.cbSelectAll.Checked = False
@@ -164,16 +168,18 @@ Public Class StepGetCouponOffers
 #End Region
 #Region "StepGetCouponOffers_Validation"
 	''' <summary>
-	''' Asks StepGetCouponOffers_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepGetCouponOffers_Data to validate data and
+	''' then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered
+	''' when user presses the "Next> Button."</remarks>
 	Private Sub StepGetCouponOffers_Validation(sender As Object, _
 											   e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 
 		If Me.Data.No_CouponOffers_Created() Then
 			cancelContinuingToNextStep = True
@@ -284,14 +290,16 @@ Public Class StepGetCouponOffers
 		Dim couponOffer As CouponOffer = New CouponOffer()
 		Me.btnSubmit.Enabled = False
 		couponOffer = StepGetCouponOffers_GetData()
-		Dim couponOfferIsValid As Boolean = Me.Data.Is_CouponOffer_Valid(couponOffer, _
-																		 Me.rbExcludeDaysYES.Checked)
+		Dim couponOfferIsValid As Boolean = _
+			Me.Data.Is_CouponOffer_Valid(couponOffer, _
+										 Me.rbExcludeDaysYES.Checked)
 		If couponOfferIsValid Then
 			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
 			Me.StepGetCouponOffers_ResetControls()
 			Me.lblCouponOffersList.Text = RefreshLabelList()
 			If firstOfferList And Not Me.wildcardMsgBool Then
-				GUI_Util.msgBox("Add another Coupon Offer or press Next to continue.", _
+				GUI_Util.msgBox("Add another Coupon Offer or " & _
+								"press Next to continue.", _
 								"Coupon Offers Options", _
 								"Information")
 			End If
@@ -310,7 +318,8 @@ Public Class StepGetCouponOffers
 #Region "StepGetCouponOffers_RefreshLableList"
 	Private Function RefreshLabelList()
 		Dim result As String = If(Me.Data.No_CouponOffers_Created(), _
-								  "Click 'Submit' below to add Coupon Offers to this Coupon ID.", _
+								  "Click 'Submit' below to add " & _
+								  "Coupon Offers to this Coupon ID.", _
 								  Me.Data.GetCouponOfferListString())
 		Return result
 	End Function
@@ -322,8 +331,10 @@ Public Class StepGetCouponOffers
 		If rbCouponWildcardYES.Checked Then
 			If Me.wildcardMsgBool = False Then
 				Me.wildcardMsgBool = True
-				GUI_Util.msgBox("Wildcard Offers add Targets at the time of coupon creation. " & _
-								"There is no option to import a Target list for a Wildcard Offer.", _
+				GUI_Util.msgBox("Wildcard Offers add Targets at the " & _
+								"time of coupon creation. " & _
+								"There is no option to import a Target " & _
+								"list for a Wildcard Offer.", _
 								"NO TARGET IMPORT!", _
 								"Information")
 			End If
@@ -337,6 +348,15 @@ Public Class StepGetCouponOffers
 		If Me.txtNote.Text = "EX: Small Note" Then
 			Me.txtNote.Text = ""
 		End If
+		Me.btnSetNote.BackColor = Color.HotPink
+		Me.btnSetNote.Enabled = True
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_btnSetNote_Click"
+	Private Sub btnSetNote_Click(sender As Object, _
+								 e As EventArgs) _
+		Handles btnSetNote.Click
+		Me.ActiveControl = Me.pnlNote
 	End Sub
 #End Region
 End Class

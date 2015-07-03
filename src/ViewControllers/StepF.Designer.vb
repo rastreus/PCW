@@ -40,6 +40,7 @@ Partial Class StepF
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
+		Me.btnSetPromoType = New System.Windows.Forms.Button()
 		Me.pnlPayout.SuspendLayout()
 		Me.pnlCashValue.SuspendLayout()
 		Me.pnlPrize.SuspendLayout()
@@ -221,12 +222,13 @@ Partial Class StepF
 		'
 		Me.pnlPromoTypeForPayout.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoTypeForPayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoTypeForPayout.Controls.Add(Me.btnSetPromoType)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.lblPromoTypeQuestion)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.txtPromoType)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.lblPromoType)
 		Me.pnlPromoTypeForPayout.Location = New System.Drawing.Point(81, 63)
 		Me.pnlPromoTypeForPayout.Name = "pnlPromoTypeForPayout"
-		Me.pnlPromoTypeForPayout.Size = New System.Drawing.Size(80, 125)
+		Me.pnlPromoTypeForPayout.Size = New System.Drawing.Size(80, 142)
 		Me.pnlPromoTypeForPayout.TabIndex = 15
 		'
 		'lblPromoTypeQuestion
@@ -258,6 +260,23 @@ Partial Class StepF
 		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
 		Me.lblPromoType.TabIndex = 15
 		Me.lblPromoType.Text = "Promo Type:"
+		'
+		'btnSetPromoType
+		'
+		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoType.Enabled = False
+		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
+		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
+		Me.btnSetPromoType.Name = "btnSetPromoType"
+		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
+		Me.btnSetPromoType.TabIndex = 34
+		Me.btnSetPromoType.Text = "Set"
+		Me.btnSetPromoType.UseVisualStyleBackColor = False
 		'
 		'StepF
 		'
@@ -302,5 +321,6 @@ Partial Class StepF
 	Friend WithEvents lblPromoTypeQuestion As System.Windows.Forms.Label
 	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
 	Friend WithEvents lblPromoType As System.Windows.Forms.Label
+	Private WithEvents btnSetPromoType As System.Windows.Forms.Button
 
 End Class

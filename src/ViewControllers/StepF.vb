@@ -72,7 +72,8 @@ Public Class StepF
 	''' </summary>
 	''' <returns>PromoPayoutCategory.</returns>
 	''' <remarks></remarks>
-	Private Function getPromoPayoutCategory() As StepF_Data.PromoPayoutCategory
+	Private Function getPromoPayoutCategory() _
+		As StepF_Data.PromoPayoutCategory
 		Dim promoPayoutCategory As StepF_Data.PromoPayoutCategory
 		promoPayoutCategory = New StepF_Data.PromoPayoutCategory
 		If Me.rbFreePlayCoupon.Checked Then
@@ -106,6 +107,8 @@ Public Class StepF
 	End Sub
 
 	Private Sub StepF_ResetControls()
+		Me.btnSetPromoType.BackColor = Color.Gainsboro
+		Me.btnSetPromoType.Enabled = False
 		Me.rbFreePlayCoupon.Checked = True
 		deactivateTextBox(Me.txtCashValue, BEP_Util.NumStr)
 		deactivateTextBox(Me.txtPrize, BEP_Util.PrizeStr)
@@ -118,7 +121,7 @@ Public Class StepF
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepF_SetData()
@@ -131,7 +134,8 @@ Public Class StepF
 				GUI_Util.errPnl(Me.pnlCashValue)
 				Me.ActiveControl = Me.txtCashValue
 			Else
-				GUI_Util.regPnl(Me.pnlCashValue, Color.Gainsboro)
+				GUI_Util.regPnl(Me.pnlCashValue, _
+								Color.Gainsboro)
 			End If
 		End If
 
@@ -143,7 +147,8 @@ Public Class StepF
 			GUI_Util.errPnl(Me.pnlPrize)
 			Me.ActiveControl = Me.txtPrize
 		Else
-			GUI_Util.regPnl(Me.pnlPrize, Color.Gainsboro)
+			GUI_Util.regPnl(Me.pnlPrize, _
+							Color.Gainsboro)
 		End If
 
 		If Me.Data.BadPromoType() Then
@@ -228,6 +233,8 @@ Public Class StepF
 			Me.txtPromoType.Text = ""
 			Me.promoTypeEntered = True
 		End If
+		Me.btnSetPromoType.BackColor = Color.HotPink
+		Me.btnSetPromoType.Enabled = True
 	End Sub
 #End Region
 #Region "StepF_txtPromoType_Leave"
@@ -261,5 +268,12 @@ ASIDE: An exercise in keeping code DRY.
 		textBox.Text = text
 	End Sub
 #End Region
+#End Region
+#Region "StepF_btnSetPromoType_Click"
+	Private Sub btnSetPromoType_Click(sender As Object, _
+								  e As EventArgs) _
+		Handles btnSetPromoType.Click
+		Me.ActiveControl = Me.pnlPromoTypeForPayout
+	End Sub
 #End Region
 End Class

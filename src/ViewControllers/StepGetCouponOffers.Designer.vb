@@ -65,6 +65,7 @@ Partial Class StepGetCouponOffers
 		Me.rbScanToReceiptYES = New System.Windows.Forms.RadioButton()
 		Me.lblScanToReceipt = New System.Windows.Forms.Label()
 		Me.pnlNote = New System.Windows.Forms.Panel()
+		Me.btnSetNote = New System.Windows.Forms.Button()
 		Me.txtNote = New System.Windows.Forms.TextBox()
 		Me.lblNote = New System.Windows.Forms.Label()
 		Me.pnlCouponWildcard = New System.Windows.Forms.Panel()
@@ -384,6 +385,7 @@ Partial Class StepGetCouponOffers
 		Me.rbExcludeDaysNO.Name = "rbExcludeDaysNO"
 		Me.rbExcludeDaysNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbExcludeDaysNO.TabIndex = 0
+		Me.rbExcludeDaysNO.TabStop = True
 		Me.rbExcludeDaysNO.Text = "No"
 		Me.rbExcludeDaysNO.UseVisualStyleBackColor = True
 		'
@@ -441,6 +443,7 @@ Partial Class StepGetCouponOffers
 		Me.rbFullValidateNO.Name = "rbFullValidateNO"
 		Me.rbFullValidateNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbFullValidateNO.TabIndex = 0
+		Me.rbFullValidateNO.TabStop = True
 		Me.rbFullValidateNO.Text = "No"
 		Me.rbFullValidateNO.UseVisualStyleBackColor = True
 		'
@@ -498,6 +501,7 @@ Partial Class StepGetCouponOffers
 		Me.rbReprintableNO.Name = "rbReprintableNO"
 		Me.rbReprintableNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbReprintableNO.TabIndex = 0
+		Me.rbReprintableNO.TabStop = True
 		Me.rbReprintableNO.Text = "No"
 		Me.rbReprintableNO.UseVisualStyleBackColor = True
 		'
@@ -555,6 +559,7 @@ Partial Class StepGetCouponOffers
 		Me.rbScanToReceiptNO.Name = "rbScanToReceiptNO"
 		Me.rbScanToReceiptNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbScanToReceiptNO.TabIndex = 0
+		Me.rbScanToReceiptNO.TabStop = True
 		Me.rbScanToReceiptNO.Text = "No"
 		Me.rbScanToReceiptNO.UseVisualStyleBackColor = True
 		'
@@ -585,6 +590,7 @@ Partial Class StepGetCouponOffers
 		'
 		Me.pnlNote.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlNote.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlNote.Controls.Add(Me.btnSetNote)
 		Me.pnlNote.Controls.Add(Me.txtNote)
 		Me.pnlNote.Controls.Add(Me.lblNote)
 		Me.pnlNote.Location = New System.Drawing.Point(109, 195)
@@ -592,10 +598,27 @@ Partial Class StepGetCouponOffers
 		Me.pnlNote.Size = New System.Drawing.Size(100, 89)
 		Me.pnlNote.TabIndex = 38
 		'
+		'btnSetNote
+		'
+		Me.btnSetNote.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetNote.Enabled = False
+		Me.btnSetNote.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetNote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetNote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetNote.ForeColor = System.Drawing.Color.White
+		Me.btnSetNote.Location = New System.Drawing.Point(3, 53)
+		Me.btnSetNote.Name = "btnSetNote"
+		Me.btnSetNote.Size = New System.Drawing.Size(91, 20)
+		Me.btnSetNote.TabIndex = 34
+		Me.btnSetNote.Text = "Set"
+		Me.btnSetNote.UseVisualStyleBackColor = False
+		'
 		'txtNote
 		'
 		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtNote.Location = New System.Drawing.Point(2, 43)
+		Me.txtNote.Location = New System.Drawing.Point(3, 27)
 		Me.txtNote.MaxLength = 14
 		Me.txtNote.Name = "txtNote"
 		Me.txtNote.Size = New System.Drawing.Size(91, 20)
@@ -656,6 +679,7 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
 		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbCouponWildcardNO.TabIndex = 0
+		Me.rbCouponWildcardNO.TabStop = True
 		Me.rbCouponWildcardNO.Text = "No"
 		Me.rbCouponWildcardNO.UseVisualStyleBackColor = True
 		'
@@ -793,5 +817,6 @@ Partial Class StepGetCouponOffers
 	Friend WithEvents rbCouponWildcardNO As System.Windows.Forms.RadioButton
 	Friend WithEvents rbCouponWildcardYES As System.Windows.Forms.RadioButton
 	Private WithEvents lblCouponWildcard As System.Windows.Forms.Label
+	Private WithEvents btnSetNote As System.Windows.Forms.Button
 
 End Class
