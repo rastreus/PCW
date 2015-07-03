@@ -35,6 +35,7 @@ Public Class StepI
 			GUI_Util.regPnl(Me.pnlCreatePromo)
 		End If
 
+		PCW.Data.SubmitPromosToList()
 		'HELPING THE DEBUGGING PROCESS BY MAKING LOCAL VARIABLES; TIS JUST FOR TESTING
 		Dim _local_currMultiPartCategory As PCW_Data.MultiPartCategory = _
 			PCW.Data.CurrentMultiPartCategory
@@ -48,7 +49,6 @@ Public Class StepI
 			Me.NextStep = "StepF"
 			GUI_Util.msgBox("Now give info for next Payout.")
 		Else
-			PCW.Data.SubmitPromosToList()
 			Me.NextStep = "StepJ"
 		End If
 	End Sub
