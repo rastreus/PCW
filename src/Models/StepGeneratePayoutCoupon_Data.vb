@@ -1,4 +1,6 @@
-﻿Imports Key = PromotionalCreationWizard.PCW_Data.PromoFields
+﻿Imports Key = PromotionalCreationWizard _
+			  .PCW_Data _
+			  .PromoFields
 
 ''' <summary>
 ''' Contains data and validity checks for StepGeneratePayoutCoupon.
