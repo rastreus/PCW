@@ -178,13 +178,43 @@ Public Class StepCanHazSecurity
 		End If
 	End Sub
 #End Region
-#Region "StepCanHazSecurity_CheckForNext"
+#Region "StepCanHazSecurity_Checks"
 	Private Sub CheckForNext()
-		If OverrideTimeHoursEntered And
-			OverrideTimeMinutesEntered And
-			CutoffTimeHoursEntered And
+		If OverrideTimeHoursEntered And _
+			OverrideTimeMinutesEntered And _
+			CutoffTimeHoursEntered And _
 			CutoffTimeMinutesEntered Then
 			GUI_Util.NextEnabled()
+		End If
+	End Sub
+	Private Sub CheckForOverrideTime()
+		If Me.OverrideTimeHoursEntered And _
+			Me.OverrideTimeMinutesEntered Then
+			Dim errString As String = New String("!")
+			If Me.Data.Time_Is_Invalid(getOverrideTime(),
+									   errString) Then
+				GUI_Util.errPnl(Me.pnlOverrideTime)
+				GUI_Util.msgBox("Override Time: " & _
+								errString)
+			Else
+				GUI_Util.regPnl(Me.pnlOverrideTime)
+				CheckForNext()
+			End If
+		End If
+	End Sub
+	Private Sub CheckForCutoffTime()
+		If Me.CutoffTimeHoursEntered And _
+			Me.CutoffTimeMinutesEntered Then
+			Dim errString As String = New String("!")
+			If Me.Data.Time_Is_Invalid(getCutoffTime(),
+									   errString) Then
+				GUI_Util.errPnl(Me.pnlCutoffTime)
+				GUI_Util.msgBox("Cutoff Time: " & _
+								errString)
+			Else
+				GUI_Util.regPnl(Me.pnlCutoffTime)
+				CheckForNext()
+			End If
 		End If
 	End Sub
 #End Region
@@ -304,28 +334,28 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtOverrideTimeHours_Leave(sender As Object, _
 										   e As EventArgs) _
 		Handles txtOverrideTimeHours.Leave
-		CheckForNext()
+		CheckForOverrideTime()
 	End Sub
 	Private Sub txtOverrideTimeMinutes_Leave(sender As Object, _
 											 e As EventArgs) _
 		Handles txtOverrideTimeMinutes.Leave
-		CheckForNext()
+		CheckForOverrideTime()
 	End Sub
 	Private Sub txtCutoffTimeHours_Leave(sender As Object, _
 										 e As EventArgs) _
 		Handles txtCutoffTimeHours.Leave
-		CheckForNext()
+		CheckForCutoffTime()
 	End Sub
 	Private Sub txtCutoffTimeMinutes_Leave(sender As Object, _
 										   e As EventArgs) _
 		Handles txtCutoffTimeMinutes.Leave
-		CheckForNext()
+		CheckForCutoffTime()
 	End Sub
 #End Region
 #Region "_TIME_SUBMIT_"
 	Private Sub CheckToEnableTimeSubmit(ByVal hoursEntered As Boolean, _
-									ByVal minutesEntered As Boolean, _
-									ByRef btnSubmit As Button)
+										ByVal minutesEntered As Boolean, _
+										ByRef btnSubmit As Button)
 		If hoursEntered And _
 			minutesEntered Then
 			EnableTimeSubmit(btnSubmit)

@@ -86,8 +86,8 @@ Public Class StepCanHazSecurity_Data
 							   CutoffTime_errString)
 	End Function
 
-	Private Function Time_Is_Invalid(ByVal timeStr As String, _
-									 ByRef errString As String) As Boolean
+	Public Function Time_Is_Invalid(ByVal timeStr As String, _
+									ByRef errString As String) As Boolean
 		Dim result As Boolean = False
 		If Not_Five_Chars(timeStr) Then
 			result = True
