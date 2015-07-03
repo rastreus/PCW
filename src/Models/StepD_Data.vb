@@ -151,6 +151,11 @@ Public Class StepD_Data
 	End Function
 #End Region
 #Region "CheckForReset"
+	''' <summary>
+	''' "Loops" for another go.
+	''' </summary>
+	''' <remarks>I'm not sure this is
+	''' even needed anymore?</remarks>
 	Public Sub CheckForReset()
 		If (Me.Category = PCW_Data _
 						 .PromoCategory _

@@ -181,7 +181,9 @@ Public Class StepD
 		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepD_SetData()
-		Me.Data.CheckForReset()
+		'(07/03/15: Commented out b/c not needed anymore?)
+		'THIS CODE CAN BE REMOVED'
+		'Me.Data.CheckForReset()
 
 		If Me.Data.Category = Category.multiPart And
 			BEP_Util.invalidNum(Me.Data.MultiPartDaysTiers) Then
