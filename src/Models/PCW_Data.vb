@@ -357,6 +357,8 @@ Public Class PCW_Data
 		payoutPromo.PointCutoff = Nothing
 		payoutPromo.PointDivisor = Nothing
 		payoutPromo.MaxTickets = Nothing
+		payoutPromo.PromoMaxTickets = _
+			GetPayoutMaxNumOfCouponsPerPatron()
 		Return payoutPromo
 	End Function
 
@@ -368,6 +370,10 @@ Public Class PCW_Data
 
 	Private Function GetPayoutPromoType() As String
 		Return PromoDataHash.Item(Key.PayoutPromoType)
+	End Function
+
+	Private Function GetPayoutMaxNumOfCouponsPerPatron()
+		Return PromoDataHash.Item(Key.MaxNumOfCouponsPerPatron)
 	End Function
 #End Region
 #Region "GetPromoSummary"
@@ -561,6 +567,8 @@ Public Class PCW_Data
 		anotherPayoutPromo.PointCutoff = Nothing
 		anotherPayoutPromo.PointDivisor = Nothing
 		anotherPayoutPromo.MaxTickets = Nothing
+		anotherPayoutPromo.PromoMaxTickets = _
+			GetPayoutMaxNumOfCouponsPerPatron()
 		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
 		anotherPayoutPromo.Recurring = False
 		anotherPayoutPromo.Frequency = "W"
