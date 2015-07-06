@@ -194,9 +194,10 @@ Public Class StepF
 	Private Sub StepF_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
-		'If Me.Data.StepNotSet Then
-		'	PCW.NextEnabled = False
-		'End If
+#If DEBUG Then
+		Me.pnlDEBUG.Visible = False
+		Me.lblDEBUG.Visible = False
+#End If
 	End Sub
 #End Region
 #Region "StepF_rbCashValue_CheckedChanged"

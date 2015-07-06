@@ -37,14 +37,17 @@ Partial Class StepF
 		Me.rbCashValue = New System.Windows.Forms.RadioButton()
 		Me.pnlLavender = New System.Windows.Forms.Panel()
 		Me.pnlPromoTypeForPayout = New System.Windows.Forms.Panel()
+		Me.btnSetPromoType = New System.Windows.Forms.Button()
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
-		Me.btnSetPromoType = New System.Windows.Forms.Button()
+		Me.pnlDEBUG = New System.Windows.Forms.Panel()
+		Me.lblDEBUG = New System.Windows.Forms.Label()
 		Me.pnlPayout.SuspendLayout()
 		Me.pnlCashValue.SuspendLayout()
 		Me.pnlPrize.SuspendLayout()
 		Me.pnlPromoTypeForPayout.SuspendLayout()
+		Me.pnlDEBUG.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -56,6 +59,7 @@ Partial Class StepF
 		'
 		Me.pnlPayout.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPayout.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPayout.Controls.Add(Me.pnlDEBUG)
 		Me.pnlPayout.Controls.Add(Me.pnlCashValue)
 		Me.pnlPayout.Controls.Add(Me.Label3)
 		Me.pnlPayout.Controls.Add(Me.Label1)
@@ -231,6 +235,23 @@ Partial Class StepF
 		Me.pnlPromoTypeForPayout.Size = New System.Drawing.Size(80, 142)
 		Me.pnlPromoTypeForPayout.TabIndex = 15
 		'
+		'btnSetPromoType
+		'
+		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoType.Enabled = False
+		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
+		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
+		Me.btnSetPromoType.Name = "btnSetPromoType"
+		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
+		Me.btnSetPromoType.TabIndex = 34
+		Me.btnSetPromoType.Text = "Set"
+		Me.btnSetPromoType.UseVisualStyleBackColor = False
+		'
 		'lblPromoTypeQuestion
 		'
 		Me.lblPromoTypeQuestion.BackColor = System.Drawing.Color.Transparent
@@ -261,22 +282,25 @@ Partial Class StepF
 		Me.lblPromoType.TabIndex = 15
 		Me.lblPromoType.Text = "Promo Type:"
 		'
-		'btnSetPromoType
+		'pnlDEBUG
 		'
-		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetPromoType.Enabled = False
-		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
-		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
-		Me.btnSetPromoType.Name = "btnSetPromoType"
-		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
-		Me.btnSetPromoType.TabIndex = 34
-		Me.btnSetPromoType.Text = "Set"
-		Me.btnSetPromoType.UseVisualStyleBackColor = False
+		Me.pnlDEBUG.BackColor = System.Drawing.Color.Transparent
+		Me.pnlDEBUG.Controls.Add(Me.lblDEBUG)
+		Me.pnlDEBUG.Location = New System.Drawing.Point(14, 62)
+		Me.pnlDEBUG.Name = "pnlDEBUG"
+		Me.pnlDEBUG.Size = New System.Drawing.Size(279, 128)
+		Me.pnlDEBUG.TabIndex = 16
+		'
+		'lblDEBUG
+		'
+		Me.lblDEBUG.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDEBUG.ForeColor = System.Drawing.Color.Lavender
+		Me.lblDEBUG.Location = New System.Drawing.Point(3, 51)
+		Me.lblDEBUG.Name = "lblDEBUG"
+		Me.lblDEBUG.Size = New System.Drawing.Size(273, 77)
+		Me.lblDEBUG.TabIndex = 0
+		Me.lblDEBUG.Text = "(More Options In Development)"
+		Me.lblDEBUG.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
 		'StepF
 		'
@@ -300,6 +324,7 @@ Partial Class StepF
 		Me.pnlPrize.PerformLayout()
 		Me.pnlPromoTypeForPayout.ResumeLayout(False)
 		Me.pnlPromoTypeForPayout.PerformLayout()
+		Me.pnlDEBUG.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -322,5 +347,7 @@ Partial Class StepF
 	Friend WithEvents txtPromoType As System.Windows.Forms.TextBox
 	Friend WithEvents lblPromoType As System.Windows.Forms.Label
 	Private WithEvents btnSetPromoType As System.Windows.Forms.Button
+	Friend WithEvents pnlDEBUG As System.Windows.Forms.Panel
+	Friend WithEvents lblDEBUG As System.Windows.Forms.Label
 
 End Class
