@@ -294,6 +294,9 @@ Public Class StepB
 		For Each word In words
 			acronym = acronym & word(0)
 		Next
+		If acronym.Length > 6 Then
+			acronym = acronym.Substring(0, 5)
+		End If
 		Return acronym
 	End Function
 
