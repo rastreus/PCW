@@ -300,11 +300,12 @@ Public Class PCW_Data
 	''' <returns>"PCW;05132015;rdillin"</returns>
 	''' <remarks>A security feature which tags each promo created by PCW with date and username.</remarks>
 	Private Function GetPromoComment() As String
-		Dim dateFormatStr As String = New String("{0:MMddyyyy}")
+		Dim dateFormatStr As String = New String("{0:MM/dd/yy H:mm:ss}")
 		Dim comment As String = PromoDataHash.Item(Key.Comment)
 		comment = comment & _
 				  ";PCW;" & _
-				  String.Format(dateFormatStr, Date.Today.ToString) & ";" & _
+				  String.Format(dateFormatStr, _
+								Date.Now.ToString) & ";" & _
 				  Environment.UserName.ToString
 		Return comment
 	End Function
