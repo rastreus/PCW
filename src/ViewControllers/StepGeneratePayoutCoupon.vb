@@ -121,8 +121,8 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 
 	Private Sub StepGeneratePayoutCoupon_ResetControls()
-		Me.btnCouponID.Text = "EXAMPLE1503"
-		Me.txtEditCouponID.Text = "EXAMPLE"
+		Me.btnCouponID.Text = "TEST!1503"
+		Me.txtEditCouponID.Text = "TEST!"
 		Me.pnlEditCouponID.Enabled = False
 		Me.pnlEditCouponID.Visible = False
 		Me.rbCouponsPerPatronNO.Checked = True
@@ -142,7 +142,7 @@ Public Class StepGeneratePayoutCoupon
 													e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepGeneratePayoutCoupon_SetData()

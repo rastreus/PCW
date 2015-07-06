@@ -234,7 +234,7 @@ Partial Class StepB
 		Me.btnPromoID.Name = "btnPromoID"
 		Me.btnPromoID.Size = New System.Drawing.Size(101, 23)
 		Me.btnPromoID.TabIndex = 1
-		Me.btnPromoID.Text = "EXAMPLE1503"
+		Me.btnPromoID.Text = "TEST!1503"
 		Me.btnPromoID.UseVisualStyleBackColor = False
 		'
 		'lblPromoIDEdit
@@ -260,7 +260,7 @@ Partial Class StepB
 		Me.pnlEditPromoID.Enabled = False
 		Me.pnlEditPromoID.Location = New System.Drawing.Point(405, 137)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
-		Me.pnlEditPromoID.Size = New System.Drawing.Size(123, 63)
+		Me.pnlEditPromoID.Size = New System.Drawing.Size(99, 63)
 		Me.pnlEditPromoID.TabIndex = 0
 		Me.pnlEditPromoID.Visible = False
 		'
@@ -275,7 +275,7 @@ Partial Class StepB
 		Me.btnTxtEditPromoID.ForeColor = System.Drawing.Color.White
 		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 32)
 		Me.btnTxtEditPromoID.Name = "btnTxtEditPromoID"
-		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(111, 20)
+		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(87, 20)
 		Me.btnTxtEditPromoID.TabIndex = 2
 		Me.btnTxtEditPromoID.Text = "Set ID"
 		Me.btnTxtEditPromoID.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -286,7 +286,7 @@ Partial Class StepB
 		Me.lblEditPromoID.BackColor = System.Drawing.Color.Transparent
 		Me.lblEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblEditPromoID.ForeColor = System.Drawing.Color.White
-		Me.lblEditPromoID.Location = New System.Drawing.Point(82, 3)
+		Me.lblEditPromoID.Location = New System.Drawing.Point(53, 3)
 		Me.lblEditPromoID.Name = "lblEditPromoID"
 		Me.lblEditPromoID.Size = New System.Drawing.Size(37, 23)
 		Me.lblEditPromoID.TabIndex = 0
@@ -296,13 +296,13 @@ Partial Class StepB
 		'txtEditPromoID
 		'
 		Me.txtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtEditPromoID.Location = New System.Drawing.Point(3, 3)
-		Me.txtEditPromoID.MaxLength = 7
+		Me.txtEditPromoID.Location = New System.Drawing.Point(8, 3)
+		Me.txtEditPromoID.MaxLength = 5
 		Me.txtEditPromoID.Name = "txtEditPromoID"
-		Me.txtEditPromoID.Size = New System.Drawing.Size(77, 23)
+		Me.txtEditPromoID.Size = New System.Drawing.Size(43, 23)
 		Me.txtEditPromoID.TabIndex = 0
 		Me.txtEditPromoID.TabStop = False
-		Me.txtEditPromoID.Text = "EXAMPLE"
+		Me.txtEditPromoID.Text = "TEST!"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
 		'StepB

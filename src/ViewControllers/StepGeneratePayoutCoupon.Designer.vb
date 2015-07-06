@@ -33,11 +33,13 @@ Partial Class StepGeneratePayoutCoupon
 		Me.lblCouponIDEdit = New System.Windows.Forms.Label()
 		Me.pnlMaxAmtAllCoupons = New System.Windows.Forms.Panel()
 		Me.pnlLavender = New System.Windows.Forms.Panel()
+		Me.btnSetMaxAmtAllCoupons = New System.Windows.Forms.Button()
 		Me.txtMaxAmtAllCoupons = New System.Windows.Forms.TextBox()
 		Me.lblMoney2 = New System.Windows.Forms.Label()
 		Me.lblMaxAmtAllCoupons = New System.Windows.Forms.Label()
 		Me.pnlMaxAmtOneCoupon = New System.Windows.Forms.Panel()
 		Me.pnlPaleTurquoise = New System.Windows.Forms.Panel()
+		Me.btnSetMaxAmtOneCoupon = New System.Windows.Forms.Button()
 		Me.txtMaxAmtOneCoupon = New System.Windows.Forms.TextBox()
 		Me.lblMoney1 = New System.Windows.Forms.Label()
 		Me.lblMaxAmtOneCoupon = New System.Windows.Forms.Label()
@@ -45,11 +47,9 @@ Partial Class StepGeneratePayoutCoupon
 		Me.rbCouponsPerPatronNO = New System.Windows.Forms.RadioButton()
 		Me.rbCouponsPerPatronYES = New System.Windows.Forms.RadioButton()
 		Me.pnlAquamarine = New System.Windows.Forms.Panel()
+		Me.btnSetCouponsPerPatron = New System.Windows.Forms.Button()
 		Me.txtCouponsPerPatron = New System.Windows.Forms.TextBox()
 		Me.Label7 = New System.Windows.Forms.Label()
-		Me.btnSetMaxAmtOneCoupon = New System.Windows.Forms.Button()
-		Me.btnSetMaxAmtAllCoupons = New System.Windows.Forms.Button()
-		Me.btnSetCouponsPerPatron = New System.Windows.Forms.Button()
 		Me.pnlEditCouponID.SuspendLayout()
 		Me.pnlCouponID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
@@ -117,7 +117,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.txtEditCouponID.Name = "txtEditCouponID"
 		Me.txtEditCouponID.Size = New System.Drawing.Size(85, 23)
 		Me.txtEditCouponID.TabIndex = 0
-		Me.txtEditCouponID.Text = "EXAMPLE1513"
+		Me.txtEditCouponID.Text = "TEST!1513"
 		'
 		'pnlCouponID
 		'
@@ -165,7 +165,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Name = "btnCouponID"
 		Me.btnCouponID.Size = New System.Drawing.Size(101, 23)
 		Me.btnCouponID.TabIndex = 1
-		Me.btnCouponID.Text = "CIDEXAMPLE1503"
+		Me.btnCouponID.Text = "CIDTEST!1503"
 		Me.btnCouponID.UseVisualStyleBackColor = False
 		'
 		'lblCouponIDEdit
@@ -202,6 +202,24 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlLavender.Name = "pnlLavender"
 		Me.pnlLavender.Size = New System.Drawing.Size(179, 35)
 		Me.pnlLavender.TabIndex = 11
+		'
+		'btnSetMaxAmtAllCoupons
+		'
+		Me.btnSetMaxAmtAllCoupons.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetMaxAmtAllCoupons.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetMaxAmtAllCoupons.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetMaxAmtAllCoupons.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetMaxAmtAllCoupons.ForeColor = System.Drawing.Color.White
+		Me.btnSetMaxAmtAllCoupons.Location = New System.Drawing.Point(133, 8)
+		Me.btnSetMaxAmtAllCoupons.Name = "btnSetMaxAmtAllCoupons"
+		Me.btnSetMaxAmtAllCoupons.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetMaxAmtAllCoupons.TabIndex = 12
+		Me.btnSetMaxAmtAllCoupons.TabStop = False
+		Me.btnSetMaxAmtAllCoupons.Text = "Set"
+		Me.btnSetMaxAmtAllCoupons.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetMaxAmtAllCoupons.UseVisualStyleBackColor = False
 		'
 		'txtMaxAmtAllCoupons
 		'
@@ -257,6 +275,24 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
 		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(179, 35)
 		Me.pnlPaleTurquoise.TabIndex = 10
+		'
+		'btnSetMaxAmtOneCoupon
+		'
+		Me.btnSetMaxAmtOneCoupon.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetMaxAmtOneCoupon.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetMaxAmtOneCoupon.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetMaxAmtOneCoupon.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetMaxAmtOneCoupon.ForeColor = System.Drawing.Color.White
+		Me.btnSetMaxAmtOneCoupon.Location = New System.Drawing.Point(133, 7)
+		Me.btnSetMaxAmtOneCoupon.Name = "btnSetMaxAmtOneCoupon"
+		Me.btnSetMaxAmtOneCoupon.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetMaxAmtOneCoupon.TabIndex = 11
+		Me.btnSetMaxAmtOneCoupon.TabStop = False
+		Me.btnSetMaxAmtOneCoupon.Text = "Set"
+		Me.btnSetMaxAmtOneCoupon.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetMaxAmtOneCoupon.UseVisualStyleBackColor = False
 		'
 		'txtMaxAmtOneCoupon
 		'
@@ -341,6 +377,24 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlAquamarine.Size = New System.Drawing.Size(200, 48)
 		Me.pnlAquamarine.TabIndex = 10
 		'
+		'btnSetCouponsPerPatron
+		'
+		Me.btnSetCouponsPerPatron.BackColor = System.Drawing.Color.HotPink
+		Me.btnSetCouponsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetCouponsPerPatron.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetCouponsPerPatron.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetCouponsPerPatron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetCouponsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetCouponsPerPatron.ForeColor = System.Drawing.Color.White
+		Me.btnSetCouponsPerPatron.Location = New System.Drawing.Point(152, 4)
+		Me.btnSetCouponsPerPatron.Name = "btnSetCouponsPerPatron"
+		Me.btnSetCouponsPerPatron.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetCouponsPerPatron.TabIndex = 12
+		Me.btnSetCouponsPerPatron.TabStop = False
+		Me.btnSetCouponsPerPatron.Text = "Set"
+		Me.btnSetCouponsPerPatron.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetCouponsPerPatron.UseVisualStyleBackColor = False
+		'
 		'txtCouponsPerPatron
 		'
 		Me.txtCouponsPerPatron.Enabled = False
@@ -362,60 +416,6 @@ Partial Class StepGeneratePayoutCoupon
 		Me.Label7.Size = New System.Drawing.Size(139, 38)
 		Me.Label7.TabIndex = 6
 		Me.Label7.Text = "Limit # of coupons per patron?"
-		'
-		'btnSetMaxAmtOneCoupon
-		'
-		Me.btnSetMaxAmtOneCoupon.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetMaxAmtOneCoupon.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetMaxAmtOneCoupon.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetMaxAmtOneCoupon.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetMaxAmtOneCoupon.ForeColor = System.Drawing.Color.White
-		Me.btnSetMaxAmtOneCoupon.Location = New System.Drawing.Point(133, 7)
-		Me.btnSetMaxAmtOneCoupon.Name = "btnSetMaxAmtOneCoupon"
-		Me.btnSetMaxAmtOneCoupon.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetMaxAmtOneCoupon.TabIndex = 11
-		Me.btnSetMaxAmtOneCoupon.TabStop = False
-		Me.btnSetMaxAmtOneCoupon.Text = "Set"
-		Me.btnSetMaxAmtOneCoupon.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSetMaxAmtOneCoupon.UseVisualStyleBackColor = False
-		'
-		'btnSetMaxAmtAllCoupons
-		'
-		Me.btnSetMaxAmtAllCoupons.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetMaxAmtAllCoupons.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetMaxAmtAllCoupons.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetMaxAmtAllCoupons.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetMaxAmtAllCoupons.ForeColor = System.Drawing.Color.White
-		Me.btnSetMaxAmtAllCoupons.Location = New System.Drawing.Point(133, 8)
-		Me.btnSetMaxAmtAllCoupons.Name = "btnSetMaxAmtAllCoupons"
-		Me.btnSetMaxAmtAllCoupons.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetMaxAmtAllCoupons.TabIndex = 12
-		Me.btnSetMaxAmtAllCoupons.TabStop = False
-		Me.btnSetMaxAmtAllCoupons.Text = "Set"
-		Me.btnSetMaxAmtAllCoupons.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSetMaxAmtAllCoupons.UseVisualStyleBackColor = False
-		'
-		'btnSetCouponsPerPatron
-		'
-		Me.btnSetCouponsPerPatron.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetCouponsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
-		Me.btnSetCouponsPerPatron.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetCouponsPerPatron.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetCouponsPerPatron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetCouponsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetCouponsPerPatron.ForeColor = System.Drawing.Color.White
-		Me.btnSetCouponsPerPatron.Location = New System.Drawing.Point(152, 4)
-		Me.btnSetCouponsPerPatron.Name = "btnSetCouponsPerPatron"
-		Me.btnSetCouponsPerPatron.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetCouponsPerPatron.TabIndex = 12
-		Me.btnSetCouponsPerPatron.TabStop = False
-		Me.btnSetCouponsPerPatron.Text = "Set"
-		Me.btnSetCouponsPerPatron.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSetCouponsPerPatron.UseVisualStyleBackColor = False
 		'
 		'StepGeneratePayoutCoupon
 		'

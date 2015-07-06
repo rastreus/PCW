@@ -108,7 +108,7 @@ Public Class StepB_Data
 	Public Function PromoID_Invalid(ByVal id As String) As Boolean
 		Dim invalid As Boolean = False
 
-		If (id = "EXAMPLE1503") Or _
+		If (id = "TEST!1503") Or _
 			(id = "") Or _
 			(id.Length > 9) Or _
 			(SQL_Util.Existing_PromoID(id)) Then
@@ -119,7 +119,7 @@ Public Class StepB_Data
 	End Function
 	Public Function Get_PromoID_errString(ByVal id As String) As String
 		Dim errString As String = New String("!")
-		If (id = "EXAMPLE1503") Or
+		If (id = "TEST!1503") Or
 			(id = "") Then
 			errString = "ID not set"
 		ElseIf (SQL_Util.Existing_PromoID(id)) Then
