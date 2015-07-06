@@ -31,6 +31,9 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		PCW.BackEnabled = False
+		If Me.cbPCWRerun.Checked Then
+			Me.cbPCWRerun.Checked = False
+		End If
 	End Sub
 #End Region
 #Region "StepX_OnFinish"

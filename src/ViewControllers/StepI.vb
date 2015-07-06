@@ -10,6 +10,9 @@ Public Class StepI
 	Private Sub StepI_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
+		If Me.cbCreatePromo.Checked Then
+			Me.cbCreatePromo.Checked = False
+		End If
 		PCW.NextEnabled = False
 		PCW.PrepareAllPromoData()
 		Me.promoSummary = PCW.Data.GetPromoSummary()
