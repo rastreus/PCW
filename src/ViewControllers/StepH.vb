@@ -60,7 +60,7 @@ Public Class StepH
 		Me.rbNO.Checked = True
 		Me.txtCommentBox.Enabled = False
 		Me.pnlCommentBox.Enabled = False
-		Me.txtCommentBox.Text = "Insert Comment of 140 characters " &
+		Me.txtCommentBox.Text = "Insert Comment of 140 characters " & _
 								"or less into this TextBox."
 		Me.lblNumerator.Text = "140"
 		Me.lblDenominator.Text = "/  140"
@@ -80,16 +80,18 @@ Public Class StepH
 #End Region
 #Region "StepH_Validation"
 	''' <summary>
-	''' Asks StepH_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepH_Data to validate data and then
+	''' handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepH_Validation(sender As Object, _
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 
 		StepH_SetData()
 
@@ -153,7 +155,8 @@ Public Class StepH
 				Me.pnl140Characters.BackColor = SystemColors.ControlDarkDark
 				GUI_Util.NextEnabled()
 			End If
-			Me.lblNumerator.Text = (140 - Me.txtCommentBox.Text.Length).ToString
+			Me.lblNumerator.Text = _
+				(140 - Me.txtCommentBox.Text.Length).ToString
 		End If
 	End Sub
 #End Region

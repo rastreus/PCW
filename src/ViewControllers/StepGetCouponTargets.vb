@@ -53,10 +53,12 @@ Public Class StepGetCouponTargets
 											   e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
-		Dim local_promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
-		Me.stepGetCouponTargets_data.SameForAllDaysTiers = If(SameForAllDaysTiers(local_promoCategory), _
-															  True, _
-															  False)
+		Dim local_promoCategory As PCW_Data.PromoCategory = _
+			local_stepD.Data.Category
+		Me.stepGetCouponTargets_data.SameForAllDaysTiers = _
+			If(SameForAllDaysTiers(local_promoCategory), _
+				True, _
+				False)
 		'Step has been set if no error.
 		Me.stepGetCouponTargets_data.StepNotSet = False
 	End Sub
@@ -73,14 +75,17 @@ Public Class StepGetCouponTargets
 	End Sub
 
 	Private Sub SetCouponID()
-		Dim local_genpayoff As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
+		Dim local_genpayoff As StepGeneratePayoutCoupon = _
+			PCW.GetStep("StepGeneratePayoutCoupon")
 		Dim local_couponID As String = local_genpayoff.Data.CouponID
 		Me.stepGetCouponTargets_data.CouponID = local_couponID
 	End Sub
 
 	Private Sub AddImportedOffers()
-		Dim local_offers As StepGetCouponOffers = PCW.GetStep("StepGetCouponOffers")
-		Dim couponOffers As ArrayList = local_offers.Data.GetCouponOfferNumbersAsArrayList()
+		Dim local_offers As StepGetCouponOffers = _
+			PCW.GetStep("StepGetCouponOffers")
+		Dim couponOffers As ArrayList = _
+			local_offers.Data.GetCouponOfferNumbersAsArrayList()
 		Me.cbImportedOffers.Items.Clear()
 		For Each offer As String In couponOffers
 			Me.cbImportedOffers.Items.Add(offer)
@@ -88,15 +93,22 @@ Public Class StepGetCouponTargets
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_SameForAllDaysTiers"
-	Private Function SameForAllDaysTiers(ByVal promoCategory As PCW_Data.PromoCategory) As Boolean
+	Private Function SameForAllDaysTiers(ByVal promoCategory _
+										 As PCW_Data.PromoCategory) _
+										 As Boolean
 		Dim result As Boolean = False
 		If promoCategory = PCW_Data.PromoCategory.multiPart Then
-			Dim dialogResult As DialogResult = CenteredMessagebox.MsgBox.Show("Do all Days/Tiers use the same" & _
-																			  "Coupon Offers & Coupon Targets?", _
-																			  "Reuse Offers and Targets?", _
-																			  MessageBoxButtons.YesNo, _
-																			  MessageBoxIcon.Exclamation)
-			result = If(dialogResult = Windows.Forms.DialogResult.Yes, True, False)
+			Dim dialogResult As DialogResult = _
+				CenteredMessagebox _
+				.MsgBox _
+				.Show("Do all Days/Tiers use the same" & _
+					  "Coupon Offers & Coupon Targets?", _
+					  "Reuse Offers and Targets?", _
+					  MessageBoxButtons.YesNo, _
+					  MessageBoxIcon.Exclamation)
+			result = If(dialogResult = Windows.Forms.DialogResult.Yes, _
+						True, _
+						False)
 		End If
 		Return result
 	End Function
@@ -109,7 +121,8 @@ Public Class StepGetCouponTargets
 		End If
 	End Sub
 
-	Private Sub pnlDragTargetList_DragEnter(sender As Object, e As DragEventArgs) _
+	Private Sub pnlDragTargetList_DragEnter(sender As Object, _
+											e As DragEventArgs) _
 		Handles pnlDragTargetList.DragEnter
 		If e.Data.GetDataPresent(DataFormats.FileDrop) Then
 			e.Effect = DragDropEffects.Copy
@@ -119,18 +132,23 @@ Public Class StepGetCouponTargets
 		End If
 	End Sub
 
-	Private Sub pnlDragTargetList_DragDrop(sender As Object, e As DragEventArgs) _
+	Private Sub pnlDragTargetList_DragDrop(sender As Object, _
+										   e As DragEventArgs) _
 		Handles pnlDragTargetList.DragDrop
 		Me.pnlDragTargetList.BackColor = Color.SeaShell
 		Try
-			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop), Array)
+			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop),  _
+								   Array)
 			If Not IsNothing(a) Then
 				Dim s As String = a.GetValue(0).ToString
-				Me.BeginInvoke(m_DelegateSetPathText, New Object() {s})
+				Me.BeginInvoke(m_DelegateSetPathText, _
+							   New Object() {s})
 				Success()
 			End If
 		Catch ex As Exception
-			Trace.WriteLine("Error in StepGetCouponTargets.pnlDragTargetList_DragDrop: " & ex.Message)
+			Trace.WriteLine("Error in StepGetCouponTargets." & _
+							"pnlDragTargetList_DragDrop: " & _
+							ex.Message)
 			GUI_Util.errPnl(Me.pnlDragTargetList)
 			Me.lblDragHere.Text = "Error!"
 		End Try
@@ -141,7 +159,8 @@ Public Class StepGetCouponTargets
 		Me.lblDragHere.Text = "Success!"
 	End Sub
 
-	Private Sub btnFileBrowser_Click(sender As Object, e As EventArgs) _
+	Private Sub btnFileBrowser_Click(sender As Object, _
+									 e As EventArgs) _
 		Handles btnFileBrowser.Click
 		Dim fileDialog As New OpenFileDialog()
 		fileDialog.InitialDirectory = "C:\"
@@ -159,7 +178,8 @@ Public Class StepGetCouponTargets
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_rbImportedOffers_CheckedChanged"
-	Private Sub rbImportedOffers_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbImportedOffers_CheckedChanged(sender As Object, _
+												e As EventArgs) _
 		Handles rbImportedOffers.CheckedChanged
 		If Me.rbImportedOffers.Checked Then
 			Me.cbImportedOffers.Enabled = True
@@ -177,8 +197,10 @@ Public Class StepGetCouponTargets
 								e As EventArgs) _
 		Handles btnSubmit.Click
 		Me.btnSubmit.Enabled = False
-		Me.stepGetCouponTargets_data.CouponTargetsCSVFilePath = Me.btnFileBrowser.Text
-		Me.stepGetCouponTargets_data.CouponTargetsCouponNum = GetCouponNumber()
+		Me.stepGetCouponTargets_data.CouponTargetsCSVFilePath = _
+			Me.btnFileBrowser.Text
+		Me.stepGetCouponTargets_data.CouponTargetsCouponNum = _
+			GetCouponNumber()
 		Me.targetsList.Add(GetCouponTargetListsLabel())
 		Me.lblCouponTargetLists.Text = RefreshLabelList()
 		Me.UseWaitCursor = True
@@ -213,7 +235,8 @@ Public Class StepGetCouponTargets
 #End Region
 #Region "StepGetCouponTargets_RefreshLabelList"
 	Private Function RefreshLabelList()
-		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+		Dim builder As System.Text.StringBuilder = _
+			New System.Text.StringBuilder
 		For Each listStr As String In Me.targetsList
 			builder.Append(listStr & vbCrLf)
 		Next

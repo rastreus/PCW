@@ -1,5 +1,6 @@
 ﻿Imports TSWizards
 Imports System.ComponentModel
+Imports System.Windows.Forms
 
 ''' <summary>
 ''' Handles promo coupon generation.
@@ -19,7 +20,8 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_PromoData"
-	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Public ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepGeneratePayoutCoupon_data
 		End Get
@@ -43,18 +45,23 @@ Public Class StepGeneratePayoutCoupon
 	''' </summary>
 	''' <remarks>Complexity meets delegation.</remarks>
 	Private Sub StepGeneratePayoutCoupon_SetData()
-		Me.stepGeneratePayoutCoupon_data.CouponID = getCouponID()
-		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
-		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
-		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
-																								Me.txtCouponsPerPatron.Text)
+		Me.stepGeneratePayoutCoupon_data.CouponID = _
+			getCouponID()
+		Me.stepGeneratePayoutCoupon_data.CouponAmtPerPatron = _
+			getCouponAmt(Me.txtMaxAmtOneCoupon.Text)
+		Me.stepGeneratePayoutCoupon_data.CouponAmtForEntirePromo = _
+			getCouponAmt(Me.txtMaxAmtAllCoupons.Text)
+		Me.stepGeneratePayoutCoupon_data.MaxNumOfCouponsPerPatron = _
+			getMaxNumOfCouponsPerPatron(Me.rbCouponsPerPatronYES.Checked, _
+										Me.txtCouponsPerPatron.Text)
 	End Sub
 
 	Private Function getCouponID() As String
 		Return Me.btnCouponID.Text
 	End Function
 
-	Private Function getCouponAmt(ByVal txtInput As String) As System.Nullable(Of Decimal)
+	Private Function getCouponAmt(ByVal txtInput As String) _
+								  As System.Nullable(Of Decimal)
 		Dim result As System.Nullable(Of Decimal) = Nothing
 		If Not BEP_Util.invalidDecimal(txtInput) Then
 			result = Decimal.Parse(txtInput)
@@ -63,7 +70,8 @@ Public Class StepGeneratePayoutCoupon
 	End Function
 
 	Private Function getMaxNumOfCouponsPerPatron(ByVal yesChecked As Boolean, _
-												 ByVal txtInput As String) As System.Nullable(Of Short)
+												 ByVal txtInput As String) _
+												 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
@@ -76,7 +84,8 @@ Public Class StepGeneratePayoutCoupon
 	Private maxAmtOneCouponBool As Boolean = False
 	Private maxAmtAllCouponsBool As Boolean = False
 
-	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, e As EventArgs) _
+	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, _
+											  e As EventArgs) _
 	Handles MyBase.Load
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
@@ -107,7 +116,8 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_ResetStep"
-	Private Sub StepGeneratePayoutCoupon_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepGeneratePayoutCoupon_ResetStep(sender As Object, _
+												   e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
 		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
@@ -133,11 +143,13 @@ Public Class StepGeneratePayoutCoupon
 #End Region
 #Region "StepGeneratePayoutCoupon_Validation"
 	''' <summary>
-	''' Asks StepGeneratePayoutCoupon_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepGeneratePayoutCoupon_Data to validate
+	''' data and then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepGeneratePayoutCoupon_Validation(sender As Object, _
 													e As CancelEventArgs) _
 		Handles Me.ValidateStep
@@ -150,7 +162,8 @@ Public Class StepGeneratePayoutCoupon
 		If Me.Data.CouponID_Invalid() Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlCouponID)
-			errString = "ERROR: CouponID is greater than 12 characters!"
+			errString = "ERROR: CouponID is greater " & _
+						"than 12 characters!"
 			errStrArray.Add(errString)
 			Me.ActiveControl = Me.pnlCouponID
 		Else
@@ -160,7 +173,8 @@ Public Class StepGeneratePayoutCoupon
 		If Me.Data.CouponAmtPerPatron_Invalid() Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtOneCoupon)
-			errString = "Max Coupon must be a decimal amount i.e. 500.00."
+			errString = "Max Coupon must be a decimal " & _
+						"amount i.e. 500.00."
 			errStrArray.Add(errString)
 			Me.ActiveControl = Me.txtMaxAmtOneCoupon
 		Else
@@ -170,7 +184,8 @@ Public Class StepGeneratePayoutCoupon
 		If Me.Data.CouponAmtForEntirePromo_Invalid() Then
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlMaxAmtAllCoupons)
-			errString = "Promo Max Coupon must be a decimal amount i.e. 15000.00."
+			errString = "Promo Max Coupon must be a decimal " & _
+						"amount i.e. 15000.00."
 			errStrArray.Add(errString)
 			Me.ActiveControl = Me.txtMaxAmtAllCoupons
 		Else
@@ -179,13 +194,15 @@ Public Class StepGeneratePayoutCoupon
 			End If
 		End If
 
-		'Make sure that the TextBoxes for MaxCoupon and PromoMaxCoupon are not empty strings
-		If Not BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) And
+		'Make sure that the TextBoxes for
+		'MaxCoupon and PromoMaxCoupon are not empty strings
+		If Not BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) And _
 			Not BEP_Util.invalidDecimal(Me.txtMaxAmtAllCoupons.Text) Then
 			If Me.Data.BadCouponAmts() Then
 				cancelContinuingToNextStep = True
 				GUI_Util.errPnl(Me.pnlMaxAmtAllCoupons)
-				errString = "Promo Max Coupon amount is less than the Max Coupon amount."
+				errString = "Promo Max Coupon amount is less " & _
+							"than the Max Coupon amount."
 				errStrArray.Add(errString)
 				Me.ActiveControl = Me.txtMaxAmtAllCoupons
 			Else
@@ -295,10 +312,10 @@ Public Class StepGeneratePayoutCoupon
 	Private txtMaxAmtOneCoupon_acceptableKey As Boolean
 
 	Private Sub txtMaxAmtOneCoupon_KeyDown(ByVal sender As Object, _
-										   ByVal e As System.Windows.Forms.KeyEventArgs) _
+										   ByVal e As KeyEventArgs) _
 		Handles txtMaxAmtOneCoupon.KeyDown
-		If (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse
-			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse
+		If (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) OrElse _
+			(e.KeyCode >= Keys.NumPad0 And e.KeyCode <= Keys.NumPad9) OrElse _
 			e.KeyCode = Keys.Back Then
 			Me.txtMaxAmtOneCoupon_acceptableKey = True
 		Else
@@ -307,33 +324,44 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 
 	Private Sub txtMaxAmtOneCoupon_KeyPress(ByVal sender As Object, _
-											ByVal e As System.Windows.Forms.KeyPressEventArgs) _
+											ByVal e As KeyPressEventArgs) _
 		Handles txtMaxAmtOneCoupon.KeyPress
 		' Check for the flag being set in the KeyDown event.
 		If txtMaxAmtOneCoupon_acceptableKey = False Then
-			' Stop the character from being entered into the control since it is non-numerical.
+			' Stop the character from being entered
+			'into the control since it is non-numerical.
 			e.Handled = True
 			Return
 		Else
 			If e.KeyChar = Convert.ToChar(Keys.Back) Then
 				If txtMaxAmtOneCoupon_strCurrency.Length > 0 Then
-					txtMaxAmtOneCoupon_strCurrency = txtMaxAmtOneCoupon_strCurrency.Substring(0, txtMaxAmtOneCoupon_strCurrency.Length - 1)
+					txtMaxAmtOneCoupon_strCurrency = _
+						txtMaxAmtOneCoupon_strCurrency _
+						.Substring(0, _
+								   txtMaxAmtOneCoupon_strCurrency.Length - 1)
 				End If
 			Else
-				txtMaxAmtOneCoupon_strCurrency = txtMaxAmtOneCoupon_strCurrency & e.KeyChar
+				txtMaxAmtOneCoupon_strCurrency = _
+					txtMaxAmtOneCoupon_strCurrency & e.KeyChar
 			End If
 
 			If txtMaxAmtOneCoupon_strCurrency.Length = 0 Then
 				Me.txtMaxAmtOneCoupon.Text = ""
 			ElseIf txtMaxAmtOneCoupon_strCurrency.Length = 1 Then
-				Me.txtMaxAmtOneCoupon.Text = "0.0" & txtMaxAmtOneCoupon_strCurrency
+				Me.txtMaxAmtOneCoupon.Text = "0.0" & _
+					txtMaxAmtOneCoupon_strCurrency
 			ElseIf txtMaxAmtOneCoupon_strCurrency.Length = 2 Then
-				Me.txtMaxAmtOneCoupon.Text = "0." & txtMaxAmtOneCoupon_strCurrency
+				Me.txtMaxAmtOneCoupon.Text = "0." & _
+					txtMaxAmtOneCoupon_strCurrency
 			ElseIf txtMaxAmtOneCoupon_strCurrency.Length > 2 Then
-				Me.txtMaxAmtOneCoupon.Text = txtMaxAmtOneCoupon_strCurrency.Substring(0, txtMaxAmtOneCoupon_strCurrency.Length - 2) & "." & txtMaxAmtOneCoupon_strCurrency.Substring(txtMaxAmtOneCoupon_strCurrency.Length - 2)
+				Me.txtMaxAmtOneCoupon.Text = _
+					txtMaxAmtOneCoupon_strCurrency.Substring(0, _
+						txtMaxAmtOneCoupon_strCurrency.Length - 2) & _
+						"." & _
+						txtMaxAmtOneCoupon_strCurrency _
+						.Substring(txtMaxAmtOneCoupon_strCurrency.Length - 2)
 			End If
 			Me.txtMaxAmtOneCoupon.Select(Me.txtMaxAmtOneCoupon.Text.Length, 0)
-
 		End If
 		e.Handled = True
 	End Sub

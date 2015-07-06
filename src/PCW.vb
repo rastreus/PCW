@@ -5,6 +5,7 @@ Imports System.Collections
 Imports System.Windows.Forms
 Imports System.Xml
 Imports System.Xml.Linq
+Imports System.ComponentModel
 
 Public Class PCW
     Inherits TSWizards.BaseWizard
@@ -38,7 +39,8 @@ Public Class PCW
 #Region "PCW_Load"
 	Private infoCircle As FontAwesomeIcons.IconButton
 
-	Private Sub PCW_Load(sender As Object, e As EventArgs) _
+	Private Sub PCW_Load(sender As Object, _
+						 e As EventArgs) _
 		Handles MyBase.Load
 		Me.infoCircle = New FontAwesomeIcons.IconButton
 	End Sub
@@ -77,7 +79,9 @@ Public Class PCW
 #Region "PCW_PrepareAllPromoData"
 	Public Sub PrepareAllPromoData()
 		For Each stepName As String In Me.Data.PromoStepList
-			Me.GetIWizardStep(stepName).PromoData.PrepareData(Me.Data.PromoDataHash)
+			Me.GetIWizardStep(stepName) _
+				.PromoData _
+				.PrepareData(Me.Data.PromoDataHash)
 		Next
 	End Sub
 #End Region
@@ -88,10 +92,12 @@ Public Class PCW
 	End Sub
 #End Region
 #Region "PCW_OnClosing"
-	'It really bothered me that the dialog boxes did not center on their parent window.
-	'The Sub and Function that follows are a direct override of TSWizard.BaseWizard.OnClosing.
-	'The only difference here is that the dialog now centers on the parent window. SUCCESS!
-	Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
+	'It really bothered me that the dialog boxes did not center on
+	'their parent window. The Sub and Function that follows are a
+	'direct override of TSWizard.BaseWizard.OnClosing. The only
+	'difference here is that the dialog now centers on the parent
+	'window. SUCCESS!
+	Protected Overrides Sub OnClosing(e As CancelEventArgs)
 		If DialogResult = DialogResult.Cancel Then
 			e.Cancel = Not AskToClose()
 		End If
@@ -101,7 +107,11 @@ Public Class PCW
 		Dim cancelMsgString As String = <a>Do you wish to quit the wizard now?
 Your changes will not be saved if you do.</a>.Value
 
-		Dim result As Integer = CenteredMessagebox.MsgBox.Show(cancelMsgString, "Exit wizard?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+		Dim result As Integer = _
+			CenteredMessagebox.MsgBox.Show(cancelMsgString, _
+										   "Exit wizard?", _
+										   MessageBoxButtons.YesNo, _
+										   MessageBoxIcon.Question)
 
 		If result = DialogResult.Yes Then
 			Return True

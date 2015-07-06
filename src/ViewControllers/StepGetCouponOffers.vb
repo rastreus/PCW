@@ -28,7 +28,8 @@ Public Class StepGetCouponOffers
 	Private Function StepGetCouponOffers_GetData() As CouponOffer
 		Dim couponOffer As CouponOffer = New CouponOffer
 		couponOffer.OfferID = getOfferID()
-		couponOffer.CouponNumber = Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
+		couponOffer.CouponNumber = _
+			Me.Data.GetCouponNumber(Me.rbCouponWildcardYES.Checked)
 		couponOffer.ValidStart = getValidStart()
 		couponOffer.ValidEnd = getValidEnd()
 		couponOffer.ExcludeDays = getExcludeDays()
@@ -42,7 +43,8 @@ Public Class StepGetCouponOffers
 	End Function
 
 	Private Function getOfferID() As String
-		Dim local_stepGeneratePayoutCoupon As StepGeneratePayoutCoupon = PCW.GetStep("StepGeneratePayoutCoupon")
+		Dim local_stepGeneratePayoutCoupon As StepGeneratePayoutCoupon = _
+			PCW.GetStep("StepGeneratePayoutCoupon")
 		Return local_stepGeneratePayoutCoupon.Data.CouponID
 	End Function
 
@@ -234,7 +236,8 @@ Public Class StepGetCouponOffers
 		Next
 	End Sub
 
-	Private Sub cbSelectAll_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub cbSelectAll_CheckedChanged(sender As Object, _
+										   e As EventArgs) _
 		Handles cbSelectAll.CheckedChanged
 		ExcludeDaysCheckState(Me.cbSelectAll.Checked)
 	End Sub

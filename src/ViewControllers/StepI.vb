@@ -36,7 +36,9 @@ Public Class StepI
 		End If
 
 		PCW.Data.SubmitPromosToList()
-		'HELPING THE DEBUGGING PROCESS BY MAKING LOCAL VARIABLES; TIS JUST FOR TESTING
+		'HELPING THE DEBUGGING PROCESS BY
+		'MAKING LOCAL VARIABLES;
+		'TIS JUST FOR TESTING
 		Dim _local_currMultiPartCategory As PCW_Data.MultiPartCategory = _
 			PCW.Data.CurrentMultiPartCategory
 		Dim _local_numOfDiffs As Short = PCW.Data.NumOfDiffs
