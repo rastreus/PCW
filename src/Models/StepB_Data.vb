@@ -131,7 +131,7 @@ Public Class StepB_Data
 		Dim invalid As Boolean = False
 
 		If (name = "") Or _
-			(name.Length > 50) Or _
+			(name.Length > 37) Or _
 			(SQL_Util.Existing_Promo(name)) Then
 			invalid = True
 		End If
@@ -144,8 +144,8 @@ Public Class StepB_Data
 
 		If name = "" Then
 			errString = "Name not set"
-		ElseIf name.Length > 50 Then
-			errString = "Cannot be more than 50 chars"
+		ElseIf name.Length > 37 Then
+			errString = "Cannot be more than 37 chars"
 		ElseIf SQL_Util.Existing_Promo(name) Then
 			errString = "Name already exists"
 		Else
