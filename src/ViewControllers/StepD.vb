@@ -69,11 +69,13 @@ Public Class StepD
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.NumOfDiffs = Short.Parse(Me.lblNumOfDays.Text)
+					PCW.Data.PayoutDiffType = "DAYS"
 				ElseIf Me.rbTIERS.Checked And _
 					(Not Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.NumOfDiffs = Short.Parse(Me.txtNumOfTiers.Text)
+					PCW.Data.PayoutDiffType = "TIERS"
 				End If
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _

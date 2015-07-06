@@ -110,6 +110,7 @@ Public Class PCW_Data
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 	Private _pcwNumOfDiffs As Short
 	Private _pcwPayoutDiffNum As Short = 1
+	Private _pcwPayoutDiffType As String = New String("!")
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
@@ -250,6 +251,14 @@ Public Class PCW_Data
 		End Get
 		Set(value As Short)
 			_pcwPayoutDiffNum = value
+		End Set
+	End Property
+	Public Property PayoutDiffType As String
+		Get
+			Return _pcwPayoutDiffType
+		End Get
+		Set(value As String)
+			_pcwPayoutDiffType = value
 		End Set
 	End Property
 
@@ -562,18 +571,22 @@ Public Class PCW_Data
 									 & " - " _
 									 & PromoDataHash.Item(Key.Name)
 		anotherPayoutPromo.PromoType = GetPayoutPromoType()
-		anotherPayoutPromo.StartDate = payoutDate
-		anotherPayoutPromo.EndDate = payoutDate
 		anotherPayoutPromo.PointCutoff = Nothing
 		anotherPayoutPromo.PointDivisor = Nothing
 		anotherPayoutPromo.MaxTickets = Nothing
 		anotherPayoutPromo.PromoMaxTickets = _
 			GetPayoutMaxNumOfCouponsPerPatron()
 		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
-		anotherPayoutPromo.Recurring = False
-		anotherPayoutPromo.Frequency = "W"
-		anotherPayoutPromo.RecursOnWeekday = Nothing
-		anotherPayoutPromo.EarnsOnWeekday = Nothing
+		If (Not (CurrentMultiPartCategory = _
+				MultiPartCategory.multiPartDiff) And _
+				(PayoutDiffType = "TIERS")) Then
+			anotherPayoutPromo.StartDate = payoutDate
+			anotherPayoutPromo.EndDate = payoutDate
+			anotherPayoutPromo.Recurring = False
+			anotherPayoutPromo.Frequency = "W"
+			anotherPayoutPromo.RecursOnWeekday = Nothing
+			anotherPayoutPromo.EarnsOnWeekday = Nothing
+		End If
 		Return anotherPayoutPromo
 	End Function
 #End Region
