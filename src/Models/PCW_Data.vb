@@ -597,11 +597,15 @@ Public Class PCW_Data
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
 			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & _
 									   payoutNumber.ToString
-			couponOfferDBRow.ValidStart = payoutDate
-			couponOfferDBRow.ValidEnd = payoutDate
-			couponOfferDBRow.ExcludeDays = Nothing
-			couponOfferDBRow.ExcludeStart = Nothing
-			couponOfferDBRow.ExcludeEnd = Nothing
+			If (Not (CurrentMultiPartCategory = _
+					 MultiPartCategory.multiPartDiff) And _
+					 (PayoutDiffType = "TIERS")) Then
+				couponOfferDBRow.ValidStart = payoutDate
+				couponOfferDBRow.ValidEnd = payoutDate
+				couponOfferDBRow.ExcludeDays = Nothing
+				couponOfferDBRow.ExcludeStart = Nothing
+				couponOfferDBRow.ExcludeEnd = Nothing
+			End If
 		Next
 	End Sub
 
@@ -616,11 +620,15 @@ Public Class PCW_Data
 			YACO.OfferID = YACO.OfferID.Substring(0, (YACO.OfferID.Length - 1)) & _
 												  payoutNumber.ToString
 			YACO.CouponNumber = couponOfferDBRow.CouponNumber
-			YACO.ValidStart = payoutDate
-			YACO.ValidEnd = payoutDate
-			YACO.ExcludeDays = Nothing
-			YACO.ExcludeStart = Nothing
-			YACO.ExcludeEnd = Nothing
+			If (Not (CurrentMultiPartCategory = _
+					 MultiPartCategory.multiPartDiff) And _
+					 (PayoutDiffType = "TIERS")) Then
+				YACO.ValidStart = payoutDate
+				YACO.ValidEnd = payoutDate
+				YACO.ExcludeDays = Nothing
+				YACO.ExcludeStart = Nothing
+				YACO.ExcludeEnd = Nothing
+			End If
 			YACO.FullValidate = couponOfferDBRow.FullValidate
 			YACO.Reprintable = couponOfferDBRow.Reprintable
 			YACO.Note = couponOfferDBRow.Note
