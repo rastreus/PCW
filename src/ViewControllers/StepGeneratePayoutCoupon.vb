@@ -163,7 +163,7 @@ Public Class StepGeneratePayoutCoupon
 			cancelContinuingToNextStep = True
 			GUI_Util.errPnl(Me.pnlCouponID)
 			errString = "ERROR: CouponID is greater " & _
-						"than 12 characters!"
+						"than 10 characters!"
 			errStrArray.Add(errString)
 			Me.ActiveControl = Me.pnlCouponID
 		Else

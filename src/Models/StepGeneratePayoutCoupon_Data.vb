@@ -101,7 +101,7 @@ Public Class StepGeneratePayoutCoupon_Data
 #Region "Validity Checks"
 	Public Function CouponID_Invalid() As Boolean
 		Dim result As Boolean = False
-		If (CouponID.Length > 9) Then
+		If (CouponID.Length > 10) Then
 			result = True
 		End If
 		Return result
