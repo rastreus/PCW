@@ -81,7 +81,8 @@ Public Class StepEntryTicketAmt
 									 ByVal txtInput As String) _
 									 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
-		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+		If yesChecked And _
+			(Not BEP_Util.invalidNum(txtInput)) Then
 			result = Short.Parse(txtInput)
 		End If
 		Return result
@@ -204,7 +205,7 @@ Public Class StepEntryTicketAmt
 
 		Me.StepEntryTicketAmt_SetData()
 
-		If (Me.Data.TicketAmtCategory = Category.calculated) Or
+		If (Me.Data.TicketAmtCategory = Category.calculated) Or _
 			(Me.Data.TicketAmtCategory = Category.calPlusNumOfVisits) Then
 			If Me.Data.PointsDivisor_Invalid() Then
 				cancelContinuingToNextStep = True

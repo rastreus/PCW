@@ -31,6 +31,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnl1 = New System.Windows.Forms.Panel()
 		Me.pnlCountAndCal = New System.Windows.Forms.Panel()
 		Me.pnlPointsDivisor = New System.Windows.Forms.Panel()
+		Me.btnSetPointsDivisor = New System.Windows.Forms.Button()
 		Me.txtPointsDivisor = New System.Windows.Forms.TextBox()
 		Me.lblPointsDivisor = New System.Windows.Forms.Label()
 		Me.pnlTicketPerPatron = New System.Windows.Forms.Panel()
@@ -38,24 +39,23 @@ Partial Class StepEntryTicketAmt
 		Me.rbTicketsPerPatronNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketPerPatronYES = New System.Windows.Forms.RadioButton()
 		Me.Panel1 = New System.Windows.Forms.Panel()
+		Me.btnSetTicketsPerPatron = New System.Windows.Forms.Button()
 		Me.lblTicketsPerPatron = New System.Windows.Forms.Label()
 		Me.pnlTicketsEntirePromo = New System.Windows.Forms.Panel()
-		Me.txtTicketsEntirePromo = New System.Windows.Forms.TextBox()
 		Me.rbTicketsEntirePromoNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketsEntirePromoYES = New System.Windows.Forms.RadioButton()
 		Me.Panel2 = New System.Windows.Forms.Panel()
+		Me.txtTicketsEntirePromo = New System.Windows.Forms.TextBox()
+		Me.btnSetTicketsEntirePromo = New System.Windows.Forms.Button()
 		Me.lblTicketsEntirePromo = New System.Windows.Forms.Label()
 		Me.lblDescription = New System.Windows.Forms.Label()
 		Me.pnlAmtDescription = New System.Windows.Forms.Panel()
 		Me.lblAmtDesc = New System.Windows.Forms.Label()
 		Me.pnlPromoTypeForEntry = New System.Windows.Forms.Panel()
+		Me.btnSetPromoType = New System.Windows.Forms.Button()
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
-		Me.btnSetPromoType = New System.Windows.Forms.Button()
-		Me.btnSetPointsDivisor = New System.Windows.Forms.Button()
-		Me.btnSetTicketsPerPatron = New System.Windows.Forms.Button()
-		Me.btnSetTicketsEntirePromo = New System.Windows.Forms.Button()
 		Me.pnlTicketsAmount.SuspendLayout()
 		Me.pnlPointsDivisor.SuspendLayout()
 		Me.pnlTicketPerPatron.SuspendLayout()
@@ -177,11 +177,28 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPointsDivisor.TabIndex = 11
 		Me.pnlPointsDivisor.Visible = False
 		'
+		'btnSetPointsDivisor
+		'
+		Me.btnSetPointsDivisor.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPointsDivisor.Enabled = False
+		Me.btnSetPointsDivisor.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPointsDivisor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPointsDivisor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPointsDivisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPointsDivisor.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPointsDivisor.ForeColor = System.Drawing.Color.White
+		Me.btnSetPointsDivisor.Location = New System.Drawing.Point(3, 47)
+		Me.btnSetPointsDivisor.Name = "btnSetPointsDivisor"
+		Me.btnSetPointsDivisor.Size = New System.Drawing.Size(99, 20)
+		Me.btnSetPointsDivisor.TabIndex = 34
+		Me.btnSetPointsDivisor.Text = "Set"
+		Me.btnSetPointsDivisor.UseVisualStyleBackColor = False
+		'
 		'txtPointsDivisor
 		'
 		Me.txtPointsDivisor.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtPointsDivisor.Location = New System.Drawing.Point(2, 21)
-		Me.txtPointsDivisor.MaxLength = 6
+		Me.txtPointsDivisor.MaxLength = 5
 		Me.txtPointsDivisor.Name = "txtPointsDivisor"
 		Me.txtPointsDivisor.Size = New System.Drawing.Size(100, 20)
 		Me.txtPointsDivisor.TabIndex = 1
@@ -217,7 +234,7 @@ Partial Class StepEntryTicketAmt
 		Me.txtTicketsPerPatron.Enabled = False
 		Me.txtTicketsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtTicketsPerPatron.Location = New System.Drawing.Point(57, 37)
-		Me.txtTicketsPerPatron.MaxLength = 6
+		Me.txtTicketsPerPatron.MaxLength = 5
 		Me.txtTicketsPerPatron.Name = "txtTicketsPerPatron"
 		Me.txtTicketsPerPatron.Size = New System.Drawing.Size(81, 20)
 		Me.txtTicketsPerPatron.TabIndex = 9
@@ -258,6 +275,23 @@ Partial Class StepEntryTicketAmt
 		Me.Panel1.Size = New System.Drawing.Size(143, 58)
 		Me.Panel1.TabIndex = 10
 		'
+		'btnSetTicketsPerPatron
+		'
+		Me.btnSetTicketsPerPatron.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetTicketsPerPatron.Enabled = False
+		Me.btnSetTicketsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetTicketsPerPatron.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetTicketsPerPatron.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetTicketsPerPatron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetTicketsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetTicketsPerPatron.ForeColor = System.Drawing.Color.White
+		Me.btnSetTicketsPerPatron.Location = New System.Drawing.Point(55, 31)
+		Me.btnSetTicketsPerPatron.Name = "btnSetTicketsPerPatron"
+		Me.btnSetTicketsPerPatron.Size = New System.Drawing.Size(81, 20)
+		Me.btnSetTicketsPerPatron.TabIndex = 34
+		Me.btnSetTicketsPerPatron.Text = "Set"
+		Me.btnSetTicketsPerPatron.UseVisualStyleBackColor = False
+		'
 		'lblTicketsPerPatron
 		'
 		Me.lblTicketsPerPatron.BackColor = System.Drawing.Color.Transparent
@@ -281,17 +315,6 @@ Partial Class StepEntryTicketAmt
 		Me.pnlTicketsEntirePromo.Name = "pnlTicketsEntirePromo"
 		Me.pnlTicketsEntirePromo.Size = New System.Drawing.Size(152, 98)
 		Me.pnlTicketsEntirePromo.TabIndex = 5
-		'
-		'txtTicketsEntirePromo
-		'
-		Me.txtTicketsEntirePromo.Enabled = False
-		Me.txtTicketsEntirePromo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtTicketsEntirePromo.Location = New System.Drawing.Point(54, 5)
-		Me.txtTicketsEntirePromo.MaxLength = 6
-		Me.txtTicketsEntirePromo.Name = "txtTicketsEntirePromo"
-		Me.txtTicketsEntirePromo.Size = New System.Drawing.Size(81, 20)
-		Me.txtTicketsEntirePromo.TabIndex = 10
-		Me.txtTicketsEntirePromo.Text = "Enter # Here"
 		'
 		'rbTicketsEntirePromoNO
 		'
@@ -327,6 +350,34 @@ Partial Class StepEntryTicketAmt
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(143, 58)
 		Me.Panel2.TabIndex = 11
+		'
+		'txtTicketsEntirePromo
+		'
+		Me.txtTicketsEntirePromo.Enabled = False
+		Me.txtTicketsEntirePromo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtTicketsEntirePromo.Location = New System.Drawing.Point(54, 5)
+		Me.txtTicketsEntirePromo.MaxLength = 5
+		Me.txtTicketsEntirePromo.Name = "txtTicketsEntirePromo"
+		Me.txtTicketsEntirePromo.Size = New System.Drawing.Size(81, 20)
+		Me.txtTicketsEntirePromo.TabIndex = 10
+		Me.txtTicketsEntirePromo.Text = "Enter # Here"
+		'
+		'btnSetTicketsEntirePromo
+		'
+		Me.btnSetTicketsEntirePromo.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetTicketsEntirePromo.Enabled = False
+		Me.btnSetTicketsEntirePromo.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetTicketsEntirePromo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetTicketsEntirePromo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetTicketsEntirePromo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetTicketsEntirePromo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetTicketsEntirePromo.ForeColor = System.Drawing.Color.White
+		Me.btnSetTicketsEntirePromo.Location = New System.Drawing.Point(54, 30)
+		Me.btnSetTicketsEntirePromo.Name = "btnSetTicketsEntirePromo"
+		Me.btnSetTicketsEntirePromo.Size = New System.Drawing.Size(81, 20)
+		Me.btnSetTicketsEntirePromo.TabIndex = 35
+		Me.btnSetTicketsEntirePromo.Text = "Set"
+		Me.btnSetTicketsEntirePromo.UseVisualStyleBackColor = False
 		'
 		'lblTicketsEntirePromo
 		'
@@ -386,6 +437,23 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPromoTypeForEntry.Size = New System.Drawing.Size(80, 142)
 		Me.pnlPromoTypeForEntry.TabIndex = 14
 		'
+		'btnSetPromoType
+		'
+		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoType.Enabled = False
+		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
+		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
+		Me.btnSetPromoType.Name = "btnSetPromoType"
+		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
+		Me.btnSetPromoType.TabIndex = 33
+		Me.btnSetPromoType.Text = "Set"
+		Me.btnSetPromoType.UseVisualStyleBackColor = False
+		'
 		'lblPromoTypeQuestion
 		'
 		Me.lblPromoTypeQuestion.BackColor = System.Drawing.Color.Transparent
@@ -415,74 +483,6 @@ Partial Class StepEntryTicketAmt
 		Me.lblPromoType.Size = New System.Drawing.Size(70, 35)
 		Me.lblPromoType.TabIndex = 15
 		Me.lblPromoType.Text = "Promo Type:"
-		'
-		'btnSetPromoType
-		'
-		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetPromoType.Enabled = False
-		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
-		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
-		Me.btnSetPromoType.Name = "btnSetPromoType"
-		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
-		Me.btnSetPromoType.TabIndex = 33
-		Me.btnSetPromoType.Text = "Set"
-		Me.btnSetPromoType.UseVisualStyleBackColor = False
-		'
-		'btnSetPointsDivisor
-		'
-		Me.btnSetPointsDivisor.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetPointsDivisor.Enabled = False
-		Me.btnSetPointsDivisor.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSetPointsDivisor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetPointsDivisor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetPointsDivisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetPointsDivisor.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetPointsDivisor.ForeColor = System.Drawing.Color.White
-		Me.btnSetPointsDivisor.Location = New System.Drawing.Point(3, 47)
-		Me.btnSetPointsDivisor.Name = "btnSetPointsDivisor"
-		Me.btnSetPointsDivisor.Size = New System.Drawing.Size(99, 20)
-		Me.btnSetPointsDivisor.TabIndex = 34
-		Me.btnSetPointsDivisor.Text = "Set"
-		Me.btnSetPointsDivisor.UseVisualStyleBackColor = False
-		'
-		'btnSetTicketsPerPatron
-		'
-		Me.btnSetTicketsPerPatron.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetTicketsPerPatron.Enabled = False
-		Me.btnSetTicketsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSetTicketsPerPatron.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetTicketsPerPatron.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetTicketsPerPatron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetTicketsPerPatron.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetTicketsPerPatron.ForeColor = System.Drawing.Color.White
-		Me.btnSetTicketsPerPatron.Location = New System.Drawing.Point(55, 31)
-		Me.btnSetTicketsPerPatron.Name = "btnSetTicketsPerPatron"
-		Me.btnSetTicketsPerPatron.Size = New System.Drawing.Size(81, 20)
-		Me.btnSetTicketsPerPatron.TabIndex = 34
-		Me.btnSetTicketsPerPatron.Text = "Set"
-		Me.btnSetTicketsPerPatron.UseVisualStyleBackColor = False
-		'
-		'btnSetTicketsEntirePromo
-		'
-		Me.btnSetTicketsEntirePromo.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetTicketsEntirePromo.Enabled = False
-		Me.btnSetTicketsEntirePromo.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSetTicketsEntirePromo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
-		Me.btnSetTicketsEntirePromo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
-		Me.btnSetTicketsEntirePromo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetTicketsEntirePromo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSetTicketsEntirePromo.ForeColor = System.Drawing.Color.White
-		Me.btnSetTicketsEntirePromo.Location = New System.Drawing.Point(54, 30)
-		Me.btnSetTicketsEntirePromo.Name = "btnSetTicketsEntirePromo"
-		Me.btnSetTicketsEntirePromo.Size = New System.Drawing.Size(81, 20)
-		Me.btnSetTicketsEntirePromo.TabIndex = 35
-		Me.btnSetTicketsEntirePromo.Text = "Set"
-		Me.btnSetTicketsEntirePromo.UseVisualStyleBackColor = False
 		'
 		'StepEntryTicketAmt
 		'

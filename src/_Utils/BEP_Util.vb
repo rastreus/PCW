@@ -82,6 +82,8 @@ Public Class BEP_Util
 				invalid = True
 			End If
 		Catch ex As Exception
+			'Will catch an OverflowException if input
+			'is greater than Int16.MaxValue (32767).
 			invalid = True
 		End Try
 
