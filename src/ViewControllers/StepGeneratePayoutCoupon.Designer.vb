@@ -76,7 +76,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlEditCouponID.Enabled = False
 		Me.pnlEditCouponID.Location = New System.Drawing.Point(95, 106)
 		Me.pnlEditCouponID.Name = "pnlEditCouponID"
-		Me.pnlEditCouponID.Size = New System.Drawing.Size(123, 63)
+		Me.pnlEditCouponID.Size = New System.Drawing.Size(111, 63)
 		Me.pnlEditCouponID.TabIndex = 1
 		Me.pnlEditCouponID.Visible = False
 		'
@@ -91,7 +91,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnTxtEditCouponID.ForeColor = System.Drawing.Color.White
 		Me.btnTxtEditCouponID.Location = New System.Drawing.Point(3, 32)
 		Me.btnTxtEditCouponID.Name = "btnTxtEditCouponID"
-		Me.btnTxtEditCouponID.Size = New System.Drawing.Size(111, 20)
+		Me.btnTxtEditCouponID.Size = New System.Drawing.Size(99, 20)
 		Me.btnTxtEditCouponID.TabIndex = 2
 		Me.btnTxtEditCouponID.Text = "Set ID"
 		Me.btnTxtEditCouponID.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -102,20 +102,20 @@ Partial Class StepGeneratePayoutCoupon
 		Me.lblEditCouponID.BackColor = System.Drawing.Color.Transparent
 		Me.lblEditCouponID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblEditCouponID.ForeColor = System.Drawing.Color.White
-		Me.lblEditCouponID.Location = New System.Drawing.Point(0, 2)
+		Me.lblEditCouponID.Location = New System.Drawing.Point(79, 3)
 		Me.lblEditCouponID.Name = "lblEditCouponID"
-		Me.lblEditCouponID.Size = New System.Drawing.Size(29, 23)
+		Me.lblEditCouponID.Size = New System.Drawing.Size(23, 23)
 		Me.lblEditCouponID.TabIndex = 1
-		Me.lblEditCouponID.Text = "CID"
-		Me.lblEditCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.lblEditCouponID.Text = "C"
+		Me.lblEditCouponID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'txtEditCouponID
 		'
 		Me.txtEditCouponID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtEditCouponID.Location = New System.Drawing.Point(29, 3)
+		Me.txtEditCouponID.Location = New System.Drawing.Point(3, 3)
 		Me.txtEditCouponID.MaxLength = 10
 		Me.txtEditCouponID.Name = "txtEditCouponID"
-		Me.txtEditCouponID.Size = New System.Drawing.Size(85, 23)
+		Me.txtEditCouponID.Size = New System.Drawing.Size(70, 23)
 		Me.txtEditCouponID.TabIndex = 0
 		Me.txtEditCouponID.Text = "TEST!1513"
 		'
@@ -165,7 +165,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.btnCouponID.Name = "btnCouponID"
 		Me.btnCouponID.Size = New System.Drawing.Size(101, 23)
 		Me.btnCouponID.TabIndex = 1
-		Me.btnCouponID.Text = "CIDTEST!1503"
+		Me.btnCouponID.Text = "TEST!1503C"
 		Me.btnCouponID.UseVisualStyleBackColor = False
 		'
 		'lblCouponIDEdit

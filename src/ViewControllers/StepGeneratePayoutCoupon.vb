@@ -103,7 +103,7 @@ Public Class StepGeneratePayoutCoupon
 		End If
 		Me.local_stepB = PCW.GetStep("StepB")
 		Me.local_promoID = local_stepB.Data.ID
-		Me.btnCouponID.Text = "CID" & Me.local_promoID
+		Me.btnCouponID.Text = Me.local_promoID & "C"
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_ResetStep"
@@ -248,7 +248,8 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_rbCouponsPerPatronYES_CheckedChanged"
-	Private Sub rbCouponsPerPatronYES_CheckedChanged(sender As Object, e As EventArgs) _
+	Private Sub rbCouponsPerPatronYES_CheckedChanged(sender As Object, _
+													 e As EventArgs) _
 		Handles rbCouponsPerPatronYES.CheckedChanged
 		If Me.rbCouponsPerPatronYES.Checked Then
 			Me.txtCouponsPerPatron.Text = ""
@@ -406,7 +407,8 @@ Public Class StepGeneratePayoutCoupon
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_btnTxtEditCouponID_Click"
-	Private Sub btnTxtEditCouponID_Click(sender As Object, e As EventArgs) _
+	Private Sub btnTxtEditCouponID_Click(sender As Object, _
+										 e As EventArgs) _
 	Handles btnTxtEditCouponID.Click
 		Me.btnCouponID.Text = SetBtnCouponIDText(Me.txtEditCouponID.Text)
 		Me.editCouponID_IsClosed = True
@@ -414,8 +416,9 @@ Public Class StepGeneratePayoutCoupon
 		GUI_Util.NextEnabled()
 	End Sub
 
-	Private Function SetBtnCouponIDText(ByRef txt As String) As String
-		Return "CID" & txt
+	Private Function SetBtnCouponIDText(ByRef txt As String) _
+										As String
+		Return txt & "C"
 	End Function
 #End Region
 #End Region
