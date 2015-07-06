@@ -338,24 +338,24 @@ Partial Class StepB
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents lblPromoName As System.Windows.Forms.Label
-	Friend WithEvents lblRecurring As System.Windows.Forms.Label
 	Private WithEvents pnlPromoName As System.Windows.Forms.Panel
 	Private WithEvents pnlRecurring As System.Windows.Forms.Panel
-	Friend WithEvents rbRecurringYes As System.Windows.Forms.RadioButton
-	Friend WithEvents rbRecurringNo As System.Windows.Forms.RadioButton
-	Friend WithEvents cbRecurringFrequency As System.Windows.Forms.ComboBox
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
-	Friend WithEvents pnlPromoID As System.Windows.Forms.Panel
-	Friend WithEvents lblPromoIDtop As System.Windows.Forms.Label
-	Friend WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
-	Friend WithEvents lblPromoIDEdit As System.Windows.Forms.Label
-	Friend WithEvents pnlEditPromoID As System.Windows.Forms.Panel
-	Friend WithEvents btnTxtEditPromoID As System.Windows.Forms.Button
-	Friend WithEvents lblEditPromoID As System.Windows.Forms.Label
-	Friend WithEvents txtEditPromoID As System.Windows.Forms.TextBox
-	Friend WithEvents txtPromoName As CustomizedTextBox.CustomizedTextBox
-	Friend WithEvents btnPromoID As System.Windows.Forms.Button
-	Friend WithEvents btnSetPromoName As System.Windows.Forms.Button
+	Private WithEvents lblPromoName As System.Windows.Forms.Label
+	Private WithEvents lblRecurring As System.Windows.Forms.Label
+	Private WithEvents rbRecurringYes As System.Windows.Forms.RadioButton
+	Private WithEvents rbRecurringNo As System.Windows.Forms.RadioButton
+	Private WithEvents cbRecurringFrequency As System.Windows.Forms.ComboBox
+	Private WithEvents Panel1 As System.Windows.Forms.Panel
+	Private WithEvents pnlPromoID As System.Windows.Forms.Panel
+	Private WithEvents lblPromoIDtop As System.Windows.Forms.Label
+	Private WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents lblPromoIDEdit As System.Windows.Forms.Label
+	Private WithEvents pnlEditPromoID As System.Windows.Forms.Panel
+	Private WithEvents btnTxtEditPromoID As System.Windows.Forms.Button
+	Private WithEvents lblEditPromoID As System.Windows.Forms.Label
+	Private WithEvents txtEditPromoID As System.Windows.Forms.TextBox
+	Private WithEvents btnPromoID As System.Windows.Forms.Button
+	Private WithEvents btnSetPromoName As System.Windows.Forms.Button
+	Private WithEvents txtPromoName As CustomizedTextBox.CustomizedTextBox
 
 End Class

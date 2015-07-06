@@ -610,46 +610,46 @@ Partial Class StepC
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents pnlRedemptionDays As System.Windows.Forms.Panel
-	Friend WithEvents lblRedemptionDays As System.Windows.Forms.Label
-	Friend WithEvents Panel2 As System.Windows.Forms.Panel
-	Friend WithEvents Panel3 As System.Windows.Forms.Panel
-	Friend WithEvents dtpQualifyingStart As System.Windows.Forms.DateTimePicker
-	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents Panel4 As System.Windows.Forms.Panel
-	Friend WithEvents dtpQualifyingEnd As System.Windows.Forms.DateTimePicker
-	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents clbPointsEarningDays As System.Windows.Forms.CheckedListBox
-	Friend WithEvents lblPointsEarningDays As System.Windows.Forms.Label
-	Friend WithEvents cbSelectAll As System.Windows.Forms.CheckBox
-	Friend WithEvents lblPrimaryDay As System.Windows.Forms.Label
-	Friend WithEvents Label9 As System.Windows.Forms.Label
-	Friend WithEvents Label10 As System.Windows.Forms.Label
-	Friend WithEvents lblQualifyingEnd As System.Windows.Forms.Label
-	Friend WithEvents lblQualifyingStart As System.Windows.Forms.Label
-	Friend WithEvents cbSameDayPromo As System.Windows.Forms.CheckBox
-	Friend WithEvents Label13 As System.Windows.Forms.Label
-	Friend WithEvents Label14 As System.Windows.Forms.Label
-	Friend WithEvents dtpOccursDate As System.Windows.Forms.DateTimePicker
-	Friend WithEvents MonthCal As System.Windows.Forms.MonthCalendar
-	Friend WithEvents pnlOccuringQualifyingPeriod As System.Windows.Forms.Panel
-	Friend WithEvents pnlOccursDate As System.Windows.Forms.Panel
-	Friend WithEvents pnlMonthCal As System.Windows.Forms.Panel
-	Friend WithEvents pnlCbRedemptionDays As System.Windows.Forms.Panel
-	Friend WithEvents cbSaturday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbFriday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbThursday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbWednesday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbTuesday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbMonday As System.Windows.Forms.CheckBox
-	Friend WithEvents cbSunday As System.Windows.Forms.CheckBox
-	Friend WithEvents pnlRecurringQualifyingPeriod As System.Windows.Forms.Panel
 	Friend WithEvents Label6 As System.Windows.Forms.Label
 	Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
 	Friend WithEvents Panel7 As System.Windows.Forms.Panel
 	Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
-	Friend WithEvents pnlPrimaryDay As System.Windows.Forms.Panel
-	Friend WithEvents cbPrimaryDay As System.Windows.Forms.ComboBox
-	Friend WithEvents yetAnotherLabel As System.Windows.Forms.Label
+	Private WithEvents pnlRedemptionDays As System.Windows.Forms.Panel
+	Private WithEvents lblRedemptionDays As System.Windows.Forms.Label
+	Private WithEvents Panel2 As System.Windows.Forms.Panel
+	Private WithEvents Panel3 As System.Windows.Forms.Panel
+	Private WithEvents dtpQualifyingStart As System.Windows.Forms.DateTimePicker
+	Private WithEvents Label2 As System.Windows.Forms.Label
+	Private WithEvents Panel4 As System.Windows.Forms.Panel
+	Private WithEvents dtpQualifyingEnd As System.Windows.Forms.DateTimePicker
+	Private WithEvents Label3 As System.Windows.Forms.Label
+	Private WithEvents clbPointsEarningDays As System.Windows.Forms.CheckedListBox
+	Private WithEvents lblPointsEarningDays As System.Windows.Forms.Label
+	Private WithEvents cbSelectAll As System.Windows.Forms.CheckBox
+	Private WithEvents lblPrimaryDay As System.Windows.Forms.Label
+	Private WithEvents lblQualifyingEnd As System.Windows.Forms.Label
+	Private WithEvents lblQualifyingStart As System.Windows.Forms.Label
+	Private WithEvents Label13 As System.Windows.Forms.Label
+	Private WithEvents MonthCal As System.Windows.Forms.MonthCalendar
+	Private WithEvents pnlOccuringQualifyingPeriod As System.Windows.Forms.Panel
+	Private WithEvents pnlMonthCal As System.Windows.Forms.Panel
+	Private WithEvents pnlCbRedemptionDays As System.Windows.Forms.Panel
+	Private WithEvents cbSaturday As System.Windows.Forms.CheckBox
+	Private WithEvents cbFriday As System.Windows.Forms.CheckBox
+	Private WithEvents cbThursday As System.Windows.Forms.CheckBox
+	Private WithEvents cbWednesday As System.Windows.Forms.CheckBox
+	Private WithEvents cbTuesday As System.Windows.Forms.CheckBox
+	Private WithEvents cbMonday As System.Windows.Forms.CheckBox
+	Private WithEvents cbSunday As System.Windows.Forms.CheckBox
+	Private WithEvents pnlRecurringQualifyingPeriod As System.Windows.Forms.Panel
+	Private WithEvents pnlPrimaryDay As System.Windows.Forms.Panel
+	Private WithEvents cbPrimaryDay As System.Windows.Forms.ComboBox
+	Private WithEvents yetAnotherLabel As System.Windows.Forms.Label
+	Private WithEvents Label9 As System.Windows.Forms.Label
+	Private WithEvents Label10 As System.Windows.Forms.Label
+	Private WithEvents cbSameDayPromo As System.Windows.Forms.CheckBox
+	Private WithEvents Label14 As System.Windows.Forms.Label
+	Private WithEvents dtpOccursDate As System.Windows.Forms.DateTimePicker
+	Private WithEvents pnlOccursDate As System.Windows.Forms.Panel
 
 End Class

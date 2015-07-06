@@ -168,14 +168,14 @@ Partial Class StepA
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents Label1 As System.Windows.Forms.Label
-	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents Label4 As System.Windows.Forms.Label
-	Friend WithEvents Label5 As System.Windows.Forms.Label
-	Friend WithEvents Label6 As System.Windows.Forms.Label
-	Friend WithEvents StepA_InfoCircle As FontAwesomeIcons.IconButton
-	Friend WithEvents btnEditPromo As System.Windows.Forms.Button
-	Friend WithEvents Panel1 As System.Windows.Forms.Panel
+	Private WithEvents Label1 As System.Windows.Forms.Label
+	Private WithEvents Label2 As System.Windows.Forms.Label
+	Private WithEvents Label3 As System.Windows.Forms.Label
+	Private WithEvents Label4 As System.Windows.Forms.Label
+	Private WithEvents Label5 As System.Windows.Forms.Label
+	Private WithEvents Label6 As System.Windows.Forms.Label
+	Private WithEvents StepA_InfoCircle As FontAwesomeIcons.IconButton
+	Private WithEvents btnEditPromo As System.Windows.Forms.Button
+	Private WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class
