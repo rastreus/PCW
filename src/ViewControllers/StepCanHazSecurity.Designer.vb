@@ -67,7 +67,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlSecurity.Location = New System.Drawing.Point(151, 87)
 		Me.pnlSecurity.Name = "pnlSecurity"
 		Me.pnlSecurity.Size = New System.Drawing.Size(160, 112)
-		Me.pnlSecurity.TabIndex = 1
+		Me.pnlSecurity.TabIndex = 0
 		'
 		'pnlPapayaWhip
 		'
@@ -79,7 +79,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlPapayaWhip.Location = New System.Drawing.Point(11, 40)
 		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
 		Me.pnlPapayaWhip.Size = New System.Drawing.Size(135, 50)
-		Me.pnlPapayaWhip.TabIndex = 1
+		Me.pnlPapayaWhip.TabIndex = 0
 		'
 		'rbSecurityNO
 		'
@@ -88,7 +88,7 @@ Partial Class StepCanHazSecurity
 		Me.rbSecurityNO.Location = New System.Drawing.Point(40, 27)
 		Me.rbSecurityNO.Name = "rbSecurityNO"
 		Me.rbSecurityNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbSecurityNO.TabIndex = 1
+		Me.rbSecurityNO.TabIndex = 2
 		Me.rbSecurityNO.TabStop = True
 		Me.rbSecurityNO.Text = "No"
 		Me.rbSecurityNO.UseVisualStyleBackColor = True
@@ -99,7 +99,8 @@ Partial Class StepCanHazSecurity
 		Me.rbSecurityYES.Location = New System.Drawing.Point(40, 4)
 		Me.rbSecurityYES.Name = "rbSecurityYES"
 		Me.rbSecurityYES.Size = New System.Drawing.Size(43, 17)
-		Me.rbSecurityYES.TabIndex = 0
+		Me.rbSecurityYES.TabIndex = 1
+		Me.rbSecurityYES.TabStop = True
 		Me.rbSecurityYES.Text = "Yes"
 		Me.rbSecurityYES.UseVisualStyleBackColor = True
 		'
@@ -128,7 +129,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlOverrideTime.Location = New System.Drawing.Point(317, 69)
 		Me.pnlOverrideTime.Name = "pnlOverrideTime"
 		Me.pnlOverrideTime.Size = New System.Drawing.Size(140, 75)
-		Me.pnlOverrideTime.TabIndex = 29
+		Me.pnlOverrideTime.TabIndex = 0
 		'
 		'btnSubmitOverrideTime
 		'
@@ -143,7 +144,8 @@ Partial Class StepCanHazSecurity
 		Me.btnSubmitOverrideTime.Location = New System.Drawing.Point(3, 48)
 		Me.btnSubmitOverrideTime.Name = "btnSubmitOverrideTime"
 		Me.btnSubmitOverrideTime.Size = New System.Drawing.Size(74, 20)
-		Me.btnSubmitOverrideTime.TabIndex = 32
+		Me.btnSubmitOverrideTime.TabIndex = 0
+		Me.btnSubmitOverrideTime.TabStop = False
 		Me.btnSubmitOverrideTime.Text = "Set"
 		Me.btnSubmitOverrideTime.UseVisualStyleBackColor = False
 		'
@@ -156,7 +158,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(83, 16)
 		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
 		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(49, 39)
-		Me.pnlPaleTurquoise.TabIndex = 30
+		Me.pnlPaleTurquoise.TabIndex = 0
 		'
 		'rbOverrideTimePM
 		'
@@ -165,7 +167,7 @@ Partial Class StepCanHazSecurity
 		Me.rbOverrideTimePM.Location = New System.Drawing.Point(3, 19)
 		Me.rbOverrideTimePM.Name = "rbOverrideTimePM"
 		Me.rbOverrideTimePM.Size = New System.Drawing.Size(41, 17)
-		Me.rbOverrideTimePM.TabIndex = 1
+		Me.rbOverrideTimePM.TabIndex = 6
 		Me.rbOverrideTimePM.TabStop = True
 		Me.rbOverrideTimePM.Text = "PM"
 		Me.rbOverrideTimePM.UseVisualStyleBackColor = True
@@ -176,7 +178,8 @@ Partial Class StepCanHazSecurity
 		Me.rbOverrideTimeAM.Location = New System.Drawing.Point(3, 2)
 		Me.rbOverrideTimeAM.Name = "rbOverrideTimeAM"
 		Me.rbOverrideTimeAM.Size = New System.Drawing.Size(41, 17)
-		Me.rbOverrideTimeAM.TabIndex = 0
+		Me.rbOverrideTimeAM.TabIndex = 5
+		Me.rbOverrideTimeAM.TabStop = True
 		Me.rbOverrideTimeAM.Text = "AM"
 		Me.rbOverrideTimeAM.UseVisualStyleBackColor = True
 		'
@@ -189,8 +192,7 @@ Partial Class StepCanHazSecurity
 		Me.txtOverrideTimeMinutes.MaxLength = 2
 		Me.txtOverrideTimeMinutes.Name = "txtOverrideTimeMinutes"
 		Me.txtOverrideTimeMinutes.Size = New System.Drawing.Size(26, 26)
-		Me.txtOverrideTimeMinutes.TabIndex = 0
-		Me.txtOverrideTimeMinutes.TabStop = False
+		Me.txtOverrideTimeMinutes.TabIndex = 4
 		Me.txtOverrideTimeMinutes.Text = "mm"
 		'
 		'lblTimeColon1
@@ -214,8 +216,7 @@ Partial Class StepCanHazSecurity
 		Me.txtOverrideTimeHours.MaxLength = 2
 		Me.txtOverrideTimeHours.Name = "txtOverrideTimeHours"
 		Me.txtOverrideTimeHours.Size = New System.Drawing.Size(26, 26)
-		Me.txtOverrideTimeHours.TabIndex = 0
-		Me.txtOverrideTimeHours.TabStop = False
+		Me.txtOverrideTimeHours.TabIndex = 3
 		Me.txtOverrideTimeHours.Text = "HH"
 		Me.txtOverrideTimeHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
@@ -228,7 +229,7 @@ Partial Class StepCanHazSecurity
 		Me.lblOverrideTime.Location = New System.Drawing.Point(0, 0)
 		Me.lblOverrideTime.Name = "lblOverrideTime"
 		Me.lblOverrideTime.Size = New System.Drawing.Size(86, 13)
-		Me.lblOverrideTime.TabIndex = 29
+		Me.lblOverrideTime.TabIndex = 0
 		Me.lblOverrideTime.Text = "Override Time"
 		Me.lblOverrideTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
@@ -246,7 +247,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlCutoffTime.Location = New System.Drawing.Point(317, 150)
 		Me.pnlCutoffTime.Name = "pnlCutoffTime"
 		Me.pnlCutoffTime.Size = New System.Drawing.Size(140, 75)
-		Me.pnlCutoffTime.TabIndex = 30
+		Me.pnlCutoffTime.TabIndex = 0
 		'
 		'btnSubmitCutoffTime
 		'
@@ -261,7 +262,8 @@ Partial Class StepCanHazSecurity
 		Me.btnSubmitCutoffTime.Location = New System.Drawing.Point(3, 48)
 		Me.btnSubmitCutoffTime.Name = "btnSubmitCutoffTime"
 		Me.btnSubmitCutoffTime.Size = New System.Drawing.Size(74, 20)
-		Me.btnSubmitCutoffTime.TabIndex = 31
+		Me.btnSubmitCutoffTime.TabIndex = 0
+		Me.btnSubmitCutoffTime.TabStop = False
 		Me.btnSubmitCutoffTime.Text = "Set"
 		Me.btnSubmitCutoffTime.UseVisualStyleBackColor = False
 		'
@@ -274,7 +276,7 @@ Partial Class StepCanHazSecurity
 		Me.Panel2.Location = New System.Drawing.Point(83, 16)
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(49, 39)
-		Me.Panel2.TabIndex = 30
+		Me.Panel2.TabIndex = 0
 		'
 		'rbCutoffTimePM
 		'
@@ -283,7 +285,7 @@ Partial Class StepCanHazSecurity
 		Me.rbCutoffTimePM.Location = New System.Drawing.Point(3, 19)
 		Me.rbCutoffTimePM.Name = "rbCutoffTimePM"
 		Me.rbCutoffTimePM.Size = New System.Drawing.Size(41, 17)
-		Me.rbCutoffTimePM.TabIndex = 1
+		Me.rbCutoffTimePM.TabIndex = 10
 		Me.rbCutoffTimePM.TabStop = True
 		Me.rbCutoffTimePM.Text = "PM"
 		Me.rbCutoffTimePM.UseVisualStyleBackColor = True
@@ -294,7 +296,8 @@ Partial Class StepCanHazSecurity
 		Me.rbCutoffTimeAM.Location = New System.Drawing.Point(3, 2)
 		Me.rbCutoffTimeAM.Name = "rbCutoffTimeAM"
 		Me.rbCutoffTimeAM.Size = New System.Drawing.Size(41, 17)
-		Me.rbCutoffTimeAM.TabIndex = 0
+		Me.rbCutoffTimeAM.TabIndex = 9
+		Me.rbCutoffTimeAM.TabStop = True
 		Me.rbCutoffTimeAM.Text = "AM"
 		Me.rbCutoffTimeAM.UseVisualStyleBackColor = True
 		'
@@ -307,8 +310,7 @@ Partial Class StepCanHazSecurity
 		Me.txtCutoffTimeMinutes.MaxLength = 2
 		Me.txtCutoffTimeMinutes.Name = "txtCutoffTimeMinutes"
 		Me.txtCutoffTimeMinutes.Size = New System.Drawing.Size(26, 26)
-		Me.txtCutoffTimeMinutes.TabIndex = 0
-		Me.txtCutoffTimeMinutes.TabStop = False
+		Me.txtCutoffTimeMinutes.TabIndex = 8
 		Me.txtCutoffTimeMinutes.Text = "mm"
 		'
 		'lblTimeColon2
@@ -332,8 +334,7 @@ Partial Class StepCanHazSecurity
 		Me.txtCutoffTimeHours.MaxLength = 2
 		Me.txtCutoffTimeHours.Name = "txtCutoffTimeHours"
 		Me.txtCutoffTimeHours.Size = New System.Drawing.Size(26, 26)
-		Me.txtCutoffTimeHours.TabIndex = 0
-		Me.txtCutoffTimeHours.TabStop = False
+		Me.txtCutoffTimeHours.TabIndex = 7
 		Me.txtCutoffTimeHours.Text = "HH"
 		Me.txtCutoffTimeHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
@@ -346,7 +347,7 @@ Partial Class StepCanHazSecurity
 		Me.lblCutoffTime.Location = New System.Drawing.Point(0, 0)
 		Me.lblCutoffTime.Name = "lblCutoffTime"
 		Me.lblCutoffTime.Size = New System.Drawing.Size(72, 13)
-		Me.lblCutoffTime.TabIndex = 29
+		Me.lblCutoffTime.TabIndex = 0
 		Me.lblCutoffTime.Text = "Cutoff Time"
 		Me.lblCutoffTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
@@ -380,28 +381,28 @@ Partial Class StepCanHazSecurity
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents pnlSecurity As System.Windows.Forms.Panel
-	Friend WithEvents lblSecurity As System.Windows.Forms.Label
-	Friend WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
-	Friend WithEvents rbSecurityNO As System.Windows.Forms.RadioButton
-	Friend WithEvents rbSecurityYES As System.Windows.Forms.RadioButton
-	Friend WithEvents pnlOverrideTime As System.Windows.Forms.Panel
-	Friend WithEvents lblOverrideTime As System.Windows.Forms.Label
-	Friend WithEvents pnlPaleTurquoise As System.Windows.Forms.Panel
-	Friend WithEvents rbOverrideTimePM As System.Windows.Forms.RadioButton
-	Friend WithEvents rbOverrideTimeAM As System.Windows.Forms.RadioButton
-	Friend WithEvents txtOverrideTimeMinutes As System.Windows.Forms.TextBox
 	Private WithEvents lblTimeColon1 As System.Windows.Forms.Label
-	Friend WithEvents txtOverrideTimeHours As System.Windows.Forms.TextBox
-	Friend WithEvents pnlCutoffTime As System.Windows.Forms.Panel
-	Friend WithEvents Panel2 As System.Windows.Forms.Panel
-	Friend WithEvents rbCutoffTimePM As System.Windows.Forms.RadioButton
-	Friend WithEvents rbCutoffTimeAM As System.Windows.Forms.RadioButton
-	Friend WithEvents txtCutoffTimeMinutes As System.Windows.Forms.TextBox
 	Private WithEvents lblTimeColon2 As System.Windows.Forms.Label
-	Friend WithEvents txtCutoffTimeHours As System.Windows.Forms.TextBox
-	Friend WithEvents lblCutoffTime As System.Windows.Forms.Label
 	Private WithEvents btnSubmitCutoffTime As System.Windows.Forms.Button
 	Private WithEvents btnSubmitOverrideTime As System.Windows.Forms.Button
+	Private WithEvents pnlSecurity As System.Windows.Forms.Panel
+	Private WithEvents lblSecurity As System.Windows.Forms.Label
+	Private WithEvents rbSecurityNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbSecurityYES As System.Windows.Forms.RadioButton
+	Private WithEvents pnlOverrideTime As System.Windows.Forms.Panel
+	Private WithEvents lblOverrideTime As System.Windows.Forms.Label
+	Private WithEvents rbOverrideTimePM As System.Windows.Forms.RadioButton
+	Private WithEvents rbOverrideTimeAM As System.Windows.Forms.RadioButton
+	Private WithEvents txtOverrideTimeMinutes As System.Windows.Forms.TextBox
+	Private WithEvents txtOverrideTimeHours As System.Windows.Forms.TextBox
+	Private WithEvents pnlCutoffTime As System.Windows.Forms.Panel
+	Private WithEvents rbCutoffTimePM As System.Windows.Forms.RadioButton
+	Private WithEvents rbCutoffTimeAM As System.Windows.Forms.RadioButton
+	Private WithEvents txtCutoffTimeMinutes As System.Windows.Forms.TextBox
+	Private WithEvents txtCutoffTimeHours As System.Windows.Forms.TextBox
+	Private WithEvents lblCutoffTime As System.Windows.Forms.Label
+	Private WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
+	Private WithEvents pnlPaleTurquoise As System.Windows.Forms.Panel
+	Private WithEvents Panel2 As System.Windows.Forms.Panel
 
 End Class
