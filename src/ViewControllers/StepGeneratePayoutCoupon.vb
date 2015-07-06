@@ -113,6 +113,12 @@ Public Class StepGeneratePayoutCoupon
 		Me.local_stepB = PCW.GetStep("StepB")
 		Me.local_promoID = local_stepB.Data.ID
 		Me.btnCouponID.Text = Me.local_promoID & "C"
+		If PCW.Data.CurrentMultiPartCategory = _
+			PCW_Data.MultiPartCategory.multiPartDiff And _
+			PCW.Data.PayoutDiffNum > 1 Then
+			Me.btnCouponID.Enabled = False
+			Me.lblCouponIDEdit.Text = "Cannot Edit"
+		End If
 	End Sub
 #End Region
 #Region "StepGeneratePayoutCoupon_ResetStep"

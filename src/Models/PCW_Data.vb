@@ -245,7 +245,7 @@ Public Class PCW_Data
 			_pcwNumOfDiffs = value
 		End Set
 	End Property
-	Private Property PayoutDiffNum As Short
+	Public Property PayoutDiffNum As Short
 		Get
 			Return _pcwPayoutDiffNum
 		End Get
