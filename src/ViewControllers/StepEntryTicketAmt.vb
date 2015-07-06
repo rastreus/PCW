@@ -176,6 +176,12 @@ Public Class StepEntryTicketAmt
 		Me.rbTicketsPerPatronNO.Checked = True
 		Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
 		Me.txtPromoType.Text = "EX: 25"
+		Me.btnSetPromoType.BackColor = Color.Gainsboro
+		Me.btnSetPromoType.Enabled = False
+		Me.btnSetTicketsPerPatron.BackColor = Color.Gainsboro
+		Me.btnSetTicketsPerPatron.Enabled = False
+		Me.btnSetTicketsEntirePromo.BackColor = Color.Gainsboro
+		Me.btnSetTicketsEntirePromo.Enabled = False
 		SetPointsDivisorPnl(False)
 		SetPointsDivisorTxt(False)
 	End Sub
@@ -314,6 +320,12 @@ Public Class StepEntryTicketAmt
 	Private Sub SetPointsDivisorPnl(ByVal bool As Boolean)
 		Me.pnlPointsDivisor.Enabled = bool
 		Me.pnlPointsDivisor.Visible = bool
+		Me.btnSetPointsDivisor.Enabled = bool
+		If bool = True Then
+			Me.btnSetPointsDivisor.BackColor = Color.HotPink
+		Else
+			Me.btnSetPointsDivisor.BackColor = Color.Gainsboro
+		End If
 	End Sub
 
 	Private Sub SetPointsDivisorTxt(ByVal bool As Boolean)
@@ -348,8 +360,6 @@ Public Class StepEntryTicketAmt
 			Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 			Me.btnSetTicketsPerPatron.BackColor = Color.Gainsboro
 			Me.btnSetTicketsPerPatron.Enabled = False
-			Me.btnSetTicketsEntirePromo.BackColor = Color.HotPink
-			Me.btnSetTicketsEntirePromo.Enabled = True
 		End If
 	End Sub
 #End Region
@@ -363,7 +373,7 @@ Public Class StepEntryTicketAmt
 	Private Sub rbTicketsEntirePromoNO_CheckedChanged(sender As Object, _
 													  e As EventArgs) _
 		Handles rbTicketsEntirePromoNO.CheckedChanged
-		If Me.rbTicketPerPatronYES.Checked Then
+		If Me.rbTicketsEntirePromoYES.Checked Then
 			Me.txtTicketsEntirePromo.Enabled = True
 			Me.txtTicketsEntirePromo.Text = ""
 			Me.ActiveControl = Me.txtTicketsEntirePromo
@@ -372,6 +382,8 @@ Public Class StepEntryTicketAmt
 			GUI_Util.NextEnabled()
 			Me.txtTicketsEntirePromo.Enabled = False
 			Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
+			Me.btnSetTicketsEntirePromo.BackColor = Color.Gainsboro
+			Me.btnSetTicketsEntirePromo.Enabled = False
 		End If
 	End Sub
 #End Region
@@ -409,7 +421,11 @@ Public Class StepEntryTicketAmt
 	Private Sub txtPointsDivisor_Leave(sender As Object, _
 									   e As EventArgs) _
 		Handles txtPointsDivisor.Leave
-		GUI_Util.NextEnabled()
+		If (Me.rbCalculated.Checked Or _
+			Me.rbCalPlusNumOfVisits.Checked) And _
+			(Not Me.txtPointsDivisor.Text = "") Then
+			GUI_Util.NextEnabled()
+		End If
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtPromoType_Enter"
@@ -419,6 +435,8 @@ Public Class StepEntryTicketAmt
 		If Me.promoTypeEntered = False Then
 			Me.txtPromoType.Text = ""
 			Me.promoTypeEntered = True
+			Me.btnSetPromoType.Enabled = True
+			Me.btnSetPromoType.BackColor = Color.HotPink
 		End If
 	End Sub
 #End Region
