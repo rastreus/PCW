@@ -465,11 +465,13 @@ used as UI/UX flair for ticket amount descriptions.
 							   ByVal e As EventArgs) _
 		Handles rb1.MouseEnter
 		Me.lblDescription.Text = Me.oneStr
+		Me.rb1.BackColor = Color.Yellow
 	End Sub
 	Private Sub rb1_MouseLeave(ByVal sender As Object, _
 							   ByVal e As EventArgs) _
 		Handles rb1.MouseLeave
 		Me.lblDescription.Text = Me.defaultStr
+		Me.rb1.BackColor = Color.Aquamarine
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_rbNumOfVisits_Mouse"
@@ -477,11 +479,13 @@ used as UI/UX flair for ticket amount descriptions.
 										 ByVal e As EventArgs) _
 	Handles rbNumOfVisits.MouseEnter
 		Me.lblDescription.Text = Me.numOfVisitsStr
+		Me.rbNumOfVisits.BackColor = Color.Yellow
 	End Sub
 	Private Sub rbNumOfVisits_MouseLeave(ByVal sender As Object, _
 										 ByVal e As EventArgs) _
 	Handles rbNumOfVisits.MouseLeave
 		Me.lblDescription.Text = Me.defaultStr
+		Me.rbNumOfVisits.BackColor = Color.PaleTurquoise
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_rbCalculated_Mouse"
@@ -489,11 +493,13 @@ used as UI/UX flair for ticket amount descriptions.
 										ByVal e As EventArgs) _
 		Handles rbCalculated.MouseEnter
 		Me.lblDescription.Text = Me.calStr
+		Me.rbCalculated.BackColor = Color.Yellow
 	End Sub
 	Private Sub rbCalculated_MouseLeave(ByVal sender As Object, _
 										ByVal e As EventArgs) _
 		Handles rbCalculated.MouseLeave
 		Me.lblDescription.Text = Me.defaultStr
+		Me.rbCalculated.BackColor = Color.PaleTurquoise
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_rbCalPlusNumOfVisits_Mouse"
@@ -501,22 +507,25 @@ used as UI/UX flair for ticket amount descriptions.
 												ByVal e As EventArgs) _
 		Handles rbCalPlusNumOfVisits.MouseEnter
 		Me.lblDescription.Text = Me.calPlusNumOfVisitsStr
+		Me.rbCalPlusNumOfVisits.BackColor = Color.Yellow
 	End Sub
 	Private Sub rbCalPlusNumOfVisits_MouseLeave(ByVal sender As Object, _
 												ByVal e As EventArgs) _
 		Handles rbCalPlusNumOfVisits.MouseLeave
 		Me.lblDescription.Text = Me.defaultStr
+		Me.rbCalPlusNumOfVisits.BackColor = Color.PaleTurquoise
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_rbSetAmt_Mouse"
-	Private Sub rbSetAmt_MouseEnter(ByVal sender As Object, _
-									ByVal e As EventArgs)
-		Me.lblDescription.Text = Me.setAmtStr
-	End Sub
-	Private Sub rbSetAmt_MouseLeave(ByVal sender As Object, _
-									ByVal e As EventArgs)
-		Me.lblDescription.Text = Me.defaultStr
-	End Sub
+	''DOESN'T EXIST ANYMORE'
+	'Private Sub rbSetAmt_MouseEnter(ByVal sender As Object, _
+	'								ByVal e As EventArgs)
+	'	Me.lblDescription.Text = Me.setAmtStr
+	'End Sub
+	'Private Sub rbSetAmt_MouseLeave(ByVal sender As Object, _
+	'								ByVal e As EventArgs)
+	'	Me.lblDescription.Text = Me.defaultStr
+	'End Sub
 #End Region
 #End Region
 #Region "_TEXTBOX_KEYPRESS_"

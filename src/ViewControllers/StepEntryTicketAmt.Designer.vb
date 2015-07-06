@@ -91,6 +91,8 @@ Partial Class StepEntryTicketAmt
 		'
 		Me.rbNumOfVisits.AutoSize = True
 		Me.rbNumOfVisits.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.rbNumOfVisits.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbNumOfVisits.ForeColor = System.Drawing.SystemColors.ControlText
 		Me.rbNumOfVisits.Location = New System.Drawing.Point(13, 84)
 		Me.rbNumOfVisits.Name = "rbNumOfVisits"
 		Me.rbNumOfVisits.Size = New System.Drawing.Size(71, 17)
