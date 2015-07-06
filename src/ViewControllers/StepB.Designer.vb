@@ -260,7 +260,7 @@ Partial Class StepB
 		Me.pnlEditPromoID.Enabled = False
 		Me.pnlEditPromoID.Location = New System.Drawing.Point(405, 137)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
-		Me.pnlEditPromoID.Size = New System.Drawing.Size(99, 63)
+		Me.pnlEditPromoID.Size = New System.Drawing.Size(95, 63)
 		Me.pnlEditPromoID.TabIndex = 0
 		Me.pnlEditPromoID.Visible = False
 		'
@@ -275,7 +275,7 @@ Partial Class StepB
 		Me.btnTxtEditPromoID.ForeColor = System.Drawing.Color.White
 		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 32)
 		Me.btnTxtEditPromoID.Name = "btnTxtEditPromoID"
-		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(87, 20)
+		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(84, 20)
 		Me.btnTxtEditPromoID.TabIndex = 2
 		Me.btnTxtEditPromoID.Text = "Set ID"
 		Me.btnTxtEditPromoID.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -296,10 +296,10 @@ Partial Class StepB
 		'txtEditPromoID
 		'
 		Me.txtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtEditPromoID.Location = New System.Drawing.Point(8, 3)
+		Me.txtEditPromoID.Location = New System.Drawing.Point(3, 3)
 		Me.txtEditPromoID.MaxLength = 5
 		Me.txtEditPromoID.Name = "txtEditPromoID"
-		Me.txtEditPromoID.Size = New System.Drawing.Size(43, 23)
+		Me.txtEditPromoID.Size = New System.Drawing.Size(45, 23)
 		Me.txtEditPromoID.TabIndex = 0
 		Me.txtEditPromoID.TabStop = False
 		Me.txtEditPromoID.Text = "TEST!"
