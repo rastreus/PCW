@@ -63,6 +63,15 @@ Public Class StepI
 											 e As EventArgs) _
 		Handles cbCreatePromo.CheckedChanged
 		PCW.NextEnabled = Me.cbCreatePromo.Checked
+		If Me.cbCreatePromo.Checked Then
+			Me.cbCreatePromo.ForeColor = SystemColors.ControlDarkDark
+			Me.cbCreatePromo.BackColor = Color.Lime
+			Me.pnlCreatePromo.BackColor = Color.Lime
+		Else
+			Me.cbCreatePromo.ForeColor = Color.Black
+			Me.cbCreatePromo.BackColor = Color.White
+			Me.pnlCreatePromo.BackColor = Color.White
+		End If
 	End Sub
 #End Region
 End Class
