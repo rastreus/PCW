@@ -1,11 +1,14 @@
 ﻿Imports TSWizards
+Imports System.Text
 Imports System.ComponentModel
 
 Public Class StepI
 	Inherits TSWizards.BaseInteriorStep
 
 #Region "StepI_ShowStep"
-	Private promoSummary As System.Text.StringBuilder
+	Private boolFlag As Boolean = True
+	Private promoSummary As StringBuilder
+	Private promoPayoutSummary As StringBuilder
 
 	Private Sub StepI_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
@@ -15,8 +18,36 @@ Public Class StepI
 		End If
 		PCW.NextEnabled = False
 		PCW.PrepareAllPromoData()
-		Me.promoSummary = PCW.Data.GetPromoSummary()
-		Me.lblpromoSummary.Text = Me.promoSummary.ToString
+		If boolFlag Then
+			Me.boolFlag = False
+			Me.promoSummary = PCW.Data.GetPromoSummary()
+			Me.lblpromoSummary.Text = Me.promoSummary.ToString
+		End If
+		If (Not PCW.Data.CurrentPromoCategory = _
+			PCW_Data.PromoCategory.entryOnly) Then
+			Me.promoPayoutSummary = PCW.Data.GetPromoPayoutSummary()
+			Me.lblPromoPayoutSummary.Text = Me.promoPayoutSummary.ToString
+			Me.lblPayoutPromo.Text = "Payout | Promo  |"
+		Else
+			Me.lblPromoPayoutSummary.Visible = False
+			Me.lblPayoutPromo.Visible = False
+			Me.cbCreatePromo.Location = New System.Drawing.Point(1, -1)
+			Me.pnlCreatePromo.Size = New System.Drawing.Size(219, 21)
+		End If
+	End Sub
+#End Region
+#Region "StepI_ResetStep"
+	Private Sub StepI_ResetStep(sender As Object, _
+								e As EventArgs) _
+		Handles MyBase.ResetStep
+		StepI_ResetControls()
+	End Sub
+
+	Private Sub StepI_ResetControls()
+		Me.lblPayoutPromo.Text = "****** | ****** |"
+		Me.cbCreatePromo.ForeColor = Color.Black
+		Me.cbCreatePromo.BackColor = Color.White
+		Me.pnlCreatePromo.BackColor = Color.White
 	End Sub
 #End Region
 #Region "StepI_Validation"

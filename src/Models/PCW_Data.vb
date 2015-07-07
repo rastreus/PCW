@@ -391,13 +391,9 @@ Public Class PCW_Data
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
-		'PromoDataHash.Add(Key.MaxNumOfCouponsPerPatron, MaxNumOfCouponsPerPatron)
-
-		'Now that the NULL formalities are out of the way,
-		'we can actually build the string that the user will read.
-		'builder.Append("      PromoType: " & promoType & vbCrLf)
-		builder.Append("             ID: " & nullIfNothing(Key.ID) & vbCrLf)
+		builder.Append("             ID: " & nullIfNothing(Key.ID) & "E" & vbCrLf)
 		builder.Append("           Name: " & nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append("           Type: " & nullIfNothing(Key.EntryPromoType) & vbCrLf)
 		builder.Append("           Date: " & nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
 		builder.Append("      StartDate: " & nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
 		builder.Append("        EndDate: " & nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
@@ -405,16 +401,41 @@ Public Class PCW_Data
 		builder.Append("  PointsDivisor: " & nullIfNothing(Key.PointsDivisor) & vbCrLf)
 		builder.Append("     MaxTickets: " & nullIfNothing(Key.TicketsPerPatron) & vbCrLf)
 		builder.Append("PromoMaxTickets: " & nullIfNothing(Key.TicketsForEntirePromo) & vbCrLf)
-		builder.Append("      MaxCoupon: " & nullIfNothing(Key.CouponAmtPerPatron) & vbCrLf)
-		builder.Append(" PromoMaxCoupon: " & nullIfNothing(Key.CouponAmtForEntirePromo) & vbCrLf)
-		builder.Append("       CouponID: " & nullIfNothing(Key.CouponID) & vbCrLf)
+		builder.Append("      MaxCoupon: " & "NULL" & vbCrLf)
+		builder.Append(" PromoMaxCoupon: " & "NULL" & vbCrLf)
+		builder.Append("       CouponID: " & "NULL" & vbCrLf)
 		builder.Append("      Recurring: " & nullIfNothing(Key.Recurring) & vbCrLf)
 		builder.Append("      Frequency: " & nullIfNothing(Key.RecurringFrequency) & vbCrLf)
 		builder.Append("RecursOnWeekday: " & nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
 		builder.Append(" EarnsOnWeekday: " & nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
 		builder.Append("CountCurrentDay: " & nullIfNothing(Key.CountCurrentDay) & vbCrLf)
 		builder.Append("   PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
-		builder.Append("        Comment: " & nullIfNothing(Key.Comment) & vbCrLf)
+		Return builder
+	End Function
+
+	Public Function GetPromoPayoutSummary() As System.Text.StringBuilder
+		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
+		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+
+		builder.Append("                  ID: " & nullIfNothing(Key.ID) & "P" & vbCrLf)
+		builder.Append("                Name: " & nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append("                Type: " & nullIfNothing(Key.PayoutPromoType) & vbCrLf)
+		builder.Append("                Date: " & nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
+		builder.Append("           StartDate: " & nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
+		builder.Append("             EndDate: " & nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
+		builder.Append("         PointCutoff: " & "NULL" & vbCrLf)
+		builder.Append("       PointsDivisor: " & "NULL" & vbCrLf)
+		builder.Append("          MaxTickets: " & "NULL" & vbCrLf)
+		builder.Append("Max#CouponsPerPatron: " & nullIfNothing(Key.MaxNumOfCouponsPerPatron) & vbCrLf)
+		builder.Append("           MaxCoupon: " & nullIfNothing(Key.CouponAmtPerPatron) & vbCrLf)
+		builder.Append("      PromoMaxCoupon: " & nullIfNothing(Key.CouponAmtForEntirePromo) & vbCrLf)
+		builder.Append("            CouponID: " & nullIfNothing(Key.CouponID) & vbCrLf)
+		builder.Append("           Recurring: " & nullIfNothing(Key.Recurring) & vbCrLf)
+		builder.Append("           Frequency: " & nullIfNothing(Key.RecurringFrequency) & vbCrLf)
+		builder.Append("     RecursOnWeekday: " & nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
+		builder.Append("      EarnsOnWeekday: " & nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
+		builder.Append("     CountCurrentDay: " & nullIfNothing(Key.CountCurrentDay) & vbCrLf)
+		builder.Append("        PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
 		Return builder
 	End Function
 
