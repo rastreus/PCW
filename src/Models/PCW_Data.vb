@@ -2,6 +2,7 @@
 			  .PCW_Data _
 			  .PromoFields
 Imports System.Data.SqlClient
+Imports System.Text
 
 Public Class PCW_Data
 	Implements IDisposable
@@ -17,22 +18,27 @@ Public Class PCW_Data
 				Me._pcwDataContext.Dispose()
 			End If
 
-			' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
+			' TODO: free unmanaged resources (unmanaged objects)
+			'and override Finalize() below.
 			' TODO: set large fields to null.
 		End If
 		Me.disposedValue = True
 	End Sub
 
-	' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
+	' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean)
+	'above has code to free unmanaged resources.
 	'Protected Overrides Sub Finalize()
-	'    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+	'    ' Do not change this code.
+	'	   Put cleanup code in Dispose(ByVal disposing As Boolean) above.
 	'    Dispose(False)
 	'    MyBase.Finalize()
 	'End Sub
 
-	' This code added by Visual Basic to correctly implement the disposable pattern.
+	' This code added by Visual Basic to
+	'correctly implement the disposable pattern.
 	Public Sub Dispose() Implements IDisposable.Dispose
-		' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+		' Do not change this code.
+		' Put cleanup code in Dispose(disposing As Boolean) above.
 		Dispose(True)
 		GC.SuppressFinalize(Me)
 	End Sub
@@ -273,9 +279,11 @@ Public Class PCW_Data
 		newPromo.PointCutoff = PromoDataHash.Item(Key.PointCutoffLimit)
 		newPromo.PointDivisor = PromoDataHash.Item(Key.PointsDivisor)
 		newPromo.MaxTickets = PromoDataHash.Item(Key.TicketsPerPatron)
-		newPromo.PromoMaxTickets = PromoDataHash.Item(Key.TicketsForEntirePromo)
+		newPromo.PromoMaxTickets = _
+			PromoDataHash.Item(Key.TicketsForEntirePromo)
 		newPromo.MaxCoupon = PromoDataHash.Item(Key.CouponAmtPerPatron)
-		newPromo.PromoMaxCoupon = PromoDataHash.Item(Key.CouponAmtForEntirePromo)
+		newPromo.PromoMaxCoupon = _
+			PromoDataHash.Item(Key.CouponAmtForEntirePromo)
 		newPromo.CouponID = PromoDataHash.Item(Key.CouponID)
 		newPromo.Recurring = PromoDataHash.Item(Key.Recurring)
 		newPromo.Frequency = PromoDataHash.Item(Key.RecurringFrequency)
@@ -288,12 +296,10 @@ Public Class PCW_Data
 		newPromo.Comments = GetPromoComment()
 		Return newPromo
 	End Function
-
 	Private Function GetPrintTickets() As Boolean
 		'PrintTickets cannot be NULL
 		Return PromoDataHash.Item(Key.PrintTickets)
 	End Function
-
 	''' <summary>
 	''' Returns the comment with PCW stamping.
 	''' </summary>
@@ -309,7 +315,6 @@ Public Class PCW_Data
 				  Environment.UserName.ToString
 		Return comment
 	End Function
-
 	''' <summary>
 	''' Checks the length of the PromoID and processes accordingly.
 	''' </summary>
@@ -321,7 +326,11 @@ Public Class PCW_Data
 		If PromoDataHash.Item(Key.ID).ToString.Length <= 15 Then
 			result = PromoDataHash.Item(Key.ID) & letterType
 		ElseIf PromoDataHash.Item(Key.ID).ToString.Length >= 16 Then
-			result = PromoDataHash.Item(Key.ID).ToString.Substring(0, 14) & letterType
+			result = _
+				PromoDataHash.Item(Key.ID) _
+				.ToString _
+				.Substring(0, 14) & _
+				letterType
 		End If
 		Return result
 	End Function
@@ -331,7 +340,8 @@ Public Class PCW_Data
 	''' Returns an Entry Promo.
 	''' </summary>
 	''' <returns>Promo of the "Entry" Category.</returns>
-	''' <remarks>I'm not sure why those fields wouldn't be Nothing already, but now it is certian.</remarks>
+	''' <remarks>I'm not sure why those fields wouldn't be Nothing already,
+	''' but now it is certian.</remarks>
 	Private Function GetMarketingPromoEntry() As MarketingPromo
 		Dim entryPromo As MarketingPromo = GetMarketingPromo()
 		entryPromo.PromoID = GetEntryPromoID()
@@ -342,13 +352,11 @@ Public Class PCW_Data
 		entryPromo.CouponID = Nothing
 		Return entryPromo
 	End Function
-
 	Private Function GetEntryPromoID() As String
 		Dim result As String = New String("!")
 		result = ProcessPromoID("E")
 		Return result
 	End Function
-
 	Private Function GetEntryPromoType() As String
 		Return PromoDataHash.Item(Key.EntryPromoType)
 	End Function
@@ -358,7 +366,8 @@ Public Class PCW_Data
 	''' Returns a Payout Promo.
 	''' </summary>
 	''' <returns>Promo of the "Payout" Category.</returns>
-	''' <remarks>Likewise, not sure why these fields wouldn't be Nothing, but now it is certain.</remarks>
+	''' <remarks>Likewise, not sure why these fields wouldn't be Nothing,
+	''' but now it is certain.</remarks>
 	Private Function GetMarketingPromoPayout() As MarketingPromo
 		Dim payoutPromo As MarketingPromo = GetMarketingPromo()
 		payoutPromo.PromoID = GetPayoutPromoID()
@@ -371,48 +380,95 @@ Public Class PCW_Data
 			GetPayoutMaxNumOfCouponsPerPatron()
 		Return payoutPromo
 	End Function
-
 	Private Function GetPayoutPromoID() As String
 		Dim result As String = New String("!")
 		result = ProcessPromoID("P")
 		Return result
 	End Function
-
 	Private Function GetPayoutPromoType() As String
 		Return PromoDataHash.Item(Key.PayoutPromoType)
 	End Function
-
 	Private Function GetPayoutMaxNumOfCouponsPerPatron()
 		Return PromoDataHash.Item(Key.MaxNumOfCouponsPerPatron)
 	End Function
 #End Region
 #Region "GetPromoSummary"
-	Public Function GetPromoSummary() As System.Text.StringBuilder
-		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
-		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
 
-		builder.Append("             ID: " & nullIfNothing(Key.ID) & "E" & vbCrLf)
-		builder.Append("           Name: " & nullIfNothing(Key.Name) & vbCrLf)
-		builder.Append("           Type: " & nullIfNothing(Key.EntryPromoType) & vbCrLf)
-		builder.Append("           Date: " & nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
-		builder.Append("      StartDate: " & nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
-		builder.Append("        EndDate: " & nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
-		builder.Append("    PointCutoff: " & nullIfNothing(Key.PointCutoffLimit) & vbCrLf)
-		builder.Append("  PointsDivisor: " & nullIfNothing(Key.PointsDivisor) & vbCrLf)
-		builder.Append("     MaxTickets: " & nullIfNothing(Key.TicketsPerPatron) & vbCrLf)
-		builder.Append("PromoMaxTickets: " & nullIfNothing(Key.TicketsForEntirePromo) & vbCrLf)
-		builder.Append("      MaxCoupon: " & "NULL" & vbCrLf)
-		builder.Append(" PromoMaxCoupon: " & "NULL" & vbCrLf)
-		builder.Append("       CouponID: " & "NULL" & vbCrLf)
-		builder.Append("      Recurring: " & nullIfNothing(Key.Recurring) & vbCrLf)
-		builder.Append("      Frequency: " & nullIfNothing(Key.RecurringFrequency) & vbCrLf)
-		builder.Append("RecursOnWeekday: " & nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
-		builder.Append(" EarnsOnWeekday: " & nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
-		builder.Append("CountCurrentDay: " & nullIfNothing(Key.CountCurrentDay) & vbCrLf)
-		builder.Append("   PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
+	Private ID As String = _
+												"             ID: "
+	Private Name As String = _
+												"           Name: "
+	Private Type As String = _
+												"           Type: "
+	Private _Date As String = _
+												"           Date: "
+	Private StartDate As String = _
+												"      StartDate: "
+	Private EndDate As String = _
+												"        EndDate: "
+	Private PointCutoff As String = _
+												"    PointCutoff: "
+	Private PointsDivisor As String = _
+												"  PointsDivisor: "
+	Private MaxTickets As String = _
+												"     MaxTickets: "
+	Private TicketsForEntirePromo As String = _
+												"PromoMaxTickets: "
+	Private MaxCoupon As String = _
+												"      MaxCoupon: "
+	Private PromoMaxCoupon As String = _
+												" PromoMaxCoupon: "
+	Private CouponID As String = _
+												"       CouponID: "
+	Private Recurring As String = _
+												"      Recurring: "
+	Private Frequency As String = _
+												"      Frequency: "
+	Private RecursOnWeekday As String = _
+												"RecursOnWeekday: "
+	Private EarnsOnWeekday As String = _
+												" EarnsOnWeekday: "
+	Private CountCurrentDay As String = _
+												"CountCurrentDay: "
+	Private PrintTickets As String = _
+												"   PrintTickets: "
+
+	Public Function GetPromoSummary() As StringBuilder
+		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
+		Dim builder As StringBuilder = New StringBuilder
+
+		builder.Append(ID & nullIfNothing(Key.ID) & "E" & vbCrLf)
+		builder.Append(Name & nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append(Type & nullIfNothing(Key.EntryPromoType) & vbCrLf)
+		builder.Append(_Date & nullIfNothing(Key.OccursDate, _
+											 dateFormatStr) & vbCrLf)
+		builder.Append(StartDate & nullIfNothing(Key.StartDate, _
+												 dateFormatStr) & vbCrLf)
+		builder.Append(EndDate & nullIfNothing(Key.EndDate, _
+											   dateFormatStr) & vbCrLf)
+		builder.Append(PointCutoff & nullIfNothing(Key.PointCutoffLimit) & _
+					   vbCrLf)
+		builder.Append(PointsDivisor & nullIfNothing(Key.PointsDivisor) & _
+					   vbCrLf)
+		builder.Append(MaxTickets & nullIfNothing(Key.TicketsPerPatron) & _
+					   vbCrLf)
+		builder.Append(TicketsForEntirePromo & _
+					   nullIfNothing(Key.TicketsForEntirePromo) & vbCrLf)
+		builder.Append(MaxCoupon & "NULL" & vbCrLf)
+		builder.Append(PromoMaxCoupon & "NULL" & vbCrLf)
+		builder.Append(CouponID & "NULL" & vbCrLf)
+		builder.Append(Recurring & nullIfNothing(Key.Recurring) & vbCrLf)
+		builder.Append(Frequency & nullIfNothing(Key.RecurringFrequency) & _
+					   vbCrLf)
+		builder.Append(RecursOnWeekday & nullIfNothing(Key.RecursOnWeekday) & _
+					   vbCrLf)
+		builder.Append(EarnsOnWeekday & nullIfNothing(Key.EarnsOnWeekday) & _
+					   vbCrLf)
+		builder.Append(CountCurrentDay & nullIfNothing(Key.CountCurrentDay) & _
+					   vbCrLf)
+		builder.Append(PrintTickets & nullIfNothing(Key.PrintTickets) & vbCrLf)
 		Return builder
 	End Function
-
 	Public Function GetPromoPayoutSummary() As System.Text.StringBuilder
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
 		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
@@ -438,7 +494,6 @@ Public Class PCW_Data
 		builder.Append("        PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
 		Return builder
 	End Function
-
 	Private Function nullIfNothing(ByVal key As PromoFields) As String
 		Dim result As String = New String("")
 		If IsNothing(PromoDataHash.Item(key)) Then
@@ -448,7 +503,6 @@ Public Class PCW_Data
 		End If
 		Return result
 	End Function
-
 	Private Function nullIfNothing(ByVal key As PromoFields, _
 								   ByVal dateFormatStr As String) As String
 		Dim result As String = New String("")
@@ -504,7 +558,8 @@ Public Class PCW_Data
 	End Sub
 #End Region
 #Region "ProcessAllMultiPartPayouts"
-	Private Sub ProcessAllMultiPartPayoutsSame(ByVal payoutPromo As MarketingPromo)
+	Private Sub ProcessAllMultiPartPayoutsSame(ByVal payoutPromo _
+											   As MarketingPromo)
 		'This only works for Days; refactor for Tiers.
 		Dim coTempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		Dim coAccList As List(Of CouponOffer) = New List(Of CouponOffer)
@@ -533,7 +588,8 @@ Public Class PCW_Data
 					coAccList.Add(coupOff)
 				Next
 				If usesTargetList Then
-					ctTempList = ProcessMultiPartCouponTargetAppend(payoutNumber)
+					ctTempList = _
+						ProcessMultiPartCouponTargetAppend(payoutNumber)
 					For Each coupTarg As CouponTarget In ctTempList
 						ctAccList.Add(coupTarg)
 					Next
@@ -551,7 +607,8 @@ Public Class PCW_Data
 			Next
 		End If
 	End Sub
-	Private Sub ProcessAllMultiPartPayoutsDiff(ByVal payoutPromo As MarketingPromo)
+	Private Sub ProcessAllMultiPartPayoutsDiff(ByVal payoutPromo _
+											   As MarketingPromo)
 		Dim usesTargetList As Boolean = _
 			SubmitCouponTargetsToDB()
 		Dim payoutNumber As Short = New Short
@@ -579,7 +636,6 @@ Public Class PCW_Data
 		End If
 		Me.PayoutDiffNum = Me.PayoutDiffNum + 1
 	End Sub
-
 #Region "ProcessMultiPartPayout"
 	Private Function ProcessMultiPartPayout(ByVal payoutDate As DateTime, _
 											ByVal payoutNumber As Short) _
@@ -613,8 +669,10 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "ProcessMultiPartCouponOffer"
-	Private Sub ProcessMultiPartCouponOfferInPlace(ByVal payoutDate As DateTime, _
-												   ByVal payoutNumber As Short)
+	Private Sub ProcessMultiPartCouponOfferInPlace(ByVal payoutDate _
+												   As DateTime, _
+												   ByVal payoutNumber _
+												   As Short)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
 			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & _
 									   payoutNumber.ToString
@@ -629,17 +687,19 @@ Public Class PCW_Data
 			End If
 		Next
 	End Sub
-
-	Private Function ProcessMultiPartCouponOfferAppend(ByVal payoutDate As DateTime, _
-													   ByVal payoutNumber As Short) _
+	Private Function ProcessMultiPartCouponOfferAppend(ByVal payoutDate _
+													   As DateTime, _
+													   ByVal payoutNumber _
+													   As Short) _
 													   As List(Of CouponOffer)
 		Dim YACO As CouponOffer	'Yet Another CouponOffer
 		Dim tempList As List(Of CouponOffer) = New List(Of CouponOffer)
 		For Each couponOfferDBRow As CouponOffer In CouponOffersList
 			YACO = New CouponOffer
 			YACO.OfferID = couponOfferDBRow.OfferID
-			YACO.OfferID = YACO.OfferID.Substring(0, (YACO.OfferID.Length - 1)) & _
-												  payoutNumber.ToString
+			YACO.OfferID = YACO.OfferID _
+				.Substring(0, (YACO.OfferID.Length - 1)) & _
+				payoutNumber.ToString
 			YACO.CouponNumber = couponOfferDBRow.CouponNumber
 			If (Not (CurrentMultiPartCategory = _
 					 MultiPartCategory.multiPartDiff) And _
@@ -660,22 +720,24 @@ Public Class PCW_Data
 	End Function
 #End Region
 #Region "ProcessMultiPartCouponTarget"
-	Private Sub ProcessMultiPartCouponTargetInPlace(ByVal payoutNumber As Short)
+	Private Sub ProcessMultiPartCouponTargetInPlace(ByVal payoutNumber _
+													As Short)
 		For Each couponTargetDBRow As CouponTarget In CouponTargetList
 			couponTargetDBRow.OfferID = couponTargetDBRow.OfferID & _
 										payoutNumber.ToString
 		Next
 	End Sub
-
-	Private Function ProcessMultiPartCouponTargetAppend(ByVal payoutNumber As Short) _
-														As List(Of CouponTarget)
+	Private Function ProcessMultiPartCouponTargetAppend(ByVal payoutNumber _
+														As Short) _
+													As List(Of CouponTarget)
 		Dim YACT As CouponTarget 'Yet Another CouponTarget
 		Dim tempList As List(Of CouponTarget) = New List(Of CouponTarget)
 		For Each couponTargetDBRow As CouponTarget In CouponTargetList
 			YACT = New CouponTarget
 			YACT.OfferID = couponTargetDBRow.OfferID
-			YACT.OfferID = YACT.OfferID.Substring(0, (YACT.OfferID.Length - 1)) & _
-												  payoutNumber.ToString
+			YACT.OfferID = YACT.OfferID _
+				.Substring(0, (YACT.OfferID.Length - 1)) & _
+				payoutNumber.ToString
 			YACT.Coupon = couponTargetDBRow.Coupon
 			YACT.Account = couponTargetDBRow.Account
 			YACT.Zip = couponTargetDBRow.Zip
