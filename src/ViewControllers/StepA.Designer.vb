@@ -31,6 +31,7 @@ Partial Class StepA
 		Me.StepA_InfoCircle = New FontAwesomeIcons.IconButton()
 		Me.btnEditPromo = New System.Windows.Forms.Button()
 		Me.Panel1 = New System.Windows.Forms.Panel()
+		Me.lblVERNUM = New System.Windows.Forms.Label()
 		CType(Me.StepA_InfoCircle, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
@@ -136,6 +137,7 @@ Partial Class StepA
 		'
 		Me.Panel1.BackColor = System.Drawing.Color.MediumPurple
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel1.Controls.Add(Me.lblVERNUM)
 		Me.Panel1.Controls.Add(Me.StepA_InfoCircle)
 		Me.Panel1.Controls.Add(Me.btnEditPromo)
 		Me.Panel1.Controls.Add(Me.Label1)
@@ -148,6 +150,19 @@ Partial Class StepA
 		Me.Panel1.Name = "Panel1"
 		Me.Panel1.Size = New System.Drawing.Size(415, 363)
 		Me.Panel1.TabIndex = 9
+		'
+		'lblVERNUM
+		'
+		Me.lblVERNUM.AutoSize = True
+		Me.lblVERNUM.BackColor = System.Drawing.Color.Transparent
+		Me.lblVERNUM.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblVERNUM.ForeColor = System.Drawing.Color.DarkSlateBlue
+		Me.lblVERNUM.Location = New System.Drawing.Point(326, 343)
+		Me.lblVERNUM.Name = "lblVERNUM"
+		Me.lblVERNUM.Size = New System.Drawing.Size(85, 13)
+		Me.lblVERNUM.TabIndex = 10
+		Me.lblVERNUM.Text = "v.00.00.00.00"
+		Me.lblVERNUM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'StepA
 		'
@@ -177,5 +192,6 @@ Partial Class StepA
 	Private WithEvents StepA_InfoCircle As FontAwesomeIcons.IconButton
 	Private WithEvents btnEditPromo As System.Windows.Forms.Button
 	Private WithEvents Panel1 As System.Windows.Forms.Panel
+	Friend WithEvents lblVERNUM As System.Windows.Forms.Label
 
 End Class
