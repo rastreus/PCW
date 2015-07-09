@@ -77,8 +77,8 @@ Partial Class PCW
 		Me.SideBarImage = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_SideBarImage_373
 		Me.SideBarLogo = Global.PromotionalCreationWizard.My.Resources.Resources.PCW_Logo
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-		Me.Text = "PromotionalCreationWizard (PCW)"
-		Me.Title = "PWC"
+		Me.Text = "PCW"
+		Me.Title = "PCW"
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
