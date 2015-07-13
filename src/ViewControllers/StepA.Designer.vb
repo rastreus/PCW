@@ -32,7 +32,6 @@ Partial Class StepA
 		Me.btnEditPromo = New System.Windows.Forms.Button()
 		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.lblVERNUM = New System.Windows.Forms.Label()
-		Me.btnTestEmail = New System.Windows.Forms.Button()
 		CType(Me.StepA_InfoCircle, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
@@ -138,7 +137,6 @@ Partial Class StepA
 		'
 		Me.Panel1.BackColor = System.Drawing.Color.MediumPurple
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel1.Controls.Add(Me.btnTestEmail)
 		Me.Panel1.Controls.Add(Me.lblVERNUM)
 		Me.Panel1.Controls.Add(Me.StepA_InfoCircle)
 		Me.Panel1.Controls.Add(Me.btnEditPromo)
@@ -165,16 +163,6 @@ Partial Class StepA
 		Me.lblVERNUM.TabIndex = 10
 		Me.lblVERNUM.Text = "v.00.00.00.00"
 		Me.lblVERNUM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-		'
-		'btnTestEmail
-		'
-		Me.btnTestEmail.BackColor = System.Drawing.SystemColors.Control
-		Me.btnTestEmail.Location = New System.Drawing.Point(199, 332)
-		Me.btnTestEmail.Name = "btnTestEmail"
-		Me.btnTestEmail.Size = New System.Drawing.Size(78, 23)
-		Me.btnTestEmail.TabIndex = 11
-		Me.btnTestEmail.Text = "TEST EMAIL"
-		Me.btnTestEmail.UseVisualStyleBackColor = False
 		'
 		'StepA
 		'
@@ -205,6 +193,5 @@ Partial Class StepA
 	Private WithEvents btnEditPromo As System.Windows.Forms.Button
 	Private WithEvents Panel1 As System.Windows.Forms.Panel
 	Friend WithEvents lblVERNUM As System.Windows.Forms.Label
-	Friend WithEvents btnTestEmail As System.Windows.Forms.Button
 
 End Class

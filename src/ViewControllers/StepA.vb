@@ -47,30 +47,4 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 		PCW.Close()					'Close PCW
 	End Sub
 #End Region
-
-	Private Sub btnTestEmail_Click(sender As Object, _
-								   e As EventArgs) _
-		Handles btnTestEmail.Click
-		Try
-			Dim SmtpServer As New SmtpClient()
-			Dim mail As New MailMessage()
-			SmtpServer.Credentials = New  _
-				Net.NetworkCredential( _
-					"promotionalcreationwizard@gmail.com", _
-					"VQX8;cz8x^yD3!-eG9b48v625%sd.963" & _
-					"P4W3.3G!8;365akKA:78jW9bU3p3|G2V")
-			SmtpServer.Port = 465
-			SmtpServer.EnableSsl = True
-			SmtpServer.Host = "smtp.gmail.com"
-			mail = New MailMessage()
-			mail.From = New MailAddress( _
-				"promotionalcreationwizard@gmail.com")
-			mail.To.Add("rdillin@oaklawn.com")
-			mail.Subject = "PCW-MAIL"
-			mail.Body = "This is a test."
-			SmtpServer.Send(mail)
-		Catch ex As Exception
-			'FAIL SILENTLY B/C IT'S JUST EMAIL
-		End Try
-	End Sub
 End Class
