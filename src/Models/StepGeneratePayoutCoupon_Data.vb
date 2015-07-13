@@ -99,6 +99,24 @@ Public Class StepGeneratePayoutCoupon_Data
 	End Function
 #End Region
 #Region "Validity Checks"
+	Private Function CouponAmtTooMuch(ByVal couponAmt As Decimal) As Boolean
+		Dim result As Boolean = False
+		If couponAmt > 99999.99 Then
+			result = True
+		End If
+		Return result
+	End Function
+	Private Function CouponAmt_Invalid(ByVal couponAmt As Decimal) As Boolean
+		Dim result As Boolean = False
+		If IsNothing(couponAmt) Then
+			result = True
+		ElseIf CouponAmtTooMuch(couponAmt) Then
+			result = True
+		Else
+			result = False
+		End If
+		Return result
+	End Function
 	Public Function CouponID_Invalid() As Boolean
 		Dim result As Boolean = False
 		If (CouponID.Length > 10) Then
@@ -107,10 +125,12 @@ Public Class StepGeneratePayoutCoupon_Data
 		Return result
 	End Function
 	Public Function CouponAmtPerPatron_Invalid() As Boolean
-		Return IsNothing(CouponAmtPerPatron)
+		Dim result As Boolean = CouponAmt_Invalid(CouponAmtPerPatron)
+		Return result
 	End Function
 	Public Function CouponAmtForEntirePromo_Invalid() As Boolean
-		Return IsNothing(CouponAmtForEntirePromo)
+		Dim result As Boolean = CouponAmt_Invalid(CouponAmtForEntirePromo)
+		Return result
 	End Function
 	Public Function MaxNumOfCouponsPerPatron_Invalid() As Boolean
 		Return IsNothing(MaxNumOfCouponsPerPatron)

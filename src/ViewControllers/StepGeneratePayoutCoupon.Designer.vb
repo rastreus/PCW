@@ -225,7 +225,7 @@ Partial Class StepGeneratePayoutCoupon
 		'
 		Me.txtMaxAmtAllCoupons.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtMaxAmtAllCoupons.Location = New System.Drawing.Point(16, 8)
-		Me.txtMaxAmtAllCoupons.MaxLength = 10
+		Me.txtMaxAmtAllCoupons.MaxLength = 6
 		Me.txtMaxAmtAllCoupons.Name = "txtMaxAmtAllCoupons"
 		Me.txtMaxAmtAllCoupons.Size = New System.Drawing.Size(111, 20)
 		Me.txtMaxAmtAllCoupons.TabIndex = 9
@@ -298,7 +298,7 @@ Partial Class StepGeneratePayoutCoupon
 		'
 		Me.txtMaxAmtOneCoupon.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtMaxAmtOneCoupon.Location = New System.Drawing.Point(16, 7)
-		Me.txtMaxAmtOneCoupon.MaxLength = 10
+		Me.txtMaxAmtOneCoupon.MaxLength = 6
 		Me.txtMaxAmtOneCoupon.Name = "txtMaxAmtOneCoupon"
 		Me.txtMaxAmtOneCoupon.Size = New System.Drawing.Size(111, 20)
 		Me.txtMaxAmtOneCoupon.TabIndex = 9
