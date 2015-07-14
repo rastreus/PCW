@@ -84,23 +84,24 @@
 		Dim _validEnd As DateTime = couponOffer.ValidEnd
 		Dim _excludeStart As System.Nullable(Of DateTime) = couponOffer.ExcludeStart
 		Dim _excludeEnd As System.Nullable(Of DateTime) = couponOffer.ExcludeEnd
-		If ValidEnd_Before_ValidStart(_validEnd, _validStart) Then
+		If EndDate_Before_StartDate(_validEnd, _validStart) Then
 			result = False 'No, The Coupon Offer is not valid.
 		End If
 		If willExcludeDays Then
-			If ExcludeRange_Not_Within_ValidPeriod(_validEnd, _
+			If (ExcludeRange_Not_Within_ValidPeriod(_validEnd, _
 												   _validStart, _
 												   _excludeEnd, _
-												   _excludeStart) Then
+												   _excludeStart) Or _
+				EndDate_Before_StartDate(_excludeEnd, _excludeStart)) Then
 				result = False 'No, The Coupon Offer is not valid.
 			End If
 		End If
 		Return result
 	End Function
-	Private Function ValidEnd_Before_ValidStart(ByVal validEnd As DateTime, _
-												ByVal validStart As DateTime) As Boolean
+	Private Function EndDate_Before_StartDate(ByVal endDate As DateTime, _
+											  ByVal startDate As DateTime) As Boolean
 		Dim result As Boolean = False
-		Dim compare As Integer = Date.Compare(validEnd, validStart)
+		Dim compare As Integer = Date.Compare(endDate, startDate)
 		If compare < 0 Then
 			result = True 'Yes, ValidEnd is earlier than ValidStart.
 		End If
