@@ -50,14 +50,17 @@ Partial Class StepD
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
-		Me.pnlDragOffer = New System.Windows.Forms.Panel()
-		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.lblDragOffer = New System.Windows.Forms.Label()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
+		Me.PointCutoffLimitSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.btnSetPointCutoffLimit = New System.Windows.Forms.Button()
 		Me.txtPointCutoffLimit = New System.Windows.Forms.TextBox()
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
+		Me.pnlDragOffer = New System.Windows.Forms.Panel()
+		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.lblDragOffer = New System.Windows.Forms.Label()
+		Me.TiersSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlDaysTiers.SuspendLayout()
@@ -65,9 +68,11 @@ Partial Class StepD
 		Me.pnlAcquisition.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
+		Me.pnlPointCutoffLimit.SuspendLayout()
+		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDragOffer.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.pnlPointCutoffLimit.SuspendLayout()
+		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -186,6 +191,7 @@ Partial Class StepD
 		'
 		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
 		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDaysTiers.Controls.Add(Me.TiersSuccessIcon)
 		Me.pnlDaysTiers.Controls.Add(Me.btnSetNumOfTiers)
 		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
 		Me.pnlDaysTiers.Controls.Add(Me.rbTIERS)
@@ -201,19 +207,18 @@ Partial Class StepD
 		'
 		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.Gainsboro
 		Me.btnSetNumOfTiers.Enabled = False
-		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetNumOfTiers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetNumOfTiers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnSetNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSetNumOfTiers.ForeColor = System.Drawing.Color.White
-		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(127, 20)
+		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(104, 20)
 		Me.btnSetNumOfTiers.Name = "btnSetNumOfTiers"
 		Me.btnSetNumOfTiers.Size = New System.Drawing.Size(36, 20)
 		Me.btnSetNumOfTiers.TabIndex = 13
 		Me.btnSetNumOfTiers.TabStop = False
 		Me.btnSetNumOfTiers.Text = "Set"
-		Me.btnSetNumOfTiers.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		Me.btnSetNumOfTiers.UseVisualStyleBackColor = False
 		'
 		'lblNumOfDays
@@ -261,9 +266,9 @@ Partial Class StepD
 		Me.txtNumOfTiers.Location = New System.Drawing.Point(55, 20)
 		Me.txtNumOfTiers.MaxLength = 2
 		Me.txtNumOfTiers.Name = "txtNumOfTiers"
-		Me.txtNumOfTiers.Size = New System.Drawing.Size(66, 20)
+		Me.txtNumOfTiers.Size = New System.Drawing.Size(43, 20)
 		Me.txtNumOfTiers.TabIndex = 9
-		Me.txtNumOfTiers.Text = "# of Tiers"
+		Me.txtNumOfTiers.Text = "#"
 		'
 		'pnlPayoutParameters
 		'
@@ -327,8 +332,8 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
@@ -411,6 +416,94 @@ Partial Class StepD
 		Me.lblPlayerEligibility.TabIndex = 4
 		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
 		'
+		'pnlPointCutoffLimit
+		'
+		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPointCutoffLimit.Controls.Add(Me.PointCutoffLimitSuccessIcon)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.btnSetPointCutoffLimit)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.txtPointCutoffLimit)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitNO)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitYES)
+		Me.pnlPointCutoffLimit.Controls.Add(Me.lblPointCutoffLimit)
+		Me.pnlPointCutoffLimit.Location = New System.Drawing.Point(18, 148)
+		Me.pnlPointCutoffLimit.Name = "pnlPointCutoffLimit"
+		Me.pnlPointCutoffLimit.Size = New System.Drawing.Size(224, 80)
+		Me.pnlPointCutoffLimit.TabIndex = 9
+		'
+		'PointCutoffLimitSuccessIcon
+		'
+		Me.PointCutoffLimitSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.PointCutoffLimitSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.PointCutoffLimitSuccessIcon.Enabled = False
+		Me.PointCutoffLimitSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.PointCutoffLimitSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.PointCutoffLimitSuccessIcon.Location = New System.Drawing.Point(182, 40)
+		Me.PointCutoffLimitSuccessIcon.Name = "PointCutoffLimitSuccessIcon"
+		Me.PointCutoffLimitSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.PointCutoffLimitSuccessIcon.TabIndex = 36
+		Me.PointCutoffLimitSuccessIcon.TabStop = False
+		Me.PointCutoffLimitSuccessIcon.ToolTipText = Nothing
+		Me.PointCutoffLimitSuccessIcon.Visible = False
+		'
+		'btnSetPointCutoffLimit
+		'
+		Me.btnSetPointCutoffLimit.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPointCutoffLimit.Enabled = False
+		Me.btnSetPointCutoffLimit.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPointCutoffLimit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetPointCutoffLimit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetPointCutoffLimit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPointCutoffLimit.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPointCutoffLimit.ForeColor = System.Drawing.Color.White
+		Me.btnSetPointCutoffLimit.Location = New System.Drawing.Point(140, 39)
+		Me.btnSetPointCutoffLimit.Name = "btnSetPointCutoffLimit"
+		Me.btnSetPointCutoffLimit.Size = New System.Drawing.Size(36, 20)
+		Me.btnSetPointCutoffLimit.TabIndex = 35
+		Me.btnSetPointCutoffLimit.Text = "Set"
+		Me.btnSetPointCutoffLimit.UseVisualStyleBackColor = False
+		'
+		'txtPointCutoffLimit
+		'
+		Me.txtPointCutoffLimit.Enabled = False
+		Me.txtPointCutoffLimit.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtPointCutoffLimit.Location = New System.Drawing.Point(53, 40)
+		Me.txtPointCutoffLimit.MaxLength = 5
+		Me.txtPointCutoffLimit.Name = "txtPointCutoffLimit"
+		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(81, 20)
+		Me.txtPointCutoffLimit.TabIndex = 10
+		Me.txtPointCutoffLimit.Text = "Enter # Here"
+		'
+		'rbPointCutoffLimitNO
+		'
+		Me.rbPointCutoffLimitNO.AutoSize = True
+		Me.rbPointCutoffLimitNO.Checked = True
+		Me.rbPointCutoffLimitNO.Location = New System.Drawing.Point(4, 61)
+		Me.rbPointCutoffLimitNO.Name = "rbPointCutoffLimitNO"
+		Me.rbPointCutoffLimitNO.Size = New System.Drawing.Size(39, 17)
+		Me.rbPointCutoffLimitNO.TabIndex = 9
+		Me.rbPointCutoffLimitNO.TabStop = True
+		Me.rbPointCutoffLimitNO.Text = "No"
+		Me.rbPointCutoffLimitNO.UseVisualStyleBackColor = True
+		'
+		'rbPointCutoffLimitYES
+		'
+		Me.rbPointCutoffLimitYES.AutoSize = True
+		Me.rbPointCutoffLimitYES.Location = New System.Drawing.Point(4, 41)
+		Me.rbPointCutoffLimitYES.Name = "rbPointCutoffLimitYES"
+		Me.rbPointCutoffLimitYES.Size = New System.Drawing.Size(43, 17)
+		Me.rbPointCutoffLimitYES.TabIndex = 8
+		Me.rbPointCutoffLimitYES.Text = "Yes"
+		Me.rbPointCutoffLimitYES.UseVisualStyleBackColor = True
+		'
+		'lblPointCutoffLimit
+		'
+		Me.lblPointCutoffLimit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPointCutoffLimit.Location = New System.Drawing.Point(4, 0)
+		Me.lblPointCutoffLimit.Name = "lblPointCutoffLimit"
+		Me.lblPointCutoffLimit.Size = New System.Drawing.Size(235, 37)
+		Me.lblPointCutoffLimit.TabIndex = 7
+		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+		'
 		'pnlDragOffer
 		'
 		Me.pnlDragOffer.AllowDrop = True
@@ -450,59 +543,20 @@ Partial Class StepD
 		Me.lblDragOffer.Text = "(Drag EligiblePlayers List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'pnlPointCutoffLimit
+		'TiersSuccessIcon
 		'
-		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
-		Me.pnlPointCutoffLimit.Controls.Add(Me.txtPointCutoffLimit)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitNO)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.rbPointCutoffLimitYES)
-		Me.pnlPointCutoffLimit.Controls.Add(Me.lblPointCutoffLimit)
-		Me.pnlPointCutoffLimit.Location = New System.Drawing.Point(18, 148)
-		Me.pnlPointCutoffLimit.Name = "pnlPointCutoffLimit"
-		Me.pnlPointCutoffLimit.Size = New System.Drawing.Size(224, 80)
-		Me.pnlPointCutoffLimit.TabIndex = 9
-		'
-		'txtPointCutoffLimit
-		'
-		Me.txtPointCutoffLimit.Enabled = False
-		Me.txtPointCutoffLimit.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtPointCutoffLimit.Location = New System.Drawing.Point(53, 40)
-		Me.txtPointCutoffLimit.MaxLength = 10
-		Me.txtPointCutoffLimit.Name = "txtPointCutoffLimit"
-		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(143, 23)
-		Me.txtPointCutoffLimit.TabIndex = 10
-		Me.txtPointCutoffLimit.Text = "Enter # Here"
-		'
-		'rbPointCutoffLimitNO
-		'
-		Me.rbPointCutoffLimitNO.AutoSize = True
-		Me.rbPointCutoffLimitNO.Checked = True
-		Me.rbPointCutoffLimitNO.Location = New System.Drawing.Point(4, 61)
-		Me.rbPointCutoffLimitNO.Name = "rbPointCutoffLimitNO"
-		Me.rbPointCutoffLimitNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbPointCutoffLimitNO.TabIndex = 9
-		Me.rbPointCutoffLimitNO.TabStop = True
-		Me.rbPointCutoffLimitNO.Text = "No"
-		Me.rbPointCutoffLimitNO.UseVisualStyleBackColor = True
-		'
-		'rbPointCutoffLimitYES
-		'
-		Me.rbPointCutoffLimitYES.AutoSize = True
-		Me.rbPointCutoffLimitYES.Location = New System.Drawing.Point(4, 41)
-		Me.rbPointCutoffLimitYES.Name = "rbPointCutoffLimitYES"
-		Me.rbPointCutoffLimitYES.Size = New System.Drawing.Size(43, 17)
-		Me.rbPointCutoffLimitYES.TabIndex = 8
-		Me.rbPointCutoffLimitYES.Text = "Yes"
-		Me.rbPointCutoffLimitYES.UseVisualStyleBackColor = True
-		'
-		'lblPointCutoffLimit
-		'
-		Me.lblPointCutoffLimit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblPointCutoffLimit.Location = New System.Drawing.Point(4, 0)
-		Me.lblPointCutoffLimit.Name = "lblPointCutoffLimit"
-		Me.lblPointCutoffLimit.Size = New System.Drawing.Size(235, 37)
-		Me.lblPointCutoffLimit.TabIndex = 7
-		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+		Me.TiersSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.TiersSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.TiersSuccessIcon.Enabled = False
+		Me.TiersSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.TiersSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.TiersSuccessIcon.Location = New System.Drawing.Point(146, 20)
+		Me.TiersSuccessIcon.Name = "TiersSuccessIcon"
+		Me.TiersSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.TiersSuccessIcon.TabIndex = 37
+		Me.TiersSuccessIcon.TabStop = False
+		Me.TiersSuccessIcon.ToolTipText = Nothing
+		Me.TiersSuccessIcon.Visible = False
 		'
 		'StepD
 		'
@@ -532,10 +586,12 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
 		Me.pnlSumMethod.PerformLayout()
-		Me.pnlDragOffer.ResumeLayout(False)
-		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
+		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlDragOffer.ResumeLayout(False)
+		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -574,6 +630,9 @@ Partial Class StepD
 	Friend WithEvents rbTIERS As System.Windows.Forms.RadioButton
 	Friend WithEvents rbDAYS As System.Windows.Forms.RadioButton
 	Friend WithEvents lblSTILLINDEVELOPMENT As System.Windows.Forms.Label
-	Friend WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
+	Private WithEvents btnSetPointCutoffLimit As System.Windows.Forms.Button
+	Private WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
+	Private WithEvents PointCutoffLimitSuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents TiersSuccessIcon As FontAwesomeIcons.IconButton
 
 End Class

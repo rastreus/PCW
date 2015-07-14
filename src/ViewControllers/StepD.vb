@@ -156,6 +156,8 @@ Public Class StepD
 	End Sub
 
 	Private Sub StepD_ResetControls()
+		Me.TiersSuccessIcon.Visible = False
+		Me.PointCutoffLimitSuccessIcon.Visible = False
 		Me.rbSingleEntryPayout.Checked = True
 		Me.txtNumOfTiers.Text = BEP_Util.TiersStr
 		Me.rbSumQualifyingPoints.Checked = True
@@ -433,6 +435,10 @@ Public Class StepD
 									e As EventArgs) _
 		Handles txtNumOfTiers.Enter
 		Me.txtTierBool = True
+		If Me.TiersSuccessIcon.Visible = True Then
+			TiersSuccessIcon.ActiveColor = SystemColors.ControlLight
+			TiersSuccessIcon.InActiveColor = SystemColors.ControlLight
+		End If
 	End Sub
 	Private Sub txtNumOfTiers_Leave(sender As Object, _
 									e As EventArgs) _
@@ -440,6 +446,9 @@ Public Class StepD
 		If Me.txtTierBool And _
 			(Not Me.txtNumOfTiers.Text = BEP_Util.TiersStr And _
 			 Not Me.txtNumOfTiers.Text = "") Then
+			TiersSuccessIcon.ActiveColor = Color.Lime
+			TiersSuccessIcon.InActiveColor = Color.Lime
+			TiersSuccessIcon.Visible = True
 			GUI_Util.NextEnabled()
 		ElseIf (Me.txtNumOfTiers.Text = BEP_Util.TiersStr Or _
 				Me.txtNumOfTiers.Text = "") Then
@@ -488,6 +497,32 @@ Public Class StepD
 									   e As EventArgs) _
 		Handles btnSetNumOfTiers.Click
 		Me.ActiveControl = Me.pnlDaysTiers
+	End Sub
+#End Region
+#Region "StepD_PointCutoffLimit_UI/UX"
+	Private Sub txtPointCutoffLimit_Enter(sender As Object, _
+										  e As EventArgs) _
+		Handles txtPointCutoffLimit.Enter
+		If Me.PointCutoffLimitSuccessIcon.Visible = True Then
+			Me.PointCutoffLimitSuccessIcon.ActiveColor = _
+				SystemColors.ControlLight
+			Me.PointCutoffLimitSuccessIcon.InActiveColor = _
+				SystemColors.ControlLight
+		End If
+	End Sub
+	Private Sub txtPointCutoffLimit_Leave(sender As Object, _
+										  e As EventArgs) _
+		Handles txtPointCutoffLimit.Leave
+		If (Not Me.txtPointCutoffLimit.Text = "") Then
+			Me.PointCutoffLimitSuccessIcon.ActiveColor = Color.Lime
+			Me.PointCutoffLimitSuccessIcon.InActiveColor = Color.Lime
+			Me.PointCutoffLimitSuccessIcon.Visible = True
+		End If
+	End Sub
+	Private Sub btnSetPointCutoffLimit_Click(sender As Object, _
+										 e As EventArgs) _
+	Handles btnSetPointCutoffLimit.Click
+		Me.ActiveControl = Me.pnlPointCutoffLimit
 	End Sub
 #End Region
 End Class

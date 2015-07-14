@@ -76,7 +76,7 @@ Partial Class StepB
 		'
 		Me.btnSetPromoName.BackColor = System.Drawing.Color.Gainsboro
 		Me.btnSetPromoName.Enabled = False
-		Me.btnSetPromoName.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoName.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetPromoName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetPromoName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetPromoName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -270,7 +270,7 @@ Partial Class StepB
 		'btnTxtEditPromoID
 		'
 		Me.btnTxtEditPromoID.BackColor = System.Drawing.Color.HotPink
-		Me.btnTxtEditPromoID.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnTxtEditPromoID.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnTxtEditPromoID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnTxtEditPromoID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnTxtEditPromoID.FlatStyle = System.Windows.Forms.FlatStyle.Flat

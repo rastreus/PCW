@@ -9,7 +9,7 @@ Public Class BEP_Util
 	Private Shared _promoAmtStr As String = "Enter Amt Here"
 	Private Shared _promoNumStr As String = "Enter # Here"
 	Private Shared _promoDaysStr As String = "# of Days"
-	Private Shared _promoTiersStr As String = "# of Tiers"
+	Private Shared _promoTiersStr As String = "#"
 	Private Shared _promoPrizeStr As String = "Enter Prize Here"
 
 	Public Shared ReadOnly Property AmtStr As String
