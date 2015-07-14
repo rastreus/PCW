@@ -144,7 +144,7 @@ Public Class StepEntryTicketAmt_Data
 	Public Function BadPromoType() As Boolean
 		Dim result As Boolean = False
 		If (PromoType = "") Or _
-			(PromoType = "EX: 25") Or _
+			(PromoType = "EX:25") Or _
 			(PromoType.Length > 3) Then
 			result = True
 		End If

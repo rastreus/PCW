@@ -176,7 +176,7 @@ Public Class StepEntryTicketAmt
 		Me.txtTicketsPerPatron.Text = BEP_Util.NumStr
 		Me.rbTicketsPerPatronNO.Checked = True
 		Me.txtTicketsEntirePromo.Text = BEP_Util.NumStr
-		Me.txtPromoType.Text = "EX: 25"
+		Me.txtPromoType.Text = "EX:25"
 		Me.btnSetPromoType.BackColor = Color.Gainsboro
 		Me.btnSetPromoType.Enabled = False
 		Me.btnSetTicketsPerPatron.BackColor = Color.Gainsboro
