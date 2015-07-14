@@ -433,8 +433,6 @@ Public Class StepD
 									e As EventArgs) _
 		Handles txtNumOfTiers.Enter
 		Me.txtTierBool = True
-		Me.txtNumOfTiers.Text = ""
-		Me.ActiveControl = Me.txtNumOfTiers
 	End Sub
 	Private Sub txtNumOfTiers_Leave(sender As Object, _
 									e As EventArgs) _
