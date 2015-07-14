@@ -242,10 +242,12 @@ Public Class StepCanHazSecurity
 			PCW.NextEnabled = False
 			Me.pnlOverrideTime.Enabled = True
 			Me.pnlCutoffTime.Enabled = True
+			Me.lblBefore.Visible = True
 		Else
 			GUI_Util.NextEnabled()
 			Me.pnlOverrideTime.Enabled = False
 			Me.pnlCutoffTime.Enabled = False
+			Me.lblBefore.Visible = False
 		End If
 	End Sub
 #End Region

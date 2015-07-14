@@ -45,12 +45,18 @@ Partial Class StepCanHazSecurity
 		Me.lblTimeColon2 = New System.Windows.Forms.Label()
 		Me.txtCutoffTimeHours = New System.Windows.Forms.TextBox()
 		Me.lblCutoffTime = New System.Windows.Forms.Label()
+		Me.pnlExplanations = New System.Windows.Forms.Panel()
+		Me.lblOverrideExplanation = New System.Windows.Forms.Label()
+		Me.Label1 = New System.Windows.Forms.Label()
+		Me.lblBefore = New System.Windows.Forms.Label()
+		Me.lblSecDesc = New System.Windows.Forms.Label()
 		Me.pnlSecurity.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlOverrideTime.SuspendLayout()
 		Me.pnlPaleTurquoise.SuspendLayout()
 		Me.pnlCutoffTime.SuspendLayout()
 		Me.Panel2.SuspendLayout()
+		Me.pnlExplanations.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -64,9 +70,9 @@ Partial Class StepCanHazSecurity
 		Me.pnlSecurity.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlSecurity.Controls.Add(Me.pnlPapayaWhip)
 		Me.pnlSecurity.Controls.Add(Me.lblSecurity)
-		Me.pnlSecurity.Location = New System.Drawing.Point(151, 87)
+		Me.pnlSecurity.Location = New System.Drawing.Point(68, 83)
 		Me.pnlSecurity.Name = "pnlSecurity"
-		Me.pnlSecurity.Size = New System.Drawing.Size(160, 112)
+		Me.pnlSecurity.Size = New System.Drawing.Size(160, 140)
 		Me.pnlSecurity.TabIndex = 0
 		'
 		'pnlPapayaWhip
@@ -76,7 +82,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlPapayaWhip.CausesValidation = False
 		Me.pnlPapayaWhip.Controls.Add(Me.rbSecurityNO)
 		Me.pnlPapayaWhip.Controls.Add(Me.rbSecurityYES)
-		Me.pnlPapayaWhip.Location = New System.Drawing.Point(11, 40)
+		Me.pnlPapayaWhip.Location = New System.Drawing.Point(8, 73)
 		Me.pnlPapayaWhip.Name = "pnlPapayaWhip"
 		Me.pnlPapayaWhip.Size = New System.Drawing.Size(135, 50)
 		Me.pnlPapayaWhip.TabIndex = 0
@@ -111,9 +117,9 @@ Partial Class StepCanHazSecurity
 		Me.lblSecurity.ForeColor = System.Drawing.Color.White
 		Me.lblSecurity.Location = New System.Drawing.Point(0, 0)
 		Me.lblSecurity.Name = "lblSecurity"
-		Me.lblSecurity.Size = New System.Drawing.Size(158, 52)
+		Me.lblSecurity.Size = New System.Drawing.Size(158, 75)
 		Me.lblSecurity.TabIndex = 0
-		Me.lblSecurity.Text = "Would you like to add security features?"
+		Me.lblSecurity.Text = "Would you like to add Override Time and Cutoff Time as security features?"
 		'
 		'pnlOverrideTime
 		'
@@ -126,7 +132,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlOverrideTime.Controls.Add(Me.txtOverrideTimeHours)
 		Me.pnlOverrideTime.Controls.Add(Me.lblOverrideTime)
 		Me.pnlOverrideTime.Enabled = False
-		Me.pnlOverrideTime.Location = New System.Drawing.Point(317, 69)
+		Me.pnlOverrideTime.Location = New System.Drawing.Point(380, 83)
 		Me.pnlOverrideTime.Name = "pnlOverrideTime"
 		Me.pnlOverrideTime.Size = New System.Drawing.Size(140, 75)
 		Me.pnlOverrideTime.TabIndex = 0
@@ -244,7 +250,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlCutoffTime.Controls.Add(Me.txtCutoffTimeHours)
 		Me.pnlCutoffTime.Controls.Add(Me.lblCutoffTime)
 		Me.pnlCutoffTime.Enabled = False
-		Me.pnlCutoffTime.Location = New System.Drawing.Point(317, 150)
+		Me.pnlCutoffTime.Location = New System.Drawing.Point(380, 164)
 		Me.pnlCutoffTime.Name = "pnlCutoffTime"
 		Me.pnlCutoffTime.Size = New System.Drawing.Size(140, 75)
 		Me.pnlCutoffTime.TabIndex = 0
@@ -351,10 +357,70 @@ Partial Class StepCanHazSecurity
 		Me.lblCutoffTime.Text = "Cutoff Time"
 		Me.lblCutoffTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
+		'pnlExplanations
+		'
+		Me.pnlExplanations.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlExplanations.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlExplanations.Controls.Add(Me.lblSecDesc)
+		Me.pnlExplanations.Controls.Add(Me.Label1)
+		Me.pnlExplanations.Controls.Add(Me.lblOverrideExplanation)
+		Me.pnlExplanations.Location = New System.Drawing.Point(234, 83)
+		Me.pnlExplanations.Name = "pnlExplanations"
+		Me.pnlExplanations.Size = New System.Drawing.Size(140, 156)
+		Me.pnlExplanations.TabIndex = 1
+		'
+		'lblOverrideExplanation
+		'
+		Me.lblOverrideExplanation.BackColor = System.Drawing.Color.Transparent
+		Me.lblOverrideExplanation.ForeColor = System.Drawing.Color.White
+		Me.lblOverrideExplanation.Location = New System.Drawing.Point(0, 22)
+		Me.lblOverrideExplanation.Name = "lblOverrideExplanation"
+		Me.lblOverrideExplanation.Size = New System.Drawing.Size(133, 67)
+		Me.lblOverrideExplanation.TabIndex = 0
+		Me.lblOverrideExplanation.Text = "Override Time is the time at which all further promo attempts will require a supe" & _
+	"rvisor/manager override."
+		'
+		'Label1
+		'
+		Me.Label1.BackColor = System.Drawing.Color.Transparent
+		Me.Label1.ForeColor = System.Drawing.Color.White
+		Me.Label1.Location = New System.Drawing.Point(0, 95)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(133, 56)
+		Me.Label1.TabIndex = 1
+		Me.Label1.Text = "Cutoff Time is the time at which all further promo attempts are cutoff and no one" & _
+	" can override."
+		'
+		'lblBefore
+		'
+		Me.lblBefore.BackColor = System.Drawing.Color.Yellow
+		Me.lblBefore.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblBefore.ForeColor = System.Drawing.Color.Black
+		Me.lblBefore.Location = New System.Drawing.Point(382, 32)
+		Me.lblBefore.Name = "lblBefore"
+		Me.lblBefore.Size = New System.Drawing.Size(132, 48)
+		Me.lblBefore.TabIndex = 2
+		Me.lblBefore.Text = "The Override Time must be before the Cutoff time."
+		Me.lblBefore.Visible = False
+		'
+		'lblSecDesc
+		'
+		Me.lblSecDesc.AutoSize = True
+		Me.lblSecDesc.BackColor = System.Drawing.Color.Transparent
+		Me.lblSecDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblSecDesc.ForeColor = System.Drawing.Color.White
+		Me.lblSecDesc.Location = New System.Drawing.Point(0, 0)
+		Me.lblSecDesc.Name = "lblSecDesc"
+		Me.lblSecDesc.Size = New System.Drawing.Size(99, 16)
+		Me.lblSecDesc.TabIndex = 2
+		Me.lblSecDesc.Text = "Descriptions:"
+		'
 		'StepCanHazSecurity
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.lblBefore)
+		Me.Controls.Add(Me.pnlExplanations)
 		Me.Controls.Add(Me.pnlCutoffTime)
 		Me.Controls.Add(Me.pnlOverrideTime)
 		Me.Controls.Add(Me.pnlSecurity)
@@ -367,6 +433,8 @@ Partial Class StepCanHazSecurity
 		Me.Controls.SetChildIndex(Me.pnlSecurity, 0)
 		Me.Controls.SetChildIndex(Me.pnlOverrideTime, 0)
 		Me.Controls.SetChildIndex(Me.pnlCutoffTime, 0)
+		Me.Controls.SetChildIndex(Me.pnlExplanations, 0)
+		Me.Controls.SetChildIndex(Me.lblBefore, 0)
 		Me.pnlSecurity.ResumeLayout(False)
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlPapayaWhip.PerformLayout()
@@ -378,6 +446,8 @@ Partial Class StepCanHazSecurity
 		Me.pnlCutoffTime.PerformLayout()
 		Me.Panel2.ResumeLayout(False)
 		Me.Panel2.PerformLayout()
+		Me.pnlExplanations.ResumeLayout(False)
+		Me.pnlExplanations.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -404,5 +474,10 @@ Partial Class StepCanHazSecurity
 	Private WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
 	Private WithEvents pnlPaleTurquoise As System.Windows.Forms.Panel
 	Private WithEvents Panel2 As System.Windows.Forms.Panel
+	Friend WithEvents pnlExplanations As System.Windows.Forms.Panel
+	Friend WithEvents Label1 As System.Windows.Forms.Label
+	Friend WithEvents lblOverrideExplanation As System.Windows.Forms.Label
+	Friend WithEvents lblBefore As System.Windows.Forms.Label
+	Friend WithEvents lblSecDesc As System.Windows.Forms.Label
 
 End Class
