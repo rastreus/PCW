@@ -205,6 +205,9 @@ Public Class StepCanHazSecurity
 								errString)
 				Me.ActiveControl = Me.pnlOverrideTime
 			Else
+				Me.OverrideSuccessIcon.ActiveColor = Color.Lime
+				Me.OverrideSuccessIcon.InActiveColor = Color.Lime
+				Me.OverrideSuccessIcon.Visible = True
 				GUI_Util.regPnl(Me.pnlOverrideTime)
 				CheckForNext()
 			End If
@@ -228,6 +231,9 @@ Public Class StepCanHazSecurity
 								errString)
 				Me.ActiveControl = Me.pnlCutoffTime
 			Else
+				Me.CutoffSuccessIcon.ActiveColor = Color.Lime
+				Me.CutoffSuccessIcon.InActiveColor = Color.Lime
+				Me.CutoffSuccessIcon.Visible = True
 				GUI_Util.regPnl(Me.pnlCutoffTime)
 				CheckForNext()
 			End If
@@ -302,6 +308,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtOverrideTimeHours_Enter(sender As Object, _
 										   e As EventArgs) _
 		Handles txtOverrideTimeHours.Enter
+		ClearSuccessIcon(Me.OverrideSuccessIcon)
 		Me.OverrideTimeHoursEntered = True
 		Me.txtOverrideTimeHours.Text = ClearHours( _
 			Me.txtOverrideTimeHours.Text)
@@ -312,6 +319,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtCutoffTimeHours_Enter(sender As Object, _
 										 e As EventArgs) _
 		Handles txtCutoffTimeHours.Enter
+		ClearSuccessIcon(Me.CutoffSuccessIcon)
 		Me.CutoffTimeHoursEntered = True
 		Me.txtCutoffTimeHours.Text = ClearHours( _
 			Me.txtCutoffTimeHours.Text)
@@ -322,6 +330,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtOverrideTimeMinutes_Enter(sender As Object, _
 											 e As EventArgs) _
 		Handles txtOverrideTimeMinutes.Enter
+		ClearSuccessIcon(Me.OverrideSuccessIcon)
 		Me.OverrideTimeMinutesEntered = True
 		Me.txtOverrideTimeMinutes.Text = ClearMinutes( _
 			Me.txtOverrideTimeMinutes.Text)
@@ -332,6 +341,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub txtCutoffTimeMinutes_Enter(sender As Object, _
 										   e As EventArgs) _
 		Handles txtCutoffTimeMinutes.Enter
+		ClearSuccessIcon(Me.CutoffSuccessIcon)
 		Me.CutoffTimeMinutesEntered = True
 		Me.txtCutoffTimeMinutes.Text = ClearMinutes( _
 			Me.txtCutoffTimeMinutes.Text)
@@ -347,6 +357,12 @@ Each TextBox is validated for invalid (non-numeric) characters.
 		Dim result As String = If(minutes = "mm", "", minutes)
 		Return result
 	End Function
+	Private Sub ClearSuccessIcon(ByRef successIcon As FontAwesomeIcons.IconButton)
+		If successIcon.Visible = True Then
+			successIcon.ActiveColor = SystemColors.ControlLight
+			successIcon.InActiveColor = SystemColors.ControlLight
+		End If
+	End Sub
 #End Region
 #Region "_TIME_LEAVE_"
 	Private Sub txtOverrideTimeHours_Leave(sender As Object, _

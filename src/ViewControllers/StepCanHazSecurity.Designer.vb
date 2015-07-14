@@ -50,6 +50,8 @@ Partial Class StepCanHazSecurity
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.lblBefore = New System.Windows.Forms.Label()
 		Me.lblSecDesc = New System.Windows.Forms.Label()
+		Me.OverrideSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.CutoffSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.pnlSecurity.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlOverrideTime.SuspendLayout()
@@ -57,6 +59,8 @@ Partial Class StepCanHazSecurity
 		Me.pnlCutoffTime.SuspendLayout()
 		Me.Panel2.SuspendLayout()
 		Me.pnlExplanations.SuspendLayout()
+		CType(Me.OverrideSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+		CType(Me.CutoffSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -125,6 +129,7 @@ Partial Class StepCanHazSecurity
 		'
 		Me.pnlOverrideTime.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlOverrideTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlOverrideTime.Controls.Add(Me.OverrideSuccessIcon)
 		Me.pnlOverrideTime.Controls.Add(Me.btnSubmitOverrideTime)
 		Me.pnlOverrideTime.Controls.Add(Me.pnlPaleTurquoise)
 		Me.pnlOverrideTime.Controls.Add(Me.txtOverrideTimeMinutes)
@@ -161,7 +166,7 @@ Partial Class StepCanHazSecurity
 		Me.pnlPaleTurquoise.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlPaleTurquoise.Controls.Add(Me.rbOverrideTimePM)
 		Me.pnlPaleTurquoise.Controls.Add(Me.rbOverrideTimeAM)
-		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(83, 16)
+		Me.pnlPaleTurquoise.Location = New System.Drawing.Point(83, 3)
 		Me.pnlPaleTurquoise.Name = "pnlPaleTurquoise"
 		Me.pnlPaleTurquoise.Size = New System.Drawing.Size(49, 39)
 		Me.pnlPaleTurquoise.TabIndex = 0
@@ -230,11 +235,11 @@ Partial Class StepCanHazSecurity
 		'
 		Me.lblOverrideTime.AutoSize = True
 		Me.lblOverrideTime.BackColor = System.Drawing.Color.Transparent
-		Me.lblOverrideTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblOverrideTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblOverrideTime.ForeColor = System.Drawing.Color.Gainsboro
 		Me.lblOverrideTime.Location = New System.Drawing.Point(0, 0)
 		Me.lblOverrideTime.Name = "lblOverrideTime"
-		Me.lblOverrideTime.Size = New System.Drawing.Size(86, 13)
+		Me.lblOverrideTime.Size = New System.Drawing.Size(76, 12)
 		Me.lblOverrideTime.TabIndex = 0
 		Me.lblOverrideTime.Text = "Override Time"
 		Me.lblOverrideTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -243,6 +248,7 @@ Partial Class StepCanHazSecurity
 		'
 		Me.pnlCutoffTime.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlCutoffTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlCutoffTime.Controls.Add(Me.CutoffSuccessIcon)
 		Me.pnlCutoffTime.Controls.Add(Me.btnSubmitCutoffTime)
 		Me.pnlCutoffTime.Controls.Add(Me.Panel2)
 		Me.pnlCutoffTime.Controls.Add(Me.txtCutoffTimeMinutes)
@@ -279,7 +285,7 @@ Partial Class StepCanHazSecurity
 		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.Panel2.Controls.Add(Me.rbCutoffTimePM)
 		Me.Panel2.Controls.Add(Me.rbCutoffTimeAM)
-		Me.Panel2.Location = New System.Drawing.Point(83, 16)
+		Me.Panel2.Location = New System.Drawing.Point(83, 3)
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(49, 39)
 		Me.Panel2.TabIndex = 0
@@ -348,11 +354,11 @@ Partial Class StepCanHazSecurity
 		'
 		Me.lblCutoffTime.AutoSize = True
 		Me.lblCutoffTime.BackColor = System.Drawing.Color.Transparent
-		Me.lblCutoffTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCutoffTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblCutoffTime.ForeColor = System.Drawing.Color.Gainsboro
 		Me.lblCutoffTime.Location = New System.Drawing.Point(0, 0)
 		Me.lblCutoffTime.Name = "lblCutoffTime"
-		Me.lblCutoffTime.Size = New System.Drawing.Size(72, 13)
+		Me.lblCutoffTime.Size = New System.Drawing.Size(64, 12)
 		Me.lblCutoffTime.TabIndex = 0
 		Me.lblCutoffTime.Text = "Cutoff Time"
 		Me.lblCutoffTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -396,9 +402,9 @@ Partial Class StepCanHazSecurity
 		Me.lblBefore.BackColor = System.Drawing.Color.Yellow
 		Me.lblBefore.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblBefore.ForeColor = System.Drawing.Color.Black
-		Me.lblBefore.Location = New System.Drawing.Point(382, 32)
+		Me.lblBefore.Location = New System.Drawing.Point(385, 28)
 		Me.lblBefore.Name = "lblBefore"
-		Me.lblBefore.Size = New System.Drawing.Size(132, 48)
+		Me.lblBefore.Size = New System.Drawing.Size(129, 48)
 		Me.lblBefore.TabIndex = 2
 		Me.lblBefore.Text = "The Override Time must be before the Cutoff time."
 		Me.lblBefore.Visible = False
@@ -414,6 +420,36 @@ Partial Class StepCanHazSecurity
 		Me.lblSecDesc.Size = New System.Drawing.Size(99, 16)
 		Me.lblSecDesc.TabIndex = 2
 		Me.lblSecDesc.Text = "Descriptions:"
+		'
+		'OverrideSuccessIcon
+		'
+		Me.OverrideSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.OverrideSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.OverrideSuccessIcon.Enabled = False
+		Me.OverrideSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.OverrideSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.OverrideSuccessIcon.Location = New System.Drawing.Point(83, 48)
+		Me.OverrideSuccessIcon.Name = "OverrideSuccessIcon"
+		Me.OverrideSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.OverrideSuccessIcon.TabIndex = 10
+		Me.OverrideSuccessIcon.TabStop = False
+		Me.OverrideSuccessIcon.ToolTipText = Nothing
+		Me.OverrideSuccessIcon.Visible = False
+		'
+		'CutoffSuccessIcon
+		'
+		Me.CutoffSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.CutoffSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.CutoffSuccessIcon.Enabled = False
+		Me.CutoffSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.CutoffSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.CutoffSuccessIcon.Location = New System.Drawing.Point(83, 48)
+		Me.CutoffSuccessIcon.Name = "CutoffSuccessIcon"
+		Me.CutoffSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.CutoffSuccessIcon.TabIndex = 10
+		Me.CutoffSuccessIcon.TabStop = False
+		Me.CutoffSuccessIcon.ToolTipText = Nothing
+		Me.CutoffSuccessIcon.Visible = False
 		'
 		'StepCanHazSecurity
 		'
@@ -448,6 +484,8 @@ Partial Class StepCanHazSecurity
 		Me.Panel2.PerformLayout()
 		Me.pnlExplanations.ResumeLayout(False)
 		Me.pnlExplanations.PerformLayout()
+		CType(Me.OverrideSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		CType(Me.CutoffSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -479,5 +517,7 @@ Partial Class StepCanHazSecurity
 	Friend WithEvents lblOverrideExplanation As System.Windows.Forms.Label
 	Friend WithEvents lblBefore As System.Windows.Forms.Label
 	Friend WithEvents lblSecDesc As System.Windows.Forms.Label
+	Private WithEvents OverrideSuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents CutoffSuccessIcon As FontAwesomeIcons.IconButton
 
 End Class
