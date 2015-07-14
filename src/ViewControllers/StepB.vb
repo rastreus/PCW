@@ -268,10 +268,7 @@ Public Class StepB
 		Me.promoNameEntered = True
 		Me.btnSetPromoName.BackColor = Color.HotPink
 		Me.btnSetPromoName.Enabled = True
-		If Me.SuccessIcon.Visible = True Then
-			Me.SuccessIcon.ActiveColor = SystemColors.ControlLight
-			Me.SuccessIcon.InActiveColor = SystemColors.ControlLight
-		End If
+		GUI_Util.offIcon(Me.SuccessIcon)
 	End Sub
 #End Region
 #Region "StepB_txtPromoName_Leave"
@@ -284,9 +281,7 @@ Public Class StepB
 			Me.promoID = getPromoID()
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
-			Me.SuccessIcon.ActiveColor = Color.Lime
-			Me.SuccessIcon.InActiveColor = Color.Lime
-			Me.SuccessIcon.Visible = True
+			GUI_Util.onIcon(Me.SuccessIcon)
 			If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
 				'SET IT ALL BACK
 				Dim errID As String = New String("!")
