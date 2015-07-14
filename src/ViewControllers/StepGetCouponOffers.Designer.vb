@@ -98,7 +98,7 @@ Partial Class StepGetCouponOffers
 		'Description
 		'
 		Me.Description.Size = New System.Drawing.Size(578, 72)
-		Me.Description.Text = "Drag and drop Offer Lists here."
+		Me.Description.Text = "Create Coupon Offer(s) for the Payout."
 		'
 		'pnlExclusionDays
 		'
@@ -724,7 +724,7 @@ Partial Class StepGetCouponOffers
 		Me.NextStep = "StepGetCouponTargets"
 		Me.PreviousStep = "StepGeneratePayoutCoupon"
 		Me.Size = New System.Drawing.Size(594, 293)
-		Me.StepDescription = "Drag and drop Offer Lists here."
+		Me.StepDescription = "Create Coupon Offer(s) for the Payout."
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlExclusionDays, 0)
 		Me.Controls.SetChildIndex(Me.pnlExcludeRange, 0)
