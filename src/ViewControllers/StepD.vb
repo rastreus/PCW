@@ -120,8 +120,7 @@ Public Class StepD
 		Me.stepD_data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
 		local_StepB = PCW.GetStep("StepB")
 		local_promoID = local_StepB.Data.ID
-		Me.stepD_data.CSVtoEligiblePlayersList(local_promoID, _
-											   PCW.Data.EligiblePlayerList)
+		Me.stepD_data.CSVtoEligiblePlayersList(local_promoID)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
 		GUI_Util.NextEnabled()

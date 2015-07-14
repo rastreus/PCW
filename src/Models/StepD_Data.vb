@@ -115,8 +115,8 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "CSVtoEligiblePlayersList"
-	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String, _
-										ByRef list As List(Of MarketingPromoEligiblePlayer))
+	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String)
+		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
 		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
@@ -128,7 +128,9 @@ Public Class StepD_Data
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
-				ParseIntoList(currentRow, promoID, list)
+				marketingPromoEligiblePlayerDBRow = New MarketingPromoEligiblePlayer
+				marketingPromoEligiblePlayerDBRow = ParseIntoList(currentRow, promoID)
+				PCW.Data.EligiblePlayerList.Add(marketingPromoEligiblePlayerDBRow)
 			Catch ex As Exception
 				'Handle Exception
 			End Try
@@ -136,16 +138,15 @@ Public Class StepD_Data
 	End Sub
 #End Region
 #Region "ParseIntoList"
-	Private Sub ParseIntoList(ByRef currentRow As String(), _
-							  ByRef promoID As String, _
-							  ByRef list As List(Of MarketingPromoEligiblePlayer))
+	Private Function ParseIntoList(ByRef currentRow As String(), _
+							  ByRef promoID As String)
 		Dim eligiblePlayers As MarketingPromoEligiblePlayer = New MarketingPromoEligiblePlayer()
 		eligiblePlayers.PromoID = promoID
 		eligiblePlayers.PlayerID = currentRow(0)
 		eligiblePlayers.NumOfTickets = currentRow(13)
 		eligiblePlayers.TicketAmount = Nothing
-		list.Add(eligiblePlayers)
-	End Sub
+		Return eligiblePlayers
+	End Function
 #End Region
 #Region "Validity Checks"
 	Public Function PointCutoffLimit_Invalid() As Boolean
