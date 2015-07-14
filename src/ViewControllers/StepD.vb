@@ -80,11 +80,6 @@ Public Class StepD
 		End Select
 		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
 															 Me.txtPointCutoffLimit.Text)
-		If Me.rbEligiblePlayersList.Checked And
-			Me.successBool Then
-			PCW.Data.UsesEligiblePlayers = True
-			setEligiblePlayersCSV()
-		End If
 	End Sub
 
 	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, _
@@ -115,7 +110,6 @@ Public Class StepD
 	Private Sub setEligiblePlayersCSV()
 		Dim local_StepB As StepB = New StepB
 		Dim local_promoID As String = New String("!")
-		PCW.NextEnabled = False
 		Me.UseWaitCursor = True
 		Me.stepD_data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
 		local_StepB = PCW.GetStep("StepB")
@@ -123,6 +117,7 @@ Public Class StepD
 		Me.stepD_data.CSVtoEligiblePlayersList(local_promoID)
 		'Only Enable once sure the CSV in a DataTable
 		Me.UseWaitCursor = False
+		GUI_Util.onIcon(Me.SuccessIcon)
 		GUI_Util.NextEnabled()
 	End Sub
 #End Region
@@ -249,6 +244,11 @@ Public Class StepD
 	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, _
 														  e As EventArgs) _
 		Handles rbEligiblePlayersList.CheckedChanged
+		If Me.rbEligiblePlayersList.Checked Then
+			PCW.NextEnabled = False
+		Else
+			GUI_Util.NextEnabled()
+		End If
 		SetDragDropPanel(Me.rbEligiblePlayersList.Checked)
 	End Sub
 
@@ -295,7 +295,8 @@ Public Class StepD
 				Dim s As String = a.GetValue(0).ToString
 				Me.BeginInvoke(m_DelegateChangeLabelText, _
 							   New Object() {s})
-				DragDropSuccessIcon()
+				Me.btnSubmitEP.BackColor = Color.MediumPurple
+				Me.btnSubmitEP.Enabled = True
 				Me.successBool = True
 			End If
 		Catch ex As Exception
@@ -516,6 +517,18 @@ Public Class StepD
 										 e As EventArgs) _
 	Handles btnSetPointCutoffLimit.Click
 		Me.ActiveControl = Me.pnlPointCutoffLimit
+	End Sub
+#End Region
+#Region "StepD_btnSubmitEP_Click"
+	Private Sub btnSubmitEP_Click(sender As Object, _
+							  e As EventArgs) _
+	Handles btnSubmitEP.Click
+		If Me.rbEligiblePlayersList.Checked And _
+			Me.successBool Then
+			Me.btnSubmitEP.Enabled = False
+			PCW.Data.UsesEligiblePlayers = True
+			setEligiblePlayersCSV()
+		End If
 	End Sub
 #End Region
 End Class

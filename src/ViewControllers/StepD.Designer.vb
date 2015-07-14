@@ -61,6 +61,7 @@ Partial Class StepD
 		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.lblDragOffer = New System.Windows.Forms.Label()
 		Me.TiersSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.btnSubmitEP = New System.Windows.Forms.Button()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlDaysTiers.SuspendLayout()
@@ -508,6 +509,7 @@ Partial Class StepD
 		'
 		Me.pnlDragOffer.AllowDrop = True
 		Me.pnlDragOffer.BackColor = System.Drawing.Color.LemonChiffon
+		Me.pnlDragOffer.Controls.Add(Me.btnSubmitEP)
 		Me.pnlDragOffer.Controls.Add(Me.SuccessIcon)
 		Me.pnlDragOffer.Controls.Add(Me.lblDragOffer)
 		Me.pnlDragOffer.Cursor = System.Windows.Forms.Cursors.Hand
@@ -525,9 +527,9 @@ Partial Class StepD
 		Me.SuccessIcon.Enabled = False
 		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
 		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.Location = New System.Drawing.Point(183, 10)
+		Me.SuccessIcon.Location = New System.Drawing.Point(189, 54)
 		Me.SuccessIcon.Name = "SuccessIcon"
-		Me.SuccessIcon.Size = New System.Drawing.Size(24, 24)
+		Me.SuccessIcon.Size = New System.Drawing.Size(20, 20)
 		Me.SuccessIcon.TabIndex = 5
 		Me.SuccessIcon.TabStop = False
 		Me.SuccessIcon.ToolTipText = Nothing
@@ -536,9 +538,9 @@ Partial Class StepD
 		'lblDragOffer
 		'
 		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragOffer.Location = New System.Drawing.Point(3, 34)
+		Me.lblDragOffer.Location = New System.Drawing.Point(3, 3)
 		Me.lblDragOffer.Name = "lblDragOffer"
-		Me.lblDragOffer.Size = New System.Drawing.Size(218, 21)
+		Me.lblDragOffer.Size = New System.Drawing.Size(218, 22)
 		Me.lblDragOffer.TabIndex = 0
 		Me.lblDragOffer.Text = "(Drag EligiblePlayers List .CSV File Here)"
 		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -557,6 +559,24 @@ Partial Class StepD
 		Me.TiersSuccessIcon.TabStop = False
 		Me.TiersSuccessIcon.ToolTipText = Nothing
 		Me.TiersSuccessIcon.Visible = False
+		'
+		'btnSubmitEP
+		'
+		Me.btnSubmitEP.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSubmitEP.Enabled = False
+		Me.btnSubmitEP.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSubmitEP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkViolet
+		Me.btnSubmitEP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnSubmitEP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSubmitEP.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSubmitEP.ForeColor = System.Drawing.Color.White
+		Me.btnSubmitEP.Location = New System.Drawing.Point(43, 50)
+		Me.btnSubmitEP.Name = "btnSubmitEP"
+		Me.btnSubmitEP.Size = New System.Drawing.Size(140, 26)
+		Me.btnSubmitEP.TabIndex = 32
+		Me.btnSubmitEP.Text = "Submit"
+		Me.btnSubmitEP.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSubmitEP.UseVisualStyleBackColor = False
 		'
 		'StepD
 		'
@@ -634,5 +654,6 @@ Partial Class StepD
 	Private WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
 	Private WithEvents PointCutoffLimitSuccessIcon As FontAwesomeIcons.IconButton
 	Private WithEvents TiersSuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents btnSubmitEP As System.Windows.Forms.Button
 
 End Class
