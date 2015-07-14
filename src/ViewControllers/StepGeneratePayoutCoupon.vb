@@ -234,12 +234,25 @@ Public Class StepGeneratePayoutCoupon
 										  e As EventArgs) _
 		Handles txtCouponsPerPatron.Enter
 		If Me.rbCouponsPerPatronYES.Checked Then
+			If Me.btnSetCouponsPerPatron.Enabled = False Then
+				GUI_Util.onSetBtn(Me.btnSetCouponsPerPatron)
+			End If
+			GUI_Util.offIcon(Me.CouponsPerPatronSuccessIcon)
 			Me.couponsPerPatronBool = True
 		End If
+	End Sub
+	Private Sub txtCouponsPerPatron_Leave(sender As Object, _
+										  e As EventArgs) _
+		Handles txtCouponsPerPatron.Leave
+		GUI_Util.onIcon(Me.CouponsPerPatronSuccessIcon)
 	End Sub
 	Private Sub txtMaxAmtOneCoupon_Enter(sender As Object, _
 										 e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Enter
+		If Me.btnSetMaxAmtOneCoupon.Enabled = False Then
+			GUI_Util.onSetBtn(Me.btnSetMaxAmtOneCoupon)
+		End If
+		GUI_Util.offIcon(Me.MaxAmtOneCouponSuccessIcon)
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
 			txtMaxAmtOneCoupon.Text = ""
 		End If
@@ -248,11 +261,16 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub txtMaxAmtOneCoupon_Leave(sender As Object, _
 										 e As EventArgs) _
 		Handles txtMaxAmtOneCoupon.Leave
+		GUI_Util.onIcon(Me.MaxAmtOneCouponSuccessIcon)
 		CheckForNext()
 	End Sub
 	Private Sub txtMaxAmtAllCoupons_Enter(sender As Object, _
 										  e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Enter
+		If Me.btnSetMaxAmtAllCoupons.Enabled = False Then
+			GUI_Util.onSetBtn(Me.btnSetMaxAmtAllCoupons)
+		End If
+		GUI_Util.offIcon(Me.MaxAmtAllCouponsSuccessIcon)
 		If txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr Then
 			txtMaxAmtAllCoupons.Text = ""
 		End If
@@ -261,6 +279,7 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub txtMaxAmtAllCoupons_Leave(sender As Object, _
 										  e As EventArgs) _
 		Handles txtMaxAmtAllCoupons.Leave
+		GUI_Util.onIcon(Me.MaxAmtAllCouponsSuccessIcon)
 		CheckForNext()
 	End Sub
 	Private Sub CheckForNext()

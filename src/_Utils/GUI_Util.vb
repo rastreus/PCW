@@ -16,6 +16,11 @@ Public Class GUI_Util
 		End If
 	End Sub
 
+	Public Shared Sub onSetBtn(ByRef btn As Windows.Forms.Button)
+		btn.Enabled = True
+		btn.BackColor = Color.HotPink
+	End Sub
+
 	Public Shared Sub offIcon(ByRef icon As FontAwesomeIcons.IconButton)
 		If icon.Visible = True Then
 			icon.ActiveColor = SystemColors.ControlLight
