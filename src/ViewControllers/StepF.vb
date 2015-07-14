@@ -234,14 +234,15 @@ Public Class StepF
 			Me.txtPromoType.Text = ""
 			Me.promoTypeEntered = True
 		End If
-		Me.btnSetPromoType.BackColor = Color.HotPink
-		Me.btnSetPromoType.Enabled = True
+		GUI_Util.offIcon(Me.PromoTypeSuccessIcon)
+		GUI_Util.onSetBtn(Me.btnSetPromoType)
 	End Sub
 #End Region
 #Region "StepF_txtPromoType_Leave"
 	Private Sub txtPromoType_Leave(sender As Object, _
 								   e As EventArgs) _
 		Handles txtPromoType.Leave
+		GUI_Util.onIcon(Me.PromoTypeSuccessIcon)
 		CheckForNext()
 	End Sub
 

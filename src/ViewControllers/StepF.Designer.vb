@@ -23,6 +23,8 @@ Partial Class StepF
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
 		Me.pnlPayout = New System.Windows.Forms.Panel()
+		Me.pnlDEBUG = New System.Windows.Forms.Panel()
+		Me.lblDEBUG = New System.Windows.Forms.Label()
 		Me.pnlCashValue = New System.Windows.Forms.Panel()
 		Me.txtCashValue = New System.Windows.Forms.TextBox()
 		Me.lblMoney1 = New System.Windows.Forms.Label()
@@ -41,13 +43,13 @@ Partial Class StepF
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
-		Me.pnlDEBUG = New System.Windows.Forms.Panel()
-		Me.lblDEBUG = New System.Windows.Forms.Label()
+		Me.PromoTypeSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.pnlPayout.SuspendLayout()
+		Me.pnlDEBUG.SuspendLayout()
 		Me.pnlCashValue.SuspendLayout()
 		Me.pnlPrize.SuspendLayout()
 		Me.pnlPromoTypeForPayout.SuspendLayout()
-		Me.pnlDEBUG.SuspendLayout()
+		CType(Me.PromoTypeSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -74,6 +76,26 @@ Partial Class StepF
 		Me.pnlPayout.Name = "pnlPayout"
 		Me.pnlPayout.Size = New System.Drawing.Size(313, 197)
 		Me.pnlPayout.TabIndex = 2
+		'
+		'pnlDEBUG
+		'
+		Me.pnlDEBUG.BackColor = System.Drawing.Color.Transparent
+		Me.pnlDEBUG.Controls.Add(Me.lblDEBUG)
+		Me.pnlDEBUG.Location = New System.Drawing.Point(14, 62)
+		Me.pnlDEBUG.Name = "pnlDEBUG"
+		Me.pnlDEBUG.Size = New System.Drawing.Size(279, 128)
+		Me.pnlDEBUG.TabIndex = 16
+		'
+		'lblDEBUG
+		'
+		Me.lblDEBUG.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDEBUG.ForeColor = System.Drawing.Color.Lavender
+		Me.lblDEBUG.Location = New System.Drawing.Point(3, 51)
+		Me.lblDEBUG.Name = "lblDEBUG"
+		Me.lblDEBUG.Size = New System.Drawing.Size(273, 77)
+		Me.lblDEBUG.TabIndex = 0
+		Me.lblDEBUG.Text = "(More Options In Development)"
+		Me.lblDEBUG.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
 		'pnlCashValue
 		'
@@ -226,6 +248,7 @@ Partial Class StepF
 		'
 		Me.pnlPromoTypeForPayout.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoTypeForPayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoTypeForPayout.Controls.Add(Me.PromoTypeSuccessIcon)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.btnSetPromoType)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.lblPromoTypeQuestion)
 		Me.pnlPromoTypeForPayout.Controls.Add(Me.txtPromoType)
@@ -247,7 +270,7 @@ Partial Class StepF
 		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
 		Me.btnSetPromoType.Location = New System.Drawing.Point(3, 116)
 		Me.btnSetPromoType.Name = "btnSetPromoType"
-		Me.btnSetPromoType.Size = New System.Drawing.Size(70, 20)
+		Me.btnSetPromoType.Size = New System.Drawing.Size(44, 20)
 		Me.btnSetPromoType.TabIndex = 34
 		Me.btnSetPromoType.Text = "Set"
 		Me.btnSetPromoType.UseVisualStyleBackColor = False
@@ -282,25 +305,20 @@ Partial Class StepF
 		Me.lblPromoType.TabIndex = 15
 		Me.lblPromoType.Text = "Promo Type:"
 		'
-		'pnlDEBUG
+		'PromoTypeSuccessIcon
 		'
-		Me.pnlDEBUG.BackColor = System.Drawing.Color.Transparent
-		Me.pnlDEBUG.Controls.Add(Me.lblDEBUG)
-		Me.pnlDEBUG.Location = New System.Drawing.Point(14, 62)
-		Me.pnlDEBUG.Name = "pnlDEBUG"
-		Me.pnlDEBUG.Size = New System.Drawing.Size(279, 128)
-		Me.pnlDEBUG.TabIndex = 16
-		'
-		'lblDEBUG
-		'
-		Me.lblDEBUG.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDEBUG.ForeColor = System.Drawing.Color.Lavender
-		Me.lblDEBUG.Location = New System.Drawing.Point(3, 51)
-		Me.lblDEBUG.Name = "lblDEBUG"
-		Me.lblDEBUG.Size = New System.Drawing.Size(273, 77)
-		Me.lblDEBUG.TabIndex = 0
-		Me.lblDEBUG.Text = "(More Options In Development)"
-		Me.lblDEBUG.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.PromoTypeSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.PromoTypeSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.PromoTypeSuccessIcon.Enabled = False
+		Me.PromoTypeSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.PromoTypeSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.PromoTypeSuccessIcon.Location = New System.Drawing.Point(53, 116)
+		Me.PromoTypeSuccessIcon.Name = "PromoTypeSuccessIcon"
+		Me.PromoTypeSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.PromoTypeSuccessIcon.TabIndex = 35
+		Me.PromoTypeSuccessIcon.TabStop = False
+		Me.PromoTypeSuccessIcon.ToolTipText = Nothing
+		Me.PromoTypeSuccessIcon.Visible = False
 		'
 		'StepF
 		'
@@ -318,13 +336,14 @@ Partial Class StepF
 		Me.Controls.SetChildIndex(Me.pnlPromoTypeForPayout, 0)
 		Me.pnlPayout.ResumeLayout(False)
 		Me.pnlPayout.PerformLayout()
+		Me.pnlDEBUG.ResumeLayout(False)
 		Me.pnlCashValue.ResumeLayout(False)
 		Me.pnlCashValue.PerformLayout()
 		Me.pnlPrize.ResumeLayout(False)
 		Me.pnlPrize.PerformLayout()
 		Me.pnlPromoTypeForPayout.ResumeLayout(False)
 		Me.pnlPromoTypeForPayout.PerformLayout()
-		Me.pnlDEBUG.ResumeLayout(False)
+		CType(Me.PromoTypeSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -349,5 +368,6 @@ Partial Class StepF
 	Private WithEvents btnSetPromoType As System.Windows.Forms.Button
 	Friend WithEvents pnlDEBUG As System.Windows.Forms.Panel
 	Friend WithEvents lblDEBUG As System.Windows.Forms.Label
+	Private WithEvents PromoTypeSuccessIcon As FontAwesomeIcons.IconButton
 
 End Class
