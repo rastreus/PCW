@@ -148,6 +148,7 @@ Public Class StepB
 
 	Private Sub StepB_ResetControls()
 		Me.txtPromoName.Text = ""
+		Me.SuccessIcon.Visible = False
 		Me.btnPromoID.Text = "TEST!1503"
 		Me.rbRecurringNo.Checked = True
 		Me.cbRecurringFrequency.Enabled = False
@@ -267,6 +268,10 @@ Public Class StepB
 		Me.promoNameEntered = True
 		Me.btnSetPromoName.BackColor = Color.HotPink
 		Me.btnSetPromoName.Enabled = True
+		If Me.SuccessIcon.Visible = True Then
+			Me.SuccessIcon.ActiveColor = SystemColors.ControlLight
+			Me.SuccessIcon.InActiveColor = SystemColors.ControlLight
+		End If
 	End Sub
 #End Region
 #Region "StepB_txtPromoName_Leave"
@@ -279,6 +284,9 @@ Public Class StepB
 			Me.promoID = getPromoID()
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
+			Me.SuccessIcon.ActiveColor = Color.Lime
+			Me.SuccessIcon.InActiveColor = Color.Lime
+			Me.SuccessIcon.Visible = True
 			GUI_Util.NextEnabled()
 		ElseIf Me.Data.PromoName_Invalid(Me.txtPromoName.Text) Then
 			GUI_Util.errPnl(Me.pnlPromoName)

@@ -41,12 +41,14 @@ Partial Class StepB
 		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
 		Me.lblEditPromoID = New System.Windows.Forms.Label()
 		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
+		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.pnlPromoName.SuspendLayout()
 		Me.pnlRecurring.SuspendLayout()
 		Me.Panel1.SuspendLayout()
 		Me.pnlPromoID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlEditPromoID.SuspendLayout()
+		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -61,12 +63,13 @@ Partial Class StepB
 		Me.pnlPromoName.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPromoName.CausesValidation = False
+		Me.pnlPromoName.Controls.Add(Me.SuccessIcon)
 		Me.pnlPromoName.Controls.Add(Me.btnSetPromoName)
 		Me.pnlPromoName.Controls.Add(Me.txtPromoName)
 		Me.pnlPromoName.Controls.Add(Me.lblPromoName)
-		Me.pnlPromoName.Location = New System.Drawing.Point(142, 50)
+		Me.pnlPromoName.Location = New System.Drawing.Point(138, 53)
 		Me.pnlPromoName.Name = "pnlPromoName"
-		Me.pnlPromoName.Size = New System.Drawing.Size(257, 66)
+		Me.pnlPromoName.Size = New System.Drawing.Size(267, 66)
 		Me.pnlPromoName.TabIndex = 0
 		'
 		'btnSetPromoName
@@ -118,9 +121,9 @@ Partial Class StepB
 		Me.pnlRecurring.CausesValidation = False
 		Me.pnlRecurring.Controls.Add(Me.lblRecurring)
 		Me.pnlRecurring.Controls.Add(Me.Panel1)
-		Me.pnlRecurring.Location = New System.Drawing.Point(142, 120)
+		Me.pnlRecurring.Location = New System.Drawing.Point(138, 123)
 		Me.pnlRecurring.Name = "pnlRecurring"
-		Me.pnlRecurring.Size = New System.Drawing.Size(257, 132)
+		Me.pnlRecurring.Size = New System.Drawing.Size(267, 132)
 		Me.pnlRecurring.TabIndex = 2
 		'
 		'lblRecurring
@@ -192,7 +195,7 @@ Partial Class StepB
 		Me.pnlPromoID.CausesValidation = False
 		Me.pnlPromoID.Controls.Add(Me.lblPromoIDtop)
 		Me.pnlPromoID.Controls.Add(Me.pnlPapayaWhip)
-		Me.pnlPromoID.Location = New System.Drawing.Point(405, 50)
+		Me.pnlPromoID.Location = New System.Drawing.Point(411, 53)
 		Me.pnlPromoID.Name = "pnlPromoID"
 		Me.pnlPromoID.Size = New System.Drawing.Size(123, 81)
 		Me.pnlPromoID.TabIndex = 8
@@ -258,7 +261,7 @@ Partial Class StepB
 		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.txtEditPromoID)
 		Me.pnlEditPromoID.Enabled = False
-		Me.pnlEditPromoID.Location = New System.Drawing.Point(405, 137)
+		Me.pnlEditPromoID.Location = New System.Drawing.Point(411, 140)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
 		Me.pnlEditPromoID.Size = New System.Drawing.Size(95, 63)
 		Me.pnlEditPromoID.TabIndex = 0
@@ -305,6 +308,21 @@ Partial Class StepB
 		Me.txtEditPromoID.Text = "TEST!"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
+		'SuccessIcon
+		'
+		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.SuccessIcon.Enabled = False
+		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.Location = New System.Drawing.Point(239, 33)
+		Me.SuccessIcon.Name = "SuccessIcon"
+		Me.SuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.SuccessIcon.TabIndex = 9
+		Me.SuccessIcon.TabStop = False
+		Me.SuccessIcon.ToolTipText = Nothing
+		Me.SuccessIcon.Visible = False
+		'
 		'StepB
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -335,6 +353,7 @@ Partial Class StepB
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlEditPromoID.ResumeLayout(False)
 		Me.pnlEditPromoID.PerformLayout()
+		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -357,5 +376,6 @@ Partial Class StepB
 	Private WithEvents btnPromoID As System.Windows.Forms.Button
 	Private WithEvents btnSetPromoName As System.Windows.Forms.Button
 	Private WithEvents txtPromoName As CustomizedTextBox.CustomizedTextBox
+	Private WithEvents SuccessIcon As FontAwesomeIcons.IconButton
 
 End Class
