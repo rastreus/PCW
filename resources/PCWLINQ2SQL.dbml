@@ -27,7 +27,7 @@
   </Table>
   <Table Name="dbo.MarketingPromoEligiblePlayers" Member="MarketingPromoEligiblePlayers">
     <Type Name="MarketingPromoEligiblePlayer">
-      <Column Name="PromoID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PromoID" Type="System.String" DbType="NVarChar(16) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NumOfTickets" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="TicketAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />

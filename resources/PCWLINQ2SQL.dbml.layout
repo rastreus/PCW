@@ -8,10 +8,10 @@
         <elementListCompartment Id="dab934ab-9e50-4aba-9957-c395662a8227" absoluteBounds="3.64, 1.46, 1.9700000000000002, 3.823099772135417" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1915d878-555c-4a25-af2b-5bc1b659a3c7" absoluteBounds="0.75, 1.25, 2, 1.4248478190104168">
+    <classShape Id="1915d878-555c-4a25-af2b-5bc1b659a3c7" absoluteBounds="0.625, 0.875, 2.375, 1.4248478190104168">
       <DataClassMoniker Name="/PCWLINQ2SQLDataContext/MarketingPromoEligiblePlayer" />
       <nestedChildShapes>
-        <elementListCompartment Id="9d7f3822-59ce-4708-9fb3-9ada3381fcf8" absoluteBounds="0.76500000000000012, 1.71, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9d7f3822-59ce-4708-9fb3-9ada3381fcf8" absoluteBounds="0.64, 1.335, 2.3449999999999998, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c91035f2-b24a-49df-a66d-e74207e3e44e" absoluteBounds="0.875, 6.625, 2, 2.5752791341145831">
