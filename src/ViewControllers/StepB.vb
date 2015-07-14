@@ -287,11 +287,23 @@ Public Class StepB
 			Me.SuccessIcon.ActiveColor = Color.Lime
 			Me.SuccessIcon.InActiveColor = Color.Lime
 			Me.SuccessIcon.Visible = True
-			GUI_Util.NextEnabled()
+			If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
+				'SET IT ALL BACK
+				Dim errID As String = New String("!")
+				errID = Me.btnPromoID.Text
+				GUI_Util.errPnl(Me.pnlPromoID)
+				GUI_Util.msgBox("PromoID Invalid: " & _
+								Me.Data.Get_PromoID_errString(errID) & _
+								vbCrLf & "Edit the PromoID.")
+			Else
+				GUI_Util.regPnl(Me.pnlPromoID)
+				GUI_Util.NextEnabled()
+			End If
 		ElseIf Me.Data.PromoName_Invalid(Me.txtPromoName.Text) Then
 			GUI_Util.errPnl(Me.pnlPromoName)
 			GUI_Util.msgBox("PromoName Invalid: " & _
-							Me.Data.Get_PromoName_errString(Me.txtPromoName.Text))
+							Me.Data.Get_PromoName_errString( _
+								Me.txtPromoName.Text))
 		Else
 			GUI_Util.regPnl(Me.pnlPromoName)
 		End If
