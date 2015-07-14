@@ -502,20 +502,14 @@ Public Class StepD
 	Private Sub txtPointCutoffLimit_Enter(sender As Object, _
 										  e As EventArgs) _
 		Handles txtPointCutoffLimit.Enter
-		If Me.PointCutoffLimitSuccessIcon.Visible = True Then
-			Me.PointCutoffLimitSuccessIcon.ActiveColor = _
-				SystemColors.ControlLight
-			Me.PointCutoffLimitSuccessIcon.InActiveColor = _
-				SystemColors.ControlLight
-		End If
+		GUI_Util.offIcon(Me.PointCutoffLimitSuccessIcon)
+		GUI_Util.onSetBtn(Me.btnSetPointCutoffLimit)
 	End Sub
 	Private Sub txtPointCutoffLimit_Leave(sender As Object, _
 										  e As EventArgs) _
 		Handles txtPointCutoffLimit.Leave
 		If (Not Me.txtPointCutoffLimit.Text = "") Then
-			Me.PointCutoffLimitSuccessIcon.ActiveColor = Color.Lime
-			Me.PointCutoffLimitSuccessIcon.InActiveColor = Color.Lime
-			Me.PointCutoffLimitSuccessIcon.Visible = True
+			GUI_Util.onIcon(Me.PointCutoffLimitSuccessIcon)
 		End If
 	End Sub
 	Private Sub btnSetPointCutoffLimit_Click(sender As Object, _
