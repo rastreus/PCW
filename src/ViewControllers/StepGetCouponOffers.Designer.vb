@@ -74,26 +74,28 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO = New System.Windows.Forms.RadioButton()
 		Me.rbCouponWildcardYES = New System.Windows.Forms.RadioButton()
 		Me.lblCouponWildcard = New System.Windows.Forms.Label()
-		Me.pnlExclusionDays.SuspendLayout()
-		Me.pnlExcludeRange.SuspendLayout()
-		Me.pnlExcludeStart.SuspendLayout()
-		Me.pnlExcludeEnd.SuspendLayout()
-		Me.pnlValidPeriod.SuspendLayout()
-		Me.pnlValidStart.SuspendLayout()
-		Me.pnlValidEnd.SuspendLayout()
-		Me.pnlCouponOffers.SuspendLayout()
-		Me.pnlAskExclude.SuspendLayout()
-		Me.pnlPapayaWhip.SuspendLayout()
-		Me.pnlFullValidate.SuspendLayout()
-		Me.pnlFullValidatePapayaWhip.SuspendLayout()
-		Me.pnlReprintable.SuspendLayout()
-		Me.pnlReprintablePapayaWhip.SuspendLayout()
-		Me.pnlScanToReceipt.SuspendLayout()
-		Me.pnlScanToReceiptPapayaWhip.SuspendLayout()
-		Me.pnlNote.SuspendLayout()
-		Me.pnlCouponWildcard.SuspendLayout()
-		Me.pnlYellow.SuspendLayout()
-		Me.SuspendLayout()
+		Me.NoteSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.pnlExclusionDays.SuspendLayout
+		Me.pnlExcludeRange.SuspendLayout
+		Me.pnlExcludeStart.SuspendLayout
+		Me.pnlExcludeEnd.SuspendLayout
+		Me.pnlValidPeriod.SuspendLayout
+		Me.pnlValidStart.SuspendLayout
+		Me.pnlValidEnd.SuspendLayout
+		Me.pnlCouponOffers.SuspendLayout
+		Me.pnlAskExclude.SuspendLayout
+		Me.pnlPapayaWhip.SuspendLayout
+		Me.pnlFullValidate.SuspendLayout
+		Me.pnlFullValidatePapayaWhip.SuspendLayout
+		Me.pnlReprintable.SuspendLayout
+		Me.pnlReprintablePapayaWhip.SuspendLayout
+		Me.pnlScanToReceipt.SuspendLayout
+		Me.pnlScanToReceiptPapayaWhip.SuspendLayout
+		Me.pnlNote.SuspendLayout
+		Me.pnlCouponWildcard.SuspendLayout
+		Me.pnlYellow.SuspendLayout
+		CType(Me.NoteSuccessIcon,System.ComponentModel.ISupportInitialize).BeginInit
+		Me.SuspendLayout
 		'
 		'Description
 		'
@@ -107,7 +109,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlExclusionDays.Controls.Add(Me.cbSelectAll)
 		Me.pnlExclusionDays.Controls.Add(Me.lblExcludedDays)
 		Me.pnlExclusionDays.Controls.Add(Me.clbExcludeDays)
-		Me.pnlExclusionDays.Enabled = False
+		Me.pnlExclusionDays.Enabled = false
 		Me.pnlExclusionDays.Location = New System.Drawing.Point(385, 100)
 		Me.pnlExclusionDays.Name = "pnlExclusionDays"
 		Me.pnlExclusionDays.Size = New System.Drawing.Size(173, 192)
@@ -115,20 +117,20 @@ Partial Class StepGetCouponOffers
 		'
 		'cbSelectAll
 		'
-		Me.cbSelectAll.AutoSize = True
-		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSelectAll.AutoSize = true
+		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.cbSelectAll.ForeColor = System.Drawing.Color.Lime
 		Me.cbSelectAll.Location = New System.Drawing.Point(33, 168)
 		Me.cbSelectAll.Name = "cbSelectAll"
 		Me.cbSelectAll.Size = New System.Drawing.Size(80, 17)
 		Me.cbSelectAll.TabIndex = 0
-		Me.cbSelectAll.TabStop = False
+		Me.cbSelectAll.TabStop = false
 		Me.cbSelectAll.Text = "Select All"
-		Me.cbSelectAll.UseVisualStyleBackColor = True
+		Me.cbSelectAll.UseVisualStyleBackColor = true
 		'
 		'lblExcludedDays
 		'
-		Me.lblExcludedDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblExcludedDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblExcludedDays.ForeColor = System.Drawing.Color.White
 		Me.lblExcludedDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblExcludedDays.Name = "lblExcludedDays"
@@ -140,18 +142,18 @@ Partial Class StepGetCouponOffers
 		'clbExcludeDays
 		'
 		Me.clbExcludeDays.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.clbExcludeDays.CausesValidation = False
-		Me.clbExcludeDays.CheckOnClick = True
-		Me.clbExcludeDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.clbExcludeDays.FormattingEnabled = True
+		Me.clbExcludeDays.CausesValidation = false
+		Me.clbExcludeDays.CheckOnClick = true
+		Me.clbExcludeDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.clbExcludeDays.FormattingEnabled = true
 		Me.clbExcludeDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.clbExcludeDays.Location = New System.Drawing.Point(31, 57)
 		Me.clbExcludeDays.Name = "clbExcludeDays"
 		Me.clbExcludeDays.Size = New System.Drawing.Size(103, 109)
 		Me.clbExcludeDays.TabIndex = 0
-		Me.clbExcludeDays.TabStop = False
-		Me.clbExcludeDays.ThreeDCheckBoxes = True
-		Me.clbExcludeDays.UseTabStops = False
+		Me.clbExcludeDays.TabStop = false
+		Me.clbExcludeDays.ThreeDCheckBoxes = true
+		Me.clbExcludeDays.UseTabStops = false
 		'
 		'pnlExcludeRange
 		'
@@ -159,7 +161,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlExcludeRange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeStart)
 		Me.pnlExcludeRange.Controls.Add(Me.pnlExcludeEnd)
-		Me.pnlExcludeRange.Enabled = False
+		Me.pnlExcludeRange.Enabled = false
 		Me.pnlExcludeRange.Location = New System.Drawing.Point(338, 5)
 		Me.pnlExcludeRange.Name = "pnlExcludeRange"
 		Me.pnlExcludeRange.Size = New System.Drawing.Size(220, 89)
@@ -178,18 +180,18 @@ Partial Class StepGetCouponOffers
 		'
 		'dtpExcludeStart
 		'
-		Me.dtpExcludeStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.dtpExcludeStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.dtpExcludeStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpExcludeStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpExcludeStart.Name = "dtpExcludeStart"
 		Me.dtpExcludeStart.Size = New System.Drawing.Size(95, 20)
 		Me.dtpExcludeStart.TabIndex = 0
-		Me.dtpExcludeStart.TabStop = False
+		Me.dtpExcludeStart.TabStop = false
 		'
 		'lblExcludeStart
 		'
 		Me.lblExcludeStart.BackColor = System.Drawing.Color.Transparent
-		Me.lblExcludeStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblExcludeStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblExcludeStart.Location = New System.Drawing.Point(0, 0)
 		Me.lblExcludeStart.Name = "lblExcludeStart"
 		Me.lblExcludeStart.Size = New System.Drawing.Size(106, 48)
@@ -209,18 +211,18 @@ Partial Class StepGetCouponOffers
 		'
 		'dtpExcludeEnd
 		'
-		Me.dtpExcludeEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.dtpExcludeEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.dtpExcludeEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpExcludeEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpExcludeEnd.Name = "dtpExcludeEnd"
 		Me.dtpExcludeEnd.Size = New System.Drawing.Size(95, 20)
 		Me.dtpExcludeEnd.TabIndex = 0
-		Me.dtpExcludeEnd.TabStop = False
+		Me.dtpExcludeEnd.TabStop = false
 		'
 		'lblExcludeEnd
 		'
 		Me.lblExcludeEnd.BackColor = System.Drawing.Color.Transparent
-		Me.lblExcludeEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblExcludeEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblExcludeEnd.Location = New System.Drawing.Point(0, 0)
 		Me.lblExcludeEnd.Name = "lblExcludeEnd"
 		Me.lblExcludeEnd.Size = New System.Drawing.Size(105, 48)
@@ -251,18 +253,18 @@ Partial Class StepGetCouponOffers
 		'
 		'dtpValidStart
 		'
-		Me.dtpValidStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.dtpValidStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.dtpValidStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpValidStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpValidStart.Name = "dtpValidStart"
 		Me.dtpValidStart.Size = New System.Drawing.Size(95, 20)
 		Me.dtpValidStart.TabIndex = 0
-		Me.dtpValidStart.TabStop = False
+		Me.dtpValidStart.TabStop = false
 		'
 		'lblValidStart
 		'
 		Me.lblValidStart.BackColor = System.Drawing.Color.Transparent
-		Me.lblValidStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblValidStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblValidStart.Location = New System.Drawing.Point(0, 0)
 		Me.lblValidStart.Name = "lblValidStart"
 		Me.lblValidStart.Size = New System.Drawing.Size(106, 48)
@@ -282,18 +284,18 @@ Partial Class StepGetCouponOffers
 		'
 		'dtpValidEnd
 		'
-		Me.dtpValidEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.dtpValidEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.dtpValidEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpValidEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpValidEnd.Name = "dtpValidEnd"
 		Me.dtpValidEnd.Size = New System.Drawing.Size(95, 20)
 		Me.dtpValidEnd.TabIndex = 0
-		Me.dtpValidEnd.TabStop = False
+		Me.dtpValidEnd.TabStop = false
 		'
 		'lblValidEnd
 		'
 		Me.lblValidEnd.BackColor = System.Drawing.Color.Transparent
-		Me.lblValidEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblValidEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblValidEnd.Location = New System.Drawing.Point(0, 0)
 		Me.lblValidEnd.Name = "lblValidEnd"
 		Me.lblValidEnd.Size = New System.Drawing.Size(106, 48)
@@ -303,12 +305,12 @@ Partial Class StepGetCouponOffers
 		'btnSubmit
 		'
 		Me.btnSubmit.BackColor = System.Drawing.Color.MediumPurple
-		Me.btnSubmit.Enabled = False
+		Me.btnSubmit.Enabled = false
 		Me.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkViolet
 		Me.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
 		Me.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSubmit.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSubmit.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.btnSubmit.ForeColor = System.Drawing.Color.White
 		Me.btnSubmit.Location = New System.Drawing.Point(9, 88)
 		Me.btnSubmit.Name = "btnSubmit"
@@ -316,12 +318,12 @@ Partial Class StepGetCouponOffers
 		Me.btnSubmit.TabIndex = 31
 		Me.btnSubmit.Text = "Submit"
 		Me.btnSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSubmit.UseVisualStyleBackColor = False
+		Me.btnSubmit.UseVisualStyleBackColor = false
 		'
 		'lblCouponOffers
 		'
 		Me.lblCouponOffers.BackColor = System.Drawing.Color.Transparent
-		Me.lblCouponOffers.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCouponOffers.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblCouponOffers.ForeColor = System.Drawing.Color.White
 		Me.lblCouponOffers.Location = New System.Drawing.Point(-2, 0)
 		Me.lblCouponOffers.Name = "lblCouponOffers"
@@ -345,7 +347,7 @@ Partial Class StepGetCouponOffers
 		'lblCouponOffersList
 		'
 		Me.lblCouponOffersList.BackColor = System.Drawing.Color.Gainsboro
-		Me.lblCouponOffersList.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCouponOffersList.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblCouponOffersList.ForeColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.lblCouponOffersList.Location = New System.Drawing.Point(9, 23)
 		Me.lblCouponOffersList.Name = "lblCouponOffersList"
@@ -378,32 +380,32 @@ Partial Class StepGetCouponOffers
 		'
 		'rbExcludeDaysNO
 		'
-		Me.rbExcludeDaysNO.AutoSize = True
-		Me.rbExcludeDaysNO.Checked = True
+		Me.rbExcludeDaysNO.AutoSize = true
+		Me.rbExcludeDaysNO.Checked = true
 		Me.rbExcludeDaysNO.ForeColor = System.Drawing.Color.Black
 		Me.rbExcludeDaysNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbExcludeDaysNO.Name = "rbExcludeDaysNO"
 		Me.rbExcludeDaysNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbExcludeDaysNO.TabIndex = 0
-		Me.rbExcludeDaysNO.TabStop = True
+		Me.rbExcludeDaysNO.TabStop = true
 		Me.rbExcludeDaysNO.Text = "No"
-		Me.rbExcludeDaysNO.UseVisualStyleBackColor = True
+		Me.rbExcludeDaysNO.UseVisualStyleBackColor = true
 		'
 		'rbExcludeDaysYES
 		'
-		Me.rbExcludeDaysYES.AutoSize = True
+		Me.rbExcludeDaysYES.AutoSize = true
 		Me.rbExcludeDaysYES.ForeColor = System.Drawing.Color.Black
 		Me.rbExcludeDaysYES.Location = New System.Drawing.Point(16, 8)
 		Me.rbExcludeDaysYES.Name = "rbExcludeDaysYES"
 		Me.rbExcludeDaysYES.Size = New System.Drawing.Size(43, 17)
 		Me.rbExcludeDaysYES.TabIndex = 0
 		Me.rbExcludeDaysYES.Text = "Yes"
-		Me.rbExcludeDaysYES.UseVisualStyleBackColor = True
+		Me.rbExcludeDaysYES.UseVisualStyleBackColor = true
 		'
 		'lblAskExclude
 		'
 		Me.lblAskExclude.BackColor = System.Drawing.Color.Transparent
-		Me.lblAskExclude.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblAskExclude.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblAskExclude.ForeColor = System.Drawing.Color.White
 		Me.lblAskExclude.Location = New System.Drawing.Point(3, 0)
 		Me.lblAskExclude.Name = "lblAskExclude"
@@ -436,32 +438,32 @@ Partial Class StepGetCouponOffers
 		'
 		'rbFullValidateNO
 		'
-		Me.rbFullValidateNO.AutoSize = True
-		Me.rbFullValidateNO.Checked = True
+		Me.rbFullValidateNO.AutoSize = true
+		Me.rbFullValidateNO.Checked = true
 		Me.rbFullValidateNO.ForeColor = System.Drawing.Color.Black
 		Me.rbFullValidateNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbFullValidateNO.Name = "rbFullValidateNO"
 		Me.rbFullValidateNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbFullValidateNO.TabIndex = 0
-		Me.rbFullValidateNO.TabStop = True
+		Me.rbFullValidateNO.TabStop = true
 		Me.rbFullValidateNO.Text = "No"
-		Me.rbFullValidateNO.UseVisualStyleBackColor = True
+		Me.rbFullValidateNO.UseVisualStyleBackColor = true
 		'
 		'rbFullValidateYES
 		'
-		Me.rbFullValidateYES.AutoSize = True
+		Me.rbFullValidateYES.AutoSize = true
 		Me.rbFullValidateYES.ForeColor = System.Drawing.Color.Black
 		Me.rbFullValidateYES.Location = New System.Drawing.Point(16, 8)
 		Me.rbFullValidateYES.Name = "rbFullValidateYES"
 		Me.rbFullValidateYES.Size = New System.Drawing.Size(43, 17)
 		Me.rbFullValidateYES.TabIndex = 0
 		Me.rbFullValidateYES.Text = "Yes"
-		Me.rbFullValidateYES.UseVisualStyleBackColor = True
+		Me.rbFullValidateYES.UseVisualStyleBackColor = true
 		'
 		'lblFullValidate
 		'
 		Me.lblFullValidate.BackColor = System.Drawing.Color.Transparent
-		Me.lblFullValidate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblFullValidate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblFullValidate.ForeColor = System.Drawing.Color.White
 		Me.lblFullValidate.Location = New System.Drawing.Point(3, 0)
 		Me.lblFullValidate.Name = "lblFullValidate"
@@ -494,32 +496,32 @@ Partial Class StepGetCouponOffers
 		'
 		'rbReprintableNO
 		'
-		Me.rbReprintableNO.AutoSize = True
-		Me.rbReprintableNO.Checked = True
+		Me.rbReprintableNO.AutoSize = true
+		Me.rbReprintableNO.Checked = true
 		Me.rbReprintableNO.ForeColor = System.Drawing.Color.Black
 		Me.rbReprintableNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbReprintableNO.Name = "rbReprintableNO"
 		Me.rbReprintableNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbReprintableNO.TabIndex = 0
-		Me.rbReprintableNO.TabStop = True
+		Me.rbReprintableNO.TabStop = true
 		Me.rbReprintableNO.Text = "No"
-		Me.rbReprintableNO.UseVisualStyleBackColor = True
+		Me.rbReprintableNO.UseVisualStyleBackColor = true
 		'
 		'rbReprintableYES
 		'
-		Me.rbReprintableYES.AutoSize = True
+		Me.rbReprintableYES.AutoSize = true
 		Me.rbReprintableYES.ForeColor = System.Drawing.Color.Black
 		Me.rbReprintableYES.Location = New System.Drawing.Point(16, 8)
 		Me.rbReprintableYES.Name = "rbReprintableYES"
 		Me.rbReprintableYES.Size = New System.Drawing.Size(43, 17)
 		Me.rbReprintableYES.TabIndex = 0
 		Me.rbReprintableYES.Text = "Yes"
-		Me.rbReprintableYES.UseVisualStyleBackColor = True
+		Me.rbReprintableYES.UseVisualStyleBackColor = true
 		'
 		'lblReprintable
 		'
 		Me.lblReprintable.BackColor = System.Drawing.Color.Transparent
-		Me.lblReprintable.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblReprintable.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblReprintable.ForeColor = System.Drawing.Color.White
 		Me.lblReprintable.Location = New System.Drawing.Point(3, 0)
 		Me.lblReprintable.Name = "lblReprintable"
@@ -552,32 +554,32 @@ Partial Class StepGetCouponOffers
 		'
 		'rbScanToReceiptNO
 		'
-		Me.rbScanToReceiptNO.AutoSize = True
-		Me.rbScanToReceiptNO.Checked = True
+		Me.rbScanToReceiptNO.AutoSize = true
+		Me.rbScanToReceiptNO.Checked = true
 		Me.rbScanToReceiptNO.ForeColor = System.Drawing.Color.Black
 		Me.rbScanToReceiptNO.Location = New System.Drawing.Point(16, 31)
 		Me.rbScanToReceiptNO.Name = "rbScanToReceiptNO"
 		Me.rbScanToReceiptNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbScanToReceiptNO.TabIndex = 0
-		Me.rbScanToReceiptNO.TabStop = True
+		Me.rbScanToReceiptNO.TabStop = true
 		Me.rbScanToReceiptNO.Text = "No"
-		Me.rbScanToReceiptNO.UseVisualStyleBackColor = True
+		Me.rbScanToReceiptNO.UseVisualStyleBackColor = true
 		'
 		'rbScanToReceiptYES
 		'
-		Me.rbScanToReceiptYES.AutoSize = True
+		Me.rbScanToReceiptYES.AutoSize = true
 		Me.rbScanToReceiptYES.ForeColor = System.Drawing.Color.Black
 		Me.rbScanToReceiptYES.Location = New System.Drawing.Point(16, 8)
 		Me.rbScanToReceiptYES.Name = "rbScanToReceiptYES"
 		Me.rbScanToReceiptYES.Size = New System.Drawing.Size(43, 17)
 		Me.rbScanToReceiptYES.TabIndex = 0
 		Me.rbScanToReceiptYES.Text = "Yes"
-		Me.rbScanToReceiptYES.UseVisualStyleBackColor = True
+		Me.rbScanToReceiptYES.UseVisualStyleBackColor = true
 		'
 		'lblScanToReceipt
 		'
 		Me.lblScanToReceipt.BackColor = System.Drawing.Color.Transparent
-		Me.lblScanToReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblScanToReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblScanToReceipt.ForeColor = System.Drawing.Color.White
 		Me.lblScanToReceipt.Location = New System.Drawing.Point(3, 0)
 		Me.lblScanToReceipt.Name = "lblScanToReceipt"
@@ -590,6 +592,7 @@ Partial Class StepGetCouponOffers
 		'
 		Me.pnlNote.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlNote.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlNote.Controls.Add(Me.NoteSuccessIcon)
 		Me.pnlNote.Controls.Add(Me.btnSetNote)
 		Me.pnlNote.Controls.Add(Me.txtNote)
 		Me.pnlNote.Controls.Add(Me.lblNote)
@@ -601,36 +604,36 @@ Partial Class StepGetCouponOffers
 		'btnSetNote
 		'
 		Me.btnSetNote.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSetNote.Enabled = False
+		Me.btnSetNote.Enabled = false
 		Me.btnSetNote.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetNote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetNote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSetNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.btnSetNote.ForeColor = System.Drawing.Color.White
 		Me.btnSetNote.Location = New System.Drawing.Point(3, 53)
 		Me.btnSetNote.Name = "btnSetNote"
-		Me.btnSetNote.Size = New System.Drawing.Size(91, 20)
+		Me.btnSetNote.Size = New System.Drawing.Size(64, 20)
 		Me.btnSetNote.TabIndex = 34
 		Me.btnSetNote.Text = "Set"
-		Me.btnSetNote.UseVisualStyleBackColor = False
+		Me.btnSetNote.UseVisualStyleBackColor = false
 		'
 		'txtNote
 		'
-		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.txtNote.Location = New System.Drawing.Point(3, 27)
 		Me.txtNote.MaxLength = 14
 		Me.txtNote.Name = "txtNote"
-		Me.txtNote.Size = New System.Drawing.Size(91, 20)
+		Me.txtNote.Size = New System.Drawing.Size(86, 20)
 		Me.txtNote.TabIndex = 1
-		Me.txtNote.Text = "EX: Small Note"
+		Me.txtNote.Text = "EX: Note"
 		'
 		'lblNote
 		'
 		Me.lblNote.BackColor = System.Drawing.Color.Transparent
-		Me.lblNote.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblNote.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblNote.ForeColor = System.Drawing.Color.White
-		Me.lblNote.Location = New System.Drawing.Point(3, 0)
+		Me.lblNote.Location = New System.Drawing.Point(3, 1)
 		Me.lblNote.Name = "lblNote"
 		Me.lblNote.Size = New System.Drawing.Size(91, 13)
 		Me.lblNote.TabIndex = 0
@@ -651,7 +654,7 @@ Partial Class StepGetCouponOffers
 		'
 		'Label1
 		'
-		Me.Label1.AutoSize = True
+		Me.Label1.AutoSize = true
 		Me.Label1.BackColor = System.Drawing.Color.Transparent
 		Me.Label1.ForeColor = System.Drawing.Color.White
 		Me.Label1.Location = New System.Drawing.Point(6, 15)
@@ -673,30 +676,30 @@ Partial Class StepGetCouponOffers
 		'
 		'rbCouponWildcardNO
 		'
-		Me.rbCouponWildcardNO.AutoSize = True
-		Me.rbCouponWildcardNO.Checked = True
+		Me.rbCouponWildcardNO.AutoSize = true
+		Me.rbCouponWildcardNO.Checked = true
 		Me.rbCouponWildcardNO.Location = New System.Drawing.Point(78, 3)
 		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
 		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbCouponWildcardNO.TabIndex = 0
-		Me.rbCouponWildcardNO.TabStop = True
+		Me.rbCouponWildcardNO.TabStop = true
 		Me.rbCouponWildcardNO.Text = "No"
-		Me.rbCouponWildcardNO.UseVisualStyleBackColor = True
+		Me.rbCouponWildcardNO.UseVisualStyleBackColor = true
 		'
 		'rbCouponWildcardYES
 		'
-		Me.rbCouponWildcardYES.AutoSize = True
+		Me.rbCouponWildcardYES.AutoSize = true
 		Me.rbCouponWildcardYES.Location = New System.Drawing.Point(29, 3)
 		Me.rbCouponWildcardYES.Name = "rbCouponWildcardYES"
 		Me.rbCouponWildcardYES.Size = New System.Drawing.Size(43, 17)
 		Me.rbCouponWildcardYES.TabIndex = 0
 		Me.rbCouponWildcardYES.Text = "Yes"
-		Me.rbCouponWildcardYES.UseVisualStyleBackColor = True
+		Me.rbCouponWildcardYES.UseVisualStyleBackColor = true
 		'
 		'lblCouponWildcard
 		'
 		Me.lblCouponWildcard.BackColor = System.Drawing.Color.Transparent
-		Me.lblCouponWildcard.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCouponWildcard.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.lblCouponWildcard.ForeColor = System.Drawing.Color.White
 		Me.lblCouponWildcard.Location = New System.Drawing.Point(0, 0)
 		Me.lblCouponWildcard.Name = "lblCouponWildcard"
@@ -705,9 +708,24 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponWildcard.Text = "Is this a Wildcard Offer?"
 		Me.lblCouponWildcard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
+		'NoteSuccessIcon
+		'
+		Me.NoteSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.NoteSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.NoteSuccessIcon.Enabled = false
+		Me.NoteSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.NoteSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.NoteSuccessIcon.Location = New System.Drawing.Point(69, 53)
+		Me.NoteSuccessIcon.Name = "NoteSuccessIcon"
+		Me.NoteSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.NoteSuccessIcon.TabIndex = 35
+		Me.NoteSuccessIcon.TabStop = false
+		Me.NoteSuccessIcon.ToolTipText = Nothing
+		Me.NoteSuccessIcon.Visible = false
+		'
 		'StepGetCouponOffers
 		'
-		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.pnlCouponWildcard)
 		Me.Controls.Add(Me.pnlNote)
@@ -736,36 +754,37 @@ Partial Class StepGetCouponOffers
 		Me.Controls.SetChildIndex(Me.pnlScanToReceipt, 0)
 		Me.Controls.SetChildIndex(Me.pnlNote, 0)
 		Me.Controls.SetChildIndex(Me.pnlCouponWildcard, 0)
-		Me.pnlExclusionDays.ResumeLayout(False)
-		Me.pnlExclusionDays.PerformLayout()
-		Me.pnlExcludeRange.ResumeLayout(False)
-		Me.pnlExcludeStart.ResumeLayout(False)
-		Me.pnlExcludeEnd.ResumeLayout(False)
-		Me.pnlValidPeriod.ResumeLayout(False)
-		Me.pnlValidStart.ResumeLayout(False)
-		Me.pnlValidEnd.ResumeLayout(False)
-		Me.pnlCouponOffers.ResumeLayout(False)
-		Me.pnlAskExclude.ResumeLayout(False)
-		Me.pnlPapayaWhip.ResumeLayout(False)
-		Me.pnlPapayaWhip.PerformLayout()
-		Me.pnlFullValidate.ResumeLayout(False)
-		Me.pnlFullValidatePapayaWhip.ResumeLayout(False)
-		Me.pnlFullValidatePapayaWhip.PerformLayout()
-		Me.pnlReprintable.ResumeLayout(False)
-		Me.pnlReprintablePapayaWhip.ResumeLayout(False)
-		Me.pnlReprintablePapayaWhip.PerformLayout()
-		Me.pnlScanToReceipt.ResumeLayout(False)
-		Me.pnlScanToReceiptPapayaWhip.ResumeLayout(False)
-		Me.pnlScanToReceiptPapayaWhip.PerformLayout()
-		Me.pnlNote.ResumeLayout(False)
-		Me.pnlNote.PerformLayout()
-		Me.pnlCouponWildcard.ResumeLayout(False)
-		Me.pnlCouponWildcard.PerformLayout()
-		Me.pnlYellow.ResumeLayout(False)
-		Me.pnlYellow.PerformLayout()
-		Me.ResumeLayout(False)
+		Me.pnlExclusionDays.ResumeLayout(false)
+		Me.pnlExclusionDays.PerformLayout
+		Me.pnlExcludeRange.ResumeLayout(false)
+		Me.pnlExcludeStart.ResumeLayout(false)
+		Me.pnlExcludeEnd.ResumeLayout(false)
+		Me.pnlValidPeriod.ResumeLayout(false)
+		Me.pnlValidStart.ResumeLayout(false)
+		Me.pnlValidEnd.ResumeLayout(false)
+		Me.pnlCouponOffers.ResumeLayout(false)
+		Me.pnlAskExclude.ResumeLayout(false)
+		Me.pnlPapayaWhip.ResumeLayout(false)
+		Me.pnlPapayaWhip.PerformLayout
+		Me.pnlFullValidate.ResumeLayout(false)
+		Me.pnlFullValidatePapayaWhip.ResumeLayout(false)
+		Me.pnlFullValidatePapayaWhip.PerformLayout
+		Me.pnlReprintable.ResumeLayout(false)
+		Me.pnlReprintablePapayaWhip.ResumeLayout(false)
+		Me.pnlReprintablePapayaWhip.PerformLayout
+		Me.pnlScanToReceipt.ResumeLayout(false)
+		Me.pnlScanToReceiptPapayaWhip.ResumeLayout(false)
+		Me.pnlScanToReceiptPapayaWhip.PerformLayout
+		Me.pnlNote.ResumeLayout(false)
+		Me.pnlNote.PerformLayout
+		Me.pnlCouponWildcard.ResumeLayout(false)
+		Me.pnlCouponWildcard.PerformLayout
+		Me.pnlYellow.ResumeLayout(false)
+		Me.pnlYellow.PerformLayout
+		CType(Me.NoteSuccessIcon,System.ComponentModel.ISupportInitialize).EndInit
+		Me.ResumeLayout(false)
 
-	End Sub
+End Sub
 	Private WithEvents pnlFullValidate As System.Windows.Forms.Panel
 	Private WithEvents pnlFullValidatePapayaWhip As System.Windows.Forms.Panel
 	Private WithEvents rbFullValidateNO As System.Windows.Forms.RadioButton
@@ -818,5 +837,6 @@ Partial Class StepGetCouponOffers
 	Friend WithEvents rbCouponWildcardYES As System.Windows.Forms.RadioButton
 	Private WithEvents lblCouponWildcard As System.Windows.Forms.Label
 	Private WithEvents btnSetNote As System.Windows.Forms.Button
+	Private WithEvents NoteSuccessIcon As FontAwesomeIcons.IconButton
 
 End Class

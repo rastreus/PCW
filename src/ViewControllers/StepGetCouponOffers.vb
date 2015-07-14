@@ -157,7 +157,7 @@ Public Class StepGetCouponOffers
 		Me.rbExcludeDaysNO.Checked = True
 		Me.pnlExcludeRange.Enabled = False
 		Me.pnlExclusionDays.Enabled = False
-		Me.txtNote.Text = "EX: Small Note"
+		Me.txtNote.Text = "EX: Note"
 		Me.btnSetNote.BackColor = Color.Gainsboro
 		Me.btnSetNote.Enabled = False
 		Me.lblCouponOffersList.Text = "Click 'Submit' below to add " & _
@@ -348,11 +348,18 @@ Public Class StepGetCouponOffers
 	Private Sub txtNote_Enter(sender As Object, _
 							  e As EventArgs) _
 	Handles txtNote.Enter
-		If Me.txtNote.Text = "EX: Small Note" Then
+		If Me.txtNote.Text = "EX: Note" Then
 			Me.txtNote.Text = ""
 		End If
-		Me.btnSetNote.BackColor = Color.HotPink
-		Me.btnSetNote.Enabled = True
+		GUI_Util.offIcon(Me.NoteSuccessIcon)
+		GUI_Util.onSetBtn(Me.btnSetNote)
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_txtNote_Leave"
+	Private Sub txtNote_Leave(sender As Object, _
+							  e As EventArgs) _
+		Handles txtNote.Leave
+		GUI_Util.onIcon(Me.NoteSuccessIcon)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_btnSetNote_Click"
