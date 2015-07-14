@@ -332,8 +332,8 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
