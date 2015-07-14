@@ -266,8 +266,7 @@ Public Class StepB
 								   e As EventArgs) _
 		Handles txtPromoName.Enter
 		Me.promoNameEntered = True
-		Me.btnSetPromoName.BackColor = Color.HotPink
-		Me.btnSetPromoName.Enabled = True
+		GUI_Util.onSetBtn(Me.btnSetPromoName)
 		GUI_Util.offIcon(Me.SuccessIcon)
 	End Sub
 #End Region
@@ -282,8 +281,8 @@ Public Class StepB
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
 			GUI_Util.onIcon(Me.SuccessIcon)
+			GUI_Util.regPnl(Me.pnlPromoName)
 			If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
-				'SET IT ALL BACK
 				Dim errID As String = New String("!")
 				errID = Me.btnPromoID.Text
 				GUI_Util.errPnl(Me.pnlPromoID)
@@ -300,6 +299,7 @@ Public Class StepB
 							Me.Data.Get_PromoName_errString( _
 								Me.txtPromoName.Text))
 		Else
+			'NEVER GETS HERE?
 			GUI_Util.regPnl(Me.pnlPromoName)
 		End If
 	End Sub
