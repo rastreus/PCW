@@ -392,6 +392,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtTicketsPerPatron_Enter(sender As Object, _
 										  e As EventArgs) _
 		Handles txtTicketsPerPatron.Enter
+		GUI_Util.offIcon(Me.TicketsPerPatronSuccessIcon)
 		Me.btnSetTicketsPerPatron.BackColor = Color.HotPink
 		Me.btnSetTicketsPerPatron.Enabled = True
 	End Sub
@@ -400,6 +401,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtTicketsEntirePromo_Enter(sender As Object, _
 											e As EventArgs) _
 		Handles txtTicketsEntirePromo.Enter
+		GUI_Util.offIcon(Me.TicketsEntirePromoSuccessIcon)
 		Me.btnSetTicketsEntirePromo.BackColor = Color.HotPink
 		Me.btnSetTicketsEntirePromo.Enabled = True
 	End Sub
@@ -408,6 +410,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtTicketsPerPatron_Leave(sender As Object, _
 										  e As EventArgs) _
 		Handles txtTicketsPerPatron.Leave
+		GUI_Util.onIcon(Me.TicketsPerPatronSuccessIcon)
 		GUI_Util.NextEnabled()
 	End Sub
 #End Region
@@ -415,7 +418,15 @@ Public Class StepEntryTicketAmt
 	Private Sub txtTicketsEntirePromo_Leave(sender As Object, _
 											e As EventArgs) _
 		Handles txtTicketsEntirePromo.Leave
+		GUI_Util.onIcon(Me.TicketsEntirePromoSuccessIcon)
 		GUI_Util.NextEnabled()
+	End Sub
+#End Region
+#Region "StepEntryTicketAmt_txtPointsDivisor_Enter"
+	Private Sub txtPointsDivisor_Enter(sender As Object, _
+									   e As EventArgs) _
+		Handles txtPointsDivisor.Enter
+		GUI_Util.offIcon(Me.PointsDivisorSuccessIcon)
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtPointsDivisor_Leave"
@@ -425,6 +436,7 @@ Public Class StepEntryTicketAmt
 		If (Me.rbCalculated.Checked Or _
 			Me.rbCalPlusNumOfVisits.Checked) And _
 			(Not Me.txtPointsDivisor.Text = "") Then
+			GUI_Util.onIcon(Me.PointsDivisorSuccessIcon)
 			GUI_Util.NextEnabled()
 		End If
 	End Sub
@@ -433,6 +445,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtPromoType_Enter(sender As Object, _
 								   e As EventArgs) _
 		Handles txtPromoType.Enter
+		GUI_Util.offIcon(Me.PromoTypeSuccessIcon)
 		If Me.promoTypeEntered = False Then
 			Me.txtPromoType.Text = ""
 			Me.promoTypeEntered = True
@@ -445,6 +458,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtPromoType_Leave(sender As Object, _
 								   e As EventArgs) _
 		Handles txtPromoType.Leave
+		GUI_Util.onIcon(Me.PromoTypeSuccessIcon)
 		CheckForNext()
 	End Sub
 

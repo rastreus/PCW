@@ -83,7 +83,7 @@ Partial Class StepGeneratePayoutCoupon
 		'btnTxtEditCouponID
 		'
 		Me.btnTxtEditCouponID.BackColor = System.Drawing.Color.HotPink
-		Me.btnTxtEditCouponID.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnTxtEditCouponID.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnTxtEditCouponID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnTxtEditCouponID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnTxtEditCouponID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -206,7 +206,7 @@ Partial Class StepGeneratePayoutCoupon
 		'btnSetMaxAmtAllCoupons
 		'
 		Me.btnSetMaxAmtAllCoupons.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetMaxAmtAllCoupons.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetMaxAmtAllCoupons.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetMaxAmtAllCoupons.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetMaxAmtAllCoupons.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -279,7 +279,7 @@ Partial Class StepGeneratePayoutCoupon
 		'btnSetMaxAmtOneCoupon
 		'
 		Me.btnSetMaxAmtOneCoupon.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetMaxAmtOneCoupon.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetMaxAmtOneCoupon.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetMaxAmtOneCoupon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetMaxAmtOneCoupon.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -380,7 +380,7 @@ Partial Class StepGeneratePayoutCoupon
 		'btnSetCouponsPerPatron
 		'
 		Me.btnSetCouponsPerPatron.BackColor = System.Drawing.Color.HotPink
-		Me.btnSetCouponsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro
+		Me.btnSetCouponsPerPatron.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetCouponsPerPatron.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnSetCouponsPerPatron.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
 		Me.btnSetCouponsPerPatron.FlatStyle = System.Windows.Forms.FlatStyle.Flat

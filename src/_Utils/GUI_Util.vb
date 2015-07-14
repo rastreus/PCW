@@ -16,6 +16,19 @@ Public Class GUI_Util
 		End If
 	End Sub
 
+	Public Shared Sub offIcon(ByRef icon As FontAwesomeIcons.IconButton)
+		If icon.Visible = True Then
+			icon.ActiveColor = SystemColors.ControlLight
+			icon.InActiveColor = SystemColors.ControlLight
+		End If
+	End Sub
+
+	Public Shared Sub onIcon(ByRef icon As FontAwesomeIcons.IconButton)
+		icon.ActiveColor = Color.Lime
+		icon.InActiveColor = Color.Lime
+		icon.Visible = True
+	End Sub
+
 	''' <summary>
 	''' Changes "BackColor" of Panel to represent success.
 	''' </summary>
