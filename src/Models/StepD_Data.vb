@@ -116,6 +116,8 @@ Public Class StepD_Data
 #End Region
 #Region "CSVtoEligiblePlayersList"
 	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String)
+		Dim playerID As Integer
+		Dim numOfTickets As Short
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		parser.Delimiters = New String() {","}		'Fields are separated by comma
@@ -128,8 +130,10 @@ Public Class StepD_Data
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
+				playerID = currentRow(0)
+				numOfTickets = currentRow(13)
 				marketingPromoEligiblePlayerDBRow = New MarketingPromoEligiblePlayer
-				marketingPromoEligiblePlayerDBRow = ParseIntoList(currentRow, promoID)
+				marketingPromoEligiblePlayerDBRow = ParseIntoList(promoID, playerID, numOfTickets)
 				PCW.Data.EligiblePlayerList.Add(marketingPromoEligiblePlayerDBRow)
 			Catch ex As Exception
 				'Handle Exception
@@ -138,12 +142,15 @@ Public Class StepD_Data
 	End Sub
 #End Region
 #Region "ParseIntoList"
-	Private Function ParseIntoList(ByRef currentRow As String(), _
-							  ByRef promoID As String)
-		Dim eligiblePlayers As MarketingPromoEligiblePlayer = New MarketingPromoEligiblePlayer()
+	Private Function ParseIntoList(ByRef promoID As String, _
+								   ByRef playerID As Integer, _
+								   ByRef numOfTickets As Short) _
+								   As MarketingPromoEligiblePlayer
+		Dim eligiblePlayers As MarketingPromoEligiblePlayer = _
+			New MarketingPromoEligiblePlayer()
 		eligiblePlayers.PromoID = promoID
-		eligiblePlayers.PlayerID = currentRow(0)
-		eligiblePlayers.NumOfTickets = currentRow(13)
+		eligiblePlayers.PlayerID = playerID
+		eligiblePlayers.NumOfTickets = numOfTickets
 		eligiblePlayers.TicketAmount = Nothing
 		Return eligiblePlayers
 	End Function
