@@ -196,6 +196,8 @@ Public Class StepC
 		Me.MonthCal.SelectionStart = Date.Today
 		Me.MonthCal.SelectionEnd = Date.Today
 		Me.MonthCal.TodayDate = Date.Today
+		Me.MonthCal.Visible = False
+		Me.lblSelectDates.Visible = True
 		ResetPrimaryDay()
 		ResetRedemptionDays()
 	End Sub
@@ -495,6 +497,7 @@ Public Class StepC
 			Me.occursDateBool = True
 		End If
 		If Me.MonthCal.Visible = False Then
+			Me.lblSelectDates.Visible = False
 			Me.MonthCal.Visible = True
 		End If
 		GUI_Util.NextEnabled()
@@ -614,6 +617,7 @@ Public Class StepC
 			Me.MonthCal.SetSelectionRange(Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
 										  Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
 			If Me.MonthCal.Visible = False Then
+				Me.lblSelectDates.Visible = False
 				Me.MonthCal.Visible = True
 			End If
 			If Me.primaryDayBool And _
