@@ -66,7 +66,9 @@
 				couponTargetListDBRow = ParseIntoList(currentRow)
 				PCW.Data.CouponTargetList.Add(couponTargetListDBRow)
 			Catch ex As Exception
-				'Handle Exception
+				GUI_Util.msgBox("ERROR: CSVtoCT, " & vbCrLf & _
+								"Please contact IT. " & vbCrLf & _
+								ex.Message)
 			End Try
 		Loop
 	End Sub
