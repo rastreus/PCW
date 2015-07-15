@@ -115,8 +115,11 @@ Public Class StepC_Data
 	End Property
 #End Region
 #Region "Validity Checks"
-	Public Function QualifyingPeriod_NotEstablished(ByRef startDayBool As Boolean, _
-													ByRef endDayBool As Boolean) As Boolean
+	Public Function QualifyingPeriod_NotEstablished(ByRef startDayBool _
+													As Boolean, _
+													ByRef endDayBool _
+													As Boolean) _
+													As Boolean
 		Dim invalid As Boolean = False
 		If (startDayBool = False) Or (endDayBool = False) Then
 			invalid = True
@@ -124,7 +127,9 @@ Public Class StepC_Data
 		Return invalid
 	End Function
 
-	Public Function PrimaryDay_NotEstablished(ByRef primaryDayBool As Boolean) As Boolean
+	Public Function PrimaryDay_NotEstablished(ByRef primaryDayBool _
+											  As Boolean) _
+											  As Boolean
 		Dim invalid As Boolean = False
 		If primaryDayBool = False Then
 			invalid = True
@@ -132,7 +137,9 @@ Public Class StepC_Data
 		Return invalid
 	End Function
 
-	Public Function OccursDate_NotEstablished(ByRef occursDateBool As Boolean) As Boolean
+	Public Function OccursDate_NotEstablished(ByRef occursDateBool _
+											  As Boolean) _
+											  As Boolean
 		Dim invalid As Boolean = False
 		If occursDateBool = False Then
 			invalid = True
@@ -140,7 +147,8 @@ Public Class StepC_Data
 		Return invalid
 	End Function
 	Public Function EndDate_Before_StartDate(ByVal endDate As DateTime, _
-											 ByVal startDate As DateTime) As Boolean
+											 ByVal startDate As DateTime) _
+											 As Boolean
 		Dim result As Boolean = False
 		Dim compare As Integer = Date.Compare(endDate, startDate)
 		If compare < 0 Then

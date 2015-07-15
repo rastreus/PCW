@@ -45,7 +45,8 @@ Public Class BEP_Util
 	''' <param name="inputDay"></param>
 	''' <returns>A single-character String representing the inputDay.</returns>
 	''' <remarks>Used by StepC and StepGetCouponOffers.</remarks>
-	Public Shared Function daysFormat(ByVal inputDay As String) As String
+	Public Shared Function daysFormat(ByVal inputDay As String) _
+									  As String
 		Dim returnDay As String = New String("")
 		Select Case inputDay
 			Case "Sunday"
@@ -71,7 +72,8 @@ Public Class BEP_Util
 	''' <param name="inputString"></param>
 	''' <returns>The validity of the input String.</returns>
 	''' <remarks>Don't like that it does the Short Parse.</remarks>
-	Public Shared Function invalidNum(ByVal inputString As String) As Boolean
+	Public Shared Function invalidNum(ByVal inputString As String) _
+									  As Boolean
 		Dim invalid As Boolean = False
 		Dim inputInt As Short
 		Dim RegexObj As Regex = New Regex("^\d+$")
@@ -95,14 +97,16 @@ Public Class BEP_Util
 	''' <param name="inputString"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	Public Shared Function invalidDecimal(ByVal inputString As String) As Boolean
+	Public Shared Function invalidDecimal(ByVal inputString As String) _
+										  As Boolean
 		Dim invalid As Boolean = False
 		Dim invalid_decimal As Decimal = 0.01
 		Dim RegexObj As Regex = New Regex("^\d+\.\d{2}$")
 
 		Try
 			Dim input_decimal As Decimal = Decimal.Parse(inputString)
-			If (input_decimal < invalid_decimal) Or Not RegexObj.IsMatch(inputString) Then
+			If (input_decimal < invalid_decimal) Or _
+				Not RegexObj.IsMatch(inputString) Then
 				invalid = True
 			End If
 		Catch ex As Exception
@@ -112,16 +116,21 @@ Public Class BEP_Util
 		Return invalid
 	End Function
 	''' <summary>
-	''' Checks to see if the supplied ID (Promo or Coupon) matches the required pattern.
+	''' Checks to see if the supplied ID (Promo or Coupon)
+	''' matches the required pattern.
 	''' </summary>
 	''' <param name="inputStr"></param>
 	''' <param name="limitNum"></param>
 	''' <returns></returns>
 	''' <remarks></remarks>
-	Private Function Invalid_CouponID(ByVal inputStr As String, ByVal limitNum As Short) As Boolean
+	Private Function Invalid_CouponID(ByVal inputStr As String, _
+									  ByVal limitNum As Short) _
+									  As Boolean
 		Dim invalid As Boolean = False
 		Dim limitStr As String = limitNum.ToString
-		Dim RegexObj As Regex = New Regex("^[a-zA-Z]{1," & limitStr & "}\d{4}$")
+		Dim RegexObj As Regex = New Regex("^[a-zA-Z]{1," & _
+										  limitStr & _
+										  "}\d{4}$")
 
 		If Not RegexObj.IsMatch(inputStr) Then
 			invalid = True
