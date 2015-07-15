@@ -29,8 +29,16 @@ Public Class GUI_Util
 	End Sub
 
 	Public Shared Sub onIcon(ByRef icon As FontAwesomeIcons.IconButton)
+		icon.IconType = FontAwesomeIcons.IconType.Tick
 		icon.ActiveColor = Color.Lime
 		icon.InActiveColor = Color.Lime
+		icon.Visible = True
+	End Sub
+
+	Public Shared Sub errIcon(ByRef icon As FontAwesomeIcons.IconButton)
+		icon.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
+		icon.ActiveColor = Color.White
+		icon.InActiveColor = Color.White
 		icon.Visible = True
 	End Sub
 

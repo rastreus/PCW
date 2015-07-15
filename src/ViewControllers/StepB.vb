@@ -295,6 +295,7 @@ Public Class StepB
 			End If
 		ElseIf Me.Data.PromoName_Invalid(Me.txtPromoName.Text) Then
 			GUI_Util.errPnl(Me.pnlPromoName)
+			GUI_Util.errIcon(Me.SuccessIcon)
 			GUI_Util.msgBox("PromoName Invalid: " & _
 							Me.Data.Get_PromoName_errString( _
 								Me.txtPromoName.Text))
