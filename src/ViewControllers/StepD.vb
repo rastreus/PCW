@@ -300,10 +300,10 @@ Public Class StepD
 				Me.successBool = True
 			End If
 		Catch ex As Exception
-			Trace.WriteLine("Error in DragDrop Sub: " _
-							+ ex.Message)
-			ChangeLabelText("FAILURE: " _
-							+ ex.Message)
+			Trace.WriteLine("Error in DragDrop Sub: " & _
+							ex.Message)
+			ChangeLabelText("FAILURE: " & _
+							ex.Message)
 			DragDropFailureIcon()
 			Me.successBool = False
 		End Try

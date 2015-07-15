@@ -117,7 +117,8 @@
 			Try
 				returningDecimal = Decimal.Parse(tempStr)
 			Catch ex As Exception
-				'
+				'WHY FAIL SILENTLY?
+				'WHAT'S THE POINT OF USING TRY-CATCH?
 			End Try
 		End If
 		Return returningDecimal
