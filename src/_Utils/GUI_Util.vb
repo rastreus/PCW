@@ -1,9 +1,13 @@
 ﻿Imports CenteredMessagebox
+Imports System.Windows.Forms
+Imports FontAwesomeIcons
 
 ''' <summary>
-''' Global Graphical User Interface class which handles common, utility tasks.
+''' Global Graphical User Interface class which
+''' handles common, utility tasks.
 ''' </summary>
-''' <remarks>Delegation typically is not ideal; however, something needed to be done quickly.</remarks>
+''' <remarks>Delegation typically is not ideal;
+''' however, something needed to be done quickly.</remarks>
 Public Class GUI_Util
 #Region "Utility Subroutines"
 	''' <summary>
@@ -16,27 +20,27 @@ Public Class GUI_Util
 		End If
 	End Sub
 
-	Public Shared Sub onSetBtn(ByRef btn As Windows.Forms.Button)
+	Public Shared Sub onSetBtn(ByRef btn As Button)
 		btn.Enabled = True
 		btn.BackColor = Color.HotPink
 	End Sub
 
-	Public Shared Sub offIcon(ByRef icon As FontAwesomeIcons.IconButton)
+	Public Shared Sub offIcon(ByRef icon As IconButton)
 		If icon.Visible = True Then
 			icon.ActiveColor = SystemColors.ControlLight
 			icon.InActiveColor = SystemColors.ControlLight
 		End If
 	End Sub
 
-	Public Shared Sub onIcon(ByRef icon As FontAwesomeIcons.IconButton)
-		icon.IconType = FontAwesomeIcons.IconType.Tick
+	Public Shared Sub onIcon(ByRef icon As IconButton)
+		icon.IconType = IconType.Tick
 		icon.ActiveColor = Color.Lime
 		icon.InActiveColor = Color.Lime
 		icon.Visible = True
 	End Sub
 
-	Public Shared Sub errIcon(ByRef icon As FontAwesomeIcons.IconButton)
-		icon.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
+	Public Shared Sub errIcon(ByRef icon As IconButton)
+		icon.IconType = IconType.CrossCircleSolid
 		icon.ActiveColor = Color.White
 		icon.InActiveColor = Color.White
 		icon.Visible = True
@@ -47,8 +51,8 @@ Public Class GUI_Util
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
-	Public Shared Sub successPnl(ByRef pnl As System.Windows.Forms.Panel)
-		pnl.BackColor = System.Drawing.Color.Lime
+	Public Shared Sub successPnl(ByRef pnl As Panel)
+		pnl.BackColor = Color.Lime
 	End Sub
 
 	''' <summary>
@@ -56,8 +60,8 @@ Public Class GUI_Util
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
-	Public Shared Sub errPnl(ByRef pnl As System.Windows.Forms.Panel)
-		pnl.BackColor = System.Drawing.Color.Crimson
+	Public Shared Sub errPnl(ByRef pnl As Panel)
+		pnl.BackColor = Color.Crimson
 	End Sub
 
 	''' <summary>
@@ -65,12 +69,12 @@ Public Class GUI_Util
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
-	Public Shared Sub regPnl(ByRef pnl As System.Windows.Forms.Panel)
-		pnl.BackColor = System.Drawing.SystemColors.ControlDarkDark
+	Public Shared Sub regPnl(ByRef pnl As Panel)
+		pnl.BackColor = SystemColors.ControlDarkDark
 	End Sub
 
-	Public Shared Sub regPnl(ByRef pnl As System.Windows.Forms.Panel, _
-							 ByVal color As System.Drawing.Color)
+	Public Shared Sub regPnl(ByRef pnl As Panel, _
+							 ByVal color As Color)
 		pnl.BackColor = color
 	End Sub
 
@@ -80,8 +84,10 @@ Public Class GUI_Util
 	''' <param name="str">The text to be shown in the msgBox.</param>
 	''' <remarks>Possibly unnecessary delegation; however, removes "Imports."</remarks>
 	Public Shared Sub msgBox(ByRef str As String)
-		CenteredMessagebox.MsgBox.Show(str, "Error",
-									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+		CenteredMessagebox.MsgBox.Show(str, _
+									   "Error", _
+									   MessageBoxButtons.OK, _
+									   MessageBoxIcon.Exclamation)
 	End Sub
 
 	''' <summary>
@@ -90,9 +96,12 @@ Public Class GUI_Util
 	''' <param name="str">The text to be shown in the msgBox.</param>
 	''' <param name="title">The text to be shown as the title of the msgBox.</param>
 	''' <remarks>Overloaded to increase usefulness.</remarks>
-	Public Shared Sub msgBox(ByRef str As String, ByRef title As String)
-		CenteredMessagebox.MsgBox.Show(str, title,
-									   MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+	Public Shared Sub msgBox(ByRef str As String, _
+							 ByRef title As String)
+		CenteredMessagebox.MsgBox.Show(str, _
+									   title, _
+									   MessageBoxButtons.OK, _
+									   MessageBoxIcon.Exclamation)
 	End Sub
 
 	''' <summary>
@@ -102,10 +111,14 @@ Public Class GUI_Util
 	''' <param name="title">The text to be shown as the title of the msgBox.</param>
 	''' <param name="info">"Information" must be the value.</param>
 	''' <remarks></remarks>
-	Public Shared Sub msgBox(ByRef str As String, ByRef title As String, ByRef info As String)
+	Public Shared Sub msgBox(ByRef str As String, _
+							 ByRef title As String, _
+							 ByRef info As String)
 		If info = "Information" Then
-			CenteredMessagebox.MsgBox.Show(str, title,
-									   MessageBoxButtons.OK, MessageBoxIcon.Information)
+			CenteredMessagebox.MsgBox.Show(str, _
+										   title, _
+										   MessageBoxButtons.OK, _
+										   MessageBoxIcon.Information)
 		Else
 			msgBox(str, title)
 		End If
