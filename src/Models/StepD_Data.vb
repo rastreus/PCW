@@ -136,7 +136,9 @@ Public Class StepD_Data
 				marketingPromoEligiblePlayerDBRow = ParseIntoList(promoID, playerID, numOfTickets)
 				PCW.Data.EligiblePlayerList.Add(marketingPromoEligiblePlayerDBRow)
 			Catch ex As Exception
-				'Handle Exception
+				GUI_Util.msgBox("ERROR: CSVtoEP, " & vbCrLf & _
+								"Please contact IT " & vbCrLf & _
+								ex.Message)
 			End Try
 		Loop
 	End Sub
