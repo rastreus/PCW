@@ -60,8 +60,10 @@ Public Class StepD
 				ElseIf Me.rbTIERS.Checked Then
 					Me.stepD_data.MultiPartDaysTiers = Me.txtNumOfTiers.Text
 				End If
-				If (Me.rbDAYS.Checked And Me.cbPayoutParametersYES.Checked) Or _
-					(Me.rbTIERS.Checked And Me.cbPayoutParametersYES.Checked) Then
+				If (Me.rbDAYS.Checked And _
+					Me.cbPayoutParametersYES.Checked) Or _
+					(Me.rbTIERS.Checked And _
+					 Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartSame
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartSame
 				ElseIf Me.rbDAYS.Checked And _
@@ -78,12 +80,14 @@ Public Class StepD
 					PCW.Data.PayoutDiffType = "TIERS"
 				End If
 		End Select
-		Me.stepD_data.PointCutoffLimit = getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
-															 Me.txtPointCutoffLimit.Text)
+		Me.stepD_data.PointCutoffLimit = _
+			getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
+								Me.txtPointCutoffLimit.Text)
 	End Sub
 
 	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, _
-										 ByVal txtInput As String) As System.Nullable(Of Short)
+										 ByVal txtInput As String) _
+										 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
@@ -136,7 +140,8 @@ Public Class StepD
 	Private Sub StepD_Load(sender As Object, _
 						   e As EventArgs) _
 		Handles MyBase.Load
-		m_DelegateChangeLabelText = New DelegateChangeLabelText(AddressOf ChangeLabelText)
+		m_DelegateChangeLabelText = _
+			New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 #End Region
 #Region "StepD_ResetStep"
@@ -175,7 +180,7 @@ Public Class StepD
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String("!") 'Not IsNothing
 		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepD_SetData()
@@ -514,14 +519,14 @@ Public Class StepD
 		End If
 	End Sub
 	Private Sub btnSetPointCutoffLimit_Click(sender As Object, _
-										 e As EventArgs) _
+											 e As EventArgs) _
 	Handles btnSetPointCutoffLimit.Click
 		Me.ActiveControl = Me.pnlPointCutoffLimit
 	End Sub
 #End Region
 #Region "StepD_btnSubmitEP_Click"
 	Private Sub btnSubmitEP_Click(sender As Object, _
-							  e As EventArgs) _
+								  e As EventArgs) _
 	Handles btnSubmitEP.Click
 		If Me.rbEligiblePlayersList.Checked And _
 			Me.successBool Then
