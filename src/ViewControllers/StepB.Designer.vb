@@ -23,6 +23,7 @@ Partial Class StepB
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
 		Me.pnlPromoName = New System.Windows.Forms.Panel()
+		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPromoName = New System.Windows.Forms.Button()
 		Me.txtPromoName = New CustomizedTextBox.CustomizedTextBox()
 		Me.lblPromoName = New System.Windows.Forms.Label()
@@ -41,14 +42,13 @@ Partial Class StepB
 		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
 		Me.lblEditPromoID = New System.Windows.Forms.Label()
 		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
-		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.pnlPromoName.SuspendLayout()
+		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlRecurring.SuspendLayout()
 		Me.Panel1.SuspendLayout()
 		Me.pnlPromoID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlEditPromoID.SuspendLayout()
-		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -71,6 +71,21 @@ Partial Class StepB
 		Me.pnlPromoName.Name = "pnlPromoName"
 		Me.pnlPromoName.Size = New System.Drawing.Size(267, 66)
 		Me.pnlPromoName.TabIndex = 0
+		'
+		'SuccessIcon
+		'
+		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.SuccessIcon.Enabled = False
+		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.SuccessIcon.Location = New System.Drawing.Point(239, 33)
+		Me.SuccessIcon.Name = "SuccessIcon"
+		Me.SuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.SuccessIcon.TabIndex = 9
+		Me.SuccessIcon.TabStop = False
+		Me.SuccessIcon.ToolTipText = Nothing
+		Me.SuccessIcon.Visible = False
 		'
 		'btnSetPromoName
 		'
@@ -156,11 +171,13 @@ Partial Class StepB
 		Me.cbRecurringFrequency.CausesValidation = False
 		Me.cbRecurringFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cbRecurringFrequency.Enabled = False
+		Me.cbRecurringFrequency.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbRecurringFrequency.ForeColor = System.Drawing.SystemColors.WindowText
 		Me.cbRecurringFrequency.FormattingEnabled = True
 		Me.cbRecurringFrequency.Items.AddRange(New Object() {"Daily", "Weekly", "Monthly", "Quarterly", "Yearly"})
 		Me.cbRecurringFrequency.Location = New System.Drawing.Point(52, 2)
 		Me.cbRecurringFrequency.Name = "cbRecurringFrequency"
-		Me.cbRecurringFrequency.Size = New System.Drawing.Size(121, 21)
+		Me.cbRecurringFrequency.Size = New System.Drawing.Size(91, 21)
 		Me.cbRecurringFrequency.TabIndex = 3
 		'
 		'rbRecurringYes
@@ -308,21 +325,6 @@ Partial Class StepB
 		Me.txtEditPromoID.Text = "TEST!"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		'
-		'SuccessIcon
-		'
-		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.SuccessIcon.Enabled = False
-		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.Location = New System.Drawing.Point(239, 33)
-		Me.SuccessIcon.Name = "SuccessIcon"
-		Me.SuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.SuccessIcon.TabIndex = 9
-		Me.SuccessIcon.TabStop = False
-		Me.SuccessIcon.ToolTipText = Nothing
-		Me.SuccessIcon.Visible = False
-		'
 		'StepB
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -344,6 +346,7 @@ Partial Class StepB
 		Me.Controls.SetChildIndex(Me.pnlPromoID, 0)
 		Me.pnlPromoName.ResumeLayout(False)
 		Me.pnlPromoName.PerformLayout()
+		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlRecurring.ResumeLayout(False)
 		Me.pnlRecurring.PerformLayout()
 		Me.Panel1.ResumeLayout(False)
@@ -353,7 +356,6 @@ Partial Class StepB
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlEditPromoID.ResumeLayout(False)
 		Me.pnlEditPromoID.PerformLayout()
-		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub

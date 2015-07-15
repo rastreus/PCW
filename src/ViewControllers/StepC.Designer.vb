@@ -55,6 +55,7 @@ Partial Class StepC
 		Me.pnlOccuringQualifyingPeriod = New System.Windows.Forms.Panel()
 		Me.pnlOccursDate = New System.Windows.Forms.Panel()
 		Me.pnlMonthCal = New System.Windows.Forms.Panel()
+		Me.lblSelectDates = New System.Windows.Forms.Label()
 		Me.pnlRecurringQualifyingPeriod = New System.Windows.Forms.Panel()
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
@@ -64,19 +65,18 @@ Partial Class StepC
 		Me.cbPrimaryDay = New System.Windows.Forms.ComboBox()
 		Me.yetAnotherLabel = New System.Windows.Forms.Label()
 		Me.lblQualifyingPeriod = New System.Windows.Forms.Label()
-		Me.lblSelectDates = New System.Windows.Forms.Label()
-		Me.pnlRedemptionDays.SuspendLayout
-		Me.pnlCbRedemptionDays.SuspendLayout
-		Me.Panel2.SuspendLayout
-		Me.Panel3.SuspendLayout
-		Me.Panel4.SuspendLayout
-		Me.pnlOccuringQualifyingPeriod.SuspendLayout
-		Me.pnlOccursDate.SuspendLayout
-		Me.pnlMonthCal.SuspendLayout
-		Me.pnlRecurringQualifyingPeriod.SuspendLayout
-		Me.Panel7.SuspendLayout
-		Me.pnlPrimaryDay.SuspendLayout
-		Me.SuspendLayout
+		Me.pnlRedemptionDays.SuspendLayout()
+		Me.pnlCbRedemptionDays.SuspendLayout()
+		Me.Panel2.SuspendLayout()
+		Me.Panel3.SuspendLayout()
+		Me.Panel4.SuspendLayout()
+		Me.pnlOccuringQualifyingPeriod.SuspendLayout()
+		Me.pnlOccursDate.SuspendLayout()
+		Me.pnlMonthCal.SuspendLayout()
+		Me.pnlRecurringQualifyingPeriod.SuspendLayout()
+		Me.Panel7.SuspendLayout()
+		Me.pnlPrimaryDay.SuspendLayout()
+		Me.SuspendLayout()
 		'
 		'Description
 		'
@@ -106,7 +106,7 @@ Partial Class StepC
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbTuesday)
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbMonday)
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSunday)
-		Me.pnlCbRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.pnlCbRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.pnlCbRedemptionDays.Location = New System.Drawing.Point(19, 52)
 		Me.pnlCbRedemptionDays.Name = "pnlCbRedemptionDays"
 		Me.pnlCbRedemptionDays.Size = New System.Drawing.Size(103, 109)
@@ -114,86 +114,86 @@ Partial Class StepC
 		'
 		'cbSaturday
 		'
-		Me.cbSaturday.AutoSize = true
-		Me.cbSaturday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbSaturday.AutoSize = True
+		Me.cbSaturday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSaturday.Location = New System.Drawing.Point(1, 90)
 		Me.cbSaturday.Name = "cbSaturday"
 		Me.cbSaturday.Size = New System.Drawing.Size(68, 17)
 		Me.cbSaturday.TabIndex = 34
 		Me.cbSaturday.Text = "Saturday"
-		Me.cbSaturday.UseVisualStyleBackColor = true
+		Me.cbSaturday.UseVisualStyleBackColor = True
 		'
 		'cbFriday
 		'
-		Me.cbFriday.AutoSize = true
-		Me.cbFriday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbFriday.AutoSize = True
+		Me.cbFriday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbFriday.Location = New System.Drawing.Point(1, 75)
 		Me.cbFriday.Name = "cbFriday"
 		Me.cbFriday.Size = New System.Drawing.Size(54, 17)
 		Me.cbFriday.TabIndex = 33
 		Me.cbFriday.Text = "Friday"
-		Me.cbFriday.UseVisualStyleBackColor = true
+		Me.cbFriday.UseVisualStyleBackColor = True
 		'
 		'cbThursday
 		'
-		Me.cbThursday.AutoSize = true
-		Me.cbThursday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbThursday.AutoSize = True
+		Me.cbThursday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbThursday.Location = New System.Drawing.Point(1, 60)
 		Me.cbThursday.Name = "cbThursday"
 		Me.cbThursday.Size = New System.Drawing.Size(70, 17)
 		Me.cbThursday.TabIndex = 32
 		Me.cbThursday.Text = "Thursday"
-		Me.cbThursday.UseVisualStyleBackColor = true
+		Me.cbThursday.UseVisualStyleBackColor = True
 		'
 		'cbWednesday
 		'
 		Me.cbWednesday.BackColor = System.Drawing.Color.Transparent
-		Me.cbWednesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbWednesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbWednesday.ForeColor = System.Drawing.Color.Black
 		Me.cbWednesday.Location = New System.Drawing.Point(1, 44)
 		Me.cbWednesday.Name = "cbWednesday"
 		Me.cbWednesday.Size = New System.Drawing.Size(100, 19)
 		Me.cbWednesday.TabIndex = 31
 		Me.cbWednesday.Text = "Wednesday"
-		Me.cbWednesday.UseVisualStyleBackColor = false
+		Me.cbWednesday.UseVisualStyleBackColor = False
 		'
 		'cbTuesday
 		'
-		Me.cbTuesday.AutoSize = true
-		Me.cbTuesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbTuesday.AutoSize = True
+		Me.cbTuesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbTuesday.Location = New System.Drawing.Point(1, 30)
 		Me.cbTuesday.Name = "cbTuesday"
 		Me.cbTuesday.Size = New System.Drawing.Size(67, 17)
 		Me.cbTuesday.TabIndex = 30
 		Me.cbTuesday.Text = "Tuesday"
-		Me.cbTuesday.UseVisualStyleBackColor = true
+		Me.cbTuesday.UseVisualStyleBackColor = True
 		'
 		'cbMonday
 		'
-		Me.cbMonday.AutoSize = true
-		Me.cbMonday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbMonday.AutoSize = True
+		Me.cbMonday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbMonday.Location = New System.Drawing.Point(1, 15)
 		Me.cbMonday.Name = "cbMonday"
 		Me.cbMonday.Size = New System.Drawing.Size(64, 17)
 		Me.cbMonday.TabIndex = 29
 		Me.cbMonday.Text = "Monday"
-		Me.cbMonday.UseVisualStyleBackColor = true
+		Me.cbMonday.UseVisualStyleBackColor = True
 		'
 		'cbSunday
 		'
-		Me.cbSunday.AutoSize = true
-		Me.cbSunday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbSunday.AutoSize = True
+		Me.cbSunday.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSunday.Location = New System.Drawing.Point(1, 0)
 		Me.cbSunday.Name = "cbSunday"
 		Me.cbSunday.Size = New System.Drawing.Size(62, 17)
 		Me.cbSunday.TabIndex = 28
 		Me.cbSunday.Text = "Sunday"
-		Me.cbSunday.UseVisualStyleBackColor = true
+		Me.cbSunday.UseVisualStyleBackColor = True
 		'
 		'lblPrimaryDay
 		'
-		Me.lblPrimaryDay.AutoSize = true
-		Me.lblPrimaryDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblPrimaryDay.AutoSize = True
+		Me.lblPrimaryDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPrimaryDay.ForeColor = System.Drawing.Color.Lime
 		Me.lblPrimaryDay.Location = New System.Drawing.Point(39, 164)
 		Me.lblPrimaryDay.Name = "lblPrimaryDay"
@@ -204,7 +204,7 @@ Partial Class StepC
 		'
 		'lblRedemptionDays
 		'
-		Me.lblRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblRedemptionDays.ForeColor = System.Drawing.Color.White
 		Me.lblRedemptionDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblRedemptionDays.Name = "lblRedemptionDays"
@@ -226,21 +226,21 @@ Partial Class StepC
 		'
 		'cbSelectAll
 		'
-		Me.cbSelectAll.AutoSize = true
-		Me.cbSelectAll.Checked = true
+		Me.cbSelectAll.AutoSize = True
+		Me.cbSelectAll.Checked = True
 		Me.cbSelectAll.CheckState = System.Windows.Forms.CheckState.Checked
-		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbSelectAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSelectAll.ForeColor = System.Drawing.Color.Lime
 		Me.cbSelectAll.Location = New System.Drawing.Point(21, 163)
 		Me.cbSelectAll.Name = "cbSelectAll"
 		Me.cbSelectAll.Size = New System.Drawing.Size(80, 17)
 		Me.cbSelectAll.TabIndex = 7
 		Me.cbSelectAll.Text = "Select All"
-		Me.cbSelectAll.UseVisualStyleBackColor = true
+		Me.cbSelectAll.UseVisualStyleBackColor = True
 		'
 		'lblPointsEarningDays
 		'
-		Me.lblPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPointsEarningDays.ForeColor = System.Drawing.Color.White
 		Me.lblPointsEarningDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblPointsEarningDays.Name = "lblPointsEarningDays"
@@ -251,15 +251,15 @@ Partial Class StepC
 		'clbPointsEarningDays
 		'
 		Me.clbPointsEarningDays.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.clbPointsEarningDays.CheckOnClick = true
-		Me.clbPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.clbPointsEarningDays.FormattingEnabled = true
+		Me.clbPointsEarningDays.CheckOnClick = True
+		Me.clbPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.clbPointsEarningDays.FormattingEnabled = True
 		Me.clbPointsEarningDays.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.clbPointsEarningDays.Location = New System.Drawing.Point(19, 52)
 		Me.clbPointsEarningDays.Name = "clbPointsEarningDays"
 		Me.clbPointsEarningDays.Size = New System.Drawing.Size(103, 109)
 		Me.clbPointsEarningDays.TabIndex = 6
-		Me.clbPointsEarningDays.ThreeDCheckBoxes = true
+		Me.clbPointsEarningDays.ThreeDCheckBoxes = True
 		'
 		'Panel3
 		'
@@ -274,7 +274,7 @@ Partial Class StepC
 		'
 		'dtpQualifyingStart
 		'
-		Me.dtpQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.dtpQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingStart.Name = "dtpQualifyingStart"
@@ -284,7 +284,7 @@ Partial Class StepC
 		'Label2
 		'
 		Me.Label2.BackColor = System.Drawing.Color.Transparent
-		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label2.Location = New System.Drawing.Point(0, 0)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(106, 48)
@@ -304,7 +304,7 @@ Partial Class StepC
 		'
 		'dtpQualifyingEnd
 		'
-		Me.dtpQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.dtpQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingEnd.Name = "dtpQualifyingEnd"
@@ -314,7 +314,7 @@ Partial Class StepC
 		'Label3
 		'
 		Me.Label3.BackColor = System.Drawing.Color.Transparent
-		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label3.Location = New System.Drawing.Point(0, 0)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(106, 48)
@@ -323,9 +323,9 @@ Partial Class StepC
 		'
 		'Label9
 		'
-		Me.Label9.AutoSize = true
+		Me.Label9.AutoSize = True
 		Me.Label9.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label9.ForeColor = System.Drawing.Color.Gainsboro
 		Me.Label9.Location = New System.Drawing.Point(9, 38)
 		Me.Label9.Name = "Label9"
@@ -336,9 +336,9 @@ Partial Class StepC
 		'
 		'Label10
 		'
-		Me.Label10.AutoSize = true
+		Me.Label10.AutoSize = True
 		Me.Label10.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label10.ForeColor = System.Drawing.Color.Gainsboro
 		Me.Label10.Location = New System.Drawing.Point(4, 21)
 		Me.Label10.Name = "Label10"
@@ -350,7 +350,7 @@ Partial Class StepC
 		'lblQualifyingEnd
 		'
 		Me.lblQualifyingEnd.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.lblQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingEnd.ForeColor = System.Drawing.Color.White
 		Me.lblQualifyingEnd.Location = New System.Drawing.Point(37, 34)
 		Me.lblQualifyingEnd.Name = "lblQualifyingEnd"
@@ -362,7 +362,7 @@ Partial Class StepC
 		'lblQualifyingStart
 		'
 		Me.lblQualifyingStart.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.lblQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingStart.ForeColor = System.Drawing.Color.White
 		Me.lblQualifyingStart.Location = New System.Drawing.Point(38, 17)
 		Me.lblQualifyingStart.Name = "lblQualifyingStart"
@@ -373,21 +373,21 @@ Partial Class StepC
 		'
 		'cbSameDayPromo
 		'
-		Me.cbSameDayPromo.AutoSize = true
+		Me.cbSameDayPromo.AutoSize = True
 		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
-		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic),System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 56)
 		Me.cbSameDayPromo.Name = "cbSameDayPromo"
 		Me.cbSameDayPromo.Size = New System.Drawing.Size(124, 19)
 		Me.cbSameDayPromo.TabIndex = 19
 		Me.cbSameDayPromo.Text = "Same-Day Promo"
-		Me.cbSameDayPromo.UseVisualStyleBackColor = false
+		Me.cbSameDayPromo.UseVisualStyleBackColor = False
 		'
 		'Label13
 		'
-		Me.Label13.AutoSize = true
+		Me.Label13.AutoSize = True
 		Me.Label13.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline),System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label13.ForeColor = System.Drawing.Color.Gainsboro
 		Me.Label13.Location = New System.Drawing.Point(0, 0)
 		Me.Label13.Name = "Label13"
@@ -398,9 +398,9 @@ Partial Class StepC
 		'
 		'Label14
 		'
-		Me.Label14.AutoSize = true
+		Me.Label14.AutoSize = True
 		Me.Label14.BackColor = System.Drawing.Color.Transparent
-		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline),System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label14.Location = New System.Drawing.Point(3, 10)
 		Me.Label14.Name = "Label14"
 		Me.Label14.Size = New System.Drawing.Size(142, 16)
@@ -409,7 +409,7 @@ Partial Class StepC
 		'
 		'dtpOccursDate
 		'
-		Me.dtpOccursDate.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.dtpOccursDate.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpOccursDate.Location = New System.Drawing.Point(6, 29)
 		Me.dtpOccursDate.Name = "dtpOccursDate"
 		Me.dtpOccursDate.Size = New System.Drawing.Size(199, 20)
@@ -419,19 +419,19 @@ Partial Class StepC
 		'
 		Me.MonthCal.BackColor = System.Drawing.Color.White
 		Me.MonthCal.Cursor = System.Windows.Forms.Cursors.No
-		Me.MonthCal.Enabled = false
+		Me.MonthCal.Enabled = False
 		Me.MonthCal.ForeColor = System.Drawing.SystemColors.ControlText
 		Me.MonthCal.Location = New System.Drawing.Point(6, 4)
 		Me.MonthCal.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
 		Me.MonthCal.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
 		Me.MonthCal.Name = "MonthCal"
-		Me.MonthCal.ShowToday = false
-		Me.MonthCal.ShowTodayCircle = false
+		Me.MonthCal.ShowToday = False
+		Me.MonthCal.ShowTodayCircle = False
 		Me.MonthCal.TabIndex = 15
 		Me.MonthCal.TitleBackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.MonthCal.TitleForeColor = System.Drawing.Color.Gold
 		Me.MonthCal.TrailingForeColor = System.Drawing.Color.Gray
-		Me.MonthCal.Visible = false
+		Me.MonthCal.Visible = False
 		'
 		'pnlOccuringQualifyingPeriod
 		'
@@ -470,6 +470,18 @@ Partial Class StepC
 		Me.pnlMonthCal.Size = New System.Drawing.Size(220, 175)
 		Me.pnlMonthCal.TabIndex = 26
 		'
+		'lblSelectDates
+		'
+		Me.lblSelectDates.BackColor = System.Drawing.Color.Transparent
+		Me.lblSelectDates.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblSelectDates.ForeColor = System.Drawing.Color.White
+		Me.lblSelectDates.Location = New System.Drawing.Point(3, 4)
+		Me.lblSelectDates.Name = "lblSelectDates"
+		Me.lblSelectDates.Size = New System.Drawing.Size(206, 163)
+		Me.lblSelectDates.TabIndex = 16
+		Me.lblSelectDates.Text = "Select date(s) to display the qualifying period."
+		Me.lblSelectDates.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
 		'pnlRecurringQualifyingPeriod
 		'
 		Me.pnlRecurringQualifyingPeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
@@ -483,51 +495,51 @@ Partial Class StepC
 		'
 		'Label6
 		'
-		Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label6.Location = New System.Drawing.Point(-1, 5)
 		Me.Label6.Name = "Label6"
 		Me.Label6.Size = New System.Drawing.Size(140, 35)
 		Me.Label6.TabIndex = 0
 		Me.Label6.Text = "When is the promo occurance date?"
-		Me.Label6.Visible = false
+		Me.Label6.Visible = False
 		'
 		'DateTimePicker3
 		'
-		Me.DateTimePicker3.Enabled = false
+		Me.DateTimePicker3.Enabled = False
 		Me.DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.DateTimePicker3.Location = New System.Drawing.Point(2, 43)
 		Me.DateTimePicker3.Name = "DateTimePicker3"
 		Me.DateTimePicker3.Size = New System.Drawing.Size(95, 20)
 		Me.DateTimePicker3.TabIndex = 0
-		Me.DateTimePicker3.TabStop = false
+		Me.DateTimePicker3.TabStop = False
 		'
 		'Panel7
 		'
 		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.Panel7.Controls.Add(Me.DateTimePicker3)
 		Me.Panel7.Controls.Add(Me.Label6)
-		Me.Panel7.Enabled = false
+		Me.Panel7.Enabled = False
 		Me.Panel7.Location = New System.Drawing.Point(273, 442)
 		Me.Panel7.Name = "Panel7"
 		Me.Panel7.Size = New System.Drawing.Size(144, 81)
 		Me.Panel7.TabIndex = 0
-		Me.Panel7.Visible = false
+		Me.Panel7.Visible = False
 		'
 		'CheckedListBox1
 		'
 		Me.CheckedListBox1.BackColor = System.Drawing.Color.MediumSpringGreen
-		Me.CheckedListBox1.CheckOnClick = true
-		Me.CheckedListBox1.Enabled = false
-		Me.CheckedListBox1.FormattingEnabled = true
+		Me.CheckedListBox1.CheckOnClick = True
+		Me.CheckedListBox1.Enabled = False
+		Me.CheckedListBox1.FormattingEnabled = True
 		Me.CheckedListBox1.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.CheckedListBox1.Location = New System.Drawing.Point(164, 442)
 		Me.CheckedListBox1.Name = "CheckedListBox1"
 		Me.CheckedListBox1.RightToLeft = System.Windows.Forms.RightToLeft.No
 		Me.CheckedListBox1.Size = New System.Drawing.Size(103, 109)
 		Me.CheckedListBox1.TabIndex = 4
-		Me.CheckedListBox1.ThreeDCheckBoxes = true
-		Me.CheckedListBox1.UseCompatibleTextRendering = true
-		Me.CheckedListBox1.Visible = false
+		Me.CheckedListBox1.ThreeDCheckBoxes = True
+		Me.CheckedListBox1.UseCompatibleTextRendering = True
+		Me.CheckedListBox1.Visible = False
 		'
 		'pnlPrimaryDay
 		'
@@ -535,17 +547,17 @@ Partial Class StepC
 		Me.pnlPrimaryDay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlPrimaryDay.Controls.Add(Me.cbPrimaryDay)
 		Me.pnlPrimaryDay.Controls.Add(Me.yetAnotherLabel)
-		Me.pnlPrimaryDay.Enabled = false
+		Me.pnlPrimaryDay.Enabled = False
 		Me.pnlPrimaryDay.Location = New System.Drawing.Point(229, 219)
 		Me.pnlPrimaryDay.Name = "pnlPrimaryDay"
 		Me.pnlPrimaryDay.Size = New System.Drawing.Size(124, 57)
 		Me.pnlPrimaryDay.TabIndex = 28
-		Me.pnlPrimaryDay.Visible = false
+		Me.pnlPrimaryDay.Visible = False
 		'
 		'cbPrimaryDay
 		'
-		Me.cbPrimaryDay.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.cbPrimaryDay.FormattingEnabled = true
+		Me.cbPrimaryDay.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbPrimaryDay.FormattingEnabled = True
 		Me.cbPrimaryDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.cbPrimaryDay.Location = New System.Drawing.Point(7, 24)
 		Me.cbPrimaryDay.Name = "cbPrimaryDay"
@@ -554,9 +566,9 @@ Partial Class StepC
 		'
 		'yetAnotherLabel
 		'
-		Me.yetAnotherLabel.AutoSize = true
+		Me.yetAnotherLabel.AutoSize = True
 		Me.yetAnotherLabel.BackColor = System.Drawing.Color.Transparent
-		Me.yetAnotherLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline),System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.yetAnotherLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.yetAnotherLabel.ForeColor = System.Drawing.Color.Gainsboro
 		Me.yetAnotherLabel.Location = New System.Drawing.Point(0, 0)
 		Me.yetAnotherLabel.Name = "yetAnotherLabel"
@@ -567,26 +579,14 @@ Partial Class StepC
 		'
 		'lblQualifyingPeriod
 		'
-		Me.lblQualifyingPeriod.AutoSize = true
+		Me.lblQualifyingPeriod.AutoSize = True
 		Me.lblQualifyingPeriod.BackColor = System.Drawing.Color.Transparent
-		Me.lblQualifyingPeriod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.lblQualifyingPeriod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingPeriod.Location = New System.Drawing.Point(8, 7)
 		Me.lblQualifyingPeriod.Name = "lblQualifyingPeriod"
 		Me.lblQualifyingPeriod.Size = New System.Drawing.Size(206, 13)
 		Me.lblQualifyingPeriod.TabIndex = 29
 		Me.lblQualifyingPeriod.Text = "Calendar displays Qualifying Period"
-		'
-		'lblSelectDates
-		'
-		Me.lblSelectDates.BackColor = System.Drawing.Color.Transparent
-		Me.lblSelectDates.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.lblSelectDates.ForeColor = System.Drawing.Color.White
-		Me.lblSelectDates.Location = New System.Drawing.Point(3, 4)
-		Me.lblSelectDates.Name = "lblSelectDates"
-		Me.lblSelectDates.Size = New System.Drawing.Size(206, 163)
-		Me.lblSelectDates.TabIndex = 16
-		Me.lblSelectDates.Text = "Select date(s) to display the qualifying period."
-		Me.lblSelectDates.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'StepC
 		'

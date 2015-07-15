@@ -240,6 +240,10 @@ Public Class StepB
 	Private Sub cbRecurringFrequency_DropDown(sender As Object, _
 											  e As EventArgs) _
 		Handles cbRecurringFrequency.DropDown
+		If Me.cbRecurringFrequency.BackColor = Color.DarkGreen Then
+			Me.cbRecurringFrequency.BackColor = Color.White
+			Me.cbRecurringFrequency.ForeColor = Color.Black
+		End If
 		PCW.NextEnabled = False
 	End Sub
 #End Region
@@ -257,7 +261,10 @@ Public Class StepB
 			PCW.Data.DaysBool = False
 		End If
 		If readyForNext Then
+			Me.cbRecurringFrequency.BackColor = Color.DarkGreen
+			Me.cbRecurringFrequency.ForeColor = Color.Lime
 			GUI_Util.NextEnabled()
+			Me.ActiveControl = Me.pnlRecurring
 		End If
 	End Sub
 #End Region
