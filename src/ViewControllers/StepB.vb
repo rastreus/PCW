@@ -91,33 +91,48 @@ Public Class StepB
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>This Step uses current Date info on show.</remarks>
-	Private Sub StepB_ShowStep(sender As Object, e As ShowStepEventArgs) _
+	Private Sub StepB_ShowStep(sender As Object, _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		If Me.Data.StepNotSet Then
 			PCW.NextEnabled = False
+			Me.promoAcronym = New String("")
+			Me.promoMonth = getPromoThisMonth()
+			Me.promoYear = getPromoYear()
+			Me.promoID = New String("")
+			Me.promoNameEntered = False
+			Me.promoNameLeft = False
 		End If
-		Me.promoAcronym = New String("")
-		Me.promoMonth = getPromoMonth()
-		Me.promoYear = getPromoYear()
-		Me.promoID = New String("")
-		Me.promoNameEntered = False
-		Me.promoNameLeft = False
 	End Sub
 
 	''' <summary>
-	''' Returns formatted String of month.
+	''' Returns formatted String of this (current) month.
 	''' </summary>
 	''' <returns>Current month as String of two digits.</returns>
 	''' <remarks></remarks>
-	Private Function getPromoMonth() As String
-		Dim monthStr As String = Date.Today.Month.ToString
-		Dim result As String = New String("")
+	Private Function getPromoThisMonth() As String
+		Dim thisMonthStr As String = Date.Today.Month.ToString
+		thisMonthStr = formatMonthStr(thisMonthStr)
+		Return thisMonthStr
+	End Function
+
+	''' <summary>
+	''' Returns formatted String of next month.
+	''' </summary>
+	''' <returns>Current month + 1 for next month
+	''' as String of two digits.</returns>
+	''' <remarks></remarks>
+	Private Function getPromoNextMonth() As String
+		Dim nextMonthStr As String = (Date.Today.Month + 1).ToString
+		nextMonthStr = formatMonthStr(nextMonthStr)
+		Return nextMonthStr
+	End Function
+
+	Private Function formatMonthStr(ByVal monthStr As String) As String
 		If monthStr.Length < 2 Then
-			result = "0" & monthStr
-		Else
-			result = monthStr
+			monthStr = "0" & monthStr
 		End If
-		Return result
+		Return monthStr
 	End Function
 
 	''' <summary>
@@ -391,5 +406,17 @@ Public Class StepB
 	Private Function SetBtnPromoIDText(ByRef txt As String) As String
 		Return txt
 	End Function
+#End Region
+#Region "StepB_rbNextMonth_CheckedChanged"
+	Private Sub rbNextMonth_CheckedChanged(sender As Object, _
+										   e As EventArgs) _
+		Handles rbNextMonth.CheckedChanged
+		If Me.rbNextMonth.Checked Then
+			Me.promoMonth = getPromoNextMonth()
+		Else
+			Me.promoMonth = getPromoThisMonth()
+		End If
+		Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
+	End Sub
 #End Region
 End Class

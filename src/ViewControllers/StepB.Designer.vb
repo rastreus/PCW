@@ -42,6 +42,9 @@ Partial Class StepB
 		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
 		Me.lblEditPromoID = New System.Windows.Forms.Label()
 		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
+		Me.pnlWhichMonth = New System.Windows.Forms.Panel()
+		Me.rbThisMonth = New System.Windows.Forms.RadioButton()
+		Me.rbNextMonth = New System.Windows.Forms.RadioButton()
 		Me.pnlPromoName.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlRecurring.SuspendLayout()
@@ -49,6 +52,7 @@ Partial Class StepB
 		Me.pnlPromoID.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlEditPromoID.SuspendLayout()
+		Me.pnlWhichMonth.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -274,13 +278,14 @@ Partial Class StepB
 		'
 		Me.pnlEditPromoID.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlEditPromoID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlEditPromoID.Controls.Add(Me.pnlWhichMonth)
 		Me.pnlEditPromoID.Controls.Add(Me.btnTxtEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.txtEditPromoID)
 		Me.pnlEditPromoID.Enabled = False
 		Me.pnlEditPromoID.Location = New System.Drawing.Point(411, 140)
 		Me.pnlEditPromoID.Name = "pnlEditPromoID"
-		Me.pnlEditPromoID.Size = New System.Drawing.Size(95, 63)
+		Me.pnlEditPromoID.Size = New System.Drawing.Size(105, 107)
 		Me.pnlEditPromoID.TabIndex = 0
 		Me.pnlEditPromoID.Visible = False
 		'
@@ -293,9 +298,9 @@ Partial Class StepB
 		Me.btnTxtEditPromoID.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnTxtEditPromoID.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnTxtEditPromoID.ForeColor = System.Drawing.Color.White
-		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 32)
+		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 78)
 		Me.btnTxtEditPromoID.Name = "btnTxtEditPromoID"
-		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(84, 20)
+		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(93, 20)
 		Me.btnTxtEditPromoID.TabIndex = 2
 		Me.btnTxtEditPromoID.Text = "Set ID"
 		Me.btnTxtEditPromoID.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -324,6 +329,43 @@ Partial Class StepB
 		Me.txtEditPromoID.TabStop = False
 		Me.txtEditPromoID.Text = "TEST!"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		'
+		'pnlWhichMonth
+		'
+		Me.pnlWhichMonth.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlWhichMonth.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlWhichMonth.Controls.Add(Me.rbNextMonth)
+		Me.pnlWhichMonth.Controls.Add(Me.rbThisMonth)
+		Me.pnlWhichMonth.Location = New System.Drawing.Point(3, 32)
+		Me.pnlWhichMonth.Name = "pnlWhichMonth"
+		Me.pnlWhichMonth.Size = New System.Drawing.Size(93, 40)
+		Me.pnlWhichMonth.TabIndex = 3
+		'
+		'rbThisMonth
+		'
+		Me.rbThisMonth.AutoSize = True
+		Me.rbThisMonth.BackColor = System.Drawing.Color.Transparent
+		Me.rbThisMonth.Checked = True
+		Me.rbThisMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbThisMonth.Location = New System.Drawing.Point(3, 2)
+		Me.rbThisMonth.Name = "rbThisMonth"
+		Me.rbThisMonth.Size = New System.Drawing.Size(85, 17)
+		Me.rbThisMonth.TabIndex = 0
+		Me.rbThisMonth.TabStop = True
+		Me.rbThisMonth.Text = "This Month"
+		Me.rbThisMonth.UseVisualStyleBackColor = False
+		'
+		'rbNextMonth
+		'
+		Me.rbNextMonth.AutoSize = True
+		Me.rbNextMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbNextMonth.Location = New System.Drawing.Point(3, 20)
+		Me.rbNextMonth.Name = "rbNextMonth"
+		Me.rbNextMonth.Size = New System.Drawing.Size(85, 17)
+		Me.rbNextMonth.TabIndex = 1
+		Me.rbNextMonth.TabStop = True
+		Me.rbNextMonth.Text = "Next Month"
+		Me.rbNextMonth.UseVisualStyleBackColor = True
 		'
 		'StepB
 		'
@@ -356,6 +398,8 @@ Partial Class StepB
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlEditPromoID.ResumeLayout(False)
 		Me.pnlEditPromoID.PerformLayout()
+		Me.pnlWhichMonth.ResumeLayout(False)
+		Me.pnlWhichMonth.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -379,5 +423,8 @@ Partial Class StepB
 	Private WithEvents btnSetPromoName As System.Windows.Forms.Button
 	Private WithEvents txtPromoName As CustomizedTextBox.CustomizedTextBox
 	Private WithEvents SuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents pnlWhichMonth As System.Windows.Forms.Panel
+	Private WithEvents rbNextMonth As System.Windows.Forms.RadioButton
+	Private WithEvents rbThisMonth As System.Windows.Forms.RadioButton
 
 End Class
