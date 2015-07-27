@@ -256,8 +256,7 @@ Public Class StepB
 											  e As EventArgs) _
 		Handles cbRecurringFrequency.DropDown
 		If Me.cbRecurringFrequency.BackColor = Color.DarkGreen Then
-			Me.cbRecurringFrequency.BackColor = Color.White
-			Me.cbRecurringFrequency.ForeColor = Color.Black
+			GUI_Util.regCb(Me.cbRecurringFrequency)
 		End If
 		PCW.NextEnabled = False
 	End Sub
@@ -276,8 +275,7 @@ Public Class StepB
 			PCW.Data.DaysBool = False
 		End If
 		If readyForNext Then
-			Me.cbRecurringFrequency.BackColor = Color.DarkGreen
-			Me.cbRecurringFrequency.ForeColor = Color.Lime
+			GUI_Util.successCb(Me.cbRecurringFrequency)
 			GUI_Util.NextEnabled()
 			Me.ActiveControl = Me.pnlRecurring
 		End If
@@ -288,6 +286,9 @@ Public Class StepB
 								   e As EventArgs) _
 		Handles txtPromoName.Enter
 		Me.promoNameEntered = True
+		If GUI_Util.IsSuccess(Me.txtPromoName) Then
+			GUI_Util.regTxt(Me.txtPromoName)
+		End If
 		GUI_Util.onSetBtn(Me.btnSetPromoName)
 		GUI_Util.offIcon(Me.SuccessIcon)
 	End Sub
@@ -303,6 +304,7 @@ Public Class StepB
 			Me.btnPromoID.Text = SetBtnPromoIDText(Me.promoID)
 			Me.promoNameLeft = True
 			GUI_Util.onIcon(Me.SuccessIcon)
+			GUI_Util.successTxt(Me.txtPromoName)
 			GUI_Util.regPnl(Me.pnlPromoName)
 			If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
 				Dim errID As String = New String("!")
@@ -318,6 +320,7 @@ Public Class StepB
 		ElseIf Me.Data.PromoName_Invalid(Me.txtPromoName.Text) Then
 			GUI_Util.errPnl(Me.pnlPromoName)
 			GUI_Util.errIcon(Me.SuccessIcon)
+			GUI_Util.regTxt(Me.txtPromoName)
 			GUI_Util.msgBox("PromoName Invalid: " & _
 							Me.Data.Get_PromoName_errString( _
 								Me.txtPromoName.Text))

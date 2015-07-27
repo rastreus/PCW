@@ -556,6 +556,7 @@ Public Class StepC
 									  e As EventArgs) _
 		Handles cbPrimaryDay.DropDown
 		If Not IsNothing(cbPrimaryDay.SelectedItem) Then 'Clear it if it's set!
+			GUI_Util.regCb(Me.cbPrimaryDay)
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
 			Me.primaryDayStr = "ASSIGNED A VALUE"
 		End If
@@ -565,9 +566,11 @@ Public Class StepC
 	Private Sub cbPrimaryDay_DropDownClosed(sender As Object, _
 											e As EventArgs) _
 		Handles cbPrimaryDay.DropDownClosed
+		GUI_Util.successCb(Me.cbPrimaryDay)
 		If Me.startDayBool And Me.endDayBool Then
 			GUI_Util.NextEnabled()
 		End If
+		Me.ActiveControl = Me.pnlPrimaryDay
 	End Sub
 #End Region
 #Region "StepC_cbPrimaryDay_SelectionChangeCommitted"
@@ -587,6 +590,28 @@ Public Class StepC
 		lockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))	'And Lock
 	End Sub
 #End Region
+#Region "StepC_dtpQualifyingStart_DropDown"
+	Private Sub dtpQualifyingStart_DropDown(sender As Object, _
+											e As EventArgs) _
+		Handles dtpQualifyingStart.DropDown
+		If Me.startDayBool = True Then
+			GUI_Util.regLbl(Me.lblWhenQPStart)
+			GUI_Util.regPnl(Me.pnlWhenQPStart, _
+							Color.PapayaWhip)
+		End If
+	End Sub
+#End Region
+#Region "StepC_dtpQualifyingEnd_DropDown"
+	Private Sub dtpQualifyingEnd_DropDown(sender As Object, _
+										  e As EventArgs) _
+		Handles dtpQualifyingEnd.DropDown
+		If Me.endDayBool = True Then
+			GUI_Util.regLbl(Me.lblWhenQPEnd)
+			GUI_Util.regPnl(Me.pnlWhenQPEnd, _
+							Color.PapayaWhip)
+		End If
+	End Sub
+#End Region
 #Region "StepC_dtpQualifyingStart_CloseUp"
 	Private Sub dtpQualifyingStart_CloseUp(sender As Object, _
 										   e As EventArgs) _
@@ -594,7 +619,12 @@ Public Class StepC
 		If Me.startDayBool = False Then	'"Break the (bool) seal!"
 			Me.startDayBool = True
 		End If
-		checkRecurringStartEndQualifyingCheckboxes() 'Have both seals been broken?
+		GUI_Util.successPnl(Me.pnlWhenQPStart)
+		GUI_Util.successLbl(Me.lblWhenQPStart)
+		'Have both seals been broken?
+		checkRecurringStartEndQualifyingCheckboxes(Me.lblWhenQPStart, _
+												   Me.pnlWhenQPStart)
+		Me.ActiveControl = Me.pnlWhenQPStart
 	End Sub
 #End Region
 #Region "StepC_dtpQualifyingEnd_CloseUp"
@@ -604,7 +634,12 @@ Public Class StepC
 		If Me.endDayBool = False Then '"Break the (bool) seal!"
 			Me.endDayBool = True
 		End If
-		checkRecurringStartEndQualifyingCheckboxes() 'Have both seals been broken?
+		GUI_Util.successPnl(Me.pnlWhenQPEnd)
+		GUI_Util.successLbl(Me.lblWhenQPEnd)
+		'Have both seals been broken?
+		checkRecurringStartEndQualifyingCheckboxes(Me.lblWhenQPEnd, _
+												   Me.pnlWhenQPEnd)
+		Me.ActiveControl = Me.pnlWhenQPEnd
 	End Sub
 #End Region
 #Region "StepC_checkRecurringStartEndQualifyingCheckboxes"
@@ -612,24 +647,36 @@ Public Class StepC
 	''' Sets the SelectionRange if both bools are true.
 	''' </summary>
 	''' <remarks>Make the MonthCal visible too!</remarks>
-	Private Sub checkRecurringStartEndQualifyingCheckboxes()
+	Private Sub checkRecurringStartEndQualifyingCheckboxes( _
+														  ByRef lbl As Label, _
+														  ByRef pnl As Panel)
 		If Me.startDayBool And Me.endDayBool Then
-			Me.MonthCal.SetSelectionRange(Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
-										  Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
+			Me.MonthCal.SetSelectionRange( _
+				Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
+				Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
 			If Me.MonthCal.Visible = False Then
 				Me.lblSelectDates.Visible = False
 				Me.MonthCal.Visible = True
 			End If
 			If Me.primaryDayBool And _
-				(Not Me.stepC_data.EndDate_Before_StartDate(Me.dtpQualifyingEnd.Value.Date, _
-															Me.dtpQualifyingStart.Value.Date)) Then
+				(Not Me.stepC_data.EndDate_Before_StartDate( _
+					 Me.dtpQualifyingEnd.Value.Date, _
+					 Me.dtpQualifyingStart.Value.Date)) Then
 				GUI_Util.NextEnabled()
-			ElseIf Me.stepC_data.EndDate_Before_StartDate(Me.dtpQualifyingEnd.Value.Date, _
-														  Me.dtpQualifyingStart.Value.Date) Then
-				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
+			ElseIf Me.stepC_data.EndDate_Before_StartDate( _
+					Me.dtpQualifyingEnd.Value.Date, _
+					Me.dtpQualifyingStart.Value.Date) Then
+				GUI_Util.errLbl(lbl)
+				GUI_Util.errPnl(pnl)
 				GUI_Util.msgBox("EndDate Before StartDate!")
 			Else
-				GUI_Util.regPnl(Me.pnlRecurringQualifyingPeriod)
+				If GUI_Util.IsSuccess(pnl) Then
+					GUI_Util.successLbl(lbl)
+					GUI_Util.successPnl(pnl)
+				Else
+					GUI_Util.regLbl(lbl)
+					GUI_Util.regPnl(pnl)
+				End If
 			End If
 		End If
 	End Sub

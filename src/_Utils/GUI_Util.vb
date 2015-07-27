@@ -46,13 +46,52 @@ Public Class GUI_Util
 		icon.Visible = True
 	End Sub
 
+	Public Shared Sub successLbl(ByRef lbl As Label)
+		lbl.BackColor = Color.DarkGreen
+		lbl.ForeColor = Color.Lime
+	End Sub
+
+	Public Shared Sub regLbl(ByRef lbl As Label)
+		lbl.BackColor = Color.Transparent
+		lbl.ForeColor = SystemColors.ControlText
+	End Sub
+
+	Public Shared Sub successCb(ByRef cb As ComboBox)
+		cb.BackColor = Color.DarkGreen
+		cb.ForeColor = Color.Lime
+	End Sub
+
+	Public Shared Sub regCb(ByRef cb As ComboBox)
+		cb.BackColor = Color.White
+		cb.ForeColor = Color.Black
+	End Sub
+
+	Public Shared Sub successTxt(ByRef txt As TextBox)
+		txt.BackColor = Color.DarkGreen
+		txt.ForeColor = Color.Lime
+	End Sub
+
+	Public Shared Sub regTxt(ByRef txt As TextBox)
+		txt.BackColor = SystemColors.Window
+		txt.ForeColor = SystemColors.WindowText
+	End Sub
+
+	Public Shared Function IsSuccess(ByRef ctl As Control) As Boolean
+		Return If(ctl.BackColor = Color.DarkGreen, True, False)
+	End Function
+
 	''' <summary>
 	''' Changes "BackColor" of Panel to represent success.
 	''' </summary>
 	''' <param name="pnl">The panel whose BackColor will be changed.</param>
 	''' <remarks>More delegation to clean code.</remarks>
 	Public Shared Sub successPnl(ByRef pnl As Panel)
-		pnl.BackColor = Color.Lime
+		pnl.BackColor = Color.DarkGreen
+	End Sub
+
+	Public Shared Sub errLbl(ByRef lbl As Label)
+		lbl.ForeColor = Color.White
+		lbl.BackColor = Color.Transparent
 	End Sub
 
 	''' <summary>
