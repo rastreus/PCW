@@ -334,12 +334,14 @@ Public Class StepGetCouponOffers
 		If rbCouponWildcardYES.Checked Then
 			If Me.wildcardMsgBool = False Then
 				Me.wildcardMsgBool = True
-				GUI_Util.msgBox("Wildcard Offers add Targets at the " & _
-								"time of coupon creation. " & _
-								"There is no option to import a Target " & _
-								"list for a Wildcard Offer.", _
-								"NO TARGET IMPORT!", _
-								"Information")
+				If PCW.Data.UsesCouponTargetsList Then
+					GUI_Util.msgBox("Wildcard Offers add Targets at the " & _
+									"time of coupon creation. " & _
+									"There is no option to import a " & _
+									"Target list for a Wildcard Offer.", _
+									"NO TARGET IMPORT!", _
+									"Information")
+				End If
 			End If
 		End If
 	End Sub
