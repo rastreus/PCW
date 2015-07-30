@@ -249,7 +249,8 @@ Public Class StepGetCouponOffers
 		If Me.validStartBool = False Then	'"Break the (Bool) seal!"
 			Me.validStartBool = True
 		End If
-		checkStartEndValidBools()			'Have both seals been broken?
+		'Have both seals been broken?
+		checkStartEndValidBools(Me.lblValidStart, Me.pnlValidStart)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidEnd_CloseUp"
@@ -259,7 +260,8 @@ Public Class StepGetCouponOffers
 		If Me.validEndBool = False Then		'"Break the (Bool) seal!"
 			Me.validEndBool = True
 		End If
-		checkStartEndValidBools()			'Have both seals been broken?
+		'Have both seals been broken?
+		checkStartEndValidBools(Me.lblValidEnd, Me.pnlValidEnd)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_checkStartEndValidBools"
@@ -267,11 +269,26 @@ Public Class StepGetCouponOffers
 	''' Sets the SelectionRange if both bools are true.
 	''' </summary>
 	''' <remarks>Make the MonthCal visible too!</remarks>
-	Private Sub checkStartEndValidBools()
-		If Me.validStartBool And Me.validEndBool Then
+	Private Sub checkStartEndValidBools(ByRef lbl As Label, _
+										ByRef pnl As Panel)
+		If (Me.validStartBool And Me.validEndBool) And _
+			(Not Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
+			 Me.dtpValidEnd.Value.Date, _
+			 Me.dtpValidStart.Value.Date)) Then
 			If Me.btnSubmit.Enabled = False Then
 				Me.btnSubmit.Enabled = True
 			End If
+			If GUI_Util.IsSuccess(pnl) Then
+				GUI_Util.successLbl(lbl)
+				GUI_Util.successPnl(pnl)
+			Else
+				GUI_Util.regLbl(lbl)
+				GUI_Util.regPnl(pnl, Color.PaleGreen)
+			End If
+		Else
+			GUI_Util.errLbl(lbl)
+			GUI_Util.errPnl(pnl)
+			GUI_Util.msgBox("EndDate Before StartDate!")
 		End If
 	End Sub
 #End Region

@@ -98,8 +98,8 @@
 		End If
 		Return result
 	End Function
-	Private Function EndDate_Before_StartDate(ByVal endDate As DateTime, _
-											  ByVal startDate As DateTime) As Boolean
+	Public Function EndDate_Before_StartDate(ByVal endDate As DateTime, _
+											 ByVal startDate As DateTime) As Boolean
 		Dim result As Boolean = False
 		Dim compare As Integer = Date.Compare(endDate, startDate)
 		If compare < 0 Then
