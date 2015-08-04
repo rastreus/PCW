@@ -113,7 +113,7 @@ Public Class StepD
 
 	Private Sub setEligiblePlayersCSV()
 		Dim local_StepB As StepB = New StepB
-		Dim local_promoID As String = New String("!")
+		Dim local_promoID As String = New String(String.Empty)
 		Me.UseWaitCursor = True
 		Me.stepD_data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
 		local_StepB = PCW.GetStep("StepB")
@@ -180,7 +180,7 @@ Public Class StepD
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepD_SetData()
@@ -350,7 +350,7 @@ Public Class StepD
 		Handles rbPointCutoffLimitYES.CheckedChanged
 		If Me.rbPointCutoffLimitYES.Checked Then
 			Me.txtPointCutoffLimit.Enabled = Me.rbPointCutoffLimitYES.Checked
-			Me.txtPointCutoffLimit.Text = ""
+			Me.txtPointCutoffLimit.Text = String.Empty
 			Me.ActiveControl = Me.txtPointCutoffLimit
 		Else
 			Me.txtPointCutoffLimit.Enabled = False
@@ -450,13 +450,13 @@ Public Class StepD
 		Handles txtNumOfTiers.Leave
 		If Me.txtTierBool And _
 			(Not Me.txtNumOfTiers.Text = BEP_Util.TiersStr And _
-			 Not Me.txtNumOfTiers.Text = "") Then
+			 Not Me.txtNumOfTiers.Text = String.Empty) Then
 			TiersSuccessIcon.ActiveColor = Color.Lime
 			TiersSuccessIcon.InActiveColor = Color.Lime
 			TiersSuccessIcon.Visible = True
 			GUI_Util.NextEnabled()
 		ElseIf (Me.txtNumOfTiers.Text = BEP_Util.TiersStr Or _
-				Me.txtNumOfTiers.Text = "") Then
+				Me.txtNumOfTiers.Text = String.Empty) Then
 			PCW.NextEnabled = False
 		End If
 	End Sub
@@ -514,7 +514,7 @@ Public Class StepD
 	Private Sub txtPointCutoffLimit_Leave(sender As Object, _
 										  e As EventArgs) _
 		Handles txtPointCutoffLimit.Leave
-		If (Not Me.txtPointCutoffLimit.Text = "") Then
+		If (Not Me.txtPointCutoffLimit.Text = String.Empty) Then
 			GUI_Util.onIcon(Me.PointCutoffLimitSuccessIcon)
 		End If
 	End Sub

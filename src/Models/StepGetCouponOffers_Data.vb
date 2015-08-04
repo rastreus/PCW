@@ -67,7 +67,7 @@
 #End Region
 #Region "DetermineNextStep"
 	Public Function DetermineNextStep(ByVal bool As Boolean) As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		If bool Then
 			result = "StepGetCouponTargets"
 		Else

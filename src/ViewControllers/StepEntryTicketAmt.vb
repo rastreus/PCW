@@ -65,7 +65,7 @@ Public Class StepEntryTicketAmt
 	''' <returns>Me.txtPromoType.Text</returns>
 	''' <remarks>This is simple.</remarks>
 	Private Function getPromoType() As String
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		result = Me.txtPromoType.Text
 		Return result
 	End Function
@@ -200,7 +200,7 @@ Public Class StepEntryTicketAmt
 											  e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		Me.StepEntryTicketAmt_SetData()
@@ -212,7 +212,7 @@ Public Class StepEntryTicketAmt
 				GUI_Util.errPnl(Me.pnlPointsDivisor)
 				errString = "The Points Divisor is invalid."
 				errStrArray.Add(errString)
-				Me.txtPointsDivisor.Text = ""
+				Me.txtPointsDivisor.Text = String.Empty
 				Me.ActiveControl = Me.txtPointsDivisor
 			Else
 				GUI_Util.regPnl(Me.pnlPointsDivisor)
@@ -241,7 +241,7 @@ Public Class StepEntryTicketAmt
 				errString = "The Limit # of Tickets " & _
 							"per patron is invalid."
 				errStrArray.Add(errString)
-				Me.txtTicketsPerPatron.Text = ""
+				Me.txtTicketsPerPatron.Text = String.Empty
 				Me.ActiveControl = Me.txtTicketsPerPatron
 			Else
 				GUI_Util.regPnl(Me.pnlTicketPerPatron)
@@ -255,7 +255,7 @@ Public Class StepEntryTicketAmt
 				errString = "The Limit # of Tickets for " & _
 							"entire promo is invalid."
 				errStrArray.Add(errString)
-				Me.txtTicketsEntirePromo.Text = ""
+				Me.txtTicketsEntirePromo.Text = String.Empty
 				Me.ActiveControl = Me.txtTicketsEntirePromo
 			Else
 				GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
@@ -267,7 +267,7 @@ Public Class StepEntryTicketAmt
 			GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
 			errString = "The Promo Type is invalid."
 			errStrArray.Add(errString)
-			Me.txtPromoType.Text = ""
+			Me.txtPromoType.Text = String.Empty
 			Me.ActiveControl = Me.txtTicketsEntirePromo
 		Else
 			GUI_Util.regPnl(Me.pnlTicketsEntirePromo)
@@ -332,7 +332,7 @@ Public Class StepEntryTicketAmt
 	Private Sub SetPointsDivisorTxt(ByVal bool As Boolean)
 		If bool Then
 			PCW.NextEnabled = False
-			Me.txtPointsDivisor.Text = ""
+			Me.txtPointsDivisor.Text = String.Empty
 			Me.ActiveControl = Me.txtPointsDivisor
 		Else
 			GUI_Util.NextEnabled()
@@ -352,7 +352,7 @@ Public Class StepEntryTicketAmt
 		Handles rbTicketsPerPatronNO.CheckedChanged
 		If Me.rbTicketPerPatronYES.Checked Then
 			Me.txtTicketsPerPatron.Enabled = True
-			Me.txtTicketsPerPatron.Text = ""
+			Me.txtTicketsPerPatron.Text = String.Empty
 			Me.ActiveControl = Me.txtTicketsPerPatron
 			PCW.NextEnabled = False
 		Else
@@ -376,7 +376,7 @@ Public Class StepEntryTicketAmt
 		Handles rbTicketsEntirePromoNO.CheckedChanged
 		If Me.rbTicketsEntirePromoYES.Checked Then
 			Me.txtTicketsEntirePromo.Enabled = True
-			Me.txtTicketsEntirePromo.Text = ""
+			Me.txtTicketsEntirePromo.Text = String.Empty
 			Me.ActiveControl = Me.txtTicketsEntirePromo
 			PCW.NextEnabled = False
 		Else
@@ -435,7 +435,7 @@ Public Class StepEntryTicketAmt
 		Handles txtPointsDivisor.Leave
 		If (Me.rbCalculated.Checked Or _
 			Me.rbCalPlusNumOfVisits.Checked) And _
-			(Not Me.txtPointsDivisor.Text = "") Then
+			(Not Me.txtPointsDivisor.Text = String.Empty) Then
 			GUI_Util.onIcon(Me.PointsDivisorSuccessIcon)
 			GUI_Util.NextEnabled()
 		End If
@@ -447,7 +447,7 @@ Public Class StepEntryTicketAmt
 		Handles txtPromoType.Enter
 		GUI_Util.offIcon(Me.PromoTypeSuccessIcon)
 		If Me.promoTypeEntered = False Then
-			Me.txtPromoType.Text = ""
+			Me.txtPromoType.Text = String.Empty
 			Me.promoTypeEntered = True
 			Me.btnSetPromoType.Enabled = True
 			Me.btnSetPromoType.BackColor = Color.HotPink

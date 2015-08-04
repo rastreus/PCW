@@ -99,7 +99,8 @@ Public Class StepB_Data
 	Public Function Recurring_Period_Invalid() As Boolean
 		Dim invalid As Boolean = False
 
-		If Me.Recurring And Me.RecurringFrequency = "" Then
+		If Me.Recurring And _
+			Me.RecurringFrequency = String.Empty Then
 			invalid = True
 		End If
 
@@ -109,7 +110,7 @@ Public Class StepB_Data
 		Dim invalid As Boolean = False
 
 		If (id = "TEST!1503") Or _
-			(id = "") Or _
+			(id = String.Empty) Or _
 			(id.Length > 9) Or _
 			(SQL_Util.Existing_PromoID(id)) Then
 			invalid = True
@@ -118,9 +119,9 @@ Public Class StepB_Data
 		Return invalid
 	End Function
 	Public Function Get_PromoID_errString(ByVal id As String) As String
-		Dim errString As String = New String("!")
+		Dim errString As String = New String(String.Empty)
 		If (id = "TEST!1503") Or
-			(id = "") Then
+			(id = String.Empty) Then
 			errString = "ID not set"
 		ElseIf (SQL_Util.Existing_PromoID(id)) Then
 			errString = "ID already exists."
@@ -130,7 +131,7 @@ Public Class StepB_Data
 	Public Function PromoName_Invalid(ByVal name As String) As Boolean
 		Dim invalid As Boolean = False
 
-		If (name = "") Or _
+		If (name = String.Empty) Or _
 			(name.Length > 37) Or _
 			(SQL_Util.Existing_Promo(name)) Then
 			invalid = True
@@ -140,9 +141,9 @@ Public Class StepB_Data
 	End Function
 	Public Function Get_PromoName_errString(ByVal name As String) As String
 		'Assign a value to a declared variable to avoid NULL errors.
-		Dim errString As String = New String("!")
+		Dim errString As String = New String(String.Empty)
 
-		If name = "" Then
+		If name = String.Empty Then
 			errString = "Name not set"
 		ElseIf name.Length > 37 Then
 			errString = "Cannot be more than 37 chars"

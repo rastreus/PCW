@@ -121,7 +121,7 @@ Public Class StepCanHazSecurity_Data
 
 	Private Function Hours_Are_Invalid(ByVal timeStr As String) As Boolean
 		Dim result As Boolean = False
-		Dim hoursStr As String = New String("!")
+		Dim hoursStr As String = New String(String.Empty)
 		Dim hours As Short = 0
 		Try
 			hoursStr = timeStr.Substring(0, 2)
@@ -138,7 +138,7 @@ Public Class StepCanHazSecurity_Data
 
 	Private Function Minutes_Are_Invalid(ByVal timeStr As String) As Boolean
 		Dim result As Boolean = False
-		Dim minutesStr As String = New String("!")
+		Dim minutesStr As String = New String(String.Empty)
 		Dim minutes As Short = 0
 		Try
 			minutesStr = timeStr.Substring(2, 2)

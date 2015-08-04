@@ -37,7 +37,7 @@ Public Class StepD_Data
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
-	Private _dataEligiblePlayersCSVFilePath As String = New String("")
+	Private _dataEligiblePlayersCSVFilePath As String = New String(String.Empty)
 	Private _promoMultiPartCategory As PCW_Data.MultiPartCategory
 
 	Private Property DataAddedToHash As Boolean _
@@ -188,7 +188,7 @@ Public Class StepD_Data
 	''' <returns>NextStep.</returns>
 	''' <remarks>Trying to keep this as clean as possible.</remarks>
 	Public Function DetermineStepFlow() As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		Select Case Category
 			Case PCW_Data.PromoCategory.payoutOnly
 				result = "StepF"

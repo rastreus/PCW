@@ -87,9 +87,9 @@ Public Class StepGeneratePayoutCoupon
 	Private Sub StepGeneratePayoutCoupon_Load(sender As Object, _
 											  e As EventArgs) _
 	Handles MyBase.Load
-		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
+		Me.txtMaxAmtOneCoupon_strCurrency = New String(String.Empty)
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
-		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
+		Me.txtMaxAmtAllCoupons_strCurrency = New String(String.Empty)
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
 		Me.editCouponID_IsClosed = True
 	End Sub
@@ -126,9 +126,9 @@ Public Class StepGeneratePayoutCoupon
 												   e As EventArgs) _
 		Handles MyBase.ResetStep
 		Me.stepGeneratePayoutCoupon_data = New StepGeneratePayoutCoupon_Data
-		Me.txtMaxAmtOneCoupon_strCurrency = New String("")
+		Me.txtMaxAmtOneCoupon_strCurrency = New String(String.Empty)
 		Me.txtMaxAmtOneCoupon_acceptableKey = False
-		Me.txtMaxAmtAllCoupons_strCurrency = New String("")
+		Me.txtMaxAmtAllCoupons_strCurrency = New String(String.Empty)
 		Me.txtMaxAmtAllCoupons_acceptableKey = False
 		Me.couponsPerPatronBool = False
 		Me.maxAmtOneCouponBool = False
@@ -160,7 +160,7 @@ Public Class StepGeneratePayoutCoupon
 													e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepGeneratePayoutCoupon_SetData()
@@ -254,7 +254,7 @@ Public Class StepGeneratePayoutCoupon
 		End If
 		GUI_Util.offIcon(Me.MaxAmtOneCouponSuccessIcon)
 		If txtMaxAmtOneCoupon.Text = BEP_Util.AmtStr Then
-			txtMaxAmtOneCoupon.Text = ""
+			txtMaxAmtOneCoupon.Text = String.Empty
 		End If
 		Me.maxAmtOneCouponBool = True
 	End Sub
@@ -272,7 +272,7 @@ Public Class StepGeneratePayoutCoupon
 		End If
 		GUI_Util.offIcon(Me.MaxAmtAllCouponsSuccessIcon)
 		If txtMaxAmtAllCoupons.Text = BEP_Util.AmtStr Then
-			txtMaxAmtAllCoupons.Text = ""
+			txtMaxAmtAllCoupons.Text = String.Empty
 		End If
 		Me.maxAmtAllCouponsBool = True
 	End Sub
@@ -294,7 +294,7 @@ Public Class StepGeneratePayoutCoupon
 													 e As EventArgs) _
 		Handles rbCouponsPerPatronYES.CheckedChanged
 		If Me.rbCouponsPerPatronYES.Checked Then
-			Me.txtCouponsPerPatron.Text = ""
+			Me.txtCouponsPerPatron.Text = String.Empty
 			Me.txtCouponsPerPatron.Enabled = rbCouponsPerPatronYES.Checked
 			Me.ActiveControl = Me.txtCouponsPerPatron
 		Else
@@ -371,7 +371,7 @@ Public Class StepGeneratePayoutCoupon
 			End If
 
 			If txtMaxAmtOneCoupon_strCurrency.Length = 0 Then
-				Me.txtMaxAmtOneCoupon.Text = ""
+				Me.txtMaxAmtOneCoupon.Text = String.Empty
 			ElseIf txtMaxAmtOneCoupon_strCurrency.Length = 1 Then
 				Me.txtMaxAmtOneCoupon.Text = "0.0" & _
 					txtMaxAmtOneCoupon_strCurrency
@@ -425,7 +425,7 @@ Public Class StepGeneratePayoutCoupon
 			End If
 
 			If txtMaxAmtAllCoupons_strCurrency.Length = 0 Then
-				Me.txtMaxAmtAllCoupons.Text = ""
+				Me.txtMaxAmtAllCoupons.Text = String.Empty
 			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 1 Then
 				Me.txtMaxAmtAllCoupons.Text = "0.0" & txtMaxAmtAllCoupons_strCurrency
 			ElseIf txtMaxAmtAllCoupons_strCurrency.Length = 2 Then

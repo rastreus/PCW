@@ -99,11 +99,11 @@ Public Class StepF_Data
 		Return BEP_Util.invalidNum(cashValueStr)
 	End Function
 	Public Function PrizeIsBlank() As Boolean
-		Return (Prize = "")
+		Return (Prize = String.Empty)
 	End Function
 	Public Function BadPromoType() As Boolean
 		Dim result As Boolean = False
-		If (PromoType = "") Or _
+		If (PromoType = String.Empty) Or _
 			(PromoType = "EX: 31B") Or _
 			(PromoType.Length > 3) Then
 			result = True
@@ -118,7 +118,7 @@ Public Class StepF_Data
 	''' <returns>NextStep.</returns>
 	''' <remarks>Trying to keep this as clean as possible.</remarks>
 	Public Function DetermineNextStep() As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		Select Case PayoutCatgory
 			Case PromoPayoutCategory.freePlayCoupon
 				result = "StepGeneratePayoutCoupon"

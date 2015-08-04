@@ -91,7 +91,7 @@ Public Class StepH
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 
 		StepH_SetData()
 
@@ -128,7 +128,7 @@ Public Class StepH
 			Me.IconTick.InActiveColor = Color.Lime
 			Me.pnlCommentBox.Enabled = True
 			Me.txtCommentBox.Enabled = True
-			Me.txtCommentBox.Text = ""
+			Me.txtCommentBox.Text = String.Empty
 			Me.ActiveControl = Me.txtCommentBox
 		Else
 			StepH_ResetControls()

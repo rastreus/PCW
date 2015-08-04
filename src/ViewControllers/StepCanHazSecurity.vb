@@ -76,7 +76,7 @@ Public Class StepCanHazSecurity
 	Private Function ParseTime(ByVal hours As String, _
 							   ByVal minutes As String, _
 							   ByVal pmChecked As Boolean) As String
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		Dim ampm As String = If(pmChecked, "P", "A")
 		hours = PrependZeroIfOneDigit(hours)
 		result = hours & minutes & ampm
@@ -143,7 +143,7 @@ Public Class StepCanHazSecurity
 											  e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepCanHazSecurity_SetData()
@@ -190,7 +190,7 @@ Public Class StepCanHazSecurity
 	Private Sub CheckForOverrideTime()
 		If Me.OverrideTimeHoursEntered And _
 			Me.OverrideTimeMinutesEntered Then
-			Dim errString As String = New String("!")
+			Dim errString As String = New String(String.Empty)
 			If Me.Data.Time_Is_Invalid(getOverrideTime(),
 									   errString) Then
 				Me.OverrideTimeHoursEntered = False
@@ -216,7 +216,7 @@ Public Class StepCanHazSecurity
 	Private Sub CheckForCutoffTime()
 		If Me.CutoffTimeHoursEntered And _
 			Me.CutoffTimeMinutesEntered Then
-			Dim errString As String = New String("!")
+			Dim errString As String = New String(String.Empty)
 			If Me.Data.Time_Is_Invalid(getCutoffTime(),
 									   errString) Then
 				Me.CutoffTimeHoursEntered = False
@@ -350,11 +350,11 @@ Each TextBox is validated for invalid (non-numeric) characters.
 								Me.btnSubmitCutoffTime)
 	End Sub
 	Private Function ClearHours(ByVal hours As String) As String
-		Dim result As String = If(hours = "HH", "", hours)
+		Dim result As String = If(hours = "HH", String.Empty, hours)
 		Return result
 	End Function
 	Private Function ClearMinutes(ByVal minutes As String) As String
-		Dim result As String = If(minutes = "mm", "", minutes)
+		Dim result As String = If(minutes = "mm", String.Empty, minutes)
 		Return result
 	End Function
 	Private Sub ClearSuccessIcon(ByRef successIcon As FontAwesomeIcons.IconButton)

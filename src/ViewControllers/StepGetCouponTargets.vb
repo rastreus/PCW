@@ -170,7 +170,7 @@ Public Class StepGetCouponTargets
 		fileDialog.RestoreDirectory = True
 		'seperates message outputs for files found or not found
 		If fileDialog.ShowDialog() = DialogResult.OK Then
-			If Dir(fileDialog.FileName) <> "" Then
+			If Dir(fileDialog.FileName) <> String.Empty Then
 				SetPathText(fileDialog.FileName)
 				Success()
 			End If
@@ -214,7 +214,7 @@ Public Class StepGetCouponTargets
 #End Region
 #Region "StepGetCouponTargets_GetCouponNumber"
 	Private Function GetCouponNumber() As Integer
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		result = If(Me.rbWildcard.Checked, _
 					0, _
 					Me.cbImportedOffers.SelectedItem)

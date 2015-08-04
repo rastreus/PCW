@@ -143,7 +143,7 @@ Public Class StepEntryTicketAmt_Data
 	End Function
 	Public Function BadPromoType() As Boolean
 		Dim result As Boolean = False
-		If (PromoType = "") Or _
+		If (PromoType = String.Empty) Or _
 			(PromoType = "EX:25") Or _
 			(PromoType.Length > 3) Then
 			result = True
@@ -158,7 +158,7 @@ Public Class StepEntryTicketAmt_Data
 	''' <returns>NextStep.</returns>
 	''' <remarks>Trying to keep this as clean as possible.</remarks>
 	Public Function DetermineStepFlow() As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		Dim local_stepD As StepD = PCW.GetStep("StepD")
 		Dim promoCategory As PCW_Data.PromoCategory = local_stepD.Data.Category
 		Select Case promoCategory

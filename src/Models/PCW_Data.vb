@@ -116,7 +116,7 @@ Public Class PCW_Data
 	Private _pcwNumOfDays As System.Nullable(Of Short) = Nothing
 	Private _pcwNumOfDiffs As Short
 	Private _pcwPayoutDiffNum As Short = 1
-	Private _pcwPayoutDiffType As String = New String("!")
+	Private _pcwPayoutDiffType As String = New String(String.Empty)
 
 	Private ReadOnly Property DataContext As PCWLINQ2SQLDataContext
 		Get
@@ -322,7 +322,7 @@ Public Class PCW_Data
 	''' <returns>The PromoID of correct length with appended letterType.</returns>
 	''' <remarks>DRYs up GetEntryPromoID and GetPayoutPromoID.</remarks>
 	Private Function ProcessPromoID(ByVal letterType As String) As String
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		If PromoDataHash.Item(Key.ID).ToString.Length <= 15 Then
 			result = PromoDataHash.Item(Key.ID) & letterType
 		ElseIf PromoDataHash.Item(Key.ID).ToString.Length >= 16 Then
@@ -353,7 +353,7 @@ Public Class PCW_Data
 		Return entryPromo
 	End Function
 	Private Function GetEntryPromoID() As String
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		result = ProcessPromoID("E")
 		Return result
 	End Function
@@ -381,7 +381,7 @@ Public Class PCW_Data
 		Return payoutPromo
 	End Function
 	Private Function GetPayoutPromoID() As String
-		Dim result As String = New String("!")
+		Dim result As String = New String(String.Empty)
 		result = ProcessPromoID("P")
 		Return result
 	End Function
@@ -495,7 +495,7 @@ Public Class PCW_Data
 		Return builder
 	End Function
 	Private Function nullIfNothing(ByVal key As PromoFields) As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		If IsNothing(PromoDataHash.Item(key)) Then
 			result = "NULL"
 		Else
@@ -505,7 +505,7 @@ Public Class PCW_Data
 	End Function
 	Private Function nullIfNothing(ByVal key As PromoFields, _
 								   ByVal dateFormatStr As String) As String
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		If IsNothing(PromoDataHash.Item(key)) Then
 			result = "NULL"
 		Else
@@ -821,7 +821,7 @@ Public Class PCW_Data
 #Region "SubmitCouponTargetsToDB"
 	Private Function SubmitCouponTargetsToDB() As Boolean
 		Dim result As Boolean = True
-		Dim payoutType As String = New String("")
+		Dim payoutType As String = New String(String.Empty)
 		payoutType = GetPayoutPromoType()
 		If (payoutType = "31B") Or _
 		   (payoutType = "31C") Or _

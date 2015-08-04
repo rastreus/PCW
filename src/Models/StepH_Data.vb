@@ -53,7 +53,7 @@ Public Class StepH_Data
 #Region "Validity Checks"
 	Public Function CommentIsBlank() As Boolean
 		Dim result As Boolean = False
-		If (Comment = "") Then
+		If (Comment = String.Empty) Then
 			result = True
 		End If
 		Return result

@@ -64,7 +64,7 @@ Public Class StepGetCouponOffers
 	End Function
 
 	Private Function buildExclueDaysString() As String
-		Dim days As String = New String("")
+		Dim days As String = New String(String.Empty)
 		For Each item In Me.clbExcludeDays.CheckedItems
 			days = days & BEP_Util.daysFormat(item.ToString)
 		Next
@@ -100,9 +100,9 @@ Public Class StepGetCouponOffers
 	End Function
 
 	Private Function getNote() As String
-		Dim result As String = New String("")
-		If Me.txtNote.Text = "EX: Small Note" Or
-			Me.txtNote.Text = "" Then
+		Dim result As String = New String(String.Empty)
+		If Me.txtNote.Text = "EX: Small Note" Or _
+			Me.txtNote.Text = String.Empty Then
 			result = Nothing
 		Else
 			result = Me.txtNote.Text
@@ -181,7 +181,7 @@ Public Class StepGetCouponOffers
 											   e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 
 		If Me.Data.No_CouponOffers_Created() Then
 			cancelContinuingToNextStep = True
@@ -368,7 +368,7 @@ Public Class StepGetCouponOffers
 							  e As EventArgs) _
 	Handles txtNote.Enter
 		If Me.txtNote.Text = "EX: Note" Then
-			Me.txtNote.Text = ""
+			Me.txtNote.Text = String.Empty
 		End If
 		GUI_Util.offIcon(Me.NoteSuccessIcon)
 		GUI_Util.onSetBtn(Me.btnSetNote)

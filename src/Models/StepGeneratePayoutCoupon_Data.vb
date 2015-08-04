@@ -94,7 +94,7 @@ Public Class StepGeneratePayoutCoupon_Data
 #End Region
 #Region "SetCouponId"
 	Private Function setCouponId() As String
-		Dim concatStr As String = New String("!")
+		Dim concatStr As String = New String(String.Empty)
 		Return concatStr
 	End Function
 #End Region

@@ -121,7 +121,7 @@ Public Class StepF
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("!") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepF_SetData()
@@ -156,7 +156,7 @@ Public Class StepF
 			errString = "Promo Type is invalid."
 			errStrArray.Add(errString)
 			GUI_Util.errPnl(Me.pnlPromoTypeForPayout)
-			Me.txtPromoType.Text = ""
+			Me.txtPromoType.Text = String.Empty
 			Me.ActiveControl = Me.txtPromoType
 		Else
 			GUI_Util.regPnl(Me.pnlPromoTypeForPayout)
@@ -231,7 +231,7 @@ Public Class StepF
 								   e As EventArgs) _
 		Handles txtPromoType.Enter
 		If Me.promoTypeEntered = False Then
-			Me.txtPromoType.Text = ""
+			Me.txtPromoType.Text = String.Empty
 			Me.promoTypeEntered = True
 		End If
 		GUI_Util.offIcon(Me.PromoTypeSuccessIcon)
@@ -259,7 +259,7 @@ ASIDE: An exercise in keeping code DRY.
 #Region "activateTextBox"
 	Private Sub activateTextBox(ByVal textBox As TextBox)
 		textBox.Enabled = True
-		textBox.Text = ""
+		textBox.Text = String.Empty
 		Me.ActiveControl = textBox
 	End Sub
 #End Region

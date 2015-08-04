@@ -106,7 +106,7 @@ Public Class StepC
 	''' <returns>A String of letters representing days.</returns>
 	''' <remarks>Be sure to confirm that it is not the primary day.</remarks>
 	Private Function getSecondaryDays() As String
-		Dim days As String = New String("")
+		Dim days As String = New String(String.Empty)
 		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
 			If (Not ctrl.Text = Me.primaryDayStr) And ctrl.Checked Then
 				days = days & BEP_Util.daysFormat(ctrl.Text)
@@ -121,11 +121,11 @@ Public Class StepC
 	''' <returns>A String of letters representing days.</returns>
 	''' <remarks>If none are checked, return Nothing.</remarks>
 	Private Function getEarnsOnWeekday() As String
-		Dim days As String = New String("")
+		Dim days As String = New String(String.Empty)
 		For Each item In Me.clbPointsEarningDays.CheckedItems
 			days = days & BEP_Util.daysFormat(item.ToString)
 		Next
-		If days = "" Then
+		If days = String.Empty Then
 			days = Nothing
 		End If
 		Return days
@@ -146,7 +146,7 @@ Public Class StepC
 	Private Sub StepC_Load(sender As Object, _
 						   e As EventArgs) _
 		Handles MyBase.Load
-		Me.primaryDayStr = New String("ASSIGNED A VALUE")
+		Me.primaryDayStr = New String(String.Empty)
 		Me.primaryDayBool = False
 		Me.recurringFlagBool = Nothing
 		Me.occursDateBool = False
@@ -177,7 +177,7 @@ Public Class StepC
 	''' </summary>
 	''' <remarks>Just in case user changes between Recurring/Occuring.</remarks>
 	Private Sub StepC_ResetControls()
-		Me.primaryDayStr = "ASSIGNED A VALUE"
+		Me.primaryDayStr = String.Empty
 		Me.primaryDayBool = False
 		Me.dtpOccursDate.Value = Date.Today
 		Me.dtpQualifyingStart.Value = Date.Today
@@ -207,10 +207,10 @@ Public Class StepC
 	''' </summary>
 	''' <remarks>Separated from ResetControls because logic.</remarks>
 	Private Sub ResetPrimaryDay()
-		If Not Me.primaryDayStr = "ASSIGNED A VALUE" Then
+		If Not Me.primaryDayStr = String.Empty Then
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
-			Me.primaryDayStr = "ASSIGNED A VALUE"
-			Me.cbPrimaryDay.Text = ""
+			Me.primaryDayStr = String.Empty
+			Me.cbPrimaryDay.Text = String.Empty
 		End If
 	End Sub
 
@@ -235,7 +235,7 @@ Public Class StepC
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepC_SetData()
@@ -418,7 +418,7 @@ Public Class StepC
 	''' <param name="cbDayOfWeek"></param>
 	''' <remarks>If you're going to lock it, you best be prepared to unlock it.</remarks>
 	Private Sub unlockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
-		Dim txt As String = New String("ASSIGNED A VALUE")
+		Dim txt As String = New String(String.Empty)
 		cbDayOfWeek.Checked = False
 		cbDayOfWeek.Enabled = True
 		cbDayOfWeek.BackColor = Color.Transparent
@@ -454,7 +454,7 @@ Public Class StepC
 		Handles dtpOccursDate.DropDown
 		If Not Me.firstTimeOccursDateBool Then
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
-			Me.primaryDayStr = "ASSIGNED A VALUE"
+			Me.primaryDayStr = String.Empty
 		Else
 			Me.firstTimeOccursDateBool = True
 		End If
@@ -513,8 +513,8 @@ Public Class StepC
 	Private Sub cbSameDayPromo_CheckedChanged(sender As Object, _
 											  e As EventArgs) _
 		Handles cbSameDayPromo.CheckedChanged
-		Dim local_startDay As String = New String("")
-		Dim local_endDay As String = New String("")
+		Dim local_startDay As String = New String(String.Empty)
+		Dim local_endDay As String = New String(String.Empty)
 		If Me.occursDateBool Then
 			If Me.cbSameDayPromo.Checked Then '"Weird" maths for Qualifying Range
 				Me.startDayInt = -6
@@ -558,7 +558,7 @@ Public Class StepC
 		If Not IsNothing(cbPrimaryDay.SelectedItem) Then 'Clear it if it's set!
 			GUI_Util.regCb(Me.cbPrimaryDay)
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
-			Me.primaryDayStr = "ASSIGNED A VALUE"
+			Me.primaryDayStr = String.Empty
 		End If
 	End Sub
 #End Region

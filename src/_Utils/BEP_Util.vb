@@ -47,7 +47,7 @@ Public Class BEP_Util
 	''' <remarks>Used by StepC and StepGetCouponOffers.</remarks>
 	Public Shared Function daysFormat(ByVal inputDay As String) _
 									  As String
-		Dim returnDay As String = New String("")
+		Dim returnDay As String = New String(String.Empty)
 		Select Case inputDay
 			Case "Sunday"
 				returnDay = "N"

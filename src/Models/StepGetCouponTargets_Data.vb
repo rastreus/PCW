@@ -2,7 +2,7 @@
 
 #Region "Properties"
 	Private _stepNotSet As Boolean = True
-	Private _dataCouponTargetsCSVFilePath As String = New String("")
+	Private _dataCouponTargetsCSVFilePath As String = New String(String.Empty)
 	Private _dataCouponTargetsCouponNum As Integer = New Integer
 	Private _promoSameForAllDaysTiers As Boolean
 	Private _dataCouponID As String
@@ -109,7 +109,7 @@
 		Dim returningDecimal As Decimal = New Decimal
 		Dim dollarSign As String = "$"
 		If input.Substring(0, 1) = dollarSign Then
-			tempStr = input.Replace(dollarSign, "")
+			tempStr = input.Replace(dollarSign, String.Empty)
 			tempStr = tempStr.Trim
 			returningDecimal = Decimal.Parse(tempStr)
 		Else

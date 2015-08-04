@@ -96,10 +96,10 @@ Public Class StepB
 		Handles MyBase.ShowStep
 		If Me.Data.StepNotSet Then
 			PCW.NextEnabled = False
-			Me.promoAcronym = New String("")
+			Me.promoAcronym = New String(String.Empty)
 			Me.promoMonth = getPromoThisMonth()
 			Me.promoYear = getPromoYear()
-			Me.promoID = New String("")
+			Me.promoID = New String(String.Empty)
 			Me.promoNameEntered = False
 			Me.promoNameLeft = False
 		End If
@@ -142,7 +142,7 @@ Public Class StepB
 	''' <remarks></remarks>
 	Private Function getPromoYear() As String
 		Dim yearStr = Date.Today.Year.ToString
-		Dim result As String = New String("")
+		Dim result As String = New String(String.Empty)
 		result = yearStr.Chars(2) & yearStr.Chars(3)
 		Return result
 	End Function
@@ -162,7 +162,7 @@ Public Class StepB
 	End Sub
 
 	Private Sub StepB_ResetControls()
-		Me.txtPromoName.Text = ""
+		Me.txtPromoName.Text = String.Empty
 		Me.SuccessIcon.Visible = False
 		Me.btnPromoID.Text = "TEST!1503"
 		Me.rbRecurringNo.Checked = True
@@ -180,7 +180,7 @@ Public Class StepB
 	Private Sub StepB_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
-		Dim errString As String = New String("ASSINGED A VALUE") 'Not IsNothing
+		Dim errString As String = New String(String.Empty)
 		Dim errStrArray As ArrayList = New ArrayList
 
 		StepB_SetData()
@@ -269,7 +269,7 @@ Public Class StepB
 		If cbRecurringFrequency.SelectedItem = "Daily" Then
 			PCW.Data.DaysBool = True
 			readyForNext = True
-		ElseIf (Not cbRecurringFrequency.SelectedItem = "") Then
+		ElseIf (Not cbRecurringFrequency.SelectedItem = String.Empty) Then
 			readyForNext = True
 		Else
 			PCW.Data.DaysBool = False
@@ -307,7 +307,7 @@ Public Class StepB
 			GUI_Util.successTxt(Me.txtPromoName)
 			GUI_Util.regPnl(Me.pnlPromoName)
 			If Me.Data.PromoID_Invalid(Me.btnPromoID.Text) Then
-				Dim errID As String = New String("!")
+				Dim errID As String = New String(String.Empty)
 				errID = Me.btnPromoID.Text
 				GUI_Util.errPnl(Me.pnlPromoID)
 				GUI_Util.msgBox("PromoID Invalid: " & _
@@ -333,7 +333,7 @@ Public Class StepB
 	Private Function getPromoAcronym() As String
 		Dim word As String = New String(Me.txtPromoName.Text.Trim)
 		Dim words As String() = word.Split(New Char() {" "c})
-		Dim acronym As String = New String("")
+		Dim acronym As String = New String(String.Empty)
 		For Each word In words
 			acronym = acronym & word(0)
 		Next
@@ -354,7 +354,7 @@ Public Class StepB
 									  e As EventArgs) _
 		Handles btnSetPromoName.Click
 		If Me.promoNameEntered And _
-			(Not Me.txtPromoName.Text = "") Then
+			(Not Me.txtPromoName.Text = String.Empty) Then
 			Me.ActiveControl = Me.pnlPromoName
 		End If
 	End Sub
@@ -380,9 +380,9 @@ Public Class StepB
 	Private Sub btnTxtEditPromoID_Click(sender As Object, _
 										e As EventArgs) _
 		Handles btnTxtEditPromoID.Click
-		Dim tempPromoAcronym As String = New String("!")
-		Dim tempPromoID As String = New String("!")
-		Dim errID As String = New String("!")
+		Dim tempPromoAcronym As String = New String(String.Empty)
+		Dim tempPromoID As String = New String(String.Empty)
+		Dim errID As String = New String(String.Empty)
 		tempPromoAcronym = Me.promoAcronym
 		tempPromoID = Me.promoID
 		'
