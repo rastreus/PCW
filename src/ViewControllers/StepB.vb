@@ -1,10 +1,12 @@
 ﻿Imports TSWizards
 Imports CustomizedTextBox
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Second Step; handles PromoName, Recurring and RecurringFrequency.
 ''' </summary>
-''' <remarks>Ideally each Class should have a single purpose, but this is decent.</remarks>
+''' <remarks>Ideally each Class should have a single purpose,
+''' but this is decent.</remarks>
 Public Class StepB
 	Inherits TSWizards.BaseInteriorStep
 	Implements IWizardStep
@@ -19,7 +21,8 @@ Public Class StepB
 	End Sub
 #End Region
 #Region "StepB_PromoData"
-	Public ReadOnly Property PromoData As IPromoData Implements IWizardStep.PromoData
+	Public ReadOnly Property PromoData As IPromoData _
+		Implements IWizardStep.PromoData
 		Get
 			Return Me.stepB_data
 		End Get
@@ -29,7 +32,8 @@ Public Class StepB
 	''' <summary>
 	''' Model for StepB.
 	''' </summary>
-	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	''' <remarks>As a loose representation of MVC,
+	''' this is the Model.</remarks>
 	Private stepB_data As StepB_Data
 	Public ReadOnly Property Data() As StepB_Data
 		Get
@@ -43,7 +47,8 @@ Public Class StepB
 	''' </summary>
 	''' <remarks>(View->Controller->Model)</remarks>
 	Private Sub StepB_SetData()
-		Dim frequency As System.Nullable(Of Char) = New System.Nullable(Of Char)
+		Dim frequency As System.Nullable(Of Char) = _
+			New System.Nullable(Of Char)
 		'Frequency needs to be set in case Promo is Not Recurring.
 		'Ideally, this should be Nothing, but not sure if GPM can handles it.
 		frequency = "W"	'Nothing
@@ -177,7 +182,8 @@ Public Class StepB
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
-	Private Sub StepB_Validation(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+	Private Sub StepB_Validation(sender As Object, _
+								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
 		Dim cancelContinuingToNextStep As Boolean = False
 		Dim errString As String = New String(String.Empty)
