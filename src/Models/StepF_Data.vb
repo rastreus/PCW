@@ -122,7 +122,8 @@ Public Class StepF_Data
 		Select Case PayoutCatgory
 			Case PromoPayoutCategory.freePlayCoupon
 				result = "StepGeneratePayoutCoupon"
-			Case PromoPayoutCategory.randomPrize	'Not implimented
+			Case PromoPayoutCategory.randomPrize
+				'RANDOM PRIZE IS NOT IMPLIMENTED
 				result = "StepG3"
 			Case Else
 				result = "StepH"

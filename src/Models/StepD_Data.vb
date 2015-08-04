@@ -37,7 +37,8 @@ Public Class StepD_Data
 	Private _promoPathToFile As String
 	Private _promoSkipEntry As Boolean = False
 	Private _promoSkipPayout As Boolean = False
-	Private _dataEligiblePlayersCSVFilePath As String = New String(String.Empty)
+	Private _dataEligiblePlayersCSVFilePath As String = _
+		New String(String.Empty)
 	Private _promoMultiPartCategory As PCW_Data.MultiPartCategory
 
 	Private Property DataAddedToHash As Boolean _
@@ -120,21 +121,28 @@ Public Class StepD_Data
 		Dim numOfTickets As Short
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
-		parser.Delimiters = New String() {","}		'Fields are separated by comma
-		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
+		'Fields are separated by comma
+		parser.Delimiters = New String() {","}
+		'Each of the values are not enclosed w/ quotes
+		parser.HasFieldsEnclosedInQuotes = False
 		parser.TrimWhiteSpace = True
 
-		parser.ReadLine()							'First line is skipped, its the headers
+		'First line is skipped, its the headers
+		parser.ReadLine()
 
-		Dim currentRow(13) As String				'Create a String Array
+		'Create a String Array
+		Dim currentRow(13) As String
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
 				playerID = currentRow(0)
 				numOfTickets = currentRow(13)
-				marketingPromoEligiblePlayerDBRow = New MarketingPromoEligiblePlayer
-				marketingPromoEligiblePlayerDBRow = ParseIntoList(promoID, playerID, numOfTickets)
-				PCW.Data.EligiblePlayerList.Add(marketingPromoEligiblePlayerDBRow)
+				marketingPromoEligiblePlayerDBRow = _
+					New MarketingPromoEligiblePlayer
+				marketingPromoEligiblePlayerDBRow = _
+					ParseIntoList(promoID, playerID, numOfTickets)
+				PCW.Data.EligiblePlayerList _
+					.Add(marketingPromoEligiblePlayerDBRow)
 			Catch ex As Exception
 				GUI_Util.msgBox("ERROR: CSVtoEP, " & vbCrLf & _
 								"Please contact IT " & vbCrLf & _

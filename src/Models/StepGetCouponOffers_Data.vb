@@ -78,12 +78,15 @@
 #End Region
 #Region "Is_CouponOffer_Valid"
 	Public Function Is_CouponOffer_Valid(ByRef couponOffer As CouponOffer, _
-										 ByRef willExcludeDays As Boolean) As Boolean
+										 ByRef willExcludeDays As Boolean) _
+										 As Boolean
 		Dim result As Boolean = True
 		Dim _validStart As DateTime = couponOffer.ValidStart
 		Dim _validEnd As DateTime = couponOffer.ValidEnd
-		Dim _excludeStart As System.Nullable(Of DateTime) = couponOffer.ExcludeStart
-		Dim _excludeEnd As System.Nullable(Of DateTime) = couponOffer.ExcludeEnd
+		Dim _excludeStart As System.Nullable(Of DateTime) = _
+			couponOffer.ExcludeStart
+		Dim _excludeEnd As System.Nullable(Of DateTime) = _
+			couponOffer.ExcludeEnd
 		If EndDate_Before_StartDate(_validEnd, _validStart) Then
 			result = False 'No, The Coupon Offer is not valid.
 		End If
@@ -99,7 +102,8 @@
 		Return result
 	End Function
 	Public Function EndDate_Before_StartDate(ByVal endDate As DateTime, _
-											 ByVal startDate As DateTime) As Boolean
+											 ByVal startDate As DateTime) _
+											 As Boolean
 		Dim result As Boolean = False
 		Dim compare As Integer = Date.Compare(endDate, startDate)
 		If compare < 0 Then
@@ -107,10 +111,12 @@
 		End If
 		Return result
 	End Function
-	Private Function ExcludeRange_Not_Within_ValidPeriod(ByVal validEnd As DateTime, _
-														 ByVal validStart As DateTime, _
-														 ByVal excludeEnd As DateTime, _
-														 ByVal excludeStart As DateTime) As Boolean
+	Private Function ExcludeRange_Not_Within_ValidPeriod( _
+											ByVal validEnd As DateTime, _
+											ByVal validStart As DateTime, _
+											ByVal excludeEnd As DateTime, _
+											ByVal excludeStart As DateTime) _
+											As Boolean
 		Dim result As Boolean = False
 		Dim compareStarts As Integer = Date.Compare(excludeStart, validStart)
 		Dim compareEnds As Integer = Date.Compare(excludeEnd, validEnd)
@@ -147,7 +153,8 @@
 #End Region
 #Region "GetCouponOfferListString"
 	Public Function GetCouponOfferListString() As String
-		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+		Dim builder As System.Text.StringBuilder = _
+			New System.Text.StringBuilder
 		For Each key As String In CouponOffersHash.Keys
 			builder.Append("Coupon Number: " & key & vbCrLf)
 		Next

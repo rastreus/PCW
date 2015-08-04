@@ -24,7 +24,8 @@ Public Class StepEntryTicketAmt_Data
 			promoDataHash.Item(Key.EntryPromoType) = PromoType
 			promoDataHash.Item(Key.PointsDivisor) = PointsDivisor
 			promoDataHash.Item(Key.TicketsPerPatron) = TicketsPerPatron
-			promoDataHash.Item(Key.TicketsForEntirePromo) = TicketsForEntirePromo
+			promoDataHash.Item(Key.TicketsForEntirePromo) = _
+				TicketsForEntirePromo
 			promoDataHash.Item(Key.PrintTickets) = PrintTickets
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
@@ -42,9 +43,12 @@ Public Class StepEntryTicketAmt_Data
 	Private _stepNotSet As Boolean = True
 	Private _promoTicketAmtCategory As PromoTicketAmtCategory
 	Private _promoPointsDivisor As System.Nullable(Of Short)
-	Private _promoTicketsPerPatron As System.Nullable(Of Short)			'MaxTickets
-	Private _promoTicketsForEntirePromo As System.Nullable(Of Short)	'PromoMaxTickets
-	Private _promoPrintTickets As Boolean								'NOT NULLABLE!
+	' TicketPerPatron = MaxTickets
+	Private _promoTicketsPerPatron As System.Nullable(Of Short)
+	' TicketsForEntirePromo = PromoMaxTickets
+	Private _promoTicketsForEntirePromo As System.Nullable(Of Short)
+	' PrintTickets CANNOT BE NULL!
+	Private _promoPrintTickets As Boolean
 	Private _pcwPromoType As String
 
 	Public Enum PromoTicketAmtCategory

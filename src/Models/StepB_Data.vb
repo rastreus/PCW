@@ -10,7 +10,8 @@ Public Class StepB_Data
 	Implements IPromoData
 
 #Region "ToPromoStepList"
-	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, _
+							   ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
 		promoStepList.Add(stepName.Name)
 	End Sub
@@ -120,7 +121,7 @@ Public Class StepB_Data
 	End Function
 	Public Function Get_PromoID_errString(ByVal id As String) As String
 		Dim errString As String = New String(String.Empty)
-		If (id = "TEST!1503") Or
+		If (id = "TEST!1503") Or _
 			(id = String.Empty) Then
 			errString = "ID not set"
 		ElseIf (SQL_Util.Existing_PromoID(id)) Then
@@ -140,7 +141,6 @@ Public Class StepB_Data
 		Return invalid
 	End Function
 	Public Function Get_PromoName_errString(ByVal name As String) As String
-		'Assign a value to a declared variable to avoid NULL errors.
 		Dim errString As String = New String(String.Empty)
 
 		If name = String.Empty Then

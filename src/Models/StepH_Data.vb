@@ -10,7 +10,8 @@ Public Class StepH_Data
 	Implements IPromoData
 
 #Region "ToPromoStepList"
-	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, _
+							   ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
 		promoStepList.Add(stepName.Name)
 	End Sub

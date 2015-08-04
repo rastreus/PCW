@@ -10,7 +10,8 @@ Public Class StepGeneratePayoutCoupon_Data
 	Implements IPromoData
 
 #Region "ToPromoStepList"
-	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, ByRef promoStepList As ArrayList) _
+	Public Sub ToPromoStepList(ByVal stepName As TSWizards.BaseInteriorStep, _
+							   ByRef promoStepList As ArrayList) _
 		Implements IPromoData.ToPromoStepList
 		promoStepList.Add(stepName.Name)
 	End Sub
@@ -20,16 +21,24 @@ Public Class StepGeneratePayoutCoupon_Data
 		Implements IPromoData.PrepareData
 		'Set the Item if already in the Hashtable
 		If DataAddedToHash Then
-			promoDataHash.Item(Key.CouponID) = CouponID
-			promoDataHash.Item(Key.CouponAmtPerPatron) = CouponAmtPerPatron
-			promoDataHash.Item(Key.CouponAmtForEntirePromo) = CouponAmtForEntirePromo
-			promoDataHash.Item(Key.MaxNumOfCouponsPerPatron) = MaxNumOfCouponsPerPatron
+			promoDataHash.Item(Key.CouponID) = _
+				CouponID
+			promoDataHash.Item(Key.CouponAmtPerPatron) = _
+				CouponAmtPerPatron
+			promoDataHash.Item(Key.CouponAmtForEntirePromo) = _
+				CouponAmtForEntirePromo
+			promoDataHash.Item(Key.MaxNumOfCouponsPerPatron) = _
+				MaxNumOfCouponsPerPatron
 		Else 'Otherwise, Add the key-value pair to the Hashtable
 			'And tell DataAddedToHash that it has now been Added.
-			promoDataHash.Add(Key.CouponID, CouponID)
-			promoDataHash.Add(Key.CouponAmtPerPatron, CouponAmtPerPatron)
-			promoDataHash.Add(Key.CouponAmtForEntirePromo, CouponAmtForEntirePromo)
-			promoDataHash.Add(Key.MaxNumOfCouponsPerPatron, MaxNumOfCouponsPerPatron)
+			promoDataHash.Add(Key.CouponID, _
+							  CouponID)
+			promoDataHash.Add(Key.CouponAmtPerPatron, _
+							  CouponAmtPerPatron)
+			promoDataHash.Add(Key.CouponAmtForEntirePromo, _
+							  CouponAmtForEntirePromo)
+			promoDataHash.Add(Key.MaxNumOfCouponsPerPatron, _
+							  MaxNumOfCouponsPerPatron)
 			DataAddedToHash = True
 		End If
 	End Sub

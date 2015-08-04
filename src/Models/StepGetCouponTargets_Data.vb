@@ -52,13 +52,17 @@
 	Public Sub CSVtoCouponTargetsList()
 		Dim couponTargetListDBRow As CouponTarget
 		Dim parser As New FileIO.TextFieldParser(CouponTargetsCSVFilePath)
-		parser.Delimiters = New String() {","}		'Fields are separated by comma
-		parser.HasFieldsEnclosedInQuotes = False	'Each of the values are not enclosed w/ quotes
+		'Fields are separated by comma
+		parser.Delimiters = New String() {","}
+		'Each of the values are not enclosed w/ quotes
+		parser.HasFieldsEnclosedInQuotes = False
 		parser.TrimWhiteSpace = True
 
-		parser.ReadLine()							'First line is skipped, its the headers
+		'First line is skipped, its the headers
+		parser.ReadLine()
 
-		Dim currentRow(17) As String				'Create a String Array
+		'Create a String Array
+		Dim currentRow(17) As String
 		Do Until parser.EndOfData = True
 			Try
 				currentRow = parser.ReadFields()
@@ -74,7 +78,8 @@
 	End Sub
 #End Region
 #Region "ParseIntoList"
-	Private Function ParseIntoList(ByRef currentRow As String()) As CouponTarget
+	Private Function ParseIntoList(ByRef currentRow As String()) _
+								   As CouponTarget
 		Dim couponTarget As CouponTarget = New CouponTarget()
 		couponTarget.OfferID = CouponID
 		couponTarget.Coupon = CouponTargetsCouponNum
@@ -100,11 +105,13 @@
 		End If
 		Return zip
 	End Function
-	Private Function getTruncatedDecimal(ByVal input As Decimal) As Decimal
+	Private Function getTruncatedDecimal(ByVal input As Decimal) _
+										 As Decimal
 		Dim truncation As Decimal = Math.Truncate(input)
 		Return truncation
 	End Function
-	Private Function removeDollarReturnDecimal(ByVal input As String) As Decimal
+	Private Function removeDollarReturnDecimal(ByVal input As String) _
+											   As Decimal
 		Dim tempStr As String
 		Dim returningDecimal As Decimal = New Decimal
 		Dim dollarSign As String = "$"
@@ -117,6 +124,7 @@
 			Try
 				returningDecimal = Decimal.Parse(tempStr)
 			Catch ex As Exception
+				'Handle Exception
 				'WHY FAIL SILENTLY?
 				'WHAT'S THE POINT OF USING TRY-CATCH?
 			End Try
