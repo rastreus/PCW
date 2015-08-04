@@ -88,7 +88,8 @@ Public Class StepCanHazSecurity_Data
 	End Function
 
 	Public Function Time_Is_Invalid(ByVal timeStr As String, _
-									ByRef errString As String) As Boolean
+									ByRef errString As String) _
+									As Boolean
 		Dim result As Boolean = False
 		If Not_Five_Chars(timeStr) Then
 			result = True
@@ -106,21 +107,25 @@ Public Class StepCanHazSecurity_Data
 		Return result
 	End Function
 
-	Private Function Not_Five_Chars(ByVal timeStr As String) As Boolean
-		Dim result As Boolean = If(timeStr.Length < 5,
-								   True,
+	Private Function Not_Five_Chars(ByVal timeStr As String) _
+									As Boolean
+		Dim result As Boolean = If(timeStr.Length < 5, _
+								   True, _
 								   False)
 		Return result
 	End Function
 
-	Private Function Time_Not_Set(ByVal timeStr As String) As Boolean
-		Dim result As Boolean = If((timeStr = "A" Or timeStr = "P"),
-								   True,
+	Private Function Time_Not_Set(ByVal timeStr As String) _
+								  As Boolean
+		Dim result As Boolean = If((timeStr = "A" Or _
+									timeStr = "P"), _
+								   True, _
 								   False)
 		Return result
 	End Function
 
-	Private Function Hours_Are_Invalid(ByVal timeStr As String) As Boolean
+	Private Function Hours_Are_Invalid(ByVal timeStr As String) _
+									   As Boolean
 		Dim result As Boolean = False
 		Dim hoursStr As String = New String(String.Empty)
 		Dim hours As Short = 0
@@ -130,14 +135,15 @@ Public Class StepCanHazSecurity_Data
 		Catch ex As Exception
 			'Handle Exception
 		End Try
-		If hours < 1 Or
+		If hours < 1 Or _
 			hours > 12 Then
 			result = True
 		End If
 		Return result
 	End Function
 
-	Private Function Minutes_Are_Invalid(ByVal timeStr As String) As Boolean
+	Private Function Minutes_Are_Invalid(ByVal timeStr As String) _
+										 As Boolean
 		Dim result As Boolean = False
 		Dim minutesStr As String = New String(String.Empty)
 		Dim minutes As Short = 0
@@ -147,7 +153,7 @@ Public Class StepCanHazSecurity_Data
 		Catch ex As Exception
 			'Handle Exception
 		End Try
-		If minutes < 0 Or
+		If minutes < 0 Or _
 			minutes > 59 Then
 			result = True
 		End If
