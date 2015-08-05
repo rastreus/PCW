@@ -543,6 +543,28 @@ Public Class StepC
 		End If
 	End Sub
 #End Region
+#Region "StepC_cbSingleDayPromo_CheckedChanged"
+	Private Sub cbSingleDayPromo_CheckedChanged(sender As Object, _
+												e As EventArgs) _
+		Handles cbSingleDayPromo.CheckedChanged
+		Dim local_startDay As String = New String(String.Empty)
+		Dim local_endDay As String = New String(String.Empty)
+		If Me.occursDateBool Then
+
+		End If
+		If Me.cbSingleDayPromo.Checked Then
+			local_startDay = Me.dtpOccursDate _
+							   .Value _
+							   .Date _
+							   .ToString(Me.longDateFormat)
+			local_endDay = local_startDay
+			setStartEndQualifyingLabels(local_startDay, _
+										local_endDay)
+			Me.MonthCal.SetSelectionRange(local_startDay, _
+										  local_endDay)
+		End If
+	End Sub
+#End Region
 #End Region
 #Region "_RECURRING_PROMO_"
 #Region "StepC_cbPrimaryDay_DropDown"

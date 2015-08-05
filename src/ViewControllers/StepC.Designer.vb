@@ -54,6 +54,7 @@ Partial Class StepC
 		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
 		Me.pnlOccuringQualifyingPeriod = New System.Windows.Forms.Panel()
 		Me.pnlOccursDate = New System.Windows.Forms.Panel()
+		Me.cbSingleDayPromo = New System.Windows.Forms.CheckBox()
 		Me.pnlMonthCal = New System.Windows.Forms.Panel()
 		Me.lblSelectDates = New System.Windows.Forms.Label()
 		Me.pnlRecurringQualifyingPeriod = New System.Windows.Forms.Panel()
@@ -376,10 +377,10 @@ Partial Class StepC
 		'
 		Me.cbSameDayPromo.AutoSize = True
 		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
-		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 56)
+		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 51)
 		Me.cbSameDayPromo.Name = "cbSameDayPromo"
-		Me.cbSameDayPromo.Size = New System.Drawing.Size(124, 19)
+		Me.cbSameDayPromo.Size = New System.Drawing.Size(110, 17)
 		Me.cbSameDayPromo.TabIndex = 19
 		Me.cbSameDayPromo.Text = "Same-Day Promo"
 		Me.cbSameDayPromo.UseVisualStyleBackColor = False
@@ -404,7 +405,7 @@ Partial Class StepC
 		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label14.Location = New System.Drawing.Point(3, 10)
 		Me.Label14.Name = "Label14"
-		Me.Label14.Size = New System.Drawing.Size(147, 16)
+		Me.Label14.Size = New System.Drawing.Size(142, 16)
 		Me.Label14.TabIndex = 17
 		Me.Label14.Text = "Promo Occurs Date"
 		'
@@ -452,6 +453,7 @@ Partial Class StepC
 		'
 		Me.pnlOccursDate.BackColor = System.Drawing.Color.Moccasin
 		Me.pnlOccursDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlOccursDate.Controls.Add(Me.cbSingleDayPromo)
 		Me.pnlOccursDate.Controls.Add(Me.Label14)
 		Me.pnlOccursDate.Controls.Add(Me.dtpOccursDate)
 		Me.pnlOccursDate.Controls.Add(Me.cbSameDayPromo)
@@ -459,6 +461,18 @@ Partial Class StepC
 		Me.pnlOccursDate.Name = "pnlOccursDate"
 		Me.pnlOccursDate.Size = New System.Drawing.Size(220, 89)
 		Me.pnlOccursDate.TabIndex = 25
+		'
+		'cbSingleDayPromo
+		'
+		Me.cbSingleDayPromo.AutoSize = True
+		Me.cbSingleDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSingleDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSingleDayPromo.Location = New System.Drawing.Point(6, 69)
+		Me.cbSingleDayPromo.Name = "cbSingleDayPromo"
+		Me.cbSingleDayPromo.Size = New System.Drawing.Size(182, 17)
+		Me.cbSingleDayPromo.TabIndex = 20
+		Me.cbSingleDayPromo.Text = "Single-Day Promo (Ex. VIP)"
+		Me.cbSingleDayPromo.UseVisualStyleBackColor = False
 		'
 		'pnlMonthCal
 		'
@@ -601,15 +615,15 @@ Partial Class StepC
 		Me.Controls.Add(Me.pnlRedemptionDays)
 		Me.Controls.Add(Me.pnlPrimaryDay)
 		Me.Controls.Add(Me.pnlOccuringQualifyingPeriod)
-		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
 		Me.Controls.Add(Me.pnlOccursDate)
+		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
 		Me.Name = "StepC"
 		Me.NextStep = "StepCanHazSecurity"
 		Me.PreviousStep = "StepB"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Set the date information for the promotional."
-		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
 		Me.Controls.SetChildIndex(Me.pnlRecurringQualifyingPeriod, 0)
+		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
 		Me.Controls.SetChildIndex(Me.pnlOccuringQualifyingPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlPrimaryDay, 0)
 		Me.Controls.SetChildIndex(Me.pnlRedemptionDays, 0)
@@ -683,5 +697,6 @@ Partial Class StepC
 	Private WithEvents pnlOccursDate As System.Windows.Forms.Panel
 	Private WithEvents lblQualifyingPeriod As System.Windows.Forms.Label
 	Private WithEvents lblSelectDates As System.Windows.Forms.Label
+	Friend WithEvents cbSingleDayPromo As System.Windows.Forms.CheckBox
 
 End Class
