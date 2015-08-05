@@ -118,7 +118,7 @@ Public Class StepD_Data
 #Region "CSVtoEligiblePlayersList"
 	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String)
 		Dim playerID As Integer
-		Dim numOfTickets As Short
+		Dim numOfTickets As System.Nullable(Of Short)
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
 		'Fields are separated by comma
@@ -136,7 +136,14 @@ Public Class StepD_Data
 			Try
 				currentRow = parser.ReadFields()
 				playerID = currentRow(0)
-				numOfTickets = currentRow(13)
+				'If numOfTickets is NULL,
+				'GPM will prompt for 1 or 2
+				'tickets to be printed.
+				If currentRow(13) = String.Empty Then
+					numOfTickets = Nothing
+				Else
+					numOfTickets = currentRow(13)
+				End If
 				marketingPromoEligiblePlayerDBRow = _
 					New MarketingPromoEligiblePlayer
 				marketingPromoEligiblePlayerDBRow = _
@@ -154,7 +161,7 @@ Public Class StepD_Data
 #Region "ParseIntoList"
 	Private Function ParseIntoList(ByRef promoID As String, _
 								   ByRef playerID As Integer, _
-								   ByRef numOfTickets As Short) _
+								   ByRef numOfTickets As System.Nullable(Of Short)) _
 								   As MarketingPromoEligiblePlayer
 		Dim eligiblePlayers As MarketingPromoEligiblePlayer = _
 			New MarketingPromoEligiblePlayer()
