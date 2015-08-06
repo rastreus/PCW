@@ -39,7 +39,13 @@ Public Class StepH
 #End Region
 #Region "StepH_SetData"
 	Private Sub StepH_SetData()
-		Me.stepH_data.Comment = Me.txtCommentBox.Text
+		Dim commentStr As String = New String(String.Empty)
+		If Me.rbNO.Checked Then
+			commentStr = "N/A"
+		Else
+			commentStr = Me.txtCommentBox.Text
+		End If
+		Me.stepH_data.Comment = commentStr
 	End Sub
 #End Region
 #Region "StepH_Load"

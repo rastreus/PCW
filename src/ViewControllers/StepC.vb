@@ -9,6 +9,10 @@ Public Class StepC
 	Inherits TSWizards.BaseInteriorStep
 	Implements IWizardStep
 
+#Region "StepC_Constants"
+	Private OCCURS_START = -7
+	Private OCCURS_END = -1
+#End Region
 #Region "StepC_New"
 	Public Sub New()
 		' This call is required by the designer.
@@ -152,8 +156,8 @@ Public Class StepC
 		Me.occursDateBool = False
 		Me.startDayBool = False
 		Me.endDayBool = False
-		Me.startDayInt = -7
-		Me.endDayInt = -1
+		Me.startDayInt = Me.OCCURS_START
+		Me.endDayInt = Me.OCCURS_END
 		Me.longDateFormat = New String("dddd, MMMM dd, yyyy")
 		Me.firstTimeOccursDateBool = False
 	End Sub
@@ -177,20 +181,21 @@ Public Class StepC
 	''' </summary>
 	''' <remarks>Just in case user changes between Recurring/Occuring.</remarks>
 	Private Sub StepC_ResetControls()
-		Me.primaryDayStr = String.Empty
+		ResetPrimaryDay()
 		Me.primaryDayBool = False
 		Me.dtpOccursDate.Value = Date.Today
 		Me.dtpQualifyingStart.Value = Date.Today
 		Me.dtpQualifyingEnd.Value = Date.Today
 		Me.cbSameDayPromo.Checked = False
+		Me.cbSingleDayPromo.Checked = False
 		Me.lblQualifyingStart.Text = "Start Date"
 		Me.lblQualifyingEnd.Text = "End Date"
 		Me.occursDateBool = False
 		Me.recurringFlagBool = Nothing
 		Me.startDayBool = False
 		Me.endDayBool = False
-		Me.startDayInt = -7
-		Me.endDayInt = -1
+		Me.startDayInt = Me.OCCURS_START
+		Me.endDayInt = Me.OCCURS_END
 		Me.longDateFormat = New String("dddd, MMMM dd, yyyy")
 		Me.firstTimeOccursDateBool = False
 		Me.MonthCal.SelectionStart = Date.Today
@@ -198,8 +203,10 @@ Public Class StepC
 		Me.MonthCal.TodayDate = Date.Today
 		Me.MonthCal.Visible = False
 		Me.lblSelectDates.Visible = True
-		ResetPrimaryDay()
+		Me.cbSameDayPromo.Enabled = False
+		Me.cbSingleDayPromo.Enabled = False
 		ResetRedemptionDays()
+		ResetGUIElements()
 	End Sub
 
 	''' <summary>
@@ -222,6 +229,12 @@ Public Class StepC
 		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
 			ctrl.Checked = False
 		Next
+	End Sub
+
+	Private Sub ResetGUIElements()
+		GUI_Util.regPnl(Me.pnlOccursDate)
+		GUI_Util.regLbl(Me.lblPromoOccursDate, _
+						Color.White)
 	End Sub
 #End Region
 #Region "StepC_Validation"
@@ -452,7 +465,7 @@ Public Class StepC
 	Private Sub dtpOccursDate_DropDown(sender As Object, _
 									   e As EventArgs) _
 		Handles dtpOccursDate.DropDown
-		If Not Me.firstTimeOccursDateBool Then
+		If Me.firstTimeOccursDateBool = False Then
 			unlockPrimaryDayOfWeek(getPrimaryDayOfWeek(Me.primaryDayStr))
 			Me.primaryDayStr = String.Empty
 		Else
@@ -470,18 +483,18 @@ Public Class StepC
 	Private Sub dtpOccursDate_CloseUp(sender As Object, _
 									  e As EventArgs) _
 		Handles dtpOccursDate.CloseUp
-		'Local vars because of all those dot operators to get to what is needed!
+		'Local vars b/c of all those dot operators to get to what is needed!
 		Dim local_startDay As String = Me.dtpOccursDate _
 										 .Value _
 										 .Date _
 										 .AddDays(Me.startDayInt) _
-										 .ToString(Me.longDateFormat)	'Math + Format
+										 .ToString(Me.longDateFormat)
 		'
 		Dim local_endDay As String = Me.dtpOccursDate _
 									   .Value _
 									   .Date _
 									   .AddDays(Me.endDayInt) _
-									   .ToString(Me.longDateFormat)		'Math + Format
+									   .ToString(Me.longDateFormat)
 		'
 		Me.primaryDayStr = Me.dtpOccursDate _
 							 .Value _
@@ -495,12 +508,17 @@ Public Class StepC
 		'This Boolean determines if the Occurs Date has ever been set.
 		If Me.occursDateBool = False Then
 			Me.occursDateBool = True
+			Me.cbSameDayPromo.Enabled = True
+			Me.cbSingleDayPromo.Enabled = True
+			GUI_Util.successLbl(Me.lblPromoOccursDate)
+			GUI_Util.successPnl(Me.pnlOccursDate)
 		End If
 		If Me.MonthCal.Visible = False Then
 			Me.lblSelectDates.Visible = False
 			Me.MonthCal.Visible = True
 		End If
 		GUI_Util.NextEnabled()
+		Me.ActiveControl = Me.pnlOccursDate
 	End Sub
 #End Region
 #Region "StepC_cbSameDayPromo_CheckedChanged"
@@ -516,12 +534,19 @@ Public Class StepC
 		Dim local_startDay As String = New String(String.Empty)
 		Dim local_endDay As String = New String(String.Empty)
 		If Me.occursDateBool Then
-			If Me.cbSameDayPromo.Checked Then '"Weird" maths for Qualifying Range
-				Me.startDayInt = -6
-				Me.endDayInt = 0
+			If Me.cbSameDayPromo.Checked Then
+				Me.cbSingleDayPromo.Enabled = False
+				If Me.cbSingleDayPromo.Checked Then
+					Me.cbSingleDayPromo.Checked = False
+				End If
+				Me.startDayInt = Me.OCCURS_START + 1
+				Me.endDayInt = Me.OCCURS_END + 1
 			Else
-				Me.startDayInt = -7
-				Me.endDayInt = -1
+				If Me.cbSingleDayPromo.Enabled = False Then
+					Me.cbSingleDayPromo.Enabled = True
+				End If
+				Me.startDayInt = Me.OCCURS_START
+				Me.endDayInt = Me.OCCURS_END
 			End If
 			'
 			local_startDay = Me.dtpOccursDate _
@@ -550,18 +575,37 @@ Public Class StepC
 		Dim local_startDay As String = New String(String.Empty)
 		Dim local_endDay As String = New String(String.Empty)
 		If Me.occursDateBool Then
-
-		End If
-		If Me.cbSingleDayPromo.Checked Then
+			If Me.cbSingleDayPromo.Checked Then
+				Me.cbSameDayPromo.Enabled = False
+				If Me.cbSameDayPromo.Checked Then
+					Me.cbSameDayPromo.Checked = False
+				End If
+				Me.startDayInt = 0
+				Me.endDayInt = 0
+			Else
+				If Me.cbSameDayPromo.Enabled = False Then
+					Me.cbSameDayPromo.Enabled = True
+				End If
+				Me.startDayInt = Me.OCCURS_START
+				Me.endDayInt = Me.OCCURS_END
+			End If
+			'
 			local_startDay = Me.dtpOccursDate _
 							   .Value _
 							   .Date _
+							   .AddDays(Me.startDayInt) _
 							   .ToString(Me.longDateFormat)
-			local_endDay = local_startDay
+			'
+			local_endDay = Me.dtpOccursDate _
+							 .Value _
+							 .Date _
+							 .AddDays(Me.endDayInt) _
+							 .ToString(Me.longDateFormat)
+			'
 			setStartEndQualifyingLabels(local_startDay, _
 										local_endDay)
 			Me.MonthCal.SetSelectionRange(local_startDay, _
-										  local_endDay)
+										  local_endDay)	'UI/UX flair! (^_^)
 		End If
 	End Sub
 #End Region

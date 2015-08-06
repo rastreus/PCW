@@ -56,6 +56,12 @@ Public Class GUI_Util
 		lbl.ForeColor = SystemColors.ControlText
 	End Sub
 
+	Public Shared Sub regLbl(ByRef lbl As Label, _
+							 ByVal color As Color)
+		lbl.BackColor = Drawing.Color.Transparent
+		lbl.ForeColor = color
+	End Sub
+
 	Public Shared Sub successCb(ByRef cb As ComboBox)
 		cb.BackColor = Color.DarkGreen
 		cb.ForeColor = Color.Lime

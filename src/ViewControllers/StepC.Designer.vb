@@ -49,7 +49,7 @@ Partial Class StepC
 		Me.lblQualifyingStart = New System.Windows.Forms.Label()
 		Me.cbSameDayPromo = New System.Windows.Forms.CheckBox()
 		Me.Label13 = New System.Windows.Forms.Label()
-		Me.Label14 = New System.Windows.Forms.Label()
+		Me.lblPromoOccursDate = New System.Windows.Forms.Label()
 		Me.dtpOccursDate = New System.Windows.Forms.DateTimePicker()
 		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
 		Me.pnlOccuringQualifyingPeriod = New System.Windows.Forms.Panel()
@@ -66,6 +66,7 @@ Partial Class StepC
 		Me.cbPrimaryDay = New System.Windows.Forms.ComboBox()
 		Me.yetAnotherLabel = New System.Windows.Forms.Label()
 		Me.lblQualifyingPeriod = New System.Windows.Forms.Label()
+		Me.pnlMoccasin = New System.Windows.Forms.Panel()
 		Me.pnlRedemptionDays.SuspendLayout()
 		Me.pnlCbRedemptionDays.SuspendLayout()
 		Me.Panel2.SuspendLayout()
@@ -77,6 +78,7 @@ Partial Class StepC
 		Me.pnlRecurringQualifyingPeriod.SuspendLayout()
 		Me.Panel7.SuspendLayout()
 		Me.pnlPrimaryDay.SuspendLayout()
+		Me.pnlMoccasin.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -377,8 +379,9 @@ Partial Class StepC
 		'
 		Me.cbSameDayPromo.AutoSize = True
 		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSameDayPromo.Enabled = False
 		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbSameDayPromo.Location = New System.Drawing.Point(6, 51)
+		Me.cbSameDayPromo.Location = New System.Drawing.Point(3, 3)
 		Me.cbSameDayPromo.Name = "cbSameDayPromo"
 		Me.cbSameDayPromo.Size = New System.Drawing.Size(110, 17)
 		Me.cbSameDayPromo.TabIndex = 19
@@ -398,21 +401,22 @@ Partial Class StepC
 		Me.Label13.Text = "Qualifying Period Dates"
 		Me.Label13.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
-		'Label14
+		'lblPromoOccursDate
 		'
-		Me.Label14.AutoSize = True
-		Me.Label14.BackColor = System.Drawing.Color.Transparent
-		Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label14.Location = New System.Drawing.Point(3, 10)
-		Me.Label14.Name = "Label14"
-		Me.Label14.Size = New System.Drawing.Size(142, 16)
-		Me.Label14.TabIndex = 17
-		Me.Label14.Text = "Promo Occurs Date"
+		Me.lblPromoOccursDate.AutoSize = True
+		Me.lblPromoOccursDate.BackColor = System.Drawing.Color.Transparent
+		Me.lblPromoOccursDate.Font = New System.Drawing.Font("Consolas", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPromoOccursDate.ForeColor = System.Drawing.Color.White
+		Me.lblPromoOccursDate.Location = New System.Drawing.Point(3, 1)
+		Me.lblPromoOccursDate.Name = "lblPromoOccursDate"
+		Me.lblPromoOccursDate.Size = New System.Drawing.Size(126, 15)
+		Me.lblPromoOccursDate.TabIndex = 17
+		Me.lblPromoOccursDate.Text = "Promo Occurs Date"
 		'
 		'dtpOccursDate
 		'
 		Me.dtpOccursDate.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.dtpOccursDate.Location = New System.Drawing.Point(6, 29)
+		Me.dtpOccursDate.Location = New System.Drawing.Point(6, 17)
 		Me.dtpOccursDate.Name = "dtpOccursDate"
 		Me.dtpOccursDate.Size = New System.Drawing.Size(199, 20)
 		Me.dtpOccursDate.TabIndex = 16
@@ -451,12 +455,11 @@ Partial Class StepC
 		'
 		'pnlOccursDate
 		'
-		Me.pnlOccursDate.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlOccursDate.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlOccursDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlOccursDate.Controls.Add(Me.cbSingleDayPromo)
-		Me.pnlOccursDate.Controls.Add(Me.Label14)
+		Me.pnlOccursDate.Controls.Add(Me.lblPromoOccursDate)
 		Me.pnlOccursDate.Controls.Add(Me.dtpOccursDate)
-		Me.pnlOccursDate.Controls.Add(Me.cbSameDayPromo)
+		Me.pnlOccursDate.Controls.Add(Me.pnlMoccasin)
 		Me.pnlOccursDate.Location = New System.Drawing.Point(3, 200)
 		Me.pnlOccursDate.Name = "pnlOccursDate"
 		Me.pnlOccursDate.Size = New System.Drawing.Size(220, 89)
@@ -466,8 +469,9 @@ Partial Class StepC
 		'
 		Me.cbSingleDayPromo.AutoSize = True
 		Me.cbSingleDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSingleDayPromo.Enabled = False
 		Me.cbSingleDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbSingleDayPromo.Location = New System.Drawing.Point(6, 69)
+		Me.cbSingleDayPromo.Location = New System.Drawing.Point(3, 21)
 		Me.cbSingleDayPromo.Name = "cbSingleDayPromo"
 		Me.cbSingleDayPromo.Size = New System.Drawing.Size(182, 17)
 		Me.cbSingleDayPromo.TabIndex = 20
@@ -603,6 +607,17 @@ Partial Class StepC
 		Me.lblQualifyingPeriod.TabIndex = 29
 		Me.lblQualifyingPeriod.Text = "Calendar displays Qualifying Period"
 		'
+		'pnlMoccasin
+		'
+		Me.pnlMoccasin.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlMoccasin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMoccasin.Controls.Add(Me.cbSingleDayPromo)
+		Me.pnlMoccasin.Controls.Add(Me.cbSameDayPromo)
+		Me.pnlMoccasin.Location = New System.Drawing.Point(4, 40)
+		Me.pnlMoccasin.Name = "pnlMoccasin"
+		Me.pnlMoccasin.Size = New System.Drawing.Size(201, 42)
+		Me.pnlMoccasin.TabIndex = 21
+		'
 		'StepC
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -650,6 +665,8 @@ Partial Class StepC
 		Me.Panel7.ResumeLayout(False)
 		Me.pnlPrimaryDay.ResumeLayout(False)
 		Me.pnlPrimaryDay.PerformLayout()
+		Me.pnlMoccasin.ResumeLayout(False)
+		Me.pnlMoccasin.PerformLayout()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -692,11 +709,12 @@ Partial Class StepC
 	Private WithEvents Label9 As System.Windows.Forms.Label
 	Private WithEvents Label10 As System.Windows.Forms.Label
 	Private WithEvents cbSameDayPromo As System.Windows.Forms.CheckBox
-	Private WithEvents Label14 As System.Windows.Forms.Label
+	Private WithEvents lblPromoOccursDate As System.Windows.Forms.Label
 	Private WithEvents dtpOccursDate As System.Windows.Forms.DateTimePicker
 	Private WithEvents pnlOccursDate As System.Windows.Forms.Panel
 	Private WithEvents lblQualifyingPeriod As System.Windows.Forms.Label
 	Private WithEvents lblSelectDates As System.Windows.Forms.Label
-	Friend WithEvents cbSingleDayPromo As System.Windows.Forms.CheckBox
+	Private WithEvents cbSingleDayPromo As System.Windows.Forms.CheckBox
+	Private WithEvents pnlMoccasin As System.Windows.Forms.Panel
 
 End Class

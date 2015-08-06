@@ -165,7 +165,7 @@ Public Class StepD_Data
 								   As MarketingPromoEligiblePlayer
 		Dim eligiblePlayers As MarketingPromoEligiblePlayer = _
 			New MarketingPromoEligiblePlayer()
-		eligiblePlayers.PromoID = promoID
+		eligiblePlayers.PromoID = promoID & "E"
 		eligiblePlayers.PlayerID = playerID
 		eligiblePlayers.NumOfTickets = numOfTickets
 		eligiblePlayers.TicketAmount = Nothing

@@ -257,6 +257,15 @@ Public Class StepB
 		End If
 	End Sub
 #End Region
+#Region "StepB_rbRecurringNo_CheckedChanged"
+	Private Sub rbRecurringNo_CheckedChanged(sender As Object, _
+											 e As EventArgs) _
+		Handles rbRecurringYes.CheckedChanged
+		If Me.rbRecurringNo.Checked Then
+			GUI_Util.NextEnabled()
+		End If
+	End Sub
+#End Region
 #Region "StepB_cbRecurringFrequency_DropDown"
 	Private Sub cbRecurringFrequency_DropDown(sender As Object, _
 											  e As EventArgs) _
