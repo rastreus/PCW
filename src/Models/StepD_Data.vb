@@ -156,6 +156,8 @@ Public Class StepD_Data
 								ex.Message)
 			End Try
 		Loop
+		parser.Close()
+		parser.Dispose()
 	End Sub
 #End Region
 #Region "ParseIntoList"

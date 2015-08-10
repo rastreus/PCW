@@ -78,6 +78,10 @@
     <ApplicationIcon>resources\PCW.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoUpdate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\AutoUpdate.dll</HintPath>
+    </Reference>
     <Reference Include="CenteredMessagebox">
       <HintPath>resources\CenteredMessagebox.dll</HintPath>
     </Reference>
@@ -131,6 +135,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>
     <Compile Include="src\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\frmStartup.Designer.vb">
+      <DependentUpon>frmStartup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\frmStartup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Interfaces\IPromoData.vb" />
@@ -276,6 +286,9 @@
     <None Include="research\PromoTypeDescriptions.xlsx" />
     <None Include="research\Target-Lists\Monthly Mailer Target List.csv" />
     <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
+    <EmbeddedResource Include="src\frmStartup.resx">
+      <DependentUpon>frmStartup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\PCW.resx">
       <DependentUpon>PCW.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -387,6 +400,7 @@
     <Content Include="LICENSE\PromotionalCreationWizard-License.txt" />
     <Content Include="research\PromoTypeBNF.txt" />
     <Content Include="research\Target-Lists\_Note-About-Target-List.txt" />
+    <Content Include="resources\AutoUpdate.dll" />
     <Content Include="resources\CenteredMessagebox.dll" />
     <Content Include="resources\CustomizedTextBox.dll" />
     <Content Include="resources\FontAwesomeIcons.dll" />

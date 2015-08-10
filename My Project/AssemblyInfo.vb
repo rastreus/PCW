@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("PCW (PromotionalCreationWizard)")> 
+<Assembly: AssemblyTitle("PromotionalCreationWizard")> 
 <Assembly: AssemblyDescription("Guide for Creating Promos")> 
 <Assembly: AssemblyCompany("Oaklawn Jockey Club")> 
 <Assembly: AssemblyProduct("PromotionalCreationWizard")> 
@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.3.0.10")> 
-<Assembly: AssemblyFileVersion("0.3.0.10")> 
+<Assembly: AssemblyVersion("0.4.0.0")> 
+<Assembly: AssemblyFileVersion("0.4.0.0")> 
 
 <Assembly: NeutralResourcesLanguageAttribute("en-US")> 
