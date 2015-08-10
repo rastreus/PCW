@@ -67,6 +67,16 @@ Public Class GUI_Util
 		cb.ForeColor = Color.Lime
 	End Sub
 
+	Public Shared Sub successCheckBox(ByRef cb As CheckBox)
+		cb.BackColor = Color.DarkGreen
+		cb.ForeColor = Color.Lime
+	End Sub
+
+	Public Shared Sub regCheckBox(ByRef cb As CheckBox)
+		cb.BackColor = Color.Transparent
+		cb.ForeColor = Color.White
+	End Sub
+
 	Public Shared Sub regCb(ByRef cb As ComboBox)
 		cb.BackColor = Color.White
 		cb.ForeColor = Color.Black

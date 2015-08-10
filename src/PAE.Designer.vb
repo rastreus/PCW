@@ -26,14 +26,14 @@ Partial Class PAE
 		Me.lblPAE = New System.Windows.Forms.Label()
 		Me.lblDescription = New System.Windows.Forms.Label()
 		Me.pnlControl = New System.Windows.Forms.Panel()
-		Me.pnlControlDarkDark = New System.Windows.Forms.Panel()
-		Me.cbResponsibility = New System.Windows.Forms.CheckBox()
 		Me.btnSubmit = New System.Windows.Forms.Button()
 		Me.btnCancel = New System.Windows.Forms.Button()
 		Me.pnlSaddleBrown = New System.Windows.Forms.Panel()
+		Me.cbResponsibility = New System.Windows.Forms.CheckBox()
+		Me.pnlControlDarkDark = New System.Windows.Forms.Panel()
 		Me.pnlControl.SuspendLayout()
-		Me.pnlControlDarkDark.SuspendLayout()
 		Me.pnlSaddleBrown.SuspendLayout()
+		Me.pnlControlDarkDark.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'lblPAE
@@ -78,35 +78,10 @@ Partial Class PAE
 		Me.pnlControl.Size = New System.Drawing.Size(601, 40)
 		Me.pnlControl.TabIndex = 2
 		'
-		'pnlControlDarkDark
-		'
-		Me.pnlControlDarkDark.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.pnlControlDarkDark.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlControlDarkDark.CausesValidation = False
-		Me.pnlControlDarkDark.Controls.Add(Me.cbResponsibility)
-		Me.pnlControlDarkDark.ForeColor = System.Drawing.Color.White
-		Me.pnlControlDarkDark.Location = New System.Drawing.Point(97, 3)
-		Me.pnlControlDarkDark.Name = "pnlControlDarkDark"
-		Me.pnlControlDarkDark.Size = New System.Drawing.Size(408, 32)
-		Me.pnlControlDarkDark.TabIndex = 0
-		'
-		'cbResponsibility
-		'
-		Me.cbResponsibility.CausesValidation = False
-		Me.cbResponsibility.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbResponsibility.Location = New System.Drawing.Point(3, -2)
-		Me.cbResponsibility.Name = "cbResponsibility"
-		Me.cbResponsibility.Size = New System.Drawing.Size(398, 32)
-		Me.cbResponsibility.TabIndex = 0
-		Me.cbResponsibility.TabStop = False
-		Me.cbResponsibility.Text = "I take responsibility for the changes to the above promo."
-		Me.cbResponsibility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		Me.cbResponsibility.UseMnemonic = False
-		Me.cbResponsibility.UseVisualStyleBackColor = True
-		'
 		'btnSubmit
 		'
 		Me.btnSubmit.CausesValidation = False
+		Me.btnSubmit.Enabled = False
 		Me.btnSubmit.Location = New System.Drawing.Point(511, 7)
 		Me.btnSubmit.Name = "btnSubmit"
 		Me.btnSubmit.Size = New System.Drawing.Size(75, 23)
@@ -140,6 +115,33 @@ Partial Class PAE
 		Me.pnlSaddleBrown.Size = New System.Drawing.Size(601, 160)
 		Me.pnlSaddleBrown.TabIndex = 0
 		'
+		'cbResponsibility
+		'
+		Me.cbResponsibility.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.cbResponsibility.CausesValidation = False
+		Me.cbResponsibility.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbResponsibility.Location = New System.Drawing.Point(3, -2)
+		Me.cbResponsibility.Name = "cbResponsibility"
+		Me.cbResponsibility.Size = New System.Drawing.Size(398, 32)
+		Me.cbResponsibility.TabIndex = 0
+		Me.cbResponsibility.TabStop = False
+		Me.cbResponsibility.Text = "I take responsibility for the changes to the above promo."
+		Me.cbResponsibility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.cbResponsibility.UseMnemonic = False
+		Me.cbResponsibility.UseVisualStyleBackColor = False
+		'
+		'pnlControlDarkDark
+		'
+		Me.pnlControlDarkDark.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlControlDarkDark.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlControlDarkDark.CausesValidation = False
+		Me.pnlControlDarkDark.Controls.Add(Me.cbResponsibility)
+		Me.pnlControlDarkDark.ForeColor = System.Drawing.Color.White
+		Me.pnlControlDarkDark.Location = New System.Drawing.Point(97, 4)
+		Me.pnlControlDarkDark.Name = "pnlControlDarkDark"
+		Me.pnlControlDarkDark.Size = New System.Drawing.Size(408, 32)
+		Me.pnlControlDarkDark.TabIndex = 0
+		'
 		'PAE
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -157,18 +159,18 @@ Partial Class PAE
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
 		Me.Text = "PAE (PromotionalAlternationEditor)"
 		Me.pnlControl.ResumeLayout(False)
-		Me.pnlControlDarkDark.ResumeLayout(False)
 		Me.pnlSaddleBrown.ResumeLayout(False)
 		Me.pnlSaddleBrown.PerformLayout()
+		Me.pnlControlDarkDark.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
 	Private WithEvents pnlControl As System.Windows.Forms.Panel
 	Private WithEvents btnCancel As System.Windows.Forms.Button
 	Private WithEvents btnSubmit As System.Windows.Forms.Button
-	Private WithEvents cbResponsibility As System.Windows.Forms.CheckBox
-	Private WithEvents pnlControlDarkDark As System.Windows.Forms.Panel
 	Private WithEvents pnlSaddleBrown As System.Windows.Forms.Panel
 	Private WithEvents lblPAE As System.Windows.Forms.Label
 	Private WithEvents lblDescription As System.Windows.Forms.Label
+	Private WithEvents pnlControlDarkDark As System.Windows.Forms.Panel
+	Private WithEvents cbResponsibility As System.Windows.Forms.CheckBox
 End Class
