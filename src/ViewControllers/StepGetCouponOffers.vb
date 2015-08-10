@@ -164,7 +164,7 @@ Public Class StepGetCouponOffers
 									  "Coupon Offers to this Coupon ID."
 		ExcludeDaysCheckState(False)
 		Me.clbExcludeDays.ClearSelected()
-		Me.cbSelectAll.Checked = False
+		Me.cbSelectAllExcludeDays.Checked = False
 		Me.btnSubmit.Enabled = False
 	End Sub
 #End Region
@@ -225,7 +225,7 @@ Public Class StepGetCouponOffers
 		End If
 	End Sub
 #End Region
-#Region "StepGetCouponOffers_SelectAll"
+#Region "StepGetCouponOffers_SelectAllExcludeDays"
 	''' <summary>
 	''' Checks all the Items in clbExcludeDays.
 	''' </summary>
@@ -236,10 +236,10 @@ Public Class StepGetCouponOffers
 		Next
 	End Sub
 
-	Private Sub cbSelectAll_CheckedChanged(sender As Object, _
-										   e As EventArgs) _
-		Handles cbSelectAll.CheckedChanged
-		ExcludeDaysCheckState(Me.cbSelectAll.Checked)
+	Private Sub cbSelectAllExcludeDays_CheckedChanged(sender As Object, _
+													  e As EventArgs) _
+		Handles cbSelectAllExcludeDays.CheckedChanged
+		ExcludeDaysCheckState(Me.cbSelectAllExcludeDays.Checked)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidStart_CloseUp"
@@ -306,9 +306,9 @@ Public Class StepGetCouponOffers
 	Private Sub btnSubmit_Click(sender As Object, _
 								e As EventArgs) _
 		Handles btnSubmit.Click
+		Me.btnSubmit.Enabled = False
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
 		Dim couponOffer As CouponOffer = New CouponOffer()
-		Me.btnSubmit.Enabled = False
 		couponOffer = StepGetCouponOffers_GetData()
 		Dim couponOfferIsValid As Boolean = _
 			Me.Data.Is_CouponOffer_Valid(couponOffer, _
