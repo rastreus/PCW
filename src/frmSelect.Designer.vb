@@ -39,7 +39,7 @@ Partial Class frmSelect
 		Me.pnlDarkSlateBlue.Controls.Add(Me.btnOpenPCW)
 		Me.pnlDarkSlateBlue.Location = New System.Drawing.Point(-5, -1)
 		Me.pnlDarkSlateBlue.Name = "pnlDarkSlateBlue"
-		Me.pnlDarkSlateBlue.Size = New System.Drawing.Size(604, 60)
+		Me.pnlDarkSlateBlue.Size = New System.Drawing.Size(604, 211)
 		Me.pnlDarkSlateBlue.TabIndex = 0
 		'
 		'btnOpenPCW
@@ -53,7 +53,7 @@ Partial Class frmSelect
 		Me.btnOpenPCW.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnOpenPCW.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnOpenPCW.ForeColor = System.Drawing.Color.White
-		Me.btnOpenPCW.Location = New System.Drawing.Point(218, 12)
+		Me.btnOpenPCW.Location = New System.Drawing.Point(218, 85)
 		Me.btnOpenPCW.Name = "btnOpenPCW"
 		Me.btnOpenPCW.Size = New System.Drawing.Size(189, 37)
 		Me.btnOpenPCW.TabIndex = 0
@@ -68,9 +68,9 @@ Partial Class frmSelect
 		Me.pnlDarkGoldenrod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlDarkGoldenrod.CausesValidation = False
 		Me.pnlDarkGoldenrod.Controls.Add(Me.btnOpenPAE)
-		Me.pnlDarkGoldenrod.Location = New System.Drawing.Point(-5, 58)
+		Me.pnlDarkGoldenrod.Location = New System.Drawing.Point(-5, 204)
 		Me.pnlDarkGoldenrod.Name = "pnlDarkGoldenrod"
-		Me.pnlDarkGoldenrod.Size = New System.Drawing.Size(604, 60)
+		Me.pnlDarkGoldenrod.Size = New System.Drawing.Size(604, 211)
 		Me.pnlDarkGoldenrod.TabIndex = 0
 		'
 		'btnOpenPAE
@@ -84,7 +84,7 @@ Partial Class frmSelect
 		Me.btnOpenPAE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnOpenPAE.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnOpenPAE.ForeColor = System.Drawing.Color.White
-		Me.btnOpenPAE.Location = New System.Drawing.Point(218, 10)
+		Me.btnOpenPAE.Location = New System.Drawing.Point(218, 85)
 		Me.btnOpenPAE.Name = "btnOpenPAE"
 		Me.btnOpenPAE.Size = New System.Drawing.Size(189, 37)
 		Me.btnOpenPAE.TabIndex = 0
@@ -99,7 +99,7 @@ Partial Class frmSelect
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Black
 		Me.CausesValidation = False
-		Me.ClientSize = New System.Drawing.Size(594, 117)
+		Me.ClientSize = New System.Drawing.Size(594, 414)
 		Me.Controls.Add(Me.pnlDarkGoldenrod)
 		Me.Controls.Add(Me.pnlDarkSlateBlue)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
