@@ -17,6 +17,5 @@ Public Class frmStartup
 			frmMain.Show()
 		End If
 		Me.Close()
-		Me.Dispose()
 	End Sub
 End Class
