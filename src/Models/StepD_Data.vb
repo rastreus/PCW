@@ -162,7 +162,8 @@ Public Class StepD_Data
 #Region "ParseIntoList"
 	Private Function ParseIntoList(ByRef promoID As String, _
 								   ByRef playerID As Integer, _
-								   ByRef numOfTickets As System.Nullable(Of Short)) _
+								   ByRef numOfTickets _
+								   As System.Nullable(Of Short)) _
 								   As MarketingPromoEligiblePlayer
 		Dim eligiblePlayers As MarketingPromoEligiblePlayer = _
 			New MarketingPromoEligiblePlayer()

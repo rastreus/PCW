@@ -17,8 +17,8 @@
 		Dim result As Integer = _
 			CenteredMessagebox.MsgBox.Show(cancelMsgString, _
 										   "Exit editor?", _
-											MessageBoxButtons.YesNo, _
-											MessageBoxIcon.Question)
+										   MessageBoxButtons.YesNo, _
+										   MessageBoxIcon.Question)
 		If result = DialogResult.Yes Then
 			bool = True
 		Else
