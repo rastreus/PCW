@@ -2,14 +2,16 @@
 
 #Region "New"
 	Public Sub New()
-		_dataCouponOffersHash = New Hashtable
+		_dataCouponOffersTplList = _
+			New List(Of Tuple(Of CheckBox, CouponOffer))
 		_dataCouponOffer = New CouponOffer
 		_promoSkipTargetImport = False
 	End Sub
 #End Region
 #Region "Properties"
 	Private _stepNotSet As Boolean = True
-	Private _dataCouponOffersHash As Hashtable
+	Private _dataCouponOffersTplList _
+		As List(Of Tuple(Of CheckBox, CouponOffer))
 	Private _dataCouponOffer As CouponOffer
 	Private _promoSkipTargetImport As Boolean
 
@@ -21,12 +23,13 @@
 			_stepNotSet = value
 		End Set
 	End Property
-	Private Property CouponOffersHash As Hashtable
+	Public Property CouponOffersTplList _
+		As List(Of Tuple(Of CheckBox, CouponOffer))
 		Get
-			Return _dataCouponOffersHash
+			Return _dataCouponOffersTplList
 		End Get
-		Set(value As Hashtable)
-			_dataCouponOffersHash = value
+		Set(value As List(Of Tuple(Of CheckBox, CouponOffer)))
+			_dataCouponOffersTplList = value
 		End Set
 	End Property
 	Public Property CouponOffers As CouponOffer
@@ -59,7 +62,7 @@
 #Region "Validity Checks"
 #Region "No_CouponOffers_Created"
 	Public Function No_CouponOffers_Created() As Boolean
-		Dim result As Boolean = If(CouponOffersHash.Count = 0, _
+		Dim result As Boolean = If(CouponOffersTplList.Count = 0, _
 								   True, _
 								   False)
 		Return result
@@ -134,38 +137,25 @@
 		If wildcardBool Then
 			result = 0
 		Else
-			result = CouponOffersHash.Count + 1
+			result = CouponOffersTplList.Count + 1
 		End If
 		Return result
 	End Function
 #End Region
-#Region "AddCouponOfferToHash"
-	Public Sub AddCouponOfferToList(ByRef couponOffer As CouponOffer)
-		Try
-			CouponOffersHash.Add(couponOffer.CouponNumber.ToString.Trim, _
-								 couponOffer)
-			PCW.Data.CouponOffersList.Add(couponOffer)
-		Catch ex As Exception
-			'Handle Exception
-			'Possibly trying to add a Coupon which already has a key?
-		End Try
+#Region "AddCouponOffersToList"
+	Public Sub AddCouponOffersToList()
+		For Each tpl As Tuple(Of CheckBox, CouponOffer) In CouponOffersTplList
+			PCW.Data.CouponOffersList.Add(tpl.Item2)
+		Next
 	End Sub
 #End Region
-#Region "GetCouponOfferListString"
-	Public Function GetCouponOfferListString() As String
-		Dim builder As System.Text.StringBuilder = _
-			New System.Text.StringBuilder
-		For Each key As String In CouponOffersHash.Keys
-			builder.Append("Coupon Number: " & key & vbCrLf)
-		Next
-		Return builder.ToString()
-	End Function
-#End Region
-#Region "GetCouponOfferNumbers"
+#Region "GetCouponOfferNumbersAsArrayList"
 	Public Function GetCouponOfferNumbersAsArrayList() As ArrayList
 		Dim result As ArrayList = New ArrayList
-		For Each key As String In CouponOffersHash.Keys
-			result.Add(key)
+		Dim split() As String
+		For Each tpl As Tuple(Of CheckBox, CouponOffer) In CouponOffersTplList
+			split = tpl.Item1.Text.Split(" ")
+			result.Add(split(1))
 		Next
 		Return result
 	End Function

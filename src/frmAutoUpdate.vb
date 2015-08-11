@@ -15,25 +15,19 @@
 '''     EXAMPLE: 0.4.0.1
 ''' 5.) Done! An old, out-of-date copy of PCW will auto-update itself.
 ''' </remarks>
-Public Class frmStartup
-	Private Sub frmStartup_Load(sender As Object, _
-								e As EventArgs) _
-		Handles Me.Load
+Public Class frmAutoUpdate
+	Private Sub frmStartup_Activate(sender As Object, _
+									e As EventArgs) _
+		Handles Me.Activated
 		AutoUpdate.RootPath = "\\domainserver\data\InformationTechnology" & _
 							  "\Software Master\Oaklawn\PCW"
 		AutoUpdate.UpdateFile = "_update.dat"
 		AutoUpdate.ErrorMessage = "ERROR IN AUTOUPDATE!"
 		If AutoUpdate.UpdateEXE() Then
 			GUI_Util.msgBox("PCW auto-updated to latest version!" & vbCrLf & _
-							"Please restart PCW after quit.", _
+							"Please quit and restart PCW.", _
 							"AUTO-UPDATE SUCCESS!", _
 							"Information")
-		Else
-			'Eventually this will be frmSelect
-			'instead of going to PCW directly.
-			'(GRD;08/10/15)
-			Dim frmMain As PCW = New PCW
-			frmMain.Show()
 		End If
 		Me.Close()
 	End Sub

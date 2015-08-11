@@ -43,9 +43,9 @@ Partial Class StepGetCouponOffers
 		Me.btnSubmit = New System.Windows.Forms.Button()
 		Me.lblCouponOffers = New System.Windows.Forms.Label()
 		Me.pnlCouponOffers = New System.Windows.Forms.Panel()
+		Me.cbSelectAllCouponOffers = New System.Windows.Forms.CheckBox()
 		Me.btnDelete = New System.Windows.Forms.Button()
-		Me.pnlForCB = New System.Windows.Forms.Panel()
-		Me.lblCouponOffersList = New System.Windows.Forms.Label()
+		Me.pnlForCheckBox = New System.Windows.Forms.Panel()
 		Me.pnlAskExclude = New System.Windows.Forms.Panel()
 		Me.pnlPapayaWhip = New System.Windows.Forms.Panel()
 		Me.rbExcludeDaysNO = New System.Windows.Forms.RadioButton()
@@ -72,7 +72,7 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO = New System.Windows.Forms.RadioButton()
 		Me.rbCouponWildcardYES = New System.Windows.Forms.RadioButton()
 		Me.lblCouponWildcard = New System.Windows.Forms.Label()
-		Me.cbSelectAllCouponOffers = New System.Windows.Forms.CheckBox()
+		Me.lblCouponOffersDirections = New System.Windows.Forms.Label()
 		Me.pnlExclusionDays.SuspendLayout()
 		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
@@ -81,6 +81,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlValidStart.SuspendLayout()
 		Me.pnlValidEnd.SuspendLayout()
 		Me.pnlCouponOffers.SuspendLayout()
+		Me.pnlForCheckBox.SuspendLayout()
 		Me.pnlAskExclude.SuspendLayout()
 		Me.pnlPapayaWhip.SuspendLayout()
 		Me.pnlFullValidate.SuspendLayout()
@@ -298,7 +299,7 @@ Partial Class StepGetCouponOffers
 		'
 		'btnSubmit
 		'
-		Me.btnSubmit.BackColor = System.Drawing.Color.MediumPurple
+		Me.btnSubmit.BackColor = System.Drawing.Color.Gainsboro
 		Me.btnSubmit.Enabled = False
 		Me.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSubmit.FlatAppearance.BorderSize = 2
@@ -331,18 +332,32 @@ Partial Class StepGetCouponOffers
 		Me.pnlCouponOffers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCouponOffers.Controls.Add(Me.cbSelectAllCouponOffers)
 		Me.pnlCouponOffers.Controls.Add(Me.btnDelete)
-		Me.pnlCouponOffers.Controls.Add(Me.pnlForCB)
-		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffersList)
 		Me.pnlCouponOffers.Controls.Add(Me.lblCouponOffers)
 		Me.pnlCouponOffers.Controls.Add(Me.btnSubmit)
+		Me.pnlCouponOffers.Controls.Add(Me.pnlForCheckBox)
 		Me.pnlCouponOffers.Location = New System.Drawing.Point(231, 100)
 		Me.pnlCouponOffers.Name = "pnlCouponOffers"
 		Me.pnlCouponOffers.Size = New System.Drawing.Size(189, 192)
 		Me.pnlCouponOffers.TabIndex = 33
 		'
+		'cbSelectAllCouponOffers
+		'
+		Me.cbSelectAllCouponOffers.AutoSize = True
+		Me.cbSelectAllCouponOffers.Enabled = False
+		Me.cbSelectAllCouponOffers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.cbSelectAllCouponOffers.ForeColor = System.Drawing.Color.Lime
+		Me.cbSelectAllCouponOffers.Location = New System.Drawing.Point(14, 144)
+		Me.cbSelectAllCouponOffers.Name = "cbSelectAllCouponOffers"
+		Me.cbSelectAllCouponOffers.Size = New System.Drawing.Size(86, 17)
+		Me.cbSelectAllCouponOffers.TabIndex = 34
+		Me.cbSelectAllCouponOffers.TabStop = False
+		Me.cbSelectAllCouponOffers.Text = "Select All"
+		Me.cbSelectAllCouponOffers.UseVisualStyleBackColor = True
+		Me.cbSelectAllCouponOffers.Visible = False
+		'
 		'btnDelete
 		'
-		Me.btnDelete.BackColor = System.Drawing.Color.Maroon
+		Me.btnDelete.BackColor = System.Drawing.Color.Gainsboro
 		Me.btnDelete.CausesValidation = False
 		Me.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnDelete.FlatAppearance.BorderSize = 2
@@ -358,28 +373,18 @@ Partial Class StepGetCouponOffers
 		Me.btnDelete.TabStop = False
 		Me.btnDelete.UseVisualStyleBackColor = False
 		'
-		'pnlForCB
+		'pnlForCheckBox
 		'
-		Me.pnlForCB.BackColor = System.Drawing.SystemColors.ControlDark
-		Me.pnlForCB.CausesValidation = False
-		Me.pnlForCB.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.pnlForCB.ForeColor = System.Drawing.Color.White
-		Me.pnlForCB.Location = New System.Drawing.Point(9, 17)
-		Me.pnlForCB.Name = "pnlForCB"
-		Me.pnlForCB.Size = New System.Drawing.Size(164, 125)
-		Me.pnlForCB.TabIndex = 0
-		'
-		'lblCouponOffersList
-		'
-		Me.lblCouponOffersList.BackColor = System.Drawing.Color.Gainsboro
-		Me.lblCouponOffersList.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblCouponOffersList.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.lblCouponOffersList.Location = New System.Drawing.Point(9, 17)
-		Me.lblCouponOffersList.Name = "lblCouponOffersList"
-		Me.lblCouponOffersList.Size = New System.Drawing.Size(140, 68)
-		Me.lblCouponOffersList.TabIndex = 33
-		Me.lblCouponOffersList.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
-		Me.lblCouponOffersList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.pnlForCheckBox.BackColor = System.Drawing.SystemColors.ControlDark
+		Me.pnlForCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlForCheckBox.CausesValidation = False
+		Me.pnlForCheckBox.Controls.Add(Me.lblCouponOffersDirections)
+		Me.pnlForCheckBox.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.pnlForCheckBox.ForeColor = System.Drawing.Color.White
+		Me.pnlForCheckBox.Location = New System.Drawing.Point(9, 17)
+		Me.pnlForCheckBox.Name = "pnlForCheckBox"
+		Me.pnlForCheckBox.Size = New System.Drawing.Size(164, 125)
+		Me.pnlForCheckBox.TabIndex = 0
 		'
 		'pnlAskExclude
 		'
@@ -662,7 +667,7 @@ Partial Class StepGetCouponOffers
 		'
 		'pnlCouponWildcard
 		'
-		Me.pnlCouponWildcard.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlCouponWildcard.BackColor = System.Drawing.Color.Yellow
 		Me.pnlCouponWildcard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCouponWildcard.Controls.Add(Me.rbCouponWildcardNO)
 		Me.pnlCouponWildcard.Controls.Add(Me.rbCouponWildcardYES)
@@ -678,7 +683,7 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO.BackColor = System.Drawing.Color.Transparent
 		Me.rbCouponWildcardNO.Checked = True
 		Me.rbCouponWildcardNO.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.rbCouponWildcardNO.ForeColor = System.Drawing.Color.White
+		Me.rbCouponWildcardNO.ForeColor = System.Drawing.Color.Black
 		Me.rbCouponWildcardNO.Location = New System.Drawing.Point(175, 12)
 		Me.rbCouponWildcardNO.Name = "rbCouponWildcardNO"
 		Me.rbCouponWildcardNO.Size = New System.Drawing.Size(37, 17)
@@ -692,7 +697,7 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardYES.AutoSize = True
 		Me.rbCouponWildcardYES.BackColor = System.Drawing.Color.Transparent
 		Me.rbCouponWildcardYES.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.rbCouponWildcardYES.ForeColor = System.Drawing.Color.White
+		Me.rbCouponWildcardYES.ForeColor = System.Drawing.Color.Black
 		Me.rbCouponWildcardYES.Location = New System.Drawing.Point(126, 12)
 		Me.rbCouponWildcardYES.Name = "rbCouponWildcardYES"
 		Me.rbCouponWildcardYES.Size = New System.Drawing.Size(43, 17)
@@ -704,7 +709,7 @@ Partial Class StepGetCouponOffers
 		'
 		Me.lblCouponWildcard.BackColor = System.Drawing.Color.Transparent
 		Me.lblCouponWildcard.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblCouponWildcard.ForeColor = System.Drawing.Color.White
+		Me.lblCouponWildcard.ForeColor = System.Drawing.Color.Black
 		Me.lblCouponWildcard.Location = New System.Drawing.Point(3, 0)
 		Me.lblCouponWildcard.Name = "lblCouponWildcard"
 		Me.lblCouponWildcard.Size = New System.Drawing.Size(117, 29)
@@ -712,18 +717,18 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponWildcard.Text = "Can the Patron Win more than Once?"
 		Me.lblCouponWildcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
-		'cbSelectAllCouponOffers
+		'lblCouponOffersDirections
 		'
-		Me.cbSelectAllCouponOffers.AutoSize = True
-		Me.cbSelectAllCouponOffers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.cbSelectAllCouponOffers.ForeColor = System.Drawing.Color.Lime
-		Me.cbSelectAllCouponOffers.Location = New System.Drawing.Point(14, 144)
-		Me.cbSelectAllCouponOffers.Name = "cbSelectAllCouponOffers"
-		Me.cbSelectAllCouponOffers.Size = New System.Drawing.Size(86, 17)
-		Me.cbSelectAllCouponOffers.TabIndex = 34
-		Me.cbSelectAllCouponOffers.TabStop = False
-		Me.cbSelectAllCouponOffers.Text = "Select All"
-		Me.cbSelectAllCouponOffers.UseVisualStyleBackColor = True
+		Me.lblCouponOffersDirections.BackColor = System.Drawing.Color.Transparent
+		Me.lblCouponOffersDirections.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblCouponOffersDirections.ForeColor = System.Drawing.Color.White
+		Me.lblCouponOffersDirections.Location = New System.Drawing.Point(3, 13)
+		Me.lblCouponOffersDirections.Name = "lblCouponOffersDirections"
+		Me.lblCouponOffersDirections.Size = New System.Drawing.Size(154, 92)
+		Me.lblCouponOffersDirections.TabIndex = 0
+		Me.lblCouponOffersDirections.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
+		Me.lblCouponOffersDirections.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		Me.lblCouponOffersDirections.UseMnemonic = False
 		'
 		'StepGetCouponOffers
 		'
@@ -766,6 +771,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlValidEnd.ResumeLayout(False)
 		Me.pnlCouponOffers.ResumeLayout(False)
 		Me.pnlCouponOffers.PerformLayout()
+		Me.pnlForCheckBox.ResumeLayout(False)
 		Me.pnlAskExclude.ResumeLayout(False)
 		Me.pnlPapayaWhip.ResumeLayout(False)
 		Me.pnlPapayaWhip.PerformLayout()
@@ -819,7 +825,6 @@ Partial Class StepGetCouponOffers
 	Private WithEvents btnSubmit As System.Windows.Forms.Button
 	Private WithEvents lblCouponOffers As System.Windows.Forms.Label
 	Private WithEvents pnlCouponOffers As System.Windows.Forms.Panel
-	Private WithEvents lblCouponOffersList As System.Windows.Forms.Label
 	Private WithEvents pnlAskExclude As System.Windows.Forms.Panel
 	Private WithEvents pnlPapayaWhip As System.Windows.Forms.Panel
 	Private WithEvents rbExcludeDaysNO As System.Windows.Forms.RadioButton
@@ -832,7 +837,8 @@ Partial Class StepGetCouponOffers
 	Private WithEvents rbCouponWildcardNO As System.Windows.Forms.RadioButton
 	Private WithEvents rbCouponWildcardYES As System.Windows.Forms.RadioButton
 	Private WithEvents btnDelete As System.Windows.Forms.Button
-	Private WithEvents pnlForCB As System.Windows.Forms.Panel
+	Private WithEvents pnlForCheckBox As System.Windows.Forms.Panel
 	Private WithEvents cbSelectAllCouponOffers As System.Windows.Forms.CheckBox
+	Private WithEvents lblCouponOffersDirections As System.Windows.Forms.Label
 
 End Class

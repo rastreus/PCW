@@ -20,12 +20,16 @@ Public Class PCW
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
 		Me.pcw_data = New PCW_Data
+		Me.updater = New frmAutoUpdate
+		Me.infoCircle = New FontAwesomeIcons.IconButton
 		Me.cancel.Visible = True
 		Me.back.Visible = True
 	End Sub
 #End Region
 #Region "PCW_Data"
 	Private pcw_data As PCW_Data
+	Private updater As frmAutoUpdate
+	Private infoCircle As FontAwesomeIcons.IconButton
 
 	Public Property Data() As PCW_Data
 		Get
@@ -36,13 +40,11 @@ Public Class PCW
 		End Set
 	End Property
 #End Region
-#Region "PCW_Load"
-	Private infoCircle As FontAwesomeIcons.IconButton
-
-	Private Sub PCW_Load(sender As Object, _
-						 e As EventArgs) _
-		Handles MyBase.Load
-		Me.infoCircle = New FontAwesomeIcons.IconButton
+#Region "PCW_Shown"
+	Private Sub PCW_Shown(sender As Object, _
+						  e As EventArgs) _
+		Handles Me.Shown
+		Me.updater.Show()
 	End Sub
 #End Region
 #Region "PCW_LoadSteps"
@@ -54,7 +56,7 @@ Public Class PCW
 	''' <remarks>THIS IS AN IMPORTANT SUB!</remarks>
 	Private Sub PCW_LoadSteps(ByVal sender As System.Object, _
 							  ByVal e As System.EventArgs) _
-		Handles MyBase.LoadSteps
+		Handles Me.LoadSteps
 		AddStep("StepA", New StepA)
 		AddStep("StepB", New StepB)
 		AddStep("StepC", New StepC)

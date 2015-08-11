@@ -4,6 +4,18 @@ Imports System.ComponentModel
 Public Class StepGetCouponOffers
 	Inherits TSWizards.BaseInteriorStep
 
+#Region "StepGetCouponOffers_Const"
+	Private Const CB_NAME As String = "CouponNumber: "
+	Private Const CB_SPACE As Integer = 20
+	Private Const NUM_OF_CB As Integer = 7
+	Private Const START_LFT As Integer = 5
+	Private Const START_LOC As Integer = 2
+	Private HLT_FORE As Color = Color.Black
+	Private HLT_BACK As Color = Color.Yellow
+	Private REG_FORE As Color = Color.White
+	Private REG_BACK As Color = Color.Transparent
+	Private ALL_SLCT As Boolean = False
+#End Region
 #Region "StepGetCouponOffers_New"
 	Public Sub New()
 		' This call is required by the designer.
@@ -160,12 +172,13 @@ Public Class StepGetCouponOffers
 		Me.txtNote.Text = "EX: Note"
 		Me.btnSetNote.BackColor = Color.Gainsboro
 		Me.btnSetNote.Enabled = False
-		Me.lblCouponOffersList.Text = "Click 'Submit' below to add " & _
-									  "Coupon Offers to this Coupon ID."
+		Me.lblCouponOffersDirections.Enabled = True
+		Me.lblCouponOffersDirections.Visible = True
 		ExcludeDaysCheckState(False)
 		Me.clbExcludeDays.ClearSelected()
 		Me.cbSelectAllExcludeDays.Checked = False
-		Me.btnSubmit.Enabled = False
+		disableSubmit()
+		disableDelete()
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_Validation"
@@ -195,6 +208,8 @@ Public Class StepGetCouponOffers
 		If cancelContinuingToNextStep Then
 			GUI_Util.msgBox(errString)
 		Else
+			'ACTUALLY PUT COUPON OFFERS INTO PCW_DATA LIST
+			Me.Data.AddCouponOffersToList()
 			'Step has been set if no error.
 			Me.stepGetCouponOffers_data.StepNotSet = False
 			If Me.skipTargetImport Then
@@ -275,9 +290,7 @@ Public Class StepGetCouponOffers
 			(Not Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
 			 Me.dtpValidEnd.Value.Date, _
 			 Me.dtpValidStart.Value.Date)) Then
-			If Me.btnSubmit.Enabled = False Then
-				Me.btnSubmit.Enabled = True
-			End If
+			checkToEnableSubmit(Me.Data.CouponOffersTplList.Count)
 			If GUI_Util.IsSuccess(pnl) Then
 				GUI_Util.successLbl(lbl)
 				GUI_Util.successPnl(pnl)
@@ -292,6 +305,55 @@ Public Class StepGetCouponOffers
 		End If
 	End Sub
 #End Region
+#Region "StepGetCouponOffers_toggleBUTTONS"
+	Private Sub checkToEnableSubmit(ByVal num As Integer)
+		If (Me.btnSubmit.Enabled = False And _
+			num < NUM_OF_CB) Then
+			Me.btnSubmit.Enabled = True
+			Me.btnSubmit.BackColor = Color.MediumPurple
+			Me.btnSubmit.Text = "Submit"
+		End If
+	End Sub
+	Private Sub enableDelete()
+		Me.btnDelete.Enabled = True
+		Me.btnDelete.BackColor = Color.Maroon
+		Me.btnDelete.Text = "Delete"
+	End Sub
+	Private Sub disableSubmit()
+		If Me.btnSubmit.Enabled = True Then
+			Me.btnSubmit.Enabled = False
+			Me.btnSubmit.BackColor = Color.Gainsboro
+			Me.btnSubmit.Text = String.Empty
+		End If
+	End Sub
+	Private Sub disableDelete()
+		If Me.btnDelete.Enabled = True Then
+			Me.btnDelete.Enabled = False
+			Me.btnDelete.BackColor = Color.Gainsboro
+			Me.btnDelete.Text = String.Empty
+		End If
+	End Sub
+	Private Sub checkToEnableSelectAllCouponOffers()
+		If Me.cbSelectAllCouponOffers.Enabled = False Then
+			Me.cbSelectAllCouponOffers.Enabled = True
+			Me.cbSelectAllCouponOffers.Visible = True
+		End If
+	End Sub
+	Private Sub checkToChangeDeleteAndSelectAll(ByVal num As Integer)
+		If num = 0 Then
+			If Me.btnDelete.Enabled = True Then
+				Me.btnDelete.Enabled = False
+				Me.btnDelete.BackColor = Color.Gainsboro
+				Me.btnDelete.Text = String.Empty
+			End If
+			If Me.cbSelectAllCouponOffers.Enabled = True Then
+				Me.cbSelectAllCouponOffers.Enabled = False
+				Me.cbSelectAllCouponOffers.Visible = False
+				Me.cbSelectAllCouponOffers.Checked = False
+			End If
+		End If
+	End Sub
+#End Region
 #Region "StepGetCouponOffers_rbExcludeDaysYES_CheckedChanged"
 	Private Sub rbExcludeDaysYES_CheckedChanged(sender As Object, _
 												e As EventArgs) _
@@ -302,11 +364,43 @@ Public Class StepGetCouponOffers
 		End If
 	End Sub
 #End Region
+#Region "StepGetCouponOffers_pnlForCheckBox_Handles"
+	Private Sub pnlForCheckBox_ControlAdded(sender As Object, _
+											e As EventArgs) _
+		Handles pnlForCheckBox.ControlAdded
+		checkToEnableSelectAllCouponOffers()
+	End Sub
+	Private Sub pnlForCheckBox_ControlRemoved(sender As Object, _
+											  e As EventArgs) _
+		Handles pnlForCheckBox.ControlRemoved
+		Dim num As Integer = Me.Data.CouponOffersTplList.Count
+		If num = 0 Then
+			PCW.NextEnabled = False
+			Me.lblCouponOffersDirections.Enabled = True
+			Me.lblCouponOffersDirections.Visible = True
+		End If
+		checkToEnableSubmit(num)
+		checkToRelocateAndRenumberCheckBox()
+		checkToChangeDeleteAndSelectAll(num)
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_cbSelectAllCouponOffers_CheckedChanged"
+	Private Sub cbSelectAllCouponOffers_CheckedChanged(sender As Object, _
+													   e As EventArgs) _
+		Handles cbSelectAllCouponOffers.CheckedChanged
+		ALL_SLCT = Me.cbSelectAllCouponOffers.Checked
+		For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+			cb.Checked = ALL_SLCT
+		Next
+	End Sub
+#End Region
 #Region "StepGetCouponOffers_btnSubmit_Click"
 	Private Sub btnSubmit_Click(sender As Object, _
 								e As EventArgs) _
 		Handles btnSubmit.Click
-		Me.btnSubmit.Enabled = False
+		disableSubmit()
+		Me.lblCouponOffersDirections.Enabled = False
+		Me.lblCouponOffersDirections.Visible = False
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
 		Dim couponOffer As CouponOffer = New CouponOffer()
 		couponOffer = StepGetCouponOffers_GetData()
@@ -314,9 +408,12 @@ Public Class StepGetCouponOffers
 			Me.Data.Is_CouponOffer_Valid(couponOffer, _
 										 Me.rbExcludeDaysYES.Checked)
 		If couponOfferIsValid Then
-			Me.stepGetCouponOffers_data.AddCouponOfferToList(couponOffer)
+			Dim cb As CheckBox = getCheckBox()
+			Dim tpl As Tuple(Of CheckBox, CouponOffer) = _
+				New Tuple(Of CheckBox, CouponOffer)(cb, couponOffer)
+			Me.Data.CouponOffersTplList.Add(tpl)
+			Me.pnlForCheckBox.Controls.Add(tpl.Item1)
 			Me.StepGetCouponOffers_ResetControls()
-			Me.lblCouponOffersList.Text = RefreshLabelList()
 			If firstOfferList And Not Me.wildcardMsgBool Then
 				GUI_Util.msgBox("Add another Coupon Offer or " & _
 								"press Next to continue.", _
@@ -329,20 +426,14 @@ Public Class StepGetCouponOffers
 			GUI_Util.NextEnabled()
 			GUI_Util.regPnl(Me.pnlCouponOffers)
 		Else
-			Me.btnSubmit.Enabled = True
+			'CouponOffer Not Valid
+			checkToEnableSubmit(Me.Data.CouponOffersTplList.Count)
+			Me.lblCouponOffersDirections.Enabled = True
+			Me.lblCouponOffersDirections.Visible = True
 			GUI_Util.errPnl(Me.pnlCouponOffers)
 			GUI_Util.msgBox("Coupon Offer Invalid.")
 		End If
 	End Sub
-#End Region
-#Region "StepGetCouponOffers_RefreshLableList"
-	Private Function RefreshLabelList()
-		Dim result As String = If(Me.Data.No_CouponOffers_Created(), _
-								  "Click 'Submit' below to add " & _
-								  "Coupon Offers to this Coupon ID.", _
-								  Me.Data.GetCouponOfferListString())
-		Return result
-	End Function
 #End Region
 #Region "StepGetCouponOffers_rbCouponWildcardYES_CheckedChanged"
 	Private Sub rbCouponWildcardYES_CheckedChanged(sender As Object, _
@@ -386,6 +477,130 @@ Public Class StepGetCouponOffers
 								 e As EventArgs) _
 		Handles btnSetNote.Click
 		Me.ActiveControl = Me.pnlNote
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_getCheckBox"
+	Private Sub relocateCheckBox()
+		Dim pt As Point
+		Dim curr As Integer = 0
+		Dim prev As Integer = 0
+		Dim diff As Integer = 0
+		If Me.Data.CouponOffersTplList.Count >= 2 Then
+			For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+				curr = cb.Location.Y
+				diff = curr - prev
+				If diff > CB_SPACE Then
+					pt = cb.Location
+					pt.Y -= CB_SPACE
+					cb.Location = pt
+					curr = cb.Location.Y
+				End If
+				prev = curr
+			Next
+		Else
+			For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+				cb.Location = New Point(START_LFT, START_LOC)
+			Next
+		End If
+	End Sub
+
+	Private Sub renumberCheckBox()
+		Dim num As Integer = 1
+		For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+			Dim split() As String = cb.Text.Split(" ")
+			If (Not Short.Parse(split(1)) = 0) Then
+				cb.Text = CB_NAME & num.ToString
+				num += 1
+			End If
+		Next
+	End Sub
+
+	Private Sub checkToRelocateAndRenumberCheckBox()
+		If (Me.cbSelectAllCouponOffers.Checked <> True) Or _
+		   (Me.cbSelectAllCouponOffers.Checked And _
+		   (Me.cbSelectAllCouponOffers.CheckState = _
+			   CheckState.Indeterminate)) Then
+			relocateCheckBox()
+			renumberCheckBox()
+			If Me.cbSelectAllCouponOffers.CheckState = _
+				CheckState.Indeterminate Then
+				Me.cbSelectAllCouponOffers.CheckState = _
+					CheckState.Unchecked
+			End If
+		End If
+	End Sub
+
+	Private Sub checkAllSelectAll()
+		Dim bool As Boolean = False
+		For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+			If cb.Checked = False Then
+				bool = True
+			End If
+		Next
+		If bool Then
+			Me.cbSelectAllCouponOffers.CheckState = _
+				CheckState.Indeterminate
+		End If
+	End Sub
+
+	Private Sub cb_CheckedChanged(sender As CheckBox, _
+								  e As EventArgs)
+		If sender.Checked Then
+			If Me.btnDelete.Enabled = False Then
+				enableDelete()
+			End If
+			sender.ForeColor = HLT_FORE
+			sender.BackColor = HLT_BACK
+		Else
+			sender.ForeColor = REG_FORE
+			sender.BackColor = REG_BACK
+			If ALL_SLCT Then
+				checkAllSelectAll()
+			End If
+		End If
+	End Sub
+
+	Private Function getCheckBox() As CheckBox
+		Dim num As Integer = Me.Data. _
+			CouponOffersTplList.Count
+		Dim cb As CheckBox = New CheckBox()
+		cb.AutoSize = True
+		cb.Checked = False
+		cb.Enabled = True
+		If num = 0 Then
+			cb.Location = New Point(START_LFT, START_LOC)
+			cb.Text = CB_NAME & (num + 1).ToString
+		Else
+			Dim lastCheckBox As CheckBox = Me.Data. _
+				CouponOffersTplList.Last.Item1
+			Dim pt As Point = lastCheckBox.Location
+			pt.Y += CB_SPACE
+			cb.Location = pt
+			cb.Text = CB_NAME & Me.Data.GetCouponNumber( _
+				Me.rbCouponWildcardYES.Checked).ToString
+		End If
+		AddHandler cb.CheckedChanged, AddressOf cb_CheckedChanged
+		Return cb
+	End Function
+#End Region
+#Region "StepGetCouponOffers_btnDelete_Click"
+	Private Sub btnDelete_Click(sender As Object, _
+							e As EventArgs) _
+	Handles btnDelete.Click
+		disableDelete()
+		Dim toBeDeleted As List(Of Tuple(Of CheckBox, CouponOffer)) = _
+			New List(Of Tuple(Of CheckBox, CouponOffer))
+		For Each tpl As Tuple(Of CheckBox, CouponOffer) In _
+			Me.Data.CouponOffersTplList
+			If tpl.Item1.Checked Then
+				toBeDeleted.Add(tpl)
+			End If
+		Next
+		For Each tpl As Tuple(Of CheckBox, CouponOffer) In toBeDeleted
+			Me.Data.CouponOffersTplList.Remove(tpl)
+			Me.pnlForCheckBox.Controls.Remove(tpl.Item1)
+			tpl.Item1.Dispose()
+		Next
 	End Sub
 #End Region
 End Class
