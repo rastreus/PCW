@@ -352,6 +352,7 @@ Partial Class StepGetCouponOffers
 		Me.cbSelectAllCouponOffers.TabIndex = 34
 		Me.cbSelectAllCouponOffers.TabStop = False
 		Me.cbSelectAllCouponOffers.Text = "Select All"
+		Me.cbSelectAllCouponOffers.UseMnemonic = False
 		Me.cbSelectAllCouponOffers.UseVisualStyleBackColor = True
 		Me.cbSelectAllCouponOffers.Visible = False
 		'

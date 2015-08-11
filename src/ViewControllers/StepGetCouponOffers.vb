@@ -176,6 +176,9 @@ Public Class StepGetCouponOffers
 		Me.lblCouponOffersDirections.Visible = True
 		ExcludeDaysCheckState(False)
 		Me.clbExcludeDays.ClearSelected()
+		Me.cbSelectAllCouponOffers.Checked = False
+		Me.cbSelectAllCouponOffers.Visible = False
+		Me.cbSelectAllCouponOffers.Enabled = False
 		Me.cbSelectAllExcludeDays.Checked = False
 		disableSubmit()
 		disableDelete()
@@ -261,22 +264,26 @@ Public Class StepGetCouponOffers
 	Private Sub dtpValidStart_CloseUp(sender As Object, _
 									  e As EventArgs) _
 		Handles dtpValidStart.CloseUp
-		If Me.validStartBool = False Then	'"Break the (Bool) seal!"
+		'"Break the (Bool) seal!"
+		If Me.validStartBool = False Then
 			Me.validStartBool = True
 		End If
 		'Have both seals been broken?
-		checkStartEndValidBools(Me.lblValidStart, Me.pnlValidStart)
+		checkStartEndValidBools(Me.lblValidStart, _
+								Me.pnlValidStart)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_dtpValidEnd_CloseUp"
 	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, _
 										 e As EventArgs) _
 		Handles dtpValidEnd.CloseUp
-		If Me.validEndBool = False Then		'"Break the (Bool) seal!"
+		'"Break the (Bool) seal!"
+		If Me.validEndBool = False Then
 			Me.validEndBool = True
 		End If
 		'Have both seals been broken?
-		checkStartEndValidBools(Me.lblValidEnd, Me.pnlValidEnd)
+		checkStartEndValidBools(Me.lblValidEnd, _
+								Me.pnlValidEnd)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_checkStartEndValidBools"
@@ -286,7 +293,8 @@ Public Class StepGetCouponOffers
 	''' <remarks>Make the MonthCal visible too!</remarks>
 	Private Sub checkStartEndValidBools(ByRef lbl As Label, _
 										ByRef pnl As Panel)
-		If (Me.validStartBool And Me.validEndBool) And _
+		If (Me.validStartBool = True AndAlso _
+			Me.validEndBool = True) And _
 			(Not Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
 			 Me.dtpValidEnd.Value.Date, _
 			 Me.dtpValidStart.Value.Date)) Then
