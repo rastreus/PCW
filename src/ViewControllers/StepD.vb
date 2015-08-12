@@ -115,14 +115,23 @@ Public Class StepD
 		Dim local_StepB As StepB = New StepB
 		Dim local_promoID As String = New String(String.Empty)
 		Me.UseWaitCursor = True
-		Me.stepD_data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
+		Me.Data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
 		local_StepB = PCW.GetStep("StepB")
 		local_promoID = local_StepB.Data.ID
-		Me.stepD_data.CSVtoEligiblePlayersList(local_promoID)
-		'Only Enable once sure the CSV in a DataTable
+		Dim incorrectLength As Integer = _
+			Me.Data.CSVtoEligiblePlayersList(local_promoID)
 		Me.UseWaitCursor = False
-		GUI_Util.onIcon(Me.SuccessIcon)
-		GUI_Util.NextEnabled()
+		If incorrectLength > 0 Then
+			GUI_Util.msgBox("There were " & incorrectLength.ToString & _
+							" rows of incorrect length." & vbCrLf & _
+							"Please fix CSV file and try again.", _
+							"INCORRECT LENGTH!")
+		Else
+			'Only Enable once sure the CSV in a DataTable
+			Me.Data.TempIntoReal()
+			GUI_Util.onIcon(Me.SuccessIcon)
+			GUI_Util.NextEnabled()
+		End If
 	End Sub
 #End Region
 #Region "StepD_Delegates"

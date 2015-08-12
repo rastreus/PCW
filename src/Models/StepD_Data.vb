@@ -40,6 +40,9 @@ Public Class StepD_Data
 	Private _dataEligiblePlayersCSVFilePath As String = _
 		New String(String.Empty)
 	Private _promoMultiPartCategory As PCW_Data.MultiPartCategory
+	Private _dataTempEligiblePlayersList As  _
+		List(Of MarketingPromoEligiblePlayer) = _
+		New List(Of MarketingPromoEligiblePlayer)
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
@@ -114,9 +117,17 @@ Public Class StepD_Data
 			_dataEligiblePlayersCSVFilePath = value
 		End Set
 	End Property
+	Private Property TempList As List(Of MarketingPromoEligiblePlayer)
+		Get
+			Return _dataTempEligiblePlayersList
+		End Get
+		Set(value As List(Of MarketingPromoEligiblePlayer))
+			_dataTempEligiblePlayersList = value
+		End Set
+	End Property
 #End Region
 #Region "CSVtoEligiblePlayersList"
-	Public Sub CSVtoEligiblePlayersList(ByVal promoID As String)
+	Public Function CSVtoEligiblePlayersList(ByVal promoID As String) As Integer
 		Dim playerID As Integer
 		Dim numOfTickets As System.Nullable(Of Short)
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
@@ -132,24 +143,34 @@ Public Class StepD_Data
 
 		'Create a String Array
 		Dim currentRow(13) As String
+		Dim incorrectLength As Integer = 0
 		Do Until parser.EndOfData = True
 			Try
-				currentRow = parser.ReadFields()
-				playerID = currentRow(0)
-				'If numOfTickets is NULL,
-				'GPM will prompt for 1 or 2
-				'tickets to be printed.
-				If currentRow(13) = String.Empty Then
-					numOfTickets = Nothing
+				Dim index As Short = 0
+				For Each field As String In parser.ReadFields()
+					currentRow(index) = field
+					If index < 13 Then
+						index += 1
+					End If
+				Next
+				If index = 13 Then
+					playerID = currentRow(0)
+					'If numOfTickets is NULL,
+					'GPM will prompt for 1 or 2
+					'tickets to be printed.
+					If currentRow(13) = String.Empty Then
+						numOfTickets = Nothing
+					Else
+						numOfTickets = currentRow(13)
+					End If
+					marketingPromoEligiblePlayerDBRow = _
+						New MarketingPromoEligiblePlayer
+					marketingPromoEligiblePlayerDBRow = _
+						ParseIntoList(promoID, playerID, numOfTickets)
+					TempList.Add(marketingPromoEligiblePlayerDBRow)
 				Else
-					numOfTickets = currentRow(13)
+					incorrectLength += 1
 				End If
-				marketingPromoEligiblePlayerDBRow = _
-					New MarketingPromoEligiblePlayer
-				marketingPromoEligiblePlayerDBRow = _
-					ParseIntoList(promoID, playerID, numOfTickets)
-				PCW.Data.EligiblePlayerList _
-					.Add(marketingPromoEligiblePlayerDBRow)
 			Catch ex As Exception
 				GUI_Util.msgBox("ERROR: CSVtoEP, " & vbCrLf & _
 								"Please contact IT " & vbCrLf & _
@@ -157,7 +178,8 @@ Public Class StepD_Data
 			End Try
 		Loop
 		parser.Close()
-	End Sub
+		Return incorrectLength
+	End Function
 #End Region
 #Region "ParseIntoList"
 	Private Function ParseIntoList(ByRef promoID As String, _
@@ -173,6 +195,13 @@ Public Class StepD_Data
 		eligiblePlayers.TicketAmount = Nothing
 		Return eligiblePlayers
 	End Function
+#End Region
+#Region "TempIntoReal"
+	Public Sub TempIntoReal()
+		For Each ep As MarketingPromoEligiblePlayer In TempList
+			PCW.Data.EligiblePlayerList.Add(ep)
+		Next
+	End Sub
 #End Region
 #Region "Validity Checks"
 	Public Function PointCutoffLimit_Invalid() As Boolean
