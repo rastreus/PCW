@@ -134,10 +134,10 @@
 #Region "GetCouponNumber"
 	Public Function GetCouponNumber(ByVal wildcardBool As Boolean) As Integer
 		Dim result As Integer = 0
-		If wildcardBool Then
+		If wildcardBool = True Then
 			result = 0
 		Else
-			result = CouponOffersTplList.Count + 1
+			result = (CouponOffersTplList.Count + 1)
 		End If
 		Return result
 	End Function

@@ -155,6 +155,12 @@ Public Class StepGetCouponOffers
 	''' </summary>
 	''' <remarks></remarks>
 	Private Sub StepGetCouponOffers_ResetControls()
+		Me.lblValidStart.ForeColor = Color.Black
+		Me.lblValidStart.BackColor = Color.PaleGreen
+		Me.pnlValidStart.BackColor = Color.PaleGreen
+		Me.lblValidEnd.ForeColor = Color.Black
+		Me.lblValidEnd.BackColor = Color.PaleGreen
+		Me.pnlValidEnd.BackColor = Color.PaleGreen
 		Me.validStartBool = False
 		Me.validEndBool = False
 		Me.wildcardMsgBool = False
@@ -172,13 +178,8 @@ Public Class StepGetCouponOffers
 		Me.txtNote.Text = "EX: Note"
 		Me.btnSetNote.BackColor = Color.Gainsboro
 		Me.btnSetNote.Enabled = False
-		Me.lblCouponOffersDirections.Enabled = True
-		Me.lblCouponOffersDirections.Visible = True
 		ExcludeDaysCheckState(False)
 		Me.clbExcludeDays.ClearSelected()
-		Me.cbSelectAllCouponOffers.Checked = False
-		Me.cbSelectAllCouponOffers.Visible = False
-		Me.cbSelectAllCouponOffers.Enabled = False
 		Me.cbSelectAllExcludeDays.Checked = False
 		disableSubmit()
 		disableDelete()
@@ -260,14 +261,37 @@ Public Class StepGetCouponOffers
 		ExcludeDaysCheckState(Me.cbSelectAllExcludeDays.Checked)
 	End Sub
 #End Region
+#Region "StepGetCouponOffers_dtpValidStart_DropDown"
+	Private Sub dtpValidStart_DropDown(sender As Object, _
+									   e As EventArgs) _
+		Handles dtpValidStart.DropDown
+		If GUI_Util.IsSuccess(Me.pnlValidStart) Then
+			GUI_Util.regLbl(Me.lblValidStart)
+			GUI_Util.regPnl(Me.pnlValidStart)
+		End If
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_dtpValidEnd_DropDown"
+	Private Sub dtpValidEnd_DropDown(sender As Object, _
+									 e As EventArgs) _
+		Handles dtpValidEnd.DropDown
+		If GUI_Util.IsSuccess(Me.pnlValidEnd) Then
+			GUI_Util.regLbl(Me.lblValidEnd)
+			GUI_Util.regPnl(Me.pnlValidEnd)
+		End If
+	End Sub
+#End Region
 #Region "StepGetCouponOffers_dtpValidStart_CloseUp"
 	Private Sub dtpValidStart_CloseUp(sender As Object, _
 									  e As EventArgs) _
 		Handles dtpValidStart.CloseUp
-		'"Break the (Bool) seal!"
+		'Break the (Bool) seal!
 		If Me.validStartBool = False Then
 			Me.validStartBool = True
+			GUI_Util.successLbl(Me.lblValidStart)
+			GUI_Util.successPnl(Me.pnlValidStart)
 		End If
+		Me.ActiveControl = Me.pnlValidStart
 		'Have both seals been broken?
 		checkStartEndValidBools(Me.lblValidStart, _
 								Me.pnlValidStart)
@@ -277,10 +301,13 @@ Public Class StepGetCouponOffers
 	Private Sub dtpQualifyingEnd_CloseUp(sender As Object, _
 										 e As EventArgs) _
 		Handles dtpValidEnd.CloseUp
-		'"Break the (Bool) seal!"
+		'Break the (Bool) seal!
 		If Me.validEndBool = False Then
 			Me.validEndBool = True
+			GUI_Util.successLbl(Me.lblValidEnd)
+			GUI_Util.successPnl(Me.pnlValidEnd)
 		End If
+		Me.ActiveControl = Me.pnlValidEnd
 		'Have both seals been broken?
 		checkStartEndValidBools(Me.lblValidEnd, _
 								Me.pnlValidEnd)
@@ -293,9 +320,9 @@ Public Class StepGetCouponOffers
 	''' <remarks>Make the MonthCal visible too!</remarks>
 	Private Sub checkStartEndValidBools(ByRef lbl As Label, _
 										ByRef pnl As Panel)
-		If (Me.validStartBool = True AndAlso _
-			Me.validEndBool = True) And _
-			(Not Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
+		If (Me.validEndBool = True AndAlso _
+			Me.validStartBool = True AndAlso _
+			Not Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
 			 Me.dtpValidEnd.Value.Date, _
 			 Me.dtpValidStart.Value.Date)) Then
 			checkToEnableSubmit(Me.Data.CouponOffersTplList.Count)
@@ -306,7 +333,11 @@ Public Class StepGetCouponOffers
 				GUI_Util.regLbl(lbl)
 				GUI_Util.regPnl(pnl, Color.PaleGreen)
 			End If
-		Else
+		ElseIf (Me.validEndBool = True AndAlso _
+				Me.validStartBool = True AndAlso _
+				Me.stepGetCouponOffers_data.EndDate_Before_StartDate( _
+				Me.dtpValidEnd.Value.Date, _
+				Me.dtpValidStart.Value.Date)) Then
 			GUI_Util.errLbl(lbl)
 			GUI_Util.errPnl(pnl)
 			GUI_Util.msgBox("EndDate Before StartDate!")
@@ -359,6 +390,10 @@ Public Class StepGetCouponOffers
 				Me.cbSelectAllCouponOffers.Visible = False
 				Me.cbSelectAllCouponOffers.Checked = False
 			End If
+			If Me.lblCouponOffersDirections.Enabled = False Then
+				Me.lblCouponOffersDirections.Enabled = True
+				Me.lblCouponOffersDirections.Visible = True
+			End If
 		End If
 	End Sub
 #End Region
@@ -377,6 +412,10 @@ Public Class StepGetCouponOffers
 											e As EventArgs) _
 		Handles pnlForCheckBox.ControlAdded
 		checkToEnableSelectAllCouponOffers()
+		If Me.lblCouponOffersDirections.Enabled = True Then
+			Me.lblCouponOffersDirections.Enabled = False
+			Me.lblCouponOffersDirections.Visible = False
+		End If
 	End Sub
 	Private Sub pnlForCheckBox_ControlRemoved(sender As Object, _
 											  e As EventArgs) _
@@ -384,12 +423,9 @@ Public Class StepGetCouponOffers
 		Dim num As Integer = Me.Data.CouponOffersTplList.Count
 		If num = 0 Then
 			PCW.NextEnabled = False
-			Me.lblCouponOffersDirections.Enabled = True
-			Me.lblCouponOffersDirections.Visible = True
+			checkToChangeDeleteAndSelectAll(num)
 		End If
-		checkToEnableSubmit(num)
 		checkToRelocateAndRenumberCheckBox()
-		checkToChangeDeleteAndSelectAll(num)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_cbSelectAllCouponOffers_CheckedChanged"
@@ -407,8 +443,6 @@ Public Class StepGetCouponOffers
 								e As EventArgs) _
 		Handles btnSubmit.Click
 		disableSubmit()
-		Me.lblCouponOffersDirections.Enabled = False
-		Me.lblCouponOffersDirections.Visible = False
 		Dim firstOfferList As Boolean = Me.Data.No_CouponOffers_Created()
 		Dim couponOffer As CouponOffer = New CouponOffer()
 		couponOffer = StepGetCouponOffers_GetData()
@@ -422,7 +456,8 @@ Public Class StepGetCouponOffers
 			Me.Data.CouponOffersTplList.Add(tpl)
 			Me.pnlForCheckBox.Controls.Add(tpl.Item1)
 			Me.StepGetCouponOffers_ResetControls()
-			If firstOfferList And Not Me.wildcardMsgBool Then
+			If firstOfferList AndAlso _
+				(Not Me.wildcardMsgBool) Then
 				GUI_Util.msgBox("Add another Coupon Offer or " & _
 								"press Next to continue.", _
 								"Coupon Offers Options", _
@@ -436,8 +471,6 @@ Public Class StepGetCouponOffers
 		Else
 			'CouponOffer Not Valid
 			checkToEnableSubmit(Me.Data.CouponOffersTplList.Count)
-			Me.lblCouponOffersDirections.Enabled = True
-			Me.lblCouponOffersDirections.Visible = True
 			GUI_Util.errPnl(Me.pnlCouponOffers)
 			GUI_Util.msgBox("Coupon Offer Invalid.")
 		End If
@@ -448,16 +481,14 @@ Public Class StepGetCouponOffers
 												   e As EventArgs) _
 		Handles rbCouponWildcardYES.CheckedChanged
 		If rbCouponWildcardYES.Checked Then
-			If Me.wildcardMsgBool = False Then
-				Me.wildcardMsgBool = True
-				If PCW.Data.UsesCouponTargetsList Then
-					GUI_Util.msgBox("Wildcard Offers add Targets at the " & _
-									"time of coupon creation. " & _
-									"There is no option to import a " & _
-									"Target list for a Wildcard Offer.", _
-									"NO TARGET IMPORT!", _
-									"Information")
-				End If
+			Me.wildcardMsgBool = True
+			If PCW.Data.UsesCouponTargetsList Then
+				GUI_Util.msgBox("Wildcard Offers add Targets at the " & _
+								"time of coupon creation. " & _
+								"There is no option to import a " & _
+								"Target list for a Wildcard Offer.", _
+								"NO TARGET IMPORT!", _
+								"Information")
 			End If
 		End If
 	End Sub
@@ -551,6 +582,16 @@ Public Class StepGetCouponOffers
 		End If
 	End Sub
 
+	Private Function checkToDisableDelete() As Boolean
+		Dim result As Boolean = False
+		For Each cb As CheckBox In Me.pnlForCheckBox.Controls
+			If cb.Checked Then
+				result = True
+			End If
+		Next
+		Return result
+	End Function
+
 	Private Sub cb_CheckedChanged(sender As CheckBox, _
 								  e As EventArgs)
 		If sender.Checked Then
@@ -560,6 +601,9 @@ Public Class StepGetCouponOffers
 			sender.ForeColor = HLT_FORE
 			sender.BackColor = HLT_BACK
 		Else
+			If checkToDisableDelete() = False Then
+				disableDelete()
+			End If
 			sender.ForeColor = REG_FORE
 			sender.BackColor = REG_BACK
 			If ALL_SLCT Then
@@ -577,16 +621,15 @@ Public Class StepGetCouponOffers
 		cb.Enabled = True
 		If num = 0 Then
 			cb.Location = New Point(START_LFT, START_LOC)
-			cb.Text = CB_NAME & (num + 1).ToString
 		Else
 			Dim lastCheckBox As CheckBox = Me.Data. _
 				CouponOffersTplList.Last.Item1
 			Dim pt As Point = lastCheckBox.Location
 			pt.Y += CB_SPACE
 			cb.Location = pt
-			cb.Text = CB_NAME & Me.Data.GetCouponNumber( _
-				Me.rbCouponWildcardYES.Checked).ToString
 		End If
+		cb.Text = CB_NAME & Me.Data.GetCouponNumber( _
+				Me.rbCouponWildcardYES.Checked).ToString
 		AddHandler cb.CheckedChanged, AddressOf cb_CheckedChanged
 		Return cb
 	End Function

@@ -16,7 +16,7 @@
 ''' 5.) Done! An old, out-of-date copy of PCW will auto-update itself.
 ''' </remarks>
 Public Class frmAutoUpdate
-	Private Sub frmStartup_Activate(sender As Object, _
+	Private Sub frmStartup_Activate(sender As PCW, _
 									e As EventArgs) _
 		Handles Me.Activated
 		AutoUpdate.RootPath = "\\domainserver\data\InformationTechnology" & _
@@ -28,6 +28,9 @@ Public Class frmAutoUpdate
 							"Please quit and restart PCW.", _
 							"AUTO-UPDATE SUCCESS!", _
 							"Information")
+		End If
+		If sender.Visible = False Then
+			sender.Visible = True
 		End If
 		Me.Close()
 	End Sub
