@@ -18,12 +18,12 @@
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
 		''' <remarks></remarks>
-		Private Sub My_UnhandledException(ByVal sender As Object, _
+		Private Sub My_UnhandledException(ByVal sender As Exception, _
 										  ByVal e As EventArgs) _
 			Handles MyBase.UnhandledException
-			GUI_Util.msgBox("PCW HAS ENCOUNTERED AN EXCEPTION! " & vbCrLf & _
-							"PLEASE CONTACT THE IT DEPT FOR HELP.")
-			Me.MainForm.Close()
+			GUI_Util.msgBox("PCW HAS ENCOUNTERED AN EXCEPTION: " & vbCrLf & _
+							sender.Message)
+			'Me.MainForm.Close()
 		End Sub
 		''' <summary>
 		''' Educates users that PCW is a Single Instance Application.
