@@ -132,6 +132,9 @@ Public Class StepD_Data
 		Dim numOfTickets As System.Nullable(Of Short)
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
 		Dim parser As New FileIO.TextFieldParser(EligiblePlayersCSVFilePath)
+		If TempList.Count > 0 Then
+			TempList.Clear()
+		End If
 		'Fields are separated by comma
 		parser.Delimiters = New String() {","}
 		'Each of the values are not enclosed w/ quotes
