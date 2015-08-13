@@ -220,7 +220,7 @@ Public Class StepD_Data
 	Public Sub CheckForReset()
 		If (Me.Category = PCW_Data _
 						  .PromoCategory _
-						  .multiPart) And _
+						  .multiPart) AndAlso _
 			(Me.MultiPartCategory = PCW_Data _
 									.MultiPartCategory _
 									.multiPartDiff) Then

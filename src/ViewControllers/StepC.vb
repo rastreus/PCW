@@ -112,7 +112,7 @@ Public Class StepC
 	Private Function getSecondaryDays() As String
 		Dim days As String = New String(String.Empty)
 		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
-			If (Not ctrl.Text = Me.primaryDayStr) And ctrl.Checked Then
+			If (Not ctrl.Text = Me.primaryDayStr) AndAlso ctrl.Checked Then
 				days = days & BEP_Util.daysFormat(ctrl.Text)
 			End If
 		Next
@@ -633,7 +633,7 @@ Public Class StepC
 											e As EventArgs) _
 		Handles cbPrimaryDay.DropDownClosed
 		GUI_Util.successCb(Me.cbPrimaryDay)
-		If Me.startDayBool And Me.endDayBool Then
+		If Me.startDayBool AndAlso Me.endDayBool Then
 			GUI_Util.NextEnabled()
 		End If
 		Me.ActiveControl = Me.pnlPrimaryDay
@@ -716,7 +716,7 @@ Public Class StepC
 	Private Sub checkRecurringStartEndQualifyingCheckboxes( _
 														  ByRef lbl As Label, _
 														  ByRef pnl As Panel)
-		If Me.startDayBool And Me.endDayBool Then
+		If Me.startDayBool AndAlso Me.endDayBool Then
 			Me.MonthCal.SetSelectionRange( _
 				Me.dtpQualifyingStart.Value.Date.ToString(Me.longDateFormat), _
 				Me.dtpQualifyingEnd.Value.Date.ToString(Me.longDateFormat))
@@ -724,7 +724,7 @@ Public Class StepC
 				Me.lblSelectDates.Visible = False
 				Me.MonthCal.Visible = True
 			End If
-			If Me.primaryDayBool And _
+			If Me.primaryDayBool AndAlso _
 				(Not Me.stepC_data.EndDate_Before_StartDate( _
 					 Me.dtpQualifyingEnd.Value.Date, _
 					 Me.dtpQualifyingStart.Value.Date)) Then

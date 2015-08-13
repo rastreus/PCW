@@ -139,7 +139,7 @@ Public Class StepF
 			End If
 		End If
 
-		If Me.Data.PayoutCatgory = PayoutCategory.prize And
+		If Me.Data.PayoutCatgory = PayoutCategory.prize AndAlso
 			Me.Data.PrizeIsBlank Then
 			cancelContinuingToNextStep = True
 			errString = "Prize invalid."

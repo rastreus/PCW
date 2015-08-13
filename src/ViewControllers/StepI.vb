@@ -77,7 +77,7 @@ Public Class StepI
 			PCW.Data.CurrentMultiPartCategory
 		Dim _local_numOfDiffs As Short = PCW.Data.NumOfDiffs
 		If (_local_currMultiPartCategory = _
-			PCW_Data.MultiPartCategory.multiPartDiff) And _
+			PCW_Data.MultiPartCategory.multiPartDiff) AndAlso _
 			(_local_numOfDiffs > 1) Then
 			PCW.Data.NumOfDiffs = PCW.Data.NumOfDiffs - 1
 			PCW.Data.CurrentPromoCategory = _

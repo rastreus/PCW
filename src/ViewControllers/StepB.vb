@@ -312,7 +312,7 @@ Public Class StepB
 	Private Sub txtPromoName_Leave(sender As Object, _
 								   e As EventArgs) _
 		Handles txtPromoName.Leave
-		If Me.promoNameEntered And _
+		If Me.promoNameEntered AndAlso _
 			(Not Me.Data.PromoName_Invalid(Me.txtPromoName.Text)) Then
 			Me.promoAcronym = getPromoAcronym()
 			Me.promoID = getPromoID()
@@ -368,7 +368,7 @@ Public Class StepB
 	Private Sub btnSetPromoName_Click(sender As Object, _
 									  e As EventArgs) _
 		Handles btnSetPromoName.Click
-		If Me.promoNameEntered And _
+		If Me.promoNameEntered AndAlso _
 			(Not Me.txtPromoName.Text = String.Empty) Then
 			Me.ActiveControl = Me.pnlPromoName
 		End If

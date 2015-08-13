@@ -60,19 +60,19 @@ Public Class StepD
 				ElseIf Me.rbTIERS.Checked Then
 					Me.stepD_data.MultiPartDaysTiers = Me.txtNumOfTiers.Text
 				End If
-				If (Me.rbDAYS.Checked And _
+				If (Me.rbDAYS.Checked AndAlso _
 					Me.cbPayoutParametersYES.Checked) Or _
-					(Me.rbTIERS.Checked And _
+					(Me.rbTIERS.Checked AndAlso _
 					 Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartSame
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartSame
-				ElseIf Me.rbDAYS.Checked And _
+				ElseIf Me.rbDAYS.Checked AndAlso _
 					(Not Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.NumOfDiffs = Short.Parse(Me.lblNumOfDays.Text)
 					PCW.Data.PayoutDiffType = "DAYS"
-				ElseIf Me.rbTIERS.Checked And _
+				ElseIf Me.rbTIERS.Checked AndAlso _
 					(Not Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartDiff
 					PCW.Data.CurrentMultiPartCategory = MultiPart.multiPartDiff
@@ -89,7 +89,7 @@ Public Class StepD
 										 ByVal txtInput As String) _
 										 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
-		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+		If yesChecked AndAlso Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
 		End If
 		Return result
@@ -197,7 +197,7 @@ Public Class StepD
 		'THIS CODE CAN BE REMOVED'
 		'Me.Data.CheckForReset()
 
-		If Me.Data.Category = Category.multiPart And
+		If Me.Data.Category = Category.multiPart AndAlso
 			BEP_Util.invalidNum(Me.Data.MultiPartDaysTiers) Then
 			cancelContinuingToNextStep = True
 			errString = "MutiPart Days/Tiers Invalid Number."
@@ -208,7 +208,7 @@ Public Class StepD
 			GUI_Util.regPnl(Me.pnlPromoType)
 		End If
 
-		If Me.rbPointCutoffLimitYES.Checked And
+		If Me.rbPointCutoffLimitYES.Checked AndAlso
 			Me.Data.PointCutoffLimit_Invalid() Then
 			cancelContinuingToNextStep = True
 			errString = "Point Cutoff Limit Invalid Number."
@@ -242,7 +242,7 @@ Public Class StepD
 	Private Sub Stepd_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
-		If PCW.Data.DaysBool And _
+		If PCW.Data.DaysBool AndAlso _
 			(Not IsNothing(PCW.Data.NumOfDays)) Then
 			Me.rbDAYS.Checked = True
 			Me.lblNumOfDays.Text = PCW.Data.NumOfDays.ToString
@@ -380,7 +380,7 @@ Public Class StepD
 													  e As EventArgs) _
 		Handles rbMultiPartEntryPayout.CheckedChanged
 		If Me.rbMultiPartEntryPayout.Checked Then
-			If (Not Me.rbDAYS.Checked) And _
+			If (Not Me.rbDAYS.Checked) AndAlso _
 				(Not Me.rbTIERS.Checked) Then
 				PCW.NextEnabled = False
 			End If
@@ -397,8 +397,8 @@ Public Class StepD
 	Private Sub rbDAYS_CheckedChanged(sender As Object, _
 									  e As EventArgs) _
 		Handles rbDAYS.CheckedChanged
-		If Me.rbDAYS.Checked And _
-			(Not Me.rbDAYS.ForeColor = SystemColors.ControlText) And _
+		If Me.rbDAYS.Checked AndAlso _
+			(Not Me.rbDAYS.ForeColor = SystemColors.ControlText) AndAlso _
 			(Not Me.lblNumOfDays.ForeColor = SystemColors.ControlText) Then
 			Me.rbDAYS.ForeColor = SystemColors.ControlText
 			Me.lblNumOfDays.ForeColor = SystemColors.ControlText
@@ -457,8 +457,8 @@ Public Class StepD
 	Private Sub txtNumOfTiers_Leave(sender As Object, _
 									e As EventArgs) _
 		Handles txtNumOfTiers.Leave
-		If Me.txtTierBool And _
-			(Not Me.txtNumOfTiers.Text = BEP_Util.TiersStr And _
+		If Me.txtTierBool AndAlso _
+			(Not Me.txtNumOfTiers.Text = BEP_Util.TiersStr AndAlso _
 			 Not Me.txtNumOfTiers.Text = String.Empty) Then
 			TiersSuccessIcon.ActiveColor = Color.Lime
 			TiersSuccessIcon.InActiveColor = Color.Lime
@@ -474,7 +474,7 @@ Public Class StepD
 	Private Sub cbPayoutParametersYES_CheckedChanged(sender As Object, _
 													 e As EventArgs) _
 		Handles cbPayoutParametersYES.CheckedChanged
-		If (Me.rbMultiPartEntryPayout.Checked = True) And _
+		If (Me.rbMultiPartEntryPayout.Checked = True) AndAlso _
 			(Me.cbPayoutParametersYES.Checked = False) Then
 			If Me.rbDAYS.Checked Then
 				GUI_Util.msgBox("Typically a 'Multi-Part of Days' uses " &
@@ -500,7 +500,7 @@ Public Class StepD
 	Private Sub txtNumOfTiers_KeyPress(sender As Object, _
 									   e As KeyPressEventArgs) _
 		Handles txtNumOfTiers.KeyPress
-		If Not Char.IsDigit(e.KeyChar) And
+		If Not Char.IsDigit(e.KeyChar) AndAlso
 			Not Char.IsControl(e.KeyChar) Then
 			e.Handled = True
 		End If
@@ -537,7 +537,7 @@ Public Class StepD
 	Private Sub btnSubmitEP_Click(sender As Object, _
 								  e As EventArgs) _
 	Handles btnSubmitEP.Click
-		If Me.rbEligiblePlayersList.Checked And _
+		If Me.rbEligiblePlayersList.Checked AndAlso _
 			Me.successBool Then
 			Me.btnSubmitEP.Enabled = False
 			PCW.Data.UsesEligiblePlayers = True

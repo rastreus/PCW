@@ -346,7 +346,7 @@ Public Class StepGetCouponOffers
 #End Region
 #Region "StepGetCouponOffers_toggleBUTTONS"
 	Private Sub checkToEnableSubmit(ByVal num As Integer)
-		If (Me.btnSubmit.Enabled = False And _
+		If (Me.btnSubmit.Enabled = False AndAlso _
 			num < NUM_OF_CB) Then
 			Me.btnSubmit.Enabled = True
 			Me.btnSubmit.BackColor = Color.MediumPurple
@@ -556,7 +556,7 @@ Public Class StepGetCouponOffers
 
 	Private Sub checkToRelocateAndRenumberCheckBox()
 		If (Me.cbSelectAllCouponOffers.Checked <> True) Or _
-		   (Me.cbSelectAllCouponOffers.Checked And _
+		   (Me.cbSelectAllCouponOffers.Checked AndAlso _
 		   (Me.cbSelectAllCouponOffers.CheckState = _
 			   CheckState.Indeterminate)) Then
 			relocateCheckBox()

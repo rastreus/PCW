@@ -136,7 +136,7 @@ Public Class StepEntryTicketAmt_Data
 	End Function
 	Public Function BadTicketLimits() As Boolean
 		Dim result As Boolean = False
-		If (Not IsNothing(TicketsForEntirePromo)) And _
+		If (Not IsNothing(TicketsForEntirePromo)) AndAlso _
 			(Not IsNothing(TicketsPerPatron)) Then
 			result = (TicketsForEntirePromo < TicketsPerPatron)
 		ElseIf (IsNothing(TicketsForEntirePromo)) Or _

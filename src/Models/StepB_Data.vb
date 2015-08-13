@@ -100,7 +100,7 @@ Public Class StepB_Data
 	Public Function Recurring_Period_Invalid() As Boolean
 		Dim invalid As Boolean = False
 
-		If Me.Recurring And _
+		If Me.Recurring AndAlso _
 			Me.RecurringFrequency = String.Empty Then
 			invalid = True
 		End If

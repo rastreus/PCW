@@ -657,7 +657,7 @@ Public Class PCW_Data
 			GetPayoutMaxNumOfCouponsPerPatron()
 		anotherPayoutPromo.CouponID = anotherPayoutPromo.CouponID & num
 		If (Not (CurrentMultiPartCategory = _
-				MultiPartCategory.multiPartDiff) And _
+				MultiPartCategory.multiPartDiff) AndAlso _
 				(PayoutDiffType = "TIERS")) Then
 			anotherPayoutPromo.StartDate = payoutDate
 			anotherPayoutPromo.EndDate = payoutDate
@@ -678,7 +678,7 @@ Public Class PCW_Data
 			couponOfferDBRow.OfferID = couponOfferDBRow.OfferID & _
 									   payoutNumber.ToString
 			If (Not (CurrentMultiPartCategory = _
-					 MultiPartCategory.multiPartDiff) And _
+					 MultiPartCategory.multiPartDiff) AndAlso _
 					 (PayoutDiffType = "TIERS")) Then
 				couponOfferDBRow.ValidStart = payoutDate
 				couponOfferDBRow.ValidEnd = payoutDate
@@ -703,7 +703,7 @@ Public Class PCW_Data
 				payoutNumber.ToString
 			YACO.CouponNumber = couponOfferDBRow.CouponNumber
 			If (Not (CurrentMultiPartCategory = _
-					 MultiPartCategory.multiPartDiff) And _
+					 MultiPartCategory.multiPartDiff) AndAlso _
 					 (PayoutDiffType = "TIERS")) Then
 				YACO.ValidStart = payoutDate
 				YACO.ValidEnd = payoutDate

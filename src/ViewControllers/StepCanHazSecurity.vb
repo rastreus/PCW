@@ -180,15 +180,15 @@ Public Class StepCanHazSecurity
 #End Region
 #Region "StepCanHazSecurity_Checks"
 	Private Sub CheckForNext()
-		If OverrideTimeHoursEntered And _
-			OverrideTimeMinutesEntered And _
-			CutoffTimeHoursEntered And _
+		If OverrideTimeHoursEntered AndAlso _
+			OverrideTimeMinutesEntered AndAlso _
+			CutoffTimeHoursEntered AndAlso _
 			CutoffTimeMinutesEntered Then
 			GUI_Util.NextEnabled()
 		End If
 	End Sub
 	Private Sub CheckForOverrideTime()
-		If Me.OverrideTimeHoursEntered And _
+		If Me.OverrideTimeHoursEntered AndAlso _
 			Me.OverrideTimeMinutesEntered Then
 			Dim errString As String = New String(String.Empty)
 			If Me.Data.Time_Is_Invalid(getOverrideTime(),
@@ -214,7 +214,7 @@ Public Class StepCanHazSecurity
 		End If
 	End Sub
 	Private Sub CheckForCutoffTime()
-		If Me.CutoffTimeHoursEntered And _
+		If Me.CutoffTimeHoursEntered AndAlso _
 			Me.CutoffTimeMinutesEntered Then
 			Dim errString As String = New String(String.Empty)
 			If Me.Data.Time_Is_Invalid(getCutoffTime(),
@@ -390,7 +390,7 @@ Each TextBox is validated for invalid (non-numeric) characters.
 	Private Sub CheckToEnableTimeSubmit(ByVal hoursEntered As Boolean, _
 										ByVal minutesEntered As Boolean, _
 										ByRef btnSubmit As Button)
-		If hoursEntered And _
+		If hoursEntered AndAlso _
 			minutesEntered Then
 			EnableTimeSubmit(btnSubmit)
 		End If

@@ -81,7 +81,7 @@ Public Class StepEntryTicketAmt
 									 ByVal txtInput As String) _
 									 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
-		If yesChecked And _
+		If yesChecked AndAlso _
 			(Not BEP_Util.invalidNum(txtInput)) Then
 			result = Short.Parse(txtInput)
 		End If
@@ -100,7 +100,7 @@ Public Class StepEntryTicketAmt
 		Dim pointsDivisor As System.Nullable(Of Short) = Nothing
 		Dim pointsDivisorStr As String = Me.txtPointsDivisor.Text
 		If ((_ticketAmtCategory = Category.calculated) Or
-			(_ticketAmtCategory = Category.calPlusNumOfVisits)) And
+			(_ticketAmtCategory = Category.calPlusNumOfVisits)) AndAlso
 			(Not BEP_Util.invalidNum(pointsDivisorStr)) Then
 			pointsDivisor = Short.Parse(pointsDivisorStr)
 		End If
@@ -219,7 +219,7 @@ Public Class StepEntryTicketAmt
 			End If
 		End If
 
-		If Me.rbTicketPerPatronYES.Checked And _
+		If Me.rbTicketPerPatronYES.Checked AndAlso _
 			Me.rbTicketsEntirePromoYES.Checked Then
 			If Me.Data.BadTicketLimits() Then
 				cancelContinuingToNextStep = True
@@ -434,7 +434,7 @@ Public Class StepEntryTicketAmt
 									   e As EventArgs) _
 		Handles txtPointsDivisor.Leave
 		If (Me.rbCalculated.Checked Or _
-			Me.rbCalPlusNumOfVisits.Checked) And _
+			Me.rbCalPlusNumOfVisits.Checked) AndAlso _
 			(Not Me.txtPointsDivisor.Text = String.Empty) Then
 			GUI_Util.onIcon(Me.PointsDivisorSuccessIcon)
 			GUI_Util.NextEnabled()

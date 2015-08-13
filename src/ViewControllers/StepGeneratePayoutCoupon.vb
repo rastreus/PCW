@@ -73,7 +73,7 @@ Public Class StepGeneratePayoutCoupon
 												 ByVal txtInput As String) _
 												 As System.Nullable(Of Short)
 		Dim result As System.Nullable(Of Short) = Nothing
-		If yesChecked And Not BEP_Util.invalidNum(txtInput) Then
+		If yesChecked AndAlso Not BEP_Util.invalidNum(txtInput) Then
 			result = Short.Parse(txtInput)
 		End If
 		Return result
@@ -114,7 +114,7 @@ Public Class StepGeneratePayoutCoupon
 		Me.local_promoID = local_stepB.Data.ID
 		Me.btnCouponID.Text = Me.local_promoID & "C"
 		If PCW.Data.CurrentMultiPartCategory = _
-			PCW_Data.MultiPartCategory.multiPartDiff And _
+			PCW_Data.MultiPartCategory.multiPartDiff AndAlso _
 			PCW.Data.PayoutDiffNum > 1 Then
 			Me.btnCouponID.Enabled = False
 			Me.lblCouponIDEdit.Text = "Cannot Edit"
@@ -202,7 +202,7 @@ Public Class StepGeneratePayoutCoupon
 
 		'Make sure that the TextBoxes for
 		'MaxCoupon and PromoMaxCoupon are not empty strings
-		If Not BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) And _
+		If Not BEP_Util.invalidDecimal(Me.txtMaxAmtOneCoupon.Text) AndAlso _
 			Not BEP_Util.invalidDecimal(Me.txtMaxAmtAllCoupons.Text) Then
 			If Me.Data.BadCouponAmts() Then
 				cancelContinuingToNextStep = True
@@ -283,7 +283,7 @@ Public Class StepGeneratePayoutCoupon
 		CheckForNext()
 	End Sub
 	Private Sub CheckForNext()
-		If Me.maxAmtOneCouponBool And _
+		If Me.maxAmtOneCouponBool AndAlso _
 			Me.maxAmtAllCouponsBool Then
 			GUI_Util.NextEnabled()
 		End If
