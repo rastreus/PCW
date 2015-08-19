@@ -83,6 +83,7 @@ Partial Class StepD
 		'
 		Me.pnlPromoType.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPromoType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPromoType.CausesValidation = False
 		Me.pnlPromoType.Controls.Add(Me.rbSinglePayoutOnly)
 		Me.pnlPromoType.Controls.Add(Me.rbSingleEntryPayout)
 		Me.pnlPromoType.Controls.Add(Me.rbMultiPartEntryPayout)
@@ -95,76 +96,92 @@ Partial Class StepD
 		Me.pnlPromoType.Location = New System.Drawing.Point(24, 34)
 		Me.pnlPromoType.Name = "pnlPromoType"
 		Me.pnlPromoType.Size = New System.Drawing.Size(259, 238)
-		Me.pnlPromoType.TabIndex = 3
+		Me.pnlPromoType.TabIndex = 0
 		'
 		'rbSinglePayoutOnly
 		'
 		Me.rbSinglePayoutOnly.AutoSize = True
 		Me.rbSinglePayoutOnly.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSinglePayoutOnly.CausesValidation = False
 		Me.rbSinglePayoutOnly.Location = New System.Drawing.Point(7, 77)
 		Me.rbSinglePayoutOnly.Name = "rbSinglePayoutOnly"
 		Me.rbSinglePayoutOnly.Size = New System.Drawing.Size(148, 17)
-		Me.rbSinglePayoutOnly.TabIndex = 11
+		Me.rbSinglePayoutOnly.TabIndex = 3
+		Me.rbSinglePayoutOnly.TabStop = True
 		Me.rbSinglePayoutOnly.Text = "Single Event: Payout Only"
+		Me.rbSinglePayoutOnly.UseMnemonic = False
 		Me.rbSinglePayoutOnly.UseVisualStyleBackColor = False
 		'
 		'rbSingleEntryPayout
 		'
 		Me.rbSingleEntryPayout.AutoSize = True
 		Me.rbSingleEntryPayout.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSingleEntryPayout.CausesValidation = False
 		Me.rbSingleEntryPayout.Checked = True
 		Me.rbSingleEntryPayout.Location = New System.Drawing.Point(7, 31)
 		Me.rbSingleEntryPayout.Name = "rbSingleEntryPayout"
 		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(172, 17)
-		Me.rbSingleEntryPayout.TabIndex = 10
+		Me.rbSingleEntryPayout.TabIndex = 1
 		Me.rbSingleEntryPayout.TabStop = True
 		Me.rbSingleEntryPayout.Text = "Single Event: Entry and Payout"
+		Me.rbSingleEntryPayout.UseMnemonic = False
 		Me.rbSingleEntryPayout.UseVisualStyleBackColor = False
 		'
 		'rbMultiPartEntryPayout
 		'
 		Me.rbMultiPartEntryPayout.AutoSize = True
 		Me.rbMultiPartEntryPayout.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.rbMultiPartEntryPayout.CausesValidation = False
 		Me.rbMultiPartEntryPayout.Location = New System.Drawing.Point(7, 112)
 		Me.rbMultiPartEntryPayout.Name = "rbMultiPartEntryPayout"
 		Me.rbMultiPartEntryPayout.Size = New System.Drawing.Size(245, 17)
-		Me.rbMultiPartEntryPayout.TabIndex = 8
+		Me.rbMultiPartEntryPayout.TabIndex = 4
+		Me.rbMultiPartEntryPayout.TabStop = True
 		Me.rbMultiPartEntryPayout.Text = "Multi-Part Sequential Event: Entry and Payouts"
+		Me.rbMultiPartEntryPayout.UseMnemonic = False
 		Me.rbMultiPartEntryPayout.UseVisualStyleBackColor = False
 		'
 		'rbAcquisition
 		'
 		Me.rbAcquisition.AutoSize = True
 		Me.rbAcquisition.BackColor = System.Drawing.Color.Lavender
+		Me.rbAcquisition.CausesValidation = False
 		Me.rbAcquisition.Enabled = False
 		Me.rbAcquisition.Location = New System.Drawing.Point(7, 205)
 		Me.rbAcquisition.Name = "rbAcquisition"
 		Me.rbAcquisition.Size = New System.Drawing.Size(76, 17)
-		Me.rbAcquisition.TabIndex = 6
+		Me.rbAcquisition.TabIndex = 5
+		Me.rbAcquisition.TabStop = True
 		Me.rbAcquisition.Text = "Acquisition"
+		Me.rbAcquisition.UseMnemonic = False
 		Me.rbAcquisition.UseVisualStyleBackColor = False
 		'
 		'rbSingleEntryOnly
 		'
 		Me.rbSingleEntryOnly.AutoSize = True
 		Me.rbSingleEntryOnly.BackColor = System.Drawing.Color.Aquamarine
+		Me.rbSingleEntryOnly.CausesValidation = False
 		Me.rbSingleEntryOnly.Location = New System.Drawing.Point(7, 54)
 		Me.rbSingleEntryOnly.Name = "rbSingleEntryOnly"
 		Me.rbSingleEntryOnly.Size = New System.Drawing.Size(139, 17)
-		Me.rbSingleEntryOnly.TabIndex = 5
+		Me.rbSingleEntryOnly.TabIndex = 2
+		Me.rbSingleEntryOnly.TabStop = True
 		Me.rbSingleEntryOnly.Text = "Single Event: Entry Only"
+		Me.rbSingleEntryOnly.UseMnemonic = False
 		Me.rbSingleEntryOnly.UseVisualStyleBackColor = False
 		'
 		'lblPromoType
 		'
 		Me.lblPromoType.AutoSize = True
+		Me.lblPromoType.CausesValidation = False
 		Me.lblPromoType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPromoType.ForeColor = System.Drawing.Color.White
 		Me.lblPromoType.Location = New System.Drawing.Point(0, 0)
 		Me.lblPromoType.Name = "lblPromoType"
 		Me.lblPromoType.Size = New System.Drawing.Size(205, 16)
-		Me.lblPromoType.TabIndex = 3
+		Me.lblPromoType.TabIndex = 0
 		Me.lblPromoType.Text = "What category is the promo?"
+		Me.lblPromoType.UseMnemonic = False
 		'
 		'pnlSingleEvent
 		'
@@ -190,6 +207,7 @@ Partial Class StepD
 		'
 		Me.pnlDaysTiers.BackColor = System.Drawing.Color.LightBlue
 		Me.pnlDaysTiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlDaysTiers.CausesValidation = False
 		Me.pnlDaysTiers.Controls.Add(Me.TiersSuccessIcon)
 		Me.pnlDaysTiers.Controls.Add(Me.btnSetNumOfTiers)
 		Me.pnlDaysTiers.Controls.Add(Me.lblNumOfDays)
@@ -200,7 +218,7 @@ Partial Class StepD
 		Me.pnlDaysTiers.Location = New System.Drawing.Point(6, 26)
 		Me.pnlDaysTiers.Name = "pnlDaysTiers"
 		Me.pnlDaysTiers.Size = New System.Drawing.Size(171, 45)
-		Me.pnlDaysTiers.TabIndex = 5
+		Me.pnlDaysTiers.TabIndex = 0
 		'
 		'TiersSuccessIcon
 		'
@@ -220,6 +238,7 @@ Partial Class StepD
 		'btnSetNumOfTiers
 		'
 		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetNumOfTiers.CausesValidation = False
 		Me.btnSetNumOfTiers.Enabled = False
 		Me.btnSetNumOfTiers.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetNumOfTiers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
@@ -230,50 +249,58 @@ Partial Class StepD
 		Me.btnSetNumOfTiers.Location = New System.Drawing.Point(104, 20)
 		Me.btnSetNumOfTiers.Name = "btnSetNumOfTiers"
 		Me.btnSetNumOfTiers.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetNumOfTiers.TabIndex = 13
+		Me.btnSetNumOfTiers.TabIndex = 0
 		Me.btnSetNumOfTiers.TabStop = False
 		Me.btnSetNumOfTiers.Text = "Set"
+		Me.btnSetNumOfTiers.UseMnemonic = False
 		Me.btnSetNumOfTiers.UseVisualStyleBackColor = False
 		'
 		'lblNumOfDays
 		'
 		Me.lblNumOfDays.AutoSize = True
 		Me.lblNumOfDays.BackColor = System.Drawing.Color.Transparent
+		Me.lblNumOfDays.CausesValidation = False
 		Me.lblNumOfDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblNumOfDays.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.lblNumOfDays.Location = New System.Drawing.Point(56, 5)
 		Me.lblNumOfDays.Name = "lblNumOfDays"
 		Me.lblNumOfDays.Size = New System.Drawing.Size(61, 13)
-		Me.lblNumOfDays.TabIndex = 12
+		Me.lblNumOfDays.TabIndex = 0
 		Me.lblNumOfDays.Text = "# of Days"
+		Me.lblNumOfDays.UseMnemonic = False
 		'
 		'rbTIERS
 		'
 		Me.rbTIERS.AutoSize = True
 		Me.rbTIERS.BackColor = System.Drawing.Color.Transparent
+		Me.rbTIERS.CausesValidation = False
 		Me.rbTIERS.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.rbTIERS.Location = New System.Drawing.Point(2, 20)
 		Me.rbTIERS.Name = "rbTIERS"
 		Me.rbTIERS.Size = New System.Drawing.Size(48, 17)
-		Me.rbTIERS.TabIndex = 11
+		Me.rbTIERS.TabIndex = 0
 		Me.rbTIERS.Text = "Tiers"
+		Me.rbTIERS.UseMnemonic = False
 		Me.rbTIERS.UseVisualStyleBackColor = False
 		'
 		'rbDAYS
 		'
 		Me.rbDAYS.AutoSize = True
 		Me.rbDAYS.BackColor = System.Drawing.Color.Transparent
+		Me.rbDAYS.CausesValidation = False
 		Me.rbDAYS.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.rbDAYS.Location = New System.Drawing.Point(2, 2)
 		Me.rbDAYS.Name = "rbDAYS"
 		Me.rbDAYS.Size = New System.Drawing.Size(49, 17)
-		Me.rbDAYS.TabIndex = 10
+		Me.rbDAYS.TabIndex = 0
 		Me.rbDAYS.Text = "Days"
+		Me.rbDAYS.UseMnemonic = False
 		Me.rbDAYS.UseVisualStyleBackColor = False
 		'
 		'txtNumOfTiers
 		'
 		Me.txtNumOfTiers.BackColor = System.Drawing.SystemColors.HighlightText
+		Me.txtNumOfTiers.CausesValidation = False
 		Me.txtNumOfTiers.Enabled = False
 		Me.txtNumOfTiers.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtNumOfTiers.ForeColor = System.Drawing.SystemColors.ControlDark
@@ -281,57 +308,66 @@ Partial Class StepD
 		Me.txtNumOfTiers.MaxLength = 2
 		Me.txtNumOfTiers.Name = "txtNumOfTiers"
 		Me.txtNumOfTiers.Size = New System.Drawing.Size(43, 20)
-		Me.txtNumOfTiers.TabIndex = 9
+		Me.txtNumOfTiers.TabIndex = 0
+		Me.txtNumOfTiers.TabStop = False
 		Me.txtNumOfTiers.Text = "#"
 		'
 		'pnlPayoutParameters
 		'
 		Me.pnlPayoutParameters.BackColor = System.Drawing.Color.PowderBlue
 		Me.pnlPayoutParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPayoutParameters.CausesValidation = False
 		Me.pnlPayoutParameters.Controls.Add(Me.cbPayoutParametersYES)
 		Me.pnlPayoutParameters.Controls.Add(Me.lblPaymentParameters)
 		Me.pnlPayoutParameters.Enabled = False
 		Me.pnlPayoutParameters.Location = New System.Drawing.Point(183, 26)
 		Me.pnlPayoutParameters.Name = "pnlPayoutParameters"
 		Me.pnlPayoutParameters.Size = New System.Drawing.Size(64, 45)
-		Me.pnlPayoutParameters.TabIndex = 10
+		Me.pnlPayoutParameters.TabIndex = 0
 		'
 		'cbPayoutParametersYES
 		'
 		Me.cbPayoutParametersYES.AutoSize = True
 		Me.cbPayoutParametersYES.BackColor = System.Drawing.Color.Transparent
+		Me.cbPayoutParametersYES.CausesValidation = False
 		Me.cbPayoutParametersYES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbPayoutParametersYES.ForeColor = System.Drawing.SystemColors.ControlDark
 		Me.cbPayoutParametersYES.Location = New System.Drawing.Point(9, 27)
 		Me.cbPayoutParametersYES.Name = "cbPayoutParametersYES"
 		Me.cbPayoutParametersYES.Size = New System.Drawing.Size(47, 17)
 		Me.cbPayoutParametersYES.TabIndex = 0
+		Me.cbPayoutParametersYES.TabStop = False
 		Me.cbPayoutParametersYES.Text = "Yes"
+		Me.cbPayoutParametersYES.UseMnemonic = False
 		Me.cbPayoutParametersYES.UseVisualStyleBackColor = False
 		'
 		'lblPaymentParameters
 		'
 		Me.lblPaymentParameters.BackColor = System.Drawing.Color.Transparent
+		Me.lblPaymentParameters.CausesValidation = False
 		Me.lblPaymentParameters.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPaymentParameters.Location = New System.Drawing.Point(-1, 0)
 		Me.lblPaymentParameters.Name = "lblPaymentParameters"
 		Me.lblPaymentParameters.Size = New System.Drawing.Size(64, 29)
-		Me.lblPaymentParameters.TabIndex = 1
+		Me.lblPaymentParameters.TabIndex = 0
 		Me.lblPaymentParameters.Text = "Are Payouts equal?"
+		Me.lblPaymentParameters.UseMnemonic = False
 		'
 		'pnlAcquisition
 		'
 		Me.pnlAcquisition.BackColor = System.Drawing.Color.Lavender
 		Me.pnlAcquisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlAcquisition.CausesValidation = False
 		Me.pnlAcquisition.Controls.Add(Me.lblSTILLINDEVELOPMENT)
 		Me.pnlAcquisition.Location = New System.Drawing.Point(3, 191)
 		Me.pnlAcquisition.Name = "pnlAcquisition"
 		Me.pnlAcquisition.Size = New System.Drawing.Size(251, 43)
-		Me.pnlAcquisition.TabIndex = 14
+		Me.pnlAcquisition.TabIndex = 0
 		'
 		'lblSTILLINDEVELOPMENT
 		'
 		Me.lblSTILLINDEVELOPMENT.AutoSize = True
+		Me.lblSTILLINDEVELOPMENT.CausesValidation = False
 		Me.lblSTILLINDEVELOPMENT.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblSTILLINDEVELOPMENT.ForeColor = System.Drawing.Color.SlateBlue
 		Me.lblSTILLINDEVELOPMENT.Location = New System.Drawing.Point(84, 14)
@@ -339,24 +375,27 @@ Partial Class StepD
 		Me.lblSTILLINDEVELOPMENT.Size = New System.Drawing.Size(158, 14)
 		Me.lblSTILLINDEVELOPMENT.TabIndex = 0
 		Me.lblSTILLINDEVELOPMENT.Text = "(Not Enabled: In Development)"
+		Me.lblSTILLINDEVELOPMENT.UseMnemonic = False
 		'
 		'pnlPlayerEligibility
 		'
 		Me.pnlPlayerEligibility.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlPlayerEligibility.CausesValidation = False
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlLemonChiffon)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlLemonChiffon)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
-		Me.pnlPlayerEligibility.TabIndex = 4
+		Me.pnlPlayerEligibility.TabIndex = 0
 		'
 		'pnlSumMethod
 		'
 		Me.pnlSumMethod.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlSumMethod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlSumMethod.CausesValidation = False
 		Me.pnlSumMethod.Controls.Add(Me.rbEligiblePlayersList)
 		Me.pnlSumMethod.Controls.Add(Me.rbSumQualifyingPoints)
 		Me.pnlSumMethod.Controls.Add(Me.rbSumLifetimePoints)
@@ -365,76 +404,90 @@ Partial Class StepD
 		Me.pnlSumMethod.Location = New System.Drawing.Point(3, 22)
 		Me.pnlSumMethod.Name = "pnlSumMethod"
 		Me.pnlSumMethod.Size = New System.Drawing.Size(255, 120)
-		Me.pnlSumMethod.TabIndex = 10
+		Me.pnlSumMethod.TabIndex = 0
 		'
 		'rbEligiblePlayersList
 		'
 		Me.rbEligiblePlayersList.AutoSize = True
 		Me.rbEligiblePlayersList.BackColor = System.Drawing.Color.LemonChiffon
+		Me.rbEligiblePlayersList.CausesValidation = False
 		Me.rbEligiblePlayersList.Location = New System.Drawing.Point(3, 93)
 		Me.rbEligiblePlayersList.Name = "rbEligiblePlayersList"
 		Me.rbEligiblePlayersList.Size = New System.Drawing.Size(228, 17)
-		Me.rbEligiblePlayersList.TabIndex = 8
+		Me.rbEligiblePlayersList.TabIndex = 9
+		Me.rbEligiblePlayersList.TabStop = True
 		Me.rbEligiblePlayersList.Text = "EligiblePlayers List Determines Qualification"
+		Me.rbEligiblePlayersList.UseMnemonic = False
 		Me.rbEligiblePlayersList.UseVisualStyleBackColor = False
 		'
 		'rbSumQualifyingPoints
 		'
 		Me.rbSumQualifyingPoints.AutoSize = True
+		Me.rbSumQualifyingPoints.CausesValidation = False
 		Me.rbSumQualifyingPoints.Checked = True
 		Me.rbSumQualifyingPoints.Location = New System.Drawing.Point(3, 9)
 		Me.rbSumQualifyingPoints.Name = "rbSumQualifyingPoints"
 		Me.rbSumQualifyingPoints.Size = New System.Drawing.Size(193, 17)
-		Me.rbSumQualifyingPoints.TabIndex = 5
+		Me.rbSumQualifyingPoints.TabIndex = 6
 		Me.rbSumQualifyingPoints.TabStop = True
 		Me.rbSumQualifyingPoints.Text = "Sum Points Within Qualifying Peroid"
+		Me.rbSumQualifyingPoints.UseMnemonic = False
 		Me.rbSumQualifyingPoints.UseVisualStyleBackColor = True
 		'
 		'rbSumLifetimePoints
 		'
 		Me.rbSumLifetimePoints.AutoSize = True
+		Me.rbSumLifetimePoints.CausesValidation = False
 		Me.rbSumLifetimePoints.Location = New System.Drawing.Point(3, 32)
 		Me.rbSumLifetimePoints.Name = "rbSumLifetimePoints"
 		Me.rbSumLifetimePoints.Size = New System.Drawing.Size(117, 17)
-		Me.rbSumLifetimePoints.TabIndex = 6
+		Me.rbSumLifetimePoints.TabIndex = 7
+		Me.rbSumLifetimePoints.TabStop = True
 		Me.rbSumLifetimePoints.Text = "Sum Lifetime Points"
+		Me.rbSumLifetimePoints.UseMnemonic = False
 		Me.rbSumLifetimePoints.UseVisualStyleBackColor = True
 		'
 		'rbAutoQualification
 		'
 		Me.rbAutoQualification.AutoSize = True
+		Me.rbAutoQualification.CausesValidation = False
 		Me.rbAutoQualification.Location = New System.Drawing.Point(3, 55)
 		Me.rbAutoQualification.Name = "rbAutoQualification"
 		Me.rbAutoQualification.Size = New System.Drawing.Size(233, 17)
-		Me.rbAutoQualification.TabIndex = 7
+		Me.rbAutoQualification.TabIndex = 8
+		Me.rbAutoQualification.TabStop = True
 		Me.rbAutoQualification.Text = "Automatic Qualification Regardless of Points"
+		Me.rbAutoQualification.UseMnemonic = False
 		Me.rbAutoQualification.UseVisualStyleBackColor = True
 		'
 		'Panel7
 		'
 		Me.Panel7.BackColor = System.Drawing.Color.LemonChiffon
 		Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel7.CausesValidation = False
 		Me.Panel7.Location = New System.Drawing.Point(-2, 83)
 		Me.Panel7.Name = "Panel7"
 		Me.Panel7.Size = New System.Drawing.Size(255, 35)
-		Me.Panel7.TabIndex = 11
+		Me.Panel7.TabIndex = 0
 		'
 		'lblPlayerEligibility
 		'
 		Me.lblPlayerEligibility.AutoSize = True
+		Me.lblPlayerEligibility.CausesValidation = False
 		Me.lblPlayerEligibility.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPlayerEligibility.ForeColor = System.Drawing.Color.White
 		Me.lblPlayerEligibility.Location = New System.Drawing.Point(0, 0)
 		Me.lblPlayerEligibility.Name = "lblPlayerEligibility"
 		Me.lblPlayerEligibility.Size = New System.Drawing.Size(259, 16)
-		Me.lblPlayerEligibility.TabIndex = 4
+		Me.lblPlayerEligibility.TabIndex = 0
 		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
+		Me.lblPlayerEligibility.UseMnemonic = False
 		'
 		'pnlLemonChiffon
 		'
 		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
 		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
-		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
 		Me.pnlLemonChiffon.Enabled = False
 		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
 		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
@@ -463,6 +516,7 @@ Partial Class StepD
 		'pnlPointCutoffLimit
 		'
 		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
+		Me.pnlPointCutoffLimit.CausesValidation = False
 		Me.pnlPointCutoffLimit.Controls.Add(Me.PointCutoffLimitSuccessIcon)
 		Me.pnlPointCutoffLimit.Controls.Add(Me.btnSetPointCutoffLimit)
 		Me.pnlPointCutoffLimit.Controls.Add(Me.txtPointCutoffLimit)
@@ -472,7 +526,7 @@ Partial Class StepD
 		Me.pnlPointCutoffLimit.Location = New System.Drawing.Point(18, 148)
 		Me.pnlPointCutoffLimit.Name = "pnlPointCutoffLimit"
 		Me.pnlPointCutoffLimit.Size = New System.Drawing.Size(224, 80)
-		Me.pnlPointCutoffLimit.TabIndex = 9
+		Me.pnlPointCutoffLimit.TabIndex = 0
 		'
 		'PointCutoffLimitSuccessIcon
 		'
@@ -492,6 +546,7 @@ Partial Class StepD
 		'btnSetPointCutoffLimit
 		'
 		Me.btnSetPointCutoffLimit.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPointCutoffLimit.CausesValidation = False
 		Me.btnSetPointCutoffLimit.Enabled = False
 		Me.btnSetPointCutoffLimit.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetPointCutoffLimit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
@@ -502,51 +557,60 @@ Partial Class StepD
 		Me.btnSetPointCutoffLimit.Location = New System.Drawing.Point(140, 39)
 		Me.btnSetPointCutoffLimit.Name = "btnSetPointCutoffLimit"
 		Me.btnSetPointCutoffLimit.Size = New System.Drawing.Size(36, 20)
-		Me.btnSetPointCutoffLimit.TabIndex = 35
+		Me.btnSetPointCutoffLimit.TabIndex = 0
+		Me.btnSetPointCutoffLimit.TabStop = False
 		Me.btnSetPointCutoffLimit.Text = "Set"
+		Me.btnSetPointCutoffLimit.UseMnemonic = False
 		Me.btnSetPointCutoffLimit.UseVisualStyleBackColor = False
 		'
 		'txtPointCutoffLimit
 		'
+		Me.txtPointCutoffLimit.CausesValidation = False
 		Me.txtPointCutoffLimit.Enabled = False
 		Me.txtPointCutoffLimit.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtPointCutoffLimit.Location = New System.Drawing.Point(53, 40)
 		Me.txtPointCutoffLimit.MaxLength = 5
 		Me.txtPointCutoffLimit.Name = "txtPointCutoffLimit"
 		Me.txtPointCutoffLimit.Size = New System.Drawing.Size(81, 20)
-		Me.txtPointCutoffLimit.TabIndex = 10
+		Me.txtPointCutoffLimit.TabIndex = 0
+		Me.txtPointCutoffLimit.TabStop = False
 		Me.txtPointCutoffLimit.Text = "Enter # Here"
 		'
 		'rbPointCutoffLimitNO
 		'
 		Me.rbPointCutoffLimitNO.AutoSize = True
+		Me.rbPointCutoffLimitNO.CausesValidation = False
 		Me.rbPointCutoffLimitNO.Checked = True
 		Me.rbPointCutoffLimitNO.Location = New System.Drawing.Point(4, 61)
 		Me.rbPointCutoffLimitNO.Name = "rbPointCutoffLimitNO"
 		Me.rbPointCutoffLimitNO.Size = New System.Drawing.Size(39, 17)
-		Me.rbPointCutoffLimitNO.TabIndex = 9
-		Me.rbPointCutoffLimitNO.TabStop = True
+		Me.rbPointCutoffLimitNO.TabIndex = 0
 		Me.rbPointCutoffLimitNO.Text = "No"
+		Me.rbPointCutoffLimitNO.UseMnemonic = False
 		Me.rbPointCutoffLimitNO.UseVisualStyleBackColor = True
 		'
 		'rbPointCutoffLimitYES
 		'
 		Me.rbPointCutoffLimitYES.AutoSize = True
+		Me.rbPointCutoffLimitYES.CausesValidation = False
 		Me.rbPointCutoffLimitYES.Location = New System.Drawing.Point(4, 41)
 		Me.rbPointCutoffLimitYES.Name = "rbPointCutoffLimitYES"
 		Me.rbPointCutoffLimitYES.Size = New System.Drawing.Size(43, 17)
-		Me.rbPointCutoffLimitYES.TabIndex = 8
+		Me.rbPointCutoffLimitYES.TabIndex = 0
 		Me.rbPointCutoffLimitYES.Text = "Yes"
+		Me.rbPointCutoffLimitYES.UseMnemonic = False
 		Me.rbPointCutoffLimitYES.UseVisualStyleBackColor = True
 		'
 		'lblPointCutoffLimit
 		'
+		Me.lblPointCutoffLimit.CausesValidation = False
 		Me.lblPointCutoffLimit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPointCutoffLimit.Location = New System.Drawing.Point(4, 0)
 		Me.lblPointCutoffLimit.Name = "lblPointCutoffLimit"
 		Me.lblPointCutoffLimit.Size = New System.Drawing.Size(235, 37)
-		Me.lblPointCutoffLimit.TabIndex = 7
+		Me.lblPointCutoffLimit.TabIndex = 0
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
+		Me.lblPointCutoffLimit.UseMnemonic = False
 		'
 		'stepD_DDEP
 		'
@@ -602,38 +666,6 @@ Partial Class StepD
 		Me.ResumeLayout(False)
 
 	End Sub
-	Friend WithEvents pnlPromoType As System.Windows.Forms.Panel
-	Friend WithEvents rbSingleEntryPayout As System.Windows.Forms.RadioButton
-	Friend WithEvents txtNumOfTiers As System.Windows.Forms.TextBox
-	Friend WithEvents rbMultiPartEntryPayout As System.Windows.Forms.RadioButton
-	Friend WithEvents rbAcquisition As System.Windows.Forms.RadioButton
-	Friend WithEvents rbSingleEntryOnly As System.Windows.Forms.RadioButton
-	Friend WithEvents lblPromoType As System.Windows.Forms.Label
-	Friend WithEvents rbSinglePayoutOnly As System.Windows.Forms.RadioButton
-	Friend WithEvents pnlSingleEvent As System.Windows.Forms.Panel
-	Friend WithEvents pnlMultiPart As System.Windows.Forms.Panel
-	Friend WithEvents pnlAcquisition As System.Windows.Forms.Panel
-	Friend WithEvents pnlPlayerEligibility As System.Windows.Forms.Panel
-	Friend WithEvents lblPlayerEligibility As System.Windows.Forms.Label
-	Friend WithEvents rbEligiblePlayersList As System.Windows.Forms.RadioButton
-	Friend WithEvents rbAutoQualification As System.Windows.Forms.RadioButton
-	Friend WithEvents rbSumLifetimePoints As System.Windows.Forms.RadioButton
-	Friend WithEvents rbSumQualifyingPoints As System.Windows.Forms.RadioButton
-	Friend WithEvents pnlPointCutoffLimit As System.Windows.Forms.Panel
-	Friend WithEvents txtPointCutoffLimit As System.Windows.Forms.TextBox
-	Friend WithEvents rbPointCutoffLimitNO As System.Windows.Forms.RadioButton
-	Friend WithEvents rbPointCutoffLimitYES As System.Windows.Forms.RadioButton
-	Friend WithEvents lblPointCutoffLimit As System.Windows.Forms.Label
-	Friend WithEvents pnlSumMethod As System.Windows.Forms.Panel
-	Friend WithEvents Panel7 As System.Windows.Forms.Panel
-	Friend WithEvents pnlPayoutParameters As System.Windows.Forms.Panel
-	Friend WithEvents cbPayoutParametersYES As System.Windows.Forms.CheckBox
-	Friend WithEvents lblPaymentParameters As System.Windows.Forms.Label
-	Friend WithEvents pnlDaysTiers As System.Windows.Forms.Panel
-	Friend WithEvents lblNumOfDays As System.Windows.Forms.Label
-	Friend WithEvents rbTIERS As System.Windows.Forms.RadioButton
-	Friend WithEvents rbDAYS As System.Windows.Forms.RadioButton
-	Friend WithEvents lblSTILLINDEVELOPMENT As System.Windows.Forms.Label
 	Private WithEvents btnSetPointCutoffLimit As System.Windows.Forms.Button
 	Private WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
 	Private WithEvents PointCutoffLimitSuccessIcon As FontAwesomeIcons.IconButton
@@ -641,5 +673,37 @@ Partial Class StepD
 	Private WithEvents btnOpenPanel As System.Windows.Forms.Button
 	Private WithEvents pnlLemonChiffon As System.Windows.Forms.Panel
 	Friend WithEvents stepD_DDEP As PromotionalCreationWizard.DDEP
+	Private WithEvents rbEligiblePlayersList As System.Windows.Forms.RadioButton
+	Private WithEvents rbAutoQualification As System.Windows.Forms.RadioButton
+	Private WithEvents rbSumLifetimePoints As System.Windows.Forms.RadioButton
+	Private WithEvents rbSumQualifyingPoints As System.Windows.Forms.RadioButton
+	Private WithEvents pnlSumMethod As System.Windows.Forms.Panel
+	Private WithEvents Panel7 As System.Windows.Forms.Panel
+	Private WithEvents pnlPromoType As System.Windows.Forms.Panel
+	Private WithEvents rbSingleEntryPayout As System.Windows.Forms.RadioButton
+	Private WithEvents rbMultiPartEntryPayout As System.Windows.Forms.RadioButton
+	Private WithEvents rbAcquisition As System.Windows.Forms.RadioButton
+	Private WithEvents rbSingleEntryOnly As System.Windows.Forms.RadioButton
+	Private WithEvents lblPromoType As System.Windows.Forms.Label
+	Private WithEvents pnlAcquisition As System.Windows.Forms.Panel
+	Private WithEvents pnlPlayerEligibility As System.Windows.Forms.Panel
+	Private WithEvents lblPlayerEligibility As System.Windows.Forms.Label
+	Private WithEvents txtNumOfTiers As System.Windows.Forms.TextBox
+	Private WithEvents pnlPayoutParameters As System.Windows.Forms.Panel
+	Private WithEvents cbPayoutParametersYES As System.Windows.Forms.CheckBox
+	Private WithEvents lblPaymentParameters As System.Windows.Forms.Label
+	Private WithEvents pnlDaysTiers As System.Windows.Forms.Panel
+	Private WithEvents lblNumOfDays As System.Windows.Forms.Label
+	Private WithEvents rbTIERS As System.Windows.Forms.RadioButton
+	Private WithEvents rbDAYS As System.Windows.Forms.RadioButton
+	Private WithEvents lblSTILLINDEVELOPMENT As System.Windows.Forms.Label
+	Private WithEvents pnlPointCutoffLimit As System.Windows.Forms.Panel
+	Private WithEvents txtPointCutoffLimit As System.Windows.Forms.TextBox
+	Private WithEvents rbPointCutoffLimitNO As System.Windows.Forms.RadioButton
+	Private WithEvents rbPointCutoffLimitYES As System.Windows.Forms.RadioButton
+	Private WithEvents lblPointCutoffLimit As System.Windows.Forms.Label
+	Private WithEvents rbSinglePayoutOnly As System.Windows.Forms.RadioButton
+	Private WithEvents pnlSingleEvent As System.Windows.Forms.Panel
+	Private WithEvents pnlMultiPart As System.Windows.Forms.Panel
 
 End Class
