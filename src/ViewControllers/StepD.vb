@@ -7,6 +7,7 @@ Imports Category = PromotionalCreationWizard _
 Imports MultiPart = PromotionalCreationWizard _
 					.PCW_Data _
 					.MultiPartCategory
+Imports PromotionalCreationWizard.DDEP
 
 ''' <summary>
 ''' Fourth Step; handles promo category and player eligiblity.
@@ -38,6 +39,8 @@ Public Class StepD
 	''' Model for StepD.
 	''' </summary>
 	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	Private successBool As Boolean = False
+	Private txtTierBool As Boolean = False
 	Private stepD_data As StepD_Data
 	Public ReadOnly Property Data() As StepD_Data
 		Get
@@ -83,6 +86,12 @@ Public Class StepD
 		Me.stepD_data.PointCutoffLimit = _
 			getPointCutoffLimit(Me.rbPointCutoffLimitYES.Checked, _
 								Me.txtPointCutoffLimit.Text)
+		If (Me.rbEligiblePlayersList.Checked AndAlso _
+			Me.stepD_DDEP.indexAreSet) Then
+			setEligiblePlayersCSV()
+		Else
+			GUI_Util.msgBox("ELIGIBLEPLAYER INDICE NOT SET!")
+		End If
 	End Sub
 
 	Private Function getPointCutoffLimit(ByVal yesChecked As Boolean, _
@@ -115,11 +124,13 @@ Public Class StepD
 		Dim local_StepB As StepB = New StepB
 		Dim local_promoID As String = New String(String.Empty)
 		Me.UseWaitCursor = True
-		Me.Data.EligiblePlayersCSVFilePath = Me.lblDragOffer.Text
+		Me.Data.EligiblePlayersCSVFilePath = Me.stepD_DDEP.lblFilePath.Text
 		local_StepB = PCW.GetStep("StepB")
 		local_promoID = local_StepB.Data.ID
 		Dim incorrectLength As Integer = _
-			Me.Data.CSVtoEligiblePlayersList(local_promoID)
+			Me.Data.CSVtoEligiblePlayersList(local_promoID, _
+											 Me.stepD_DDEP.PlayerIDIndex, _
+											 Me.stepD_DDEP.NumOfTicketsIndex)
 		Me.UseWaitCursor = False
 		If incorrectLength > 0 Then
 			GUI_Util.msgBox("There were " & incorrectLength.ToString & _
@@ -129,28 +140,8 @@ Public Class StepD
 		Else
 			'Only Enable once sure the CSV in a DataTable
 			Me.Data.TempIntoReal()
-			GUI_Util.onIcon(Me.SuccessIcon)
 			GUI_Util.NextEnabled()
 		End If
-	End Sub
-#End Region
-#Region "StepD_Delegates"
-	Private Delegate Sub DelegateChangeLabelText(ByVal s As String)
-	Private m_DelegateChangeLabelText As DelegateChangeLabelText
-
-	Private Sub ChangeLabelText(ByVal str As String)
-		Me.lblDragOffer.Text = str
-	End Sub
-#End Region
-#Region "StepD_Load"
-	Private successBool As Boolean = False
-	Private txtTierBool As Boolean = False
-
-	Private Sub StepD_Load(sender As Object, _
-						   e As EventArgs) _
-		Handles MyBase.Load
-		m_DelegateChangeLabelText = _
-			New DelegateChangeLabelText(AddressOf ChangeLabelText)
 	End Sub
 #End Region
 #Region "StepD_ResetStep"
@@ -175,7 +166,7 @@ Public Class StepD
 		Me.cbPayoutParametersYES.Checked = False
 		GUI_Util.regPnl(Me.pnlPointCutoffLimit, Color.PapayaWhip)
 		Me.SetPointCutoffPanel(True)
-		Me.SetDragDropPanel(False)
+		Me.SetpnlLemonChiffon(False)
 	End Sub
 #End Region
 #Region "StepD_Validation"
@@ -254,7 +245,7 @@ Public Class StepD
 		End If
 	End Sub
 #End Region
-#Region "StepD_SetDragDropPanel"
+#Region "StepD_SetpnlLemonChiffon"
 	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, _
 														  e As EventArgs) _
 		Handles rbEligiblePlayersList.CheckedChanged
@@ -263,64 +254,16 @@ Public Class StepD
 		Else
 			GUI_Util.NextEnabled()
 		End If
-		SetDragDropPanel(Me.rbEligiblePlayersList.Checked)
+		SetpnlLemonChiffon(Me.rbEligiblePlayersList.Checked)
 	End Sub
 
-	Private Sub SetDragDropPanel(ByVal bool As Boolean)
-		Me.pnlDragOffer.Enabled = bool
-		Me.pnlDragOffer.Visible = bool
+	Private Sub SetpnlLemonChiffon(ByVal bool As Boolean)
+		Me.pnlLemonChiffon.Enabled = bool
+		Me.pnlLemonChiffon.Visible = bool
 		If Not bool Then
-			Me.SuccessIcon.Visible = bool
-			ChangeLabelText("Drag EligiblePlayers List .CSV File Here")
+			Me.btnOpenPanel.BackColor = Color.MediumPurple
+			Me.btnOpenPanel.Enabled = True
 		End If
-	End Sub
-
-	Private Sub pnlDragOffer_DragEnter(sender As Object, _
-									   e As DragEventArgs) _
-		Handles pnlDragOffer.DragEnter
-		If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-			e.Effect = DragDropEffects.Copy
-		Else
-			e.Effect = DragDropEffects.None
-		End If
-	End Sub
-
-	Private Sub DragDropSuccessIcon()
-		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.SuccessIcon.ActiveColor = Color.Lime
-		Me.SuccessIcon.InActiveColor = Color.Lime
-		Me.SuccessIcon.Visible = True
-	End Sub
-
-	Private Sub DragDropFailureIcon()
-		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.CrossCircleSolid
-		Me.SuccessIcon.ActiveColor = Color.Red
-		Me.SuccessIcon.InActiveColor = Color.Red
-		Me.SuccessIcon.Visible = True
-	End Sub
-
-	Private Sub pnlDragOffer_DragDrop(sender As Object, _
-									  e As DragEventArgs) _
-		Handles pnlDragOffer.DragDrop
-		Try
-			Dim a As Array = CType(e.Data.GetData(DataFormats.FileDrop),  _
-								   Array)
-			If Not IsNothing(a) Then
-				Dim s As String = a.GetValue(0).ToString
-				Me.BeginInvoke(m_DelegateChangeLabelText, _
-							   New Object() {s})
-				Me.btnSubmitEP.BackColor = Color.MediumPurple
-				Me.btnSubmitEP.Enabled = True
-				Me.successBool = True
-			End If
-		Catch ex As Exception
-			Trace.WriteLine("Error in DragDrop Sub: " & _
-							ex.Message)
-			ChangeLabelText("FAILURE: " & _
-							ex.Message)
-			DragDropFailureIcon()
-			Me.successBool = False
-		End Try
 	End Sub
 #End Region
 #Region "StepD_SetPointCutoffPanel"
@@ -533,15 +476,17 @@ Public Class StepD
 		Me.ActiveControl = Me.pnlPointCutoffLimit
 	End Sub
 #End Region
-#Region "StepD_btnSubmitEP_Click"
-	Private Sub btnSubmitEP_Click(sender As Object, _
-								  e As EventArgs) _
-	Handles btnSubmitEP.Click
-		If Me.rbEligiblePlayersList.Checked AndAlso _
-			Me.successBool Then
-			Me.btnSubmitEP.Enabled = False
+#Region "StepD_btnOpenPanel_Click"
+	Private Sub btnOpenPanel_Click(sender As Object, _
+								   e As EventArgs) _
+		Handles btnOpenPanel.Click
+		If Me.rbEligiblePlayersList.Checked Then
+			Me.btnOpenPanel.Enabled = False
 			PCW.Data.UsesEligiblePlayers = True
-			setEligiblePlayersCSV()
+			Me.stepD_DDEP.Visible = True
+			Me.stepD_DDEP.Enabled = True
+			Me.stepD_DDEP.BringToFront()
+			Me.btnOpenPanel.Enabled = True
 		End If
 	End Sub
 #End Region

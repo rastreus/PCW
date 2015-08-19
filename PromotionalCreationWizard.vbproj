@@ -131,6 +131,15 @@
       <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="src\Components\DDEP.Designer.vb">
+      <DependentUpon>DDEP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Components\DDEP.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Components\SelectorButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\frmSelect.Designer.vb">
       <DependentUpon>frmSelect.vb</DependentUpon>
     </Compile>
@@ -277,6 +286,9 @@
     <None Include="resources\PCWLINQ2SQL.dbml.layout">
       <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="src\Components\DDEP.resx">
+      <DependentUpon>DDEP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\frmSelect.resx">
       <DependentUpon>frmSelect.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -288,6 +300,7 @@
     <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
     <EmbeddedResource Include="src\frmAutoUpdate.resx">
       <DependentUpon>frmAutoUpdate.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\PCW.resx">
       <DependentUpon>PCW.vb</DependentUpon>

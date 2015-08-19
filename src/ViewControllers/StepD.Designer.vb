@@ -32,6 +32,7 @@ Partial Class StepD
 		Me.pnlSingleEvent = New System.Windows.Forms.Panel()
 		Me.pnlMultiPart = New System.Windows.Forms.Panel()
 		Me.pnlDaysTiers = New System.Windows.Forms.Panel()
+		Me.TiersSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetNumOfTiers = New System.Windows.Forms.Button()
 		Me.lblNumOfDays = New System.Windows.Forms.Label()
 		Me.rbTIERS = New System.Windows.Forms.RadioButton()
@@ -50,6 +51,8 @@ Partial Class StepD
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
+		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
+		Me.btnOpenPanel = New System.Windows.Forms.Button()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.PointCutoffLimitSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPointCutoffLimit = New System.Windows.Forms.Button()
@@ -57,23 +60,18 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.pnlDragOffer = New System.Windows.Forms.Panel()
-		Me.SuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.lblDragOffer = New System.Windows.Forms.Label()
-		Me.TiersSuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.btnSubmitEP = New System.Windows.Forms.Button()
+		Me.stepD_DDEP = New PromotionalCreationWizard.DDEP()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
 		Me.pnlDaysTiers.SuspendLayout()
+		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlPayoutParameters.SuspendLayout()
 		Me.pnlAcquisition.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
+		Me.pnlLemonChiffon.SuspendLayout()
 		Me.pnlPointCutoffLimit.SuspendLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.pnlDragOffer.SuspendLayout()
-		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -204,6 +202,21 @@ Partial Class StepD
 		Me.pnlDaysTiers.Size = New System.Drawing.Size(171, 45)
 		Me.pnlDaysTiers.TabIndex = 5
 		'
+		'TiersSuccessIcon
+		'
+		Me.TiersSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.TiersSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.TiersSuccessIcon.Enabled = False
+		Me.TiersSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.TiersSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.TiersSuccessIcon.Location = New System.Drawing.Point(146, 20)
+		Me.TiersSuccessIcon.Name = "TiersSuccessIcon"
+		Me.TiersSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.TiersSuccessIcon.TabIndex = 37
+		Me.TiersSuccessIcon.TabStop = False
+		Me.TiersSuccessIcon.ToolTipText = Nothing
+		Me.TiersSuccessIcon.Visible = False
+		'
 		'btnSetNumOfTiers
 		'
 		Me.btnSetNumOfTiers.BackColor = System.Drawing.Color.Gainsboro
@@ -333,7 +346,7 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlDragOffer)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlLemonChiffon)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
@@ -416,6 +429,36 @@ Partial Class StepD
 		Me.lblPlayerEligibility.Size = New System.Drawing.Size(259, 16)
 		Me.lblPlayerEligibility.TabIndex = 4
 		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
+		'
+		'pnlLemonChiffon
+		'
+		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
+		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
+		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.pnlLemonChiffon.Enabled = False
+		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
+		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
+		Me.pnlLemonChiffon.Size = New System.Drawing.Size(224, 80)
+		Me.pnlLemonChiffon.TabIndex = 0
+		Me.pnlLemonChiffon.Visible = False
+		'
+		'btnOpenPanel
+		'
+		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnOpenPanel.Enabled = False
+		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
+		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
+		Me.btnOpenPanel.Name = "btnOpenPanel"
+		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
+		Me.btnOpenPanel.TabIndex = 32
+		Me.btnOpenPanel.Text = "Open Panel"
+		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnOpenPanel.UseVisualStyleBackColor = False
 		'
 		'pnlPointCutoffLimit
 		'
@@ -505,78 +548,21 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 7
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		'
-		'pnlDragOffer
+		'stepD_DDEP
 		'
-		Me.pnlDragOffer.AllowDrop = True
-		Me.pnlDragOffer.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlDragOffer.Controls.Add(Me.btnSubmitEP)
-		Me.pnlDragOffer.Controls.Add(Me.SuccessIcon)
-		Me.pnlDragOffer.Controls.Add(Me.lblDragOffer)
-		Me.pnlDragOffer.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.pnlDragOffer.Enabled = False
-		Me.pnlDragOffer.Location = New System.Drawing.Point(18, 148)
-		Me.pnlDragOffer.Name = "pnlDragOffer"
-		Me.pnlDragOffer.Size = New System.Drawing.Size(224, 80)
-		Me.pnlDragOffer.TabIndex = 9
-		Me.pnlDragOffer.Visible = False
-		'
-		'SuccessIcon
-		'
-		Me.SuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.SuccessIcon.Enabled = False
-		Me.SuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.SuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.SuccessIcon.Location = New System.Drawing.Point(189, 54)
-		Me.SuccessIcon.Name = "SuccessIcon"
-		Me.SuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.SuccessIcon.TabIndex = 5
-		Me.SuccessIcon.TabStop = False
-		Me.SuccessIcon.ToolTipText = Nothing
-		Me.SuccessIcon.Visible = False
-		'
-		'lblDragOffer
-		'
-		Me.lblDragOffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDragOffer.Location = New System.Drawing.Point(3, 3)
-		Me.lblDragOffer.Name = "lblDragOffer"
-		Me.lblDragOffer.Size = New System.Drawing.Size(218, 22)
-		Me.lblDragOffer.TabIndex = 0
-		Me.lblDragOffer.Text = "(Drag EligiblePlayers List .CSV File Here)"
-		Me.lblDragOffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		'
-		'TiersSuccessIcon
-		'
-		Me.TiersSuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.TiersSuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.TiersSuccessIcon.Enabled = False
-		Me.TiersSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.TiersSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.TiersSuccessIcon.Location = New System.Drawing.Point(146, 20)
-		Me.TiersSuccessIcon.Name = "TiersSuccessIcon"
-		Me.TiersSuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.TiersSuccessIcon.TabIndex = 37
-		Me.TiersSuccessIcon.TabStop = False
-		Me.TiersSuccessIcon.ToolTipText = Nothing
-		Me.TiersSuccessIcon.Visible = False
-		'
-		'btnSubmitEP
-		'
-		Me.btnSubmitEP.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnSubmitEP.Enabled = False
-		Me.btnSubmitEP.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnSubmitEP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkViolet
-		Me.btnSubmitEP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
-		Me.btnSubmitEP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnSubmitEP.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSubmitEP.ForeColor = System.Drawing.Color.White
-		Me.btnSubmitEP.Location = New System.Drawing.Point(43, 50)
-		Me.btnSubmitEP.Name = "btnSubmitEP"
-		Me.btnSubmitEP.Size = New System.Drawing.Size(140, 26)
-		Me.btnSubmitEP.TabIndex = 32
-		Me.btnSubmitEP.Text = "Submit"
-		Me.btnSubmitEP.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnSubmitEP.UseVisualStyleBackColor = False
+		Me.stepD_DDEP.BackColor = System.Drawing.Color.LemonChiffon
+		Me.stepD_DDEP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.stepD_DDEP.CausesValidation = False
+		Me.stepD_DDEP.Enabled = False
+		Me.stepD_DDEP.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.stepD_DDEP.Location = New System.Drawing.Point(24, 34)
+		Me.stepD_DDEP.Name = "stepD_DDEP"
+		Me.stepD_DDEP.NumOfTicketsIndex = -1
+		Me.stepD_DDEP.PlayerIDIndex = -1
+		Me.stepD_DDEP.Size = New System.Drawing.Size(531, 238)
+		Me.stepD_DDEP.TabIndex = 0
+		Me.stepD_DDEP.TabStop = False
+		Me.stepD_DDEP.Visible = False
 		'
 		'StepD
 		'
@@ -584,12 +570,14 @@ Partial Class StepD
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.Controls.Add(Me.pnlPlayerEligibility)
 		Me.Controls.Add(Me.pnlPromoType)
+		Me.Controls.Add(Me.stepD_DDEP)
 		Me.ForeColor = System.Drawing.SystemColors.ControlText
 		Me.Name = "StepD"
 		Me.NextStep = "StepEntryTicketAmt"
 		Me.PreviousStep = "StepCanHazSecurity"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Of the five available categories, which will this promo be?"
+		Me.Controls.SetChildIndex(Me.stepD_DDEP, 0)
 		Me.Controls.SetChildIndex(Me.pnlPromoType, 0)
 		Me.Controls.SetChildIndex(Me.pnlPlayerEligibility, 0)
 		Me.Controls.SetChildIndex(Me.Description, 0)
@@ -598,6 +586,7 @@ Partial Class StepD
 		Me.pnlMultiPart.ResumeLayout(False)
 		Me.pnlDaysTiers.ResumeLayout(False)
 		Me.pnlDaysTiers.PerformLayout()
+		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlPayoutParameters.ResumeLayout(False)
 		Me.pnlPayoutParameters.PerformLayout()
 		Me.pnlAcquisition.ResumeLayout(False)
@@ -606,12 +595,10 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
 		Me.pnlSumMethod.PerformLayout()
+		Me.pnlLemonChiffon.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		Me.pnlDragOffer.ResumeLayout(False)
-		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		CType(Me.TiersSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -632,9 +619,6 @@ Partial Class StepD
 	Friend WithEvents rbAutoQualification As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSumLifetimePoints As System.Windows.Forms.RadioButton
 	Friend WithEvents rbSumQualifyingPoints As System.Windows.Forms.RadioButton
-	Friend WithEvents pnlDragOffer As System.Windows.Forms.Panel
-	Friend WithEvents lblDragOffer As System.Windows.Forms.Label
-	Friend WithEvents SuccessIcon As FontAwesomeIcons.IconButton
 	Friend WithEvents pnlPointCutoffLimit As System.Windows.Forms.Panel
 	Friend WithEvents txtPointCutoffLimit As System.Windows.Forms.TextBox
 	Friend WithEvents rbPointCutoffLimitNO As System.Windows.Forms.RadioButton
@@ -654,6 +638,8 @@ Partial Class StepD
 	Private WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
 	Private WithEvents PointCutoffLimitSuccessIcon As FontAwesomeIcons.IconButton
 	Private WithEvents TiersSuccessIcon As FontAwesomeIcons.IconButton
-	Private WithEvents btnSubmitEP As System.Windows.Forms.Button
+	Private WithEvents btnOpenPanel As System.Windows.Forms.Button
+	Private WithEvents pnlLemonChiffon As System.Windows.Forms.Panel
+	Friend WithEvents stepD_DDEP As PromotionalCreationWizard.DDEP
 
 End Class

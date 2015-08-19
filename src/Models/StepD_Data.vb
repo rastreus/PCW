@@ -1,6 +1,7 @@
 ﻿Imports Key = PromotionalCreationWizard _
 			  .PCW_Data _
 			  .PromoFields
+Imports PromotionalCreationWizard.SelectorButton
 
 ''' <summary>
 ''' Contains data and validity checks for StepD.
@@ -127,7 +128,11 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "CSVtoEligiblePlayersList"
-	Public Function CSVtoEligiblePlayersList(ByVal promoID As String) As Integer
+	Public Function CSVtoEligiblePlayersList(ByVal promoID As String, _
+											 ByVal playerIDIndex As Integer, _
+											 ByVal numOfTicketsIndex As Integer) As Integer
+		Dim MAX_LEN As Integer = -1
+		Dim numOfCols As Integer = 0
 		Dim playerID As Integer
 		Dim numOfTickets As System.Nullable(Of Short)
 		Dim marketingPromoEligiblePlayerDBRow As MarketingPromoEligiblePlayer
@@ -141,30 +146,33 @@ Public Class StepD_Data
 		parser.HasFieldsEnclosedInQuotes = False
 		parser.TrimWhiteSpace = True
 
-		'First line is skipped, its the headers
-		parser.ReadLine()
+		'First line of headers is counted
+		For Each header As String In parser.ReadFields()
+			numOfCols += 1
+		Next
+		MAX_LEN = numOfCols
 
 		'Create a String Array
-		Dim currentRow(13) As String
+		Dim currentRow(MAX_LEN) As String
 		Dim incorrectLength As Integer = 0
 		Do Until parser.EndOfData = True
 			Try
 				Dim index As Short = 0
 				For Each field As String In parser.ReadFields()
 					currentRow(index) = field
-					If index < 13 Then
+					If index < MAX_LEN Then
 						index += 1
 					End If
 				Next
-				If index = 13 Then
-					playerID = currentRow(0)
+				If index = MAX_LEN Then
+					playerID = currentRow(playerIDIndex)
 					'If numOfTickets is NULL,
 					'GPM will prompt for 1 or 2
 					'tickets to be printed.
-					If currentRow(13) = String.Empty Then
+					If currentRow(numOfTicketsIndex) = String.Empty Then
 						numOfTickets = Nothing
 					Else
-						numOfTickets = currentRow(13)
+						numOfTickets = currentRow(numOfTicketsIndex)
 					End If
 					marketingPromoEligiblePlayerDBRow = _
 						New MarketingPromoEligiblePlayer
