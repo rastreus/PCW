@@ -268,7 +268,6 @@ Public Class PCW_Data
 			_pcwPayoutDiffType = value
 		End Set
 	End Property
-
 #End Region
 #Region "GetMarketingPromo"
 	Private Function GetMarketingPromo() As MarketingPromo
@@ -305,7 +304,8 @@ Public Class PCW_Data
 	''' Returns the comment with PCW stamping.
 	''' </summary>
 	''' <returns>"PCW;05132015;rdillin"</returns>
-	''' <remarks>A security feature which tags each promo created by PCW with date and username.</remarks>
+	''' <remarks>A security feature which tags each promo created
+	''' by PCW with date and username.</remarks>
 	Private Function GetPromoComment() As String
 		Dim dateFormatStr As String = New String("{0:MM/dd/yy H:mm:ss}")
 		Dim comment As String = PromoDataHash.Item(Key.Comment)
@@ -320,7 +320,8 @@ Public Class PCW_Data
 	''' Checks the length of the PromoID and processes accordingly.
 	''' </summary>
 	''' <param name="letterType">"E" or "P"</param>
-	''' <returns>The PromoID of correct length with appended letterType.</returns>
+	''' <returns>The PromoID of correct length
+	''' with appended letterType.</returns>
 	''' <remarks>DRYs up GetEntryPromoID and GetPayoutPromoID.</remarks>
 	Private Function ProcessPromoID(ByVal letterType As String) As String
 		Dim result As String = New String(String.Empty)
@@ -438,61 +439,91 @@ Public Class PCW_Data
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
 		Dim builder As StringBuilder = New StringBuilder
 
-		builder.Append(ID & nullIfNothing(Key.ID) & "E" & vbCrLf)
-		builder.Append(Name & nullIfNothing(Key.Name) & vbCrLf)
-		builder.Append(Type & nullIfNothing(Key.EntryPromoType) & vbCrLf)
-		builder.Append(_Date & nullIfNothing(Key.OccursDate, _
-											 dateFormatStr) & vbCrLf)
-		builder.Append(StartDate & nullIfNothing(Key.StartDate, _
-												 dateFormatStr) & vbCrLf)
-		builder.Append(EndDate & nullIfNothing(Key.EndDate, _
-											   dateFormatStr) & vbCrLf)
-		builder.Append(PointCutoff & nullIfNothing(Key.PointCutoffLimit) & _
-					   vbCrLf)
-		builder.Append(PointsDivisor & nullIfNothing(Key.PointsDivisor) & _
-					   vbCrLf)
-		builder.Append(MaxTickets & nullIfNothing(Key.TicketsPerPatron) & _
-					   vbCrLf)
+		builder.Append(ID & _
+					   nullIfNothing(Key.ID) & "E" & vbCrLf)
+		builder.Append(Name & _
+					   nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append(Type & _
+					   nullIfNothing(Key.EntryPromoType) & vbCrLf)
+		builder.Append(_Date & _
+					   nullIfNothing(Key.OccursDate, _
+									 dateFormatStr) & vbCrLf)
+		builder.Append(StartDate & _
+					   nullIfNothing(Key.StartDate, _
+									 dateFormatStr) & vbCrLf)
+		builder.Append(EndDate & _
+					   nullIfNothing(Key.EndDate, _
+									 dateFormatStr) & vbCrLf)
+		builder.Append(PointCutoff & _
+					   nullIfNothing(Key.PointCutoffLimit) & vbCrLf)
+		builder.Append(PointsDivisor & _
+					   nullIfNothing(Key.PointsDivisor) & vbCrLf)
+		builder.Append(MaxTickets & _
+					   nullIfNothing(Key.TicketsPerPatron) & vbCrLf)
 		builder.Append(TicketsForEntirePromo & _
 					   nullIfNothing(Key.TicketsForEntirePromo) & vbCrLf)
-		builder.Append(MaxCoupon & "NULL" & vbCrLf)
-		builder.Append(PromoMaxCoupon & "NULL" & vbCrLf)
-		builder.Append(CouponID & "NULL" & vbCrLf)
-		builder.Append(Recurring & nullIfNothing(Key.Recurring) & vbCrLf)
-		builder.Append(Frequency & nullIfNothing(Key.RecurringFrequency) & _
-					   vbCrLf)
-		builder.Append(RecursOnWeekday & nullIfNothing(Key.RecursOnWeekday) & _
-					   vbCrLf)
-		builder.Append(EarnsOnWeekday & nullIfNothing(Key.EarnsOnWeekday) & _
-					   vbCrLf)
-		builder.Append(CountCurrentDay & nullIfNothing(Key.CountCurrentDay) & _
-					   vbCrLf)
-		builder.Append(PrintTickets & nullIfNothing(Key.PrintTickets) & vbCrLf)
+		builder.Append(MaxCoupon & _
+					   "NULL" & vbCrLf)
+		builder.Append(PromoMaxCoupon & _
+					   "NULL" & vbCrLf)
+		builder.Append(CouponID & _
+					   "NULL" & vbCrLf)
+		builder.Append(Recurring & _
+					   nullIfNothing(Key.Recurring) & vbCrLf)
+		builder.Append(Frequency & _
+					   nullIfNothing(Key.RecurringFrequency) & vbCrLf)
+		builder.Append(RecursOnWeekday & _
+					   nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
+		builder.Append(EarnsOnWeekday & _
+					   nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
+		builder.Append(CountCurrentDay & _
+					   nullIfNothing(Key.CountCurrentDay) & vbCrLf)
+		builder.Append(PrintTickets & _
+					   nullIfNothing(Key.PrintTickets) & vbCrLf)
 		Return builder
 	End Function
-	Public Function GetPromoPayoutSummary() As System.Text.StringBuilder
+	Public Function GetPromoPayoutSummary() As StringBuilder
 		Dim dateFormatStr As String = New String("{0:MM/dd/yyyy}")
-		Dim builder As System.Text.StringBuilder = New System.Text.StringBuilder
+		Dim builder As StringBuilder = New StringBuilder
 
-		builder.Append("                  ID: " & nullIfNothing(Key.ID) & "P" & vbCrLf)
-		builder.Append("                Name: " & nullIfNothing(Key.Name) & vbCrLf)
-		builder.Append("                Type: " & nullIfNothing(Key.PayoutPromoType) & vbCrLf)
-		builder.Append("                Date: " & nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
-		builder.Append("           StartDate: " & nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
-		builder.Append("             EndDate: " & nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
-		builder.Append("         PointCutoff: " & "NULL" & vbCrLf)
-		builder.Append("       PointsDivisor: " & "NULL" & vbCrLf)
-		builder.Append("          MaxTickets: " & "NULL" & vbCrLf)
-		builder.Append("Max#CouponsPerPatron: " & nullIfNothing(Key.MaxNumOfCouponsPerPatron) & vbCrLf)
-		builder.Append("           MaxCoupon: " & nullIfNothing(Key.CouponAmtPerPatron) & vbCrLf)
-		builder.Append("      PromoMaxCoupon: " & nullIfNothing(Key.CouponAmtForEntirePromo) & vbCrLf)
-		builder.Append("            CouponID: " & nullIfNothing(Key.CouponID) & vbCrLf)
-		builder.Append("           Recurring: " & nullIfNothing(Key.Recurring) & vbCrLf)
-		builder.Append("           Frequency: " & nullIfNothing(Key.RecurringFrequency) & vbCrLf)
-		builder.Append("     RecursOnWeekday: " & nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
-		builder.Append("      EarnsOnWeekday: " & nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
-		builder.Append("     CountCurrentDay: " & nullIfNothing(Key.CountCurrentDay) & vbCrLf)
-		builder.Append("        PrintTickets: " & nullIfNothing(Key.PrintTickets) & vbCrLf)
+		builder.Append(ID & _
+					   nullIfNothing(Key.ID) & "P" & vbCrLf)
+		builder.Append(Name & _
+					   nullIfNothing(Key.Name) & vbCrLf)
+		builder.Append(Type & _
+					   nullIfNothing(Key.PayoutPromoType) & vbCrLf)
+		builder.Append(_Date & _
+					   nullIfNothing(Key.OccursDate, dateFormatStr) & vbCrLf)
+		builder.Append(StartDate & _
+					   nullIfNothing(Key.StartDate, dateFormatStr) & vbCrLf)
+		builder.Append(EndDate & _
+					   nullIfNothing(Key.EndDate, dateFormatStr) & vbCrLf)
+		builder.Append(PointCutoff & _
+					   "NULL" & vbCrLf)
+		builder.Append(PointsDivisor & _
+					   "NULL" & vbCrLf)
+		builder.Append(MaxTickets & _
+					   "NULL" & vbCrLf)
+		builder.Append("Max#CouponsPerPatron: " & _
+					   nullIfNothing(Key.MaxNumOfCouponsPerPatron) & vbCrLf)
+		builder.Append(MaxCoupon & _
+					   nullIfNothing(Key.CouponAmtPerPatron) & vbCrLf)
+		builder.Append(PromoMaxCoupon & _
+					   nullIfNothing(Key.CouponAmtForEntirePromo) & vbCrLf)
+		builder.Append(CouponID & _
+					   nullIfNothing(Key.CouponID) & vbCrLf)
+		builder.Append(Recurring & _
+					   nullIfNothing(Key.Recurring) & vbCrLf)
+		builder.Append(Frequency & _
+					   nullIfNothing(Key.RecurringFrequency) & vbCrLf)
+		builder.Append(RecursOnWeekday & _
+					   nullIfNothing(Key.RecursOnWeekday) & vbCrLf)
+		builder.Append(EarnsOnWeekday & _
+					   nullIfNothing(Key.EarnsOnWeekday) & vbCrLf)
+		builder.Append(CountCurrentDay & _
+					   nullIfNothing(Key.CountCurrentDay) & vbCrLf)
+		builder.Append(PrintTickets & _
+					   nullIfNothing(Key.PrintTickets) & vbCrLf)
 		Return builder
 	End Function
 	Private Function nullIfNothing(ByVal key As PromoFields) As String
@@ -555,6 +586,7 @@ Public Class PCW_Data
 			Case PromoCategory.acquisition
 				'Needs to be implemented (As of: 05/13/15)
 				'Hasn't been implemented (As of: 06/23/15)
+				'Still needs to be done  (As of: 08/20/15)
 		End Select
 	End Sub
 #End Region

@@ -128,9 +128,10 @@ Public Class StepD_Data
 	End Property
 #End Region
 #Region "CSVtoEligiblePlayersList"
-	Public Function CSVtoEligiblePlayersList(ByVal promoID As String, _
-											 ByVal playerIDIndex As Integer, _
-											 ByVal numOfTicketsIndex As Integer) As Integer
+	Public Function CSVtoEligiblePlayersList( _
+								ByVal promoID As String, _
+								ByVal playerIDIndex As Integer, _
+								ByVal numOfTicketsIndex As Integer) As Integer
 		Dim MAX_LEN As Integer = -1
 		Dim numOfCols As Integer = 0
 		Dim playerID As Integer

@@ -139,17 +139,4 @@
 		Return result
 	End Function
 #End Region
-#Region "Validity Checks"
-	'
-	'Not sure what this was being used for?
-	'Commented out for the time-being.
-	'As of: 05/22/2015; GRD
-	'
-	'Public Function No_CouponTargets_Created() As Boolean
-	'	Dim result As Boolean = If(_dataCouponTargetsList.Count = 0, _
-	'							   True, _
-	'							   False)
-	'	Return result
-	'End Function
-#End Region
 End Class

@@ -47,9 +47,12 @@ Public Class StepGeneratePayoutCoupon_Data
 	Private _dataAddedToHash As Boolean = False
 	Private _stepNotSet As Boolean = True
 	Private _promoCouponID As String = Nothing
-	Private _promoCouponAmtPerPatron As System.Nullable(Of Decimal) = Nothing
-	Private _promoCouponAmtForEntirePromo As System.Nullable(Of Decimal) = Nothing
-	Private _promoMaxNumOfCouponsPerPatron As System.Nullable(Of Short) = Nothing
+	Private _promoCouponAmtPerPatron _
+		As System.Nullable(Of Decimal) = Nothing
+	Private _promoCouponAmtForEntirePromo _
+		As System.Nullable(Of Decimal) = Nothing
+	Private _promoMaxNumOfCouponsPerPatron _
+		As System.Nullable(Of Short) = Nothing
 
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash

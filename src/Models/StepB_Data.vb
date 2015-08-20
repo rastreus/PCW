@@ -42,10 +42,11 @@ Public Class StepB_Data
 	Private _promoName As String
 	Private _promoRecurring As System.Nullable(Of Boolean)
 	Private _promoRecurringFrequency As System.Nullable(Of Char)
-	'ASIDE: It's possible that the below Property definitions are implicitly declared.
-	'That is probably both good and true; however, I enjoy explicit definitions.
-	'That is why the boilerplate below currently exists and will exist in all Models.
-	'Let this be a lesson in programming style: Choose to be explicit over implicit.
+	'ASIDE: It's possible that the below Property definitions are
+	'implicitly declared. That is probably both good and true; however,
+	'I enjoy explicit definitions. That is why the boilerplate below
+	'currently exists and will exist in all Models. Let this be a lesson
+	'in programming style: Choose to be explicit over implicit.
 	Private Property DataAddedToHash As Boolean _
 		Implements IPromoData.DataAddedToHash
 		Get

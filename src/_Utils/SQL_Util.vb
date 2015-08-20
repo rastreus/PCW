@@ -79,7 +79,8 @@ Public Class SQL_Util
 #End Region
 #Region "Existing_PromoID"
 	''' <summary>
-	''' Queries the ID field to see if there is an existing promo with the same ID.
+	''' Queries the ID field to see if there
+	''' is an existing promo with the same ID.
 	''' </summary>
 	''' <param name="new_promoID"></param>
 	''' <returns>The existance of the coupon ID.</returns>

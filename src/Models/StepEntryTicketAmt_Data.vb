@@ -3,9 +3,11 @@
 			  .PromoFields
 
 ''' <summary>
-''' Contains data and validity checks for StepEntryTicketAmt.
+''' Contains data and validity
+''' checks for StepEntryTicketAmt.
 ''' </summary>
-''' <remarks>This is the Model for StepEntryTicketAmt (Controller).</remarks>
+''' <remarks>This is the Model for
+''' StepEntryTicketAmt (Controller).</remarks>
 Public Class StepEntryTicketAmt_Data
 	Implements IPromoData
 
