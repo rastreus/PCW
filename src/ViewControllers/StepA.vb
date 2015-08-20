@@ -3,19 +3,20 @@
 ''' <summary>
 ''' First Step; welcomes to the PCW.
 ''' </summary>
-''' <remarks>A bunch of words that no one will read.</remarks>
+''' <remarks>A bunch of words
+''' that no one will read.</remarks>
 Public Class StepA
     Inherits TSWizards.BaseExteriorStep
 
 #Region "StepA_ShowStep"
 	Private Sub StepA_ShowStep(sender As Object, _
-						   e As ShowStepEventArgs) _
+							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
 		Me.lblVERNUM.Text = "v." & _
 							My.Application _
-							.Info _
-							.Version _
-							.ToString
+							  .Info _
+							  .Version _
+							  .ToString
 	End Sub
 #End Region
 #Region "StepA_InfoCircle"
