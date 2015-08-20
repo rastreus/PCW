@@ -29,7 +29,8 @@ Public Class StepH
 	''' <summary>
 	''' Model for StepH.
 	''' </summary>
-	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	''' <remarks>As a loose representation of
+	''' MVC, this is the Model.</remarks>
 	Private stepH_data As StepH_Data
 	Public ReadOnly Property Data() As StepH_Data
 		Get
@@ -47,12 +48,6 @@ Public Class StepH
 		End If
 		Me.stepH_data.Comment = commentStr
 	End Sub
-#End Region
-#Region "StepH_Load"
-	'Private Sub StepH_Load(sender As Object, e As EventArgs) _
-	'Handles MyBase.Load
-	'Moved stepH_data initialization to New.
-	'End Sub
 #End Region
 #Region "StepH_ResetStep"
 	Private Sub StepH_ResetStep(sender As Object, _

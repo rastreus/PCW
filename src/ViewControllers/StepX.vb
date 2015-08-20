@@ -12,9 +12,10 @@ Public Class StepX
 									   e As EventArgs) _
 		Handles stepX_InfoCircle.Click
 		Dim copyStr As String = "Copyright " & ChrW(169)
-		Dim infoStr As String = <a>Oaklawn Jockey Club, 2014-2015
+		Dim infoStr As String = "Oaklawn Jockey Club, 2014-2015" & vbCrLf & _
+								"Brought to you by the fine folks " & _
+								"of the OJC IT Department!"
 
-Brought to you by the fine folks of the OJC IT Department!</a>.Value
 		Dim str As String = copyStr & " " & infoStr
 
 		GUI_Util.msgBox(str, "Information", "Information")
@@ -26,7 +27,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Too late for the user to go back and change anything.</remarks>
+	''' <remarks>Too late for the user to
+	''' go back and change anything.</remarks>
 	Private Sub StepX_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
@@ -40,7 +42,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	''' <summary>
 	''' Resets and reruns the PCW.
 	''' </summary>
-	''' <remarks>If the user wants, he/she can do it all over again!</remarks>
+	''' <remarks>If the user wants, he/she
+	''' can do it all over again!</remarks>
 	Protected Overrides Sub OnFinish()
 		If PCW.Data.Reset Then
 			PCW.ResetSteps()

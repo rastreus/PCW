@@ -39,7 +39,8 @@ Public Class StepCanHazSecurity
 	''' <summary>
 	''' Sets the data's properties from the controls.
 	''' </summary>
-	''' <remarks>Values are set differently depending if the promo is recurring or not.</remarks>
+	''' <remarks>Values are set differently depending
+	''' if the promo is recurring or not.</remarks>
 	Private Sub StepCanHazSecurity_SetData()
 		Me.stepCanHazSecurity_data.OverrideTime = getOverrideTime
 		Me.stepCanHazSecurity_data.CutoffTime = getCutoffTime
@@ -357,7 +358,8 @@ Each TextBox is validated for invalid (non-numeric) characters.
 		Dim result As String = If(minutes = "mm", String.Empty, minutes)
 		Return result
 	End Function
-	Private Sub ClearSuccessIcon(ByRef successIcon As FontAwesomeIcons.IconButton)
+	Private Sub ClearSuccessIcon(ByRef successIcon _
+								 As FontAwesomeIcons.IconButton)
 		If successIcon.Visible = True Then
 			successIcon.ActiveColor = SystemColors.ControlLight
 			successIcon.InActiveColor = SystemColors.ControlLight

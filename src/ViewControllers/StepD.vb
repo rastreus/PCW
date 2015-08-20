@@ -38,7 +38,8 @@ Public Class StepD
 	''' <summary>
 	''' Model for StepD.
 	''' </summary>
-	''' <remarks>As a loose representation of MVC, this is the Model.</remarks>
+	''' <remarks>As a loose representation of
+	''' MVC, this is the Model.</remarks>
 	Private successBool As Boolean = False
 	Private txtTierBool As Boolean = False
 	Private stepD_data As StepD_Data
@@ -171,11 +172,13 @@ Public Class StepD
 #End Region
 #Region "StepD_Validation"
 	''' <summary>
-	''' Asks StepD_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepD_Data to validate data and
+	''' then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepD_Validation(sender As Object, _
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
@@ -316,7 +319,8 @@ Public Class StepD
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>If MULTI-PART SEQUENCIAL INSTANCES is selected, please enable the textbox.
+	''' <remarks>If MULTI-PART SEQUENCIAL INSTANCES is
+	''' selected, please enable the textbox.
 	''' Otherwise, put that thing back the way it was.
 	''' </remarks>
 	Private Sub rbMultiPartEntryPayout_CheckedChanged(sender As Object, _
@@ -439,7 +443,8 @@ Public Class StepD
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>A user is able to paste non-numeric input into the textbox.</remarks>
+	''' <remarks>A user is able to paste
+	''' non-numeric input into the textbox.</remarks>
 	Private Sub txtNumOfTiers_KeyPress(sender As Object, _
 									   e As KeyPressEventArgs) _
 		Handles txtNumOfTiers.KeyPress

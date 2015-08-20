@@ -158,7 +158,8 @@ Public Class StepB
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>If PCW is run for a single-entry and then gets run again for a single-payout.</remarks>
+	''' <remarks>If PCW is run for a single-entry and
+	''' then gets run again for a single-payout.</remarks>
 	Private Sub StepB_ResetStep(sender As Object, _
 								e As EventArgs) _
 		Handles MyBase.ResetStep
@@ -177,11 +178,13 @@ Public Class StepB
 #End Region
 #Region "StepB_Validation"
 	''' <summary>
-	''' Asks StepB_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepB_Data to validate data and
+	''' then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepB_Validation(sender As Object, _
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep

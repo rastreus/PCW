@@ -232,7 +232,8 @@ Public Class StepGetCouponOffers
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Don't enable the "Next>" button until we're ready!</remarks>
+	''' <remarks>Don't enable the "Next>"
+	''' button until we're ready!</remarks>
 	Private Sub StepGetCouponOffers_ShowStep(sender As Object, _
 											 e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
@@ -250,7 +251,7 @@ Public Class StepGetCouponOffers
 	''' </summary>
 	''' <remarks></remarks>
 	Private Sub ExcludeDaysCheckState(ByVal checkState As Boolean)
-		For item As Integer = 0 To Me.clbExcludeDays.Items.Count - 1
+		For item As Integer = 0 To (Me.clbExcludeDays.Items.Count - 1)
 			Me.clbExcludeDays.SetItemChecked(item, checkState)
 		Next
 	End Sub

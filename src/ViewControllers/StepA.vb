@@ -1,5 +1,4 @@
 ﻿Imports TSWizards
-Imports System.Net.Mail
 
 ''' <summary>
 ''' First Step; welcomes to the PCW.
@@ -24,9 +23,11 @@ Public Class StepA
 									   e As EventArgs) _
 		Handles StepA_InfoCircle.Click
 		Dim copyStr As String = "Copyright " & ChrW(169)
-		Dim infoStr As String = <a>Oaklawn Jockey Club, 2014-2015
 
-Brought to you by the fine folks of the OJC IT Department!</a>.Value
+		Dim infoStr As String = "Oaklawn Jockey Club, 2014-2015" & vbCrLf & _
+								"Brought to you by the fine folks " & _
+								"of the OJC IT Department!"
+
 		Dim str As String = copyStr & " " & infoStr
 
 		GUI_Util.msgBox(str, "Information", "Information")
@@ -38,7 +39,8 @@ Brought to you by the fine folks of the OJC IT Department!</a>.Value
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>User wants to edit an existing promo instead of creating a new one.</remarks>
+	''' <remarks>User wants to edit an existing promo
+	''' instead of creating a new one.</remarks>
 	Private Sub btnEditPromo_Click(sender As Object, _
 								   e As EventArgs) _
 		Handles btnEditPromo.Click

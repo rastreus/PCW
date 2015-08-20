@@ -46,7 +46,8 @@ Public Class StepC
 	''' <summary>
 	''' Sets the data's properties from the controls.
 	''' </summary>
-	''' <remarks>Values are set differently depending if the promo is recurring or not.</remarks>
+	''' <remarks>Values are set differently depending
+	''' if the promo is recurring or not.</remarks>
 	Private Sub StepC_SetData()
 		If Recurring_Promo() Then
 			Me.stepC_data.OccursDate = Nothing
@@ -55,12 +56,16 @@ Public Class StepC
 			Me.stepC_data.RecursOnWeekday = getRecursOnWeekday()
 			Me.stepC_data.CountCurrentDay = False
 			If PCW.Data.DaysBool Then
-				PCW.Data.NumOfDays = SetNumOfDays(Me.Data.StartDate, Me.Data.EndDate)
+				PCW.Data.NumOfDays = _
+					SetNumOfDays(Me.Data.StartDate, Me.Data.EndDate)
 			End If
 		Else 'Occurring Promo
-			Me.stepC_data.OccursDate = Me.dtpOccursDate.Value.Date
-			Me.stepC_data.StartDate = Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt)
-			Me.stepC_data.EndDate = Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt)
+			Me.stepC_data.OccursDate = _
+				Me.dtpOccursDate.Value.Date
+			Me.stepC_data.StartDate = _
+				Me.dtpOccursDate.Value.Date.AddDays(Me.startDayInt)
+			Me.stepC_data.EndDate = _
+				Me.dtpOccursDate.Value.Date.AddDays(Me.endDayInt)
 			Me.stepC_data.RecursOnWeekday = Nothing
 			Me.stepC_data.CountCurrentDay = Me.cbSameDayPromo.Checked
 		End If
@@ -74,7 +79,8 @@ Public Class StepC
 	End Sub
 
 	Private Function SetNumOfDays(ByVal startDate As Date, _
-								  ByVal endDate As Date) As System.Nullable(Of Short)
+								  ByVal endDate As Date) _
+								  As System.Nullable(Of Short)
 		Dim ts As TimeSpan = endDate.Subtract(startDate)
 		Dim result As System.Nullable(Of Short) = Nothing
 		If Convert.ToInt16(ts.Days) >= 0 Then
@@ -88,8 +94,10 @@ Public Class StepC
 	''' <summary>
 	''' Concatenates the Primary and Secondary Days.
 	''' </summary>
-	''' <returns>The formatted days String for "RecursOnWeekday."</returns>
-	''' <remarks>Trim removes the whitespace that may happen if there are no secondary days.</remarks>
+	''' <returns>The formatted days String
+	''' for "RecursOnWeekday."</returns>
+	''' <remarks>Trim removes the whitespace that may happen
+	''' if there are no secondary days.</remarks>
 	Private Function getRecursOnWeekday() As String
 		Dim value As String = getPrimaryDay() & getSecondaryDays()
 		Return value.Trim
@@ -111,7 +119,8 @@ Public Class StepC
 	''' <remarks>Be sure to confirm that it is not the primary day.</remarks>
 	Private Function getSecondaryDays() As String
 		Dim days As String = New String(String.Empty)
-		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
+		For Each ctrl As System.Windows.Forms.CheckBox _
+			In Me.pnlCbRedemptionDays.Controls
 			If (Not ctrl.Text = Me.primaryDayStr) AndAlso ctrl.Checked Then
 				days = days & BEP_Util.daysFormat(ctrl.Text)
 			End If
@@ -226,7 +235,8 @@ Public Class StepC
 	''' </summary>
 	''' <remarks>A Panel full (/fool/) of CheckBoxs instead of CheckListBox.</remarks>
 	Private Sub ResetRedemptionDays()
-		For Each ctrl As System.Windows.Forms.CheckBox In Me.pnlCbRedemptionDays.Controls
+		For Each ctrl As System.Windows.Forms.CheckBox _
+			In Me.pnlCbRedemptionDays.Controls
 			ctrl.Checked = False
 		Next
 	End Sub
@@ -239,11 +249,13 @@ Public Class StepC
 #End Region
 #Region "StepC_Validation"
 	''' <summary>
-	''' Asks StepC_Data to validate data and then handles GUI reactions accordingly.
+	''' Asks StepC_Data to validate data and
+	''' then handles GUI reactions accordingly.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>Validation event is triggered when user presses the "Next> Button."</remarks>
+	''' <remarks>Validation event is triggered when
+	''' user presses the "Next> Button."</remarks>
 	Private Sub StepC_Validation(sender As Object, _
 								 e As CancelEventArgs) _
 		Handles Me.ValidateStep
@@ -254,10 +266,12 @@ Public Class StepC
 		StepC_SetData()
 
 		If Recurring_Promo() Then
-			If Me.stepC_data.QualifyingPeriod_NotEstablished(Me.startDayBool, _
-															 Me.endDayBool) Then
+			If Me.stepC_data _
+				.QualifyingPeriod_NotEstablished(Me.startDayBool, _
+												 Me.endDayBool) Then
 				cancelContinuingToNextStep = True
-				errString = "Qualifying Period Start or End is not established."
+				errString = "Qualifying Period Start or " & _
+							"End is not established."
 				errStrArray.Add(errString)
 				GUI_Util.errPnl(Me.pnlRecurringQualifyingPeriod)
 			Else
@@ -322,7 +336,8 @@ Public Class StepC
 			Me.pnlRecurringQualifyingPeriod.Visible = True
 			Me.pnlPrimaryDay.Enabled = True
 			Me.pnlPrimaryDay.Visible = True
-			Me.lblRedemptionDays.Text = "On which day(s) is redemption allowed?"
+			Me.lblRedemptionDays.Text = "On which day(s) is " & _
+										"redemption allowed?"
 			Me.pnlOccursDate.Enabled = False
 			Me.pnlOccursDate.Visible = False
 			Me.pnlOccuringQualifyingPeriod.Enabled = False
@@ -339,7 +354,8 @@ Public Class StepC
 			Me.pnlOccursDate.Visible = True
 			Me.pnlOccuringQualifyingPeriod.Enabled = True
 			Me.pnlOccuringQualifyingPeriod.Visible = True
-			Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
+			Me.lblRedemptionDays.Text = "On which day(s) is " & _
+										"secondary redemption allowed?"
 			Me.pnlRecurringQualifyingPeriod.Enabled = False
 			Me.pnlRecurringQualifyingPeriod.Visible = False
 			Me.pnlPrimaryDay.Enabled = False
@@ -372,8 +388,9 @@ Public Class StepC
 	''' </summary>
 	''' <remarks></remarks>
 	Private Sub SelectAll()
-		For item As Integer = 0 To Me.clbPointsEarningDays.Items.Count - 1
-			Me.clbPointsEarningDays.SetItemChecked(item, Me.cbSelectAll.Checked)
+		For item As Integer = 0 To (Me.clbPointsEarningDays.Items.Count - 1)
+			Me.clbPointsEarningDays _
+				.SetItemChecked(item, Me.cbSelectAll.Checked)
 		Next
 	End Sub
 
@@ -430,7 +447,8 @@ Public Class StepC
 	''' </summary>
 	''' <param name="cbDayOfWeek"></param>
 	''' <remarks>If you're going to lock it, you best be prepared to unlock it.</remarks>
-	Private Sub unlockPrimaryDayOfWeek(ByRef cbDayOfWeek As System.Windows.Forms.CheckBox)
+	Private Sub unlockPrimaryDayOfWeek(ByRef cbDayOfWeek _
+									   As System.Windows.Forms.CheckBox)
 		Dim txt As String = New String(String.Empty)
 		cbDayOfWeek.Checked = False
 		cbDayOfWeek.Enabled = True
@@ -617,7 +635,8 @@ Public Class StepC
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>What if I fat-finger the Primary Day and have to change it?</remarks>
+	''' <remarks>What if I fat-finger the
+	''' Primary Day and have to change it?</remarks>
 	Private Sub cbPrimaryDay_DropDown(sender As Object, _
 									  e As EventArgs) _
 		Handles cbPrimaryDay.DropDown

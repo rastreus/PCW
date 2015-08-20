@@ -14,7 +14,8 @@ Public Class PCW
 	''' <summary>
 	''' Gets run when creating a New PCW
 	''' </summary>
-	''' <remarks>'Not entirely sure if this is needed, but it  works.</remarks>
+	''' <remarks>'Not entirely sure if
+	''' this is needed, but it  works.</remarks>
 	Public Sub New()
 		'Required by the Designer code.
 		InitializeComponent()
@@ -107,9 +108,10 @@ Public Class PCW
 	End Sub
 
 	Private Function AskToClose()
-		Dim cancelMsgString As String = <a>Do you wish to quit the wizard now?
-Your changes will not be saved if you do.</a>.Value
-
+		Dim cancelMsgString As String = "Do you wish to quit " & _
+										"the wizard now?" & vbCrLf & _
+										"Your changes will not" & _
+										"be saved if you do."
 		Dim result As Integer = _
 			CenteredMessagebox.MsgBox.Show(cancelMsgString, _
 										   "Exit wizard?", _

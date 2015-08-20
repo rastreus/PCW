@@ -139,7 +139,7 @@ Public Class StepF
 			End If
 		End If
 
-		If Me.Data.PayoutCatgory = PayoutCategory.prize AndAlso
+		If Me.Data.PayoutCatgory = PayoutCategory.prize AndAlso _
 			Me.Data.PrizeIsBlank Then
 			cancelContinuingToNextStep = True
 			errString = "Prize invalid."
@@ -190,7 +190,8 @@ Public Class StepF
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>We MUST have the PromoType, disable "Next>" until we get it.</remarks>
+	''' <remarks>We MUST have the PromoType,
+	''' disable "Next>" until we get it.</remarks>
 	Private Sub StepF_ShowStep(sender As Object, _
 							   e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep

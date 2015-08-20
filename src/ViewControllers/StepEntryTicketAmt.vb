@@ -294,7 +294,8 @@ Public Class StepEntryTicketAmt
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	''' <remarks>We MUST have the PromoType, disable "Next>" until we get it.</remarks>
+	''' <remarks>We MUST have the PromoType,
+	''' disable "Next>" until we get it.</remarks>
 	Private Sub StepEntryTicketAmt_ShowStep(sender As Object, _
 											e As ShowStepEventArgs) _
 		Handles MyBase.ShowStep
@@ -342,7 +343,8 @@ Public Class StepEntryTicketAmt
 #End Region
 #Region "StepEntryTicketAmt_rbTicketsPerPatronNO_CheckedChanged"
 	''' <summary>
-	''' Yes/No pair of RadioButtons for "Limit # of tickets per patron?"
+	''' Yes/No pair of RadioButtons for
+	''' "Limit # of tickets per patron?"
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -366,7 +368,8 @@ Public Class StepEntryTicketAmt
 #End Region
 #Region "StepEntryTicketAmt_rbTicketsEntirePromoNO_CheckedChanged"
 	''' <summary>
-	''' Yes/No pair of RadioButtons for "Limit # of tickets for entire promo?"
+	''' Yes/No pair of RadioButtons for
+	''' "Limit # of tickets for entire promo?"
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
