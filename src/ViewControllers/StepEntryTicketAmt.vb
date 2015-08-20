@@ -205,7 +205,7 @@ Public Class StepEntryTicketAmt
 
 		Me.StepEntryTicketAmt_SetData()
 
-		If (Me.Data.TicketAmtCategory = Category.calculated) Or _
+		If (Me.Data.TicketAmtCategory = Category.calculated) OrElse _
 			(Me.Data.TicketAmtCategory = Category.calPlusNumOfVisits) Then
 			If Me.Data.PointsDivisor_Invalid() Then
 				cancelContinuingToNextStep = True
@@ -433,7 +433,7 @@ Public Class StepEntryTicketAmt
 	Private Sub txtPointsDivisor_Leave(sender As Object, _
 									   e As EventArgs) _
 		Handles txtPointsDivisor.Leave
-		If (Me.rbCalculated.Checked Or _
+		If (Me.rbCalculated.Checked OrElse _
 			Me.rbCalPlusNumOfVisits.Checked) AndAlso _
 			(Not Me.txtPointsDivisor.Text = String.Empty) Then
 			GUI_Util.onIcon(Me.PointsDivisorSuccessIcon)

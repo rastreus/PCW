@@ -117,7 +117,7 @@ Public Class StepCanHazSecurity_Data
 
 	Private Function Time_Not_Set(ByVal timeStr As String) _
 								  As Boolean
-		Dim result As Boolean = If((timeStr = "A" Or _
+		Dim result As Boolean = If((timeStr = "A" OrElse _
 									timeStr = "P"), _
 								   True, _
 								   False)
@@ -135,7 +135,7 @@ Public Class StepCanHazSecurity_Data
 		Catch ex As Exception
 			'Handle Exception
 		End Try
-		If hours < 1 Or _
+		If hours < 1 OrElse _
 			hours > 12 Then
 			result = True
 		End If
@@ -153,7 +153,7 @@ Public Class StepCanHazSecurity_Data
 		Catch ex As Exception
 			'Handle Exception
 		End Try
-		If minutes < 0 Or _
+		If minutes < 0 OrElse _
 			minutes > 59 Then
 			result = True
 		End If

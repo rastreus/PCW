@@ -288,6 +288,7 @@
     </None>
     <EmbeddedResource Include="src\Components\DDEP.resx">
       <DependentUpon>DDEP.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\frmSelect.resx">
       <DependentUpon>frmSelect.vb</DependentUpon>

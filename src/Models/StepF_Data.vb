@@ -103,8 +103,8 @@ Public Class StepF_Data
 	End Function
 	Public Function BadPromoType() As Boolean
 		Dim result As Boolean = False
-		If (PromoType = String.Empty) Or _
-			(PromoType = "EX: 31B") Or _
+		If (PromoType = String.Empty) OrElse _
+			(PromoType = "EX: 31B") OrElse _
 			(PromoType.Length > 3) Then
 			result = True
 		End If
@@ -134,8 +134,8 @@ Public Class StepF_Data
 #Region "WillUseCouponTargetsList"
 	Public Function WillUseCouponTargetsList() As Boolean
 		Dim result As Boolean = True
-		If (PromoType = "31B") Or _
-			(PromoType = "31C") Or _
+		If (PromoType = "31B") OrElse _
+			(PromoType = "31C") OrElse _
 			(PromoType = "34") Then
 			result = False
 		End If

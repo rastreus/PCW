@@ -122,7 +122,7 @@ Public Class StepC_Data
 													As Boolean) _
 													As Boolean
 		Dim invalid As Boolean = False
-		If (startDayBool = False) Or (endDayBool = False) Then
+		If (startDayBool = False) OrElse (endDayBool = False) Then
 			invalid = True
 		End If
 		Return invalid

@@ -80,7 +80,7 @@ Public Class BEP_Util
 
 		Try
 			inputInt = Short.Parse(inputString)
-			If (inputInt = 0) Or Not RegexObj.IsMatch(inputString) Then
+			If (inputInt = 0) OrElse Not RegexObj.IsMatch(inputString) Then
 				invalid = True
 			End If
 		Catch ex As Exception
@@ -105,7 +105,7 @@ Public Class BEP_Util
 
 		Try
 			Dim input_decimal As Decimal = Decimal.Parse(inputString)
-			If (input_decimal < invalid_decimal) Or _
+			If (input_decimal < invalid_decimal) OrElse _
 				Not RegexObj.IsMatch(inputString) Then
 				invalid = True
 			End If

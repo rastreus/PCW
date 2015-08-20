@@ -810,9 +810,9 @@ Public Class PCW_Data
 #Region "SubmitCouponListsToDB"
 	Private Function SubmitCouponOffersToDB() As Boolean
 		Dim result As Boolean = False
-		If (CurrentPromoCategory = PromoCategory.entryAndPayout) Or _
-		   (CurrentPromoCategory = PromoCategory.payoutOnly) Or _
-		   (CurrentPromoCategory = PromoCategory.multiPart) Or _
+		If (CurrentPromoCategory = PromoCategory.entryAndPayout) OrElse _
+		   (CurrentPromoCategory = PromoCategory.payoutOnly) OrElse _
+		   (CurrentPromoCategory = PromoCategory.multiPart) OrElse _
 		   (CurrentPromoCategory = PromoCategory.acquisition) Then
 			result = True
 		End If
@@ -824,8 +824,8 @@ Public Class PCW_Data
 		Dim result As Boolean = True
 		Dim payoutType As String = New String(String.Empty)
 		payoutType = GetPayoutPromoType()
-		If (payoutType = "31B") Or _
-		   (payoutType = "31C") Or _
+		If (payoutType = "31B") OrElse _
+		   (payoutType = "31C") OrElse _
 		   (payoutType = "34") Then
 			result = False
 		End If

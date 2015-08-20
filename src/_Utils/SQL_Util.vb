@@ -43,7 +43,7 @@ Public Class SQL_Util
 		'Will be NULL (VB value of Nothing) if they are not the same;
 		'however, if existing_promoName is not NULL, check to be sure.
 		'No need to assume incorrectly.
-		If (Not String.IsNullOrEmpty(existing_promoName_entry) Or _
+		If (Not String.IsNullOrEmpty(existing_promoName_entry) OrElse _
 			Not String.IsNullOrEmpty(existing_promoName_payout)) Then
 			returningBool = True
 		End If

@@ -113,7 +113,7 @@ Public Class StepGetCouponOffers
 
 	Private Function getNote() As String
 		Dim result As String = New String(String.Empty)
-		If Me.txtNote.Text = "EX: Small Note" Or _
+		If Me.txtNote.Text = "EX: Small Note" OrElse _
 			Me.txtNote.Text = String.Empty Then
 			result = Nothing
 		Else
@@ -555,7 +555,7 @@ Public Class StepGetCouponOffers
 	End Sub
 
 	Private Sub checkToRelocateAndRenumberCheckBox()
-		If (Me.cbSelectAllCouponOffers.Checked <> True) Or _
+		If (Me.cbSelectAllCouponOffers.Checked <> True) OrElse _
 		   (Me.cbSelectAllCouponOffers.Checked AndAlso _
 		   (Me.cbSelectAllCouponOffers.CheckState = _
 			   CheckState.Indeterminate)) Then

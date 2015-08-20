@@ -97,7 +97,7 @@
 			If (ExcludeRange_Not_Within_ValidPeriod(_validEnd, _
 												   _validStart, _
 												   _excludeEnd, _
-												   _excludeStart) Or _
+												   _excludeStart) OrElse _
 				EndDate_Before_StartDate(_excludeEnd, _excludeStart)) Then
 				result = False 'No, The Coupon Offer is not valid.
 			End If

@@ -139,7 +139,7 @@ Public Class StepEntryTicketAmt_Data
 		If (Not IsNothing(TicketsForEntirePromo)) AndAlso _
 			(Not IsNothing(TicketsPerPatron)) Then
 			result = (TicketsForEntirePromo < TicketsPerPatron)
-		ElseIf (IsNothing(TicketsForEntirePromo)) Or _
+		ElseIf (IsNothing(TicketsForEntirePromo)) OrElse _
 			(IsNothing(TicketsPerPatron)) Then
 			result = True
 		End If
@@ -147,8 +147,8 @@ Public Class StepEntryTicketAmt_Data
 	End Function
 	Public Function BadPromoType() As Boolean
 		Dim result As Boolean = False
-		If (PromoType = String.Empty) Or _
-			(PromoType = "EX:25") Or _
+		If (PromoType = String.Empty) OrElse _
+			(PromoType = "EX:25") OrElse _
 			(PromoType.Length > 3) Then
 			result = True
 		End If

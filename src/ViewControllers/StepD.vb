@@ -64,7 +64,7 @@ Public Class StepD
 					Me.stepD_data.MultiPartDaysTiers = Me.txtNumOfTiers.Text
 				End If
 				If (Me.rbDAYS.Checked AndAlso _
-					Me.cbPayoutParametersYES.Checked) Or _
+					Me.cbPayoutParametersYES.Checked) OrElse _
 					(Me.rbTIERS.Checked AndAlso _
 					 Me.cbPayoutParametersYES.Checked) Then
 					Me.stepD_data.MultiPartCategory = MultiPart.multiPartSame
@@ -407,7 +407,7 @@ Public Class StepD
 			TiersSuccessIcon.InActiveColor = Color.Lime
 			TiersSuccessIcon.Visible = True
 			GUI_Util.NextEnabled()
-		ElseIf (Me.txtNumOfTiers.Text = BEP_Util.TiersStr Or _
+		ElseIf (Me.txtNumOfTiers.Text = BEP_Util.TiersStr OrElse _
 				Me.txtNumOfTiers.Text = String.Empty) Then
 			PCW.NextEnabled = False
 		End If
