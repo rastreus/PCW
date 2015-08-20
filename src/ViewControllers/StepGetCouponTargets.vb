@@ -30,13 +30,16 @@ Public Class StepGetCouponTargets
 	Private m_DelegateSetPathText As DelegateSetPathText
 	Private targetsList As ArrayList
 
-	Private Sub StepGetCouponTarget_Load(sender As Object, e As EventArgs) _
+	Private Sub StepGetCouponTarget_Load(sender As Object, _
+										 e As EventArgs) _
 		Handles MyBase.Load
-		m_DelegateSetPathText = New DelegateSetPathText(AddressOf Me.SetPathText)
+		m_DelegateSetPathText = _
+			New DelegateSetPathText(AddressOf Me.SetPathText)
 	End Sub
 #End Region
 #Region "StepGetCouponTargets_ResetStep"
-	Private Sub StepGetCouponTarget_ResetStep(sender As Object, e As EventArgs) _
+	Private Sub StepGetCouponTarget_ResetStep(sender As Object, _
+											  e As EventArgs) _
 		Handles MyBase.ResetStep
 		ResetControls()
 	End Sub
