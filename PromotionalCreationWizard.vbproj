@@ -140,16 +140,16 @@
     <Compile Include="src\Components\SelectorButton.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\frmSelect.Designer.vb">
+    <Compile Include="src\Forms\frmSelect.Designer.vb">
       <DependentUpon>frmSelect.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\frmSelect.vb">
+    <Compile Include="src\Forms\frmSelect.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\frmAutoUpdate.Designer.vb">
+    <Compile Include="src\Forms\frmAutoUpdate.Designer.vb">
       <DependentUpon>frmAutoUpdate.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\frmAutoUpdate.vb">
+    <Compile Include="src\Forms\frmAutoUpdate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Interfaces\IPromoData.vb" />
@@ -184,10 +184,10 @@
     <Compile Include="src\Models\PCW_Data.vb" />
     <Compile Include="src\Models\StepB_Data.vb" />
     <Compile Include="src\Models\StepC_Data.vb" />
-    <Compile Include="src\PCW.vb">
+    <Compile Include="src\Forms\PCW.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\PCW.Designer.vb">
+    <Compile Include="src\Forms\PCW.Designer.vb">
       <DependentUpon>PCW.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -206,13 +206,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="src\PAE.Designer.vb">
+    <Compile Include="src\Forms\PAE.Designer.vb">
       <DependentUpon>PAE.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\PAE.vb">
+    <Compile Include="src\Forms\PAE.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\SingletonQueue.vb" />
     <Compile Include="src\_Utils\SQL_Util.vb" />
     <Compile Include="src\ViewControllers\StepA.Designer.vb">
       <DependentUpon>StepA.vb</DependentUpon>
@@ -290,7 +289,7 @@
       <DependentUpon>DDEP.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\frmSelect.resx">
+    <EmbeddedResource Include="src\Forms\frmSelect.resx">
       <DependentUpon>frmSelect.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -299,11 +298,11 @@
     <None Include="research\PromoTypeDescriptions.xlsx" />
     <None Include="research\Target-Lists\Monthly Mailer Target List.csv" />
     <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
-    <EmbeddedResource Include="src\frmAutoUpdate.resx">
+    <EmbeddedResource Include="src\Forms\frmAutoUpdate.resx">
       <DependentUpon>frmAutoUpdate.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\PCW.resx">
+    <EmbeddedResource Include="src\Forms\PCW.resx">
       <DependentUpon>PCW.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -312,7 +311,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\PAE.resx">
+    <EmbeddedResource Include="src\Forms\PAE.resx">
       <DependentUpon>PAE.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -410,7 +409,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE\CenterMessagebox-License.txt" />
-    <Content Include="Future-Developer-README.txt" />
+    <None Include="FUTURE-DEV-README.md" />
     <Content Include="LICENSE\PromotionalCreationWizard-License.txt" />
     <Content Include="research\PromoTypeBNF.txt" />
     <Content Include="research\Target-Lists\_Note-About-Target-List.txt" />
