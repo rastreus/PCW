@@ -39,12 +39,12 @@ Partial Class StepB
 		Me.btnPromoID = New System.Windows.Forms.Button()
 		Me.lblPromoIDEdit = New System.Windows.Forms.Label()
 		Me.pnlEditPromoID = New System.Windows.Forms.Panel()
+		Me.pnlWhichMonth = New System.Windows.Forms.Panel()
+		Me.rbNextMonth = New System.Windows.Forms.RadioButton()
+		Me.rbThisMonth = New System.Windows.Forms.RadioButton()
 		Me.btnTxtEditPromoID = New System.Windows.Forms.Button()
 		Me.lblEditPromoID = New System.Windows.Forms.Label()
 		Me.txtEditPromoID = New System.Windows.Forms.TextBox()
-		Me.pnlWhichMonth = New System.Windows.Forms.Panel()
-		Me.rbThisMonth = New System.Windows.Forms.RadioButton()
-		Me.rbNextMonth = New System.Windows.Forms.RadioButton()
 		Me.pnlPromoName.SuspendLayout()
 		CType(Me.SuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlRecurring.SuspendLayout()
@@ -94,6 +94,7 @@ Partial Class StepB
 		'btnSetPromoName
 		'
 		Me.btnSetPromoName.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoName.CausesValidation = False
 		Me.btnSetPromoName.Enabled = False
 		Me.btnSetPromoName.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnSetPromoName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
@@ -108,6 +109,7 @@ Partial Class StepB
 		Me.btnSetPromoName.TabStop = False
 		Me.btnSetPromoName.Text = "Set"
 		Me.btnSetPromoName.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetPromoName.UseMnemonic = False
 		Me.btnSetPromoName.UseVisualStyleBackColor = False
 		'
 		'txtPromoName
@@ -129,9 +131,10 @@ Partial Class StepB
 		Me.lblPromoName.ForeColor = System.Drawing.Color.White
 		Me.lblPromoName.Location = New System.Drawing.Point(0, 0)
 		Me.lblPromoName.Name = "lblPromoName"
-		Me.lblPromoName.Size = New System.Drawing.Size(255, 16)
+		Me.lblPromoName.Size = New System.Drawing.Size(264, 16)
 		Me.lblPromoName.TabIndex = 0
 		Me.lblPromoName.Text = "What is the name of the new promo?"
+		Me.lblPromoName.UseMnemonic = False
 		'
 		'pnlRecurring
 		'
@@ -143,7 +146,7 @@ Partial Class StepB
 		Me.pnlRecurring.Location = New System.Drawing.Point(138, 123)
 		Me.pnlRecurring.Name = "pnlRecurring"
 		Me.pnlRecurring.Size = New System.Drawing.Size(267, 132)
-		Me.pnlRecurring.TabIndex = 2
+		Me.pnlRecurring.TabIndex = 0
 		'
 		'lblRecurring
 		'
@@ -154,14 +157,16 @@ Partial Class StepB
 		Me.lblRecurring.ForeColor = System.Drawing.Color.White
 		Me.lblRecurring.Location = New System.Drawing.Point(0, 0)
 		Me.lblRecurring.Name = "lblRecurring"
-		Me.lblRecurring.Size = New System.Drawing.Size(233, 16)
+		Me.lblRecurring.Size = New System.Drawing.Size(240, 16)
 		Me.lblRecurring.TabIndex = 0
 		Me.lblRecurring.Text = "Will the new promo be recurring?"
+		Me.lblRecurring.UseMnemonic = False
 		'
 		'Panel1
 		'
 		Me.Panel1.BackColor = System.Drawing.Color.PapayaWhip
 		Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.Panel1.CausesValidation = False
 		Me.Panel1.Controls.Add(Me.cbRecurringFrequency)
 		Me.Panel1.Controls.Add(Me.rbRecurringYes)
 		Me.Panel1.Controls.Add(Me.rbRecurringNo)
@@ -182,7 +187,8 @@ Partial Class StepB
 		Me.cbRecurringFrequency.Location = New System.Drawing.Point(52, 2)
 		Me.cbRecurringFrequency.Name = "cbRecurringFrequency"
 		Me.cbRecurringFrequency.Size = New System.Drawing.Size(91, 21)
-		Me.cbRecurringFrequency.TabIndex = 3
+		Me.cbRecurringFrequency.TabIndex = 0
+		Me.cbRecurringFrequency.TabStop = False
 		'
 		'rbRecurringYes
 		'
@@ -191,8 +197,7 @@ Partial Class StepB
 		Me.rbRecurringYes.Location = New System.Drawing.Point(3, 3)
 		Me.rbRecurringYes.Name = "rbRecurringYes"
 		Me.rbRecurringYes.Size = New System.Drawing.Size(43, 17)
-		Me.rbRecurringYes.TabIndex = 2
-		Me.rbRecurringYes.TabStop = True
+		Me.rbRecurringYes.TabIndex = 0
 		Me.rbRecurringYes.Text = "Yes"
 		Me.rbRecurringYes.UseVisualStyleBackColor = True
 		'
@@ -204,8 +209,7 @@ Partial Class StepB
 		Me.rbRecurringNo.Location = New System.Drawing.Point(3, 26)
 		Me.rbRecurringNo.Name = "rbRecurringNo"
 		Me.rbRecurringNo.Size = New System.Drawing.Size(39, 17)
-		Me.rbRecurringNo.TabIndex = 4
-		Me.rbRecurringNo.TabStop = True
+		Me.rbRecurringNo.TabIndex = 0
 		Me.rbRecurringNo.Text = "No"
 		Me.rbRecurringNo.UseVisualStyleBackColor = True
 		'
@@ -219,7 +223,7 @@ Partial Class StepB
 		Me.pnlPromoID.Location = New System.Drawing.Point(411, 53)
 		Me.pnlPromoID.Name = "pnlPromoID"
 		Me.pnlPromoID.Size = New System.Drawing.Size(123, 81)
-		Me.pnlPromoID.TabIndex = 8
+		Me.pnlPromoID.TabIndex = 0
 		'
 		'lblPromoIDtop
 		'
@@ -230,9 +234,10 @@ Partial Class StepB
 		Me.lblPromoIDtop.ForeColor = System.Drawing.Color.White
 		Me.lblPromoIDtop.Location = New System.Drawing.Point(0, 0)
 		Me.lblPromoIDtop.Name = "lblPromoIDtop"
-		Me.lblPromoIDtop.Size = New System.Drawing.Size(76, 16)
+		Me.lblPromoIDtop.Size = New System.Drawing.Size(81, 16)
 		Me.lblPromoIDtop.TabIndex = 0
 		Me.lblPromoIDtop.Text = "PromoID: "
+		Me.lblPromoIDtop.UseMnemonic = False
 		'
 		'pnlPapayaWhip
 		'
@@ -249,6 +254,7 @@ Partial Class StepB
 		'btnPromoID
 		'
 		Me.btnPromoID.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnPromoID.CausesValidation = False
 		Me.btnPromoID.FlatAppearance.BorderColor = System.Drawing.Color.Black
 		Me.btnPromoID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
 		Me.btnPromoID.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
@@ -257,8 +263,10 @@ Partial Class StepB
 		Me.btnPromoID.Location = New System.Drawing.Point(3, 3)
 		Me.btnPromoID.Name = "btnPromoID"
 		Me.btnPromoID.Size = New System.Drawing.Size(101, 23)
-		Me.btnPromoID.TabIndex = 1
+		Me.btnPromoID.TabIndex = 0
+		Me.btnPromoID.TabStop = False
 		Me.btnPromoID.Text = "TEST!1503"
+		Me.btnPromoID.UseMnemonic = False
 		Me.btnPromoID.UseVisualStyleBackColor = False
 		'
 		'lblPromoIDEdit
@@ -273,11 +281,13 @@ Partial Class StepB
 		Me.lblPromoIDEdit.TabIndex = 0
 		Me.lblPromoIDEdit.Text = "(Click to edit)"
 		Me.lblPromoIDEdit.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.lblPromoIDEdit.UseMnemonic = False
 		'
 		'pnlEditPromoID
 		'
 		Me.pnlEditPromoID.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlEditPromoID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlEditPromoID.CausesValidation = False
 		Me.pnlEditPromoID.Controls.Add(Me.pnlWhichMonth)
 		Me.pnlEditPromoID.Controls.Add(Me.btnTxtEditPromoID)
 		Me.pnlEditPromoID.Controls.Add(Me.lblEditPromoID)
@@ -289,9 +299,50 @@ Partial Class StepB
 		Me.pnlEditPromoID.TabIndex = 0
 		Me.pnlEditPromoID.Visible = False
 		'
+		'pnlWhichMonth
+		'
+		Me.pnlWhichMonth.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.pnlWhichMonth.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlWhichMonth.CausesValidation = False
+		Me.pnlWhichMonth.Controls.Add(Me.rbNextMonth)
+		Me.pnlWhichMonth.Controls.Add(Me.rbThisMonth)
+		Me.pnlWhichMonth.Location = New System.Drawing.Point(3, 32)
+		Me.pnlWhichMonth.Name = "pnlWhichMonth"
+		Me.pnlWhichMonth.Size = New System.Drawing.Size(93, 40)
+		Me.pnlWhichMonth.TabIndex = 0
+		'
+		'rbNextMonth
+		'
+		Me.rbNextMonth.AutoSize = True
+		Me.rbNextMonth.CausesValidation = False
+		Me.rbNextMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbNextMonth.Location = New System.Drawing.Point(3, 20)
+		Me.rbNextMonth.Name = "rbNextMonth"
+		Me.rbNextMonth.Size = New System.Drawing.Size(85, 17)
+		Me.rbNextMonth.TabIndex = 0
+		Me.rbNextMonth.Text = "Next Month"
+		Me.rbNextMonth.UseMnemonic = False
+		Me.rbNextMonth.UseVisualStyleBackColor = True
+		'
+		'rbThisMonth
+		'
+		Me.rbThisMonth.AutoSize = True
+		Me.rbThisMonth.BackColor = System.Drawing.Color.Transparent
+		Me.rbThisMonth.CausesValidation = False
+		Me.rbThisMonth.Checked = True
+		Me.rbThisMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbThisMonth.Location = New System.Drawing.Point(3, 2)
+		Me.rbThisMonth.Name = "rbThisMonth"
+		Me.rbThisMonth.Size = New System.Drawing.Size(85, 17)
+		Me.rbThisMonth.TabIndex = 0
+		Me.rbThisMonth.Text = "This Month"
+		Me.rbThisMonth.UseMnemonic = False
+		Me.rbThisMonth.UseVisualStyleBackColor = False
+		'
 		'btnTxtEditPromoID
 		'
 		Me.btnTxtEditPromoID.BackColor = System.Drawing.Color.HotPink
+		Me.btnTxtEditPromoID.CausesValidation = False
 		Me.btnTxtEditPromoID.FlatAppearance.BorderColor = System.Drawing.Color.White
 		Me.btnTxtEditPromoID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
 		Me.btnTxtEditPromoID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
@@ -301,14 +352,17 @@ Partial Class StepB
 		Me.btnTxtEditPromoID.Location = New System.Drawing.Point(3, 78)
 		Me.btnTxtEditPromoID.Name = "btnTxtEditPromoID"
 		Me.btnTxtEditPromoID.Size = New System.Drawing.Size(93, 20)
-		Me.btnTxtEditPromoID.TabIndex = 2
+		Me.btnTxtEditPromoID.TabIndex = 0
+		Me.btnTxtEditPromoID.TabStop = False
 		Me.btnTxtEditPromoID.Text = "Set ID"
 		Me.btnTxtEditPromoID.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnTxtEditPromoID.UseMnemonic = False
 		Me.btnTxtEditPromoID.UseVisualStyleBackColor = False
 		'
 		'lblEditPromoID
 		'
 		Me.lblEditPromoID.BackColor = System.Drawing.Color.Transparent
+		Me.lblEditPromoID.CausesValidation = False
 		Me.lblEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblEditPromoID.ForeColor = System.Drawing.Color.White
 		Me.lblEditPromoID.Location = New System.Drawing.Point(53, 3)
@@ -317,9 +371,11 @@ Partial Class StepB
 		Me.lblEditPromoID.TabIndex = 0
 		Me.lblEditPromoID.Text = "1503"
 		Me.lblEditPromoID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.lblEditPromoID.UseMnemonic = False
 		'
 		'txtEditPromoID
 		'
+		Me.txtEditPromoID.CausesValidation = False
 		Me.txtEditPromoID.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.txtEditPromoID.Location = New System.Drawing.Point(3, 3)
 		Me.txtEditPromoID.MaxLength = 5
@@ -329,43 +385,6 @@ Partial Class StepB
 		Me.txtEditPromoID.TabStop = False
 		Me.txtEditPromoID.Text = "TEST!"
 		Me.txtEditPromoID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		'
-		'pnlWhichMonth
-		'
-		Me.pnlWhichMonth.BackColor = System.Drawing.Color.PaleTurquoise
-		Me.pnlWhichMonth.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlWhichMonth.Controls.Add(Me.rbNextMonth)
-		Me.pnlWhichMonth.Controls.Add(Me.rbThisMonth)
-		Me.pnlWhichMonth.Location = New System.Drawing.Point(3, 32)
-		Me.pnlWhichMonth.Name = "pnlWhichMonth"
-		Me.pnlWhichMonth.Size = New System.Drawing.Size(93, 40)
-		Me.pnlWhichMonth.TabIndex = 3
-		'
-		'rbThisMonth
-		'
-		Me.rbThisMonth.AutoSize = True
-		Me.rbThisMonth.BackColor = System.Drawing.Color.Transparent
-		Me.rbThisMonth.Checked = True
-		Me.rbThisMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.rbThisMonth.Location = New System.Drawing.Point(3, 2)
-		Me.rbThisMonth.Name = "rbThisMonth"
-		Me.rbThisMonth.Size = New System.Drawing.Size(85, 17)
-		Me.rbThisMonth.TabIndex = 0
-		Me.rbThisMonth.TabStop = True
-		Me.rbThisMonth.Text = "This Month"
-		Me.rbThisMonth.UseVisualStyleBackColor = False
-		'
-		'rbNextMonth
-		'
-		Me.rbNextMonth.AutoSize = True
-		Me.rbNextMonth.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.rbNextMonth.Location = New System.Drawing.Point(3, 20)
-		Me.rbNextMonth.Name = "rbNextMonth"
-		Me.rbNextMonth.Size = New System.Drawing.Size(85, 17)
-		Me.rbNextMonth.TabIndex = 1
-		Me.rbNextMonth.TabStop = True
-		Me.rbNextMonth.Text = "Next Month"
-		Me.rbNextMonth.UseVisualStyleBackColor = True
 		'
 		'StepB
 		'
