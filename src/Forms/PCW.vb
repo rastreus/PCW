@@ -20,7 +20,6 @@ Public Class PCW
 		'Required by the Designer code.
 		InitializeComponent()
 		' Add any initialization after the InitializeComponent() call.
-		Me.Visible = False
 		Me.pcw_data = New PCW_Data
 		Me.updater = New frmAutoUpdate
 		Me.infoCircle = New FontAwesomeIcons.IconButton

@@ -249,8 +249,8 @@ Public Class StepD
 	End Sub
 #End Region
 #Region "StepD_SetpnlLemonChiffon"
-	Private Sub rbEligiblePlayersOfferList_CheckedChanged(sender As Object, _
-														  e As EventArgs) _
+	Private Sub rbEligiblePlayersList_CheckedChanged(sender As Object, _
+													 e As EventArgs) _
 		Handles rbEligiblePlayersList.CheckedChanged
 		If Me.rbEligiblePlayersList.Checked Then
 			PCW.NextEnabled = False
@@ -263,9 +263,12 @@ Public Class StepD
 	Private Sub SetpnlLemonChiffon(ByVal bool As Boolean)
 		Me.pnlLemonChiffon.Enabled = bool
 		Me.pnlLemonChiffon.Visible = bool
-		If Not bool Then
+		If bool = True Then
 			Me.btnOpenPanel.BackColor = Color.MediumPurple
 			Me.btnOpenPanel.Enabled = True
+			Me.pnlLemonChiffon.BringToFront()
+		Else
+			Me.pnlLemonChiffon.SendToBack()
 		End If
 	End Sub
 #End Region

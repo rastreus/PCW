@@ -51,8 +51,6 @@ Partial Class StepD
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
-		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
-		Me.btnOpenPanel = New System.Windows.Forms.Button()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.PointCutoffLimitSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPointCutoffLimit = New System.Windows.Forms.Button()
@@ -60,6 +58,8 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
+		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
+		Me.btnOpenPanel = New System.Windows.Forms.Button()
 		Me.stepD_DDEP = New PromotionalCreationWizard.DDEP()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
@@ -69,9 +69,9 @@ Partial Class StepD
 		Me.pnlAcquisition.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
-		Me.pnlLemonChiffon.SuspendLayout()
 		Me.pnlPointCutoffLimit.SuspendLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnlLemonChiffon.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -384,8 +384,8 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.CausesValidation = False
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlSumMethod)
 		Me.pnlPlayerEligibility.Controls.Add(Me.lblPlayerEligibility)
-		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Controls.Add(Me.pnlLemonChiffon)
+		Me.pnlPlayerEligibility.Controls.Add(Me.pnlPointCutoffLimit)
 		Me.pnlPlayerEligibility.Location = New System.Drawing.Point(290, 34)
 		Me.pnlPlayerEligibility.Name = "pnlPlayerEligibility"
 		Me.pnlPlayerEligibility.Size = New System.Drawing.Size(265, 238)
@@ -483,36 +483,6 @@ Partial Class StepD
 		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
 		Me.lblPlayerEligibility.UseMnemonic = False
 		'
-		'pnlLemonChiffon
-		'
-		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
-		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
-		Me.pnlLemonChiffon.Enabled = False
-		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
-		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
-		Me.pnlLemonChiffon.Size = New System.Drawing.Size(224, 80)
-		Me.pnlLemonChiffon.TabIndex = 0
-		Me.pnlLemonChiffon.Visible = False
-		'
-		'btnOpenPanel
-		'
-		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnOpenPanel.Enabled = False
-		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
-		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
-		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
-		Me.btnOpenPanel.Name = "btnOpenPanel"
-		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
-		Me.btnOpenPanel.TabIndex = 32
-		Me.btnOpenPanel.Text = "Open Panel"
-		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnOpenPanel.UseVisualStyleBackColor = False
-		'
 		'pnlPointCutoffLimit
 		'
 		Me.pnlPointCutoffLimit.BackColor = System.Drawing.Color.PapayaWhip
@@ -585,6 +555,7 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO.Name = "rbPointCutoffLimitNO"
 		Me.rbPointCutoffLimitNO.Size = New System.Drawing.Size(39, 17)
 		Me.rbPointCutoffLimitNO.TabIndex = 0
+		Me.rbPointCutoffLimitNO.TabStop = True
 		Me.rbPointCutoffLimitNO.Text = "No"
 		Me.rbPointCutoffLimitNO.UseMnemonic = False
 		Me.rbPointCutoffLimitNO.UseVisualStyleBackColor = True
@@ -611,6 +582,36 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.TabIndex = 0
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		Me.lblPointCutoffLimit.UseMnemonic = False
+		'
+		'pnlLemonChiffon
+		'
+		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
+		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
+		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
+		Me.pnlLemonChiffon.Enabled = False
+		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
+		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
+		Me.pnlLemonChiffon.Size = New System.Drawing.Size(224, 80)
+		Me.pnlLemonChiffon.TabIndex = 0
+		Me.pnlLemonChiffon.Visible = False
+		'
+		'btnOpenPanel
+		'
+		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnOpenPanel.Enabled = False
+		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
+		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
+		Me.btnOpenPanel.Name = "btnOpenPanel"
+		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
+		Me.btnOpenPanel.TabIndex = 32
+		Me.btnOpenPanel.Text = "Open Panel"
+		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnOpenPanel.UseVisualStyleBackColor = False
 		'
 		'stepD_DDEP
 		'
@@ -659,10 +660,10 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
 		Me.pnlSumMethod.PerformLayout()
-		Me.pnlLemonChiffon.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlLemonChiffon.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
