@@ -51,6 +51,8 @@ Partial Class StepD
 		Me.rbAutoQualification = New System.Windows.Forms.RadioButton()
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
+		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
+		Me.btnOpenPanel = New System.Windows.Forms.Button()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.PointCutoffLimitSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPointCutoffLimit = New System.Windows.Forms.Button()
@@ -58,8 +60,6 @@ Partial Class StepD
 		Me.rbPointCutoffLimitNO = New System.Windows.Forms.RadioButton()
 		Me.rbPointCutoffLimitYES = New System.Windows.Forms.RadioButton()
 		Me.lblPointCutoffLimit = New System.Windows.Forms.Label()
-		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
-		Me.btnOpenPanel = New System.Windows.Forms.Button()
 		Me.stepD_DDEP = New PromotionalCreationWizard.DDEP()
 		Me.pnlPromoType.SuspendLayout()
 		Me.pnlMultiPart.SuspendLayout()
@@ -69,9 +69,9 @@ Partial Class StepD
 		Me.pnlAcquisition.SuspendLayout()
 		Me.pnlPlayerEligibility.SuspendLayout()
 		Me.pnlSumMethod.SuspendLayout()
+		Me.pnlLemonChiffon.SuspendLayout()
 		Me.pnlPointCutoffLimit.SuspendLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.pnlLemonChiffon.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -106,8 +106,7 @@ Partial Class StepD
 		Me.rbSinglePayoutOnly.Location = New System.Drawing.Point(7, 77)
 		Me.rbSinglePayoutOnly.Name = "rbSinglePayoutOnly"
 		Me.rbSinglePayoutOnly.Size = New System.Drawing.Size(148, 17)
-		Me.rbSinglePayoutOnly.TabIndex = 3
-		Me.rbSinglePayoutOnly.TabStop = True
+		Me.rbSinglePayoutOnly.TabIndex = 0
 		Me.rbSinglePayoutOnly.Text = "Single Event: Payout Only"
 		Me.rbSinglePayoutOnly.UseMnemonic = False
 		Me.rbSinglePayoutOnly.UseVisualStyleBackColor = False
@@ -121,8 +120,7 @@ Partial Class StepD
 		Me.rbSingleEntryPayout.Location = New System.Drawing.Point(7, 31)
 		Me.rbSingleEntryPayout.Name = "rbSingleEntryPayout"
 		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(172, 17)
-		Me.rbSingleEntryPayout.TabIndex = 1
-		Me.rbSingleEntryPayout.TabStop = True
+		Me.rbSingleEntryPayout.TabIndex = 0
 		Me.rbSingleEntryPayout.Text = "Single Event: Entry and Payout"
 		Me.rbSingleEntryPayout.UseMnemonic = False
 		Me.rbSingleEntryPayout.UseVisualStyleBackColor = False
@@ -135,8 +133,7 @@ Partial Class StepD
 		Me.rbMultiPartEntryPayout.Location = New System.Drawing.Point(7, 112)
 		Me.rbMultiPartEntryPayout.Name = "rbMultiPartEntryPayout"
 		Me.rbMultiPartEntryPayout.Size = New System.Drawing.Size(245, 17)
-		Me.rbMultiPartEntryPayout.TabIndex = 4
-		Me.rbMultiPartEntryPayout.TabStop = True
+		Me.rbMultiPartEntryPayout.TabIndex = 0
 		Me.rbMultiPartEntryPayout.Text = "Multi-Part Sequential Event: Entry and Payouts"
 		Me.rbMultiPartEntryPayout.UseMnemonic = False
 		Me.rbMultiPartEntryPayout.UseVisualStyleBackColor = False
@@ -150,8 +147,7 @@ Partial Class StepD
 		Me.rbAcquisition.Location = New System.Drawing.Point(7, 205)
 		Me.rbAcquisition.Name = "rbAcquisition"
 		Me.rbAcquisition.Size = New System.Drawing.Size(76, 17)
-		Me.rbAcquisition.TabIndex = 5
-		Me.rbAcquisition.TabStop = True
+		Me.rbAcquisition.TabIndex = 0
 		Me.rbAcquisition.Text = "Acquisition"
 		Me.rbAcquisition.UseMnemonic = False
 		Me.rbAcquisition.UseVisualStyleBackColor = False
@@ -164,8 +160,7 @@ Partial Class StepD
 		Me.rbSingleEntryOnly.Location = New System.Drawing.Point(7, 54)
 		Me.rbSingleEntryOnly.Name = "rbSingleEntryOnly"
 		Me.rbSingleEntryOnly.Size = New System.Drawing.Size(139, 17)
-		Me.rbSingleEntryOnly.TabIndex = 2
-		Me.rbSingleEntryOnly.TabStop = True
+		Me.rbSingleEntryOnly.TabIndex = 0
 		Me.rbSingleEntryOnly.Text = "Single Event: Entry Only"
 		Me.rbSingleEntryOnly.UseMnemonic = False
 		Me.rbSingleEntryOnly.UseVisualStyleBackColor = False
@@ -414,8 +409,7 @@ Partial Class StepD
 		Me.rbEligiblePlayersList.Location = New System.Drawing.Point(3, 93)
 		Me.rbEligiblePlayersList.Name = "rbEligiblePlayersList"
 		Me.rbEligiblePlayersList.Size = New System.Drawing.Size(228, 17)
-		Me.rbEligiblePlayersList.TabIndex = 9
-		Me.rbEligiblePlayersList.TabStop = True
+		Me.rbEligiblePlayersList.TabIndex = 0
 		Me.rbEligiblePlayersList.Text = "EligiblePlayers List Determines Qualification"
 		Me.rbEligiblePlayersList.UseMnemonic = False
 		Me.rbEligiblePlayersList.UseVisualStyleBackColor = False
@@ -428,8 +422,7 @@ Partial Class StepD
 		Me.rbSumQualifyingPoints.Location = New System.Drawing.Point(3, 9)
 		Me.rbSumQualifyingPoints.Name = "rbSumQualifyingPoints"
 		Me.rbSumQualifyingPoints.Size = New System.Drawing.Size(193, 17)
-		Me.rbSumQualifyingPoints.TabIndex = 6
-		Me.rbSumQualifyingPoints.TabStop = True
+		Me.rbSumQualifyingPoints.TabIndex = 0
 		Me.rbSumQualifyingPoints.Text = "Sum Points Within Qualifying Peroid"
 		Me.rbSumQualifyingPoints.UseMnemonic = False
 		Me.rbSumQualifyingPoints.UseVisualStyleBackColor = True
@@ -441,8 +434,7 @@ Partial Class StepD
 		Me.rbSumLifetimePoints.Location = New System.Drawing.Point(3, 32)
 		Me.rbSumLifetimePoints.Name = "rbSumLifetimePoints"
 		Me.rbSumLifetimePoints.Size = New System.Drawing.Size(117, 17)
-		Me.rbSumLifetimePoints.TabIndex = 7
-		Me.rbSumLifetimePoints.TabStop = True
+		Me.rbSumLifetimePoints.TabIndex = 0
 		Me.rbSumLifetimePoints.Text = "Sum Lifetime Points"
 		Me.rbSumLifetimePoints.UseMnemonic = False
 		Me.rbSumLifetimePoints.UseVisualStyleBackColor = True
@@ -454,8 +446,7 @@ Partial Class StepD
 		Me.rbAutoQualification.Location = New System.Drawing.Point(3, 55)
 		Me.rbAutoQualification.Name = "rbAutoQualification"
 		Me.rbAutoQualification.Size = New System.Drawing.Size(233, 17)
-		Me.rbAutoQualification.TabIndex = 8
-		Me.rbAutoQualification.TabStop = True
+		Me.rbAutoQualification.TabIndex = 0
 		Me.rbAutoQualification.Text = "Automatic Qualification Regardless of Points"
 		Me.rbAutoQualification.UseMnemonic = False
 		Me.rbAutoQualification.UseVisualStyleBackColor = True
@@ -482,6 +473,36 @@ Partial Class StepD
 		Me.lblPlayerEligibility.TabIndex = 0
 		Me.lblPlayerEligibility.Text = "How is player eligibility determined?"
 		Me.lblPlayerEligibility.UseMnemonic = False
+		'
+		'pnlLemonChiffon
+		'
+		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
+		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
+		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
+		Me.pnlLemonChiffon.Enabled = False
+		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
+		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
+		Me.pnlLemonChiffon.Size = New System.Drawing.Size(224, 80)
+		Me.pnlLemonChiffon.TabIndex = 0
+		Me.pnlLemonChiffon.Visible = False
+		'
+		'btnOpenPanel
+		'
+		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnOpenPanel.Enabled = False
+		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
+		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
+		Me.btnOpenPanel.Name = "btnOpenPanel"
+		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
+		Me.btnOpenPanel.TabIndex = 32
+		Me.btnOpenPanel.Text = "Open Panel"
+		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnOpenPanel.UseVisualStyleBackColor = False
 		'
 		'pnlPointCutoffLimit
 		'
@@ -583,36 +604,6 @@ Partial Class StepD
 		Me.lblPointCutoffLimit.Text = "Is there a Point Cutoff limit in order to qualify for the promo?"
 		Me.lblPointCutoffLimit.UseMnemonic = False
 		'
-		'pnlLemonChiffon
-		'
-		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
-		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
-		Me.pnlLemonChiffon.Enabled = False
-		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
-		Me.pnlLemonChiffon.Name = "pnlLemonChiffon"
-		Me.pnlLemonChiffon.Size = New System.Drawing.Size(224, 80)
-		Me.pnlLemonChiffon.TabIndex = 0
-		Me.pnlLemonChiffon.Visible = False
-		'
-		'btnOpenPanel
-		'
-		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnOpenPanel.Enabled = False
-		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
-		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
-		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
-		Me.btnOpenPanel.Name = "btnOpenPanel"
-		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
-		Me.btnOpenPanel.TabIndex = 32
-		Me.btnOpenPanel.Text = "Open Panel"
-		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnOpenPanel.UseVisualStyleBackColor = False
-		'
 		'stepD_DDEP
 		'
 		Me.stepD_DDEP.BackColor = System.Drawing.Color.LemonChiffon
@@ -660,10 +651,10 @@ Partial Class StepD
 		Me.pnlPlayerEligibility.PerformLayout()
 		Me.pnlSumMethod.ResumeLayout(False)
 		Me.pnlSumMethod.PerformLayout()
+		Me.pnlLemonChiffon.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.ResumeLayout(False)
 		Me.pnlPointCutoffLimit.PerformLayout()
 		CType(Me.PointCutoffLimitSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		Me.pnlLemonChiffon.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
