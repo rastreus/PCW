@@ -33,7 +33,7 @@ Partial Class StepC
 		Me.cbSunday = New System.Windows.Forms.CheckBox()
 		Me.lblPrimaryDay = New System.Windows.Forms.Label()
 		Me.lblRedemptionDays = New System.Windows.Forms.Label()
-		Me.Panel2 = New System.Windows.Forms.Panel()
+		Me.pnlEarningDays = New System.Windows.Forms.Panel()
 		Me.cbSelectAll = New System.Windows.Forms.CheckBox()
 		Me.lblPointsEarningDays = New System.Windows.Forms.Label()
 		Me.clbPointsEarningDays = New System.Windows.Forms.CheckedListBox()
@@ -48,12 +48,13 @@ Partial Class StepC
 		Me.lblQualifyingEnd = New System.Windows.Forms.Label()
 		Me.lblQualifyingStart = New System.Windows.Forms.Label()
 		Me.cbSameDayPromo = New System.Windows.Forms.CheckBox()
-		Me.Label13 = New System.Windows.Forms.Label()
+		Me.lblYALBL = New System.Windows.Forms.Label()
 		Me.lblPromoOccursDate = New System.Windows.Forms.Label()
 		Me.dtpOccursDate = New System.Windows.Forms.DateTimePicker()
 		Me.MonthCal = New System.Windows.Forms.MonthCalendar()
 		Me.pnlOccuringQualifyingPeriod = New System.Windows.Forms.Panel()
 		Me.pnlOccursDate = New System.Windows.Forms.Panel()
+		Me.pnlMoccasin = New System.Windows.Forms.Panel()
 		Me.cbSingleDayPromo = New System.Windows.Forms.CheckBox()
 		Me.pnlMonthCal = New System.Windows.Forms.Panel()
 		Me.lblSelectDates = New System.Windows.Forms.Label()
@@ -66,19 +67,18 @@ Partial Class StepC
 		Me.cbPrimaryDay = New System.Windows.Forms.ComboBox()
 		Me.yetAnotherLabel = New System.Windows.Forms.Label()
 		Me.lblQualifyingPeriod = New System.Windows.Forms.Label()
-		Me.pnlMoccasin = New System.Windows.Forms.Panel()
 		Me.pnlRedemptionDays.SuspendLayout()
 		Me.pnlCbRedemptionDays.SuspendLayout()
-		Me.Panel2.SuspendLayout()
+		Me.pnlEarningDays.SuspendLayout()
 		Me.pnlWhenQPStart.SuspendLayout()
 		Me.pnlWhenQPEnd.SuspendLayout()
 		Me.pnlOccuringQualifyingPeriod.SuspendLayout()
 		Me.pnlOccursDate.SuspendLayout()
+		Me.pnlMoccasin.SuspendLayout()
 		Me.pnlMonthCal.SuspendLayout()
 		Me.pnlRecurringQualifyingPeriod.SuspendLayout()
 		Me.Panel7.SuspendLayout()
 		Me.pnlPrimaryDay.SuspendLayout()
-		Me.pnlMoccasin.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -90,6 +90,7 @@ Partial Class StepC
 		'
 		Me.pnlRedemptionDays.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlRedemptionDays.CausesValidation = False
 		Me.pnlRedemptionDays.Controls.Add(Me.pnlCbRedemptionDays)
 		Me.pnlRedemptionDays.Controls.Add(Me.lblPrimaryDay)
 		Me.pnlRedemptionDays.Controls.Add(Me.lblRedemptionDays)
@@ -102,6 +103,7 @@ Partial Class StepC
 		'
 		Me.pnlCbRedemptionDays.BackColor = System.Drawing.Color.Lavender
 		Me.pnlCbRedemptionDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlCbRedemptionDays.CausesValidation = False
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbSaturday)
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbFriday)
 		Me.pnlCbRedemptionDays.Controls.Add(Me.cbThursday)
@@ -113,7 +115,7 @@ Partial Class StepC
 		Me.pnlCbRedemptionDays.Location = New System.Drawing.Point(19, 52)
 		Me.pnlCbRedemptionDays.Name = "pnlCbRedemptionDays"
 		Me.pnlCbRedemptionDays.Size = New System.Drawing.Size(103, 109)
-		Me.pnlCbRedemptionDays.TabIndex = 27
+		Me.pnlCbRedemptionDays.TabIndex = 0
 		'
 		'cbSaturday
 		'
@@ -196,36 +198,41 @@ Partial Class StepC
 		'lblPrimaryDay
 		'
 		Me.lblPrimaryDay.AutoSize = True
+		Me.lblPrimaryDay.CausesValidation = False
 		Me.lblPrimaryDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPrimaryDay.ForeColor = System.Drawing.Color.Lime
 		Me.lblPrimaryDay.Location = New System.Drawing.Point(39, 164)
 		Me.lblPrimaryDay.Name = "lblPrimaryDay"
 		Me.lblPrimaryDay.Size = New System.Drawing.Size(83, 13)
-		Me.lblPrimaryDay.TabIndex = 5
+		Me.lblPrimaryDay.TabIndex = 0
 		Me.lblPrimaryDay.Text = "* Primary Day"
 		Me.lblPrimaryDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.lblPrimaryDay.UseMnemonic = False
 		'
 		'lblRedemptionDays
 		'
-		Me.lblRedemptionDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblRedemptionDays.CausesValidation = False
+		Me.lblRedemptionDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblRedemptionDays.ForeColor = System.Drawing.Color.White
 		Me.lblRedemptionDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblRedemptionDays.Name = "lblRedemptionDays"
 		Me.lblRedemptionDays.Size = New System.Drawing.Size(165, 49)
 		Me.lblRedemptionDays.TabIndex = 0
 		Me.lblRedemptionDays.Text = "On which day(s) is secondary redemption allowed?"
+		Me.lblRedemptionDays.UseMnemonic = False
 		'
-		'Panel2
+		'pnlEarningDays
 		'
-		Me.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.Panel2.Controls.Add(Me.cbSelectAll)
-		Me.Panel2.Controls.Add(Me.lblPointsEarningDays)
-		Me.Panel2.Controls.Add(Me.clbPointsEarningDays)
-		Me.Panel2.Location = New System.Drawing.Point(409, 21)
-		Me.Panel2.Name = "Panel2"
-		Me.Panel2.Size = New System.Drawing.Size(172, 192)
-		Me.Panel2.TabIndex = 0
+		Me.pnlEarningDays.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlEarningDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlEarningDays.CausesValidation = False
+		Me.pnlEarningDays.Controls.Add(Me.cbSelectAll)
+		Me.pnlEarningDays.Controls.Add(Me.lblPointsEarningDays)
+		Me.pnlEarningDays.Controls.Add(Me.clbPointsEarningDays)
+		Me.pnlEarningDays.Location = New System.Drawing.Point(409, 21)
+		Me.pnlEarningDays.Name = "pnlEarningDays"
+		Me.pnlEarningDays.Size = New System.Drawing.Size(172, 192)
+		Me.pnlEarningDays.TabIndex = 0
 		'
 		'cbSelectAll
 		'
@@ -243,17 +250,20 @@ Partial Class StepC
 		'
 		'lblPointsEarningDays
 		'
-		Me.lblPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPointsEarningDays.CausesValidation = False
+		Me.lblPointsEarningDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblPointsEarningDays.ForeColor = System.Drawing.Color.White
 		Me.lblPointsEarningDays.Location = New System.Drawing.Point(3, 0)
 		Me.lblPointsEarningDays.Name = "lblPointsEarningDays"
 		Me.lblPointsEarningDays.Size = New System.Drawing.Size(165, 49)
 		Me.lblPointsEarningDays.TabIndex = 0
 		Me.lblPointsEarningDays.Text = "On which day(s), within the qualifying period, will points be earned?"
+		Me.lblPointsEarningDays.UseMnemonic = False
 		'
 		'clbPointsEarningDays
 		'
 		Me.clbPointsEarningDays.BackColor = System.Drawing.Color.PaleTurquoise
+		Me.clbPointsEarningDays.CausesValidation = False
 		Me.clbPointsEarningDays.CheckOnClick = True
 		Me.clbPointsEarningDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.clbPointsEarningDays.FormattingEnabled = True
@@ -261,13 +271,15 @@ Partial Class StepC
 		Me.clbPointsEarningDays.Location = New System.Drawing.Point(19, 52)
 		Me.clbPointsEarningDays.Name = "clbPointsEarningDays"
 		Me.clbPointsEarningDays.Size = New System.Drawing.Size(103, 109)
-		Me.clbPointsEarningDays.TabIndex = 6
+		Me.clbPointsEarningDays.TabIndex = 0
+		Me.clbPointsEarningDays.TabStop = False
 		Me.clbPointsEarningDays.ThreeDCheckBoxes = True
 		'
 		'pnlWhenQPStart
 		'
 		Me.pnlWhenQPStart.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlWhenQPStart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlWhenQPStart.CausesValidation = False
 		Me.pnlWhenQPStart.Controls.Add(Me.dtpQualifyingStart)
 		Me.pnlWhenQPStart.Controls.Add(Me.lblWhenQPStart)
 		Me.pnlWhenQPStart.Location = New System.Drawing.Point(0, 3)
@@ -277,16 +289,19 @@ Partial Class StepC
 		'
 		'dtpQualifyingStart
 		'
+		Me.dtpQualifyingStart.CausesValidation = False
 		Me.dtpQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingStart.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingStart.Name = "dtpQualifyingStart"
 		Me.dtpQualifyingStart.Size = New System.Drawing.Size(95, 20)
-		Me.dtpQualifyingStart.TabIndex = 1
+		Me.dtpQualifyingStart.TabIndex = 0
+		Me.dtpQualifyingStart.TabStop = False
 		'
 		'lblWhenQPStart
 		'
 		Me.lblWhenQPStart.BackColor = System.Drawing.Color.Transparent
+		Me.lblWhenQPStart.CausesValidation = False
 		Me.lblWhenQPStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblWhenQPStart.ForeColor = System.Drawing.SystemColors.ControlText
 		Me.lblWhenQPStart.Location = New System.Drawing.Point(0, 0)
@@ -294,11 +309,13 @@ Partial Class StepC
 		Me.lblWhenQPStart.Size = New System.Drawing.Size(106, 48)
 		Me.lblWhenQPStart.TabIndex = 0
 		Me.lblWhenQPStart.Text = "When does the qualifying period start?"
+		Me.lblWhenQPStart.UseMnemonic = False
 		'
 		'pnlWhenQPEnd
 		'
 		Me.pnlWhenQPEnd.BackColor = System.Drawing.Color.PapayaWhip
 		Me.pnlWhenQPEnd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlWhenQPEnd.CausesValidation = False
 		Me.pnlWhenQPEnd.Controls.Add(Me.dtpQualifyingEnd)
 		Me.pnlWhenQPEnd.Controls.Add(Me.lblWhenQPEnd)
 		Me.pnlWhenQPEnd.Location = New System.Drawing.Point(113, 3)
@@ -308,22 +325,26 @@ Partial Class StepC
 		'
 		'dtpQualifyingEnd
 		'
+		Me.dtpQualifyingEnd.CausesValidation = False
 		Me.dtpQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpQualifyingEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
 		Me.dtpQualifyingEnd.Location = New System.Drawing.Point(3, 53)
 		Me.dtpQualifyingEnd.Name = "dtpQualifyingEnd"
 		Me.dtpQualifyingEnd.Size = New System.Drawing.Size(95, 20)
-		Me.dtpQualifyingEnd.TabIndex = 2
+		Me.dtpQualifyingEnd.TabIndex = 0
+		Me.dtpQualifyingEnd.TabStop = False
 		'
 		'lblWhenQPEnd
 		'
 		Me.lblWhenQPEnd.BackColor = System.Drawing.Color.Transparent
+		Me.lblWhenQPEnd.CausesValidation = False
 		Me.lblWhenQPEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblWhenQPEnd.Location = New System.Drawing.Point(0, 0)
 		Me.lblWhenQPEnd.Name = "lblWhenQPEnd"
 		Me.lblWhenQPEnd.Size = New System.Drawing.Size(106, 48)
 		Me.lblWhenQPEnd.TabIndex = 0
 		Me.lblWhenQPEnd.Text = "When does the qualifying period end?"
+		Me.lblWhenQPEnd.UseMnemonic = False
 		'
 		'Label9
 		'
@@ -354,52 +375,60 @@ Partial Class StepC
 		'lblQualifyingEnd
 		'
 		Me.lblQualifyingEnd.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblQualifyingEnd.CausesValidation = False
 		Me.lblQualifyingEnd.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingEnd.ForeColor = System.Drawing.Color.White
 		Me.lblQualifyingEnd.Location = New System.Drawing.Point(37, 34)
 		Me.lblQualifyingEnd.Name = "lblQualifyingEnd"
 		Me.lblQualifyingEnd.Size = New System.Drawing.Size(198, 23)
-		Me.lblQualifyingEnd.TabIndex = 20
+		Me.lblQualifyingEnd.TabIndex = 0
 		Me.lblQualifyingEnd.Text = "End Date"
 		Me.lblQualifyingEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.lblQualifyingEnd.UseMnemonic = False
 		'
 		'lblQualifyingStart
 		'
 		Me.lblQualifyingStart.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblQualifyingStart.CausesValidation = False
 		Me.lblQualifyingStart.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingStart.ForeColor = System.Drawing.Color.White
 		Me.lblQualifyingStart.Location = New System.Drawing.Point(38, 17)
 		Me.lblQualifyingStart.Name = "lblQualifyingStart"
 		Me.lblQualifyingStart.Size = New System.Drawing.Size(198, 23)
-		Me.lblQualifyingStart.TabIndex = 21
+		Me.lblQualifyingStart.TabIndex = 0
 		Me.lblQualifyingStart.Text = "Start Date"
 		Me.lblQualifyingStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.lblQualifyingStart.UseMnemonic = False
 		'
 		'cbSameDayPromo
 		'
 		Me.cbSameDayPromo.AutoSize = True
 		Me.cbSameDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSameDayPromo.CausesValidation = False
 		Me.cbSameDayPromo.Enabled = False
 		Me.cbSameDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSameDayPromo.Location = New System.Drawing.Point(3, 3)
 		Me.cbSameDayPromo.Name = "cbSameDayPromo"
 		Me.cbSameDayPromo.Size = New System.Drawing.Size(110, 17)
-		Me.cbSameDayPromo.TabIndex = 19
+		Me.cbSameDayPromo.TabIndex = 0
+		Me.cbSameDayPromo.TabStop = False
 		Me.cbSameDayPromo.Text = "Same-Day Promo"
 		Me.cbSameDayPromo.UseVisualStyleBackColor = False
 		'
-		'Label13
+		'lblYALBL
 		'
-		Me.Label13.AutoSize = True
-		Me.Label13.BackColor = System.Drawing.SystemColors.ControlDarkDark
-		Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label13.ForeColor = System.Drawing.Color.Gainsboro
-		Me.Label13.Location = New System.Drawing.Point(0, 0)
-		Me.Label13.Name = "Label13"
-		Me.Label13.Size = New System.Drawing.Size(140, 13)
-		Me.Label13.TabIndex = 18
-		Me.Label13.Text = "Qualifying Period Dates"
-		Me.Label13.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.lblYALBL.AutoSize = True
+		Me.lblYALBL.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.lblYALBL.CausesValidation = False
+		Me.lblYALBL.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblYALBL.ForeColor = System.Drawing.Color.Gainsboro
+		Me.lblYALBL.Location = New System.Drawing.Point(0, 0)
+		Me.lblYALBL.Name = "lblYALBL"
+		Me.lblYALBL.Size = New System.Drawing.Size(140, 13)
+		Me.lblYALBL.TabIndex = 0
+		Me.lblYALBL.Text = "Qualifying Period Dates"
+		Me.lblYALBL.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.lblYALBL.UseMnemonic = False
 		'
 		'lblPromoOccursDate
 		'
@@ -410,20 +439,24 @@ Partial Class StepC
 		Me.lblPromoOccursDate.Location = New System.Drawing.Point(3, 1)
 		Me.lblPromoOccursDate.Name = "lblPromoOccursDate"
 		Me.lblPromoOccursDate.Size = New System.Drawing.Size(126, 15)
-		Me.lblPromoOccursDate.TabIndex = 17
+		Me.lblPromoOccursDate.TabIndex = 0
 		Me.lblPromoOccursDate.Text = "Promo Occurs Date"
+		Me.lblPromoOccursDate.UseMnemonic = False
 		'
 		'dtpOccursDate
 		'
+		Me.dtpOccursDate.CausesValidation = False
 		Me.dtpOccursDate.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.dtpOccursDate.Location = New System.Drawing.Point(6, 17)
 		Me.dtpOccursDate.Name = "dtpOccursDate"
 		Me.dtpOccursDate.Size = New System.Drawing.Size(199, 20)
-		Me.dtpOccursDate.TabIndex = 16
+		Me.dtpOccursDate.TabIndex = 0
+		Me.dtpOccursDate.TabStop = False
 		'
 		'MonthCal
 		'
 		Me.MonthCal.BackColor = System.Drawing.Color.White
+		Me.MonthCal.CausesValidation = False
 		Me.MonthCal.Cursor = System.Windows.Forms.Cursors.No
 		Me.MonthCal.Enabled = False
 		Me.MonthCal.ForeColor = System.Drawing.SystemColors.ControlText
@@ -434,6 +467,7 @@ Partial Class StepC
 		Me.MonthCal.ShowToday = False
 		Me.MonthCal.ShowTodayCircle = False
 		Me.MonthCal.TabIndex = 15
+		Me.MonthCal.TabStop = False
 		Me.MonthCal.TitleBackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.MonthCal.TitleForeColor = System.Drawing.Color.Gold
 		Me.MonthCal.TrailingForeColor = System.Drawing.Color.Gray
@@ -443,7 +477,8 @@ Partial Class StepC
 		'
 		Me.pnlOccuringQualifyingPeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlOccuringQualifyingPeriod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label13)
+		Me.pnlOccuringQualifyingPeriod.CausesValidation = False
+		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblYALBL)
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.Label10)
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingEnd)
 		Me.pnlOccuringQualifyingPeriod.Controls.Add(Me.lblQualifyingStart)
@@ -457,24 +492,39 @@ Partial Class StepC
 		'
 		Me.pnlOccursDate.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlOccursDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlOccursDate.CausesValidation = False
 		Me.pnlOccursDate.Controls.Add(Me.lblPromoOccursDate)
 		Me.pnlOccursDate.Controls.Add(Me.dtpOccursDate)
 		Me.pnlOccursDate.Controls.Add(Me.pnlMoccasin)
 		Me.pnlOccursDate.Location = New System.Drawing.Point(3, 200)
 		Me.pnlOccursDate.Name = "pnlOccursDate"
 		Me.pnlOccursDate.Size = New System.Drawing.Size(220, 89)
-		Me.pnlOccursDate.TabIndex = 25
+		Me.pnlOccursDate.TabIndex = 0
+		'
+		'pnlMoccasin
+		'
+		Me.pnlMoccasin.BackColor = System.Drawing.Color.Moccasin
+		Me.pnlMoccasin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMoccasin.CausesValidation = False
+		Me.pnlMoccasin.Controls.Add(Me.cbSingleDayPromo)
+		Me.pnlMoccasin.Controls.Add(Me.cbSameDayPromo)
+		Me.pnlMoccasin.Location = New System.Drawing.Point(4, 40)
+		Me.pnlMoccasin.Name = "pnlMoccasin"
+		Me.pnlMoccasin.Size = New System.Drawing.Size(201, 42)
+		Me.pnlMoccasin.TabIndex = 0
 		'
 		'cbSingleDayPromo
 		'
 		Me.cbSingleDayPromo.AutoSize = True
 		Me.cbSingleDayPromo.BackColor = System.Drawing.Color.Transparent
+		Me.cbSingleDayPromo.CausesValidation = False
 		Me.cbSingleDayPromo.Enabled = False
 		Me.cbSingleDayPromo.Font = New System.Drawing.Font("Consolas", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbSingleDayPromo.Location = New System.Drawing.Point(3, 21)
 		Me.cbSingleDayPromo.Name = "cbSingleDayPromo"
 		Me.cbSingleDayPromo.Size = New System.Drawing.Size(182, 17)
-		Me.cbSingleDayPromo.TabIndex = 20
+		Me.cbSingleDayPromo.TabIndex = 0
+		Me.cbSingleDayPromo.TabStop = False
 		Me.cbSingleDayPromo.Text = "Single-Day Promo (Ex. VIP)"
 		Me.cbSingleDayPromo.UseVisualStyleBackColor = False
 		'
@@ -482,12 +532,13 @@ Partial Class StepC
 		'
 		Me.pnlMonthCal.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlMonthCal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlMonthCal.CausesValidation = False
 		Me.pnlMonthCal.Controls.Add(Me.MonthCal)
 		Me.pnlMonthCal.Controls.Add(Me.lblSelectDates)
 		Me.pnlMonthCal.Location = New System.Drawing.Point(3, 21)
 		Me.pnlMonthCal.Name = "pnlMonthCal"
 		Me.pnlMonthCal.Size = New System.Drawing.Size(220, 175)
-		Me.pnlMonthCal.TabIndex = 26
+		Me.pnlMonthCal.TabIndex = 0
 		'
 		'lblSelectDates
 		'
@@ -505,12 +556,13 @@ Partial Class StepC
 		'
 		Me.pnlRecurringQualifyingPeriod.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlRecurringQualifyingPeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlRecurringQualifyingPeriod.CausesValidation = False
 		Me.pnlRecurringQualifyingPeriod.Controls.Add(Me.pnlWhenQPStart)
 		Me.pnlRecurringQualifyingPeriod.Controls.Add(Me.pnlWhenQPEnd)
 		Me.pnlRecurringQualifyingPeriod.Location = New System.Drawing.Point(3, 200)
 		Me.pnlRecurringQualifyingPeriod.Name = "pnlRecurringQualifyingPeriod"
 		Me.pnlRecurringQualifyingPeriod.Size = New System.Drawing.Size(220, 89)
-		Me.pnlRecurringQualifyingPeriod.TabIndex = 27
+		Me.pnlRecurringQualifyingPeriod.TabIndex = 0
 		'
 		'Label6
 		'
@@ -564,59 +616,55 @@ Partial Class StepC
 		'
 		Me.pnlPrimaryDay.BackColor = System.Drawing.SystemColors.ControlDarkDark
 		Me.pnlPrimaryDay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlPrimaryDay.CausesValidation = False
 		Me.pnlPrimaryDay.Controls.Add(Me.cbPrimaryDay)
 		Me.pnlPrimaryDay.Controls.Add(Me.yetAnotherLabel)
 		Me.pnlPrimaryDay.Enabled = False
 		Me.pnlPrimaryDay.Location = New System.Drawing.Point(229, 219)
 		Me.pnlPrimaryDay.Name = "pnlPrimaryDay"
 		Me.pnlPrimaryDay.Size = New System.Drawing.Size(124, 57)
-		Me.pnlPrimaryDay.TabIndex = 28
+		Me.pnlPrimaryDay.TabIndex = 0
 		Me.pnlPrimaryDay.Visible = False
 		'
 		'cbPrimaryDay
 		'
+		Me.cbPrimaryDay.CausesValidation = False
 		Me.cbPrimaryDay.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.cbPrimaryDay.FormattingEnabled = True
 		Me.cbPrimaryDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
 		Me.cbPrimaryDay.Location = New System.Drawing.Point(7, 24)
 		Me.cbPrimaryDay.Name = "cbPrimaryDay"
 		Me.cbPrimaryDay.Size = New System.Drawing.Size(103, 21)
-		Me.cbPrimaryDay.TabIndex = 30
+		Me.cbPrimaryDay.TabIndex = 0
+		Me.cbPrimaryDay.TabStop = False
 		'
 		'yetAnotherLabel
 		'
 		Me.yetAnotherLabel.AutoSize = True
 		Me.yetAnotherLabel.BackColor = System.Drawing.Color.Transparent
+		Me.yetAnotherLabel.CausesValidation = False
 		Me.yetAnotherLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.yetAnotherLabel.ForeColor = System.Drawing.Color.Gainsboro
 		Me.yetAnotherLabel.Location = New System.Drawing.Point(0, 0)
 		Me.yetAnotherLabel.Name = "yetAnotherLabel"
 		Me.yetAnotherLabel.Size = New System.Drawing.Size(74, 13)
-		Me.yetAnotherLabel.TabIndex = 29
+		Me.yetAnotherLabel.TabIndex = 0
 		Me.yetAnotherLabel.Text = "Primary Day"
 		Me.yetAnotherLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.yetAnotherLabel.UseMnemonic = False
 		'
 		'lblQualifyingPeriod
 		'
 		Me.lblQualifyingPeriod.AutoSize = True
 		Me.lblQualifyingPeriod.BackColor = System.Drawing.Color.Transparent
+		Me.lblQualifyingPeriod.CausesValidation = False
 		Me.lblQualifyingPeriod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblQualifyingPeriod.Location = New System.Drawing.Point(8, 7)
 		Me.lblQualifyingPeriod.Name = "lblQualifyingPeriod"
 		Me.lblQualifyingPeriod.Size = New System.Drawing.Size(206, 13)
-		Me.lblQualifyingPeriod.TabIndex = 29
+		Me.lblQualifyingPeriod.TabIndex = 0
 		Me.lblQualifyingPeriod.Text = "Calendar displays Qualifying Period"
-		'
-		'pnlMoccasin
-		'
-		Me.pnlMoccasin.BackColor = System.Drawing.Color.Moccasin
-		Me.pnlMoccasin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-		Me.pnlMoccasin.Controls.Add(Me.cbSingleDayPromo)
-		Me.pnlMoccasin.Controls.Add(Me.cbSameDayPromo)
-		Me.pnlMoccasin.Location = New System.Drawing.Point(4, 40)
-		Me.pnlMoccasin.Name = "pnlMoccasin"
-		Me.pnlMoccasin.Size = New System.Drawing.Size(201, 42)
-		Me.pnlMoccasin.TabIndex = 21
+		Me.lblQualifyingPeriod.UseMnemonic = False
 		'
 		'StepC
 		'
@@ -626,23 +674,23 @@ Partial Class StepC
 		Me.Controls.Add(Me.CheckedListBox1)
 		Me.Controls.Add(Me.pnlMonthCal)
 		Me.Controls.Add(Me.Panel7)
-		Me.Controls.Add(Me.Panel2)
+		Me.Controls.Add(Me.pnlEarningDays)
 		Me.Controls.Add(Me.pnlRedemptionDays)
 		Me.Controls.Add(Me.pnlPrimaryDay)
 		Me.Controls.Add(Me.pnlOccuringQualifyingPeriod)
-		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Controls.Add(Me.pnlRecurringQualifyingPeriod)
+		Me.Controls.Add(Me.pnlOccursDate)
 		Me.Name = "StepC"
 		Me.NextStep = "StepCanHazSecurity"
 		Me.PreviousStep = "StepB"
 		Me.Size = New System.Drawing.Size(594, 293)
 		Me.StepDescription = "Set the date information for the promotional."
-		Me.Controls.SetChildIndex(Me.pnlRecurringQualifyingPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlOccursDate, 0)
+		Me.Controls.SetChildIndex(Me.pnlRecurringQualifyingPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlOccuringQualifyingPeriod, 0)
 		Me.Controls.SetChildIndex(Me.pnlPrimaryDay, 0)
 		Me.Controls.SetChildIndex(Me.pnlRedemptionDays, 0)
-		Me.Controls.SetChildIndex(Me.Panel2, 0)
+		Me.Controls.SetChildIndex(Me.pnlEarningDays, 0)
 		Me.Controls.SetChildIndex(Me.Panel7, 0)
 		Me.Controls.SetChildIndex(Me.pnlMonthCal, 0)
 		Me.Controls.SetChildIndex(Me.CheckedListBox1, 0)
@@ -652,21 +700,21 @@ Partial Class StepC
 		Me.pnlRedemptionDays.PerformLayout()
 		Me.pnlCbRedemptionDays.ResumeLayout(False)
 		Me.pnlCbRedemptionDays.PerformLayout()
-		Me.Panel2.ResumeLayout(False)
-		Me.Panel2.PerformLayout()
+		Me.pnlEarningDays.ResumeLayout(False)
+		Me.pnlEarningDays.PerformLayout()
 		Me.pnlWhenQPStart.ResumeLayout(False)
 		Me.pnlWhenQPEnd.ResumeLayout(False)
 		Me.pnlOccuringQualifyingPeriod.ResumeLayout(False)
 		Me.pnlOccuringQualifyingPeriod.PerformLayout()
 		Me.pnlOccursDate.ResumeLayout(False)
 		Me.pnlOccursDate.PerformLayout()
+		Me.pnlMoccasin.ResumeLayout(False)
+		Me.pnlMoccasin.PerformLayout()
 		Me.pnlMonthCal.ResumeLayout(False)
 		Me.pnlRecurringQualifyingPeriod.ResumeLayout(False)
 		Me.Panel7.ResumeLayout(False)
 		Me.pnlPrimaryDay.ResumeLayout(False)
 		Me.pnlPrimaryDay.PerformLayout()
-		Me.pnlMoccasin.ResumeLayout(False)
-		Me.pnlMoccasin.PerformLayout()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -677,7 +725,7 @@ Partial Class StepC
 	Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
 	Private WithEvents pnlRedemptionDays As System.Windows.Forms.Panel
 	Private WithEvents lblRedemptionDays As System.Windows.Forms.Label
-	Private WithEvents Panel2 As System.Windows.Forms.Panel
+	Private WithEvents pnlEarningDays As System.Windows.Forms.Panel
 	Private WithEvents pnlWhenQPStart As System.Windows.Forms.Panel
 	Private WithEvents dtpQualifyingStart As System.Windows.Forms.DateTimePicker
 	Private WithEvents lblWhenQPStart As System.Windows.Forms.Label
@@ -690,7 +738,7 @@ Partial Class StepC
 	Private WithEvents lblPrimaryDay As System.Windows.Forms.Label
 	Private WithEvents lblQualifyingEnd As System.Windows.Forms.Label
 	Private WithEvents lblQualifyingStart As System.Windows.Forms.Label
-	Private WithEvents Label13 As System.Windows.Forms.Label
+	Private WithEvents lblYALBL As System.Windows.Forms.Label
 	Private WithEvents MonthCal As System.Windows.Forms.MonthCalendar
 	Private WithEvents pnlOccuringQualifyingPeriod As System.Windows.Forms.Panel
 	Private WithEvents pnlMonthCal As System.Windows.Forms.Panel
