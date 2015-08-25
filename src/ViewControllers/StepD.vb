@@ -90,7 +90,8 @@ Public Class StepD
 		If (Me.rbEligiblePlayersList.Checked AndAlso _
 			Me.stepD_DDEP.indexAreSet) Then
 			setEligiblePlayersCSV()
-		Else
+		ElseIf (Me.rbEligiblePlayersList.Checked AndAlso _
+				 Me.stepD_DDEP.indexAreSet = False) Then
 			GUI_Util.msgBox("ELIGIBLEPLAYER INDICE NOT SET!")
 		End If
 	End Sub
@@ -490,11 +491,25 @@ Public Class StepD
 		Handles btnOpenPanel.Click
 		If Me.rbEligiblePlayersList.Checked Then
 			Me.btnOpenPanel.Enabled = False
+			Me.pnlPromoType.Enabled = False
+			Me.pnlPlayerEligibility.Enabled = False
 			PCW.Data.UsesEligiblePlayers = True
 			Me.stepD_DDEP.Visible = True
 			Me.stepD_DDEP.Enabled = True
 			Me.stepD_DDEP.BringToFront()
 			Me.btnOpenPanel.Enabled = True
+		End If
+	End Sub
+
+	Private Sub stepD_DDEP_EnabledChanged(sender As Object, _
+										  e As EventArgs) _
+		Handles stepD_DDEP.EnabledChanged
+		If stepD_DDEP.Enabled = False Then
+			If Me.pnlPromoType.Enabled = False AndAlso _
+				Me.pnlPlayerEligibility.Enabled = False Then
+				Me.pnlPromoType.Enabled = True
+				Me.pnlPlayerEligibility.Enabled = True
+			End If
 		End If
 	End Sub
 #End Region
