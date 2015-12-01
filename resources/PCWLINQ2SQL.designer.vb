@@ -782,6 +782,10 @@ Partial Public Class CouponOffer
 	
 	Private _Note As String
 	
+	Private _PayasXC As Boolean
+	
+	Private _XCDays As Short
+	
     #Region "Extensibility Method Definitions"
     Partial Private Sub OnLoaded()
     End Sub
@@ -832,6 +836,14 @@ Partial Public Class CouponOffer
     Partial Private Sub OnNoteChanging(value As String)
     End Sub
     Partial Private Sub OnNoteChanged()
+    End Sub
+    Partial Private Sub OnPayasXCChanging(value As Boolean)
+    End Sub
+    Partial Private Sub OnPayasXCChanged()
+    End Sub
+    Partial Private Sub OnXCDaysChanging(value As Short)
+    End Sub
+    Partial Private Sub OnXCDaysChanged()
     End Sub
     #End Region
 	
@@ -1021,6 +1033,40 @@ Partial Public Class CouponOffer
 		End Set
 	End Property
 	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_PayasXC", DbType:="Bit NOT NULL")>  _
+	Public Property PayasXC() As Boolean
+		Get
+			Return Me._PayasXC
+		End Get
+		Set
+			If ((Me._PayasXC = value)  _
+						= false) Then
+				Me.OnPayasXCChanging(value)
+				Me.SendPropertyChanging
+				Me._PayasXC = value
+				Me.SendPropertyChanged("PayasXC")
+				Me.OnPayasXCChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_XCDays", DbType:="SmallInt NOT NULL")>  _
+	Public Property XCDays() As Short
+		Get
+			Return Me._XCDays
+		End Get
+		Set
+			If ((Me._XCDays = value)  _
+						= false) Then
+				Me.OnXCDaysChanging(value)
+				Me.SendPropertyChanging
+				Me._XCDays = value
+				Me.SendPropertyChanged("XCDays")
+				Me.OnXCDaysChanged
+			End If
+		End Set
+	End Property
+	
 	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
 	
 	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
@@ -1069,6 +1115,8 @@ Partial Public Class CouponTarget
 	Private _TestCoupon As System.Nullable(Of Boolean)
 	
 	Private _CreateDate As System.Nullable(Of Date)
+	
+	Private _Voided As System.Nullable(Of Boolean)
 	
     #Region "Extensibility Method Definitions"
     Partial Private Sub OnLoaded()
@@ -1124,6 +1172,10 @@ Partial Public Class CouponTarget
     Partial Private Sub OnCreateDateChanging(value As System.Nullable(Of Date))
     End Sub
     Partial Private Sub OnCreateDateChanged()
+    End Sub
+    Partial Private Sub OnVoidedChanging(value As System.Nullable(Of Boolean))
+    End Sub
+    Partial Private Sub OnVoidedChanged()
     End Sub
     #End Region
 	
@@ -1323,6 +1375,22 @@ Partial Public Class CouponTarget
 				Me._CreateDate = value
 				Me.SendPropertyChanged("CreateDate")
 				Me.OnCreateDateChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Voided", DbType:="Bit")>  _
+	Public Property Voided() As System.Nullable(Of Boolean)
+		Get
+			Return Me._Voided
+		End Get
+		Set
+			If (Me._Voided.Equals(value) = false) Then
+				Me.OnVoidedChanging(value)
+				Me.SendPropertyChanging
+				Me._Voided = value
+				Me.SendPropertyChanged("Voided")
+				Me.OnVoidedChanged
 			End If
 		End Set
 	End Property
