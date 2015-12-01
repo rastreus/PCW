@@ -137,6 +137,12 @@
     <Compile Include="src\Components\DDEP.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\Components\GPTS.Designer.vb">
+      <DependentUpon>GPTS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Components\GPTS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\Components\SelectorButton.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     <EmbeddedResource Include="src\Components\DDEP.resx">
       <DependentUpon>DDEP.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Components\GPTS.resx">
+      <DependentUpon>GPTS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\frmSelect.resx">
       <DependentUpon>frmSelect.vb</DependentUpon>

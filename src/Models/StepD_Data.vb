@@ -244,7 +244,8 @@ Public Class StepD_Data
 	''' Queries to PromoCategory to determine where to go.
 	''' </summary>
 	''' <returns>NextStep.</returns>
-	''' <remarks>Trying to keep this as clean as possible.</remarks>
+	''' <remarks>Trying to keep this
+	''' as clean as possible.</remarks>
 	Public Function DetermineStepFlow() As String
 		Dim result As String = New String(String.Empty)
 		Select Case Category

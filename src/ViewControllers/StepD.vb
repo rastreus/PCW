@@ -265,8 +265,8 @@ Public Class StepD
 		Me.pnlLemonChiffon.Enabled = bool
 		Me.pnlLemonChiffon.Visible = bool
 		If bool = True Then
-			Me.btnOpenPanel.BackColor = Color.MediumPurple
-			Me.btnOpenPanel.Enabled = True
+			Me.btnImportCSV.BackColor = Color.MediumPurple
+			Me.btnImportCSV.Enabled = True
 			Me.pnlLemonChiffon.BringToFront()
 		Else
 			Me.pnlLemonChiffon.SendToBack()
@@ -485,19 +485,19 @@ Public Class StepD
 		Me.ActiveControl = Me.pnlPointCutoffLimit
 	End Sub
 #End Region
-#Region "StepD_btnOpenPanel_Click"
-	Private Sub btnOpenPanel_Click(sender As Object, _
+#Region "StepD_btnImportCSV_Click"
+	Private Sub btnImportCSV_Click(sender As Object, _
 								   e As EventArgs) _
-		Handles btnOpenPanel.Click
+		Handles btnImportCSV.Click
 		If Me.rbEligiblePlayersList.Checked Then
-			Me.btnOpenPanel.Enabled = False
+			Me.btnImportCSV.Enabled = False
 			Me.pnlPromoType.Enabled = False
 			Me.pnlPlayerEligibility.Enabled = False
 			PCW.Data.UsesEligiblePlayers = True
 			Me.stepD_DDEP.Visible = True
 			Me.stepD_DDEP.Enabled = True
 			Me.stepD_DDEP.BringToFront()
-			Me.btnOpenPanel.Enabled = True
+			Me.btnImportCSV.Enabled = True
 		End If
 	End Sub
 
@@ -513,4 +513,10 @@ Public Class StepD
 		End If
 	End Sub
 #End Region
+
+	Private Sub btnSetPromoType_Click(sender As Object, _
+									  e As EventArgs) _
+		Handles btnSetPromoType.Click
+
+	End Sub
 End Class

@@ -52,7 +52,8 @@ Partial Class StepD
 		Me.Panel7 = New System.Windows.Forms.Panel()
 		Me.lblPlayerEligibility = New System.Windows.Forms.Label()
 		Me.pnlLemonChiffon = New System.Windows.Forms.Panel()
-		Me.btnOpenPanel = New System.Windows.Forms.Button()
+		Me.btnSetPromoType = New System.Windows.Forms.Button()
+		Me.btnImportCSV = New System.Windows.Forms.Button()
 		Me.pnlPointCutoffLimit = New System.Windows.Forms.Panel()
 		Me.PointCutoffLimitSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPointCutoffLimit = New System.Windows.Forms.Button()
@@ -121,6 +122,7 @@ Partial Class StepD
 		Me.rbSingleEntryPayout.Name = "rbSingleEntryPayout"
 		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(172, 17)
 		Me.rbSingleEntryPayout.TabIndex = 0
+		Me.rbSingleEntryPayout.TabStop = True
 		Me.rbSingleEntryPayout.Text = "Single Event: Entry and Payout"
 		Me.rbSingleEntryPayout.UseMnemonic = False
 		Me.rbSingleEntryPayout.UseVisualStyleBackColor = False
@@ -423,6 +425,7 @@ Partial Class StepD
 		Me.rbSumQualifyingPoints.Name = "rbSumQualifyingPoints"
 		Me.rbSumQualifyingPoints.Size = New System.Drawing.Size(193, 17)
 		Me.rbSumQualifyingPoints.TabIndex = 0
+		Me.rbSumQualifyingPoints.TabStop = True
 		Me.rbSumQualifyingPoints.Text = "Sum Points Within Qualifying Peroid"
 		Me.rbSumQualifyingPoints.UseMnemonic = False
 		Me.rbSumQualifyingPoints.UseVisualStyleBackColor = True
@@ -477,7 +480,8 @@ Partial Class StepD
 		'pnlLemonChiffon
 		'
 		Me.pnlLemonChiffon.BackColor = System.Drawing.Color.LemonChiffon
-		Me.pnlLemonChiffon.Controls.Add(Me.btnOpenPanel)
+		Me.pnlLemonChiffon.Controls.Add(Me.btnSetPromoType)
+		Me.pnlLemonChiffon.Controls.Add(Me.btnImportCSV)
 		Me.pnlLemonChiffon.Cursor = System.Windows.Forms.Cursors.Default
 		Me.pnlLemonChiffon.Enabled = False
 		Me.pnlLemonChiffon.Location = New System.Drawing.Point(18, 148)
@@ -486,23 +490,47 @@ Partial Class StepD
 		Me.pnlLemonChiffon.TabIndex = 0
 		Me.pnlLemonChiffon.Visible = False
 		'
-		'btnOpenPanel
+		'btnSetPromoType
 		'
-		Me.btnOpenPanel.BackColor = System.Drawing.Color.Gainsboro
-		Me.btnOpenPanel.Enabled = False
-		Me.btnOpenPanel.FlatAppearance.BorderColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-		Me.btnOpenPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
-		Me.btnOpenPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnOpenPanel.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnOpenPanel.ForeColor = System.Drawing.Color.White
-		Me.btnOpenPanel.Location = New System.Drawing.Point(43, 29)
-		Me.btnOpenPanel.Name = "btnOpenPanel"
-		Me.btnOpenPanel.Size = New System.Drawing.Size(140, 26)
-		Me.btnOpenPanel.TabIndex = 32
-		Me.btnOpenPanel.Text = "Open Panel"
-		Me.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter
-		Me.btnOpenPanel.UseVisualStyleBackColor = False
+		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetPromoType.CausesValidation = False
+		Me.btnSetPromoType.Enabled = False
+		Me.btnSetPromoType.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetPromoType.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+		Me.btnSetPromoType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnSetPromoType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetPromoType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetPromoType.ForeColor = System.Drawing.Color.White
+		Me.btnSetPromoType.Location = New System.Drawing.Point(43, 43)
+		Me.btnSetPromoType.Name = "btnSetPromoType"
+		Me.btnSetPromoType.Size = New System.Drawing.Size(140, 26)
+		Me.btnSetPromoType.TabIndex = 0
+		Me.btnSetPromoType.TabStop = False
+		Me.btnSetPromoType.Text = "Set PromoType"
+		Me.btnSetPromoType.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnSetPromoType.UseMnemonic = False
+		Me.btnSetPromoType.UseVisualStyleBackColor = False
+		'
+		'btnImportCSV
+		'
+		Me.btnImportCSV.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnImportCSV.CausesValidation = False
+		Me.btnImportCSV.Enabled = False
+		Me.btnImportCSV.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnImportCSV.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+		Me.btnImportCSV.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue
+		Me.btnImportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnImportCSV.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnImportCSV.ForeColor = System.Drawing.Color.White
+		Me.btnImportCSV.Location = New System.Drawing.Point(43, 11)
+		Me.btnImportCSV.Name = "btnImportCSV"
+		Me.btnImportCSV.Size = New System.Drawing.Size(140, 26)
+		Me.btnImportCSV.TabIndex = 0
+		Me.btnImportCSV.TabStop = False
+		Me.btnImportCSV.Text = "Import CSV"
+		Me.btnImportCSV.TextAlign = System.Drawing.ContentAlignment.TopCenter
+		Me.btnImportCSV.UseMnemonic = False
+		Me.btnImportCSV.UseVisualStyleBackColor = False
 		'
 		'pnlPointCutoffLimit
 		'
@@ -662,7 +690,7 @@ Partial Class StepD
 	Private WithEvents btnSetNumOfTiers As System.Windows.Forms.Button
 	Private WithEvents PointCutoffLimitSuccessIcon As FontAwesomeIcons.IconButton
 	Private WithEvents TiersSuccessIcon As FontAwesomeIcons.IconButton
-	Private WithEvents btnOpenPanel As System.Windows.Forms.Button
+	Private WithEvents btnImportCSV As System.Windows.Forms.Button
 	Private WithEvents pnlLemonChiffon As System.Windows.Forms.Panel
 	Friend WithEvents stepD_DDEP As PromotionalCreationWizard.DDEP
 	Private WithEvents rbEligiblePlayersList As System.Windows.Forms.RadioButton
@@ -697,5 +725,6 @@ Partial Class StepD
 	Private WithEvents rbSinglePayoutOnly As System.Windows.Forms.RadioButton
 	Private WithEvents pnlSingleEvent As System.Windows.Forms.Panel
 	Private WithEvents pnlMultiPart As System.Windows.Forms.Panel
+	Private WithEvents btnSetPromoType As System.Windows.Forms.Button
 
 End Class
