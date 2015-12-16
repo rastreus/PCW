@@ -50,6 +50,8 @@ Public Class StepGetCouponOffers
 		couponOffer.FullValidate = getFullValidate()
 		couponOffer.Reprintable = getReprintable()
 		couponOffer.ScanToReceipt = getScanToReceipt()
+		couponOffer.PayasXC = getPayasXC()
+		couponOffer.XCDays = getXCDays()
 		couponOffer.Note = getNote()
 		Return couponOffer
 	End Function
@@ -109,6 +111,22 @@ Public Class StepGetCouponOffers
 
 	Private Function getScanToReceipt() As Boolean
 		Return Me.rbScanToReceiptYES.Checked
+	End Function
+
+	Private Function getPayasXC() As Boolean
+		Dim result As Boolean = False
+		If Me.rbXC.Checked Then
+			result = True
+		End If
+		Return result
+	End Function
+
+	Private Function getXCDays() As Short
+		Dim result As Short = 90
+		If Me.rbXC.Checked Then
+			result = Short.Parse(Me.txtXCDays.Text.Trim)
+		End If
+		Return result
 	End Function
 
 	Private Function getNote() As String
@@ -391,10 +409,6 @@ Public Class StepGetCouponOffers
 				Me.cbSelectAllCouponOffers.Visible = False
 				Me.cbSelectAllCouponOffers.Checked = False
 			End If
-			If Me.lblCouponOffersDirections.Enabled = False Then
-				Me.lblCouponOffersDirections.Enabled = True
-				Me.lblCouponOffersDirections.Visible = True
-			End If
 		End If
 	End Sub
 #End Region
@@ -413,10 +427,6 @@ Public Class StepGetCouponOffers
 											e As EventArgs) _
 		Handles pnlForCheckBox.ControlAdded
 		checkToEnableSelectAllCouponOffers()
-		If Me.lblCouponOffersDirections.Enabled = True Then
-			Me.lblCouponOffersDirections.Enabled = False
-			Me.lblCouponOffersDirections.Visible = False
-		End If
 	End Sub
 	Private Sub pnlForCheckBox_ControlRemoved(sender As Object, _
 											  e As EventArgs) _
@@ -517,6 +527,24 @@ Public Class StepGetCouponOffers
 								 e As EventArgs) _
 		Handles btnSetNote.Click
 		Me.ActiveControl = Me.pnlNote
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_txtXCDays_Enter"
+	Private Sub txtXCDays_Enter(sender As Object, _
+								e As EventArgs) _
+		Handles txtXCDays.Enter
+		If Me.txtXCDays.Text = "###" Then
+			Me.txtXCDays.Text = String.Empty
+		End If
+		GUI_Util.offIcon(Me.XCSuccessIcon)
+		GUI_Util.onSetBtn(Me.btnSetXCDays)
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_txtXCDays_Leave"
+	Private Sub txtXCDays_Leave(sender As Object, _
+								e As EventArgs) _
+		Handles txtXCDays.Leave
+		GUI_Util.onIcon(Me.XCSuccessIcon)
 	End Sub
 #End Region
 #Region "StepGetCouponOffers_getCheckBox"
@@ -653,6 +681,36 @@ Public Class StepGetCouponOffers
 			Me.pnlForCheckBox.Controls.Remove(tpl.Item1)
 			tpl.Item1.Dispose()
 		Next
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_btnSetXCDays_Click"
+	Private Sub btnSetXCDays_Click(sender As Object, _
+								   e As EventArgs) _
+		Handles btnSetXCDays.Click
+		Me.ActiveControl = Me.pnlXC
+	End Sub
+#End Region
+#Region "StepGetCouponOffers_rbXC_CheckedChanged"
+	Private Sub rbXC_CheckedChanged(sender As Object, _
+									e As EventArgs) _
+		Handles rbXC.CheckedChanged
+		If Me.rbXC.Checked Then
+			Me.lblXCDays.Visible = True
+			Me.txtXCDays.Visible = True
+			Me.lblDefault.Visible = True
+			Me.btnSetXCDays.Visible = True
+			Me.txtXCDays.Enabled = True
+		Else
+			If Me.XCSuccessIcon.Visible = True Then
+				Me.XCSuccessIcon.Visible = False
+			End If
+			Me.lblXCDays.Visible = False
+			Me.txtXCDays.Visible = False
+			Me.lblDefault.Visible = False
+			Me.btnSetXCDays.Visible = False
+			Me.txtXCDays.Enabled = False
+			Me.txtXCDays.Text = "###"
+		End If
 	End Sub
 #End Region
 End Class

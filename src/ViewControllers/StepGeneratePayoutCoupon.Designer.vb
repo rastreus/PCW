@@ -80,7 +80,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlEditCouponID.Controls.Add(Me.lblEditCouponID)
 		Me.pnlEditCouponID.Controls.Add(Me.txtEditCouponID)
 		Me.pnlEditCouponID.Enabled = False
-		Me.pnlEditCouponID.Location = New System.Drawing.Point(95, 106)
+		Me.pnlEditCouponID.Location = New System.Drawing.Point(45, 109)
 		Me.pnlEditCouponID.Name = "pnlEditCouponID"
 		Me.pnlEditCouponID.Size = New System.Drawing.Size(111, 63)
 		Me.pnlEditCouponID.TabIndex = 1
@@ -131,7 +131,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlCouponID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCouponID.Controls.Add(Me.lblCouponID)
 		Me.pnlCouponID.Controls.Add(Me.pnlPapayaWhip)
-		Me.pnlCouponID.Location = New System.Drawing.Point(95, 19)
+		Me.pnlCouponID.Location = New System.Drawing.Point(45, 22)
 		Me.pnlCouponID.Name = "pnlCouponID"
 		Me.pnlCouponID.Size = New System.Drawing.Size(123, 81)
 		Me.pnlCouponID.TabIndex = 6
@@ -192,7 +192,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlMaxAmtAllCoupons.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlMaxAmtAllCoupons.Controls.Add(Me.pnlLavender)
 		Me.pnlMaxAmtAllCoupons.Controls.Add(Me.lblMaxAmtAllCoupons)
-		Me.pnlMaxAmtAllCoupons.Location = New System.Drawing.Point(224, 182)
+		Me.pnlMaxAmtAllCoupons.Location = New System.Drawing.Point(174, 185)
 		Me.pnlMaxAmtAllCoupons.Name = "pnlMaxAmtAllCoupons"
 		Me.pnlMaxAmtAllCoupons.Size = New System.Drawing.Size(220, 91)
 		Me.pnlMaxAmtAllCoupons.TabIndex = 8
@@ -282,7 +282,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlMaxAmtOneCoupon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.pnlPaleTurquoise)
 		Me.pnlMaxAmtOneCoupon.Controls.Add(Me.lblMaxAmtOneCoupon)
-		Me.pnlMaxAmtOneCoupon.Location = New System.Drawing.Point(224, 99)
+		Me.pnlMaxAmtOneCoupon.Location = New System.Drawing.Point(174, 102)
 		Me.pnlMaxAmtOneCoupon.Name = "pnlMaxAmtOneCoupon"
 		Me.pnlMaxAmtOneCoupon.Size = New System.Drawing.Size(220, 77)
 		Me.pnlMaxAmtOneCoupon.TabIndex = 7
@@ -372,7 +372,7 @@ Partial Class StepGeneratePayoutCoupon
 		Me.pnlCouponsPerPatron.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
 		Me.pnlCouponsPerPatron.Controls.Add(Me.pnlAquamarine)
 		Me.pnlCouponsPerPatron.Controls.Add(Me.Label7)
-		Me.pnlCouponsPerPatron.Location = New System.Drawing.Point(224, 19)
+		Me.pnlCouponsPerPatron.Location = New System.Drawing.Point(174, 22)
 		Me.pnlCouponsPerPatron.Name = "pnlCouponsPerPatron"
 		Me.pnlCouponsPerPatron.Size = New System.Drawing.Size(220, 74)
 		Me.pnlCouponsPerPatron.TabIndex = 9

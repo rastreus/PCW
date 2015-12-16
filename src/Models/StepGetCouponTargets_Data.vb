@@ -93,6 +93,7 @@
 		couponTarget.TotalCoupon = removeDollarReturnDecimal(currentRow(17))
 		couponTarget.TestCoupon = IsTestCoupon()
 		couponTarget.CreateDate = DateTime.Now
+		couponTarget.Voided = Nothing
 		Return couponTarget
 	End Function
 

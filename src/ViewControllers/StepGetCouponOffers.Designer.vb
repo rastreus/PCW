@@ -46,7 +46,6 @@ Partial Class StepGetCouponOffers
 		Me.cbSelectAllCouponOffers = New System.Windows.Forms.CheckBox()
 		Me.btnDelete = New System.Windows.Forms.Button()
 		Me.pnlForCheckBox = New System.Windows.Forms.Panel()
-		Me.lblCouponOffersDirections = New System.Windows.Forms.Label()
 		Me.pnlAskExclude = New System.Windows.Forms.Panel()
 		Me.pnlPapayaWhip = New System.Windows.Forms.Panel()
 		Me.rbExcludeDaysNO = New System.Windows.Forms.RadioButton()
@@ -73,6 +72,15 @@ Partial Class StepGetCouponOffers
 		Me.rbCouponWildcardNO = New System.Windows.Forms.RadioButton()
 		Me.rbCouponWildcardYES = New System.Windows.Forms.RadioButton()
 		Me.lblCouponWildcard = New System.Windows.Forms.Label()
+		Me.pnlXC = New System.Windows.Forms.Panel()
+		Me.lblDefault = New System.Windows.Forms.Label()
+		Me.XCSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.btnSetXCDays = New System.Windows.Forms.Button()
+		Me.lblXCDays = New System.Windows.Forms.Label()
+		Me.txtXCDays = New System.Windows.Forms.TextBox()
+		Me.rbCash = New System.Windows.Forms.RadioButton()
+		Me.rbXC = New System.Windows.Forms.RadioButton()
+		Me.lblPayasXC = New System.Windows.Forms.Label()
 		Me.pnlExclusionDays.SuspendLayout()
 		Me.pnlExcludeRange.SuspendLayout()
 		Me.pnlExcludeStart.SuspendLayout()
@@ -89,6 +97,8 @@ Partial Class StepGetCouponOffers
 		Me.pnlNote.SuspendLayout()
 		CType(Me.NoteSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlCouponWildcard.SuspendLayout()
+		Me.pnlXC.SuspendLayout()
+		CType(Me.XCSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -389,19 +399,6 @@ Partial Class StepGetCouponOffers
 		Me.pnlForCheckBox.Size = New System.Drawing.Size(164, 125)
 		Me.pnlForCheckBox.TabIndex = 0
 		'
-		'lblCouponOffersDirections
-		'
-		Me.lblCouponOffersDirections.BackColor = System.Drawing.Color.Transparent
-		Me.lblCouponOffersDirections.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblCouponOffersDirections.ForeColor = System.Drawing.Color.Black
-		Me.lblCouponOffersDirections.Location = New System.Drawing.Point(19, 258)
-		Me.lblCouponOffersDirections.Name = "lblCouponOffersDirections"
-		Me.lblCouponOffersDirections.Size = New System.Drawing.Size(204, 35)
-		Me.lblCouponOffersDirections.TabIndex = 0
-		Me.lblCouponOffersDirections.Text = "Click 'Submit' below to add Coupon Offers to this Coupon ID."
-		Me.lblCouponOffersDirections.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-		Me.lblCouponOffersDirections.UseMnemonic = False
-		'
 		'pnlAskExclude
 		'
 		Me.pnlAskExclude.BackColor = System.Drawing.SystemColors.ControlDarkDark
@@ -467,7 +464,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlFullValidate.Controls.Add(Me.rbFullValidateNO)
 		Me.pnlFullValidate.Controls.Add(Me.lblFullValidate)
 		Me.pnlFullValidate.Controls.Add(Me.rbFullValidateYES)
-		Me.pnlFullValidate.Location = New System.Drawing.Point(2, 134)
+		Me.pnlFullValidate.Location = New System.Drawing.Point(2, 135)
 		Me.pnlFullValidate.Name = "pnlFullValidate"
 		Me.pnlFullValidate.Size = New System.Drawing.Size(222, 25)
 		Me.pnlFullValidate.TabIndex = 35
@@ -519,7 +516,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlReprintable.Controls.Add(Me.rbReprintableNO)
 		Me.pnlReprintable.Controls.Add(Me.rbReprintableYES)
 		Me.pnlReprintable.Controls.Add(Me.lblReprintable)
-		Me.pnlReprintable.Location = New System.Drawing.Point(2, 157)
+		Me.pnlReprintable.Location = New System.Drawing.Point(2, 158)
 		Me.pnlReprintable.Name = "pnlReprintable"
 		Me.pnlReprintable.Size = New System.Drawing.Size(222, 25)
 		Me.pnlReprintable.TabIndex = 36
@@ -569,7 +566,7 @@ Partial Class StepGetCouponOffers
 		Me.pnlScanToReceipt.Controls.Add(Me.rbScanToReceiptNO)
 		Me.pnlScanToReceipt.Controls.Add(Me.lblScanToReceipt)
 		Me.pnlScanToReceipt.Controls.Add(Me.rbScanToReceiptYES)
-		Me.pnlScanToReceipt.Location = New System.Drawing.Point(2, 180)
+		Me.pnlScanToReceipt.Location = New System.Drawing.Point(2, 181)
 		Me.pnlScanToReceipt.Name = "pnlScanToReceipt"
 		Me.pnlScanToReceipt.Size = New System.Drawing.Size(222, 25)
 		Me.pnlScanToReceipt.TabIndex = 37
@@ -622,9 +619,9 @@ Partial Class StepGetCouponOffers
 		Me.pnlNote.Controls.Add(Me.btnSetNote)
 		Me.pnlNote.Controls.Add(Me.txtNote)
 		Me.pnlNote.Controls.Add(Me.lblNote)
-		Me.pnlNote.Location = New System.Drawing.Point(2, 203)
+		Me.pnlNote.Location = New System.Drawing.Point(2, 264)
 		Me.pnlNote.Name = "pnlNote"
-		Me.pnlNote.Size = New System.Drawing.Size(222, 55)
+		Me.pnlNote.Size = New System.Drawing.Size(222, 27)
 		Me.pnlNote.TabIndex = 38
 		'
 		'NoteSuccessIcon
@@ -634,7 +631,7 @@ Partial Class StepGetCouponOffers
 		Me.NoteSuccessIcon.Enabled = False
 		Me.NoteSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
 		Me.NoteSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.NoteSuccessIcon.Location = New System.Drawing.Point(195, 27)
+		Me.NoteSuccessIcon.Location = New System.Drawing.Point(196, 1)
 		Me.NoteSuccessIcon.Name = "NoteSuccessIcon"
 		Me.NoteSuccessIcon.Size = New System.Drawing.Size(20, 20)
 		Me.NoteSuccessIcon.TabIndex = 35
@@ -652,9 +649,9 @@ Partial Class StepGetCouponOffers
 		Me.btnSetNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnSetNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSetNote.ForeColor = System.Drawing.Color.White
-		Me.btnSetNote.Location = New System.Drawing.Point(126, 27)
+		Me.btnSetNote.Location = New System.Drawing.Point(151, 1)
 		Me.btnSetNote.Name = "btnSetNote"
-		Me.btnSetNote.Size = New System.Drawing.Size(63, 20)
+		Me.btnSetNote.Size = New System.Drawing.Size(39, 20)
 		Me.btnSetNote.TabIndex = 34
 		Me.btnSetNote.Text = "Set"
 		Me.btnSetNote.UseVisualStyleBackColor = False
@@ -662,10 +659,10 @@ Partial Class StepGetCouponOffers
 		'txtNote
 		'
 		Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.txtNote.Location = New System.Drawing.Point(126, 1)
+		Me.txtNote.Location = New System.Drawing.Point(61, 1)
 		Me.txtNote.MaxLength = 14
 		Me.txtNote.Name = "txtNote"
-		Me.txtNote.Size = New System.Drawing.Size(89, 20)
+		Me.txtNote.Size = New System.Drawing.Size(76, 20)
 		Me.txtNote.TabIndex = 1
 		Me.txtNote.Text = "EX: Note"
 		'
@@ -674,9 +671,9 @@ Partial Class StepGetCouponOffers
 		Me.lblNote.BackColor = System.Drawing.Color.Transparent
 		Me.lblNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblNote.ForeColor = System.Drawing.Color.White
-		Me.lblNote.Location = New System.Drawing.Point(0, 1)
+		Me.lblNote.Location = New System.Drawing.Point(16, 0)
 		Me.lblNote.Name = "lblNote"
-		Me.lblNote.Size = New System.Drawing.Size(120, 19)
+		Me.lblNote.Size = New System.Drawing.Size(39, 19)
 		Me.lblNote.TabIndex = 0
 		Me.lblNote.Text = "Note?"
 		Me.lblNote.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -688,9 +685,9 @@ Partial Class StepGetCouponOffers
 		Me.pnlCouponWildcard.Controls.Add(Me.rbCouponWildcardNO)
 		Me.pnlCouponWildcard.Controls.Add(Me.rbCouponWildcardYES)
 		Me.pnlCouponWildcard.Controls.Add(Me.lblCouponWildcard)
-		Me.pnlCouponWildcard.Location = New System.Drawing.Point(2, 100)
+		Me.pnlCouponWildcard.Location = New System.Drawing.Point(2, 101)
 		Me.pnlCouponWildcard.Name = "pnlCouponWildcard"
-		Me.pnlCouponWildcard.Size = New System.Drawing.Size(222, 38)
+		Me.pnlCouponWildcard.Size = New System.Drawing.Size(221, 38)
 		Me.pnlCouponWildcard.TabIndex = 39
 		'
 		'rbCouponWildcardNO
@@ -733,11 +730,143 @@ Partial Class StepGetCouponOffers
 		Me.lblCouponWildcard.Text = "Can the Patron Win more than Once?"
 		Me.lblCouponWildcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		'
+		'pnlXC
+		'
+		Me.pnlXC.BackColor = System.Drawing.Color.Yellow
+		Me.pnlXC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+		Me.pnlXC.Controls.Add(Me.lblDefault)
+		Me.pnlXC.Controls.Add(Me.XCSuccessIcon)
+		Me.pnlXC.Controls.Add(Me.btnSetXCDays)
+		Me.pnlXC.Controls.Add(Me.lblXCDays)
+		Me.pnlXC.Controls.Add(Me.txtXCDays)
+		Me.pnlXC.Controls.Add(Me.rbCash)
+		Me.pnlXC.Controls.Add(Me.rbXC)
+		Me.pnlXC.Controls.Add(Me.lblPayasXC)
+		Me.pnlXC.Location = New System.Drawing.Point(2, 204)
+		Me.pnlXC.Name = "pnlXC"
+		Me.pnlXC.Size = New System.Drawing.Size(221, 60)
+		Me.pnlXC.TabIndex = 40
+		'
+		'lblDefault
+		'
+		Me.lblDefault.AutoSize = True
+		Me.lblDefault.BackColor = System.Drawing.Color.Transparent
+		Me.lblDefault.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDefault.ForeColor = System.Drawing.Color.Black
+		Me.lblDefault.Location = New System.Drawing.Point(58, 44)
+		Me.lblDefault.Name = "lblDefault"
+		Me.lblDefault.Size = New System.Drawing.Size(85, 13)
+		Me.lblDefault.TabIndex = 0
+		Me.lblDefault.Text = "Default is 90"
+		Me.lblDefault.UseMnemonic = False
+		Me.lblDefault.Visible = False
+		'
+		'XCSuccessIcon
+		'
+		Me.XCSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.XCSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.XCSuccessIcon.Enabled = False
+		Me.XCSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.XCSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.XCSuccessIcon.Location = New System.Drawing.Point(196, 25)
+		Me.XCSuccessIcon.Name = "XCSuccessIcon"
+		Me.XCSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.XCSuccessIcon.TabIndex = 36
+		Me.XCSuccessIcon.TabStop = False
+		Me.XCSuccessIcon.ToolTipText = Nothing
+		Me.XCSuccessIcon.Visible = False
+		'
+		'btnSetXCDays
+		'
+		Me.btnSetXCDays.BackColor = System.Drawing.Color.Gainsboro
+		Me.btnSetXCDays.Enabled = False
+		Me.btnSetXCDays.FlatAppearance.BorderColor = System.Drawing.Color.White
+		Me.btnSetXCDays.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepPink
+		Me.btnSetXCDays.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumVioletRed
+		Me.btnSetXCDays.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnSetXCDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSetXCDays.ForeColor = System.Drawing.Color.White
+		Me.btnSetXCDays.Location = New System.Drawing.Point(151, 25)
+		Me.btnSetXCDays.Name = "btnSetXCDays"
+		Me.btnSetXCDays.Size = New System.Drawing.Size(39, 20)
+		Me.btnSetXCDays.TabIndex = 0
+		Me.btnSetXCDays.TabStop = False
+		Me.btnSetXCDays.Text = "Set"
+		Me.btnSetXCDays.UseVisualStyleBackColor = False
+		Me.btnSetXCDays.Visible = False
+		'
+		'lblXCDays
+		'
+		Me.lblXCDays.AutoSize = True
+		Me.lblXCDays.BackColor = System.Drawing.Color.Transparent
+		Me.lblXCDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblXCDays.ForeColor = System.Drawing.Color.Black
+		Me.lblXCDays.Location = New System.Drawing.Point(3, 29)
+		Me.lblXCDays.Name = "lblXCDays"
+		Me.lblXCDays.Size = New System.Drawing.Size(55, 13)
+		Me.lblXCDays.TabIndex = 0
+		Me.lblXCDays.Text = "XC Days?"
+		Me.lblXCDays.UseMnemonic = False
+		Me.lblXCDays.Visible = False
+		'
+		'txtXCDays
+		'
+		Me.txtXCDays.Enabled = False
+		Me.txtXCDays.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.txtXCDays.Location = New System.Drawing.Point(61, 25)
+		Me.txtXCDays.MaxLength = 3
+		Me.txtXCDays.Name = "txtXCDays"
+		Me.txtXCDays.Size = New System.Drawing.Size(78, 20)
+		Me.txtXCDays.TabIndex = 0
+		Me.txtXCDays.TabStop = False
+		Me.txtXCDays.Text = "###"
+		Me.txtXCDays.Visible = False
+		'
+		'rbCash
+		'
+		Me.rbCash.AutoSize = True
+		Me.rbCash.BackColor = System.Drawing.Color.Transparent
+		Me.rbCash.Checked = True
+		Me.rbCash.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbCash.ForeColor = System.Drawing.Color.Black
+		Me.rbCash.Location = New System.Drawing.Point(126, 3)
+		Me.rbCash.Name = "rbCash"
+		Me.rbCash.Size = New System.Drawing.Size(49, 17)
+		Me.rbCash.TabIndex = 0
+		Me.rbCash.TabStop = True
+		Me.rbCash.Text = "Cash"
+		Me.rbCash.UseVisualStyleBackColor = False
+		'
+		'rbXC
+		'
+		Me.rbXC.AutoSize = True
+		Me.rbXC.BackColor = System.Drawing.Color.Transparent
+		Me.rbXC.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rbXC.ForeColor = System.Drawing.Color.Black
+		Me.rbXC.Location = New System.Drawing.Point(175, 3)
+		Me.rbXC.Name = "rbXC"
+		Me.rbXC.Size = New System.Drawing.Size(37, 17)
+		Me.rbXC.TabIndex = 0
+		Me.rbXC.Text = "XC"
+		Me.rbXC.UseVisualStyleBackColor = False
+		'
+		'lblPayasXC
+		'
+		Me.lblPayasXC.BackColor = System.Drawing.Color.Transparent
+		Me.lblPayasXC.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPayasXC.ForeColor = System.Drawing.Color.Black
+		Me.lblPayasXC.Location = New System.Drawing.Point(0, 0)
+		Me.lblPayasXC.Name = "lblPayasXC"
+		Me.lblPayasXC.Size = New System.Drawing.Size(120, 23)
+		Me.lblPayasXC.TabIndex = 1
+		Me.lblPayasXC.Text = "Cash or XC?"
+		Me.lblPayasXC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		'
 		'StepGetCouponOffers
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.Controls.Add(Me.lblCouponOffersDirections)
+		Me.Controls.Add(Me.pnlXC)
 		Me.Controls.Add(Me.pnlNote)
 		Me.Controls.Add(Me.pnlScanToReceipt)
 		Me.Controls.Add(Me.pnlReprintable)
@@ -765,7 +894,7 @@ Partial Class StepGetCouponOffers
 		Me.Controls.SetChildIndex(Me.pnlReprintable, 0)
 		Me.Controls.SetChildIndex(Me.pnlScanToReceipt, 0)
 		Me.Controls.SetChildIndex(Me.pnlNote, 0)
-		Me.Controls.SetChildIndex(Me.lblCouponOffersDirections, 0)
+		Me.Controls.SetChildIndex(Me.pnlXC, 0)
 		Me.pnlExclusionDays.ResumeLayout(False)
 		Me.pnlExclusionDays.PerformLayout()
 		Me.pnlExcludeRange.ResumeLayout(False)
@@ -790,6 +919,9 @@ Partial Class StepGetCouponOffers
 		CType(Me.NoteSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlCouponWildcard.ResumeLayout(False)
 		Me.pnlCouponWildcard.PerformLayout()
+		Me.pnlXC.ResumeLayout(False)
+		Me.pnlXC.PerformLayout()
+		CType(Me.XCSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -843,6 +975,14 @@ Partial Class StepGetCouponOffers
 	Private WithEvents btnDelete As System.Windows.Forms.Button
 	Private WithEvents pnlForCheckBox As System.Windows.Forms.Panel
 	Private WithEvents cbSelectAllCouponOffers As System.Windows.Forms.CheckBox
-	Private WithEvents lblCouponOffersDirections As System.Windows.Forms.Label
+	Private WithEvents pnlXC As System.Windows.Forms.Panel
+	Private WithEvents rbCash As System.Windows.Forms.RadioButton
+	Private WithEvents rbXC As System.Windows.Forms.RadioButton
+	Private WithEvents lblPayasXC As System.Windows.Forms.Label
+	Friend WithEvents lblDefault As System.Windows.Forms.Label
+	Private WithEvents XCSuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents btnSetXCDays As System.Windows.Forms.Button
+	Private WithEvents lblXCDays As System.Windows.Forms.Label
+	Private WithEvents txtXCDays As System.Windows.Forms.TextBox
 
 End Class
