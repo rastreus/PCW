@@ -109,11 +109,11 @@ Public Class PCW
 	Private Function AskToClose()
 		Dim cancelMsgString As String = "Do you wish to quit " & _
 										"the wizard now?" & vbCrLf & _
-										"Your changes will not" & _
-										"be saved if you do."
+										"Your changes will not " & _
+										"be saved if you quit."
 		Dim result As Integer = _
 			CenteredMessagebox.MsgBox.Show(cancelMsgString, _
-										   "Exit wizard?", _
+										   "Quit wizard?", _
 										   MessageBoxButtons.YesNo, _
 										   MessageBoxIcon.Question)
 

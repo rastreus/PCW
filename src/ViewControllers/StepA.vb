@@ -25,7 +25,7 @@ Public Class StepA
 		Handles StepA_InfoCircle.Click
 		Dim copyStr As String = "Copyright " & ChrW(169)
 
-		Dim infoStr As String = "Oaklawn Jockey Club, 2014-2015" & vbCrLf & _
+		Dim infoStr As String = "Oaklawn Jockey Club, 2014-2016" & vbCrLf & _
 								"Brought to you by the fine folks " & _
 								"of the OJC IT Department!"
 
