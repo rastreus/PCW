@@ -31,6 +31,7 @@ Partial Class StepEntryTicketAmt
 		Me.pnl1 = New System.Windows.Forms.Panel()
 		Me.pnlCountAndCal = New System.Windows.Forms.Panel()
 		Me.pnlPointsDivisor = New System.Windows.Forms.Panel()
+		Me.PointsDivisorSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPointsDivisor = New System.Windows.Forms.Button()
 		Me.txtPointsDivisor = New System.Windows.Forms.TextBox()
 		Me.lblPointsDivisor = New System.Windows.Forms.Label()
@@ -39,12 +40,14 @@ Partial Class StepEntryTicketAmt
 		Me.rbTicketsPerPatronNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketPerPatronYES = New System.Windows.Forms.RadioButton()
 		Me.Panel1 = New System.Windows.Forms.Panel()
+		Me.TicketsPerPatronSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetTicketsPerPatron = New System.Windows.Forms.Button()
 		Me.lblTicketsPerPatron = New System.Windows.Forms.Label()
 		Me.pnlTicketsEntirePromo = New System.Windows.Forms.Panel()
 		Me.rbTicketsEntirePromoNO = New System.Windows.Forms.RadioButton()
 		Me.rbTicketsEntirePromoYES = New System.Windows.Forms.RadioButton()
 		Me.Panel2 = New System.Windows.Forms.Panel()
+		Me.TicketsEntirePromoSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.txtTicketsEntirePromo = New System.Windows.Forms.TextBox()
 		Me.btnSetTicketsEntirePromo = New System.Windows.Forms.Button()
 		Me.lblTicketsEntirePromo = New System.Windows.Forms.Label()
@@ -52,26 +55,26 @@ Partial Class StepEntryTicketAmt
 		Me.pnlAmtDescription = New System.Windows.Forms.Panel()
 		Me.lblAmtDesc = New System.Windows.Forms.Label()
 		Me.pnlPromoTypeForEntry = New System.Windows.Forms.Panel()
+		Me.PromoTypeSuccessIcon = New FontAwesomeIcons.IconButton()
 		Me.btnSetPromoType = New System.Windows.Forms.Button()
 		Me.lblPromoTypeQuestion = New System.Windows.Forms.Label()
 		Me.txtPromoType = New System.Windows.Forms.TextBox()
 		Me.lblPromoType = New System.Windows.Forms.Label()
-		Me.PromoTypeSuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.TicketsPerPatronSuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.TicketsEntirePromoSuccessIcon = New FontAwesomeIcons.IconButton()
-		Me.PointsDivisorSuccessIcon = New FontAwesomeIcons.IconButton()
+		Me.pnlInfoNotNeeded = New System.Windows.Forms.Panel()
+		Me.Label3 = New System.Windows.Forms.Label()
 		Me.pnlTicketsAmount.SuspendLayout()
 		Me.pnlPointsDivisor.SuspendLayout()
+		CType(Me.PointsDivisorSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlTicketPerPatron.SuspendLayout()
 		Me.Panel1.SuspendLayout()
+		CType(Me.TicketsPerPatronSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlTicketsEntirePromo.SuspendLayout()
 		Me.Panel2.SuspendLayout()
+		CType(Me.TicketsEntirePromoSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlAmtDescription.SuspendLayout()
 		Me.pnlPromoTypeForEntry.SuspendLayout()
 		CType(Me.PromoTypeSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		CType(Me.TicketsPerPatronSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		CType(Me.TicketsEntirePromoSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-		CType(Me.PointsDivisorSuccessIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnlInfoNotNeeded.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'Description
@@ -188,6 +191,21 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPointsDivisor.TabIndex = 11
 		Me.pnlPointsDivisor.Visible = False
 		'
+		'PointsDivisorSuccessIcon
+		'
+		Me.PointsDivisorSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.PointsDivisorSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.PointsDivisorSuccessIcon.Enabled = False
+		Me.PointsDivisorSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.PointsDivisorSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.PointsDivisorSuccessIcon.Location = New System.Drawing.Point(63, 47)
+		Me.PointsDivisorSuccessIcon.Name = "PointsDivisorSuccessIcon"
+		Me.PointsDivisorSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.PointsDivisorSuccessIcon.TabIndex = 36
+		Me.PointsDivisorSuccessIcon.TabStop = False
+		Me.PointsDivisorSuccessIcon.ToolTipText = Nothing
+		Me.PointsDivisorSuccessIcon.Visible = False
+		'
 		'btnSetPointsDivisor
 		'
 		Me.btnSetPointsDivisor.BackColor = System.Drawing.Color.Gainsboro
@@ -287,6 +305,21 @@ Partial Class StepEntryTicketAmt
 		Me.Panel1.Size = New System.Drawing.Size(143, 58)
 		Me.Panel1.TabIndex = 10
 		'
+		'TicketsPerPatronSuccessIcon
+		'
+		Me.TicketsPerPatronSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.TicketsPerPatronSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.TicketsPerPatronSuccessIcon.Enabled = False
+		Me.TicketsPerPatronSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.TicketsPerPatronSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.TicketsPerPatronSuccessIcon.Location = New System.Drawing.Point(116, 31)
+		Me.TicketsPerPatronSuccessIcon.Name = "TicketsPerPatronSuccessIcon"
+		Me.TicketsPerPatronSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.TicketsPerPatronSuccessIcon.TabIndex = 35
+		Me.TicketsPerPatronSuccessIcon.TabStop = False
+		Me.TicketsPerPatronSuccessIcon.ToolTipText = Nothing
+		Me.TicketsPerPatronSuccessIcon.Visible = False
+		'
 		'btnSetTicketsPerPatron
 		'
 		Me.btnSetTicketsPerPatron.BackColor = System.Drawing.Color.Gainsboro
@@ -363,6 +396,21 @@ Partial Class StepEntryTicketAmt
 		Me.Panel2.Name = "Panel2"
 		Me.Panel2.Size = New System.Drawing.Size(143, 58)
 		Me.Panel2.TabIndex = 11
+		'
+		'TicketsEntirePromoSuccessIcon
+		'
+		Me.TicketsEntirePromoSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.TicketsEntirePromoSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.TicketsEntirePromoSuccessIcon.Enabled = False
+		Me.TicketsEntirePromoSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.TicketsEntirePromoSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.TicketsEntirePromoSuccessIcon.Location = New System.Drawing.Point(115, 31)
+		Me.TicketsEntirePromoSuccessIcon.Name = "TicketsEntirePromoSuccessIcon"
+		Me.TicketsEntirePromoSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.TicketsEntirePromoSuccessIcon.TabIndex = 36
+		Me.TicketsEntirePromoSuccessIcon.TabStop = False
+		Me.TicketsEntirePromoSuccessIcon.ToolTipText = Nothing
+		Me.TicketsEntirePromoSuccessIcon.Visible = False
 		'
 		'txtTicketsEntirePromo
 		'
@@ -451,6 +499,21 @@ Partial Class StepEntryTicketAmt
 		Me.pnlPromoTypeForEntry.Size = New System.Drawing.Size(80, 130)
 		Me.pnlPromoTypeForEntry.TabIndex = 14
 		'
+		'PromoTypeSuccessIcon
+		'
+		Me.PromoTypeSuccessIcon.ActiveColor = System.Drawing.Color.Lime
+		Me.PromoTypeSuccessIcon.BackColor = System.Drawing.Color.Transparent
+		Me.PromoTypeSuccessIcon.Enabled = False
+		Me.PromoTypeSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
+		Me.PromoTypeSuccessIcon.InActiveColor = System.Drawing.Color.Lime
+		Me.PromoTypeSuccessIcon.Location = New System.Drawing.Point(53, 102)
+		Me.PromoTypeSuccessIcon.Name = "PromoTypeSuccessIcon"
+		Me.PromoTypeSuccessIcon.Size = New System.Drawing.Size(20, 20)
+		Me.PromoTypeSuccessIcon.TabIndex = 34
+		Me.PromoTypeSuccessIcon.TabStop = False
+		Me.PromoTypeSuccessIcon.ToolTipText = Nothing
+		Me.PromoTypeSuccessIcon.Visible = False
+		'
 		'btnSetPromoType
 		'
 		Me.btnSetPromoType.BackColor = System.Drawing.Color.Gainsboro
@@ -498,70 +561,33 @@ Partial Class StepEntryTicketAmt
 		Me.lblPromoType.TabIndex = 15
 		Me.lblPromoType.Text = "Promo Type:"
 		'
-		'PromoTypeSuccessIcon
+		'pnlInfoNotNeeded
 		'
-		Me.PromoTypeSuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.PromoTypeSuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.PromoTypeSuccessIcon.Enabled = False
-		Me.PromoTypeSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.PromoTypeSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.PromoTypeSuccessIcon.Location = New System.Drawing.Point(53, 102)
-		Me.PromoTypeSuccessIcon.Name = "PromoTypeSuccessIcon"
-		Me.PromoTypeSuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.PromoTypeSuccessIcon.TabIndex = 34
-		Me.PromoTypeSuccessIcon.TabStop = False
-		Me.PromoTypeSuccessIcon.ToolTipText = Nothing
-		Me.PromoTypeSuccessIcon.Visible = False
+		Me.pnlInfoNotNeeded.BackColor = System.Drawing.SystemColors.ControlDarkDark
+		Me.pnlInfoNotNeeded.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.pnlInfoNotNeeded.Controls.Add(Me.Label3)
+		Me.pnlInfoNotNeeded.Location = New System.Drawing.Point(114, 341)
+		Me.pnlInfoNotNeeded.Name = "pnlInfoNotNeeded"
+		Me.pnlInfoNotNeeded.Size = New System.Drawing.Size(343, 172)
+		Me.pnlInfoNotNeeded.TabIndex = 0
+		Me.pnlInfoNotNeeded.Visible = False
 		'
-		'TicketsPerPatronSuccessIcon
+		'Label3
 		'
-		Me.TicketsPerPatronSuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.TicketsPerPatronSuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.TicketsPerPatronSuccessIcon.Enabled = False
-		Me.TicketsPerPatronSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.TicketsPerPatronSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.TicketsPerPatronSuccessIcon.Location = New System.Drawing.Point(116, 31)
-		Me.TicketsPerPatronSuccessIcon.Name = "TicketsPerPatronSuccessIcon"
-		Me.TicketsPerPatronSuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.TicketsPerPatronSuccessIcon.TabIndex = 35
-		Me.TicketsPerPatronSuccessIcon.TabStop = False
-		Me.TicketsPerPatronSuccessIcon.ToolTipText = Nothing
-		Me.TicketsPerPatronSuccessIcon.Visible = False
-		'
-		'TicketsEntirePromoSuccessIcon
-		'
-		Me.TicketsEntirePromoSuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.TicketsEntirePromoSuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.TicketsEntirePromoSuccessIcon.Enabled = False
-		Me.TicketsEntirePromoSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.TicketsEntirePromoSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.TicketsEntirePromoSuccessIcon.Location = New System.Drawing.Point(115, 31)
-		Me.TicketsEntirePromoSuccessIcon.Name = "TicketsEntirePromoSuccessIcon"
-		Me.TicketsEntirePromoSuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.TicketsEntirePromoSuccessIcon.TabIndex = 36
-		Me.TicketsEntirePromoSuccessIcon.TabStop = False
-		Me.TicketsEntirePromoSuccessIcon.ToolTipText = Nothing
-		Me.TicketsEntirePromoSuccessIcon.Visible = False
-		'
-		'PointsDivisorSuccessIcon
-		'
-		Me.PointsDivisorSuccessIcon.ActiveColor = System.Drawing.Color.Lime
-		Me.PointsDivisorSuccessIcon.BackColor = System.Drawing.Color.Transparent
-		Me.PointsDivisorSuccessIcon.Enabled = False
-		Me.PointsDivisorSuccessIcon.IconType = FontAwesomeIcons.IconType.Tick
-		Me.PointsDivisorSuccessIcon.InActiveColor = System.Drawing.Color.Lime
-		Me.PointsDivisorSuccessIcon.Location = New System.Drawing.Point(63, 47)
-		Me.PointsDivisorSuccessIcon.Name = "PointsDivisorSuccessIcon"
-		Me.PointsDivisorSuccessIcon.Size = New System.Drawing.Size(20, 20)
-		Me.PointsDivisorSuccessIcon.TabIndex = 36
-		Me.PointsDivisorSuccessIcon.TabStop = False
-		Me.PointsDivisorSuccessIcon.ToolTipText = Nothing
-		Me.PointsDivisorSuccessIcon.Visible = False
+		Me.Label3.AutoSize = True
+		Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label3.ForeColor = System.Drawing.Color.White
+		Me.Label3.Location = New System.Drawing.Point(21, 80)
+		Me.Label3.Name = "Label3"
+		Me.Label3.Size = New System.Drawing.Size(307, 16)
+		Me.Label3.TabIndex = 14
+		Me.Label3.Text = "Information not needed for PromoType 20B."
 		'
 		'StepEntryTicketAmt
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.Controls.Add(Me.pnlInfoNotNeeded)
 		Me.Controls.Add(Me.pnlPromoTypeForEntry)
 		Me.Controls.Add(Me.pnlPointsDivisor)
 		Me.Controls.Add(Me.pnlTicketsEntirePromo)
@@ -580,25 +606,28 @@ Partial Class StepEntryTicketAmt
 		Me.Controls.SetChildIndex(Me.Description, 0)
 		Me.Controls.SetChildIndex(Me.pnlPointsDivisor, 0)
 		Me.Controls.SetChildIndex(Me.pnlPromoTypeForEntry, 0)
+		Me.Controls.SetChildIndex(Me.pnlInfoNotNeeded, 0)
 		Me.pnlTicketsAmount.ResumeLayout(False)
 		Me.pnlTicketsAmount.PerformLayout()
 		Me.pnlPointsDivisor.ResumeLayout(False)
 		Me.pnlPointsDivisor.PerformLayout()
+		CType(Me.PointsDivisorSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlTicketPerPatron.ResumeLayout(False)
 		Me.pnlTicketPerPatron.PerformLayout()
 		Me.Panel1.ResumeLayout(False)
+		CType(Me.TicketsPerPatronSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlTicketsEntirePromo.ResumeLayout(False)
 		Me.pnlTicketsEntirePromo.PerformLayout()
 		Me.Panel2.ResumeLayout(False)
 		Me.Panel2.PerformLayout()
+		CType(Me.TicketsEntirePromoSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlAmtDescription.ResumeLayout(False)
 		Me.pnlAmtDescription.PerformLayout()
 		Me.pnlPromoTypeForEntry.ResumeLayout(False)
 		Me.pnlPromoTypeForEntry.PerformLayout()
 		CType(Me.PromoTypeSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		CType(Me.TicketsPerPatronSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		CType(Me.TicketsEntirePromoSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
-		CType(Me.PointsDivisorSuccessIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlInfoNotNeeded.ResumeLayout(False)
+		Me.pnlInfoNotNeeded.PerformLayout()
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -640,5 +669,7 @@ Partial Class StepEntryTicketAmt
 	Private WithEvents TicketsPerPatronSuccessIcon As FontAwesomeIcons.IconButton
 	Private WithEvents TicketsEntirePromoSuccessIcon As FontAwesomeIcons.IconButton
 	Private WithEvents PointsDivisorSuccessIcon As FontAwesomeIcons.IconButton
+	Private WithEvents pnlInfoNotNeeded As System.Windows.Forms.Panel
+	Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class

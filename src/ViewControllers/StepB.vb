@@ -133,6 +133,43 @@ Public Class StepB
 		Return nextMonthStr
 	End Function
 
+	''' <summary>
+	''' Returns formatted String of the picked month.
+	''' </summary>
+	''' <param name="monthAbbreviation"></param>
+	''' <returns>Picked month as String of two digits</returns>
+	''' <remarks></remarks>
+	Private Function getPromoPickMonth(ByVal monthAbbreviation As String) As String
+		Dim monthStr As String = New String("00")
+		Select Case monthAbbreviation
+			Case "Jan"
+				monthStr = "01"
+			Case "Feb"
+				monthStr = "02"
+			Case "Mar"
+				monthStr = "03"
+			Case "Apr"
+				monthStr = "04"
+			Case "May"
+				monthStr = "05"
+			Case "June"
+				monthStr = "06"
+			Case "July"
+				monthStr = "07"
+			Case "Aug"
+				monthStr = "08"
+			Case "Sept"
+				monthStr = "09"
+			Case "Oct"
+				monthStr = "10"
+			Case "Nov"
+				monthStr = "11"
+			Case "Dec"
+				monthStr = "12"
+		End Select
+		Return monthStr
+	End Function
+
 	Private Function formatMonthStr(ByVal monthStr As String) As String
 		If monthStr.Length < 2 Then
 			monthStr = "0" & monthStr
@@ -273,6 +310,7 @@ Public Class StepB
 	Private Sub cbRecurringFrequency_DropDown(sender As Object, _
 											  e As EventArgs) _
 		Handles cbRecurringFrequency.DropDown
+		'If the ComboBox is in a Success state
 		If Me.cbRecurringFrequency.BackColor = Color.DarkGreen Then
 			GUI_Util.regCb(Me.cbRecurringFrequency)
 		End If
@@ -438,6 +476,42 @@ Public Class StepB
 			Me.promoMonth = getPromoThisMonth()
 		End If
 		Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
+	End Sub
+#End Region
+#Region "StepB_rbPickMonth_CheckedChanged"
+	Private Sub rbPickMonth_CheckedChanged(sender As Object, _
+										   e As EventArgs) _
+		Handles rbPickMonth.CheckedChanged
+		If Me.rbPickMonth.Checked AndAlso _
+			Me.cbPickMonth.Enabled = False Then
+			Me.cbPickMonth.Enabled = True
+			Me.cbPickMonth.DroppedDown = True
+		Else
+			Me.cbPickMonth.Enabled = False
+		End If
+	End Sub
+#End Region
+#Region "StepB_cbPickMonth_DropDown"
+	Private Sub cbPickMonth_DropDown(sender As Object, _
+									 e As EventArgs) _
+		Handles cbPickMonth.DropDown
+		'If the ComboBox is in a Success state
+		If Me.cbPickMonth.BackColor = Color.DarkGreen Then
+			GUI_Util.regCb(Me.cbPickMonth)
+		End If
+		PCW.NextEnabled = False
+	End Sub
+#End Region
+#Region "StepB_cbPickMonth_DropDownClosed"
+	Private Sub cbPickMonth_DropDownClosed(sender As Object, _
+										   e As EventArgs) _
+	Handles cbPickMonth.DropDownClosed
+		If (Not cbPickMonth.SelectedItem = String.Empty) Then
+			Me.promoMonth = getPromoPickMonth(Me.cbPickMonth.SelectedItem)
+			Me.lblEditPromoID.Text = Me.promoYear & Me.promoMonth
+			GUI_Util.successCb(Me.cbPickMonth)
+			Me.ActiveControl = Me.pnlEditPromoID
+		End If
 	End Sub
 #End Region
 End Class

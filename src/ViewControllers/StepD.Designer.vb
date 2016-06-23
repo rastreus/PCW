@@ -120,10 +120,10 @@ Partial Class StepD
 		Me.rbSingleEntryPayout.Checked = True
 		Me.rbSingleEntryPayout.Location = New System.Drawing.Point(7, 31)
 		Me.rbSingleEntryPayout.Name = "rbSingleEntryPayout"
-		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(172, 17)
+		Me.rbSingleEntryPayout.Size = New System.Drawing.Size(176, 17)
 		Me.rbSingleEntryPayout.TabIndex = 0
 		Me.rbSingleEntryPayout.TabStop = True
-		Me.rbSingleEntryPayout.Text = "Single Event: Entry and Payout"
+		Me.rbSingleEntryPayout.Text = "Combo Event: Entry and Payout"
 		Me.rbSingleEntryPayout.UseMnemonic = False
 		Me.rbSingleEntryPayout.UseVisualStyleBackColor = False
 		'

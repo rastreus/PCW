@@ -183,6 +183,12 @@ Public Class StepEntryTicketAmt
 		Me.btnSetTicketsPerPatron.Enabled = False
 		Me.btnSetTicketsEntirePromo.BackColor = Color.Gainsboro
 		Me.btnSetTicketsEntirePromo.Enabled = False
+		Me.pnlAmtDescription.Enabled = True
+		Me.pnlAmtDescription.Visible = True
+		Me.pnlTicketsAmount.Enabled = True
+		Me.pnlTicketsAmount.Visible = True
+		Me.pnlInfoNotNeeded.Visible = False
+		Me.pnlInfoNotNeeded.Location = New Point(114, 341)
 		SetPointsDivisorPnl(False)
 		SetPointsDivisorTxt(False)
 	End Sub
@@ -264,7 +270,7 @@ Public Class StepEntryTicketAmt
 
 		If Me.Data.BadPromoType() Then
 			cancelContinuingToNextStep = True
-			GUI_Util.errPnl(Me.pnlTicketsEntirePromo)
+			GUI_Util.errPnl(Me.pnlPromoTypeForEntry)
 			errString = "The Promo Type is invalid."
 			errStrArray.Add(errString)
 			Me.txtPromoType.Text = String.Empty
@@ -413,8 +419,10 @@ Public Class StepEntryTicketAmt
 	Private Sub txtTicketsPerPatron_Leave(sender As Object, _
 										  e As EventArgs) _
 		Handles txtTicketsPerPatron.Leave
-		GUI_Util.onIcon(Me.TicketsPerPatronSuccessIcon)
-		GUI_Util.NextEnabled()
+		If Not Me.txtTicketsPerPatron.Text = String.Empty Then
+			GUI_Util.onIcon(Me.TicketsPerPatronSuccessIcon)
+			GUI_Util.NextEnabled()
+		End If
 	End Sub
 #End Region
 #Region "StepEntryTicketAmt_txtTicketsEntirePromo_Leave"
@@ -463,11 +471,38 @@ Public Class StepEntryTicketAmt
 		Handles txtPromoType.Leave
 		GUI_Util.onIcon(Me.PromoTypeSuccessIcon)
 		CheckForNext()
+		CheckFor20B()
 	End Sub
 
 	Private Sub CheckForNext()
 		If Me.promoTypeEntered Then
 			GUI_Util.NextEnabled()
+		End If
+	End Sub
+
+	Private Sub CheckFor20B()
+		If Me.txtPromoType.Text = "20B" OrElse _
+			Me.txtPromoType.Text = "20b" Then
+			Me.rbTicketPerPatronYES.Checked = True
+			Me.rbTicketsPerPatronNO.Enabled = False
+			Me.pnlAmtDescription.Enabled = False
+			Me.pnlAmtDescription.Visible = False
+			Me.pnlTicketsAmount.Enabled = False
+			Me.pnlTicketsAmount.Visible = False
+			Me.pnlInfoNotNeeded.Location = New Point(114, 15)
+			Me.pnlInfoNotNeeded.BringToFront()
+			Me.pnlInfoNotNeeded.Visible = True
+		Else
+			Me.rbTicketsPerPatronNO.Checked = True
+			Me.rbTicketsPerPatronNO.Enabled = True
+			Me.pnlAmtDescription.Enabled = True
+			Me.pnlAmtDescription.Visible = True
+			Me.pnlTicketsAmount.Enabled = True
+			Me.pnlTicketsAmount.Visible = True
+			Me.pnlInfoNotNeeded.Location = New Point(114, 341)
+			Me.pnlInfoNotNeeded.SendToBack()
+			Me.pnlInfoNotNeeded.Visible = False
+			GUI_Util.offIcon(Me.TicketsPerPatronSuccessIcon)
 		End If
 	End Sub
 #End Region
