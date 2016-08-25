@@ -23,6 +23,14 @@ Imports TSWizards
 Imports System.Text
 Imports System.ComponentModel
 
+''' <summary>
+''' StepI
+''' </summary>
+''' <remarks>
+''' This Step shows the information that will be added to the database.
+''' It is the last check for the user to make sure that they did not
+''' accidentally make the promo incorrectly.
+''' </remarks>
 Public Class StepI
 	Inherits TSWizards.BaseInteriorStep
 
