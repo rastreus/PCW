@@ -75,6 +75,32 @@ ADDENDUM (08/25/16): This is too humorous. Do whatever you have to do. I love
 programming style and 80 columns. I used a vertical monior for programming instead
 of a horizontal monitor so I literally couldn't go too much further past 80 cols.
 
+UPDATING:
+=========
+The steps to update the application are on the "frmAutoUpdate.vb" file.
+I am copying them here as well:
+
+On each new release of PCW that needs to be pushed out:
+
+OBVIOUSLY UPDATE THE VERSION NUMBER BEFORE PUSHING THE UPDATE!
+PromotionalCreationWizard > Properties > Application > Assembly Information
+Update the Assembly Version and the File Version.
+EXAMPLE: As of 08/25/16, the current version is 0.9.0.4.
+If I were updating, I would simply change the version to 0.9.0.5.
+
+The following steps use examples of updating from 0.9.0.4 to 0.9.0.5:
+
+0.) Go to the AutoUpdate.RootPath in your Windows file browser.
+    (Currently: "\\domainserver\data\InformationTechnology\Software Master\Oaklawn\PCW")
+1.) Create a new folder whose name is the newest version.
+    EXAMPLE: 00090005
+2.) Copy the new release .exe into the folder from \bin\Release.
+3.) Rename the exe by appending "-" and the newest version number.
+    EXAMPLE: PromotionalCreationWizard-00090005.exe
+4.) Update the "UpdateFile" with the newest version.
+    EXAMPLE: 0.9.0.5
+5.) Done! An old, out-of-date copy of PCW will auto-update itself upon first launch.
+
 -------------------------------------------------------------------------------
 
 _*gl hf*_
