@@ -82,10 +82,7 @@ Public Class DDEP
 				Dim s As String = a.GetValue(0).ToString
 				Me.BeginInvoke(m_DelegateChangeLabel, New Object() {s})
 				Me.BeginInvoke(m_DelegateCSVtoComboBox, New Object() {s})
-				Me.lblDrag.Text = "Success!"
-				Me.pnlDragDropCSV.BackColor = Color.PaleGreen
-				enableSpB(Me.sbPlayerID, "PlayerID")
-				enableSpB(Me.sbNumOfTickets, "NumOfTickets")
+				Success()
 			End If
 		Catch ex As Exception
 			Trace.WriteLine("Error in DragDrop: " & ex.Message)
@@ -195,8 +192,10 @@ Public Class DDEP
 #End Region
 #Region "File Finder"
 	Private Sub Success()
-		GUI_Util.successPnl(Me.pnlControlDarkDark)
-		Me.lblDrag.Text = "Import Successful!"
+		Me.lblDrag.Text = "Success!"
+		Me.pnlDragDropCSV.BackColor = Color.PaleGreen
+		enableSpB(Me.sbPlayerID, "PlayerID")
+		enableSpB(Me.sbNumOfTickets, "NumOfTickets")
 	End Sub
 	Private Sub SetPathText(ByVal s As String)
 		Me.lblFilePath.Text = s
