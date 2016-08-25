@@ -1,18 +1,18 @@
 ADVICE:
 =======
 SERIOUSLY READ ALL THE COMMENTS! I tried to keep them updated and informative.
-It's a good place to start. But seriously! Send a few days reading the code and
+It's a good place to start. But seriously! Spend a few days reading the code and
 all the comments. Trace the flow. The program starts in the PCW form and goes
 from there. **Unfortunately**, there are a lot of features where this software
-is tightly coupled to bizarre, hidden ---bug--- _features_ of GPM. If you don't
-know what's going on, and you won't (trust me), you'll just have to ask Daniel
-or whomever is coding on GPM at the time of reading this.
+is tightly coupled to GPM since this application creates the database entries
+that GPM has to use. If you don't know what's going on, ask Daniel Dainwood
+(or whomever is coding on GPM at the time of reading this).
 
 DESIGN DECISIONS:
 =================
 There are definitely some "design flaws" in that it is not a nice, arch.
 without a lot of tight coupling -- there is quite a bit of tight coupling
-unfortunately. Tread carefully lest you break everything. Also, there's not
+unfortunately. Tread carefully lest you break EVERYTHING. Also, there's not
 really a testing framework so unless you know what to actually look for, you
 won't even know that you've broken everything. I know. I'm sorry. But in my
 defense, I did the best I could with what I was given -- absolutely nothing!
@@ -24,12 +24,13 @@ be in the Model which are the `_Data` files. The worst piece of shit code that
 had to be written was the `DataAddedToHash`. Basically, it's a gangsta' drive-
 by that collects all the needed data from each Step into a single hash. The
 data is then "parsed" to get what's needed to put into the database for the
-given task at hand. I'm sorry. Just wanted to warn you about that. Also, my
-naming convensions weren't that good. I didn't really know what things should
-do what and when throughout the process. It was kind of trial-by-fire. Towards
-the end, I started using more descriptive names, but until then, it was just
-letters -- actually, I started with numbers, but then had to rearrange things
-and switched to letters for some reason. I don't know.
+given task at hand. I dislike SQL strings so I went with LINQ. It's actually
+really cool. Spend some time learning LINQ to understand how the data gets to
+the database. Also, my naming convensions weren't that good. I didn't really
+know what things should do what and when throughout the process. It was kind
+of trial-by-fire. Towards the end, I started using more descriptive names, but
+until then, it was just letters -- actually, I started with numbers, but then
+had to rearrange things and switched to letters for some reason. I don't know.
 
 VERSION CONTROL (GIT):
 ======================
@@ -52,6 +53,13 @@ back to earlier versions of software is invaluable. Even if you are only a
 single developer on this project, it is still good practice to use version
 control software.
 
+ADDENDUM (08/25/16): I have no idea what happeded to the GitLab vm. I cannot
+access the code or anything. I believe that the ActiveDirectory was messed up.
+Anyway, I'm putting a copyleft, GNU license on the code and pushing it to Github.
+Do whatever you need to do to get work done. In my more youthful, zealous days, I
+was very adament about version control and git. I still swear by git; use it!
+But I understand that you need to do what you need to do.
+
 READABILITY AND MANTAINABILITY:
 ===============================
 I know some of the horrible design issues makes this difficult. But there is
@@ -62,6 +70,10 @@ Look it up. Read about it. You will notice it a lot throughout this code. I
 hold it near and dear to my heart. SERIOUSLY! Follow a programming style of
 staying true to 80 columns. Do not let a single line of code go even a single
 character over 80 columns. That would mean a lot to me. Thank you.
+
+ADDENDUM (08/25/16): This is too humorous. Do whatever you have to do. I love
+programming style and 80 columns. I used a vertical monior for programming instead
+of a horizontal monitor so I literally couldn't go too much further past 80 cols.
 
 -------------------------------------------------------------------------------
 
