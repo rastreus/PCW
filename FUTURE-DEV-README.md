@@ -60,6 +60,8 @@ Do whatever you need to do to get work done. In my more youthful, zealous days, 
 was very adament about version control and git. I still swear by git; use it!
 But I understand that you need to do what you need to do.
 
+ADDENDUM (08/26/16): https://github.com/rastreus/PCW. FORK IT, BRUH!
+
 READABILITY AND MANTAINABILITY:
 ===============================
 I know some of the horrible design issues makes this difficult. But there is
