@@ -14,7 +14,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Guide for Creating Promos")> 
 <Assembly: AssemblyCompany("Oaklawn Jockey Club")> 
 <Assembly: AssemblyProduct("PromotionalCreationWizard")> 
-<Assembly: AssemblyCopyright("Copyright ©  2014-2016")> 
+<Assembly: AssemblyCopyright("Copyright ©  2014-2016 Russell Dillin")> 
 <Assembly: AssemblyTrademark("N/A")> 
 
 <Assembly: ComVisible(False)> 
