@@ -10,7 +10,7 @@
             <complex> ::= <compound> ADD <count>
                <date> ::= "current-week" | <date-region> | "earns-on-field"
         <date-region> ::= "start-date, end-date"
-	 <date-recurring> ::= "daily" | "weekly" | "monthly" | "quartly" | "yearly"
+	 <date-recurring> ::= "daily" | "weekly"
 	    <conditional> ::= <date-conditional> | <points-conditional> | <user-conditional>
    <date-conditional> ::= "not-already-today" | "not-enroll-date"
              <points> ::= "lifetime" | <date-region>

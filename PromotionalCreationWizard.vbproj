@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -21,11 +22,16 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
+    <MapFileExtensions>false</MapFileExtensions>
+    <TargetCulture>en-US</TargetCulture>
+    <ProductName>PromotionalCreationWizard %28PCW%29</ProductName>
+    <PublisherName>Oaklawn Jockey Club</PublisherName>
+    <SuiteName>PromotionalManagementSuite %28PMS%29</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -35,18 +41,23 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>PromotionalCreationWizard.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>None</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>PromotionalCreationWizard.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -67,8 +78,16 @@
     <ApplicationIcon>resources\PCW.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoUpdate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\AutoUpdate.dll</HintPath>
+    </Reference>
     <Reference Include="CenteredMessagebox">
       <HintPath>resources\CenteredMessagebox.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomizedTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\CustomizedTextBox.dll</HintPath>
     </Reference>
     <Reference Include="FontAwesomeIcons">
       <HintPath>resources\FontAwesomeIcons.dll</HintPath>
@@ -102,27 +121,79 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="src\Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Lingering_ToolTip.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="resources\MarketingPromos.designer.vb">
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="resources\PCWLINQ2SQL.designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
     </Compile>
-    <Compile Include="resources\MarketingPromos.vb">
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
+    <Compile Include="resources\PCWLINQ2SQL.vb">
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
     </Compile>
-    <Compile Include="src\PCW.vb">
+    <Compile Include="Settings.vb" />
+    <Compile Include="src\Components\DDEP.Designer.vb">
+      <DependentUpon>DDEP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Components\DDEP.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Components\GPTS.Designer.vb">
+      <DependentUpon>GPTS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Components\GPTS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Components\SelectorButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Forms\frmSelect.Designer.vb">
+      <DependentUpon>frmSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Forms\frmSelect.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\PCW.Designer.vb">
+    <Compile Include="src\Forms\frmAutoUpdate.Designer.vb">
+      <DependentUpon>frmAutoUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\Forms\frmAutoUpdate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Interfaces\IPromoData.vb" />
+    <Compile Include="src\Interfaces\IWizardStep.vb" />
+    <Compile Include="src\Models\StepCanHazSecurity_Data.vb" />
+    <Compile Include="src\Models\StepGetCouponOffers_Data.vb" />
+    <Compile Include="src\Models\StepGetCouponTargets_Data.vb" />
+    <Compile Include="src\Models\StepD_Data.vb" />
+    <Compile Include="src\Models\StepEntryTicketAmt_Data.vb" />
+    <Compile Include="src\Models\StepF_Data.vb" />
+    <Compile Include="src\Models\StepGeneratePayoutCoupon_Data.vb" />
+    <Compile Include="src\Models\StepH_Data.vb" />
+    <Compile Include="src\ViewControllers\StepCanHazSecurity.Designer.vb">
+      <DependentUpon>StepCanHazSecurity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepCanHazSecurity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponOffers.Designer.vb">
+      <DependentUpon>StepGetCouponOffers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponOffers.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponTargets.Designer.vb">
+      <DependentUpon>StepGetCouponTargets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\ViewControllers\StepGetCouponTargets.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\_Utils\GUI_Util.vb" />
+    <Compile Include="src\Models\PCW_Data.vb" />
+    <Compile Include="src\Models\StepB_Data.vb" />
+    <Compile Include="src\Models\StepC_Data.vb" />
+    <Compile Include="src\Forms\PCW.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\PCW.Designer.vb">
       <DependentUpon>PCW.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -141,152 +212,176 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="src\PAE.Designer.vb">
+    <Compile Include="src\Forms\PAE.Designer.vb">
       <DependentUpon>PAE.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\PAE.vb">
+    <Compile Include="src\Forms\PAE.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\SingletonQueue.vb" />
-    <Compile Include="src\Sql_Query.vb" />
-    <Compile Include="src\StepA.Designer.vb">
+    <Compile Include="src\_Utils\SQL_Util.vb" />
+    <Compile Include="src\ViewControllers\StepA.Designer.vb">
       <DependentUpon>StepA.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepA.vb">
+    <Compile Include="src\ViewControllers\StepA.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepB.Designer.vb">
+    <Compile Include="src\ViewControllers\StepB.Designer.vb">
       <DependentUpon>StepB.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepB.vb">
+    <Compile Include="src\ViewControllers\StepB.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepC.Designer.vb">
+    <Compile Include="src\ViewControllers\StepC.Designer.vb">
       <DependentUpon>StepC.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepC.vb">
+    <Compile Include="src\ViewControllers\StepC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepG1.Designer.vb">
-      <DependentUpon>StepG1.vb</DependentUpon>
+    <Compile Include="src\ViewControllers\StepEntryTicketAmt.Designer.vb">
+      <DependentUpon>StepEntryTicketAmt.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepG1.vb">
+    <Compile Include="src\ViewControllers\StepEntryTicketAmt.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepG2.Designer.vb">
-      <DependentUpon>StepG2.vb</DependentUpon>
+    <Compile Include="src\ViewControllers\StepGeneratePayoutCoupon.Designer.vb">
+      <DependentUpon>StepGeneratePayoutCoupon.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepG2.vb">
+    <Compile Include="src\ViewControllers\StepGeneratePayoutCoupon.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepD.Designer.vb">
+    <Compile Include="src\ViewControllers\StepD.Designer.vb">
       <DependentUpon>StepD.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepD.vb">
+    <Compile Include="src\ViewControllers\StepD.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepE.Designer.vb">
-      <DependentUpon>StepE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="src\StepE.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="src\StepF.Designer.vb">
+    <Compile Include="src\ViewControllers\StepF.Designer.vb">
       <DependentUpon>StepF.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepF.vb">
+    <Compile Include="src\ViewControllers\StepF.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepH.Designer.vb">
+    <Compile Include="src\ViewControllers\StepH.Designer.vb">
       <DependentUpon>StepH.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepH.vb">
+    <Compile Include="src\ViewControllers\StepH.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepI.Designer.vb">
+    <Compile Include="src\ViewControllers\StepI.Designer.vb">
       <DependentUpon>StepI.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepI.vb">
+    <Compile Include="src\ViewControllers\StepI.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepJ.Designer.vb">
+    <Compile Include="src\ViewControllers\StepJ.Designer.vb">
       <DependentUpon>StepJ.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepJ.vb">
+    <Compile Include="src\ViewControllers\StepJ.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\StepX.Designer.vb">
+    <Compile Include="src\ViewControllers\StepX.Designer.vb">
       <DependentUpon>StepX.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\StepX.vb">
+    <Compile Include="src\ViewControllers\StepX.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="src\_Utils\BEP_Util.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="src\Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <None Include="resources\PCWLINQ2SQL.dbml.layout">
+      <DependentUpon>PCWLINQ2SQL.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="src\Components\DDEP.resx">
+      <DependentUpon>DDEP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Components\GPTS.resx">
+      <DependentUpon>GPTS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\frmSelect.resx">
+      <DependentUpon>frmSelect.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="My Project\app.manifest" />
     <None Include="README.md" />
     <None Include="research\PromoTypeDescriptions.xlsx" />
-    <None Include="resources\MarketingPromos.dbml.layout">
-      <DependentUpon>MarketingPromos.dbml</DependentUpon>
-    </None>
-    <EmbeddedResource Include="src\PCW.resx">
+    <None Include="research\Target-Lists\Monthly Mailer Target List.csv" />
+    <None Include="research\Target-Lists\Postcard Drawing Target List.csv" />
+    <EmbeddedResource Include="src\Forms\frmAutoUpdate.resx">
+      <DependentUpon>frmAutoUpdate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\PCW.resx">
       <DependentUpon>PCW.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\PAE.resx">
+    <EmbeddedResource Include="src\Forms\PAE.resx">
       <DependentUpon>PAE.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepA.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepA.resx">
       <DependentUpon>StepA.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepB.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepB.resx">
       <DependentUpon>StepB.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepC.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepC.resx">
       <DependentUpon>StepC.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepG1.resx">
-      <DependentUpon>StepG1.vb</DependentUpon>
+    <EmbeddedResource Include="src\ViewControllers\StepCanHazSecurity.resx">
+      <DependentUpon>StepCanHazSecurity.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepG2.resx">
-      <DependentUpon>StepG2.vb</DependentUpon>
+    <EmbeddedResource Include="src\ViewControllers\StepGetCouponOffers.resx">
+      <DependentUpon>StepGetCouponOffers.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepD.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepEntryTicketAmt.resx">
+      <DependentUpon>StepEntryTicketAmt.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ViewControllers\StepGeneratePayoutCoupon.resx">
+      <DependentUpon>StepGeneratePayoutCoupon.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ViewControllers\StepD.resx">
       <DependentUpon>StepD.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepE.resx">
-      <DependentUpon>StepE.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\StepF.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepF.resx">
       <DependentUpon>StepF.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepH.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepGetCouponTargets.resx">
+      <DependentUpon>StepGetCouponTargets.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ViewControllers\StepH.resx">
       <DependentUpon>StepH.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepI.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepI.resx">
       <DependentUpon>StepI.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepJ.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepJ.resx">
       <DependentUpon>StepJ.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\StepX.resx">
+    <EmbeddedResource Include="src\ViewControllers\StepX.resx">
       <DependentUpon>StepX.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\MarketingPromos.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MarketingPromos.designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -299,6 +394,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\PCWLINQ2SQL.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PCWLINQ2SQL.designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="resources\TSWizards.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -318,10 +418,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE\CenterMessagebox-License.txt" />
-    <Content Include="Future-Developer-README.txt" />
+    <None Include="FUTURE-DEV-README.md" />
     <Content Include="LICENSE\PromotionalCreationWizard-License.txt" />
     <Content Include="research\PromoTypeBNF.txt" />
+    <Content Include="research\Target-Lists\_Note-About-Target-List.txt" />
+    <Content Include="resources\AutoUpdate.dll" />
     <Content Include="resources\CenteredMessagebox.dll" />
+    <Content Include="resources\CustomizedTextBox.dll" />
     <Content Include="resources\FontAwesomeIcons.dll" />
     <None Include="resources\PCW.ico" />
   </ItemGroup>
@@ -342,7 +445,74 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Future-Developer-README.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="research\PromoTypeBNF.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="research\Target-Lists\_Note-About-Target-List.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="resources\CenteredMessagebox.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="resources\CustomizedTextBox.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="resources\FontAwesomeIcons.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>; Move all assemblies and related files to lib folder
+ROBOCOPY "$(TargetDir) " "$(TargetDir)lib\ " /XF *.exe *.config *.manifest /XD lib logs data /E /IS /MOVE
+if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

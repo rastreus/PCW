@@ -3,8 +3,8 @@
   <MySubMain>true</MySubMain>
   <MainForm>PCW</MainForm>
   <SingleInstance>true</SingleInstance>
-  <ShutdownMode>1</ShutdownMode>
-  <EnableVisualStyles>true</EnableVisualStyles>
+  <ShutdownMode>0</ShutdownMode>
+  <EnableVisualStyles>false</EnableVisualStyles>
   <AuthenticationMode>0</AuthenticationMode>
   <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
 </MyApplicationData>

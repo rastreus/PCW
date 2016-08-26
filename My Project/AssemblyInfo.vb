@@ -1,4 +1,6 @@
-﻿Imports System
+﻿Imports System.Resources
+
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -12,10 +14,10 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Guide for Creating Promos")> 
 <Assembly: AssemblyCompany("Oaklawn Jockey Club")> 
 <Assembly: AssemblyProduct("PromotionalCreationWizard")> 
-<Assembly: AssemblyCopyright("Copyright ©  2014")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyCopyright("Copyright ©  2014-2016 Russell Dillin")> 
+<Assembly: AssemblyTrademark("N/A")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("2abc6e1f-af10-4fda-9390-cfbef0316a0a")> 
@@ -31,5 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("0.9.0.4")> 
+<Assembly: AssemblyFileVersion("0.9.0.4")> 
+
+<Assembly: NeutralResourcesLanguageAttribute("en-US")> 

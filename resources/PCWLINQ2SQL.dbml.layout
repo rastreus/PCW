@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.375" name="PCWLINQ2SQL">
+  <DataContextMoniker Name="/PCWLINQ2SQLDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5d828d06-36a5-40b4-85d1-1a5883158b70" absoluteBounds="3.625, 1, 2, 4.3830997721354166">
+      <DataClassMoniker Name="/PCWLINQ2SQLDataContext/MarketingPromo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dab934ab-9e50-4aba-9957-c395662a8227" absoluteBounds="3.64, 1.46, 1.9700000000000002, 3.823099772135417" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1915d878-555c-4a25-af2b-5bc1b659a3c7" absoluteBounds="0.625, 0.875, 2.375, 1.4248478190104168">
+      <DataClassMoniker Name="/PCWLINQ2SQLDataContext/MarketingPromoEligiblePlayer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9d7f3822-59ce-4708-9fb3-9ada3381fcf8" absoluteBounds="0.64, 1.335, 2.3449999999999998, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c91035f2-b24a-49df-a66d-e74207e3e44e" absoluteBounds="1, 6.25, 2, 2.9039737955729166">
+      <DataClassMoniker Name="/PCWLINQ2SQLDataContext/CouponOffer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="35c314ea-59fd-4f14-a2d3-7d3a740de779" absoluteBounds="1.0150000000000001, 6.71, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99dab8fd-8cc1-4ea0-9b78-d1303fde15f7" absoluteBounds="0.625, 2.875, 2, 2.9039737955729166">
+      <DataClassMoniker Name="/PCWLINQ2SQLDataContext/CouponTarget" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc7cabe1-7b74-43d0-bc2f-04c0bd6b1e93" absoluteBounds="0.64, 3.335, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
